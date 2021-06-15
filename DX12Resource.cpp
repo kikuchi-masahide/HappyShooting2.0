@@ -254,7 +254,8 @@ void DX12Pimple::Copy4x4Matrix(void* _map, MatVec::Matrix4x4 _mat)
 			dxmatrix.r[i].m128_f32[j] = _mat(j, i);
 		}
 	}
-	*((DirectX::XMMATRIX*)_map) = dxmatrix;
+	DirectX::XMMATRIX* map_vec = (DirectX::XMMATRIX*)_map;
+	*map_vec = dxmatrix;
 }
 
 void DX12Pimple::CreateConstBufferView(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n)

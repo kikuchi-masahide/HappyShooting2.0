@@ -61,7 +61,7 @@ public:
 		DX12Config::PrimitiveTopologyType _primitive, UINT _numrt,
 		boost::shared_ptr<DX12RootSignature> _rootsignature);
 	//ルートシグネチャの作成(暫定)
-	boost::shared_ptr<DX12RootSignature> CreateRootSignature(DX12RootParameter& _rootparam);
+	boost::shared_ptr<DX12RootSignature> CreateRootSignature(std::vector<DX12RootParameter>& _rootparams);
 	//パイプラインステートのセット
 	void SetGraphicsPipeline(boost::shared_ptr<DX12GraphicsPipeline> _pipeline);
 	//ルートシグネチャのセット

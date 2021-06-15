@@ -1,8 +1,8 @@
 #pragma once
 
 /// <summary>
-/// 1つのDX12DescriptorRangeは，1つのDescriptorHeapの持つ
-/// 同種の連続したディスクリプタをシェーダレジスタにバインドする
+/// 1つのDX12DescriptorRangeは1つのDescriptorHeapと対応し，
+/// 各ビューがどのようにシェーダレジスタと対応するか指定する．
 /// see:https://sites.google.com/site/monshonosuana/directxno-hanashi-1/directx-145
 /// </summary>
 struct DX12DescriptorRange {
@@ -21,15 +21,19 @@ public:
 	/// このディスクリプタレンジはb2からb5を占有する)
 	/// </summary>
 	unsigned int mBaseShaderRegister;
-	DX12DescriptorRange(unsigned int _num, DX12Config::DescriptorRangeType _type, unsigned int _reg)
-		:mNumDescriptors(_num), mType(_type), mBaseShaderRegister(_reg)
+	/// <summary>
+	/// ディスクリプタヒープの何番目から占有するか
+	/// (例えばmBaseHeapRegister = 2,mNumDescriptors = 4ならば，
+	/// ディスクリプタヒープの2から5番目を占有する)
+	/// </summary>
+	unsigned int mBaseHeapRegister;
+	DX12DescriptorRange(unsigned int _num, DX12Config::DescriptorRangeType _type, unsigned int _shaderreg, unsigned int _heapreg)
+		:mNumDescriptors(_num), mType(_type), mBaseShaderRegister(_shaderreg),mBaseHeapRegister(_heapreg)
 	{}
 };
 
 /// <summary>
 /// 複数のディスクリプタレンジをまとめる構造体
-/// (本当はディスクリプタレンジはディスクリプタテーブルによりまとめられ，複数のテーブルがルートパラメタによりまとめられるが，
-/// ここでは簡単のため全ディスクリプタレンジを1つのテーブルにまとめ，それを1つのルートパラメタが持つようにした)
 /// see:https://sites.google.com/site/monshonosuana/directxno-hanashi-1/directx-145
 /// </summary>
 struct DX12RootParameter {

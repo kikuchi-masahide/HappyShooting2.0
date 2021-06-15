@@ -12,7 +12,7 @@ class DX12CmdList;
 /// </summary>
 class DX12RootSignature final :public boost::noncopyable {
 public:
-	DX12RootSignature(ComPtr<ID3D12Device> _device,DX12RootParameter& _rootparam);
+	DX12RootSignature(ComPtr<ID3D12Device> _device, std::vector<DX12RootParameter>& _rootparams);
 	ComPtr<ID3D12RootSignature> mRootSignature;
 	void SetRootSignature(ComPtr<ID3D12GraphicsCommandList> _list);
 private:
