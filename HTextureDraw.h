@@ -15,7 +15,9 @@ public:
 	/// <param name="_rx">右端x</param>
 	/// <param name="_by">下端y</param>
 	/// <param name="_ty">上端y</param>
-	void Draw(Game* _game, double _lx, double _rx, double _by, double _ty);
+	/// <param name="_rtwidth">レンダーターゲットの横幅</param>
+	/// <param name="_rtheight">レンダーターゲットの縦幅</param>
+	void Draw(Game* _game, double _lx, double _rx, double _by, double _ty, unsigned int _rtwidth,unsigned int _rtheight);
 private:
 	static boost::shared_ptr<DX12GraphicsPipeline> mGPipeline;
 	static boost::shared_ptr<DX12RootSignature> mRootSignature;
