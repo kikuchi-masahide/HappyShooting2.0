@@ -7,17 +7,27 @@ class HTextureDraw
 {
 public:
 	/// <param name="_textureid">このインスタンスで描くテクスチャのID</param>
-	HTextureDraw(Game* _game,unsigned int _textureid);
+	HTextureDraw(Game& _game,unsigned int _textureid);
 	/// <summary>
 	/// RTVを開いた状態で，指定座標にテクスチャを描く
 	/// </summary>
-	/// <param name="_lx">左端x</param>
-	/// <param name="_rx">右端x</param>
-	/// <param name="_by">下端y</param>
-	/// <param name="_ty">上端y</param>
-	/// <param name="_rtwidth">レンダーターゲットの横幅</param>
-	/// <param name="_rtheight">レンダーターゲットの縦幅</param>
-	void Draw(Game* _game, double _lx, double _rx, double _by, double _ty, unsigned int _rtwidth,unsigned int _rtheight);
+	/// <param name="_lx">左端x[px]</param>
+	/// <param name="_rx">右端x[px]</param>
+	/// <param name="_by">下端y[px]</param>
+	/// <param name="_ty">上端y[px]</param>
+	/// <param name="_rtwidth">レンダーターゲットの横幅[px]</param>
+	/// <param name="_rtheight">レンダーターゲットの縦幅[px]</param>
+	void DrawInRect(Game& _game, double _lx, double _rx, double _by, double _ty, unsigned int _rtwidth,unsigned int _rtheight);
+	/// <summary>
+	/// RTVを開いた状態で，中心点と倍率を指定してテクスチャを描く
+	/// </summary>
+	/// <param name="_cx">中心x[px]</param>
+	/// <param name="_cy">中心y[px]</param>
+	/// <param name="_rx">幅[px]</param>
+	/// <param name="_ry">高さ[px]</param>
+	/// <param name="_rtwidth">レンダーターゲットの横幅[px]</param>
+	/// <param name="_rtheight">レンダーターゲットの縦幅[px]</param>
+	void DrawCenter(Game& _game, double _cx, double _cy, double _rx, double _ry, unsigned int _rtwidth, unsigned int _rtheight);
 private:
 	static boost::shared_ptr<DX12GraphicsPipeline> mGPipeline;
 	static boost::shared_ptr<DX12RootSignature> mRootSignature;
@@ -27,9 +37,9 @@ private:
 	static boost::shared_ptr<DX12Resource> mMatrixBuffer;
 	static boost::shared_ptr<DX12DescriptorHeap> mCRVDescHeap;
 	//パイプライン等の初期化
-	static void GraphicInit(Game* _game);
+	static void GraphicInit(Game& _game);
 	//コンストラクタで呼び出されSRVの読み込みを行う
-	void ReadSRV(Game* _game,unsigned int _textureid);
+	void ReadSRV(Game& _game,unsigned int _textureid);
 	struct Vertex {
 	public:
 		float x, y, z;
@@ -40,4 +50,9 @@ private:
 	//SRVの入っているヒープとその番号
 	boost::shared_ptr<DX12DescriptorHeap> mSRVHeap;
 	unsigned int mSRVHeapIndex;
+	//テクスチャの大きさ
+	double texWidth_;
+	double texHeight_;
+	//行列マップ先
+	static void* matrix_map;
 };

@@ -85,6 +85,7 @@
       <Filter>Engine\Math</Filter>
     </ClCompile>
     <ClCompile Include="HTextureDraw.cpp" />
+    <ClCompile Include="TitleUIScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -177,6 +178,7 @@
       <Filter>Engine\Math</Filter>
     </ClInclude>
     <ClInclude Include="HTextureDraw.h" />
+    <ClInclude Include="TitleUIScreen.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HTextureDrawInclude.hlsli" />

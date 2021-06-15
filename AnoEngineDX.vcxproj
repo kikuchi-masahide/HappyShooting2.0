@@ -188,6 +188,7 @@
     </ClCompile>
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="TitleUIScreen.cpp" />
     <ClCompile Include="UIScreen.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
@@ -222,6 +223,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="TitleUIScreen.h" />
     <ClInclude Include="UIScreen.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>

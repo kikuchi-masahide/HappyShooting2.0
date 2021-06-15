@@ -1,22 +1,21 @@
 #include "TitleScene.h"
 
+#include "TitleUIScreen.h"
+
 TitleScene::TitleScene(Game* _game)
 	:Scene(_game)
 {
-	Log::OutputTrivial("TitleScene constructor");
+	AddUIScreen<TitleUIScreen>(this);
 }
 
 TitleScene::~TitleScene()
 {
-	Log::OutputTrivial("TitleScene destructor");
 }
 
 void TitleScene::UniqueUpdate()
 {
-	Log::OutputTrivial("TitleScene UniqueUpdate");
 }
 
 void TitleScene::UniqueOutput()
 {
-	Log::OutputTrivial("TitleScnene UniqueOutput");
 }

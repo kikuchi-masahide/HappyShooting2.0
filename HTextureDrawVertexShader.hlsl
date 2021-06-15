@@ -1,6 +1,6 @@
 #include "HTextureDrawInclude.hlsli"
 
-Output main( float4 pos : POS,float2 uv : UV )
+Output main( float4 pos : POSITION,float2 uv : TEXCOORD )
 {
 	Output output;
 	output.svpos = mul(mat, pos);
