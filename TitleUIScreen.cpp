@@ -21,10 +21,10 @@ void TitleUIScreen::Output()
 	//タイトル描画
 	title_draw_helper_.DrawCenter(scene_->mGame, kTitleCenterX_, kTitleCenterY_, kTitleWidth_, KTitleHeight_, 900, 900);
 	//マウス位置取得
-	auto mouse_pos = scene_->GetMouseScreenPos();
+	auto mouse_pos = scene_->GetMouseClientPos(0);
 	//左上原点なのでy座標反転
 	double mouse_x = mouse_pos(0);
-	double mouse_y = 900 - mouse_pos(1);
+	double mouse_y = mouse_pos(1);
 	bool is_mouse_in_button = false;
 	//マウスの位置がボタン内であるとき
 	if (
