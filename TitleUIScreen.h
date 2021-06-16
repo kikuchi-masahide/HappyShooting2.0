@@ -20,7 +20,7 @@ private:
 	const double kButtonHeight_ = 200;
 	//ƒ^ƒCƒgƒ‹•`‰æ‚Ì‚½‚ß‚Ìî•ñ
 	HTextureDraw title_draw_helper_;
-	const double kTitleCenterY_ = 450;
+	const double kTitleCenterY_ = 600;
 	const double kTitleCenterX_ = 450;
 	const double kTitleWidth_ = 300;
 	const double KTitleHeight_ = 30;

@@ -54,6 +54,7 @@ HTextureDraw::HTextureDraw(Game& _game, unsigned int _textureid)
 		GraphicInit(_game);
 	}
 	ReadSRV(_game,_textureid);
+	InitializeCRV(_game);
 }
 
 void HTextureDraw::GraphicInit(Game& _game)
@@ -121,14 +122,6 @@ void HTextureDraw::GraphicInit(Game& _game)
 	mGPipeline = _game.mdx12.CreateGraphicsPipeline(
 		vertexshader, pixelshader, vertexlayout, DX12Config::PrimitiveTopologyType::TRIANGLE, 1, mRootSignature
 	);
-	//定数バッファ作成
-	mMatrixBuffer = _game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD,sizeof(double)*16);
-	//定数バッファのヒープ
-	mCRVDescHeap = _game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
-	//定数バッファのビュー
-	_game.mdx12.CreateConstBufferView(mMatrixBuffer, mCRVDescHeap, 0);
-	//行列マップ先を設定
-	matrix_map = _game.mdx12.Map(mMatrixBuffer);
 }
 
 void HTextureDraw::ReadSRV(Game& _game, unsigned int _textureid)
@@ -138,10 +131,19 @@ void HTextureDraw::ReadSRV(Game& _game, unsigned int _textureid)
 	mSRVHeapIndex = res.second;
 }
 
+void HTextureDraw::InitializeCRV(Game& game)
+{
+	//定数バッファ作成
+	mMatrixBuffer = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(double) * 16);
+	//定数バッファのヒープ
+	mCRVDescHeap = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
+	//定数バッファのビュー
+	game.mdx12.CreateConstBufferView(mMatrixBuffer, mCRVDescHeap, 0);
+	//行列マップ先を設定
+	matrix_map = game.mdx12.Map(mMatrixBuffer);
+}
+
 boost::shared_ptr<DX12GraphicsPipeline> HTextureDraw::mGPipeline = nullptr;
 boost::shared_ptr<DX12RootSignature> HTextureDraw::mRootSignature = nullptr;
 boost::shared_ptr<DX12Resource> HTextureDraw::mIndexBuffer = nullptr;
 boost::shared_ptr<DX12Resource> HTextureDraw::mVertexBuffer = nullptr;
-boost::shared_ptr<DX12Resource> HTextureDraw::mMatrixBuffer = nullptr;
-boost::shared_ptr<DX12DescriptorHeap> HTextureDraw::mCRVDescHeap = nullptr;
-void* HTextureDraw::matrix_map = nullptr;
