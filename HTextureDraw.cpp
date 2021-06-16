@@ -25,7 +25,7 @@ void HTextureDraw::DrawInRect(Game& _game, double _lx, double _rx, double _by, d
 	_game.mdx12.SetDescriptorHeap(mCRVDescHeap);
 	_game.mdx12.SetGraphicsRootDescriptorTable(1, mCRVDescHeap, 0);
 	//プリミティブトポロジ
-	_game.mdx12.SetPrimitiveTopology(DX12Config::PrimitiveTopology::TRIANGLESTRIP);
+	_game.mdx12.SetPrimitiveTopology(DX12Config::PrimitiveTopology::TRIANGLELIST);
 	//頂点バッファ指定
 	_game.mdx12.SetVertexBuffers(mVertexBuffer, 0, sizeof(Vertex) * 4, sizeof(Vertex));
 	//インデックスバッファ

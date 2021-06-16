@@ -20,13 +20,21 @@ DX12GraphicsPipeline::DX12GraphicsPipeline(
 	gpipeline.RasterizerState.CullMode = D3D12_CULL_MODE_NONE;
 	gpipeline.RasterizerState.FillMode = D3D12_FILL_MODE_SOLID;
 	gpipeline.RasterizerState.DepthClipEnable = true;
-	gpipeline.BlendState.AlphaToCoverageEnable = false;
+	gpipeline.BlendState.AlphaToCoverageEnable = true;
 	gpipeline.BlendState.IndependentBlendEnable = false;
-	D3D12_RENDER_TARGET_BLEND_DESC renderTargetBlendDesc = {};
-	renderTargetBlendDesc.BlendEnable = false;
-	renderTargetBlendDesc.LogicOpEnable = false;
-	renderTargetBlendDesc.RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
-	gpipeline.BlendState.RenderTarget[0] = renderTargetBlendDesc;
+	CD3DX12_BLEND_DESC renderTargetBlendDesc(D3D12_DEFAULT);
+	//αブレンドを行う
+	renderTargetBlendDesc.RenderTarget[0].BlendEnable = true;
+	renderTargetBlendDesc.RenderTarget[0].LogicOpEnable = false;
+	renderTargetBlendDesc.RenderTarget[0].SrcBlend = D3D12_BLEND_SRC_ALPHA;
+	renderTargetBlendDesc.RenderTarget[0].DestBlend = D3D12_BLEND_INV_SRC_ALPHA;
+	renderTargetBlendDesc.RenderTarget[0].BlendOp = D3D12_BLEND_OP_ADD;
+	renderTargetBlendDesc.RenderTarget[0].SrcBlendAlpha = D3D12_BLEND_ONE;
+	renderTargetBlendDesc.RenderTarget[0].DestBlendAlpha = D3D12_BLEND_ZERO;
+	renderTargetBlendDesc.RenderTarget[0].BlendOpAlpha = D3D12_BLEND_OP_ADD;
+	renderTargetBlendDesc.RenderTarget[0].LogicOp = D3D12_LOGIC_OP_NOOP;
+	renderTargetBlendDesc.RenderTarget[0].RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
+	gpipeline.BlendState = renderTargetBlendDesc;
 	//頂点レイアウトの配列をこちらで作り直す
 	unsigned int layoutNum = _vertexLayout.size();
 	D3D12_INPUT_ELEMENT_DESC* layouts = new D3D12_INPUT_ELEMENT_DESC[layoutNum];

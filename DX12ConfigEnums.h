@@ -43,12 +43,12 @@ namespace DX12Config {
 		INPUT_CLASSIFICATION_PER_INSTANCE_DATA,
 		size
 	};
-	//コマンドリストで指定するプリミティブトポロジ
+	//コマンドリストで指定するプリミティブトポロジ(構成要素の指定)
 	enum class PrimitiveTopology :unsigned char {
 		POINT,
 		LINE,
-		TRIANGLE,
-		TRIANGLESTRIP,
+		TRIANGLELIST,//独立した三角形の集合
+		TRIANGLESTRIP,//前の三角形とつながった三角形の集合体
 		size
 	};
 	//グラフィックスパイプラインで指定するプリミティブトポロジタイプ
