@@ -28,4 +28,6 @@ private:
 	HTextureDraw cursor_draw_helper_;
 	//親Sceneインスタンス
 	Scene* scene_;
+	//MainSceneクラスへ移行するための関数
+	void TransToMainScene();
 };

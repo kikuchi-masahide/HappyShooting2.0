@@ -1,6 +1,8 @@
 #include "TitleUIScreen.h"
 
 #include "Scene.h"
+#include "Game.h"
+#include "MainScene.h"
 
 TitleUIScreen::TitleUIScreen(Scene* scene)
 //下部オブジェクトのアップデートは許可，入力は渡さない
@@ -48,8 +50,7 @@ void TitleUIScreen::Output()
 	//ボタン内で左ボタンを離した
 	if (is_mouse_in_button && mouse_left == ButtonState::Released)
 	{
-		//とりあえずコンソールにアウトプットするのみ
-		Log::OutputCritical("Mouse Clicked in the Button");
+		TransToMainScene();
 	}
 	//カーソル描画
 	cursor_draw_helper_.DrawCenter(scene_->mGame, mouse_x, mouse_y, 20, 20, 900, 900);
@@ -58,5 +59,10 @@ void TitleUIScreen::Output()
 
 TitleUIScreen::~TitleUIScreen()
 {
+}
+
+void TitleUIScreen::TransToMainScene()
+{
+	scene_->mGame.ChangeScene<MainScene>();
 }
 

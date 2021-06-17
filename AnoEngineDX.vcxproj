@@ -178,6 +178,9 @@
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainScene.cpp" />
+    <ClCompile Include="MainSceneBaseLayer.cpp" />
+    <ClCompile Include="MainSceneDrawComponent.cpp" />
     <ClCompile Include="MatVec.cpp" />
     <ClCompile Include="Rect2.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -215,6 +218,9 @@
     <ClInclude Include="Layer.h" />
     <ClInclude Include="LayerHandle.h" />
     <ClInclude Include="Log.h" />
+    <ClInclude Include="MainScene.h" />
+    <ClInclude Include="MainSceneBaseLayer.h" />
+    <ClInclude Include="MainSceneDrawComponent.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="MatVec.h" />
     <ClInclude Include="Rect2.h" />
