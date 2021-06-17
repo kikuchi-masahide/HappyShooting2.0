@@ -11,7 +11,7 @@ public:
 	void Draw();
 	/// <summary>
 	/// Draw()から呼び出される，ペラポリゴンを実際にウィンドウへ描画するための関数
-	/// ペラポリゴンは，全componentの描画が済んだ状態になっている
+	/// ペラポリゴンは，全componentの描画が済んだ状態になっており，シェーダーリソース状態にするバリア実行済
 	/// </summary>
 	virtual void UniqueDraw() = 0;
 	/// <summary>
@@ -31,4 +31,12 @@ private:
 	//このレイヤーがアクティブになってから何度目のフレームか
 	//(1回目にUniqueDrawが呼び出されたときが0)
 	unsigned int layer_t_;
+	//ペラポリゴン
+	boost::shared_ptr<DX12Resource> pera_texture_;
+	//ペラポリゴンのRTV;
+	boost::shared_ptr<DX12DescriptorHeap> pera_rtv_;
+	//ペラポリゴンのSRV;
+	boost::shared_ptr<DX12DescriptorHeap> pera_srv_;
+	//MainSceneBaseLayerのグラフィックス初期化
+	void GraphicsInit();
 };
