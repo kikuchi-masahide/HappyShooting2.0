@@ -55,7 +55,17 @@ GameObjectHandle Scene::AddObject(MatVec::Vector2 _pos, double _scale, double _a
 	return objh;
 }
 
-Scene::~Scene() {}
+Scene::~Scene() {
+		//UIScreen‚Ìíœˆ—
+	for (auto uiscreen : mUIScreens)
+	{
+		delete uiscreen;
+	}
+	for (auto uiscreen : mPandingUIScreens)
+	{
+		delete uiscreen;
+	}
+}
 
 ButtonState Scene::GetKeyState(unsigned char _key)
 {
