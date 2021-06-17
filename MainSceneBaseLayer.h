@@ -24,19 +24,24 @@ public:
 	/// MainSceneから呼び出される，Drawコールが必要なコンポーネントの追加関数
 	/// </summary>
 	void AddComponent(ComponentHandle<MainSceneDrawComponent> component);
-private:
-	std::vector<ComponentHandle<MainSceneDrawComponent>> draw_components_;
-	//このレイヤーがアクティブか否か
-	bool is_active_;
-	//このレイヤーがアクティブになってから何度目のフレームか
-	//(1回目にUniqueDrawが呼び出されたときが0)
-	unsigned int layer_t_;
+	/// <summary>
+	/// layer_t_(アクティブになってからの時間)を取得
+	/// </summary>
+	unsigned int GetLayert();
+protected:
 	//ペラポリゴン
 	boost::shared_ptr<DX12Resource> pera_texture_;
 	//ペラポリゴンのRTV;
 	boost::shared_ptr<DX12DescriptorHeap> pera_rtv_;
 	//ペラポリゴンのSRV;
 	boost::shared_ptr<DX12DescriptorHeap> pera_srv_;
+private:
+	std::vector<ComponentHandle<MainSceneDrawComponent>> draw_components_;
+	//このレイヤーがアクティブになってから何度目のフレームか
+	//(1回目にUniqueDrawが呼び出されたときが0)
+	unsigned int layer_t_;
+	//このレイヤーがアクティブか否か
+	bool is_active_;
 	//MainSceneBaseLayerのグラフィックス初期化
 	void GraphicsInit();
 };

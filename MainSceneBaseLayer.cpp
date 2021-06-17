@@ -32,6 +32,7 @@ void MainSceneBaseLayer::Draw()
 		//ペラポリゴンをウィンドウに描画
 		UniqueDraw();
 		draw_components_.clear();
+		layer_t_++;
 	}
 }
 
@@ -49,6 +50,11 @@ void MainSceneBaseLayer::SetUnActive()
 void MainSceneBaseLayer::AddComponent(ComponentHandle<MainSceneDrawComponent> component)
 {
 	draw_components_.push_back(component);
+}
+
+unsigned int MainSceneBaseLayer::GetLayert()
+{
+	return layer_t_;
 }
 
 void MainSceneBaseLayer::GraphicsInit()
