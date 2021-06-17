@@ -24,6 +24,8 @@ private:
 	const double kTitleCenterX_ = 450;
 	const double kTitleWidth_ = 300;
 	const double KTitleHeight_ = 30;
+	//カーソル表示
+	HTextureDraw cursor_draw_helper_;
 	//親Sceneインスタンス
 	Scene* scene_;
 };

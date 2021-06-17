@@ -38,6 +38,8 @@ void LoadTextures(Game* _game)
 	_game->mTexManager.LoadTexture(L"Resources/TitlePage/ButtonMouseOn.png", heap, 1, 1);
 	heap = _game->mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
 	_game->mTexManager.LoadTexture(L"Resources/TitlePage/Title.png", heap, 0, 2);
+	heap = _game->mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
+	_game->mTexManager.LoadTexture(L"Resources/Cursor/cursor.png",heap,0,3);
 }
 
 void LoadShaders(Game* _game)
