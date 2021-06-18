@@ -1,8 +1,16 @@
 #include "MainScene.h"
 
+#include "MainSceneBasicLayer.h"
+
 MainScene::MainScene(Game* game)
 	:Scene(game),layer_from_next_tick_(999)
 {
+	//レイヤー
+	auto layer0 = AddLayer<MainSceneBasicLayer>();
+	available_layers_[0] = static_cast<LayerHandle<MainSceneBaseLayer>>(layer0);
+	//始めはレイヤー0を有効化
+	active_layer_ = available_layers_[0];
+	active_layer_->SetActive();
 }
 
 void MainScene::UniqueUpdate()

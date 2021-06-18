@@ -46,4 +46,9 @@ void LoadShaders(Game* _game)
 {
 	_game->mShaderManager.LoadShader(L"HTextureDrawVertexShader.hlsl", DX12Config::ShaderType::VERTEX, 0);
 	_game->mShaderManager.LoadShader(L"HTextureDrawPixelShader.hlsl", DX12Config::ShaderType::PIXEL, 1);
+	_game->mShaderManager.LoadShader(L"MainSceneBasicLayerVertexShader.hlsl", DX12Config::ShaderType::VERTEX, 2);
+	_game->mShaderManager.LoadShader(L"MainSceneBasicLayerPixelShader.hlsl", DX12Config::ShaderType::PIXEL, 3);
+	_game->mShaderManager.LoadShader(L"HDrawLineFrameVertexShader.hlsl", DX12Config::ShaderType::VERTEX, 4);
+	_game->mShaderManager.LoadShader(L"HDrawLineFramePixelShader.hlsl", DX12Config::ShaderType::PIXEL, 5);
+
 }
