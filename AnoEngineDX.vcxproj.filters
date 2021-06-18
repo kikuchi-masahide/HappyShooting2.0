@@ -10,6 +10,39 @@
     <Filter Include="Engine\Math">
       <UniqueIdentifier>{a69bc711-297e-4efe-9420-0740e923aa22}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TitleScene">
+      <UniqueIdentifier>{b7484c34-30cf-4d53-8c93-0ad77a4722a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TitleScene\TitleScene">
+      <UniqueIdentifier>{d00c6a6d-050b-4ecd-9a70-aa8091efa5e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TitleScene\TitleUIScreen">
+      <UniqueIdentifier>{c92a5600-1b89-4dfa-a508-ffb81a2b0b77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene">
+      <UniqueIdentifier>{51a0e4e1-2227-437b-9958-0e6cabb1a780}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\MainScene">
+      <UniqueIdentifier>{c73684a9-3c80-4173-9652-f989fcf3de3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\MainSceneBaseLayer">
+      <UniqueIdentifier>{77a5e622-f244-441a-a38e-2e2ef80d6849}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\MainSceneBasicLayer">
+      <UniqueIdentifier>{d72ee825-47d4-4220-9acf-cc7c6264d75d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\MainSceneDrawComponent">
+      <UniqueIdentifier>{d42c5b5a-a76d-4aeb-a6d6-7cc564cf0041}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helper">
+      <UniqueIdentifier>{79a135d6-f49b-4a7b-9cd7-ab8a494261b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helper\HTextureDraw">
+      <UniqueIdentifier>{40210d86-4baa-484e-98f8-98a793727b31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helper\HDrawLineFrame">
+      <UniqueIdentifier>{a1e43c4f-96fe-49c0-b138-6ca6ede8e688}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -50,7 +83,6 @@
     <ClCompile Include="Layer.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="DX12.cpp">
       <Filter>Engine\DX12</Filter>
     </ClCompile>
@@ -84,13 +116,30 @@
     <ClCompile Include="Rect2.cpp">
       <Filter>Engine\Math</Filter>
     </ClCompile>
-    <ClCompile Include="HTextureDraw.cpp" />
-    <ClCompile Include="TitleUIScreen.cpp" />
-    <ClCompile Include="MainScene.cpp" />
-    <ClCompile Include="MainSceneBaseLayer.cpp" />
-    <ClCompile Include="MainSceneDrawComponent.cpp" />
-    <ClCompile Include="MainSceneBasicLayer.cpp" />
-    <ClCompile Include="HDrawLineFrame.cpp" />
+    <ClCompile Include="HTextureDraw.cpp">
+      <Filter>Helper\HTextureDraw</Filter>
+    </ClCompile>
+    <ClCompile Include="HDrawLineFrame.cpp">
+      <Filter>Helper\HDrawLineFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>TitleScene\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleUIScreen.cpp">
+      <Filter>TitleScene\TitleUIScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="MainScene.cpp">
+      <Filter>MainScene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="MainSceneBaseLayer.cpp">
+      <Filter>MainScene\MainSceneBaseLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainSceneBasicLayer.cpp">
+      <Filter>MainScene\MainSceneBasicLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="MainSceneDrawComponent.cpp">
+      <Filter>MainScene\MainSceneDrawComponent</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -136,7 +185,6 @@
     <ClInclude Include="Game.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="TitleScene.h" />
     <ClInclude Include="DX12.h">
       <Filter>Engine\DX12</Filter>
     </ClInclude>
@@ -182,24 +230,57 @@
     <ClInclude Include="Rect2.h">
       <Filter>Engine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="HTextureDraw.h" />
-    <ClInclude Include="TitleUIScreen.h" />
-    <ClInclude Include="MainScene.h" />
-    <ClInclude Include="MainSceneBaseLayer.h" />
-    <ClInclude Include="MainSceneDrawComponent.h" />
-    <ClInclude Include="MainSceneBasicLayer.h" />
-    <ClInclude Include="HDrawLineFrame.h" />
+    <ClInclude Include="HTextureDraw.h">
+      <Filter>Helper\HTextureDraw</Filter>
+    </ClInclude>
+    <ClInclude Include="HDrawLineFrame.h">
+      <Filter>Helper\HDrawLineFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>TitleScene\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleUIScreen.h">
+      <Filter>TitleScene\TitleUIScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="MainScene.h">
+      <Filter>MainScene\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="MainSceneBaseLayer.h">
+      <Filter>MainScene\MainSceneBaseLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="MainSceneBasicLayer.h">
+      <Filter>MainScene\MainSceneBasicLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="MainSceneDrawComponent.h">
+      <Filter>MainScene\MainSceneDrawComponent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="HTextureDrawInclude.hlsli" />
-    <None Include="MainSceneBasicLayerHeader.hlsli" />
+    <None Include="HTextureDrawInclude.hlsli">
+      <Filter>Helper\HTextureDraw</Filter>
+    </None>
+    <None Include="MainSceneBasicLayerHeader.hlsli">
+      <Filter>MainScene\MainSceneBasicLayer</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="HTextureDrawVertexShader.hlsl" />
-    <FxCompile Include="HTextureDrawPixelShader.hlsl" />
-    <FxCompile Include="MainSceneBasicLayerVertexShader.hlsl" />
-    <FxCompile Include="MainSceneBasicLayerPixelShader.hlsl" />
-    <FxCompile Include="HDrawLineFrameVertexShader.hlsl" />
-    <FxCompile Include="HDrawLineFramePixelShader.hlsl" />
+    <FxCompile Include="HTextureDrawPixelShader.hlsl">
+      <Filter>Helper\HTextureDraw</Filter>
+    </FxCompile>
+    <FxCompile Include="HTextureDrawVertexShader.hlsl">
+      <Filter>Helper\HTextureDraw</Filter>
+    </FxCompile>
+    <FxCompile Include="HDrawLineFrameVertexShader.hlsl">
+      <Filter>Helper\HDrawLineFrame</Filter>
+    </FxCompile>
+    <FxCompile Include="HDrawLineFramePixelShader.hlsl">
+      <Filter>Helper\HDrawLineFrame</Filter>
+    </FxCompile>
+    <FxCompile Include="MainSceneBasicLayerPixelShader.hlsl">
+      <Filter>MainScene\MainSceneBasicLayer</Filter>
+    </FxCompile>
+    <FxCompile Include="MainSceneBasicLayerVertexShader.hlsl">
+      <Filter>MainScene\MainSceneBasicLayer</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
