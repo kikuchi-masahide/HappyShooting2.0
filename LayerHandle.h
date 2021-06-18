@@ -65,8 +65,12 @@ public:
 		return (mLayer != nullptr);
 	}
 	LayerHandle<T>& operator=(const LayerHandle<T>& h) {
-		mHandleSet->erase((void*)this);
-		mHandleSet = nullptr;
+		//Ž©•ª‚ª‹ó‚Å‚È‚©‚Á‚½‚ç
+		if (mHandleSet != nullptr)
+		{
+			mHandleSet->erase((void*)this);
+			mHandleSet = nullptr;
+		}
 		mLayer = nullptr;
 		if (h.mLayer)
 		{
