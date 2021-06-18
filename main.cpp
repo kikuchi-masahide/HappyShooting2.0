@@ -39,7 +39,9 @@ void LoadTextures(Game* _game)
 	heap = _game->mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
 	_game->mTexManager.LoadTexture(L"Resources/TitlePage/Title.png", heap, 0, 2);
 	heap = _game->mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
-	_game->mTexManager.LoadTexture(L"Resources/Cursor/cursor.png",heap,0,3);
+	_game->mTexManager.LoadTexture(L"Resources/Cursor/cursor.png", heap, 0, 3);
+	heap = _game->mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
+	_game->mTexManager.LoadTexture(L"Resources/myself1/myself1.png", heap, 0, 4);
 }
 
 void LoadShaders(Game* _game)
@@ -50,5 +52,6 @@ void LoadShaders(Game* _game)
 	_game->mShaderManager.LoadShader(L"MainSceneBasicLayerPixelShader.hlsl", DX12Config::ShaderType::PIXEL, 3);
 	_game->mShaderManager.LoadShader(L"HDrawLineFrameVertexShader.hlsl", DX12Config::ShaderType::VERTEX, 4);
 	_game->mShaderManager.LoadShader(L"HDrawLineFramePixelShader.hlsl", DX12Config::ShaderType::PIXEL, 5);
-
+	_game->mShaderManager.LoadShader(L"HTextureAlphaRotateDrawVertexShader.hlsl", DX12Config::ShaderType::VERTEX, 6);
+	_game->mShaderManager.LoadShader(L"HTextureAlphaRotateDrawPixelShader.hlsl", DX12Config::ShaderType::PIXEL, 7);
 }

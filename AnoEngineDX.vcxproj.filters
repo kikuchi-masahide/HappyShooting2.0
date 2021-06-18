@@ -43,6 +43,9 @@
     <Filter Include="Helper\HDrawLineFrame">
       <UniqueIdentifier>{a1e43c4f-96fe-49c0-b138-6ca6ede8e688}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HTextureAlphaRotateDraw">
+      <UniqueIdentifier>{23d15d32-8b94-453c-bcee-036772bbaa80}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -139,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="MainSceneDrawComponent.cpp">
       <Filter>MainScene\MainSceneDrawComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="HTextureAlphaRotateDraw.cpp">
+      <Filter>HTextureAlphaRotateDraw</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -254,6 +260,9 @@
     <ClInclude Include="MainSceneDrawComponent.h">
       <Filter>MainScene\MainSceneDrawComponent</Filter>
     </ClInclude>
+    <ClInclude Include="HTextureAlphaRotateDraw.h">
+      <Filter>HTextureAlphaRotateDraw</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="HTextureDrawInclude.hlsli">
@@ -261,6 +270,9 @@
     </None>
     <None Include="MainSceneBasicLayerHeader.hlsli">
       <Filter>MainScene\MainSceneBasicLayer</Filter>
+    </None>
+    <None Include="HTextureAlphaRotateDrawHeader.hlsli">
+      <Filter>HTextureAlphaRotateDraw</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -281,6 +293,12 @@
     </FxCompile>
     <FxCompile Include="MainSceneBasicLayerVertexShader.hlsl">
       <Filter>MainScene\MainSceneBasicLayer</Filter>
+    </FxCompile>
+    <FxCompile Include="HTextureAlphaRotateDrawPixelShader.hlsl">
+      <Filter>HTextureAlphaRotateDraw</Filter>
+    </FxCompile>
+    <FxCompile Include="HTextureAlphaRotateDrawVertexShader.hlsl">
+      <Filter>HTextureAlphaRotateDraw</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

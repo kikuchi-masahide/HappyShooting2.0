@@ -1,6 +1,7 @@
 #pragma once
 #include "UIScreen.h"
 #include "HTextureDraw.h"
+#include "HTextureAlphaRotateDraw.h"
 
 //タイトル画面用のUIScreen
 class TitleUIScreen :public UIScreen
@@ -30,4 +31,6 @@ private:
 	Scene* scene_;
 	//MainSceneクラスへ移行するための関数
 	void TransToMainScene();
+
+	HTextureAlphaRotateDraw test;
 };
