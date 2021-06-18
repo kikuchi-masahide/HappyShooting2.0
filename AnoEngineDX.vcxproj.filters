@@ -89,6 +89,8 @@
     <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="MainSceneBaseLayer.cpp" />
     <ClCompile Include="MainSceneDrawComponent.cpp" />
+    <ClCompile Include="MainSceneBasicLayer.cpp" />
+    <ClCompile Include="HDrawLineFrame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -185,12 +187,19 @@
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="MainSceneBaseLayer.h" />
     <ClInclude Include="MainSceneDrawComponent.h" />
+    <ClInclude Include="MainSceneBasicLayer.h" />
+    <ClInclude Include="HDrawLineFrame.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HTextureDrawInclude.hlsli" />
+    <None Include="MainSceneBasicLayerHeader.hlsli" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="HTextureDrawVertexShader.hlsl" />
     <FxCompile Include="HTextureDrawPixelShader.hlsl" />
+    <FxCompile Include="MainSceneBasicLayerVertexShader.hlsl" />
+    <FxCompile Include="MainSceneBasicLayerPixelShader.hlsl" />
+    <FxCompile Include="HDrawLineFrameVertexShader.hlsl" />
+    <FxCompile Include="HDrawLineFramePixelShader.hlsl" />
   </ItemGroup>
 </Project>

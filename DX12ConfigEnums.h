@@ -46,7 +46,7 @@ namespace DX12Config {
 	//コマンドリストで指定するプリミティブトポロジ(構成要素の指定)
 	enum class PrimitiveTopology :unsigned char {
 		POINT,
-		LINE,
+		LINE,//前の点とつながる線集合
 		TRIANGLELIST,//独立した三角形の集合
 		TRIANGLESTRIP,//前の三角形とつながった三角形の集合体
 		size

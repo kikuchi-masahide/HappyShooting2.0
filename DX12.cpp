@@ -184,3 +184,8 @@ void DX12::CreateConstBufferView(boost::shared_ptr<DX12Resource> _resource, boos
 {
 	mPimple->CreateConstBufferView(_resource, _descheap, _n);
 }
+
+void DX12::DrawInstanced(UINT vertex_count_per_instance, UINT instance_count, UINT start_vertex_location, UINT start_instance_location)
+{
+	mPimple->DrawInstanced(vertex_count_per_instance, instance_count, start_vertex_location, start_instance_location);
+}

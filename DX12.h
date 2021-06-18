@@ -174,4 +174,12 @@ public:
 	/// ディスクリプタヒープ_descheapの_n番目スロットに定数バッファ_resourceに対するCBVを作成
 	/// </summary>
 	void CreateConstBufferView(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n);
+	/// <summary>
+	/// インデックスバッファを持たないインスタンスを描画する
+	/// </summary>
+	/// <param name="vertex_count_per_instance">描画する頂点の数</param>
+	/// <param name="instance_count">描画するインスタンスの数</param>
+	/// <param name="start_vertex_location">最初の頂点の添え字</param>
+	/// <param name="start_instance_location"></param>
+	void DrawInstanced(UINT vertex_count_per_instance, UINT instance_count, UINT start_vertex_location, UINT start_instance_location);
 };

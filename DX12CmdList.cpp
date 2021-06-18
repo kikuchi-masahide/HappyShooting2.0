@@ -53,6 +53,11 @@ void DX12Pimple::SetResourceBarrier(boost::shared_ptr<DX12Resource> _resource, D
 	_resource->SetResourceBarrier(mCmdList, _before, _after);
 }
 
+void DX12Pimple::DrawInstanced(UINT vertex_count_per_instance, UINT instance_count, UINT start_vertex_location, UINT start_instance_location)
+{
+	mCmdList->DrawInstanced(vertex_count_per_instance, instance_count, start_vertex_location, start_instance_location);
+}
+
 boost::shared_ptr<DX12SwapChain> DX12Pimple::CreateSwapChain(HWND _hwnd, UINT _width, UINT _height)
 {
 	return boost::shared_ptr<DX12SwapChain>(new DX12SwapChain(mFactory, mCmdQueue, mDevice, _hwnd, _width, _height));
