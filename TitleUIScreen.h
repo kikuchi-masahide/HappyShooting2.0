@@ -3,11 +3,13 @@
 #include "HTextureDraw.h"
 #include "HTextureAlphaRotateDraw.h"
 
+class TitleScene;
+
 //タイトル画面用のUIScreen
 class TitleUIScreen :public UIScreen
 {
 public:
-	TitleUIScreen(Scene* scene);
+	TitleUIScreen(TitleScene* scene);
 	void Update();
 	void Output();
 	~TitleUIScreen();

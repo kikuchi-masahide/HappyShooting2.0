@@ -9,10 +9,12 @@ public:
 	LayerHandle(const LayerHandle<T>& _handle)
 		:mLayer(_handle.mLayer),mHandleSet(_handle.mHandleSet)
 	{
-		mHandleSet->insert((void*)this);
+		if (mLayer != nullptr) {
+			mHandleSet->insert((void*)this);
+		}
 	}
 	//SceneのAddLayerから呼び出される
-	LayerHandle(T* _layer, boost::shared_ptr<std::set<void*>> _set)
+	LayerHandle(T* _layer, std::set<void*>* _set)
 		:mLayer(_layer), mHandleSet(_set)
 	{
 		mHandleSet->insert((void*)this);
@@ -22,10 +24,7 @@ public:
 	{}
 	~LayerHandle()
 	{
-		if (mHandleSet != nullptr)
-		{
-			mHandleSet->erase((void*)this);
-		}
+		Reset();
 	}
 	T* operator->() const noexcept
 	{
@@ -37,11 +36,14 @@ public:
 	{
 		return (mLayer != nullptr);
 	}
-	void Reset(Layer* const _layer)
+	void Reset()
 	{
-		BOOST_ASSERT_MSG(mLayer == _layer, "LayerHandle::Reset() should be called in Layer::~Layer()");
-		mLayer = nullptr;
-		mHandleSet.reset();
+		if (mLayer != nullptr)
+		{
+			mHandleSet->erase(static_cast<void*>(this));
+			mHandleSet = nullptr;
+			mLayer = nullptr;
+		}
 	}
 	bool operator!() const noexcept
 	{
@@ -65,14 +67,8 @@ public:
 		return (mLayer != nullptr);
 	}
 	LayerHandle<T>& operator=(const LayerHandle<T>& h) {
-		//自分が空でなかったら
-		if (mHandleSet != nullptr)
-		{
-			mHandleSet->erase((void*)this);
-			mHandleSet = nullptr;
-		}
-		mLayer = nullptr;
-		if (h.mLayer)
+		Reset();
+		if (h.mLayer != nullptr)
 		{
 			mLayer = h.mLayer;
 			mHandleSet = h.mHandleSet;
@@ -84,5 +80,5 @@ private:
 	//ハンドルが指すレイヤー
 	T* mLayer;
 	//mLayerを指すハンドルのset
-	boost::shared_ptr<std::set<void*>> mHandleSet;
+	std::set<void*>* mHandleSet;
 };

@@ -4,11 +4,9 @@
 #include "Scene.h"
 #include "Game.h"
 
-GameObject::GameObject(Scene* _scene, boost::shared_ptr<std::set<GameObjectHandle*>> _hset, MatVec::Vector2 _pos, double _scale, double _angle)
-	:mScene(_scene), mHandles(_hset), mPosition(_pos), mScale(_scale), mRotation(_angle),mDeleteFlag(false)
+GameObject::GameObject(Scene* _scene, MatVec::Vector2 _pos, double _scale, double _angle)
+	:mScene(_scene), mPosition(_pos), mScale(_scale), mRotation(_angle),mDeleteFlag(false)
 {
-	BOOST_ASSERT_MSG(_scene != nullptr,"GameObject::GameObject() should be called in Scene::AddObject()");
-	BOOST_ASSERT_MSG(_hset != nullptr, "GameObject::GameObject() should be called in Scene::AddObject()");
 }
 
 MatVec::Vector2 GameObject::GetPosition() const
@@ -45,21 +43,31 @@ double GameObject::SetRotation(double _ro)
 	return mRotation;
 }
 
+Game& GameObject::GetGame()
+{
+	return mScene->mGame;
+}
+
 GameObject::~GameObject() {
 	//自分を消す前にコンポーネントたちを消しておく
-	mUpdateComponents.clear();
-	mOutputComponents.clear();
+	for (auto itr = mUpdateComponents.begin(); itr != mUpdateComponents.end(); itr++)
+	{
+		DeleteComponent(*itr);
+	}
+	for (auto itr = mOutputComponents.begin(); itr != mOutputComponents.end(); itr++)
+	{
+		DeleteComponent(*itr);
+	}
 	Log::OutputCritical("GameObject Delete");
 }
 
-void GameObject::DeleteFlagedComponents(Scene* _scene)
+void GameObject::DeleteFlagedComponents()
 {
-	//ちゃんと親シーンから呼び出されているかのチェック
-	BOOST_ASSERT_MSG(_scene == mScene,"GameObject::DeleteFlagedComponents() should be called from mScene");
 	//コンポーネントを巡回しフラグが立っているものを削除
 	auto itr = mUpdateComponents.begin();
 	while (itr != mUpdateComponents.end()) {
 		if ((*itr)->GetDeleteFlag()) {
+			DeleteComponent(*itr);
 			itr = mUpdateComponents.erase(itr);
 		}
 		else itr++;
@@ -67,13 +75,30 @@ void GameObject::DeleteFlagedComponents(Scene* _scene)
 	itr = mOutputComponents.begin();
 	while (itr != mOutputComponents.end()) {
 		if ((*itr)->GetDeleteFlag()) {
+			DeleteComponent(*itr);
 			itr = mOutputComponents.erase(itr);
 		}
 		else itr++;
 	}
 }
 
-Game& GameObject::GetGame() const
+void GameObject::AddUpdateComponentToScene(ComponentHandle<Component> _handle)
 {
-	return mScene->mGame;
+	mScene->AddUpdateComponent(this, _handle);
+}
+
+void GameObject::AddOutputComponentToScene(ComponentHandle<Component> _handle)
+{
+	mScene->AddOutputComponent(this, _handle);
+}
+
+GameObjectHandle GameObject::This()
+{
+	return GameObjectHandle(this, &mHandles);
+}
+
+void GameObject::DeleteComponent(Component* _component)
+{
+	_component->mDeleteCheck = true;
+	delete _component;
 }

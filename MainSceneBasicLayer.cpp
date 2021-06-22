@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "MainSceneBasicLayer.h"
-#include "Scene.h"
+#include "MainScene.h"
 
-MainSceneBasicLayer::MainSceneBasicLayer(Scene* scene, boost::shared_ptr<std::set<void*>> hset)
-	:MainSceneBaseLayer(scene,hset),line_frame(scene->mGame)
+MainSceneBasicLayer::MainSceneBasicLayer(MainScene* scene)
+	:MainSceneBaseLayer(scene),line_frame(scene->mGame)
 {
 	GraphicsInit();
 }

@@ -6,7 +6,7 @@ class MainScene;
 class MainSceneDrawComponent :public Component
 {
 public:
-	MainSceneDrawComponent(GameObject* owner, boost::shared_ptr<std::set<void*>> hset,MainScene* scene);
+	MainSceneDrawComponent(MainScene* scene);
 	void Update();
 	virtual ~MainSceneDrawComponent();
 	/// <summary>

@@ -20,11 +20,11 @@ public:
 	template<class S, class... Args>
 	void ChangeScene(Args... _args) {
 		if (!mIsSceneChangable) {
-			if (mPandingScene != nullptr)delete mPandingScene;
+			if (mPandingScene != nullptr)DeleteScene(mPandingScene);
 			mPandingScene = new S(this, _args...);
 		}
 		else {
-			if (mCurrentScene != nullptr)delete mCurrentScene;
+			if (mCurrentScene != nullptr)DeleteScene(mCurrentScene);
 			mCurrentScene = new S(this, _args...);
 		}
 	};
@@ -57,10 +57,12 @@ private:
 	Scene* mCurrentScene;
 	Scene* mPandingScene;
 	bool mIsSceneChangable;
-	std::map<unsigned int,boost::shared_ptr<Window>> mWindows;
+	std::map<unsigned int, boost::shared_ptr<Window>> mWindows;
 	void BeforeOutput();
 	bool AfterOutput();
-	std::map<unsigned int,boost::shared_ptr<DX12SwapChain>> mSwapChains;
+	std::map<unsigned int, boost::shared_ptr<DX12SwapChain>> mSwapChains;
 	unsigned int mCurrentSwapChain;
 	InputSystem mInputSystem;
+	//このポインタをdeleteしデストラクタを呼ぶ
+	void DeleteScene(Scene* _scene);
 };

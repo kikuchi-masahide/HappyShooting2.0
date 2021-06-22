@@ -6,7 +6,7 @@ MainScene::MainScene(Game* game)
 	:Scene(game),layer_from_next_tick_(999)
 {
 	//レイヤー
-	auto layer0 = AddLayer<MainSceneBasicLayer>();
+	auto layer0 = AddLayer<MainSceneBasicLayer>(this);
 	available_layers_[0] = static_cast<LayerHandle<MainSceneBaseLayer>>(layer0);
 	//始めはレイヤー0を有効化
 	active_layer_ = available_layers_[0];

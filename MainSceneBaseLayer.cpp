@@ -1,9 +1,9 @@
 #include "MainSceneBaseLayer.h"
-
+#include "MainScene.h"
 #include "Game.h"
 
-MainSceneBaseLayer::MainSceneBaseLayer(Scene* scene, boost::shared_ptr<std::set<void*>> hset)
-	:Layer(scene, hset, Rect2(0, 600, 0, 900), 0, 0), is_active_(false),layer_t_(0)
+MainSceneBaseLayer::MainSceneBaseLayer(MainScene* scene)
+	:Layer(Rect2(0, 600, 0, 900), 0, 0), is_active_(false),layer_t_(0),scene_(scene)
 {
 	GraphicsInit();
 }
@@ -55,6 +55,11 @@ void MainSceneBaseLayer::AddComponent(ComponentHandle<MainSceneDrawComponent> co
 unsigned int MainSceneBaseLayer::GetLayert()
 {
 	return layer_t_;
+}
+
+Game& MainSceneBaseLayer::GetGame()
+{
+	return scene_->mGame;
 }
 
 void MainSceneBaseLayer::GraphicsInit()

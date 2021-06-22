@@ -2,8 +2,8 @@
 
 #include "MainScene.h"
 
-MainSceneDrawComponent::MainSceneDrawComponent(GameObject* owner, boost::shared_ptr<std::set<void*>> hset, MainScene* scene)
-	:Component(owner,hset,0),scene_(scene)
+MainSceneDrawComponent::MainSceneDrawComponent(MainScene* scene)
+	:Component(0),scene_(scene)
 {
 }
 

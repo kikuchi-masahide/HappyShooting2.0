@@ -28,8 +28,11 @@ bool Game::Initialize()
 void Game::Shutdown()
 {
 	//シーンの削除
-	delete mPandingScene;
-	delete mCurrentScene;
+	DeleteScene(mCurrentScene);
+	if (mPandingScene != nullptr)
+	{
+		DeleteScene(mPandingScene);
+	}
 
 	//DX12まわりのクリーンアップ
 	mdx12.CleanUp();
@@ -107,7 +110,7 @@ bool Game::GenerateOutput()
 	mCurrentScene->Output();
 	if (!AfterOutput())return false;
 	if (mPandingScene) {
-		delete mCurrentScene;
+		DeleteScene(mCurrentScene);
 		mCurrentScene = mPandingScene;
 		mPandingScene = nullptr;
 	}
@@ -183,4 +186,10 @@ bool Game::AfterOutput()
 		mdx12.FlipSwapChain(itr->second);
 	}
 	return true;
+}
+
+void Game::DeleteScene(Scene* _scene)
+{
+	_scene->mDeleteCheck = true;
+	delete _scene;
 }

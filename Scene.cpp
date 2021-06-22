@@ -8,7 +8,8 @@
 #include "window.h"
 
 Scene::Scene(Game* _game)
-	:mGame(*_game), mIsObjCompAddable(true), mInputSystem(nullptr), mPrevMousePos(MatVec::Vector2(0, 0)), mInputFlag(true), mInputFlagForComps(true), mUpdateFlagForComps(true) {
+	:mGame(*_game), mIsObjCompAddable(true), mInputSystem(nullptr), mPrevMousePos(MatVec::Vector2(0, 0)), mInputFlag(true), mInputFlagForComps(true), mUpdateFlagForComps(true), mDeleteCheck(false)
+{
 	BOOST_ASSERT(_game != nullptr);
 }
 
@@ -46,17 +47,49 @@ void Scene::UniqueOutput() {}
 
 GameObjectHandle Scene::AddObject(MatVec::Vector2 _pos, double _scale, double _angle)
 {
-	boost::shared_ptr<std::set<GameObjectHandle*>> objhsetp(new std::set<GameObjectHandle*>());
-	boost::shared_ptr<GameObject> objp(new GameObject(this, objhsetp, _pos, _scale, _angle));
+	//追加するオブジェクト
+	GameObject* objp(new GameObject(this, _pos, _scale, _angle));
 	//直接追加してよいならばそうする
 	if (mIsObjCompAddable)mObjs.push_back(objp);
 	else mPandingObjs.push_back(objp);
-	GameObjectHandle objh(objp.get(), objhsetp);
-	return objh;
+	return objp->This();
+}
+
+void Scene::AddUpdateComponent(GameObject* _obj, ComponentHandle<Component> _handle)
+{
+	BOOST_ASSERT(_obj != nullptr);
+	if (mIsObjCompAddable)mUpdateComponents.insert(_handle);
+	else mPandingUpdateComponents.push_back(_handle);
+}
+
+void Scene::AddOutputComponent(GameObject* _obj, ComponentHandle<Component> _handle)
+{
+	BOOST_ASSERT(_obj != nullptr);
+	if (mIsObjCompAddable)mOutputComponents.insert(_handle);
+	else mPandingOutputComponents.push_back(_handle);
 }
 
 Scene::~Scene() {
-		//UIScreenの削除処理
+	BOOST_ASSERT_MSG(mDeleteCheck == true, "irregal destructor call without Game permission");
+	//GameObjectの削除処理
+	for (auto object : mObjs)
+	{
+		DeleteObject(object);
+	}
+	for (auto object : mPandingObjs)
+	{
+		DeleteObject(object);
+	}
+	//Layerの削除処理
+	for (auto layer : mLayers)
+	{
+		DeleteLayer(layer);
+	}
+	for (auto layer : mPandingLayers)
+	{
+		DeleteLayer(layer);
+	}
+	//UIScreenの削除処理
 	for (auto uiscreen : mUIScreens)
 	{
 		delete uiscreen;
@@ -162,10 +195,13 @@ void Scene::DeleteAndProcessPandingObjComp()
 	auto objitr = mObjs.begin();
 	while (objitr != mObjs.end()) {
 		//そのオブジェクトのフラグが立っているならば消去
-		if ((*objitr)->GetDeleteFlag())objitr = mObjs.erase(objitr);
+		if ((*objitr)->GetDeleteFlag()) {
+			DeleteObject(*objitr);
+			objitr = mObjs.erase(objitr);
+		}
 		else {
 			//オブジェクトにいらないコンポーネントを削除させる
-			(*objitr)->DeleteFlagedComponents(this);
+			(*objitr)->DeleteFlagedComponents();
 			objitr++;
 		}
 	}
@@ -185,17 +221,17 @@ void Scene::DeleteAndProcessPandingObjComp()
 void Scene::OutputLayer()
 {
 	//zの変更があったLayerを引き抜き，そうでない元はRectを更新
-	std::set<boost::shared_ptr<Layer>, LayerCompare> zchanged;
+	std::set<Layer*, LayerCompare> zchanged;
 	auto itr = mLayers.begin();
 	while (itr != mLayers.end())
 	{
 		if ((*itr)->HasZChanged())
 		{
 			zchanged.insert(*itr);
-			mLayers.erase(itr);
+			itr = mLayers.erase(itr);
 		}
 		else {
-			(*itr)->FlushZRectChange(itr->get());
+			(*itr)->FlushZRectChange(*itr);
 			itr++;
 		}
 	}
@@ -203,7 +239,7 @@ void Scene::OutputLayer()
 	itr = zchanged.begin();
 	while (itr != zchanged.end())
 	{
-		(*itr)->FlushZRectChange(itr->get());
+		(*itr)->FlushZRectChange(*itr);
 		mLayers.insert(*itr);
 		itr++;
 	}
@@ -222,7 +258,7 @@ void Scene::DeleteAndProcessPandingLayers()
 	auto itr = mPandingLayers.begin();
 	while (itr != mPandingLayers.end())
 	{
-		(*itr)->FlushZRectChange(itr->get());
+		(*itr)->FlushZRectChange(*itr);
 		mLayers.insert(*itr);
 		itr++;
 	}
@@ -233,6 +269,7 @@ void Scene::DeleteAndProcessPandingLayers()
 	{
 		if ((*itr)->GetDeleteFlag())
 		{
+			DeleteLayer(*itr);
 			mLayers.erase(*itr);
 		}
 		else {
@@ -340,4 +377,15 @@ void Scene::LaunchOutputUIScreens()
 	{
 		mUIScreens[n]->Output();
 	}
+}
+
+void Scene::DeleteObject(GameObject* _object)
+{
+	delete _object;
+}
+
+void Scene::DeleteLayer(Layer* _layer)
+{
+	_layer->mDeleteCheck = true;
+	delete _layer;
 }

@@ -12,11 +12,11 @@ public:
 	/// <summary>
 	/// SceneのAddChild内でのみ呼び出されるコンストラクタ
 	/// </summary>
-	GameObjectHandle(GameObject* _obj, boost::shared_ptr<std::set<GameObjectHandle*>> _set);
+	GameObjectHandle(GameObject* _obj, std::set<GameObjectHandle*>* _set);
 	GameObjectHandle();
 	~GameObjectHandle();
-	//このハンドラが指すGameObjectのみがResetを呼び出せる(_objがmObjectと一致しなければassert)
-	void Reset(GameObject* _obj);
+	//このオブジェクトハンドルをクリアし，nullハンドルにする
+	void Reset();
 	GameObject* operator->() const noexcept;
 	bool IsValid() const;
 	GameObjectHandle& operator=(const GameObjectHandle& handle);
@@ -24,5 +24,5 @@ private:
 	//このハンドルが指すオブジェクト
 	GameObject* mObject;
 	//mObjectを指すハンドルのstd::setのポインタ
-	boost::shared_ptr<std::set<GameObjectHandle*>> mHandleSet;
+	std::set<GameObjectHandle*>* mHandleSet;
 };

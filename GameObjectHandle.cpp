@@ -4,10 +4,12 @@
 GameObjectHandle::GameObjectHandle(const GameObjectHandle& _handle)
 	:mObject(_handle.mObject), mHandleSet(_handle.mHandleSet)
 {
-	mHandleSet->insert(this);
+	if (mObject != nullptr) {
+		mHandleSet->insert(this);
+	}
 }
 
-GameObjectHandle::GameObjectHandle(GameObject* _obj, boost::shared_ptr<std::set<GameObjectHandle*>> _set)
+GameObjectHandle::GameObjectHandle(GameObject* _obj, std::set<GameObjectHandle*>* _set)
 	:mObject(_obj), mHandleSet(_set)
 {
 	mHandleSet->insert(this);
@@ -18,7 +20,7 @@ GameObjectHandle::GameObjectHandle()
 {}
 
 GameObjectHandle::~GameObjectHandle() {
-	if (mHandleSet != nullptr)mHandleSet->erase(this);
+	Reset();
 }
 
 GameObject* GameObjectHandle::operator->() const noexcept {
@@ -32,18 +34,24 @@ bool GameObjectHandle::IsValid() const
 	return (mObject != nullptr);
 }
 
-void GameObjectHandle::Reset(GameObject* _obj)
+void GameObjectHandle::Reset()
 {
-	BOOST_ASSERT_MSG(mObject == _obj, "GameObjectHandle::Reset() should be called in GameObject::~GameObject()");
-	mObject = nullptr;
-	mHandleSet.reset();
+	if (mObject != nullptr)
+	{
+		mHandleSet->erase(static_cast<GameObjectHandle*>(this));
+		mHandleSet = nullptr;
+		mObject = nullptr;
+	}
 }
 
 GameObjectHandle& GameObjectHandle::operator=(const GameObjectHandle& handle)
 {
-	mHandleSet->erase(this);
-	mObject = handle.mObject;
-	mHandleSet = handle.mHandleSet;
-	mHandleSet->insert(this);
+	Reset();
+	if (handle.mObject != nullptr)
+	{
+		mObject = handle.mObject;
+		mHandleSet = handle.mHandleSet;
+		mHandleSet->insert(this);
+	}
 	return *this;
 }

@@ -8,7 +8,7 @@ class MainSceneBasicLayer :
     public MainSceneBaseLayer
 {
 public:
-    MainSceneBasicLayer(Scene* scene, boost::shared_ptr<std::set<void*>> hset);
+    MainSceneBasicLayer(MainScene* scene);
     virtual ~MainSceneBasicLayer();
     void UniqueDraw();
 private:

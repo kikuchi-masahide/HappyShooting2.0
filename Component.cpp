@@ -5,29 +5,17 @@
 #include "ComponentHandle.h"
 
 Component::~Component() {
-	std::for_each(mHandles->begin(), mHandles->end(), [this](void* _obj) {
+	BOOST_ASSERT_MSG(mDeleteCheck == true, "irregal destructor call without GameObject permission");
+	std::for_each(mHandles.begin(), mHandles.end(), [this](void* _obj) {
 		//ñ≥óùÇ‚ÇË
-		((ComponentHandle<Component>*)_obj)->Reset(this);
+		auto handle = static_cast<ComponentHandle<Component>*>(_obj);
+		handle->Reset();
 	});
 }
 
-Component::Component(GameObject* _owner, boost::shared_ptr<std::set<void*>> _hset, int _order)
-	: mOwner(*_owner), mHandles(_hset), mUpdPriority(_order), mDeleteFlag(false)
+Component::Component(int _order)
+	: mUpdPriority(_order), mDeleteFlag(false),mDeleteCheck(false)
 {
-	//_ownerÇ™nullptrÇ…Ç»Ç¡ÇƒÇÈèÍçáÇ∆Ç©ÇÇÕÇ∂Ç≠
-	BOOST_ASSERT_MSG(_owner != nullptr,"Component::Component() should be called in GameObject::AddOutput/UpdateComponent()");
-	BOOST_ASSERT_MSG(_hset != nullptr, "Component::Component() should be called in GameObject::AddOutput/UpdateComponent()");
 }
 
 void Component::Update() {}
-
-Scene& Component::GetScene() const
-{
-	return mOwner.GetScene();
-}
-
-Game& Component::GetGame() const
-{
-	return mOwner.GetScene().mGame;
-}
-

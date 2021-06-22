@@ -1,12 +1,13 @@
 #pragma once
 #include "Layer.h"
+#include "Game.h"
 #include "ComponentHandle.h"
 #include "MainSceneDrawComponent.h"
 
 class MainSceneBaseLayer :public Layer
 {
 public:
-	MainSceneBaseLayer(Scene* scene, boost::shared_ptr<std::set<void*>> hset);
+	MainSceneBaseLayer(MainScene* scene);
 	virtual ~MainSceneBaseLayer();
 	void Draw();
 	/// <summary>
@@ -35,6 +36,8 @@ protected:
 	boost::shared_ptr<DX12DescriptorHeap> pera_rtv_;
 	//ペラポリゴンのSRV;
 	boost::shared_ptr<DX12DescriptorHeap> pera_srv_;
+	Game& GetGame();
+	MainScene* const scene_;
 private:
 	std::vector<ComponentHandle<MainSceneDrawComponent>> draw_components_;
 	//このレイヤーがアクティブになってから何度目のフレームか

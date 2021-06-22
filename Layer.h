@@ -12,8 +12,7 @@ class LayerHandle;
 /// </summary>
 class Layer {
 public:
-	Layer(Scene* _scene, boost::shared_ptr<std::set<void*>> _hset, Rect2 _rect, double _z, unsigned int _swap);
-	virtual ~Layer();
+	Layer(Rect2 _rect, double _z, unsigned int _swap);
 	/// <summary>
 	/// Outputコンポーネント・Scene::UniqueOutputの後にz降順で呼び出す
 	/// ペラポリゴンのバックバッファへの最終的な描画を行う．
@@ -28,14 +27,9 @@ public:
 	/// z座標が本当に変更されるのはDraw実行前
 	/// </summary>
 	void SetZ(double _z);
-	double GetZ();
+	double GetZ() const;
 	//z座標の変更があったか否か
 	bool HasZChanged();
-	/// <summary>
-	/// 親シーン
-	/// </summary>
-	Scene& mScene;
-	Game& GetGame() const;
 	/// <summary>
 	/// Sceneからのみ呼び出せる，Rect，zの変更フラッシュ用の関数
 	/// </summary>
@@ -54,17 +48,21 @@ public:
 	/// <returns></returns>
 	unsigned int GetSwapchainID();
 protected:
+	virtual ~Layer();
 	/// <summary>
 	/// 自身を指すT型のLayerHandleを取得
 	/// </summary>
 	template<class T>
 	LayerHandle<T> This()
 	{
-		return LayerHandle<T>((T*)this, mHandles);
+		return LayerHandle<T>((T*)this, &mHandles);
 	}
 private:
-	//自分を指すハンドルの集合のポインタ(void*を使うのは何というかやめたい)
-	boost::shared_ptr<std::set<void*>> mHandles;
+	friend Scene;
+	//Sceneはデストラクタを呼ぶ直前にmDeleteCheckをtrueにする
+	bool mDeleteCheck;
+	//自分を指すハンドルの集合(void*にするのをやめたい)
+	std::set<void*> mHandles;
 	//&によるポインタ取得を禁止
 	Layer* operator&() const noexcept;
 	//Draw実行前の変更のストックとそのフラグ

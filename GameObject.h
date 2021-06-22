@@ -1,7 +1,9 @@
 #pragma once
 
-#include "Scene.h"
-class Component;
+#include "Component.h"
+#include "GameObjectHandle.h"
+
+class Scene;
 class Game;
 class GameObjectHandle;
 template<class T>
@@ -15,7 +17,7 @@ public:
 	/// <summary>
 	/// Scene::AddChildから呼び出されるコンストラクタ
 	/// </summary>
-	GameObject(Scene* _scene, boost::shared_ptr<std::set<GameObjectHandle*>> _hset, MatVec::Vector2 _pos, double _scale, double _angle);
+	GameObject(Scene* _scene, MatVec::Vector2 _pos, double _scale, double _angle);
 	MatVec::Vector2 GetPosition() const;
 	MatVec::Vector2 SetPosition(MatVec::Vector2 _pos);
 	double GetScale() const;
@@ -24,45 +26,41 @@ public:
 	double SetRotation(double _ro);
 	bool GetDeleteFlag() const { return mDeleteFlag; };
 	void SetDeleteFlag() { mDeleteFlag = true; };
-	~GameObject();
 	/// <summary>
-	/// このオブジェクトにT型のUpdateComponentを追加(_argsはコンストラクタに渡す，_hset以降の引数)
+	/// このオブジェクトにT型のUpdateComponentを追加(_argsはコンストラクタに渡す引数)
 	/// concept等でTの正当性を後々(静的に)評価したい
 	/// </summary>
-	template<class T,class... Args>
+	template<class T, class... Args>
 	ComponentHandle<T> AddUpdateComponent(Args... _args) {
-		//このコンポーネントを指すハンドルの集合
-		boost::shared_ptr<std::set<void*>> comphsetp(new std::set<void*>());
 		//コンポーネント自身
-		T* comppn = new T(this, comphsetp, _args...);
-		boost::shared_ptr<Component> compp(comppn);
-		mUpdateComponents.push_back(compp);
-		//返すハンドル
-		ComponentHandle<T> comph(comppn, comphsetp);
+		T* comp = new T(_args...);
+		mUpdateComponents.push_back(comp);
+		auto handle = comp->This();
 		//シーンに追加
-		mScene->AddUpdateComponent(this, comph);
-		return comph;
+		AddUpdateComponentToScene(handle);
+		return handle;
 	}
+	/// <summary>
+	/// このオブジェクトにT型のOutputComponentを追加(_argsはコンストラクタに渡す引数)
+	/// concept等でTの正当性を後々(静的に)評価したい
+	/// </summary>
 	template<class T, class... Args>
 	ComponentHandle<T> AddOutputComponent(Args... _args) {
-		//このコンポーネントを指すハンドルの集合
-		boost::shared_ptr<std::set<void*>> comphsetp(new std::set<void*>());
 		//コンポーネント自身
-		T* comppn = new T(this, comphsetp, _args...);
-		boost::shared_ptr<Component> compp(comppn);
-		mOutputComponents.push_back(compp);
-		//返すハンドル
-		ComponentHandle<T> comph(comppn, comphsetp);
+		T* comp = new T(_args...);
+		mOutputComponents.push_back(comp);
+		auto handle = comp->This();
 		//シーンに追加
-		mScene->AddOutputComponent(this, comph);
-		return comph;
+		AddOutputComponentToScene(handle);
+		return handle;
 	};
-	//フラグが立っているコンポーネントを削除
-	void DeleteFlagedComponents(Scene* _scene);
-	Scene& GetScene() const { return *mScene; };
-	Game& GetGame() const;
+	Game& GetGame();
 private:
+	friend class Scene;
 	Scene* mScene;
+	~GameObject();
+	//フラグが立っているコンポーネントを削除
+	void DeleteFlagedComponents();
 	/// <summary>
 	/// オブジェクトの中心座標
 	/// </summary>
@@ -73,10 +71,21 @@ private:
 	/// </summary>
 	double mRotation;
 	//このオブジェクトの持つ更新・出力コンポーネント
-	std::list<boost::shared_ptr<Component>> mUpdateComponents;
-	std::list<boost::shared_ptr<Component>> mOutputComponents;
+	std::list<Component*> mUpdateComponents;
+	std::list<Component*> mOutputComponents;
 	//このオブジェクトを指すハンドルのset
-	boost::shared_ptr<std::set<GameObjectHandle*>> mHandles;
+	std::set<GameObjectHandle*> mHandles;
 	bool mDeleteFlag;
 	GameObject* operator&() const noexcept;
+	//AddUpdateComponent内で呼ばれる
+	//#includeの方向を一致させるため別関数に分離
+	void AddUpdateComponentToScene(ComponentHandle<Component> _handle);
+	void AddOutputComponentToScene(ComponentHandle<Component> _handle);
+	/// <summary>
+	/// Scene::AddObjectで呼び出される，自身を指すハンドルを返す関数
+	/// </summary>
+	GameObjectHandle This();
+	//このコンポーネントをdeleteしデストラクタを呼ぶ
+	//(もともとこのポインタが入っていたlistからのeraseはしない)
+	void DeleteComponent(Component* _component);
 };

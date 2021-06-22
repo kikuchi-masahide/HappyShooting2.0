@@ -1,10 +1,10 @@
 #include "TitleUIScreen.h"
 
-#include "Scene.h"
+#include "TitleScene.h"
 #include "Game.h"
 #include "MainScene.h"
 
-TitleUIScreen::TitleUIScreen(Scene* scene)
+TitleUIScreen::TitleUIScreen(TitleScene* scene)
 //下部オブジェクトのアップデートは許可，入力は渡さない
 	:UIScreen(false,true),scene_(scene),
 	button_draw_helper_away_(scene->mGame,0),button_draw_helper_on_(scene->mGame,1),

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Component.h"
+class Component;
 
 //Componentを継承したクラスのポインタ代わりに使うハンドラ
 template<class T>
@@ -13,10 +13,12 @@ public:
 		mHandleSet->insert((void*)this);
 	}
 	//GameObjectのAddChildでのみ使われるコンストラクタ
-	ComponentHandle(T* _obj, boost::shared_ptr<std::set<void*>> _set)
+	ComponentHandle(T* _obj, std::set<void*>* _set)
 		:mComp(_obj), mHandleSet(_set)
 	{
-		mHandleSet->insert((void*)this);
+		if (mComp != nullptr) {
+			mHandleSet->insert((void*)this);
+		}
 	}
 	ComponentHandle()
 		: mComp(nullptr), mHandleSet(nullptr)
@@ -28,7 +30,7 @@ public:
 	}
 	~ComponentHandle()
 	{
-		if (mHandleSet != nullptr)mHandleSet->erase((void*)this);
+		Reset();
 	}
 	T* operator->() const noexcept
 	{
@@ -42,11 +44,14 @@ public:
 	{
 		return (mComp != nullptr);
 	}
-	void Reset(Component* const _comp)
+	void Reset()
 	{
-		BOOST_ASSERT_MSG(mComp == _comp, "ComponentHandle::Reset() should be called in Component::~Component()");
-		mComp = nullptr;
-		mHandleSet.reset();
+		if (mComp != nullptr)
+		{
+			mHandleSet->erase(static_cast<void*>(this));
+			mHandleSet = nullptr;
+			mComp = nullptr;
+		}
 	}
 	bool operator!() const noexcept
 	{
@@ -70,13 +75,8 @@ public:
 		return (mComp != nullptr);
 	}
 	ComponentHandle<T>& operator=(const ComponentHandle<T>& h) {
-		if (mHandleSet)
-		{
-			mHandleSet->erase((void*)this);
-			mHandleSet = nullptr;
-		}
-		mComp = nullptr;
-		if (h.mComp)
+		Reset();
+		if (h.mComp != nullptr)
 		{
 			mComp = h.mComp;
 			mHandleSet = h.mHandleSet;
@@ -88,5 +88,5 @@ private:
 	//ハンドルが指すコンポーネント
 	T* mComp;
 	//mCompを指すハンドルのsetのポインタ(void*を使うのはできればやめたい)
-	boost::shared_ptr<std::set<void*>> mHandleSet;
+	std::set<void*>* mHandleSet;
 };

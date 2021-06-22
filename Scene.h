@@ -1,14 +1,12 @@
 #pragma once
 
-#include "Component.h"
-#include "ComponentHandle.h"
+#include "GameObject.h"
+#include "GameObjectHandle.h"
 #include "Layer.h"
 #include "LayerHandle.h"
 #include "InputSystem.h"
 
 class Game;
-class GameObject;
-class GameObjectHandle;
 class UIScreen;
 class InputSystem;
 
@@ -37,35 +35,20 @@ public:
 	Game &mGame;
 	bool GetDeleteFlag() const { return mDeleteFlag; };
 	void SetDeleteFlag() { mDeleteFlag = true; };
-	//現在のシーンのポインタを持てるのはGameのみであるから，
-	//デストラクタを呼び出せるのもGameのみ
-	virtual ~Scene();
 	//このシーンに更新・出力コンポーネントを追加する
 	//GameObject::AddUpdate・OutputComponentから呼び出される
-	template<class T>
-	void AddOutputComponent(GameObject* _obj, ComponentHandle<T> _handle)
-	{
-		BOOST_ASSERT(_obj != nullptr);
-		if (mIsObjCompAddable)mOutputComponents.insert(static_cast<ComponentHandle<Component>>(_handle));
-		else mPandingOutputComponents.push_back(static_cast<ComponentHandle<Component>>(_handle));
-	}
-	template<class T>
-	void AddUpdateComponent(GameObject* _obj, ComponentHandle<T> _handle)
-	{
-		BOOST_ASSERT(_obj != nullptr);
-		if (mIsObjCompAddable)mUpdateComponents.insert(static_cast<ComponentHandle<Component>>(_handle));
-		else mPandingUpdateComponents.push_back(static_cast<ComponentHandle<Component>>(_handle));
-	}
+	void AddUpdateComponent(GameObject* _obj, ComponentHandle<Component> _handle);
+	//このシーンに更新・出力コンポーネントを追加する
+	//GameObject::AddUpdate・OutputComponentから呼び出される
+	void AddOutputComponent(GameObject* _obj, ComponentHandle<Component> _handle);
 	template<class T, class... Args>
 	LayerHandle<T> AddLayer(Args... _args)
 	{
-		boost::shared_ptr<std::set<void*>> handlesetp(new std::set<void*>());
-		boost::shared_ptr<T> layerp(new T(this, handlesetp, _args...));
+		T* layerp= new T(_args...);
 		//直接追加してよいならばそうする
 		if (mIsObjCompAddable)mLayers.insert(layerp);
 		else mPandingLayers.insert(layerp);
-		LayerHandle<T> layerh(layerp.get(), handlesetp);
-		return layerh;
+		return layerp->This<T>();
 	}
 	/// <summary>
 	/// T型UI画面の追加
@@ -111,7 +94,10 @@ public:
 	MatVec::Vector2 GetMouseScreenPos();
 protected:
 	bool mDeleteFlag;
+	virtual ~Scene();
 private:
+	friend Game;
+	bool mDeleteCheck;
 	class ComponentHandleCompare {
 	public:
 		bool operator()(const ComponentHandle<Component>& left, const ComponentHandle<Component>& right) const {
@@ -121,14 +107,14 @@ private:
 
 	class LayerCompare {
 	public:
-		bool operator()(const boost::shared_ptr<Layer>& left, const boost::shared_ptr<Layer>& right) const {
+		bool operator()(const Layer* left, const Layer* right) const {
 			return left->GetZ() < right->GetZ();
 		}
 	};
 
 	//自身の持つGameObjectのリスト及び保留中のオブジェクト
-	std::list<boost::shared_ptr<GameObject>> mObjs;
-	std::vector<boost::shared_ptr<GameObject>> mPandingObjs;
+	std::list<GameObject*> mObjs;
+	std::vector<GameObject*> mPandingObjs;
 	//コンポーネントを持つsetのための順序比較ファンクタ
 	//自身の持つ更新・出力コンポーネントのリスト，および保留コンポーネント
 	std::set<ComponentHandle<Component>, ComponentHandleCompare> mUpdateComponents;
@@ -144,8 +130,8 @@ private:
 	void DeleteAndProcessPandingObjComp();
 	GameObject* operator&() const noexcept;
 	//Z座標昇順で取り出す(右手系!)
-	std::set<boost::shared_ptr<Layer>, LayerCompare> mLayers;
-	std::set<boost::shared_ptr<Layer>, LayerCompare> mPandingLayers;
+	std::set<Layer*, LayerCompare> mLayers;
+	std::set<Layer*, LayerCompare> mPandingLayers;
 	//自分の持つLayerのOutputを行う
 	void OutputLayer();
 	//DeleteFlag立ってるLayerの処理
@@ -176,5 +162,8 @@ private:
 	void LaunchUIScreenUpdate();
 	//UIScreenのOutputを奥から呼び出す
 	void LaunchOutputUIScreens();
-	
+	//このオブジェクトのポインタをdeleteしデストラクタを呼ぶ
+	void DeleteObject(GameObject* _object);
+	//このレイヤーのポインタをdeleteしデストラクタを呼ぶ
+	void DeleteLayer(Layer* _layer);
 };
