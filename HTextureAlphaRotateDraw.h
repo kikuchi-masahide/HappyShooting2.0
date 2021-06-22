@@ -38,8 +38,8 @@ private:
 	//テクスチャの大きさ
 	double tex_width_;
 	double tex_height_;
-	//info_to_shader_マップ先
-	void* info_map_;
+	//不透明度マップ先
+	float* alpha_map_;
 	//頂点バッファの1頂点情報
 	struct Vertex {
 	public:
@@ -47,14 +47,6 @@ private:
 		float u, v;
 		Vertex(double _x, double _y, double _z, double _u, double _v)
 			:x(_x), y(_y), z(_z), u(_u), v(_v) {}
-	};
-	//シェーダーに渡す情報の構造体
-	struct InfoToShader {
-	public:
-		//頂点変換行列
-		MatVec::Matrix4x4 matrix_;
-		//α
-		float alpha;
 	};
 	//staticなグラフィック関連変数の初期化
 	void static StaticGraphicInit(Game& game);

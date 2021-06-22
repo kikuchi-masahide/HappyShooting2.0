@@ -9,8 +9,7 @@ TitleUIScreen::TitleUIScreen(TitleScene* scene)
 	:UIScreen(false,true),scene_(scene),
 	button_draw_helper_away_(scene->mGame,0),button_draw_helper_on_(scene->mGame,1),
 	title_draw_helper_(scene->mGame,2),
-	cursor_draw_helper_(scene->mGame,3),
-	test(scene->mGame,4)
+	cursor_draw_helper_(scene->mGame,3)
 {
 }
 
@@ -56,7 +55,6 @@ void TitleUIScreen::Output()
 	}
 	//ƒJ[ƒ\ƒ‹•`‰æ
 	cursor_draw_helper_.DrawCenter(scene_->mGame, mouse_x, mouse_y, 20, 20, 900, 900);
-	test.Draw(scene_->mGame, 450, 400, 40, 40, (PI * t / 300), (cos(PI*t/300)+1)/2, 900, 900);
 	scene_->mGame.CloseSwapChain();
 	t++;
 }

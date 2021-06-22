@@ -14,17 +14,33 @@ HTextureAlphaRotateDraw::HTextureAlphaRotateDraw(Game& game, unsigned int textur
 
 void HTextureAlphaRotateDraw::Draw(Game& game, double center_x, double center_y, double width, double height, double angle, double alpha, double rt_width, double rt_height)
 {
-	//シェーダーに渡す情報の作成
-	InfoToShader info;
-	info.matrix_ = MatVec::Expand(2*width / rt_width, 2*height / rt_height, 1);
-	info.matrix_ = MatVec::Rotate(MatVec::GetQuaternion(
+	//シェーダーに渡す情報
+	*alpha_map_ = alpha;
+
+	//頂点座標を変化させる
+	//(シェーダに行列を渡すとなぜか正方形が歪んだので)
+	MatVec::Matrix4x4 matrix = MatVec::Expand(2 * width / rt_width, 2 * height / rt_height, 1);
+	matrix = MatVec::Rotate(MatVec::GetQuaternion(
 		MatVec::Vector3(0, 0, 1), angle
-	))*info.matrix_;
-	info.matrix_ = MatVec::Translation(2 * center_x / rt_width-1, 2 * center_y / rt_height-1, 0)*info.matrix_;
-	info.alpha = alpha;
-	game.mdx12.Copy4x4Matrix(info_map_,info.matrix_);
-	float* alpha_map = static_cast<float*>(info_map_) + 16;
-	*alpha_map = info.alpha;
+	)) * matrix;
+	matrix = MatVec::Translation(2 * center_x / rt_width - 1, 2 * center_y / rt_height - 1, 0) * matrix;
+	MatVec::Vector4 points_before[4];
+	points_before[0] = MatVec::Vector4(-0.5, 0.5, 0.0, 1.0);
+	points_before[1] = MatVec::Vector4(-0.5, -0.5, 0.0, 1.0);
+	points_before[2] = MatVec::Vector4(0.5, -0.5, 0.0, 1.0);
+	points_before[3] = MatVec::Vector4(0.5, 0.5, 0.0, 1.0);
+	float* vertex_map = static_cast<float*>(game.mdx12.Map(vertex_buffer_));
+	for (unsigned int n = 0; n < 4; n++)
+	{
+		points_before[n] = matrix * points_before[n];
+		points_before[n][0] /= points_before[n][3];
+		points_before[n][1] /= points_before[n][3];
+		points_before[n][2] /= points_before[n][3];
+		vertex_map[5 * n + 0] = points_before[n][0];
+		vertex_map[5 * n + 1] = points_before[n][1];
+		vertex_map[5 * n + 2] = points_before[n][2];
+	}
+	game.mdx12.Unmap(vertex_buffer_);
 
 	//パイプライン実行
 	game.mdx12.SetGraphicsPipeline(graphics_pipeline_);
@@ -103,10 +119,10 @@ void HTextureAlphaRotateDraw::StaticGraphicInit(Game& game)
 void HTextureAlphaRotateDraw::NonstaticGraphicsInit(Game& game)
 {
 	//定数バッファ初期化
-	info_to_shader_ = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(InfoToShader));
+	info_to_shader_ = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(float));
 	info_crv_heap_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
 	game.mdx12.CreateConstBufferView(info_to_shader_, info_crv_heap_, 0);
-	info_map_ = game.mdx12.Map(info_to_shader_);
+	alpha_map_ = static_cast<float*>(game.mdx12.Map(info_to_shader_));
 
 	//テクスチャsrv読み込み
 	auto res = game.mTexManager.GetDX12DescriptorHeap(texture_id_);
