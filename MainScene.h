@@ -25,4 +25,10 @@ private:
 	LayerHandle<MainSceneBaseLayer> available_layers_[1];
 	//次のtickから使うレイヤー(none:999)
 	unsigned int layer_from_next_tick_;
+	//自機オブジェクトのハンドル
+	GameObjectHandle myself_handle_;
+	//自機の位置角度変更コンポーネント
+	ComponentHandle<MyselfPosAndAngleComponent> myself_pos_angle_handle_;
+	//シーンに自機を追加する
+	void AddMyself();
 };

@@ -9,6 +9,7 @@
 #include <typeinfo>
 
 #include <Eigen/Dense>
+#include <Eigen/LU>
 
 #include <boost/noncopyable.hpp>
 

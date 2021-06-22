@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include "GameObjectHandle.h"
 #include "Component.h"
 #include "ComponentHandle.h"
 #include "Scene.h"
@@ -57,6 +58,12 @@ GameObject::~GameObject() {
 	for (auto itr = mOutputComponents.begin(); itr != mOutputComponents.end(); itr++)
 	{
 		DeleteComponent(*itr);
+	}
+	//Ž©•ª‚ðŽw‚·GameObjectHandle‚ðReset
+	while (!mHandles.empty())
+	{
+		auto itr = mHandles.begin();
+		(*itr)->Reset();
 	}
 	Log::OutputCritical("GameObject Delete");
 }

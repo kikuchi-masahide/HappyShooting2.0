@@ -187,6 +187,8 @@
     <ClCompile Include="MainSceneDrawComponent.cpp" />
     <ClCompile Include="MainSceneUIScreen.cpp" />
     <ClCompile Include="MatVec.cpp" />
+    <ClCompile Include="MyselfMediatorComponent.cpp" />
+    <ClCompile Include="MyselfPosAndAngleComponent.cpp" />
     <ClCompile Include="Rect2.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
@@ -233,6 +235,8 @@
     <ClInclude Include="MainSceneUIScreen.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="MatVec.h" />
+    <ClInclude Include="MyselfMediatorComponent.h" />
+    <ClInclude Include="MyselfPosAndAngleComponent.h" />
     <ClInclude Include="Rect2.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="ShaderManager.h" />

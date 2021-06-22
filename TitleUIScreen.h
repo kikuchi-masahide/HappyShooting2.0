@@ -33,4 +33,6 @@ private:
 	Scene* scene_;
 	//MainSceneƒNƒ‰ƒX‚ÖˆÚs‚·‚é‚½‚ß‚ÌŠÖ”
 	void TransToMainScene();
+
+	HTextureAlphaRotateDraw test;
 };

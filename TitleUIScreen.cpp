@@ -6,10 +6,11 @@
 
 TitleUIScreen::TitleUIScreen(TitleScene* scene)
 //下部オブジェクトのアップデートは許可，入力は渡さない
-	:UIScreen(false,true),scene_(scene),
-	button_draw_helper_away_(scene->mGame,0),button_draw_helper_on_(scene->mGame,1),
-	title_draw_helper_(scene->mGame,2),
-	cursor_draw_helper_(scene->mGame,3)
+	:UIScreen(false, true), scene_(scene),
+	button_draw_helper_away_(scene->mGame, 0), button_draw_helper_on_(scene->mGame, 1),
+	title_draw_helper_(scene->mGame, 2),
+	cursor_draw_helper_(scene->mGame, 3),
+	test(scene->mGame, 4)
 {
 }
 
@@ -55,8 +56,10 @@ void TitleUIScreen::Output()
 	}
 	//カーソル描画
 	cursor_draw_helper_.DrawCenter(scene_->mGame, mouse_x, mouse_y, 20, 20, 900, 900);
+	test.Draw(scene_->mGame, 450, 450, 40, 40, PI/4, 1.0, 900, 900);
 	scene_->mGame.CloseSwapChain();
 	t++;
+
 }
 
 TitleUIScreen::~TitleUIScreen()

@@ -8,7 +8,7 @@ class MainSceneBasicLayer :
     public MainSceneBaseLayer
 {
 public:
-    MainSceneBasicLayer(MainScene* scene);
+    MainSceneBasicLayer(MainScene* scene, ComponentHandle<MyselfPosAndAngleComponent> myself_pos_component);
     virtual ~MainSceneBasicLayer();
     void UniqueDraw();
 private:

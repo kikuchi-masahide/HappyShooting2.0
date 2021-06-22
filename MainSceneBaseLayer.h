@@ -4,10 +4,12 @@
 #include "ComponentHandle.h"
 #include "MainSceneDrawComponent.h"
 
+class MyselfPosAndAngleComponent;
+
 class MainSceneBaseLayer :public Layer
 {
 public:
-	MainSceneBaseLayer(MainScene* scene);
+	MainSceneBaseLayer(MainScene* scene, ComponentHandle<MyselfPosAndAngleComponent> myself_pos_component);
 	virtual ~MainSceneBaseLayer();
 	void Draw();
 	/// <summary>
@@ -38,6 +40,8 @@ protected:
 	boost::shared_ptr<DX12DescriptorHeap> pera_srv_;
 	Game& GetGame();
 	MainScene* const scene_;
+	//このコンポーネントに毎tickレイヤーの変形を通知
+	ComponentHandle<MyselfPosAndAngleComponent> myself_pos_component_;
 private:
 	std::vector<ComponentHandle<MainSceneDrawComponent>> draw_components_;
 	//このレイヤーがアクティブになってから何度目のフレームか

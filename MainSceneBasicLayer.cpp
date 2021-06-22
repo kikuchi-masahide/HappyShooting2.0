@@ -2,8 +2,8 @@
 #include "MainSceneBasicLayer.h"
 #include "MainScene.h"
 
-MainSceneBasicLayer::MainSceneBasicLayer(MainScene* scene)
-	:MainSceneBaseLayer(scene),line_frame(scene->mGame)
+MainSceneBasicLayer::MainSceneBasicLayer(MainScene* scene, ComponentHandle<MyselfPosAndAngleComponent> myself_pos_component)
+	:MainSceneBaseLayer(scene,myself_pos_component),line_frame(scene->mGame)
 {
 	GraphicsInit();
 }
@@ -25,7 +25,7 @@ void MainSceneBasicLayer::UniqueDraw()
 	game.mdx12.SetVertexBuffers(vertex_buffer_, 0, sizeof(Vertex) * 4, sizeof(Vertex));
 	game.mdx12.SetIndexBuffers(index_buffer_, 6);
 	game.mdx12.SetViewports(900, 900, 0, 0, 1.0f, 0.0f);
-	game.mdx12.SetScissorrect(0, 900, 0, 900);
+	game.mdx12.SetScissorrect(0, 900, 0, 600);
 
 	game.mdx12.DrawIndexedInstanced(6, 1, 0, 0, 0);
 
@@ -65,12 +65,12 @@ void MainSceneBasicLayer::GraphicsInit()
 
 	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(Vertex) * 4);
 	Vertex* vertex_map = static_cast<Vertex*>(game.mdx12.Map(vertex_buffer_));
+	//0 3
+	//1 2
 	vertex_map[0] = Vertex(
 		-1.0f, 1.0f, 0.0f,
 		0.0f, 0.0f
 	);
-	//0 3
-	//1 2
 	vertex_map[1] = Vertex(
 		-1.0f, -1.0f, 0.0f,
 		0.0f, 1.0f

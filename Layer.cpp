@@ -10,10 +10,12 @@ Layer::Layer(Rect2 _rect, double _z, unsigned int _swap)
 Layer::~Layer()
 {
 	BOOST_ASSERT_MSG(mDeleteCheck == true, "irregal destructor call without Scene permission");
-	std::for_each(mHandles.begin(), mHandles.end(), [this](void* _obj) {
-		//ñ≥óùÇ‚ÇË
-		((LayerHandle<Layer>*)_obj)->Reset();
-	});
+	while (!mHandles.empty())
+	{
+		auto itr = mHandles.begin();
+		auto handle = static_cast<LayerHandle<Layer>*>(*itr);
+		handle->Reset();
+	}
 }
 
 void Layer::SetRect(Rect2 _rect)

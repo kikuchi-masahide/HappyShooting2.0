@@ -6,11 +6,22 @@
 
 Component::~Component() {
 	BOOST_ASSERT_MSG(mDeleteCheck == true, "irregal destructor call without GameObject permission");
-	std::for_each(mHandles.begin(), mHandles.end(), [this](void* _obj) {
-		//ñ≥óùÇ‚ÇË
-		auto handle = static_cast<ComponentHandle<Component>*>(_obj);
+	//std::for_each(mHandles.begin(), mHandles.end(), [this](void* _obj) {
+	////	ñ≥óùÇ‚ÇË
+	//	auto handle = static_cast<ComponentHandle<Component>*>(_obj);
+	//	handle->Reset();
+	//});
+	while (!mHandles.empty())
+	{
+		auto itr = mHandles.begin();
+		auto handle = static_cast<ComponentHandle<Component>*>(*itr);
 		handle->Reset();
-	});
+	}
+	//for (auto itr = mHandles.begin(); itr != mHandles.end();)
+	//{
+	//	auto handle = static_cast<ComponentHandle<Component>*>(*itr);
+	//	handle->Reset();
+	//}
 }
 
 Component::Component(int _order)

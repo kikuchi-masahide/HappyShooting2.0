@@ -35,9 +35,9 @@ public:
 		//コンポーネント自身
 		T* comp = new T(_args...);
 		mUpdateComponents.push_back(comp);
-		auto handle = comp->This();
+		ComponentHandle<T> handle = comp->This<T>();
 		//シーンに追加
-		AddUpdateComponentToScene(handle);
+		AddUpdateComponentToScene(static_cast<ComponentHandle<Component>>(handle));
 		return handle;
 	}
 	/// <summary>
@@ -49,9 +49,9 @@ public:
 		//コンポーネント自身
 		T* comp = new T(_args...);
 		mOutputComponents.push_back(comp);
-		auto handle = comp->This();
+		ComponentHandle<T> handle = comp->This<T>();
 		//シーンに追加
-		AddOutputComponentToScene(handle);
+		AddOutputComponentToScene(static_cast<ComponentHandle<Component>>(handle));
 		return handle;
 	};
 	Game& GetGame();
