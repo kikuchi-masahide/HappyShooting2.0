@@ -37,7 +37,7 @@ public:
 		boost::shared_ptr<DX12ShaderObject> _pixelShader, DX12VertexLayout& _vertexLayout,
 		DX12Config::PrimitiveTopologyType _primitive, UINT _numrt,
 		boost::shared_ptr<DX12RootSignature> _rootsignature);
-	boost::shared_ptr<DX12RootSignature> CreateRootSignature(std::vector<DX12RootParameter>& _rootparams);
+	boost::shared_ptr<DX12RootSignature> CreateRootSignature(std::vector<DX12RootParameter>& _rootparams, bool _hasSampler);
 	void SetGraphicsPipeline(boost::shared_ptr<DX12GraphicsPipeline> _pipeline);
 	void SetRootSignature(boost::shared_ptr<DX12RootSignature> _root);
 	void SetPrimitiveTopology(DX12Config::PrimitiveTopology _prim);

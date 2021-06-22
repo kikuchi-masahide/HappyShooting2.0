@@ -1,7 +1,7 @@
 #include "DX12RootSignature.h"
 #include "DX12Pimple.h"
 
-DX12RootSignature::DX12RootSignature(ComPtr<ID3D12Device> _device, std::vector<DX12RootParameter>& _rootparams)
+DX12RootSignature::DX12RootSignature(ComPtr<ID3D12Device> _device, std::vector<DX12RootParameter>& _rootparams, bool _hasSampler)
 {
 	D3D12_ROOT_SIGNATURE_DESC RSDesc = {};
 
@@ -55,20 +55,26 @@ DX12RootSignature::DX12RootSignature(ComPtr<ID3D12Device> _device, std::vector<D
 		//ルートパラメータの数
 		RSDesc.NumParameters = _rootparams.size();
 	}
-	//サンプラー設定
-	D3D12_STATIC_SAMPLER_DESC samplerDesc = {};
-	samplerDesc.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
-	samplerDesc.AddressV = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
-	samplerDesc.AddressW = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
-	samplerDesc.BorderColor = D3D12_STATIC_BORDER_COLOR_TRANSPARENT_BLACK;
-	samplerDesc.Filter = D3D12_FILTER_MIN_MAG_MIP_LINEAR;
-	samplerDesc.MaxLOD = D3D12_FLOAT32_MAX;
-	samplerDesc.MinLOD = 0.0f;
-	samplerDesc.ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
-	samplerDesc.ComparisonFunc = D3D12_COMPARISON_FUNC_NEVER;
+	if (_hasSampler) {
+		//サンプラー設定
+		D3D12_STATIC_SAMPLER_DESC samplerDesc = {};
+		samplerDesc.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
+		samplerDesc.AddressV = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
+		samplerDesc.AddressW = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
+		samplerDesc.BorderColor = D3D12_STATIC_BORDER_COLOR_TRANSPARENT_BLACK;
+		samplerDesc.Filter = D3D12_FILTER_MIN_MAG_MIP_LINEAR;
+		samplerDesc.MaxLOD = D3D12_FLOAT32_MAX;
+		samplerDesc.MinLOD = 0.0f;
+		samplerDesc.ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
+		samplerDesc.ComparisonFunc = D3D12_COMPARISON_FUNC_NEVER;
 
-	RSDesc.pStaticSamplers = &samplerDesc;
-	RSDesc.NumStaticSamplers = 1;
+		RSDesc.pStaticSamplers = &samplerDesc;
+		RSDesc.NumStaticSamplers = 1;
+	}
+	else {
+		RSDesc.pStaticSamplers = nullptr;
+		RSDesc.NumStaticSamplers = 0;
+	}
 
 	ComPtr<ID3DBlob> rootSigBlob;
 	ComPtr<ID3DBlob> errorBlob;
@@ -114,10 +120,10 @@ D3D12_DESCRIPTOR_RANGE_TYPE DX12RootSignature::mDescRngTypeCorrespond[(unsigned 
 	D3D12_DESCRIPTOR_RANGE_TYPE_UAV
 };
 
-boost::shared_ptr<DX12RootSignature> DX12Pimple::CreateRootSignature(std::vector<DX12RootParameter>& _rootparams)
+boost::shared_ptr<DX12RootSignature> DX12Pimple::CreateRootSignature(std::vector<DX12RootParameter>& _rootparams, bool _hasSampler)
 {
 	return boost::shared_ptr<DX12RootSignature>(new DX12RootSignature(
-		mDevice, _rootparams
+		mDevice, _rootparams,_hasSampler
 	));
 }
 

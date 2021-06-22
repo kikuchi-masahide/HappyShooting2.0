@@ -47,6 +47,7 @@ void HDrawLineFrame::DrawFrame(Game& game, double center_x, double center_y, dou
 
 	//パイプライン実行
 	game.mdx12.SetGraphicsPipeline(pipeline_);
+	game.mdx12.SetRootSignature(root_signature_);
 	game.mdx12.SetPrimitiveTopology(DX12Config::PrimitiveTopology::LINESTRIP);
 	game.mdx12.SetVertexBuffers(vertex_buffer_,0,sizeof(float)*15,sizeof(float)*3);
 	game.mdx12.SetViewports(rt_width, rt_height, 0, 0, 0.0f, 1.0f);
@@ -65,7 +66,7 @@ void HDrawLineFrame::GraphicInit(Game& game)
 	));
 
 	std::vector<DX12RootParameter> root_parameters;
-	root_signature_ = game.mdx12.CreateRootSignature(root_parameters);
+	root_signature_ = game.mdx12.CreateRootSignature(root_parameters,false);
 
 	pipeline_ = game.mdx12.CreateGraphicsPipeline(
 		vertex_shader, pixel_shader, vertex_layout, DX12Config::PrimitiveTopologyType::LINE, 1, root_signature_
