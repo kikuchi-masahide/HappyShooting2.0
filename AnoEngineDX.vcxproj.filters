@@ -46,6 +46,9 @@
     <Filter Include="Helper\HTextureAlphaRotateDraw">
       <UniqueIdentifier>{23d15d32-8b94-453c-bcee-036772bbaa80}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\DrawTextureComponent">
+      <UniqueIdentifier>{dd14e352-9c7e-4549-b141-b55ca47562a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -145,6 +148,9 @@
     </ClCompile>
     <ClCompile Include="HTextureAlphaRotateDraw.cpp">
       <Filter>Helper\HTextureAlphaRotateDraw</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawTextureComponent.cpp">
+      <Filter>MainScene\DrawTextureComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -262,6 +268,9 @@
     </ClInclude>
     <ClInclude Include="HTextureAlphaRotateDraw.h">
       <Filter>Helper\HTextureAlphaRotateDraw</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawTextureComponent.h">
+      <Filter>MainScene\DrawTextureComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

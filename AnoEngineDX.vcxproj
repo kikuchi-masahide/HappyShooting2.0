@@ -161,6 +161,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="DrawTextureComponent.cpp" />
     <ClCompile Include="DX12.cpp" />
     <ClCompile Include="DX12CmdList.cpp" />
     <ClCompile Include="DX12DescriptorHeap.cpp" />
@@ -201,6 +202,7 @@
   <ItemGroup>
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentHandle.h" />
+    <ClInclude Include="DrawTextureComponent.h" />
     <ClInclude Include="DX12.h" />
     <ClInclude Include="DX12CommonInclude.h" />
     <ClInclude Include="DX12ConfigEnums.h" />
