@@ -152,6 +152,7 @@
     <ClCompile Include="DrawTextureComponent.cpp">
       <Filter>MainScene\DrawTextureComponent</Filter>
     </ClCompile>
+    <ClCompile Include="MainSceneUIScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -272,6 +273,7 @@
     <ClInclude Include="DrawTextureComponent.h">
       <Filter>MainScene\DrawTextureComponent</Filter>
     </ClInclude>
+    <ClInclude Include="MainSceneUIScreen.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HTextureDrawInclude.hlsli">

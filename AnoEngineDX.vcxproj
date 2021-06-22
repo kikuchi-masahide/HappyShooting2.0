@@ -185,6 +185,7 @@
     <ClCompile Include="MainSceneBaseLayer.cpp" />
     <ClCompile Include="MainSceneBasicLayer.cpp" />
     <ClCompile Include="MainSceneDrawComponent.cpp" />
+    <ClCompile Include="MainSceneUIScreen.cpp" />
     <ClCompile Include="MatVec.cpp" />
     <ClCompile Include="Rect2.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -229,6 +230,7 @@
     <ClInclude Include="MainSceneBaseLayer.h" />
     <ClInclude Include="MainSceneBasicLayer.h" />
     <ClInclude Include="MainSceneDrawComponent.h" />
+    <ClInclude Include="MainSceneUIScreen.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="MatVec.h" />
     <ClInclude Include="Rect2.h" />

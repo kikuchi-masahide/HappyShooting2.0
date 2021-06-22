@@ -1,6 +1,7 @@
 #include "MainScene.h"
 
 #include "MainSceneBasicLayer.h"
+#include "MainSceneUIScreen.h"
 
 MainScene::MainScene(Game* game)
 	:Scene(game),layer_from_next_tick_(999)
@@ -11,6 +12,9 @@ MainScene::MainScene(Game* game)
 	//始めはレイヤー0を有効化
 	active_layer_ = available_layers_[0];
 	active_layer_->SetActive();
+
+	//UIScreen
+	AddUIScreen<MainSceneUIScreen>(this);
 }
 
 void MainScene::UniqueUpdate()
