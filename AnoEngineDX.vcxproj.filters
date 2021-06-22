@@ -49,6 +49,9 @@
     <Filter Include="MainScene\DrawTextureComponent">
       <UniqueIdentifier>{dd14e352-9c7e-4549-b141-b55ca47562a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\MainSceneUIScreen">
+      <UniqueIdentifier>{dfb53f11-bea0-4e83-9d87-83c7cb5b6809}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -152,7 +155,9 @@
     <ClCompile Include="DrawTextureComponent.cpp">
       <Filter>MainScene\DrawTextureComponent</Filter>
     </ClCompile>
-    <ClCompile Include="MainSceneUIScreen.cpp" />
+    <ClCompile Include="MainSceneUIScreen.cpp">
+      <Filter>MainScene\MainSceneUIScreen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -273,7 +278,9 @@
     <ClInclude Include="DrawTextureComponent.h">
       <Filter>MainScene\DrawTextureComponent</Filter>
     </ClInclude>
-    <ClInclude Include="MainSceneUIScreen.h" />
+    <ClInclude Include="MainSceneUIScreen.h">
+      <Filter>MainScene\MainSceneUIScreen</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="HTextureDrawInclude.hlsli">
