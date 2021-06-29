@@ -65,7 +65,6 @@ GameObject::~GameObject() {
 		auto itr = mHandles.begin();
 		(*itr)->Reset();
 	}
-	Log::OutputCritical("GameObject Delete");
 }
 
 void GameObject::DeleteFlagedComponents()

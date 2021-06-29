@@ -70,10 +70,6 @@ void MyselfPosAndAngleComponent::Update()
 	gameobject_handle_->SetRotation(std::atan2(
 		cursor_pos_before(1) - myself_pos(1), cursor_pos_before(0) - myself_pos(0)
 	));
-	auto deg = gameobject_handle_->GetRotation();
-	deg *= 180 / PI;
-	std::string message = std::to_string(deg);
-	Log::OutputTrivial(message);
 }
 
 MyselfPosAndAngleComponent::~MyselfPosAndAngleComponent()
