@@ -28,9 +28,6 @@
     <Filter Include="MainScene\MainSceneBaseLayer">
       <UniqueIdentifier>{77a5e622-f244-441a-a38e-2e2ef80d6849}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainScene\MainSceneBasicLayer">
-      <UniqueIdentifier>{d72ee825-47d4-4220-9acf-cc7c6264d75d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Helper">
       <UniqueIdentifier>{79a135d6-f49b-4a7b-9cd7-ab8a494261b3}</UniqueIdentifier>
     </Filter>
@@ -43,9 +40,6 @@
     <Filter Include="Helper\HTextureAlphaRotateDraw">
       <UniqueIdentifier>{23d15d32-8b94-453c-bcee-036772bbaa80}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainScene\DrawTextureComponent">
-      <UniqueIdentifier>{dd14e352-9c7e-4549-b141-b55ca47562a8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MainScene\MainSceneUIScreen">
       <UniqueIdentifier>{dfb53f11-bea0-4e83-9d87-83c7cb5b6809}</UniqueIdentifier>
     </Filter>
@@ -55,11 +49,17 @@
     <Filter Include="MainScene\MyselfMediatorComponent">
       <UniqueIdentifier>{255faa76-3831-4638-ab09-889acfa3fa8b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainScene\DrawNormalBulletComponent">
+    <Filter Include="MainScene\MainSceneBaseLayer\MainSceneBasicLayer">
+      <UniqueIdentifier>{d72ee825-47d4-4220-9acf-cc7c6264d75d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\MainSceneDrawComponent">
+      <UniqueIdentifier>{d42c5b5a-a76d-4aeb-a6d6-7cc564cf0041}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\MainSceneDrawComponent\DrawNormalBulletComponent">
       <UniqueIdentifier>{6757a606-d03f-4dd8-8b91-85564bdee6e1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainScene\MainSceneBasicLayer\MainSceneDrawComponent">
-      <UniqueIdentifier>{d42c5b5a-a76d-4aeb-a6d6-7cc564cf0041}</UniqueIdentifier>
+    <Filter Include="MainScene\MainSceneDrawComponent\DrawTextureComponent">
+      <UniqueIdentifier>{dd14e352-9c7e-4549-b141-b55ca47562a8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -153,16 +153,16 @@
       <Filter>MainScene\MainSceneBaseLayer</Filter>
     </ClCompile>
     <ClCompile Include="MainSceneBasicLayer.cpp">
-      <Filter>MainScene\MainSceneBasicLayer</Filter>
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
     </ClCompile>
     <ClCompile Include="MainSceneDrawComponent.cpp">
-      <Filter>MainScene\MainSceneBasicLayer\MainSceneDrawComponent</Filter>
+      <Filter>MainScene\MainSceneDrawComponent</Filter>
     </ClCompile>
     <ClCompile Include="HTextureAlphaRotateDraw.cpp">
       <Filter>Helper\HTextureAlphaRotateDraw</Filter>
     </ClCompile>
     <ClCompile Include="DrawTextureComponent.cpp">
-      <Filter>MainScene\DrawTextureComponent</Filter>
+      <Filter>MainScene\MainSceneDrawComponent\DrawTextureComponent</Filter>
     </ClCompile>
     <ClCompile Include="MainSceneUIScreen.cpp">
       <Filter>MainScene\MainSceneUIScreen</Filter>
@@ -174,7 +174,7 @@
       <Filter>MainScene\MyselfMediatorComponent</Filter>
     </ClCompile>
     <ClCompile Include="DrawNormalBulletComponent.cpp">
-      <Filter>MainScene\DrawNormalBulletComponent</Filter>
+      <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -285,16 +285,16 @@
       <Filter>MainScene\MainSceneBaseLayer</Filter>
     </ClInclude>
     <ClInclude Include="MainSceneBasicLayer.h">
-      <Filter>MainScene\MainSceneBasicLayer</Filter>
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
     </ClInclude>
     <ClInclude Include="MainSceneDrawComponent.h">
-      <Filter>MainScene\MainSceneBasicLayer\MainSceneDrawComponent</Filter>
+      <Filter>MainScene\MainSceneDrawComponent</Filter>
     </ClInclude>
     <ClInclude Include="HTextureAlphaRotateDraw.h">
       <Filter>Helper\HTextureAlphaRotateDraw</Filter>
     </ClInclude>
     <ClInclude Include="DrawTextureComponent.h">
-      <Filter>MainScene\DrawTextureComponent</Filter>
+      <Filter>MainScene\MainSceneDrawComponent\DrawTextureComponent</Filter>
     </ClInclude>
     <ClInclude Include="MainSceneUIScreen.h">
       <Filter>MainScene\MainSceneUIScreen</Filter>
@@ -306,7 +306,7 @@
       <Filter>MainScene\MyselfMediatorComponent</Filter>
     </ClInclude>
     <ClInclude Include="DrawNormalBulletComponent.h">
-      <Filter>MainScene\DrawNormalBulletComponent</Filter>
+      <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -314,13 +314,13 @@
       <Filter>Helper\HTextureDraw</Filter>
     </None>
     <None Include="MainSceneBasicLayerHeader.hlsli">
-      <Filter>MainScene\MainSceneBasicLayer</Filter>
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
     </None>
     <None Include="HTextureAlphaRotateDrawHeader.hlsli">
       <Filter>Helper\HTextureAlphaRotateDraw</Filter>
     </None>
     <None Include="DrawNormalBulletComponentHeader.hlsli">
-      <Filter>MainScene\DrawNormalBulletComponent</Filter>
+      <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -337,10 +337,10 @@
       <Filter>Helper\HDrawLineFrame</Filter>
     </FxCompile>
     <FxCompile Include="MainSceneBasicLayerPixelShader.hlsl">
-      <Filter>MainScene\MainSceneBasicLayer</Filter>
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
     </FxCompile>
     <FxCompile Include="MainSceneBasicLayerVertexShader.hlsl">
-      <Filter>MainScene\MainSceneBasicLayer</Filter>
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
     </FxCompile>
     <FxCompile Include="HTextureAlphaRotateDrawPixelShader.hlsl">
       <Filter>Helper\HTextureAlphaRotateDraw</Filter>
@@ -349,10 +349,10 @@
       <Filter>Helper\HTextureAlphaRotateDraw</Filter>
     </FxCompile>
     <FxCompile Include="DrawNormalBulletComponentVertexShader.hlsl">
-      <Filter>MainScene\DrawNormalBulletComponent</Filter>
+      <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
     </FxCompile>
     <FxCompile Include="DrawNormalBulletComponentPixelShader.hlsl">
-      <Filter>MainScene\DrawNormalBulletComponent</Filter>
+      <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>
