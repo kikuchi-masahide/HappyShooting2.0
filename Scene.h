@@ -117,9 +117,9 @@ private:
 	std::vector<GameObject*> mPandingObjs;
 	//コンポーネントを持つsetのための順序比較ファンクタ
 	//自身の持つ更新・出力コンポーネントのリスト，および保留コンポーネント
-	std::set<ComponentHandle<Component>, ComponentHandleCompare> mUpdateComponents;
+	std::multiset<ComponentHandle<Component>, ComponentHandleCompare> mUpdateComponents;
 	std::vector<ComponentHandle<Component>> mPandingUpdateComponents;
-	std::set<ComponentHandle<Component>, ComponentHandleCompare> mOutputComponents;
+	std::multiset<ComponentHandle<Component>, ComponentHandleCompare> mOutputComponents;
 	std::vector<ComponentHandle<Component>> mPandingOutputComponents;
 	//自分の持つ全更新・出力コンポーネントのUpdateを呼び出す(保留コンポーネントのそれは実行しない)
 	void LaunchUpdateComponents();

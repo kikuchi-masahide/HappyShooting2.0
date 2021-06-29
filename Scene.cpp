@@ -65,8 +65,13 @@ void Scene::AddUpdateComponent(GameObject* _obj, ComponentHandle<Component> _han
 void Scene::AddOutputComponent(GameObject* _obj, ComponentHandle<Component> _handle)
 {
 	BOOST_ASSERT(_obj != nullptr);
-	if (mIsObjCompAddable)mOutputComponents.insert(_handle);
-	else mPandingOutputComponents.push_back(_handle);
+	if (mIsObjCompAddable) {
+		mOutputComponents.insert(_handle);
+	}
+	else
+	{
+		mPandingOutputComponents.push_back(_handle);
+	}
 }
 
 Scene::~Scene() {

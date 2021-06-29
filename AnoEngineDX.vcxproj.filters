@@ -31,9 +31,6 @@
     <Filter Include="MainScene\MainSceneBasicLayer">
       <UniqueIdentifier>{d72ee825-47d4-4220-9acf-cc7c6264d75d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainScene\MainSceneDrawComponent">
-      <UniqueIdentifier>{d42c5b5a-a76d-4aeb-a6d6-7cc564cf0041}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Helper">
       <UniqueIdentifier>{79a135d6-f49b-4a7b-9cd7-ab8a494261b3}</UniqueIdentifier>
     </Filter>
@@ -57,6 +54,12 @@
     </Filter>
     <Filter Include="MainScene\MyselfMediatorComponent">
       <UniqueIdentifier>{255faa76-3831-4638-ab09-889acfa3fa8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\DrawNormalBulletComponent">
+      <UniqueIdentifier>{6757a606-d03f-4dd8-8b91-85564bdee6e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\MainSceneBasicLayer\MainSceneDrawComponent">
+      <UniqueIdentifier>{d42c5b5a-a76d-4aeb-a6d6-7cc564cf0041}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -153,7 +156,7 @@
       <Filter>MainScene\MainSceneBasicLayer</Filter>
     </ClCompile>
     <ClCompile Include="MainSceneDrawComponent.cpp">
-      <Filter>MainScene\MainSceneDrawComponent</Filter>
+      <Filter>MainScene\MainSceneBasicLayer\MainSceneDrawComponent</Filter>
     </ClCompile>
     <ClCompile Include="HTextureAlphaRotateDraw.cpp">
       <Filter>Helper\HTextureAlphaRotateDraw</Filter>
@@ -169,6 +172,9 @@
     </ClCompile>
     <ClCompile Include="MyselfMediatorComponent.cpp">
       <Filter>MainScene\MyselfMediatorComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawNormalBulletComponent.cpp">
+      <Filter>MainScene\DrawNormalBulletComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -282,7 +288,7 @@
       <Filter>MainScene\MainSceneBasicLayer</Filter>
     </ClInclude>
     <ClInclude Include="MainSceneDrawComponent.h">
-      <Filter>MainScene\MainSceneDrawComponent</Filter>
+      <Filter>MainScene\MainSceneBasicLayer\MainSceneDrawComponent</Filter>
     </ClInclude>
     <ClInclude Include="HTextureAlphaRotateDraw.h">
       <Filter>Helper\HTextureAlphaRotateDraw</Filter>
@@ -299,6 +305,9 @@
     <ClInclude Include="MyselfMediatorComponent.h">
       <Filter>MainScene\MyselfMediatorComponent</Filter>
     </ClInclude>
+    <ClInclude Include="DrawNormalBulletComponent.h">
+      <Filter>MainScene\DrawNormalBulletComponent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="HTextureDrawInclude.hlsli">
@@ -309,6 +318,9 @@
     </None>
     <None Include="HTextureAlphaRotateDrawHeader.hlsli">
       <Filter>Helper\HTextureAlphaRotateDraw</Filter>
+    </None>
+    <None Include="DrawNormalBulletComponentHeader.hlsli">
+      <Filter>MainScene\DrawNormalBulletComponent</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -335,6 +347,12 @@
     </FxCompile>
     <FxCompile Include="HTextureAlphaRotateDrawVertexShader.hlsl">
       <Filter>Helper\HTextureAlphaRotateDraw</Filter>
+    </FxCompile>
+    <FxCompile Include="DrawNormalBulletComponentVertexShader.hlsl">
+      <Filter>MainScene\DrawNormalBulletComponent</Filter>
+    </FxCompile>
+    <FxCompile Include="DrawNormalBulletComponentPixelShader.hlsl">
+      <Filter>MainScene\DrawNormalBulletComponent</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

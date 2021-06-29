@@ -5,6 +5,7 @@
 #include "DrawTextureComponent.h"
 #include "MyselfPosAndAngleComponent.h"
 #include "MyselfMediatorComponent.h"
+#include "DrawNormalBulletComponent.h"
 
 MainScene::MainScene(Game* game)
 	:Scene(game),layer_from_next_tick_(999)
