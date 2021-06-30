@@ -65,7 +65,7 @@ void MyselfPosAndAngleComponent::Update()
 	MatVec::Vector2 cursor_pos_before(
 		cursor_pos_xyzw(0)/ cursor_pos_xyzw(3), cursor_pos_xyzw(1)/cursor_pos_xyzw(3)
 	);
-	auto myself_pos = gameobject_handle_->GetPosition()- MatVec::Vector2(300.0, 450.0);
+	auto myself_pos = gameobject_handle_->GetPosition();
 	//角度をセット
 	gameobject_handle_->SetRotation(std::atan2(
 		cursor_pos_before(1) - myself_pos(1), cursor_pos_before(0) - myself_pos(0)

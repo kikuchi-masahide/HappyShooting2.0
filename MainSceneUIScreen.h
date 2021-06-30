@@ -19,9 +19,9 @@ private:
     HDrawLineFrame point_frame_;
     MainScene* scene_;
     //得点表示枠の中心x
-    constexpr static double point_frame_cx_ = 750;
+    constexpr static double point_frame_cx_ = 750-450;
     //得点表示枠の中心y
-    constexpr static double point_frame_cy_ = 775;
+    constexpr static double point_frame_cy_ = 775-450;
     //得点表示枠の幅
     constexpr static double point_frame_width_ = 300 - 2;
     //得点表示枠の高さ

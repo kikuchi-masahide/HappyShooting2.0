@@ -4,10 +4,10 @@ void HTextureDraw::DrawInRect(Game& _game, double _lx, double _rx, double _by, d
 {
 	//変形行列をセットする
 	//座標を-1~1に変換
-	_lx = 2 * _lx / _rtwidth - 1;
-	_rx = 2 * _rx / _rtwidth - 1;
-	_ty = 2 * _ty / _rtheight - 1;
-	_by = 2 * _by / _rtheight - 1;
+	_lx = 2 * _lx / _rtwidth;
+	_rx = 2 * _rx / _rtwidth;
+	_ty = 2 * _ty / _rtheight;
+	_by = 2 * _by / _rtheight;
 	//拡大
 	MatVec::Matrix4d mat = MatVec::Expand(_rx - _lx, _ty - _by, 1);
 	//平行移動

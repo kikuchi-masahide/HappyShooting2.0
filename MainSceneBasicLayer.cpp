@@ -30,7 +30,7 @@ void MainSceneBasicLayer::UniqueDraw()
 	game.mdx12.DrawIndexedInstanced(6, 1, 0, 0, 0);
 
 	//ògê¸Çï`Ç≠
-	line_frame.DrawFrame(GetGame(), 300, 450, 600, 900, 0, 900, 900);
+	line_frame.DrawFrame(GetGame(),-150, 0, 600, 900, 0, 900, 900);
 
 	game.CloseSwapChain();
 }

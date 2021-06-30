@@ -23,6 +23,7 @@ void MainSceneUIScreen::Output()
 
 	//カーソル描画
 	auto cursor = scene_->GetMouseClientPos(0);
+	cursor -= MatVec::Vector2(450, 450);
 	cursor_draw_.DrawCenter(game, cursor(0), cursor(1), 20, 20, 900, 900);
 
 	//ポイント表示枠描画

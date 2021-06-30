@@ -17,14 +17,14 @@ private:
 	//ボタン描画のための情報
 	HTextureDraw button_draw_helper_away_;
 	HTextureDraw button_draw_helper_on_;
-	const double kButtonCenterY_ = 200;
-	const double kButtonCenterX_ = 450;
+	const double kButtonCenterY_ = -250;
+	const double kButtonCenterX_ = 0;
 	const double kButtonWidth_ = 200;
 	const double kButtonHeight_ = 200;
 	//タイトル描画のための情報
 	HTextureDraw title_draw_helper_;
-	const double kTitleCenterY_ = 600;
-	const double kTitleCenterX_ = 450;
+	const double kTitleCenterY_ = 150;
+	const double kTitleCenterX_ = 0;
 	const double kTitleWidth_ = 300;
 	const double KTitleHeight_ = 30;
 	//カーソル表示

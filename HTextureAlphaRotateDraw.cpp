@@ -23,6 +23,7 @@ void HTextureAlphaRotateDraw::Draw(Game& game, double center_x, double center_y,
 		MatVec::Vector3(0, 0, 1), -angle
 	));
 	matrix = MatVec::Translation(MatVec::Vector3(center_x, center_y, 0))*matrix;
+	matrix = MatVec::GetOrthoGraphicProjection(rt_width, rt_height, 0.0, 1.0)*matrix;
 	MatVec::Vector4 points_before[4];
 	points_before[0] = MatVec::Vector4(-width / 2, height / 2, 0.0, 1.0);
 	points_before[1] = MatVec::Vector4(-width / 2, -height / 2, 0.0, 1.0);
@@ -35,8 +36,6 @@ void HTextureAlphaRotateDraw::Draw(Game& game, double center_x, double center_y,
 		points_before[n][0] /= points_before[n][3];
 		points_before[n][1] /= points_before[n][3];
 		points_before[n][2] /= points_before[n][3];
-		points_before[n][0] = 2 * points_before[n][0] / rt_width - 1;
-		points_before[n][1] = 2 * points_before[n][1] / rt_height - 1;
 		vertex_map[5 * n + 0] = points_before[n][0];
 		vertex_map[5 * n + 1] = points_before[n][1];
 		vertex_map[5 * n + 2] = points_before[n][2];

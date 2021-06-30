@@ -27,9 +27,9 @@ void TitleUIScreen::Output()
 	title_draw_helper_.DrawCenter(scene_->mGame, kTitleCenterX_, kTitleCenterY_, kTitleWidth_, KTitleHeight_, 900, 900);
 	//マウス位置取得
 	auto mouse_pos = scene_->GetMouseClientPos(0);
-	//左上原点なのでy座標反転
-	double mouse_x = mouse_pos(0);
-	double mouse_y = mouse_pos(1);
+	//RTV中心を原点とするよう平行移動
+	double mouse_x = mouse_pos(0)-450;
+	double mouse_y = mouse_pos(1)-450;
 	bool is_mouse_in_button = false;
 	//マウスの位置がボタン内であるとき
 	if (
@@ -56,7 +56,7 @@ void TitleUIScreen::Output()
 	}
 	//カーソル描画
 	cursor_draw_helper_.DrawCenter(scene_->mGame, mouse_x, mouse_y, 20, 20, 900, 900);
-	test.Draw(scene_->mGame, 450, 450, 40, 40, PI/4, 1.0, 900, 900);
+	test.Draw(scene_->mGame, 0, 0, 40, 40, PI/4, 1.0, 900, 900);
 	scene_->mGame.CloseSwapChain();
 	t++;
 

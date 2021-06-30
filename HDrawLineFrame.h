@@ -9,6 +9,8 @@ public:
 	/// <summary>
 	/// レンダーターゲットがセットされた状態で，中心と回転角度を指定して枠線を描画する
 	/// </summary>
+	/// <param name="center_x">レンダーターゲット中心が原点のときの，フレーム中心x[px]</param>
+	/// <param name="center_y">レンダーターゲット中心が原点のときの，フレーム中心y[px]</param>
 	/// <param name="rt_width">レンダーターゲット幅</param>
 	/// <param name="rt_height">レンダーターゲット高さ</param>
 	void DrawFrame(Game& game, double center_x, double center_y, double width,double height,double angle, unsigned int rt_width, unsigned int rt_height);

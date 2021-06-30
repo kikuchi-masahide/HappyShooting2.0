@@ -56,7 +56,7 @@ void MainScene::SwapLayer(unsigned int ind)
 
 void MainScene::AddMyself()
 {
-	myself_handle_ = AddObject(MatVec::Vector2(300, 175), 1.0, 0.0);
+	myself_handle_ = AddObject(MatVec::Vector2(0, -275), 1.0, 0.0);
 	auto draw_texture_component = myself_handle_->AddOutputComponent<DrawTextureComponent>(this, 4, myself_handle_);
 	draw_texture_component->width_ = 40;
 	draw_texture_component->height_ = 40;

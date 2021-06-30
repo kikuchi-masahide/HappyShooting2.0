@@ -11,8 +11,8 @@ public:
 	/// <summary>
 	/// RTVを開いた状態で，指定座標に指定角度だけ回転して指定αでテクスチャを描く
 	/// </summary>
-	/// <param name="center_x">中心座標x[px]</param>
-	/// <param name="center_y">中心座標y[px]</param>
+	/// <param name="center_x">RTV中心を原点としたときの，テクスチャ中心座標x[px]</param>
+	/// <param name="center_y">RTV中心を原点としたときの，テクスチャ中心座標y[px]</param>
 	/// <param name="width">テクスチャ幅を何pxにするか</param>
 	/// <param name="height">テクスチャ高さを何pxにするか</param>
 	/// <param name="angle">反時計回りで回転角度[rad]</param>

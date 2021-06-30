@@ -11,18 +11,18 @@ public:
 	/// <summary>
 	/// RTVを開いた状態で，指定座標にテクスチャを描く
 	/// </summary>
-	/// <param name="_lx">左端x[px]</param>
-	/// <param name="_rx">右端x[px]</param>
-	/// <param name="_by">下端y[px]</param>
-	/// <param name="_ty">上端y[px]</param>
+	/// <param name="_lx">左端x(レンダーターゲット中心が原点)[px]</param>
+	/// <param name="_rx">右端x(レンダーターゲット中心が原点)[px]</param>
+	/// <param name="_by">下端y(レンダーターゲット中心が原点)[px]</param>
+	/// <param name="_ty">上端y(レンダーターゲット中心が原点)[px]</param>
 	/// <param name="_rtwidth">レンダーターゲットの横幅[px]</param>
 	/// <param name="_rtheight">レンダーターゲットの縦幅[px]</param>
 	void DrawInRect(Game& _game, double _lx, double _rx, double _by, double _ty, unsigned int _rtwidth,unsigned int _rtheight);
 	/// <summary>
 	/// RTVを開いた状態で，中心点と倍率を指定してテクスチャを描く
 	/// </summary>
-	/// <param name="_cx">中心x[px]</param>
-	/// <param name="_cy">中心y[px]</param>
+	/// <param name="_cx">中心x(レンダーターゲット中心が原点)[px]</param>
+	/// <param name="_cy">中心y(レンダーターゲット中心が原点)[px]</param>
 	/// <param name="_rx">幅[px]</param>
 	/// <param name="_ry">高さ[px]</param>
 	/// <param name="_rtwidth">レンダーターゲットの横幅[px]</param>
