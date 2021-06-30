@@ -166,6 +166,6 @@ MatVec::Matrix4x4 MatVec::GetOrthoGraphicProjection(double width, double height,
 	res(0, 0) = 2 / width;
 	res(1, 1) = 2 / height;
 	res(2, 2) = 1 / (far_z - near_z);
-	res(3, 2) = near_z / (near_z - far_z);
+	res(2, 3) = near_z / (near_z - far_z);
 	return res;
 }
