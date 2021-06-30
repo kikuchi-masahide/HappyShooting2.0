@@ -155,3 +155,17 @@ MatVec::Quaternion MatVec::Slerp(MatVec::Quaternion _q1, MatVec::Quaternion _q2,
 	double omega = acos(_q1.dot(_q2));
 	return sin((1 - t) * omega) / sin(omega) * _q1 + sin(t * omega) / sin(omega) * _q2;
 }
+
+MatVec::Matrix4x4 MatVec::GetOrthoGraphicProjection(double width, double height, double near_z, double far_z)
+{
+	BOOST_ASSERT_MSG(!Zero(width), "invalid width given to MatVec::GetOrthoGraphicProjection");
+	BOOST_ASSERT_MSG(!Zero(height), "invalid height given to MatVec::GetOrthoGraphicProjection");
+	BOOST_ASSERT_MSG(near_z < far_z, "invalid near_z & far_z given to MatVec::GetOrthoGraphicProjection");
+	BOOST_ASSERT_MSG(!Zero(far_z-near_z), "invalid near_z & far_z given to MatVec::GetOrthoGraphicProjection");
+	Matrix4x4 res = Identity4x4();
+	res(0, 0) = 2 / width;
+	res(1, 1) = 2 / height;
+	res(2, 2) = 1 / (far_z - near_z);
+	res(3, 2) = near_z / (near_z - far_z);
+	return res;
+}

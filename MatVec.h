@@ -70,4 +70,12 @@ namespace MatVec
 	/// _q1と_q2をt:(1-t)で補完
 	/// </summary>
 	Quaternion Slerp(Quaternion _q1, Quaternion _q2, double t);
+	/// <summary>
+	/// 原点を中心とする正射影プロジェクション行列を作る
+	/// </summary>
+	/// <param name="width">近接平面の横幅[px]</param>
+	/// <param name="height">近接平面の縦幅[px]</param>
+	/// <param name="near_z">近接平面のz座標(変換後0となるz座標)</param>
+	/// <param name="far_z">遠方平面のz座標(変換後1となるz座標)</param>
+	Matrix4x4 GetOrthoGraphicProjection(double width, double height, double near_z, double far_z);
 }
