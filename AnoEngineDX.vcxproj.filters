@@ -176,7 +176,6 @@
     <ClCompile Include="DrawNormalBulletComponent.cpp">
       <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
     </ClCompile>
-    <ClCompile Include="DX12StructToShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -309,10 +308,6 @@
     <ClInclude Include="DrawNormalBulletComponent.h">
       <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
     </ClInclude>
-    <ClInclude Include="DX12IShaderTransferable.h">
-      <Filter>Engine\DX12</Filter>
-    </ClInclude>
-    <ClInclude Include="DX12StructToShader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HTextureDrawInclude.hlsli">

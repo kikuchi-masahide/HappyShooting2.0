@@ -3,8 +3,6 @@
 #include "DX12ConfigEnums.h"
 #include "DX12VertexLayoutUnit.h"
 #include "DX12RootParameter.h"
-#include "DX12IShaderTransferable.h"
-#include "DX12StructToShader.h"
 class DX12Resource;
 class DX12DescriptorHeap;
 class DX12ShaderObject;
