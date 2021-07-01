@@ -180,6 +180,9 @@
     <ClCompile Include="DX12MatrixToShader.cpp">
       <Filter>Engine\DX12</Filter>
     </ClCompile>
+    <ClCompile Include="DX12VectorToShader.cpp">
+      <Filter>Engine\DX12</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -320,6 +323,9 @@
       <Filter>Engine\DX12</Filter>
     </ClInclude>
     <ClInclude Include="DX12MatrixToShader.h">
+      <Filter>Engine\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="DX12VectorToShader.h">
       <Filter>Engine\DX12</Filter>
     </ClInclude>
   </ItemGroup>
