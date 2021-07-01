@@ -17,12 +17,10 @@ public:
 	{}
 	~DX12DecimalToShader()
 	{}
-	void Map(void* &map_pointer)
+	void Map(void* map_pointer)
 	{
 		float* float_pointer = static_cast<float*>(map_pointer);
 		*float_pointer = static_cast<float>(data_);
-		float_pointer++;
-		map_pointer = float_pointer;
 	}
 	SIZE_T GetSize()
 	{

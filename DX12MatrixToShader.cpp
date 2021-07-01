@@ -4,15 +4,13 @@
 
 DX12MatrixToShader::DX12MatrixToShader()
 {
-	std::string str;
-	str += std::to_string(sizeof(float));
 }
 
 DX12MatrixToShader::~DX12MatrixToShader()
 {
 }
 
-void DX12MatrixToShader::Map(void* &map_pointer)
+void DX12MatrixToShader::Map(void* map_pointer)
 {
 	DirectX::XMMATRIX dxmatrix;
 	for (int i = 0; i < 4; i++)
@@ -24,8 +22,6 @@ void DX12MatrixToShader::Map(void* &map_pointer)
 	}
 	DirectX::XMMATRIX* map_vec = (DirectX::XMMATRIX*)map_pointer;
 	*map_vec = dxmatrix;
-	map_vec++;
-	map_pointer = map_vec;
 }
 
 SIZE_T DX12MatrixToShader::GetSize() const

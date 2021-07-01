@@ -59,6 +59,7 @@ public:
     {
         BOOST_ASSERT(n < datas_.size());
         datas_[n] = data;
+        was_changed_[n] = true;
     }
     //後の特殊化のための箱だけ
     template<class T>
@@ -71,6 +72,7 @@ public:
     template<>
     DX12StructToShader& Get(unsigned int n)
     {
+        was_changed_[n] = true;
         return boost::any_cast<DX12StructToShader&>(datas_[n]);
     };
     /// <summary>
@@ -79,6 +81,7 @@ public:
     template<>
     DX12DecimalToShader& Get(unsigned int n)
     {
+        was_changed_[n] = true;
         return boost::any_cast<DX12DecimalToShader&>(datas_[n]);
     };
     /// <summary>
@@ -87,6 +90,7 @@ public:
     template<>
     DX12MatrixToShader& Get(unsigned int n)
     {
+        was_changed_[n] = true;
         return boost::any_cast<DX12MatrixToShader&>(datas_[n]);
     };
     /// <summary>
@@ -95,6 +99,7 @@ public:
     template<>
     DX12Vector2ToShader& Get(unsigned int n)
     {
+        was_changed_[n] = true;
         return boost::any_cast<DX12Vector2ToShader&>(datas_[n]);
     };
     /// <summary>
@@ -103,13 +108,18 @@ public:
     template<>
     DX12Vector3ToShader& Get(unsigned int n)
     {
+        was_changed_[n] = true;
         return boost::any_cast<DX12Vector3ToShader&>(datas_[n]);
     };
-    void Map(void* &map_pointer) override;
+    void Map(void* map_pointer) override;
     SIZE_T GetSize() const override;
 private:
     std::vector<boost::any> datas_;
     bool is_datas_addable_;
+    //各データが変更されたか否か
+    std::vector<bool> was_changed_;
+    //各データのサイズ
+    std::vector<unsigned long long> data_size_;
     SIZE_T whole_size_;
     //メンバの型
     enum class InfoType

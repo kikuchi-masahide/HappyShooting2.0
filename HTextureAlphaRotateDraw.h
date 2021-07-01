@@ -38,6 +38,8 @@ private:
 	//テクスチャの大きさ
 	double tex_width_;
 	double tex_height_;
+	//不透明度マップ先
+	float* alpha_map_;
 	//頂点バッファの1頂点情報
 	struct Vertex {
 	public:
