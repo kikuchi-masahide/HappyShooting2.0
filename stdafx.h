@@ -17,6 +17,7 @@
 #include <boost/weak_ptr.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <boost/any.hpp>
 
 #include "Log.h"
 #include "Math.h"
