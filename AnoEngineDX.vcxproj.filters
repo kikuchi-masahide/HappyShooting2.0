@@ -176,13 +176,11 @@
     <ClCompile Include="DrawNormalBulletComponent.cpp">
       <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
     </ClCompile>
+    <ClCompile Include="DX12StructToShader.cpp" />
     <ClCompile Include="DX12MatrixToShader.cpp">
       <Filter>Engine\DX12</Filter>
     </ClCompile>
     <ClCompile Include="DX12VectorToShader.cpp">
-      <Filter>Engine\DX12</Filter>
-    </ClCompile>
-    <ClCompile Include="DX12StructToShader.cpp">
       <Filter>Engine\DX12</Filter>
     </ClCompile>
   </ItemGroup>
@@ -320,6 +318,7 @@
     <ClInclude Include="DX12IShaderTransferable.h">
       <Filter>Engine\DX12</Filter>
     </ClInclude>
+    <ClInclude Include="DX12StructToShader.h" />
     <ClInclude Include="DX12DecimalToShader.h">
       <Filter>Engine\DX12</Filter>
     </ClInclude>
@@ -327,9 +326,6 @@
       <Filter>Engine\DX12</Filter>
     </ClInclude>
     <ClInclude Include="DX12VectorToShader.h">
-      <Filter>Engine\DX12</Filter>
-    </ClInclude>
-    <ClInclude Include="DX12StructToShader.h">
       <Filter>Engine\DX12</Filter>
     </ClInclude>
   </ItemGroup>

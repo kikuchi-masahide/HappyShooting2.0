@@ -5,8 +5,6 @@
 #include "DX12RootParameter.h"
 #include "DX12IShaderTransferable.h"
 #include "DX12StructToShader.h"
-#include "DX12MatrixToShader.h"
-#include "DX12VectorToShader.h"
 class DX12Resource;
 class DX12DescriptorHeap;
 class DX12ShaderObject;
