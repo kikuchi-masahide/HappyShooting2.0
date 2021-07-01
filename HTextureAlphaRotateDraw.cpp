@@ -14,14 +14,12 @@ HTextureAlphaRotateDraw::HTextureAlphaRotateDraw(Game& game, unsigned int textur
 
 void HTextureAlphaRotateDraw::Draw(Game& game, double center_x, double center_y, double width, double height, double angle, double alpha, double rt_width, double rt_height)
 {
-	//シェーダーに渡す情報
-	*alpha_map_ = alpha;
-
 	//頂点座標を変化させる
 	//(シェーダに行列を渡すとなぜか正方形が歪んだので)
 	MatVec::Matrix4x4 matrix = MatVec::Rotate(MatVec::GetQuaternion(
 		MatVec::Vector3(0, 0, 1), -angle
 	));
+	matrix = MatVec::Expand(width, height, 1.0) * matrix;
 	matrix = MatVec::Translation(MatVec::Vector3(center_x, center_y, 0))*matrix;
 	matrix = MatVec::GetOrthoGraphicProjection(rt_width, rt_height, 0.0, 1.0)*matrix;
 	MatVec::Vector4 points_before[4];
@@ -29,19 +27,31 @@ void HTextureAlphaRotateDraw::Draw(Game& game, double center_x, double center_y,
 	points_before[1] = MatVec::Vector4(-width / 2, -height / 2, 0.0, 1.0);
 	points_before[2] = MatVec::Vector4(width / 2, -height / 2, 0.0, 1.0);
 	points_before[3] = MatVec::Vector4(width / 2, height / 2, 0.0, 1.0);
-	void* vertex_map = game.mdx12.Map(vertex_buffer_);
-	for (unsigned int n = 0; n < 4; n++)
+	//void* vertex_map = game.mdx12.Map(vertex_buffer_);
+	//for (unsigned int n = 0; n < 4; n++)
+	//{
+	//	points_before[n] = matrix * points_before[n];
+	//	points_before[n][0] /= points_before[n][3];
+	//	points_before[n][1] /= points_before[n][3];
+	//	points_before[n][2] /= points_before[n][3];
+	//	vertex_struct_.Get<DX12Vector3ToShader>(2 * n).data_ = MatVec::Vector3(
+	//		points_before[n][0], points_before[n][1], points_before[n][2]
+	//	);
+	//}
+	//vertex_struct_.Map(vertex_map);
+	//game.mdx12.Unmap(vertex_buffer_);
+
+	//シェーダーに渡す情報
+	crv_struct_.Get<DX12DecimalToShader>(0).data_ = alpha;
+	crv_struct_.Get<DX12MatrixToShader>(1).data_ = matrix;
+	//void* map_pointer = game.mdx12.Map(info_to_shader_);
+	//crv_struct_.Map(map_pointer);
+	//game.mdx12.Unmap(info_to_shader_);
+	float* map_pointer = static_cast<float*>(game.mdx12.Map(info_to_shader_));
+	for (unsigned int n = 0; n < 17; n++)
 	{
-		points_before[n] = matrix * points_before[n];
-		points_before[n][0] /= points_before[n][3];
-		points_before[n][1] /= points_before[n][3];
-		points_before[n][2] /= points_before[n][3];
-		vertex_struct_.Get<DX12Vector3ToShader>(2 * n).data_ = MatVec::Vector3(
-			points_before[n][0], points_before[n][1], points_before[n][2]
-		);
+		map_pointer[n] = 1;
 	}
-	vertex_struct_.Map(vertex_map);
-	game.mdx12.Unmap(vertex_buffer_);
 
 	//パイプライン実行
 	game.mdx12.SetGraphicsPipeline(graphics_pipeline_);
@@ -111,12 +121,13 @@ void HTextureAlphaRotateDraw::StaticGraphicInit(Game& game)
 void HTextureAlphaRotateDraw::NonstaticGraphicsInit(Game& game)
 {
 	//定数バッファ初期化
-	info_to_shader_ = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(float));
-	info_crv_heap_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
-	game.mdx12.CreateConstBufferView(info_to_shader_, info_crv_heap_, 0);
-	alpha_map_ = static_cast<float*>(game.mdx12.Map(info_to_shader_));
 	DX12DecimalToShader decimal_to_shader(0);
 	crv_struct_.AddData(decimal_to_shader);
+	DX12MatrixToShader matrix_to_shader;
+	crv_struct_.AddData(matrix_to_shader);
+	info_to_shader_ = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, crv_struct_.GetSize());
+	info_crv_heap_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
+	game.mdx12.CreateConstBufferView(info_to_shader_, info_crv_heap_, 0);
 
 	//テクスチャsrv読み込み
 	auto res = game.mTexManager.GetDX12DescriptorHeap(texture_id_);

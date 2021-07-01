@@ -10,7 +10,7 @@ public:
 	/// <summary>
 	/// このポインタに自身のデータをマップする
 	/// </summary>
-	virtual void Map(void* map_pointer){};
+	virtual void Map(void* &map_pointer){};
 	/// <summary>
 	/// このデータがマップされる際の全サイズを取得する
 	/// </summary>

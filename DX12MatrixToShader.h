@@ -14,7 +14,7 @@ public:
 	/// <summary>
 	/// 行列をマップする(内部で転置し行優先に直す)
 	/// </summary>
-	void Map(void* map_pointer) override;
+	void Map(void* &map_pointer) override;
 	SIZE_T GetSize() const override;
 	//実データ
 	MatVec::Matrix4x4 data_;

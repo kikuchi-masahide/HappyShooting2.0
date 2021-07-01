@@ -12,7 +12,7 @@ public:
 		:data_(MatVec::Vector2(0,0))
 	{};
 	~DX12Vector2ToShader() {};
-	void Map(void* map_pointer) override;
+	void Map(void* &map_pointer) override;
 	SIZE_T GetSize() const;
 	MatVec::Vector2 data_;
 };
@@ -28,7 +28,7 @@ public:
 		:data_(MatVec::Vector3(0, 0, 0))
 	{};
 	~DX12Vector3ToShader() {};
-	void Map(void* map_pointer) override;
+	void Map(void* &map_pointer) override;
 	SIZE_T GetSize() const;
 	MatVec::Vector3 data_;
 };
