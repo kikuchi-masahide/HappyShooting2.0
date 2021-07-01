@@ -8,7 +8,13 @@ HDrawLineFrame::HDrawLineFrame(Game& game)
 		GraphicInit(game);
 	}
 	//頂点バッファはstaticじゃないのでここで初期化
-	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(float) * 15);
+	DX12Vector3ToShader vector3;
+	for (unsigned int n = 0; n < 5; n++)
+	{
+		points_.AddData(vector3);
+
+	}
+	vertex_buffer_ = game.mdx12.CreateVertexBuffer(points_.GetSize());
 }
 
 void HDrawLineFrame::DrawFrame(Game& game, double center_x, double center_y, double width, double height, double angle, unsigned int rt_width, unsigned int rt_height)
@@ -36,11 +42,14 @@ void HDrawLineFrame::DrawFrame(Game& game, double center_x, double center_y, dou
 	{
 		points[i] = proj_matrix * points[i];
 	}
-	float* map = static_cast<float*>(game.mdx12.Map(vertex_buffer_));
+	void* map = game.mdx12.Map(vertex_buffer_);
 	for (unsigned int i = 0; i < 5; i++) {
-		map[3 * i + 0] = points[i](0) / points[i](3);
-		map[3 * i + 1] = points[i](1) / points[i](3);
-		map[3 * i + 2] = points[i](2) / points[i](3);
+		points_.Get<DX12Vector3ToShader>(i).data_ = MatVec::Vector3(
+			points[i](0) / points[i](3),
+			points[i](1) / points[i](3),
+			points[i](2) / points[i](3)
+		);
+		points_.Map(map);
 	}
 	game.mdx12.Unmap(vertex_buffer_);
 
