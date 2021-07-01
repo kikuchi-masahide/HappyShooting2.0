@@ -10,6 +10,10 @@ class DX12DecimalToShader final
 {
 public:
 	DX12DecimalToShader()
+		:data_(0)
+	{}
+	DX12DecimalToShader(double data)
+		:data_(data)
 	{}
 	~DX12DecimalToShader()
 	{}
