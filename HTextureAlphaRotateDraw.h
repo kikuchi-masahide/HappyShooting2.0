@@ -23,8 +23,8 @@ public:
 private:
 	static boost::shared_ptr<DX12GraphicsPipeline> graphics_pipeline_;
 	static boost::shared_ptr<DX12RootSignature> rootsignature_;
+	static boost::shared_ptr<DX12Resource> vertex_buffer_;
 	static boost::shared_ptr<DX12Resource> index_buffer_;
-	boost::shared_ptr<DX12Resource> vertex_buffer_;
 	//シェーダーに渡す情報のリソース
 	boost::shared_ptr<DX12Resource> info_to_shader_;
 	//info_to_shader_のビュー入りヒープ
@@ -52,8 +52,5 @@ private:
 	void static StaticGraphicInit(Game& game);
 	//非staticなグラフィック関連変数の初期化
 	void NonstaticGraphicsInit(Game& game);
-	//頂点バッファ更新用
-	DX12StructToShader vertex_struct_;
-	DX12StructToShader crv_struct_;
 };
 
