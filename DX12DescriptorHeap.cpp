@@ -11,8 +11,10 @@ DX12DescriptorHeap::DX12DescriptorHeap(DX12Config::DescriptorHeapType _type, DX1
 	mHeapDescStr.NumDescriptors = _num;
 	auto res = _device->CreateDescriptorHeap(&mHeapDescStr, IID_PPV_ARGS(mDescHeap.ReleaseAndGetAddressOf()));
 	BOOST_ASSERT_MSG(SUCCEEDED(res), "failed in creating descriptorheap");
-	mDescHeap->SetName(_name);
 	mDescriptorHandleSize = _device->GetDescriptorHandleIncrementSize(mDescriptorHeapTypeCorrespond[(unsigned char)_type]);
+#ifdef _DEBUG
+	mDescHeap->SetName(_name);
+#endif
 }
 
 DX12DescriptorHeap::~DX12DescriptorHeap()
