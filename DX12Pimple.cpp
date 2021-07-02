@@ -16,7 +16,7 @@ void DX12Pimple::Initialize() {
 #ifdef _DEBUG
 	try {
 		{
-			ComPtr<ID3D12Debug> debugLayer;
+			ComPtr<ID3D12Debug1> debugLayer;
 			if (FAILED(
 				D3D12GetDebugInterface(
 					IID_PPV_ARGS(debugLayer.ReleaseAndGetAddressOf())
@@ -27,6 +27,7 @@ void DX12Pimple::Initialize() {
 				throw 0;
 			}
 			debugLayer->EnableDebugLayer();
+			debugLayer->SetEnableGPUBasedValidation(true);
 		}
 	}
 	catch (...)
@@ -117,6 +118,13 @@ void DX12Pimple::Initialize() {
 			{
 				throw 0;
 			}
+		}
+		ComPtr<ID3D12DeviceRemovedExtendedDataSettings1> dred_settings;
+		if (SUCCEEDED(D3D12GetDebugInterface(IID_PPV_ARGS(dred_settings.ReleaseAndGetAddressOf()))))
+		{
+			dred_settings->SetAutoBreadcrumbsEnablement(D3D12_DRED_ENABLEMENT_FORCED_ON);
+			dred_settings->SetBreadcrumbContextEnablement(D3D12_DRED_ENABLEMENT_FORCED_ON);
+			dred_settings->SetPageFaultEnablement(D3D12_DRED_ENABLEMENT_FORCED_ON);
 		}
 	}
 	catch (...)
