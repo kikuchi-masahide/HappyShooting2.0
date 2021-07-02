@@ -9,7 +9,7 @@ void HTextureDraw::DrawInRect(Game& _game, double _lx, double _rx, double _by, d
 	_ty = 2 * _ty / _rtheight;
 	_by = 2 * _by / _rtheight;
 	//拡大
-	MatVec::Matrix4d mat = MatVec::Expand(_rx - _lx, _ty - _by, 1);
+	MatVec::Matrix4x4 mat = MatVec::Expand(_rx - _lx, _ty - _by, 1);
 	//平行移動
 	mat = MatVec::Translation((_lx + _rx) / 2, (_by + _ty) / 2, 0) * mat;
 	//定数バッファにマップ

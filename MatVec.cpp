@@ -1,5 +1,10 @@
 #include "MatVec.h"
 
+#include <Eigen/Dense>
+#include <Eigen/LU>
+
+#include "Math.h"
+
 MatVec::Vector4 MatVec::XYZ1(MatVec::Vector3 _vec3)
 {
 	return MatVec::Vector4(_vec3(0),_vec3(1),_vec3(2),1);
@@ -12,7 +17,11 @@ MatVec::Vector4 MatVec::XYZ0(MatVec::Vector3 _vec3)
 
 MatVec::Vector3 MatVec::XYZ(MatVec::Vector4 _vec4)
 {
-	return Vector3(_vec4(0),_vec4(1),_vec4(2));
+	if (Zero(_vec4(3)))
+	{
+		return Vector3(_vec4(0), _vec4(1), _vec4(2));
+	}
+	return Vector3(_vec4(0) / _vec4(3), _vec4(1) / _vec4(3), _vec4(2) / _vec4(3));
 }
 
 MatVec::Vector3 MatVec::XY0(MatVec::Vector2 _vec2)
@@ -168,4 +177,22 @@ MatVec::Matrix4x4 MatVec::GetOrthoGraphicProjection(double width, double height,
 	res(2, 2) = 1 / (far_z - near_z);
 	res(2, 3) = near_z / (near_z - far_z);
 	return res;
+}
+
+MatVec::Matrix4x4 MatVec::GetInverseMatrix(Matrix4x4& mat)
+{
+	Matrix4x4 inv;
+	Eigen::PartialPivLU<MatVec::Matrix4x4> lu(mat);
+	//ãtçsóÒjóÒñ⁄
+	for (unsigned int j = 0; j < 4; j++)
+	{
+		MatVec::Vector4 res(0, 0, 0, 0);
+		res(j) = 1.0;
+		res = lu.solve(res);
+		for (unsigned int i = 0; i < 4; i++)
+		{
+			inv(i, j) = res(i);
+		}
+	}
+	return inv;
 }

@@ -22,7 +22,7 @@ void HDrawLineFrame::DrawFrame(Game& game, double center_x, double center_y, dou
 	points[3] = MatVec::Vector4(+ width / 2, + height / 2, 0, 1.0);
 	points[4] = MatVec::Vector4(- width / 2, + height / 2, 0, 1.0);   //í∏ì_0Ç…ñﬂÇ¡ÇƒÇ≠ÇÈ
 	//âÒì]çsóÒ
-	MatVec::Matrix rot = MatVec::Rotate(MatVec::GetQuaternion(
+	MatVec::Matrix4x4 rot = MatVec::Rotate(MatVec::GetQuaternion(
 		MatVec::Vector3(0, 0, -1), angle
 	));
 	for (unsigned int i = 0; i < 5; i++)

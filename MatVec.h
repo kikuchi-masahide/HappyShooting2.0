@@ -2,18 +2,17 @@
 
 namespace MatVec
 {
-	using namespace Eigen;
-	using Matrix3x3 = Matrix3d;
-	using Matrix4x4 = Matrix4d;
-	using Vector2 = Vector2d;
+	using Matrix3x3 = Eigen::Matrix3d;
+	using Matrix4x4 = Eigen::Matrix4d;
+	using Vector2 = Eigen::Vector2d;
 	/// <summary>
 	/// 右手系縦3次元ベクトル
 	/// </summary>
-	using Vector3 = Vector3d;
+	using Vector3 = Eigen::Vector3d;
 	/// <summary>
 	/// 縦4次元ベクトル
 	/// </summary>
-	using Vector4 = Vector4d;
+	using Vector4 = Eigen::Vector4d;
 	/// <summary>
 	/// (x,y,z)を(x,y,z,1)に拡張
 	/// </summary>
@@ -24,6 +23,7 @@ namespace MatVec
 	Vector4 XYZ0(Vector3 _vec3);
 	/// <summary>
 	/// (x,y,z,w)を(x,y,z)に変換
+	/// (w=0ならそのまま，w\neq 0ならば/w)
 	/// </summary>
 	Vector3 XYZ(Vector4 _vec4);
 	/// <summary>
@@ -57,7 +57,7 @@ namespace MatVec
 	/// <summary>
 	/// quaternionは4次元ベクトルを流用
 	/// </summary>
-	using Quaternion = Vector4d;
+	using Quaternion = Eigen::Vector4d;
 	/// <summary>
 	/// 回転軸と角度を指定してquaternionを取得
 	/// </summary>
@@ -78,4 +78,8 @@ namespace MatVec
 	/// <param name="near_z">近接平面のz座標(変換後0となるz座標)</param>
 	/// <param name="far_z">遠方平面のz座標(変換後1となるz座標)</param>
 	Matrix4x4 GetOrthoGraphicProjection(double width, double height, double near_z, double far_z);
+	/// <summary>
+	/// LU分解で逆行列を求める
+	/// </summary>
+	Matrix4x4 GetInverseMatrix(Matrix4x4& mat);
 }

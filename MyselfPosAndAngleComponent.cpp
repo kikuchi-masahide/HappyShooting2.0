@@ -43,19 +43,7 @@ void MyselfPosAndAngleComponent::Update()
 
 	//自機に変形layer_transform_をかけた後カーソル位置を向いているようにしたい
 	//LU分解でlayer_transform_の逆行列を求める
-	MatVec::PartialPivLU<MatVec::Matrix4x4> lu(layer_transform_);
-	MatVec::Matrix4x4 layer_transform_inv;
-	//逆行列j列目
-	for (unsigned int j = 0; j < 4; j++)
-	{
-		MatVec::Vector4 res(0, 0, 0, 0);
-		res(j) = 1.0;
-		res = lu.solve(res);
-		for (unsigned int i = 0; i < 4; i++)
-		{
-			layer_transform_inv(i, j) = res(i);
-		}
-	}
+	MatVec::Matrix4x4 layer_transform_inv = MatVec::GetInverseMatrix(layer_transform_);
 	//カーソル位置を，(300,450)を中心とする左手系座標に変換
 	auto cursor_pos_xy = main_scene_->GetMouseClientPos(0);
 	cursor_pos_xy -= MatVec::Vector2(300.0, 450.0);
