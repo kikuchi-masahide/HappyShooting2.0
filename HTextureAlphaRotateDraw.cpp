@@ -126,7 +126,7 @@ void HTextureAlphaRotateDraw::NonstaticGraphicsInit(Game& game)
 {
 	//定数バッファ初期化
 	info_to_shader_ = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(InfoToShader), L"HTextureAlphaRotateDraw ConstBuffer");
-	info_crv_heap_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
+	info_crv_heap_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1, L"HTextureAlphaRotateDraw::info_crv_heap_");
 	game.mdx12.CreateConstBufferView(info_to_shader_, info_crv_heap_, 0);
 	info_to_shader_map_ = game.mdx12.Map(info_to_shader_);
 

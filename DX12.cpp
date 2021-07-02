@@ -17,9 +17,9 @@ DX12::~DX12()
 	delete mPimple;
 }
 
-boost::shared_ptr<DX12DescriptorHeap> DX12::CreateDescriptorHeap(DX12Config::DescriptorHeapType _type, DX12Config::DescriptorHeapShaderVisibility _vis, unsigned int _num)
+boost::shared_ptr<DX12DescriptorHeap> DX12::CreateDescriptorHeap(DX12Config::DescriptorHeapType _type, DX12Config::DescriptorHeapShaderVisibility _vis, unsigned int _num, LPCWSTR _name)
 {
-	return mPimple->CreateDescriptorHeap(_type, _vis, _num);
+	return mPimple->CreateDescriptorHeap(_type, _vis, _num, _name);
 }
 
 void DX12::ProcessCommands()

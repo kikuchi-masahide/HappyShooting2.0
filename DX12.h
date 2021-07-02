@@ -32,7 +32,7 @@ public:
 	/// <param name="_vis">シェーダから可視か否か</param>
 	/// <param name="_num">所有ディスクリプタの数</param>
 	/// <returns>ディスクリプタヒープを表すshared_ptr</returns>
-	boost::shared_ptr<DX12DescriptorHeap> CreateDescriptorHeap(DX12Config::DescriptorHeapType _type, DX12Config::DescriptorHeapShaderVisibility _vis, unsigned int _num);
+	boost::shared_ptr<DX12DescriptorHeap> CreateDescriptorHeap(DX12Config::DescriptorHeapType _type, DX12Config::DescriptorHeapShaderVisibility _vis, unsigned int _num, LPCWSTR _name);
 	/// <summary>
 	/// 各フレームで必要なコマンドを追加しきったあと呼び出す
 	/// </summary>

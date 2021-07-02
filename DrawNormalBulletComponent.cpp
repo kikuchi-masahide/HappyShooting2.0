@@ -90,7 +90,7 @@ void DrawNormalBulletComponent::NonstaticGraphicalInit()
 	Game& game = scene_->mGame;
 
 	crv_resource_ = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(InfoToShader), L"DrawNormalBulletComponent Const Buffer");
-	crv_desc_heap_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
+	crv_desc_heap_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1, L"DrawNormalBulletComponent::crv_desc_heap_");
 	game.mdx12.CreateConstBufferView(crv_resource_, crv_desc_heap_, 0);
 	crv_map_ = game.mdx12.Map(crv_resource_);
 }

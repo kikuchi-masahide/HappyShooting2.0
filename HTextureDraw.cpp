@@ -142,7 +142,7 @@ void HTextureDraw::InitializeCRV(Game& game)
 	//定数バッファ作成
 	mMatrixBuffer = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(double) * 16, L"HTextureDraw ConstBuffer");
 	//定数バッファのヒープ
-	mCRVDescHeap = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
+	mCRVDescHeap = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1, L"HTextureDraw::mCRVDescHeap");
 	//定数バッファのビュー
 	game.mdx12.CreateConstBufferView(mMatrixBuffer, mCRVDescHeap, 0);
 	//行列マップ先を設定

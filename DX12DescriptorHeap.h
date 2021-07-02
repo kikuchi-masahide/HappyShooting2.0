@@ -11,7 +11,7 @@ class DX12CmdList;
 class DX12DescriptorHeap final :public boost::noncopyable {
 public:
 	//コンストラクタ
-	DX12DescriptorHeap(DX12Config::DescriptorHeapType _type, DX12Config::DescriptorHeapShaderVisibility _vis, unsigned int _num, ComPtr<ID3D12Device> _device);
+	DX12DescriptorHeap(DX12Config::DescriptorHeapType _type, DX12Config::DescriptorHeapShaderVisibility _vis, unsigned int _num, ComPtr<ID3D12Device> _device, LPCWSTR _name);
 	~DX12DescriptorHeap();
 	/// <summary>
 	/// _n番目のCPUハンドル取得

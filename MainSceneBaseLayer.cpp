@@ -66,8 +66,8 @@ void MainSceneBaseLayer::GraphicsInit()
 {
 	Game& game = GetGame();
 	pera_texture_ = game.mdx12.CreateClearTexture(600, 900, 1.0f, 1.0f, 1.0f, 1.0f, L"MainSceneBaseLayer pera_texture_");
-	pera_rtv_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::RTV, DX12Config::DescriptorHeapShaderVisibility::NONE, 1);
+	pera_rtv_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::RTV, DX12Config::DescriptorHeapShaderVisibility::NONE, 1, L"MainSceneBaseLayer::pera_rtv_");
 	game.mdx12.CreateRenderTargetView(pera_texture_,pera_rtv_,0);
-	pera_srv_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
+	pera_srv_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1, L"MainSceneBaseLayer::pera_srv_");
 	game.mdx12.CreateShaderResourceView(pera_texture_, pera_srv_, 0);
 }
