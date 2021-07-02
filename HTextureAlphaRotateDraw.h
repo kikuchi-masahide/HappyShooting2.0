@@ -23,7 +23,7 @@ public:
 private:
 	static boost::shared_ptr<DX12GraphicsPipeline> graphics_pipeline_;
 	static boost::shared_ptr<DX12RootSignature> rootsignature_;
-	boost::shared_ptr<DX12Resource> vertex_buffer_;
+	static boost::shared_ptr<DX12Resource> vertex_buffer_;
 	static boost::shared_ptr<DX12Resource> index_buffer_;
 	//シェーダーに渡す情報のリソース
 	boost::shared_ptr<DX12Resource> info_to_shader_;
@@ -38,15 +38,8 @@ private:
 	//テクスチャの大きさ
 	double tex_width_;
 	double tex_height_;
-	//不透明度マップ先
-	float* alpha_map_;
-	//頂点バッファの1頂点情報
-	struct Vertex {
-	public:
-		XMFLOAT3 pos_;
-		XMFLOAT2 uv_;
-	};
-	Vertex vertexs_[4];
+	//シェーダに渡す情報のマップ先
+	void* info_to_shader_map_;
 	//staticなグラフィック関連変数の初期化
 	void static StaticGraphicInit(Game& game);
 	//非staticなグラフィック関連変数の初期化

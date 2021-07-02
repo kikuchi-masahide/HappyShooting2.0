@@ -204,7 +204,7 @@ XMMATRIX MatVec::ConvertToXMMATRIX(const Matrix4x4& mat)
 	{
 		for (int j = 0; j < 4; j++)
 		{
-			dxmatrix.r[i].m128_f32[j] = mat(j, i);
+			dxmatrix.r[i].m128_f32[j] = mat(i, j);
 		}
 	}
 	return dxmatrix;
