@@ -23,7 +23,7 @@ public:
 private:
 	static boost::shared_ptr<DX12GraphicsPipeline> graphics_pipeline_;
 	static boost::shared_ptr<DX12RootSignature> rootsignature_;
-	static boost::shared_ptr<DX12Resource> vertex_buffer_;
+	boost::shared_ptr<DX12Resource> vertex_buffer_;
 	static boost::shared_ptr<DX12Resource> index_buffer_;
 	//シェーダーに渡す情報のリソース
 	boost::shared_ptr<DX12Resource> info_to_shader_;
@@ -43,11 +43,10 @@ private:
 	//頂点バッファの1頂点情報
 	struct Vertex {
 	public:
-		float x, y, z;
-		float u, v;
-		Vertex(double _x, double _y, double _z, double _u, double _v)
-			:x(_x), y(_y), z(_z), u(_u), v(_v) {}
+		XMFLOAT3 pos_;
+		XMFLOAT2 uv_;
 	};
+	Vertex vertexs_[4];
 	//staticなグラフィック関連変数の初期化
 	void static StaticGraphicInit(Game& game);
 	//非staticなグラフィック関連変数の初期化

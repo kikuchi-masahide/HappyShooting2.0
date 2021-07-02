@@ -101,11 +101,17 @@ void HTextureDraw::GraphicInit(Game& _game)
 	_game.mdx12.Unmap(mIndexBuffer);
 	//頂点バッファ
 	mVertexBuffer = _game.mdx12.CreateVertexBuffer(sizeof(Vertex) * 4);
-	Vertex* vertexmap = (Vertex*)_game.mdx12.Map(mVertexBuffer);
-	vertexmap[0] = Vertex(-0.5, 0.5, 0.0, 0.0, 0.0);
-	vertexmap[1] = Vertex(-0.5, -0.5, 0.0, 0.0, 1.0);
-	vertexmap[2] = Vertex(0.5, -0.5, 0.0, 1.0, 1.0);
-	vertexmap[3] = Vertex(0.5, 0.5, 0.0, 1.0, 0.0);
+	void* vertexmap = _game.mdx12.Map(mVertexBuffer);
+	Vertex vertexs_[4];
+	vertexs_[0].uv_ = XMFLOAT2(0.0f, 0.0f);
+	vertexs_[1].uv_ = XMFLOAT2(0.0f, 1.0f);
+	vertexs_[2].uv_ = XMFLOAT2(1.0f, 1.0f);
+	vertexs_[3].uv_ = XMFLOAT2(1.0f, 0.0f);
+	vertexs_[0].pos_ = XMFLOAT3(-0.5f, +0.5f, 0.0f);
+	vertexs_[1].pos_ = XMFLOAT3(-0.5f, -0.5f, 0.0f);
+	vertexs_[2].pos_ = XMFLOAT3(+0.5f, -0.5f, 0.0f);
+	vertexs_[3].pos_ = XMFLOAT3(+0.5f, +0.5f, 0.0f);
+	std::memcpy(vertexmap, vertexs_, sizeof(vertexs_));
 	_game.mdx12.Unmap(mVertexBuffer);
 	//シェーダー取得
 	auto vertexshader = _game.mShaderManager.GetDX12ShaderObject(0);

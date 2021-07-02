@@ -29,17 +29,13 @@ void HTextureAlphaRotateDraw::Draw(Game& game, double center_x, double center_y,
 	points_before[1] = MatVec::Vector4(-width / 2, -height / 2, 0.0, 1.0);
 	points_before[2] = MatVec::Vector4(width / 2, -height / 2, 0.0, 1.0);
 	points_before[3] = MatVec::Vector4(width / 2, height / 2, 0.0, 1.0);
-	float* vertex_map = static_cast<float*>(game.mdx12.Map(vertex_buffer_));
 	for (unsigned int n = 0; n < 4; n++)
 	{
 		points_before[n] = matrix * points_before[n];
-		points_before[n][0] /= points_before[n][3];
-		points_before[n][1] /= points_before[n][3];
-		points_before[n][2] /= points_before[n][3];
-		vertex_map[5 * n + 0] = points_before[n][0];
-		vertex_map[5 * n + 1] = points_before[n][1];
-		vertex_map[5 * n + 2] = points_before[n][2];
+		vertexs_[n].pos_ = MatVec::ConvertToXMFLOAT3(MatVec::XYZ(points_before[n]));
 	}
+	void* map_pointer = game.mdx12.Map(vertex_buffer_);
+	std::memcpy(map_pointer, vertexs_, sizeof(vertexs_));
 	game.mdx12.Unmap(vertex_buffer_);
 
 	//パイプライン実行
@@ -88,15 +84,6 @@ void HTextureAlphaRotateDraw::StaticGraphicInit(Game& game)
 	indexmap[5] = 3;
 	game.mdx12.Unmap(index_buffer_);
 
-	//頂点バッファ
-	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(Vertex) * 4);
-	Vertex* vertexmap = static_cast<Vertex*>(game.mdx12.Map(vertex_buffer_));
-	vertexmap[0] = Vertex(-0.5, 0.5, 0.0, 0.0, 0.0);
-	vertexmap[1] = Vertex(-0.5, -0.5, 0.0, 0.0, 1.0);
-	vertexmap[2] = Vertex(0.5, -0.5, 0.0, 1.0, 1.0);
-	vertexmap[3] = Vertex(0.5, 0.5, 0.0, 1.0, 0.0);
-	game.mdx12.Unmap(vertex_buffer_);
-
 	//シェーダー取得
 	auto vertexshader = game.mShaderManager.GetDX12ShaderObject(6);
 	auto pixelshader = game.mShaderManager.GetDX12ShaderObject(7);
@@ -124,6 +111,16 @@ void HTextureAlphaRotateDraw::NonstaticGraphicsInit(Game& game)
 	game.mdx12.CreateConstBufferView(info_to_shader_, info_crv_heap_, 0);
 	alpha_map_ = static_cast<float*>(game.mdx12.Map(info_to_shader_));
 
+	//頂点情報
+	vertexs_[0].uv_ = XMFLOAT2(0.0f, 0.0f);
+	vertexs_[1].uv_ = XMFLOAT2(0.0f, 1.0f);
+	vertexs_[2].uv_ = XMFLOAT2(1.0f, 1.0f);
+	vertexs_[3].uv_ = XMFLOAT2(1.0f, 0.0f);
+
+
+	//頂点バッファ作成
+	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(Vertex) * 4);
+
 	//テクスチャsrv読み込み
 	auto res = game.mTexManager.GetDX12DescriptorHeap(texture_id_);
 	srv_heap_ = res.first;
@@ -132,5 +129,4 @@ void HTextureAlphaRotateDraw::NonstaticGraphicsInit(Game& game)
 
 boost::shared_ptr<DX12GraphicsPipeline> HTextureAlphaRotateDraw::graphics_pipeline_ = nullptr;
 boost::shared_ptr<DX12RootSignature> HTextureAlphaRotateDraw::rootsignature_ = nullptr;
-boost::shared_ptr<DX12Resource> HTextureAlphaRotateDraw::vertex_buffer_ = nullptr;
 boost::shared_ptr<DX12Resource> HTextureAlphaRotateDraw::index_buffer_ = nullptr;
