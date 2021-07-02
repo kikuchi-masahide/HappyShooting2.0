@@ -35,10 +35,10 @@ void MyselfPosAndAngleComponent::Update()
 		after_pos(1) -= moving_dist_;
 	}
 	//画面内にとどまらせる
-	after_pos(0) = Max(after_pos(0), 0.0);
-	after_pos(0) = Min(after_pos(0), 600.0);
-	after_pos(1) = Max(after_pos(1), 0.0);
-	after_pos(1) = Min(after_pos(1), 900.0);
+	after_pos(0) = Max(after_pos(0), -300.0);
+	after_pos(0) = Min(after_pos(0), 300.0);
+	after_pos(1) = Max(after_pos(1), -450.0);
+	after_pos(1) = Min(after_pos(1), 450.0);
 	gameobject_handle_->SetPosition(after_pos);
 
 	//自機に変形layer_transform_をかけた後カーソル位置を向いているようにしたい
