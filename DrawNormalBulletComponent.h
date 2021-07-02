@@ -29,31 +29,13 @@ private:
     static boost::shared_ptr<DX12GraphicsPipeline> graphics_pipeline_;
     static boost::shared_ptr<DX12RootSignature> root_signature_;
     static boost::shared_ptr<DX12Resource> index_buffer_;
-    //シェーダに渡す情報
-    struct InfoToShader {
-    public:
-        float r_;
-        float g_;
-        float b_;
-        float alpha_;
-    };
+    static boost::shared_ptr<DX12Resource> vertex_buffer_;
     //色，α格納用のバッファとCRV
     boost::shared_ptr<DX12DescriptorHeap> crv_desc_heap_;
     boost::shared_ptr<DX12Resource> crv_resource_;
     //定数バッファマップ用ポインタ
-    InfoToShader* crv_map_;
-    //頂点バッファ
-    boost::shared_ptr<DX12Resource> vertex_buffer_;
-    //頂点バッファマップ用ポインタ
-    float* vertex_map_;
+    void* crv_map_;
     static void StaticGraphicalInit(MainScene* scene);
     void NonstaticGraphicalInit();
-    struct Vertex {
-    public:
-        MatVec::Vector3 pos_;
-        MatVec::Vector2 uv_;
-        Vertex(MatVec::Vector2 uv)
-            :uv_(uv),pos_(MatVec::Vector3(0,0,0)){}
-    };
 };
 

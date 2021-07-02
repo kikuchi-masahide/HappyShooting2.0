@@ -13,5 +13,5 @@ float4 main(Output input) : SV_TARGET
 	}
 	//‹——£‚ðŠ„‡‚É’¼‚·(‰~Žü->1.0,’†S->0.0)
 	d /= 0.5;
-	return float4(r_, g_, b_, alpha_ * d);
+	return float4(rgb_, alpha_ * d);
 }

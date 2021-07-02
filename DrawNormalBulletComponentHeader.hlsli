@@ -1,9 +1,8 @@
 //定数バッファ
 cbuffer cbuff0:register(b0)
 {
-	float r_;
-	float g_;
-	float b_;
+	matrix mat_;
+	float3 rgb_;
 	float alpha_;
 }
 

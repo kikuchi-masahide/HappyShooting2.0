@@ -3,6 +3,22 @@
 
 #include "MainScene.h"
 
+//実装のみに使う構造体
+namespace{
+	struct Vertex {
+	public:
+		XMFLOAT3 pos_;
+		XMFLOAT2 uv_;
+	};
+	//シェーダに渡す情報
+	struct InfoToShader {
+	public:
+		XMMATRIX mat_;
+		XMFLOAT3 rgb_;
+		float alpha_;
+	};
+}
+
 DrawNormalBulletComponent::DrawNormalBulletComponent(MainScene* scene, GameObjectHandle object, double radius, MatVec::Vector3 edge_rgb, double edge_alpha)
 	: MainSceneDrawComponent(scene), object_handle_(object), radius_(radius), edge_rgb_(edge_rgb),edge_alpha_(edge_alpha)
 {
@@ -52,63 +68,48 @@ void DrawNormalBulletComponent::StaticGraphicalInit(MainScene* scene)
 	index_map[4] = 1;
 	index_map[5] = 2;
 	game.mdx12.Unmap(index_buffer_);
+
+	//頂点バッファ
+	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(Vertex) * 4);
+	Vertex vertexs[4];
+	vertexs[0].uv_ = XMFLOAT2(0.0f, 0.0f);
+	vertexs[1].uv_ = XMFLOAT2(0.0f, 1.0f);
+	vertexs[2].uv_ = XMFLOAT2(1.0f, 1.0f);
+	vertexs[3].uv_ = XMFLOAT2(1.0f, 0.0f);
+	vertexs[0].pos_ = XMFLOAT3(-1.0f, +1.0f, 0.0f);
+	vertexs[1].pos_ = XMFLOAT3(-1.0f, -1.0f, 0.0f);
+	vertexs[2].pos_ = XMFLOAT3(+1.0f, -1.0f, 0.0f);
+	vertexs[3].pos_ = XMFLOAT3(+1.0f, +1.0f, 0.0f);
+	void* vertex_map = game.mdx12.Map(vertex_buffer_);
+	std::memcpy(vertex_map, vertexs, sizeof(vertexs));
+	game.mdx12.Unmap(vertex_buffer_);
 }
 
 void DrawNormalBulletComponent::NonstaticGraphicalInit()
 {
 	Game& game = scene_->mGame;
 
-	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(float) * 20);
-	Vertex vertexs[4] = {
-		Vertex(MatVec::Vector2(0.0,0.0)),
-		Vertex(MatVec::Vector2(0.0,1.0)),
-		Vertex(MatVec::Vector2(1.0,1.0)),
-		Vertex(MatVec::Vector2(1.0,0.0))
-	};
-	vertex_map_ = static_cast<float*>(game.mdx12.Map(vertex_buffer_));
-	for (unsigned int n = 0; n < 4; n++)
-	{
-		vertex_map_[5 * n + 0] = vertexs[n].pos_(0);
-		vertex_map_[5 * n + 1] = vertexs[n].pos_(1);
-		vertex_map_[5 * n + 2] = vertexs[n].pos_(2);
-		vertex_map_[5 * n + 3] = vertexs[n].uv_(0);
-		vertex_map_[5 * n + 4] = vertexs[n].uv_(1);
-	}
-
 	crv_resource_ = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(InfoToShader));
 	crv_desc_heap_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
 	game.mdx12.CreateConstBufferView(crv_resource_, crv_desc_heap_, 0);
-	crv_map_ = static_cast<InfoToShader*>(game.mdx12.Map(crv_resource_));
+	crv_map_ = game.mdx12.Map(crv_resource_);
 }
 
 void DrawNormalBulletComponent::Draw()
 {
 	Game& game = scene_->mGame;
 
+	//定数バッファ
+	MatVec::Matrix4x4 matrix = MatVec::Expand(radius_, radius_, 1.0);
 	//円の中心
 	MatVec::Vector2 center = object_handle_->GetPosition() + center_offset_;
-	//頂点4つ
-	MatVec::Vector2 vertexs[4];
-	vertexs[0] = center + MatVec::Vector2(-radius_, +radius_);
-	vertexs[1] = center + MatVec::Vector2(-radius_, -radius_);
-	vertexs[2] = center + MatVec::Vector2(+radius_, -radius_);
-	vertexs[3] = center + MatVec::Vector2(+radius_, +radius_);
-	//頂点バッファにマップ
-	for (unsigned int n = 0; n < 4; n++)
-	{
-		vertexs[n](0) = 2 * vertexs[n](0) / 600 - 1;
-		vertexs[n](1) = 2 * vertexs[n](1) / 900 - 1;
-		vertex_map_[5 * n + 0] = vertexs[n](0);
-		vertex_map_[5 * n + 1] = vertexs[n](1);
-	}
-
-	//定数バッファ
+	matrix = MatVec::Translation(MatVec::XY0(center)) * matrix;
+	matrix = MatVec::GetOrthoGraphicProjection(600, 900, 0.0, 1.0) * matrix;
 	InfoToShader info;
-	info.r_ = edge_rgb_(0);
-	info.g_ = edge_rgb_(1);
-	info.b_ = edge_rgb_(2);
+	info.mat_ = MatVec::ConvertToXMMATRIX(matrix);
+	info.rgb_ = MatVec::ConvertToXMFLOAT3(edge_rgb_);
 	info.alpha_ = edge_alpha_;
-	*crv_map_ = info;
+	std::memcpy(crv_map_, &info, sizeof(InfoToShader));
 
 	//もろもろセット
 	game.mdx12.SetGraphicsPipeline(graphics_pipeline_);
@@ -116,7 +117,7 @@ void DrawNormalBulletComponent::Draw()
 	game.mdx12.SetDescriptorHeap(crv_desc_heap_);
 	game.mdx12.SetGraphicsRootDescriptorTable(0, crv_desc_heap_, 0);
 	game.mdx12.SetPrimitiveTopology(DX12Config::PrimitiveTopology::TRIANGLELIST);
-	game.mdx12.SetVertexBuffers(vertex_buffer_, 0, sizeof(float) * 20, sizeof(float)*5);
+	game.mdx12.SetVertexBuffers(vertex_buffer_, 0, sizeof(Vertex) * 4, sizeof(Vertex));
 	game.mdx12.SetIndexBuffers(index_buffer_,6);
 	game.mdx12.SetViewports(600, 900, 0, 0, 1.0, 0.0);
 	game.mdx12.SetScissorrect(0, 900, 0, 600);
@@ -130,3 +131,4 @@ DrawNormalBulletComponent::~DrawNormalBulletComponent()
 boost::shared_ptr<DX12GraphicsPipeline> DrawNormalBulletComponent::graphics_pipeline_ = nullptr;
 boost::shared_ptr<DX12RootSignature> DrawNormalBulletComponent::root_signature_ = nullptr;
 boost::shared_ptr<DX12Resource> DrawNormalBulletComponent::index_buffer_ = nullptr;
+boost::shared_ptr<DX12Resource> DrawNormalBulletComponent::vertex_buffer_ = nullptr;
