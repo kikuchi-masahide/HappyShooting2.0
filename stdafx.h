@@ -18,6 +18,9 @@
 #include <boost/make_shared.hpp>
 #include <boost/scoped_ptr.hpp>
 
+//正直ここに置きたくないが，シェーダとの情報の受け渡しのために仕方なく
+#include <DirectXMath.h>
+
 #include "Log.h"
 #include "Math.h"
 #include "MatVec.h"

@@ -196,3 +196,26 @@ MatVec::Matrix4x4 MatVec::GetInverseMatrix(Matrix4x4& mat)
 	}
 	return inv;
 }
+
+DirectX::XMMATRIX MatVec::ConvertToXMMATRIX(const Matrix4x4& mat)
+{
+	DirectX::XMMATRIX dxmatrix;
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			dxmatrix.r[i].m128_f32[j] = mat(j, i);
+		}
+	}
+	return dxmatrix;
+}
+
+DirectX::XMFLOAT2 MatVec::ConvertToXMFLOAT3(const Vector2& vec2)
+{
+	return DirectX::XMFLOAT2(vec2(0),vec2(1));
+}
+
+DirectX::XMFLOAT3 MatVec::ConvertToXMFLOAT3(const Vector3& vec3)
+{
+	return DirectX::XMFLOAT3(vec3(0),vec3(1),vec3(2));
+}
