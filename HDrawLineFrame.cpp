@@ -61,7 +61,7 @@ void HDrawLineFrame::GraphicInit(Game& game)
 	root_signature_ = game.mdx12.CreateRootSignature(root_parameters,false);
 
 	pipeline_ = game.mdx12.CreateGraphicsPipeline(
-		vertex_shader, pixel_shader, vertex_layout, DX12Config::PrimitiveTopologyType::LINE, 1, root_signature_
+		vertex_shader, pixel_shader, vertex_layout, DX12Config::PrimitiveTopologyType::LINE, 1, root_signature_,L"HDrawLineFrame::pipeline_"
 	);
 }
 

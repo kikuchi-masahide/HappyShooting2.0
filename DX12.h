@@ -55,11 +55,12 @@ public:
 	/// <param name="_vertexLayout">頂点レイアウト</param>
 	/// <param name="_primitive">プリミティブ型</param>
 	/// <param name="_numrt">レンダーターゲット数</param>
+	/// <param name="_name">デバッグ用識別子</param>
 	boost::shared_ptr<DX12GraphicsPipeline> CreateGraphicsPipeline(
 		boost::shared_ptr<DX12ShaderObject> _vertexShader,
 		boost::shared_ptr<DX12ShaderObject> _pixelShader, DX12VertexLayout& _vertexLayout,
 		DX12Config::PrimitiveTopologyType _primitive, UINT _numrt,
-		boost::shared_ptr<DX12RootSignature> _rootsignature);
+		boost::shared_ptr<DX12RootSignature> _rootsignature, LPCWSTR _name);
 	//ルートシグネチャの作成(暫定)
 	boost::shared_ptr<DX12RootSignature> CreateRootSignature(std::vector<DX12RootParameter>& _rootparams,bool _hasSampler = true);
 	//パイプラインステートのセット

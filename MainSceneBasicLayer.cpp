@@ -61,7 +61,8 @@ void MainSceneBasicLayer::GraphicsInit()
 	rootsignature_ = game.mdx12.CreateRootSignature(root_parameters);
 
 	graphics_pipeline_ = game.mdx12.CreateGraphicsPipeline(vertex_shader, pixel_shader,
-		vertex_layout, DX12Config::PrimitiveTopologyType::TRIANGLE, 1, rootsignature_);
+		vertex_layout, DX12Config::PrimitiveTopologyType::TRIANGLE, 1, rootsignature_,
+		L"MainSceneBasicLayer::graphics_pipeline_");
 
 	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(Vertex) * 4, L"MainSceneBasicLayer VertexBuffer");
 	Vertex* vertex_map = static_cast<Vertex*>(game.mdx12.Map(vertex_buffer_));

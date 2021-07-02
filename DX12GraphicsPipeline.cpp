@@ -7,7 +7,7 @@ DX12GraphicsPipeline::DX12GraphicsPipeline(
 	ComPtr<ID3D12Device> _device, boost::shared_ptr<DX12ShaderObject> _vertexShader,
 	boost::shared_ptr<DX12ShaderObject> _pixelShader, DX12VertexLayout& _vertexLayout,
 	DX12Config::PrimitiveTopologyType _primitive, UINT _numrt,
-	boost::shared_ptr<DX12RootSignature> _rootsignature)
+	boost::shared_ptr<DX12RootSignature> _rootsignature, LPCWSTR _name)
 {
 	D3D12_GRAPHICS_PIPELINE_STATE_DESC gpipeline = {};
 	gpipeline.pRootSignature = nullptr;
@@ -64,6 +64,9 @@ DX12GraphicsPipeline::DX12GraphicsPipeline(
 		Log::OutputTrivial("GraphicsPipeLine Initialising failed");
 		throw 0;
 	}
+#ifdef _DEBUG
+	mState->SetName(_name);
+#endif
 }
 
 void DX12GraphicsPipeline::SetGraphicsPipeline(ComPtr<ID3D12GraphicsCommandList> _list)
@@ -75,11 +78,11 @@ boost::shared_ptr<DX12GraphicsPipeline> DX12Pimple::CreateGraphicsPipeline(
 	boost::shared_ptr<DX12ShaderObject> _vertexShader,
 	boost::shared_ptr<DX12ShaderObject> _pixelShader, DX12VertexLayout& _vertexLayout,
 	DX12Config::PrimitiveTopologyType _primitive, UINT _numrt,
-	boost::shared_ptr<DX12RootSignature> _rootsignature) {
+	boost::shared_ptr<DX12RootSignature> _rootsignature, LPCWSTR _name) {
 		return boost::shared_ptr<DX12GraphicsPipeline>(
 			new DX12GraphicsPipeline(
 				mDevice, _vertexShader, _pixelShader, _vertexLayout,_primitive, _numrt,
-				_rootsignature)
+				_rootsignature,_name)
 		);
 }
 

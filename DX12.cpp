@@ -45,9 +45,9 @@ boost::shared_ptr<DX12ShaderObject> DX12::LoadShader(LPCWSTR _filename, DX12Conf
 	return mPimple->LoadShader(_filename, _shaderType);
 }
 
-boost::shared_ptr<DX12GraphicsPipeline> DX12::CreateGraphicsPipeline(boost::shared_ptr<DX12ShaderObject> _vertexShader, boost::shared_ptr<DX12ShaderObject> _pixelShader, DX12VertexLayout& _vertexLayout, DX12Config::PrimitiveTopologyType _primitive, UINT _numrt, boost::shared_ptr<DX12RootSignature> _rootsignature)
+boost::shared_ptr<DX12GraphicsPipeline> DX12::CreateGraphicsPipeline(boost::shared_ptr<DX12ShaderObject> _vertexShader, boost::shared_ptr<DX12ShaderObject> _pixelShader, DX12VertexLayout& _vertexLayout, DX12Config::PrimitiveTopologyType _primitive, UINT _numrt, boost::shared_ptr<DX12RootSignature> _rootsignature, LPCWSTR _name)
 {
-	return mPimple->CreateGraphicsPipeline(_vertexShader, _pixelShader, _vertexLayout, _primitive, _numrt, _rootsignature);
+	return mPimple->CreateGraphicsPipeline(_vertexShader, _pixelShader, _vertexLayout, _primitive, _numrt, _rootsignature, _name);
 }
 
 boost::shared_ptr<DX12RootSignature> DX12::CreateRootSignature(std::vector<DX12RootParameter>& _rootparams,bool _hasSampler)

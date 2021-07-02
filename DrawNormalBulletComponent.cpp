@@ -54,7 +54,8 @@ void DrawNormalBulletComponent::StaticGraphicalInit(MainScene* scene)
 	
 	graphics_pipeline_ = game.mdx12.CreateGraphicsPipeline(
 		vertex_shader,pixel_shader,vertex_layout,
-		DX12Config::PrimitiveTopologyType::TRIANGLE,1,root_signature_
+		DX12Config::PrimitiveTopologyType::TRIANGLE,1,root_signature_,
+		L"DrawNormalBulletComponent::graphics_pipeline_"
 	);
 
 	//0 3

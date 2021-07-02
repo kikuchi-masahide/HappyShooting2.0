@@ -22,7 +22,7 @@ public:
 	DX12GraphicsPipeline(ComPtr<ID3D12Device> _device, boost::shared_ptr<DX12ShaderObject> _vertexShader,
 		boost::shared_ptr<DX12ShaderObject> _pixelShader, DX12VertexLayout& _vertexLayout,
 		DX12Config::PrimitiveTopologyType _primitive, UINT _numrt,
-		boost::shared_ptr<DX12RootSignature> _rootsignature);
+		boost::shared_ptr<DX12RootSignature> _rootsignature, LPCWSTR _name);
 	void SetGraphicsPipeline(ComPtr<ID3D12GraphicsCommandList> _list);
 private:
 	ComPtr<ID3D12PipelineState> mState;

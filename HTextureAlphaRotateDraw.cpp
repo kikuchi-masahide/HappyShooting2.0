@@ -103,7 +103,7 @@ void HTextureAlphaRotateDraw::StaticGraphicInit(Game& game)
 
 	//パイプライン作成
 	graphics_pipeline_ = game.mdx12.CreateGraphicsPipeline(
-		vertexshader, pixelshader, vertexlayout, DX12Config::PrimitiveTopologyType::TRIANGLE, 1, rootsignature_
+		vertexshader, pixelshader, vertexlayout, DX12Config::PrimitiveTopologyType::TRIANGLE, 1, rootsignature_, L"HTextureAlphaRotateDraw::graphics_pipeline_"
 	);
 
 	//頂点バッファ作成と頂点情報転送

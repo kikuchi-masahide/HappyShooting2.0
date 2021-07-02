@@ -126,7 +126,7 @@ void HTextureDraw::GraphicInit(Game& _game)
 	));
 	//パイプライン作成
 	mGPipeline = _game.mdx12.CreateGraphicsPipeline(
-		vertexshader, pixelshader, vertexlayout, DX12Config::PrimitiveTopologyType::TRIANGLE, 1, mRootSignature
+		vertexshader, pixelshader, vertexlayout, DX12Config::PrimitiveTopologyType::TRIANGLE, 1, mRootSignature, L"HTextureDraw::mGPipeline"
 	);
 }
 
