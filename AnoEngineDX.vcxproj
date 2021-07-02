@@ -180,6 +180,7 @@
     <ClCompile Include="HTextureDraw.cpp" />
     <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="Layer.cpp" />
+    <ClCompile Include="LinearMoveComponent.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainScene.cpp" />
@@ -188,6 +189,7 @@
     <ClCompile Include="MainSceneDrawComponent.cpp" />
     <ClCompile Include="MainSceneUIScreen.cpp" />
     <ClCompile Include="MatVec.cpp" />
+    <ClCompile Include="MyselfAddNormalBulletComponent.cpp" />
     <ClCompile Include="MyselfMediatorComponent.cpp" />
     <ClCompile Include="MyselfPosAndAngleComponent.cpp" />
     <ClCompile Include="Rect2.cpp" />
@@ -229,6 +231,7 @@
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="LayerHandle.h" />
+    <ClInclude Include="LinearMoveComponent.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="MainSceneBaseLayer.h" />
@@ -237,6 +240,7 @@
     <ClInclude Include="MainSceneUIScreen.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="MatVec.h" />
+    <ClInclude Include="MyselfAddNormalBulletComponent.h" />
     <ClInclude Include="MyselfMediatorComponent.h" />
     <ClInclude Include="MyselfPosAndAngleComponent.h" />
     <ClInclude Include="Rect2.h" />

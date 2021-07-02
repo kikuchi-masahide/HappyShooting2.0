@@ -26,6 +26,9 @@ void Scene::Update(InputSystem* _input)
 	}
 	LaunchUIScreenUpdate();
 	UniqueUpdate();
+	std::string str;
+	str += std::to_string(mObjs.size());
+	Log::OutputTrivial(str);
 }
 
 void Scene::UniqueUpdate() {}

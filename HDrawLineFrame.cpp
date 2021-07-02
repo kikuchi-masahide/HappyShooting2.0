@@ -9,6 +9,7 @@ HDrawLineFrame::HDrawLineFrame(Game& game)
 	}
 	//頂点バッファはstaticじゃないのでここで初期化
 	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(XMFLOAT3) * 5);
+	map_ = static_cast<XMFLOAT3*>(game.mdx12.Map(vertex_buffer_));
 }
 
 void HDrawLineFrame::DrawFrame(Game& game, double center_x, double center_y, double width, double height, double angle, unsigned int rt_width, unsigned int rt_height)
@@ -16,32 +17,25 @@ void HDrawLineFrame::DrawFrame(Game& game, double center_x, double center_y, dou
 	//頂点バッファのセット
 	//回転をかける前の，重心が原点と一致する，幅/高さがwidth/heightの頂点
 	MatVec::Vector4 points[5];
-	points[0] = MatVec::Vector4(- width / 2, + height / 2, 0, 1.0);
-	points[1] = MatVec::Vector4(- width / 2, - height / 2, 0, 1.0);
-	points[2] = MatVec::Vector4(+ width / 2, - height / 2, 0, 1.0);
-	points[3] = MatVec::Vector4(+ width / 2, + height / 2, 0, 1.0);
-	points[4] = MatVec::Vector4(- width / 2, + height / 2, 0, 1.0);   //頂点0に戻ってくる
+	points[0] = MatVec::Vector4(-width / 2, +height / 2, 0, 1.0);
+	points[1] = MatVec::Vector4(-width / 2, -height / 2, 0, 1.0);
+	points[2] = MatVec::Vector4(+width / 2, -height / 2, 0, 1.0);
+	points[3] = MatVec::Vector4(+width / 2, +height / 2, 0, 1.0);
+	points[4] = MatVec::Vector4(-width / 2, +height / 2, 0, 1.0);   //頂点0に戻ってくる
 	//回転行列
-	MatVec::Matrix4x4 rot = MatVec::Rotate(MatVec::GetQuaternion(
+	MatVec::Matrix4x4 matrix = MatVec::Rotate(MatVec::GetQuaternion(
 		MatVec::Vector3(0, 0, -1), angle
 	));
+	matrix = MatVec::Translation(center_x, center_y, 0.0)*matrix;
+	matrix = MatVec::GetOrthoGraphicProjection(rt_width, rt_height, 0.0, 1.0) * matrix;
 	for (unsigned int i = 0; i < 5; i++)
 	{
-		points[i] = rot * points[i];
-		points[i] += MatVec::Vector4(center_x, center_y, 0, 0.0);
+		points[i] = matrix * points[i];
 	}
-	//-1~1に変換
-	MatVec::Matrix4x4 proj_matrix = MatVec::GetOrthoGraphicProjection(rt_width, rt_height, 0.0, 1.0);
 	for (unsigned int i = 0; i < 5; i++)
 	{
-		points[i] = proj_matrix * points[i];
+		map_[i] = MatVec::ConvertToXMFLOAT3(MatVec::XYZ(points[i]));
 	}
-	XMFLOAT3* map = static_cast<XMFLOAT3*>(game.mdx12.Map(vertex_buffer_));
-	for (unsigned int i = 0; i < 5; i++)
-	{
-		map[i] = MatVec::ConvertToXMFLOAT3(MatVec::XYZ(points[i]));
-	}
-	game.mdx12.Unmap(vertex_buffer_);
 
 	//パイプライン実行
 	game.mdx12.SetGraphicsPipeline(pipeline_);

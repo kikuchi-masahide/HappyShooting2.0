@@ -32,6 +32,6 @@ private:
             u_(u), v_(v)
         {}
     };
-    HDrawLineFrame line_frame;
+    //HDrawLineFrame line_frame;
 };
 

@@ -16,7 +16,7 @@ public:
 private:
     HTextureDraw cursor_draw_;
     //得点表示枠
-    HDrawLineFrame point_frame_;
+    //HDrawLineFrame point_frame_;
     MainScene* scene_;
     //得点表示枠の中心x
     constexpr static double point_frame_cx_ = 750-450;

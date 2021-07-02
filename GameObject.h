@@ -19,7 +19,7 @@ public:
 	/// </summary>
 	GameObject(Scene* _scene, MatVec::Vector2 _pos, double _scale, double _angle);
 	MatVec::Vector2 GetPosition() const;
-	MatVec::Vector2 SetPosition(MatVec::Vector2 _pos);
+	MatVec::Vector2 SetPosition(const MatVec::Vector2& _pos);
 	double GetScale() const;
 	double SetScale(double _sc);
 	double GetRotation() const;

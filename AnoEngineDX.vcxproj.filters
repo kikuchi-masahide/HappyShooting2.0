@@ -61,6 +61,9 @@
     <Filter Include="MainScene\MainSceneDrawComponent\DrawTextureComponent">
       <UniqueIdentifier>{dd14e352-9c7e-4549-b141-b55ca47562a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\LinearMoveComponent">
+      <UniqueIdentifier>{6c6e3c23-888d-42a7-9983-e941dedd998c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -176,6 +179,10 @@
     <ClCompile Include="DrawNormalBulletComponent.cpp">
       <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
     </ClCompile>
+    <ClCompile Include="LinearMoveComponent.cpp">
+      <Filter>MainScene\LinearMoveComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="MyselfAddNormalBulletComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -308,6 +315,10 @@
     <ClInclude Include="DrawNormalBulletComponent.h">
       <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
     </ClInclude>
+    <ClInclude Include="LinearMoveComponent.h">
+      <Filter>MainScene\LinearMoveComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="MyselfAddNormalBulletComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HTextureDrawInclude.hlsli">

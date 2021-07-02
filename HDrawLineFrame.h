@@ -19,5 +19,6 @@ private:
 	boost::shared_ptr<DX12Resource> vertex_buffer_;
 	static boost::shared_ptr<DX12RootSignature> root_signature_;
 	static void GraphicInit(Game& game);
+	XMFLOAT3* map_;
 };
 

@@ -106,6 +106,10 @@ DX12Resource::DX12Resource(ComPtr<ID3D12Device> _device, DX12Config::ResourceHea
 	auto res = _device->CreateCommittedResource(
 		&heapprop, D3D12_HEAP_FLAG_NONE,&resourcedesc, D3D12_RESOURCE_STATE_GENERIC_READ, nullptr, IID_PPV_ARGS(mResource.ReleaseAndGetAddressOf())
 	);
+	if (FAILED(res))
+	{
+		res = _device->GetDeviceRemovedReason();
+	}
 	BOOST_ASSERT_MSG(SUCCEEDED(res), "Const Buffer Initializing Failed");
 }
 

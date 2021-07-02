@@ -15,7 +15,7 @@ MatVec::Vector2 GameObject::GetPosition() const
 	return mPosition;
 }
 
-MatVec::Vector2 GameObject::SetPosition(MatVec::Vector2 _pos)
+MatVec::Vector2 GameObject::SetPosition(const MatVec::Vector2& _pos)
 {
 	mPosition = _pos;
 	return mPosition;
