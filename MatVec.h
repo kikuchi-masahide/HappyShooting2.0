@@ -82,7 +82,7 @@ namespace MatVec
 	/// LUï™âÇ≈ãtçsóÒÇãÅÇﬂÇÈ
 	/// </summary>
 	Matrix4x4 GetInverseMatrix(Matrix4x4& mat);
-	DirectX::XMMATRIX ConvertToXMMATRIX(const Matrix4x4& mat);
-	DirectX::XMFLOAT2 ConvertToXMFLOAT3(const Vector2& vec2);
-	DirectX::XMFLOAT3 ConvertToXMFLOAT3(const Vector3& vec3);
+	XMMATRIX ConvertToXMMATRIX(const Matrix4x4& mat);
+	XMFLOAT2 ConvertToXMFLOAT2(const Vector2& vec2);
+	XMFLOAT3 ConvertToXMFLOAT3(const Vector3& vec3);
 }

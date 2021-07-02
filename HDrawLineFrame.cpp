@@ -8,7 +8,7 @@ HDrawLineFrame::HDrawLineFrame(Game& game)
 		GraphicInit(game);
 	}
 	//頂点バッファはstaticじゃないのでここで初期化
-	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(float) * 15);
+	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(XMFLOAT3) * 5);
 }
 
 void HDrawLineFrame::DrawFrame(Game& game, double center_x, double center_y, double width, double height, double angle, unsigned int rt_width, unsigned int rt_height)
@@ -36,11 +36,10 @@ void HDrawLineFrame::DrawFrame(Game& game, double center_x, double center_y, dou
 	{
 		points[i] = proj_matrix * points[i];
 	}
-	float* map = static_cast<float*>(game.mdx12.Map(vertex_buffer_));
-	for (unsigned int i = 0; i < 5; i++) {
-		map[3 * i + 0] = points[i](0) / points[i](3);
-		map[3 * i + 1] = points[i](1) / points[i](3);
-		map[3 * i + 2] = points[i](2) / points[i](3);
+	XMFLOAT3* map = static_cast<XMFLOAT3*>(game.mdx12.Map(vertex_buffer_));
+	for (unsigned int i = 0; i < 5; i++)
+	{
+		map[i] = MatVec::ConvertToXMFLOAT3(MatVec::XYZ(points[i]));
 	}
 	game.mdx12.Unmap(vertex_buffer_);
 
@@ -48,7 +47,7 @@ void HDrawLineFrame::DrawFrame(Game& game, double center_x, double center_y, dou
 	game.mdx12.SetGraphicsPipeline(pipeline_);
 	game.mdx12.SetRootSignature(root_signature_);
 	game.mdx12.SetPrimitiveTopology(DX12Config::PrimitiveTopology::LINESTRIP);
-	game.mdx12.SetVertexBuffers(vertex_buffer_,0,sizeof(float)*15,sizeof(float)*3);
+	game.mdx12.SetVertexBuffers(vertex_buffer_, 0, sizeof(XMFLOAT3) * 5, sizeof(XMFLOAT3));
 	game.mdx12.SetViewports(rt_width, rt_height, 0, 0, 0.0f, 1.0f);
 	game.mdx12.SetScissorrect(0, rt_width, 0, rt_height);
 	game.mdx12.DrawInstanced(5, 1, 0, 0);

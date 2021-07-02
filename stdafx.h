@@ -20,6 +20,10 @@
 
 //正直ここに置きたくないが，シェーダとの情報の受け渡しのために仕方なく
 #include <DirectXMath.h>
+//一部構造体のみ名前空間を外し使う構造体を分かりやすくする
+using DirectX::XMMATRIX;
+using DirectX::XMFLOAT2;
+using DirectX::XMFLOAT3;
 
 #include "Log.h"
 #include "Math.h"
