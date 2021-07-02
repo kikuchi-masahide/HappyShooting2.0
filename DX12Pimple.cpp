@@ -178,15 +178,15 @@ void DX12Pimple::FenceWaitingInProcessCommands()
 	}
 }
 
-boost::shared_ptr<DX12Resource> DX12Pimple::CreateTextureUploadBuffer(unsigned int _rowpitch,unsigned int _height)
+boost::shared_ptr<DX12Resource> DX12Pimple::CreateTextureUploadBuffer(unsigned int _rowpitch,unsigned int _height, LPCWSTR _name)
 {
 	auto aligned = _rowpitch + D3D12_TEXTURE_DATA_PITCH_ALIGNMENT - _rowpitch % D3D12_TEXTURE_DATA_PITCH_ALIGNMENT;
 	return boost::shared_ptr<DX12Resource>(new DX12Resource(
-		mDevice,DX12Config::ResourceHeapType::UPLOAD,aligned*_height,1
+		mDevice,DX12Config::ResourceHeapType::UPLOAD,aligned*_height,1,_name
 	));
 }
 
-boost::shared_ptr<DX12Resource> DX12Pimple::LoadTexture(const wchar_t* _filename, boost::shared_ptr<DX12DescriptorHeap> _desc, unsigned int _num)
+boost::shared_ptr<DX12Resource> DX12Pimple::LoadTexture(const wchar_t* _filename, boost::shared_ptr<DX12DescriptorHeap> _desc, unsigned int _num, LPCWSTR _buffername)
 {
 	BOOST_ASSERT_MSG(
 		_desc->GetDescriptorHeapType() == DX12Config::DescriptorHeapType::CBV_SRV_UAV &&
@@ -201,12 +201,12 @@ boost::shared_ptr<DX12Resource> DX12Pimple::LoadTexture(const wchar_t* _filename
 	auto img = scratchImg.GetImage(0, 0, 0);//生データ抽出
 
 	auto alignmentedSize = img->rowPitch + D3D12_TEXTURE_DATA_PITCH_ALIGNMENT - img->rowPitch % D3D12_TEXTURE_DATA_PITCH_ALIGNMENT;
-	auto uploadResource = CreateTextureUploadBuffer(img->rowPitch,img->height);
+	auto uploadResource = CreateTextureUploadBuffer(img->rowPitch,img->height, _buffername);
 
 
 	//読み取り用バッファ
 	auto texResource = boost::shared_ptr<DX12Resource>(
-		new DX12Resource(mDevice, metadata)
+		new DX12Resource(mDevice, metadata, _buffername)
 		);
 
 	//転送用リソースにマップ

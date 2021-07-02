@@ -19,7 +19,7 @@ private:
 	ComPtr<ID3D12Device> mDevice;
 	ComPtr<IDXGIFactory6> mFactory;
 	void FenceWaitingInProcessCommands();
-	boost::shared_ptr<DX12Resource> CreateTextureUploadBuffer(unsigned int _rowpitch, unsigned int _height);
+	boost::shared_ptr<DX12Resource> CreateTextureUploadBuffer(unsigned int _rowpitch, unsigned int _height, LPCWSTR _name);
 public:
 	DX12Pimple();
 	void Initialize();
@@ -28,7 +28,7 @@ public:
 	void ProcessCommands();
 	void ResetCmdAllocator();
 	void ExecuteCmdLists();
-	boost::shared_ptr<DX12Resource> CreateVertexBuffer(UINT64 _width);
+	boost::shared_ptr<DX12Resource> CreateVertexBuffer(UINT64 _width, LPCWSTR _name);
 	void* Map(boost::shared_ptr<DX12Resource> _resource);
 	void Unmap(boost::shared_ptr<DX12Resource> _resource);
 	boost::shared_ptr<DX12ShaderObject> LoadShader(LPCWSTR _filename, DX12Config::ShaderType _shaderType);
@@ -49,8 +49,8 @@ public:
 		float _maxdepth, float _mindepth);
 	void SetScissorrect(float _top, float _bottom, float _left, float _right);
 	void SetIndexBuffers(boost::shared_ptr<DX12Resource> _resource, unsigned int _vertnum);
-	boost::shared_ptr<DX12Resource> CreateIndexBuffer(unsigned int _vertnum);
-	boost::shared_ptr<DX12Resource> LoadTexture(const wchar_t* _filename, boost::shared_ptr<DX12DescriptorHeap> _desc, unsigned int _num);
+	boost::shared_ptr<DX12Resource> CreateIndexBuffer(unsigned int _vertnum, LPCWSTR _name);
+	boost::shared_ptr<DX12Resource> LoadTexture(const wchar_t* _filename, boost::shared_ptr<DX12DescriptorHeap> _desc, unsigned int _num, LPCWSTR _buffername);
 	void SetDescriptorHeap(boost::shared_ptr<DX12DescriptorHeap> _descHeap);
 	void SetGraphicsRootDescriptorTable(unsigned int _rootParamIndex, boost::shared_ptr<DX12DescriptorHeap> _descHeap, unsigned int _descHeapIndex);
 	void SetResourceBarrier(boost::shared_ptr<DX12Resource> _resource, DX12Config::ResourceBarrierState _before, DX12Config::ResourceBarrierState _after);
@@ -62,10 +62,10 @@ public:
 	void OpenRenderTarget(boost::shared_ptr<DX12DescriptorHeap> _heap, unsigned int _id);
 	void ClearRenderTarget(boost::shared_ptr<DX12DescriptorHeap> _heap, unsigned int _id, float _r, float _g, float _b,float _alpha);
 	boost::shared_ptr<DX12DescriptorHeap> CreateDescriptorHeap(DX12Config::DescriptorHeapType _type, DX12Config::DescriptorHeapShaderVisibility _vis, unsigned int _num);
-	boost::shared_ptr<DX12Resource> CreateClearTexture(UINT64 _width, UINT64 _height, float _r, float _g, float _b, float _alpha);
+	boost::shared_ptr<DX12Resource> CreateClearTexture(UINT64 _width, UINT64 _height, float _r, float _g, float _b, float _alpha, LPCWSTR _name);
 	void CreateRenderTargetView(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n);
 	void CreateShaderResourceView(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n);
-	boost::shared_ptr<DX12Resource> CreateConstBuffer(DX12Config::ResourceHeapType _resheaptype, UINT64 _bytesize);
+	boost::shared_ptr<DX12Resource> CreateConstBuffer(DX12Config::ResourceHeapType _resheaptype, UINT64 _bytesize, LPCWSTR _name);
 	void Copy4x4Matrix(void* _map,MatVec::Matrix4x4 _mat);
 	void CreateConstBufferView(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n);
 	void DrawInstanced(UINT vertex_count_per_instance, UINT instance_count, UINT start_vertex_location, UINT start_instance_location);

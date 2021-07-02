@@ -41,7 +41,7 @@ public:
 	/// 頂点バッファの作成
 	/// </summary>
 	/// <param name="_width">頂点バッファの全サイズ</param>
-	boost::shared_ptr<DX12Resource> CreateVertexBuffer(UINT64 _width);
+	boost::shared_ptr<DX12Resource> CreateVertexBuffer(UINT64 _width, LPCWSTR _name);
 	//リソースのマップ
 	void* Map(boost::shared_ptr<DX12Resource> _resource);
 	void Unmap(boost::shared_ptr<DX12Resource> _resource);
@@ -105,14 +105,14 @@ public:
 	/// インデックスバッファの作成
 	/// </summary>
 	/// <param name="_size">総頂点数</param>
-	boost::shared_ptr<DX12Resource> CreateIndexBuffer(unsigned int _vertnum);
+	boost::shared_ptr<DX12Resource> CreateIndexBuffer(unsigned int _vertnum, LPCWSTR _name);
 	/// <summary>
 	/// テクスチャを読み込みディスクリプタを作成
 	/// </summary>
 	/// <param name="_desc">ディスクリプタヒープ</param>
 	/// <param name="_num">ディスクリプタヒープの何番目にディスクリプタを作成するか</param>
 	/// <returns>GPU上の読み取り専用バッファを示すDX12Resource</returns>
-	boost::shared_ptr<DX12Resource> LoadTexture(const wchar_t* _filename, boost::shared_ptr<DX12DescriptorHeap> _desc,unsigned int _num);
+	boost::shared_ptr<DX12Resource> LoadTexture(const wchar_t* _filename, boost::shared_ptr<DX12DescriptorHeap> _desc,unsigned int _num, LPCWSTR _name);
 	/// <summary>
 	/// コマンドリストに対するディスクリプタヒープの指定
 	/// </summary>
@@ -147,7 +147,7 @@ public:
 	/// <summary>
 	/// 指定の大きさ・色を持つ空のテクスチャを作成(初期状態はPIXEL_SHADER_RESOURCE)
 	/// </summary>
-	boost::shared_ptr<DX12Resource> CreateClearTexture(UINT64 _width, UINT64 _height, float _r, float _g, float _b, float _alpha);
+	boost::shared_ptr<DX12Resource> CreateClearTexture(UINT64 _width, UINT64 _height, float _r, float _g, float _b, float _alpha, LPCWSTR _name);
 	/// <summary>
 /// 指定ディスクリプタヒープ上にこのリソースのレンダーターゲットビューを作る
 /// </summary>
@@ -165,7 +165,7 @@ public:
 	/// 定数バッファを作成
 	/// </summary>
 	/// <param name="_bytesize">必要サイズ(256アラインメントは必要ない)</param>
-	boost::shared_ptr<DX12Resource> CreateConstBuffer(DX12Config::ResourceHeapType _heaptype,UINT64 _bytesize);
+	boost::shared_ptr<DX12Resource> CreateConstBuffer(DX12Config::ResourceHeapType _heaptype,UINT64 _bytesize, LPCWSTR _name);
 	/// <summary>
 	/// ポインタ_mapに行列をコピー このとき行列は自動的に転置される
 	/// </summary>

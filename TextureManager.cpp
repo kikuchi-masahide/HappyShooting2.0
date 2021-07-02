@@ -15,7 +15,9 @@ void TextureManager::LoadTexture(const wchar_t* _filename, boost::shared_ptr<DX1
 	Texture texture;
 	texture.mDescHeap = _desc;
 	texture.mDescID = _num;
-	texture.mResource = mGame->mdx12.LoadTexture(_filename, _desc, _num);
+	std::wstring str(L"LoadTexture buffer for ");
+	str += _filename;
+	texture.mResource = mGame->mdx12.LoadTexture(_filename, _desc, _num, str.c_str());
 	mTexturesmap.insert(std::pair<unsigned int,Texture>(_textureid,texture));
 	return;
 }

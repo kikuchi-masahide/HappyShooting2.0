@@ -76,7 +76,7 @@ void HTextureAlphaRotateDraw::StaticGraphicInit(Game& game)
 	rootsignature_ = game.mdx12.CreateRootSignature(root_params);
 
 	//インデックスバッファ
-	index_buffer_ = game.mdx12.CreateIndexBuffer(6);
+	index_buffer_ = game.mdx12.CreateIndexBuffer(6, L"HTextureAlphaRotateDraw IndexBuffer");
 	unsigned int* indexmap = static_cast<unsigned int*>(game.mdx12.Map(index_buffer_));
 	//0 3
 	//1 2
@@ -116,7 +116,7 @@ void HTextureAlphaRotateDraw::StaticGraphicInit(Game& game)
 	vertexs_[1].pos_ = XMFLOAT3(-0.5f, -0.5f, 0.0f);
 	vertexs_[2].pos_ = XMFLOAT3(+0.5f, -0.5f, 0.0f);
 	vertexs_[3].pos_ = XMFLOAT3(+0.5f, +0.5f, 0.0f);
-	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(Vertex) * 4);
+	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(Vertex) * 4, L"HTextureAlphaRotateDraw VertexBuffer");
 	void* vertex_map = game.mdx12.Map(vertex_buffer_);
 	std::memcpy(vertex_map, vertexs_, sizeof(vertexs_));
 	game.mdx12.Unmap(vertex_buffer_);
@@ -125,7 +125,7 @@ void HTextureAlphaRotateDraw::StaticGraphicInit(Game& game)
 void HTextureAlphaRotateDraw::NonstaticGraphicsInit(Game& game)
 {
 	//定数バッファ初期化
-	info_to_shader_ = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(InfoToShader));
+	info_to_shader_ = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(InfoToShader), L"HTextureAlphaRotateDraw ConstBuffer");
 	info_crv_heap_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
 	game.mdx12.CreateConstBufferView(info_to_shader_, info_crv_heap_, 0);
 	info_to_shader_map_ = game.mdx12.Map(info_to_shader_);

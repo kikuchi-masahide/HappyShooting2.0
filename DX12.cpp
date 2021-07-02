@@ -27,9 +27,9 @@ void DX12::ProcessCommands()
 	mPimple->ProcessCommands();
 }
 
-boost::shared_ptr<DX12Resource> DX12::CreateVertexBuffer(UINT64 _width)
+boost::shared_ptr<DX12Resource> DX12::CreateVertexBuffer(UINT64 _width, LPCWSTR _name)
 {
-	return mPimple->CreateVertexBuffer(_width);
+	return mPimple->CreateVertexBuffer(_width,_name);
 }
 
 void* DX12::Map(boost::shared_ptr<DX12Resource> _resource) {
@@ -95,14 +95,14 @@ void DX12::SetIndexBuffers(boost::shared_ptr<DX12Resource> _resource, unsigned i
 	mPimple->SetIndexBuffers(_resource, _vertnum);
 }
 
-boost::shared_ptr<DX12Resource> DX12::CreateIndexBuffer(unsigned int _vertnum)
+boost::shared_ptr<DX12Resource> DX12::CreateIndexBuffer(unsigned int _vertnum, LPCWSTR _name)
 {
-	return mPimple->CreateIndexBuffer(_vertnum);
+	return mPimple->CreateIndexBuffer(_vertnum,_name);
 }
 
-boost::shared_ptr<DX12Resource> DX12::LoadTexture(const wchar_t* _filename, boost::shared_ptr<DX12DescriptorHeap> _desc, unsigned int _num)
+boost::shared_ptr<DX12Resource> DX12::LoadTexture(const wchar_t* _filename, boost::shared_ptr<DX12DescriptorHeap> _desc, unsigned int _num, LPCWSTR _buffername)
 {
-	return mPimple->LoadTexture(_filename, _desc, _num);
+	return mPimple->LoadTexture(_filename, _desc, _num,_buffername);
 }
 
 void DX12::SetDescriptorHeap(boost::shared_ptr<DX12DescriptorHeap> _descHeap)
@@ -145,9 +145,9 @@ void DX12::ClearRenderTarget(boost::shared_ptr<DX12SwapChain> _swapchain, float 
 	mPimple->ClearRenderTarget(_swapchain, _r, _g, _b);
 }
 
-boost::shared_ptr<DX12Resource> DX12::CreateClearTexture(UINT64 _width, UINT64 _height, float _r, float _g, float _b, float _alpha)
+boost::shared_ptr<DX12Resource> DX12::CreateClearTexture(UINT64 _width, UINT64 _height, float _r, float _g, float _b, float _alpha, LPCWSTR _name)
 {
-	return mPimple->CreateClearTexture(_width, _height, _r, _g, _b,_alpha);
+	return mPimple->CreateClearTexture(_width, _height, _r, _g, _b,_alpha,_name);
 }
 
 void DX12::CreateRenderTargetView(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n)
@@ -170,9 +170,9 @@ void DX12::ClearRenderTarget(boost::shared_ptr<DX12DescriptorHeap> _heap, unsign
 	mPimple->ClearRenderTarget(_heap, _id, _r, _g, _b, _alpha);
 }
 
-boost::shared_ptr<DX12Resource> DX12::CreateConstBuffer(DX12Config::ResourceHeapType _heaptype, UINT64 _bytesize)
+boost::shared_ptr<DX12Resource> DX12::CreateConstBuffer(DX12Config::ResourceHeapType _heaptype, UINT64 _bytesize, LPCWSTR _name)
 {
-	return mPimple->CreateConstBuffer(_heaptype, _bytesize);
+	return mPimple->CreateConstBuffer(_heaptype, _bytesize, _name);
 }
 
 void DX12::Copy4x4Matrix(void* _map, MatVec::Matrix4x4 _mat)

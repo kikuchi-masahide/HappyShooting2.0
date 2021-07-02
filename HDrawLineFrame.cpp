@@ -8,7 +8,7 @@ HDrawLineFrame::HDrawLineFrame(Game& game)
 		GraphicInit(game);
 	}
 	//頂点バッファはstaticじゃないのでここで初期化
-	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(XMFLOAT3) * 5);
+	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(XMFLOAT3) * 5, L"HDrawLineFrame VertexBuffer");
 	map_ = static_cast<XMFLOAT3*>(game.mdx12.Map(vertex_buffer_));
 }
 

@@ -88,7 +88,7 @@ void HTextureDraw::GraphicInit(Game& _game)
 	mRootSignature = _game.mdx12.CreateRootSignature(root_params);
 
 	//インデックスバッファ
-	mIndexBuffer = _game.mdx12.CreateIndexBuffer(6);
+	mIndexBuffer = _game.mdx12.CreateIndexBuffer(6, L"HTextureDraw IndexBuffer");
 	unsigned int* indexmap = (unsigned int*)_game.mdx12.Map(mIndexBuffer);
 	//0 3
 	//1 2
@@ -100,7 +100,7 @@ void HTextureDraw::GraphicInit(Game& _game)
 	indexmap[5] = 3;
 	_game.mdx12.Unmap(mIndexBuffer);
 	//頂点バッファ
-	mVertexBuffer = _game.mdx12.CreateVertexBuffer(sizeof(Vertex) * 4);
+	mVertexBuffer = _game.mdx12.CreateVertexBuffer(sizeof(Vertex) * 4, L"HTextureDraw VertexBuffer");
 	void* vertexmap = _game.mdx12.Map(mVertexBuffer);
 	Vertex vertexs_[4];
 	vertexs_[0].uv_ = XMFLOAT2(0.0f, 0.0f);
@@ -140,7 +140,7 @@ void HTextureDraw::ReadSRV(Game& _game, unsigned int _textureid)
 void HTextureDraw::InitializeCRV(Game& game)
 {
 	//定数バッファ作成
-	mMatrixBuffer = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(double) * 16);
+	mMatrixBuffer = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(double) * 16, L"HTextureDraw ConstBuffer");
 	//定数バッファのヒープ
 	mCRVDescHeap = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
 	//定数バッファのビュー

@@ -59,7 +59,7 @@ void DrawNormalBulletComponent::StaticGraphicalInit(MainScene* scene)
 
 	//0 3
 	//1 2
-	index_buffer_ = game.mdx12.CreateIndexBuffer(6);
+	index_buffer_ = game.mdx12.CreateIndexBuffer(6, L"DrawNormalBulletComponent IndexBuffer");
 	unsigned int* index_map = static_cast<unsigned int*>(game.mdx12.Map(index_buffer_));
 	index_map[0] = 0;
 	index_map[1] = 1;
@@ -70,7 +70,7 @@ void DrawNormalBulletComponent::StaticGraphicalInit(MainScene* scene)
 	game.mdx12.Unmap(index_buffer_);
 
 	//頂点バッファ
-	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(Vertex) * 4);
+	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(Vertex) * 4,L"DrawNormalBulletComponent VertexBuffer");
 	Vertex vertexs[4];
 	vertexs[0].uv_ = XMFLOAT2(0.0f, 0.0f);
 	vertexs[1].uv_ = XMFLOAT2(0.0f, 1.0f);
@@ -89,7 +89,7 @@ void DrawNormalBulletComponent::NonstaticGraphicalInit()
 {
 	Game& game = scene_->mGame;
 
-	crv_resource_ = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(InfoToShader));
+	crv_resource_ = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(InfoToShader), L"DrawNormalBulletComponent Const Buffer");
 	crv_desc_heap_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1);
 	game.mdx12.CreateConstBufferView(crv_resource_, crv_desc_heap_, 0);
 	crv_map_ = game.mdx12.Map(crv_resource_);

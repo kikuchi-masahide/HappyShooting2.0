@@ -2,7 +2,7 @@
 #include "DX12Pimple.h"
 #include "DX12DescriptorHeap.h"
 
-DX12Resource::DX12Resource(ComPtr<ID3D12Device> _device, DX12Config::ResourceHeapType _heaptype, UINT64 _width, UINT _height)
+DX12Resource::DX12Resource(ComPtr<ID3D12Device> _device, DX12Config::ResourceHeapType _heaptype, UINT64 _width, UINT _height, LPCWSTR _name)
 {
 	//ヒープ設定
 	D3D12_HEAP_PROPERTIES heapProp = {};
@@ -29,9 +29,12 @@ DX12Resource::DX12Resource(ComPtr<ID3D12Device> _device, DX12Config::ResourceHea
 		throw 0;
 		Log::OutputTrivial("Resource's initializing failed");
 	}
+#ifdef _DEBUG
+	mResource->SetName(_name);
+#endif
 }
 
-DX12Resource::DX12Resource(ComPtr<ID3D12Device> _device, DirectX::TexMetadata& _metadata)
+DX12Resource::DX12Resource(ComPtr<ID3D12Device> _device, DirectX::TexMetadata& _metadata, LPCWSTR _name)
 {
 	D3D12_HEAP_PROPERTIES texHeapProp = {};
 	texHeapProp.Type = D3D12_HEAP_TYPE_DEFAULT;//テクスチャ用
@@ -62,6 +65,9 @@ DX12Resource::DX12Resource(ComPtr<ID3D12Device> _device, DirectX::TexMetadata& _
 		throw 0;
 		Log::OutputTrivial("Resource's initializing failed");
 	}
+#ifdef _DEBUG
+	mResource->SetName(_name);
+#endif
 }
 
 DX12Resource::DX12Resource(ComPtr<IDXGISwapChain4> _swapchain, UINT _n)
@@ -74,7 +80,7 @@ DX12Resource::DX12Resource(ComPtr<IDXGISwapChain4> _swapchain, UINT _n)
 	}
 }
 
-DX12Resource::DX12Resource(ComPtr<ID3D12Device> _device, UINT64 _width, UINT64 _height, float _r, float _g, float _b, float _alpha)
+DX12Resource::DX12Resource(ComPtr<ID3D12Device> _device, UINT64 _width, UINT64 _height, float _r, float _g, float _b, float _alpha, LPCWSTR _name)
 {
 	//リソース設定はバックバッファとほぼ共通にする
 	D3D12_RESOURCE_DESC resdesc = {};
@@ -96,9 +102,12 @@ DX12Resource::DX12Resource(ComPtr<ID3D12Device> _device, UINT64 _width, UINT64 _
 		Log::OutputCritical("Initialization of clear buffer failed\n");
 		throw 0;
 	}
+#ifdef _DEBUG
+	mResource->SetName(_name);
+#endif
 }
 
-DX12Resource::DX12Resource(ComPtr<ID3D12Device> _device, DX12Config::ResourceHeapType _heaptype, UINT64 _constbytesize)
+DX12Resource::DX12Resource(ComPtr<ID3D12Device> _device, DX12Config::ResourceHeapType _heaptype, UINT64 _constbytesize, LPCWSTR _name)
 {
 	auto heapprop = CD3DX12_HEAP_PROPERTIES(mResourceHeapTypeCorrespond[(unsigned char)_heaptype]);
 	auto resourcedesc = CD3DX12_RESOURCE_DESC::Buffer((_constbytesize + 0xff) & ~0xff);
@@ -111,6 +120,9 @@ DX12Resource::DX12Resource(ComPtr<ID3D12Device> _device, DX12Config::ResourceHea
 		res = _device->GetDeviceRemovedReason();
 	}
 	BOOST_ASSERT_MSG(SUCCEEDED(res), "Const Buffer Initializing Failed");
+#ifdef _DEBUG
+	mResource->SetName(_name);
+#endif
 }
 
 void* DX12Resource::Map()
@@ -192,10 +204,10 @@ D3D12_RESOURCE_STATES DX12Resource::mResourceStateCorrespond[(unsigned char)DX12
 };
 
 
-boost::shared_ptr<DX12Resource> DX12Pimple::CreateVertexBuffer(UINT64 _width)
+boost::shared_ptr<DX12Resource> DX12Pimple::CreateVertexBuffer(UINT64 _width, LPCWSTR _name = L"")
 {
 	return boost::shared_ptr<DX12Resource>(
-		new DX12Resource(mDevice, DX12Config::ResourceHeapType::UPLOAD, _width, 1)
+		new DX12Resource(mDevice, DX12Config::ResourceHeapType::UPLOAD, _width, _name)
 		);
 }
 
@@ -219,17 +231,17 @@ void DX12Pimple::SetIndexBuffers(boost::shared_ptr<DX12Resource> _resource, unsi
 	_resource->SetIndexBuffers(mCmdList, _vertnum);
 }
 
-boost::shared_ptr<DX12Resource> DX12Pimple::CreateIndexBuffer(unsigned int _vertnum)
+boost::shared_ptr<DX12Resource> DX12Pimple::CreateIndexBuffer(unsigned int _vertnum, LPCWSTR _name)
 {
 	return boost::shared_ptr<DX12Resource>(
-		new DX12Resource(mDevice, DX12Config::ResourceHeapType::UPLOAD, sizeof(unsigned int) * _vertnum, 1)
+		new DX12Resource(mDevice, DX12Config::ResourceHeapType::UPLOAD, sizeof(unsigned int) * _vertnum, 1, _name)
 		);
 }
 
-boost::shared_ptr<DX12Resource> DX12Pimple::CreateClearTexture(UINT64 _width, UINT64 _height, float _r, float _g, float _b, float _alpha)
+boost::shared_ptr<DX12Resource> DX12Pimple::CreateClearTexture(UINT64 _width, UINT64 _height, float _r, float _g, float _b, float _alpha, LPCWSTR _name)
 {
 	return boost::shared_ptr<DX12Resource>(new DX12Resource(
-		mDevice, _width, _height, _r, _g, _b, _alpha
+		mDevice, _width, _height, _r, _g, _b, _alpha,_name
 	));
 }
 
@@ -243,9 +255,9 @@ void DX12Pimple::CreateShaderResourceView(boost::shared_ptr<DX12Resource> _resou
 	_resource->CreateShaderResourceView(mDevice, _descheap, _n);
 }
 
-boost::shared_ptr<DX12Resource> DX12Pimple::CreateConstBuffer(DX12Config::ResourceHeapType _resheaptype, UINT64 _bytesize)
+boost::shared_ptr<DX12Resource> DX12Pimple::CreateConstBuffer(DX12Config::ResourceHeapType _resheaptype, UINT64 _bytesize, LPCWSTR _name)
 {
-	return boost::shared_ptr<DX12Resource>(new DX12Resource(mDevice,_resheaptype,_bytesize));
+	return boost::shared_ptr<DX12Resource>(new DX12Resource(mDevice,_resheaptype,_bytesize,_name));
 }
 
 void DX12Pimple::Copy4x4Matrix(void* _map, MatVec::Matrix4x4 _mat)

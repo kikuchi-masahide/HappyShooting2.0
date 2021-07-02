@@ -63,7 +63,7 @@ void MainSceneBasicLayer::GraphicsInit()
 	graphics_pipeline_ = game.mdx12.CreateGraphicsPipeline(vertex_shader, pixel_shader,
 		vertex_layout, DX12Config::PrimitiveTopologyType::TRIANGLE, 1, rootsignature_);
 
-	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(Vertex) * 4);
+	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(Vertex) * 4, L"MainSceneBasicLayer VertexBuffer");
 	Vertex* vertex_map = static_cast<Vertex*>(game.mdx12.Map(vertex_buffer_));
 	//0 3
 	//1 2
@@ -85,7 +85,7 @@ void MainSceneBasicLayer::GraphicsInit()
 	);
 	game.mdx12.Unmap(vertex_buffer_);
 
-	index_buffer_ = game.mdx12.CreateIndexBuffer(6);
+	index_buffer_ = game.mdx12.CreateIndexBuffer(6, L"MainSceneBasicLayer IndexBuffer");
 	unsigned int* index_map = static_cast<unsigned int*>(game.mdx12.Map(index_buffer_));
 	index_map[0] = 0;
 	index_map[1] = 1;
