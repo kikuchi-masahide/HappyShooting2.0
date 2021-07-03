@@ -39,6 +39,7 @@ void Scene::Output()
 	OutputLayer();
 	LaunchOutputUIScreens();
 	UniqueOutput();
+	mGame.mdx12.ProcessCommands();
 	mIsObjCompAddable = true;
 	//保留していたオブジェクト・コンポーネントの処理を行う
 	DeleteAndProcessPandingObjComp();

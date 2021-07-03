@@ -24,7 +24,7 @@ void TitleUIScreen::Output()
 	//ウィンドウのRTVを開く
 	scene_->mGame.OpenSwapChain(0);
 	//タイトル描画
-	//title_draw_helper_.DrawCenter(scene_->mGame, kTitleCenterX_, kTitleCenterY_, kTitleWidth_, KTitleHeight_, 900, 900);
+	title_draw_helper_.DrawCenter(scene_->mGame, kTitleCenterX_, kTitleCenterY_, kTitleWidth_, KTitleHeight_, 900, 900);
 	//マウス位置取得
 	auto mouse_pos = scene_->GetMouseClientPos(0);
 	//RTV中心を原点とするよう平行移動
@@ -41,11 +41,11 @@ void TitleUIScreen::Output()
 	{
 		is_mouse_in_button = true;
 		//ボタンを表示
-		//button_draw_helper_on_.DrawCenter(scene_->mGame, kButtonCenterX_, kButtonCenterY_, kButtonWidth_, kButtonHeight_, 900, 900);
+		button_draw_helper_on_.DrawCenter(scene_->mGame, kButtonCenterX_, kButtonCenterY_, kButtonWidth_, kButtonHeight_, 900, 900);
 	}
 	else
 	{
-		//button_draw_helper_away_.DrawCenter(scene_->mGame, kButtonCenterX_, kButtonCenterY_, kButtonWidth_, kButtonHeight_, 900, 900);
+		button_draw_helper_away_.DrawCenter(scene_->mGame, kButtonCenterX_, kButtonCenterY_, kButtonWidth_, kButtonHeight_, 900, 900);
 	}
 	//マウス左ボタンの状態
 	auto mouse_left = scene_->GetKeyState(VK_LBUTTON);
@@ -56,7 +56,7 @@ void TitleUIScreen::Output()
 	}
 	//カーソル描画
 	cursor_draw_helper_.DrawCenter(scene_->mGame, mouse_x, mouse_y, 20, 20, 900, 900);
-	//test.Draw(scene_->mGame, 0, 0, 40, 40, PI/4, 1.0, 900, 900);
+	test.Draw(scene_->mGame, 0, 0, 40, 40, PI/4, 1.0, 900, 900);
 	scene_->mGame.CloseSwapChain();
 	t++;
 

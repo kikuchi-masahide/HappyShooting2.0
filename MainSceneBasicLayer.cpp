@@ -3,7 +3,7 @@
 #include "MainScene.h"
 
 MainSceneBasicLayer::MainSceneBasicLayer(MainScene* scene, ComponentHandle<MyselfPosAndAngleComponent> myself_pos_component)
-	:MainSceneBaseLayer(scene,myself_pos_component)//,line_frame(scene->mGame)
+	:MainSceneBaseLayer(scene,myself_pos_component),line_frame(scene->mGame)
 {
 	GraphicsInit();
 }
@@ -32,7 +32,7 @@ void MainSceneBasicLayer::UniqueDraw()
 	game.mdx12.DrawIndexedInstanced(6, 1, 0, 0, 0);
 
 	//ògê¸Çï`Ç≠
-	//line_frame.DrawFrame(GetGame(),-150, 0, 600, 900, 0, 900, 900);
+	line_frame.DrawFrame(GetGame(),-150, 0, 600, 900, 0, 900, 900);
 
 	game.CloseSwapChain();
 }

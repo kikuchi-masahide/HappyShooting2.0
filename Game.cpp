@@ -179,9 +179,8 @@ void Game::BeforeOutput()
 
 bool Game::AfterOutput()
 {
-	mdx12.ProcessCommands();
 	//全てのスワップチェーンのフリップ
-	for(auto itr = mSwapChains.begin();itr != mSwapChains.end();itr++)
+	for (auto itr = mSwapChains.begin(); itr != mSwapChains.end(); itr++)
 	{
 		mdx12.FlipSwapChain(itr->second);
 	}
