@@ -19,7 +19,7 @@ void LinearMoveComponent::Update()
 	pos += d_;
 	object_->SetPosition(pos);
 	//位置のチェック
-	if (abs(pos(0)) > 300 + exist_limit_ && abs(pos(1)) > 450 + exist_limit_)
+	if (abs(pos(0)) > 300 + exist_limit_ || abs(pos(1)) > 450 + exist_limit_)
 	{
 		object_->SetDeleteFlag();
 	}
