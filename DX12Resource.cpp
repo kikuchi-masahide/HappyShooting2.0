@@ -179,14 +179,14 @@ void DX12Resource::CreateRenderTargetView(ComPtr<ID3D12Device> _device, boost::s
 	_device->CreateRenderTargetView(mResource.Get(), nullptr, handle);
 }
 
-void DX12Resource::CreateShaderResourceView(ComPtr<ID3D12Device> _device, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n)
+void DX12Resource::CreateShaderResourceView(ComPtr<ID3D12Device> _device, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n, unsigned char _format)
 {
 	BOOST_ASSERT_MSG(_descheap->GetDescriptorHeapType() == DX12Config::DescriptorHeapType::CBV_SRV_UAV,"DescriptorHeapType incorrect");
 	auto handle = _descheap->GetCPUDescriptorHandle(_n);
 	//SRV‚ÌÝ’è
 	D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
 	srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
-	srvDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+	srvDesc.Format = (DXGI_FORMAT)_format;
 	srvDesc.Texture2D.MipLevels = 1;
 	srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
 	_device->CreateShaderResourceView(mResource.Get(), &srvDesc, handle);
@@ -250,9 +250,9 @@ void DX12Pimple::CreateRenderTargetView(boost::shared_ptr<DX12Resource> _resourc
 	_resource->CreateRenderTargetView(mDevice, _descheap, _n);
 }
 
-void DX12Pimple::CreateShaderResourceView(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n)
+void DX12Pimple::CreateShaderResourceView(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n, unsigned char _format)
 {
-	_resource->CreateShaderResourceView(mDevice, _descheap, _n);
+	_resource->CreateShaderResourceView(mDevice, _descheap, _n, _format);
 }
 
 boost::shared_ptr<DX12Resource> DX12Pimple::CreateConstBuffer(DX12Config::ResourceHeapType _resheaptype, UINT64 _bytesize, LPCWSTR _name)

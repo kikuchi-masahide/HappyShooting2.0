@@ -94,6 +94,7 @@ void DX12Pimple::Initialize() {
 				Log::OutputCritical("ID3D12GraphicsCommandList Initialization failed");
 				throw 0;
 			}
+			mCmdList->SetName(L"CommandList0");
 		}
 		//コマンドキュー初期化
 		{
@@ -194,13 +195,8 @@ boost::shared_ptr<DX12Resource> DX12Pimple::CreateTextureUploadBuffer(unsigned i
 	));
 }
 
-boost::shared_ptr<DX12Resource> DX12Pimple::LoadTexture(const wchar_t* _filename, boost::shared_ptr<DX12DescriptorHeap> _desc, unsigned int _num, LPCWSTR _buffername)
+DX12Pimple::TextureInfo DX12Pimple::LoadTexture(const wchar_t* _filename, LPCWSTR _buffername)
 {
-	BOOST_ASSERT_MSG(
-		_desc->GetDescriptorHeapType() == DX12Config::DescriptorHeapType::CBV_SRV_UAV &&
-		_desc->GetShaderVisibility() == DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE,
-		"DescriptorHeapType or DescriptorShaderVisibility incorrect"
-	);
 	//WICテクスチャのロード
 	DirectX::TexMetadata metadata = {};
 	DirectX::ScratchImage scratchImg = {};
@@ -274,9 +270,11 @@ boost::shared_ptr<DX12Resource> DX12Pimple::LoadTexture(const wchar_t* _filename
 	srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
 	srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MipLevels = 1;
-	mDevice->CreateShaderResourceView(texResourcerow, &srvDesc, _desc->GetCPUDescriptorHandle(_num));
 
-	return texResource;
+	TextureInfo texture_info;
+	texture_info.texture_resource_ = texResource;
+	texture_info.format_ = (char)metadata.format;
+	return texture_info;
 }
 
 void DX12Pimple::OpenRenderTarget(boost::shared_ptr<DX12DescriptorHeap> _heap, unsigned int _id)

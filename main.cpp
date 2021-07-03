@@ -33,15 +33,11 @@ LRESULT WindowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
 
 void LoadTextures(Game* _game)
 {
-	auto heap = _game->mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 2, L"ButtonMouseAway.png");
-	_game->mTexManager.LoadTexture(L"Resources/TitlePage/ButtonMouseAway.png", heap, 0, 0);
-	_game->mTexManager.LoadTexture(L"Resources/TitlePage/ButtonMouseOn.png", heap, 1, 1);
-	heap = _game->mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1, L"Title.png");
-	_game->mTexManager.LoadTexture(L"Resources/TitlePage/Title.png", heap, 0, 2);
-	heap = _game->mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1, L"cursor.png");
-	_game->mTexManager.LoadTexture(L"Resources/Cursor/cursor.png", heap, 0, 3);
-	heap = _game->mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1, L"myself1.png");
-	_game->mTexManager.LoadTexture(L"Resources/myself1/myself1.png", heap, 0, 4);
+	_game->mTexManager.LoadTexture(L"Resources/TitlePage/ButtonMouseAway.png", 0);
+	_game->mTexManager.LoadTexture(L"Resources/TitlePage/ButtonMouseOn.png", 1);
+	_game->mTexManager.LoadTexture(L"Resources/TitlePage/Title.png", 2);
+	_game->mTexManager.LoadTexture(L"Resources/Cursor/cursor.png", 3);
+	_game->mTexManager.LoadTexture(L"Resources/myself1/myself1.png", 4);
 }
 
 void LoadShaders(Game* _game)

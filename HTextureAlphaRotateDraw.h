@@ -27,10 +27,7 @@ private:
 	static boost::shared_ptr<DX12Resource> index_buffer_;
 	//シェーダーに渡す情報のリソース
 	boost::shared_ptr<DX12Resource> info_to_shader_;
-	//info_to_shader_のビュー入りヒープ
-	boost::shared_ptr<DX12DescriptorHeap> info_crv_heap_;
-	//テクスチャのsrv
-	boost::shared_ptr<DX12DescriptorHeap> srv_heap_;
+	boost::shared_ptr<DX12DescriptorHeap> desc_heap_;
 	//ビューがヒープのどこに入っているか
 	unsigned int srv_heap_ind_;
 	//テクスチャID

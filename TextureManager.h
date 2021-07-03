@@ -14,7 +14,7 @@ public:
 	/// <param name="_desc">ディスクリプタヒープ</param>
 	/// <param name="_num">ディスクリプタヒープ上のどこにディスクリプタを置くか</param>
 	/// <param name="_textureid">テクスチャID</param>
-	void LoadTexture(const wchar_t* _filename, boost::shared_ptr<DX12DescriptorHeap> _desc, unsigned int _num, unsigned int _textureid);
+	void LoadTexture(const wchar_t* _filename, unsigned int _textureid);
 	/// <summary>
 	/// テクスチャのアンロード(DX12Resourceの解放)
 	/// </summary>
@@ -24,17 +24,12 @@ public:
 	/// </summary>
 	boost::shared_ptr<DX12Resource> GetDX12Resource(unsigned int _textureid);
 	/// <summary>
-	/// DX12DescriptorHeapとHeap上のIDを返す
+	/// ディスクリプタヒープに，テクスチャのSRVを作る
 	/// </summary>
-	/// <returns>first:DX12DescriptorHeap,second:ID</returns>
-	std::pair<boost::shared_ptr<DX12DescriptorHeap>, unsigned int> GetDX12DescriptorHeap(unsigned int _textureid);
+	/// <param name="heap_ind">DescriptorHeapの何番目にSRVを作るか</param>
+	void CreateSRVof(unsigned int texture_id, boost::shared_ptr<DX12DescriptorHeap> desc_heap, unsigned int heap_ind);
 private:
-	struct Texture {
-	public:
-		boost::shared_ptr<DX12Resource> mResource;
-		boost::shared_ptr<DX12DescriptorHeap> mDescHeap;
-		unsigned int mDescID;
-	};
-	std::map<unsigned int, Texture> mTexturesmap;
+	std::map<unsigned int, boost::shared_ptr<DX12Resource>> mTexturesmap;
+	std::map<unsigned int, unsigned char> mFormat;
 	Game* const mGame;
 };

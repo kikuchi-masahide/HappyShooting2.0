@@ -100,12 +100,16 @@ boost::shared_ptr<DX12Resource> DX12::CreateIndexBuffer(unsigned int _vertnum, L
 	return mPimple->CreateIndexBuffer(_vertnum,_name);
 }
 
-boost::shared_ptr<DX12Resource> DX12::LoadTexture(const wchar_t* _filename, boost::shared_ptr<DX12DescriptorHeap> _desc, unsigned int _num, LPCWSTR _buffername)
+DX12::TextureInfo DX12::LoadTexture(const wchar_t* _filename, LPCWSTR _buffername)
 {
-	return mPimple->LoadTexture(_filename, _desc, _num,_buffername);
+	auto conv_before = mPimple->LoadTexture(_filename, _buffername);
+	TextureInfo conv_after;
+	conv_after.resource_ = conv_before.texture_resource_;
+	conv_after.format_ = conv_before.format_;
+	return conv_after;
 }
 
-void DX12::SetDescriptorHeap(boost::shared_ptr<DX12DescriptorHeap> _descHeap)
+void DX12::SetDescriptorHeap(std::vector<boost::shared_ptr<DX12DescriptorHeap>>& _descHeap)
 {
 	mPimple->SetDescriptorHeap(_descHeap);
 }
@@ -155,9 +159,9 @@ void DX12::CreateRenderTargetView(boost::shared_ptr<DX12Resource> _resource, boo
 	mPimple->CreateRenderTargetView(_resource, _descheap, _n);
 }
 
-void DX12::CreateShaderResourceView(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n)
+void DX12::CreateShaderResourceView(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n,unsigned char _format)
 {
-	mPimple->CreateShaderResourceView(_resource, _descheap, _n);
+	mPimple->CreateShaderResourceView(_resource, _descheap, _n, _format);
 }
 
 void DX12::OpenRenderTarget(boost::shared_ptr<DX12DescriptorHeap> _heap, unsigned int _id)
@@ -188,4 +192,9 @@ void DX12::CreateConstBufferView(boost::shared_ptr<DX12Resource> _resource, boos
 void DX12::DrawInstanced(UINT vertex_count_per_instance, UINT instance_count, UINT start_vertex_location, UINT start_instance_location)
 {
 	mPimple->DrawInstanced(vertex_count_per_instance, instance_count, start_vertex_location, start_instance_location);
+}
+
+void DX12::CreateShaderResourceViewForClearTexture(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n)
+{
+	CreateShaderResourceView(_resource, _descheap, _n, 28);
 }

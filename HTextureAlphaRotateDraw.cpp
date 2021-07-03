@@ -45,10 +45,10 @@ void HTextureAlphaRotateDraw::Draw(Game& game, double center_x, double center_y,
 	//パイプライン実行
 	game.mdx12.SetGraphicsPipeline(graphics_pipeline_);
 	game.mdx12.SetRootSignature(rootsignature_);
-	game.mdx12.SetDescriptorHeap(srv_heap_);
-	game.mdx12.SetGraphicsRootDescriptorTable(0, srv_heap_, srv_heap_ind_);
-	game.mdx12.SetDescriptorHeap(info_crv_heap_);
-	game.mdx12.SetGraphicsRootDescriptorTable(1, info_crv_heap_, 0);
+	std::vector<boost::shared_ptr<DX12DescriptorHeap>> desc_heaps;
+	desc_heaps.push_back(desc_heap_);
+	game.mdx12.SetDescriptorHeap(desc_heaps);
+	game.mdx12.SetGraphicsRootDescriptorTable(1, desc_heap_, 0);
 	game.mdx12.SetPrimitiveTopology(DX12Config::PrimitiveTopology::TRIANGLELIST);
 	game.mdx12.SetVertexBuffers(vertex_buffer_, 0, sizeof(Vertex) * 4, sizeof(Vertex));
 	game.mdx12.SetIndexBuffers(index_buffer_, 6);
@@ -60,17 +60,14 @@ void HTextureAlphaRotateDraw::Draw(Game& game, double center_x, double center_y,
 void HTextureAlphaRotateDraw::StaticGraphicInit(Game& game)
 {
 	//ルートパラメタ0:
-	//	レンジ0:SRV,t0~t0 <---> テクスチャのヒープ
-	//
-	//ルートパラメタ1:
-	//	レンジ0:CRV,b0~b0 <---> info_crv_heap_
-	std::vector<DX12RootParameter> root_params(2);
+	//	レンジ0:SRV,t0~t0 <---> SRV
+	//	レンジ1:CRV,b0~b0 <---> CRV
+	std::vector<DX12RootParameter> root_params(1);
 	root_params[0].mShaderVisibility = DX12Config::RootParameterShaderVisibility::ALL;
 	root_params[0].mDescRanges.push_back(DX12DescriptorRange(
 		1, DX12Config::DescriptorRangeType::SRV, 0, 0
 	));
-	root_params[1].mShaderVisibility = DX12Config::RootParameterShaderVisibility::ALL;
-	root_params[1].mDescRanges.push_back(DX12DescriptorRange(
+	root_params[0].mDescRanges.push_back(DX12DescriptorRange(
 		1, DX12Config::DescriptorRangeType::CBV, 0, 0
 	));
 	rootsignature_ = game.mdx12.CreateRootSignature(root_params);
@@ -126,14 +123,10 @@ void HTextureAlphaRotateDraw::NonstaticGraphicsInit(Game& game)
 {
 	//定数バッファ初期化
 	info_to_shader_ = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(InfoToShader), L"HTextureAlphaRotateDraw ConstBuffer");
-	info_crv_heap_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1, L"HTextureAlphaRotateDraw::info_crv_heap_");
-	game.mdx12.CreateConstBufferView(info_to_shader_, info_crv_heap_, 0);
+	desc_heap_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 2, L"HTextureAlphaRotateDraw::info_crv_heap_");
+	game.mTexManager.CreateSRVof(texture_id_, desc_heap_, 0);
+	game.mdx12.CreateConstBufferView(info_to_shader_, desc_heap_, 1);
 	info_to_shader_map_ = game.mdx12.Map(info_to_shader_);
-
-	//テクスチャsrv読み込み
-	auto res = game.mTexManager.GetDX12DescriptorHeap(texture_id_);
-	srv_heap_ = res.first;
-	srv_heap_ind_ = res.second;
 }
 
 boost::shared_ptr<DX12GraphicsPipeline> HTextureAlphaRotateDraw::graphics_pipeline_ = nullptr;

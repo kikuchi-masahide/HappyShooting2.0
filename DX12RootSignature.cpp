@@ -44,7 +44,7 @@ DX12RootSignature::DX12RootSignature(ComPtr<ID3D12Device> _device, std::vector<D
 					//シェーダレジスタのどこからか
 					range_to.BaseShaderRegister = range_from.mBaseShaderRegister;
 					//ディスクリプタヒープのどこからか
-					range_to.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;// range_from.mBaseHeapRegister;
+					range_to.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;//range_from.mBaseHeapRegister;
 					range_to.RegisterSpace = 0;
 				}
 				param_to.DescriptorTable.pDescriptorRanges = d3d_descriptor_range;
@@ -110,8 +110,8 @@ void DX12RootSignature::SetRootSignature(ComPtr<ID3D12GraphicsCommandList> _list
 
 D3D12_SHADER_VISIBILITY DX12RootSignature::mShaderVisibilityCorrespond[(unsigned char)DX12Config::RootParameterShaderVisibility::size] = {
 	D3D12_SHADER_VISIBILITY_ALL,
-	D3D12_SHADER_VISIBILITY_PIXEL,
-	D3D12_SHADER_VISIBILITY_VERTEX
+	D3D12_SHADER_VISIBILITY_VERTEX,
+	D3D12_SHADER_VISIBILITY_PIXEL
 };
 
 D3D12_DESCRIPTOR_RANGE_TYPE DX12RootSignature::mDescRngTypeCorrespond[(unsigned char)DX12Config::DescriptorRangeType::size] = {

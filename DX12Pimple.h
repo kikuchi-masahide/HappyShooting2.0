@@ -50,8 +50,14 @@ public:
 	void SetScissorrect(float _top, float _bottom, float _left, float _right);
 	void SetIndexBuffers(boost::shared_ptr<DX12Resource> _resource, unsigned int _vertnum);
 	boost::shared_ptr<DX12Resource> CreateIndexBuffer(unsigned int _vertnum, LPCWSTR _name);
-	boost::shared_ptr<DX12Resource> LoadTexture(const wchar_t* _filename, boost::shared_ptr<DX12DescriptorHeap> _desc, unsigned int _num, LPCWSTR _buffername);
-	void SetDescriptorHeap(boost::shared_ptr<DX12DescriptorHeap> _descHeap);
+	struct TextureInfo
+	{
+	public:
+		boost::shared_ptr<DX12Resource> texture_resource_;
+		char format_;
+	};
+	TextureInfo LoadTexture(const wchar_t* _filename, LPCWSTR _buffername);
+	void SetDescriptorHeap(std::vector<boost::shared_ptr<DX12DescriptorHeap>>& _descHeap);
 	void SetGraphicsRootDescriptorTable(unsigned int _rootParamIndex, boost::shared_ptr<DX12DescriptorHeap> _descHeap, unsigned int _descHeapIndex);
 	void SetResourceBarrier(boost::shared_ptr<DX12Resource> _resource, DX12Config::ResourceBarrierState _before, DX12Config::ResourceBarrierState _after);
 	boost::shared_ptr<DX12SwapChain> CreateSwapChain(HWND _hwnd, UINT _width, UINT _height);
@@ -64,7 +70,7 @@ public:
 	boost::shared_ptr<DX12DescriptorHeap> CreateDescriptorHeap(DX12Config::DescriptorHeapType _type, DX12Config::DescriptorHeapShaderVisibility _vis, unsigned int _num, LPCWSTR _name);
 	boost::shared_ptr<DX12Resource> CreateClearTexture(UINT64 _width, UINT64 _height, float _r, float _g, float _b, float _alpha, LPCWSTR _name);
 	void CreateRenderTargetView(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n);
-	void CreateShaderResourceView(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n);
+	void CreateShaderResourceView(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n, unsigned char _format);
 	boost::shared_ptr<DX12Resource> CreateConstBuffer(DX12Config::ResourceHeapType _resheaptype, UINT64 _bytesize, LPCWSTR _name);
 	void Copy4x4Matrix(void* _map,MatVec::Matrix4x4 _mat);
 	void CreateConstBufferView(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n);

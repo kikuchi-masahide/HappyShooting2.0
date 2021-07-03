@@ -35,21 +35,17 @@ private:
 	static boost::shared_ptr<DX12Resource> mVertexBuffer;
 	//拡大・平行移動用の定数バッファとそのビューのためのヒープ
 	boost::shared_ptr<DX12Resource> mMatrixBuffer;
-	boost::shared_ptr<DX12DescriptorHeap> mCRVDescHeap;
+	boost::shared_ptr<DX12DescriptorHeap> mDescHeap;
 	//パイプライン等の初期化
 	static void GraphicInit(Game& _game);
-	//コンストラクタで呼び出されSRVの読み込みを行う
-	void ReadSRV(Game& _game,unsigned int _textureid);
+	void InitializeDescHeap(Game& _game, unsigned int _textureid);
 	//コンストラクタで呼び出され，定数バッファとそのCRVの初期化を行う
-	void InitializeCRV(Game& game);
+	void InitializeConstBuffer(Game& game);
 	struct Vertex {
 	public:
 		XMFLOAT3 pos_;
 		XMFLOAT2 uv_;
 	};
-	//SRVの入っているヒープとその番号
-	boost::shared_ptr<DX12DescriptorHeap> mSRVHeap;
-	unsigned int mSRVHeapIndex;
 	//テクスチャの大きさ
 	double texWidth_;
 	double texHeight_;

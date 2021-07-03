@@ -115,7 +115,9 @@ void DrawNormalBulletComponent::Draw()
 	//‚à‚ë‚à‚ëƒZƒbƒg
 	game.mdx12.SetGraphicsPipeline(graphics_pipeline_);
 	game.mdx12.SetRootSignature(root_signature_);
-	game.mdx12.SetDescriptorHeap(crv_desc_heap_);
+	std::vector<boost::shared_ptr<DX12DescriptorHeap>> desc_heaps;
+	desc_heaps.push_back(crv_desc_heap_);
+	game.mdx12.SetDescriptorHeap(desc_heaps);
 	game.mdx12.SetGraphicsRootDescriptorTable(0, crv_desc_heap_, 0);
 	game.mdx12.SetPrimitiveTopology(DX12Config::PrimitiveTopology::TRIANGLELIST);
 	game.mdx12.SetVertexBuffers(vertex_buffer_, 0, sizeof(Vertex) * 4, sizeof(Vertex));

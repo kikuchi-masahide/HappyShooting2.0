@@ -19,5 +19,5 @@ void DrawTextureComponent::Draw()
 {
 	auto center = object_->GetPosition()+center_offset_;
 	auto angle = object_->GetRotation() + angle_offset_;
-	draw_helper_.Draw(scene_->mGame, center(0), center(1), width_, height_, angle, alpha_, 600, 900);
+	//draw_helper_.Draw(scene_->mGame, center(0), center(1), width_, height_, angle, alpha_, 600, 900);
 }

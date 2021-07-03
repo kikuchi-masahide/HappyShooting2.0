@@ -9,6 +9,7 @@ DX12DescriptorHeap::DX12DescriptorHeap(DX12Config::DescriptorHeapType _type, DX1
 	mHeapDescStr.Type = mDescriptorHeapTypeCorrespond[(unsigned char)_type];
 	mHeapDescStr.Flags = mShaderVisibilityCorrespond[(unsigned char)_vis];
 	mHeapDescStr.NumDescriptors = _num;
+	mHeapDescStr.NodeMask = 0;
 	auto res = _device->CreateDescriptorHeap(&mHeapDescStr, IID_PPV_ARGS(mDescHeap.ReleaseAndGetAddressOf()));
 	BOOST_ASSERT_MSG(SUCCEEDED(res), "failed in creating descriptorheap");
 	mDescriptorHandleSize = _device->GetDescriptorHandleIncrementSize(mDescriptorHeapTypeCorrespond[(unsigned char)_type]);
@@ -26,12 +27,6 @@ D3D12_CPU_DESCRIPTOR_HANDLE DX12DescriptorHeap::GetCPUDescriptorHandle(unsigned 
 	auto handle = mDescHeap->GetCPUDescriptorHandleForHeapStart();
 	handle.ptr += _n * mDescriptorHandleSize;
 	return handle;
-}
-
-void DX12DescriptorHeap::SetDescriptorHeap(ComPtr<ID3D12GraphicsCommandList> _cmdlist)
-{
-	ID3D12DescriptorHeap* descHeapArray = { mDescHeap.Get() };
-	_cmdlist->SetDescriptorHeaps(1,&descHeapArray);
 }
 
 const DX12Config::DescriptorHeapType DX12DescriptorHeap::GetDescriptorHeapType()
@@ -73,7 +68,12 @@ D3D12_DESCRIPTOR_HEAP_FLAGS DX12DescriptorHeap::mShaderVisibilityCorrespond[] = 
 	D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE
 };
 
-void DX12Pimple::SetDescriptorHeap(boost::shared_ptr<DX12DescriptorHeap> _descHeap)
+void DX12Pimple::SetDescriptorHeap(std::vector<boost::shared_ptr<DX12DescriptorHeap>>& _descHeap)
 {
-	_descHeap->SetDescriptorHeap(mCmdList);
+	ID3D12DescriptorHeap** desc_heaps = new ID3D12DescriptorHeap*[_descHeap.size()];
+	for (unsigned int n = 0; n < _descHeap.size(); n++)
+	{
+		desc_heaps[n] = _descHeap[n]->mDescHeap.Get();
+	}
+	mCmdList->SetDescriptorHeaps(_descHeap.size(),desc_heaps);
 }

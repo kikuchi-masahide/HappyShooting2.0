@@ -20,10 +20,10 @@ void HTextureDraw::DrawInRect(Game& _game, double _lx, double _rx, double _by, d
 	_game.mdx12.SetRootSignature(mRootSignature);
 	//ディスクリプタヒープのセット
 	//ルートシグネチャの構成はGraphicalInit参照
-	_game.mdx12.SetDescriptorHeap(mSRVHeap);
-	_game.mdx12.SetGraphicsRootDescriptorTable(0, mSRVHeap, mSRVHeapIndex);
-	_game.mdx12.SetDescriptorHeap(mCRVDescHeap);
-	_game.mdx12.SetGraphicsRootDescriptorTable(1, mCRVDescHeap, 0);
+	std::vector<boost::shared_ptr<DX12DescriptorHeap>> desc_heaps;
+	desc_heaps.push_back(mDescHeap);
+	_game.mdx12.SetDescriptorHeap(desc_heaps);
+	_game.mdx12.SetGraphicsRootDescriptorTable(0, mDescHeap,0);
 	//プリミティブトポロジ
 	_game.mdx12.SetPrimitiveTopology(DX12Config::PrimitiveTopology::TRIANGLELIST);
 	//頂点バッファ指定
@@ -53,37 +53,28 @@ HTextureDraw::HTextureDraw(Game& _game, unsigned int _textureid)
 	{
 		GraphicInit(_game);
 	}
-	ReadSRV(_game,_textureid);
-	InitializeCRV(_game);
+	InitializeConstBuffer(_game);
+	InitializeDescHeap(_game,_textureid);
 }
 
 void HTextureDraw::GraphicInit(Game& _game)
 {
 	//ルートパラメタ0:
 	//	レンジ0:SRV,t0~t0 <---> テクスチャのヒープ
-	//
-	//ルートパラメタ1:
 	//	レンジ0:CRV,b0~b0 <---> mCRVDescHeap
 
 	//SRVヒープ用ルートパラメータ
-	DX12RootParameter srv_root_param;
-	srv_root_param.mShaderVisibility = DX12Config::RootParameterShaderVisibility::ALL;
+	DX12RootParameter root_param;
+	root_param.mShaderVisibility = DX12Config::RootParameterShaderVisibility::ALL;
 	//SRVを1つ挿入(シェーダレジスタ0番から)
-	srv_root_param.mDescRanges.push_back(DX12DescriptorRange(
+	root_param.mDescRanges.push_back(DX12DescriptorRange(
 		1, DX12Config::DescriptorRangeType::SRV, 0, 0
 	));
-
-	//mCRVDescHeap用ルートパラメータ
-	DX12RootParameter crv_root_param;
-	crv_root_param.mShaderVisibility = DX12Config::RootParameterShaderVisibility::ALL;
-	//crvを1つ挿入
-	crv_root_param.mDescRanges.push_back(DX12DescriptorRange(
+	root_param.mDescRanges.push_back(DX12DescriptorRange(
 		1, DX12Config::DescriptorRangeType::CBV, 0, 0
 	));
-
-	std::vector<DX12RootParameter> root_params(2);
-	root_params[0] = srv_root_param;
-	root_params[1] = crv_root_param;
+	std::vector<DX12RootParameter> root_params(1);
+	root_params[0] = root_param;
 	//ルートシグネチャ
 	mRootSignature = _game.mdx12.CreateRootSignature(root_params);
 
@@ -130,21 +121,17 @@ void HTextureDraw::GraphicInit(Game& _game)
 	);
 }
 
-void HTextureDraw::ReadSRV(Game& _game, unsigned int _textureid)
+void HTextureDraw::InitializeDescHeap(Game& _game, unsigned int _textureid)
 {
-	auto res = _game.mTexManager.GetDX12DescriptorHeap(_textureid);
-	mSRVHeap = res.first;
-	mSRVHeapIndex = res.second;
+	mDescHeap = _game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 2, L"HTextureDraw::,DescHeap");
+	_game.mTexManager.CreateSRVof(_textureid, mDescHeap, 0);
+	_game.mdx12.CreateConstBufferView(mMatrixBuffer, mDescHeap, 1);
 }
 
-void HTextureDraw::InitializeCRV(Game& game)
+void HTextureDraw::InitializeConstBuffer(Game& game)
 {
 	//定数バッファ作成
 	mMatrixBuffer = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(double) * 16, L"HTextureDraw ConstBuffer");
-	//定数バッファのヒープ
-	mCRVDescHeap = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1, L"HTextureDraw::mCRVDescHeap");
-	//定数バッファのビュー
-	game.mdx12.CreateConstBufferView(mMatrixBuffer, mCRVDescHeap, 0);
 	//行列マップ先を設定
 	matrix_map = game.mdx12.Map(mMatrixBuffer);
 }

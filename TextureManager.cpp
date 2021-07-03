@@ -8,17 +8,15 @@ TextureManager::TextureManager(Game* const _game)
 	BOOST_ASSERT(_game != nullptr);
 }
 
-void TextureManager::LoadTexture(const wchar_t* _filename, boost::shared_ptr<DX12DescriptorHeap> _desc, unsigned int _num, unsigned int _textureid)
+void TextureManager::LoadTexture(const wchar_t* _filename, unsigned int _textureid)
 {
 	auto itr = mTexturesmap.find(_textureid);
 	BOOST_ASSERT_MSG(itr == mTexturesmap.end(),"TextureID duplicating");
-	Texture texture;
-	texture.mDescHeap = _desc;
-	texture.mDescID = _num;
 	std::wstring str(L"LoadTexture buffer for ");
 	str += _filename;
-	texture.mResource = mGame->mdx12.LoadTexture(_filename, _desc, _num, str.c_str());
-	mTexturesmap.insert(std::pair<unsigned int,Texture>(_textureid,texture));
+	auto ret = mGame->mdx12.LoadTexture(_filename, str.c_str());
+	mTexturesmap.insert(std::pair<unsigned int,boost::shared_ptr<DX12Resource>>(_textureid,ret.resource_));
+	mFormat.insert(std::pair<unsigned int, unsigned char>(_textureid, ret.format_));
 	return;
 }
 
@@ -33,14 +31,12 @@ boost::shared_ptr<DX12Resource> TextureManager::GetDX12Resource(unsigned int _te
 {
 	auto itr = mTexturesmap.find(_textureid);
 	BOOST_ASSERT_MSG(itr != mTexturesmap.end(), "unregistered TextureID");
-	return itr->second.mResource;
+	return itr->second;
 }
 
-std::pair<boost::shared_ptr<DX12DescriptorHeap>, unsigned int> TextureManager::GetDX12DescriptorHeap(unsigned int _textureid)
+void TextureManager::CreateSRVof(unsigned int texture_id, boost::shared_ptr<DX12DescriptorHeap> desc_heap, unsigned int heap_ind)
 {
-	auto itr = mTexturesmap.find(_textureid);
-	BOOST_ASSERT_MSG(itr != mTexturesmap.end(), "unregistered TextureID");
-	auto desc = itr->second.mDescHeap;
-	auto id = itr->second.mDescID;
-	return std::pair<boost::shared_ptr<DX12DescriptorHeap>, unsigned int>(desc, id);
+	auto resource = GetDX12Resource(texture_id);
+	unsigned char format = mFormat.find(texture_id)->second;
+	mGame->mdx12.CreateShaderResourceView(resource, desc_heap, heap_ind, format);
 }

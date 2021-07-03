@@ -107,17 +107,23 @@ public:
 	/// </summary>
 	/// <param name="_size">総頂点数</param>
 	boost::shared_ptr<DX12Resource> CreateIndexBuffer(unsigned int _vertnum, LPCWSTR _name);
+	struct TextureInfo
+	{
+	public:
+		boost::shared_ptr<DX12Resource> resource_;
+		char format_;
+	};
 	/// <summary>
 	/// テクスチャを読み込みディスクリプタを作成
 	/// </summary>
 	/// <param name="_desc">ディスクリプタヒープ</param>
 	/// <param name="_num">ディスクリプタヒープの何番目にディスクリプタを作成するか</param>
 	/// <returns>GPU上の読み取り専用バッファを示すDX12Resource</returns>
-	boost::shared_ptr<DX12Resource> LoadTexture(const wchar_t* _filename, boost::shared_ptr<DX12DescriptorHeap> _desc,unsigned int _num, LPCWSTR _name);
+	TextureInfo LoadTexture(const wchar_t* _filename, LPCWSTR _name);
 	/// <summary>
 	/// コマンドリストに対するディスクリプタヒープの指定
 	/// </summary>
-	void SetDescriptorHeap(boost::shared_ptr<DX12DescriptorHeap> _descHeap);
+	void SetDescriptorHeap(std::vector<boost::shared_ptr<DX12DescriptorHeap>>& _descHeap);
 	/// <summary>
 	/// ディスクリプタテーブルの設定
 	/// </summary>
@@ -158,7 +164,7 @@ public:
 	/// 指定ディスクリプタヒープ上にこのリソースのレンダーターゲットビューを作る
 	/// </summary>
 	/// <param name="_n">ディスクリプタヒープの何番目にビューを作るか</param>
-	void CreateShaderResourceView(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n);
+	void CreateShaderResourceView(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n, unsigned char _format);
 	//ディスクリプタヒープとIDを指定してレンダーターゲットをopen(バリアの設定は無し)
 	void OpenRenderTarget(boost::shared_ptr<DX12DescriptorHeap> _heap, unsigned int _id);
 	void ClearRenderTarget(boost::shared_ptr<DX12DescriptorHeap> _heap, unsigned int _id, float _r, float _g, float _b, float _alpha);
@@ -183,4 +189,8 @@ public:
 	/// <param name="start_vertex_location">最初の頂点の添え字</param>
 	/// <param name="start_instance_location"></param>
 	void DrawInstanced(UINT vertex_count_per_instance, UINT instance_count, UINT start_vertex_location, UINT start_instance_location);
+	/// <summary>
+	/// 空のテクスチャ用のSRVを作る
+	/// </summary>
+	void CreateShaderResourceViewForClearTexture(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n);
 };

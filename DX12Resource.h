@@ -35,7 +35,7 @@ public:
 	/// 指定ディスクリプタヒープ上にこのリソースのレンダーターゲットビューを作る
 	/// </summary>
 	/// <param name="_n">ディスクリプタヒープの何番目にビューを作るか</param>
-	void CreateShaderResourceView(ComPtr<ID3D12Device> _device, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n);
+	void CreateShaderResourceView(ComPtr<ID3D12Device> _device, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n, unsigned char _format);
 private:
 	static D3D12_HEAP_TYPE mResourceHeapTypeCorrespond[(unsigned char)DX12Config::ResourceHeapType::size];
 	static D3D12_RESOURCE_STATES mResourceStateCorrespond[(unsigned char)DX12Config::ResourceBarrierState::size];

@@ -17,17 +17,15 @@ public:
 	/// _n番目のCPUハンドル取得
 	/// </summary>
 	D3D12_CPU_DESCRIPTOR_HANDLE GetCPUDescriptorHandle(unsigned int _n);
-	//コマンドリストに対するディスクリプタヒープの指定
-	void SetDescriptorHeap(ComPtr<ID3D12GraphicsCommandList> _cmdlist);
 	const DX12Config::DescriptorHeapType GetDescriptorHeapType();
 	const DX12Config::DescriptorHeapShaderVisibility GetShaderVisibility();
 	D3D12_GPU_DESCRIPTOR_HANDLE GetGPUDescriptorHandle(unsigned int _n);
+	ComPtr<ID3D12DescriptorHeap> mDescHeap;
 private:
 	//所有ディスクリプタの数
 	const unsigned int mNum;
 	const DX12Config::DescriptorHeapType mType;
 	const DX12Config::DescriptorHeapShaderVisibility mShaderVisibility;
-	ComPtr<ID3D12DescriptorHeap> mDescHeap;
 	//1ディスクリプタ当たりのディスクリプタハンドルハンドル
 	SIZE_T mDescriptorHandleSize;
 	//ディスクリプタヒープ初期化で用いる構造体(共通する設定はこれに設定しておく)
