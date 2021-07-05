@@ -9,7 +9,7 @@ float4 main(Output input) : SV_TARGET
 	//‰~ŠO
 	if (d > 0.5)
 	{
-		return float4(0.0, 0.0, 0.0, 0.0);
+		discard;
 	}
 	//‹——£‚ðŠ„‡‚É’¼‚·(‰~Žü->1.0,’†S->0.0)
 	d /= 0.5;
