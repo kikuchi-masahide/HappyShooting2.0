@@ -64,6 +64,12 @@
     <Filter Include="MainScene\LinearMoveComponent">
       <UniqueIdentifier>{6c6e3c23-888d-42a7-9983-e941dedd998c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\CollisionManager">
+      <UniqueIdentifier>{2b1a1f60-bd3e-4526-8079-8660d20a3cb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\CollisionComponent">
+      <UniqueIdentifier>{f50efe72-71cc-47c8-b922-b9351d8ffcd7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -183,6 +189,12 @@
       <Filter>MainScene\LinearMoveComponent</Filter>
     </ClCompile>
     <ClCompile Include="MyselfAddNormalBulletComponent.cpp" />
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>MainScene\CollisionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -319,6 +331,12 @@
       <Filter>MainScene\LinearMoveComponent</Filter>
     </ClInclude>
     <ClInclude Include="MyselfAddNormalBulletComponent.h" />
+    <ClInclude Include="CollisionManager.h">
+      <Filter>MainScene\CollisionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionComponent.h">
+      <Filter>MainScene\CollisionComponent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="HTextureDrawInclude.hlsli">
