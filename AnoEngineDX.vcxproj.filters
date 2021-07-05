@@ -70,6 +70,15 @@
     <Filter Include="MainScene\CollisionComponent">
       <UniqueIdentifier>{f50efe72-71cc-47c8-b922-b9351d8ffcd7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\ICollisionGeometry">
+      <UniqueIdentifier>{980d7cdc-dd77-4cb1-80bd-886c3ae6c5d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\ICollisionGeometry\CircleGeometry">
+      <UniqueIdentifier>{519fe704-e855-4ccf-9c39-450cf9d87d67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\MyselfAddNormalBulletComponent">
+      <UniqueIdentifier>{1b0d6389-e5d3-487e-9c27-8fcb6317f41a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -188,12 +197,17 @@
     <ClCompile Include="LinearMoveComponent.cpp">
       <Filter>MainScene\LinearMoveComponent</Filter>
     </ClCompile>
-    <ClCompile Include="MyselfAddNormalBulletComponent.cpp" />
     <ClCompile Include="CollisionManager.cpp">
       <Filter>MainScene\CollisionManager</Filter>
     </ClCompile>
     <ClCompile Include="CollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleGeometry.cpp">
+      <Filter>MainScene\ICollisionGeometry\CircleGeometry</Filter>
+    </ClCompile>
+    <ClCompile Include="MyselfAddNormalBulletComponent.cpp">
+      <Filter>MainScene\MyselfAddNormalBulletComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -330,12 +344,20 @@
     <ClInclude Include="LinearMoveComponent.h">
       <Filter>MainScene\LinearMoveComponent</Filter>
     </ClInclude>
-    <ClInclude Include="MyselfAddNormalBulletComponent.h" />
     <ClInclude Include="CollisionManager.h">
       <Filter>MainScene\CollisionManager</Filter>
     </ClInclude>
     <ClInclude Include="CollisionComponent.h">
       <Filter>MainScene\CollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="ICollisionGeometry.h">
+      <Filter>MainScene\ICollisionGeometry</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleGeometry.h">
+      <Filter>MainScene\ICollisionGeometry\CircleGeometry</Filter>
+    </ClInclude>
+    <ClInclude Include="MyselfAddNormalBulletComponent.h">
+      <Filter>MainScene\MyselfAddNormalBulletComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

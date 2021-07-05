@@ -160,6 +160,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CircleGeometry.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -208,6 +209,7 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CircleGeometry.h" />
     <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Component.h" />
@@ -232,6 +234,7 @@
     <ClInclude Include="HDrawLineFrame.h" />
     <ClInclude Include="HTextureAlphaRotateDraw.h" />
     <ClInclude Include="HTextureDraw.h" />
+    <ClInclude Include="ICollisionGeometry.h" />
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="LayerHandle.h" />

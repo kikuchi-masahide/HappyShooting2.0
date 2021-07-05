@@ -84,9 +84,17 @@ public:
 		}
 		return *this;
 	}
+	//指しているコンポーネントが同じならば等しい
+	bool operator==(const ComponentHandle<T>&handle);
 private:
 	//ハンドルが指すコンポーネント
 	T* mComp;
 	//mCompを指すハンドルのsetのポインタ(void*を使うのはできればやめたい)
 	std::set<void*>* mHandleSet;
 };
+
+template<class T>
+inline bool ComponentHandle<T>::operator==(const ComponentHandle<T>& handle)
+{
+	return (mComp == handle.mComp);
+}
