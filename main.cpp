@@ -11,6 +11,7 @@ int main() {
 #else
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 #endif // _DEBUG
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	Game* game = new Game();
 	game->Initialize();
 	LoadTextures(game);
