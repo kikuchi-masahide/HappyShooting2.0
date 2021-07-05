@@ -5,6 +5,7 @@
 #include "MainScene.h"
 #include "LinearMoveComponent.h"
 #include "DrawNormalBulletComponent.h"
+#include "TestCollisionComponent.h"
 
 MyselfAddNormalBulletComponent::MyselfAddNormalBulletComponent(GameObjectHandle handle, MainScene* scene)
 	:Component(30),
@@ -30,6 +31,9 @@ void MyselfAddNormalBulletComponent::Update()
 		bullet->AddOutputComponent<DrawNormalBulletComponent>(
 			scene_, bullet, bullet_redius_, MatVec::Vector3(0.0, 0.0, 1.0), 1.0
 		);
+
+		bullet->AddUpdateComponent<TestCollisionComponent>(5, bullet, bullet_redius_, true,scene_);
+
 		time_ = 0;
 	}
 	time_++;

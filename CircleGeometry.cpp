@@ -25,7 +25,7 @@ bool CircleGeometry::IsCrossing(const CircleGeometry& circle2)
 {
 	MatVec::Vector2 center2 = circle2.center_;
 	double radius2 = circle2.radius_;
-	double d2 = (center_(0) - center2(0)) * (center_(0) - center2(0)) + (center_(1) - center2(1)) * center_(1) - center2(1);
+	double d2 = (center_(0) - center2(0)) * (center_(0) - center2(0)) + (center_(1) - center2(1)) * (center_(1) - center2(1));
 	return (
 		d2 <= (radius_ + radius2) * (radius_ + radius2)
 	);

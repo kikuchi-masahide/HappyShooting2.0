@@ -37,11 +37,17 @@ void CollisionManager::TraverseAll()
 		TraverseAllSub(circle);
 	}
 
+	std::string message;
+	message += std::to_string(circles_.size());
+	Log::OutputTrivial(message);
+
 	collision_comps_.clear();
+	circles_.clear();
+
 }
 
 void CollisionManager::NoticeEachOther(ComponentHandle<CollisionComponent> comp1, ComponentHandle<CollisionComponent> comp2)
 {
 	comp1->hit_comps_.push_back(comp2);
-	comp1->hit_comps_.push_back(comp1);
+	comp2->hit_comps_.push_back(comp1);
 }

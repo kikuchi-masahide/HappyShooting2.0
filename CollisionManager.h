@@ -41,11 +41,11 @@ inline void CollisionManager::TraverseAllSub(T& geometry, std::vector<U>& geomet
 	Rect2 aabb = geometry.GetAABB();
 
 	//CircleGeometry
-	unsigned int s = -1, e = geometry_arr.size();
+	int s = -1, e = geometry_arr.size();
 	//geometry_arr[s].ç∂x < aabb.ç∂x <= geometry_arr[e].ç∂x
 	while (e - s > 1)
 	{
-		unsigned int m = (e + s) / 2;
+		int m = (e + s) / 2;
 		Rect2 aabb2 = geometry_arr[m].GetAABB();
 		if (aabb2.GetLD()(0) < aabb.GetLD()(0))s = m;
 		else e = m;

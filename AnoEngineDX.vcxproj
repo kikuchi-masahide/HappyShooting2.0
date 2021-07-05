@@ -202,6 +202,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TestCollisionComponent.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="TitleUIScreen.cpp" />
@@ -254,6 +255,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TestCollisionComponent.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="TitleUIScreen.h" />

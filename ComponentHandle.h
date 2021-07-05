@@ -10,7 +10,9 @@ public:
 	ComponentHandle(const ComponentHandle<T>& _handle)
 		:mComp(_handle.mComp), mHandleSet(_handle.mHandleSet)
 	{
-		mHandleSet->insert((void*)this);
+		if (mHandleSet != nullptr) {
+			mHandleSet->insert((void*)this);
+		}
 	}
 	//GameObjectのAddChildでのみ使われるコンストラクタ
 	ComponentHandle(T* _obj, std::set<void*>* _set)
