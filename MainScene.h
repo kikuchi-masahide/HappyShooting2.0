@@ -19,8 +19,6 @@ public:
 	/// 次tickからこのフレームを有効化する
 	/// </summary>
 	void SwapLayer(unsigned int ind);
-	//当たり判定マネージャ(テスト用)
-	CollisionManager collision_manager_;
 private:
 	//持っているレイヤーの内描画するもの
 	LayerHandle<MainSceneBaseLayer> active_layer_;
