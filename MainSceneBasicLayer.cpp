@@ -19,9 +19,7 @@ void MainSceneBasicLayer::UniqueDraw()
 	
 	game.mdx12.SetGraphicsPipeline(graphics_pipeline_);
 	game.mdx12.SetRootSignature(rootsignature_);
-	std::vector<boost::shared_ptr<DX12DescriptorHeap>> desc_heaps;
-	desc_heaps.push_back(pera_srv_);
-	game.mdx12.SetDescriptorHeap(desc_heaps);
+	game.mdx12.SetDescriptorHeap(pera_srv_);
 	game.mdx12.SetGraphicsRootDescriptorTable(0, pera_srv_,0);
 	game.mdx12.SetPrimitiveTopology(DX12Config::PrimitiveTopology::TRIANGLELIST);
 	game.mdx12.SetVertexBuffers(vertex_buffer_, 0, sizeof(Vertex) * 4, sizeof(Vertex));

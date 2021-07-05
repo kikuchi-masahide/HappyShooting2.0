@@ -57,7 +57,7 @@ public:
 		char format_;
 	};
 	TextureInfo LoadTexture(const wchar_t* _filename, LPCWSTR _buffername);
-	void SetDescriptorHeap(std::vector<boost::shared_ptr<DX12DescriptorHeap>>& _descHeap);
+	void SetDescriptorHeap(boost::shared_ptr<DX12DescriptorHeap> _descHeap);
 	void SetGraphicsRootDescriptorTable(unsigned int _rootParamIndex, boost::shared_ptr<DX12DescriptorHeap> _descHeap, unsigned int _descHeapIndex);
 	void SetResourceBarrier(boost::shared_ptr<DX12Resource> _resource, DX12Config::ResourceBarrierState _before, DX12Config::ResourceBarrierState _after);
 	boost::shared_ptr<DX12SwapChain> CreateSwapChain(HWND _hwnd, UINT _width, UINT _height);

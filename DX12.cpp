@@ -109,7 +109,7 @@ DX12::TextureInfo DX12::LoadTexture(const wchar_t* _filename, LPCWSTR _buffernam
 	return conv_after;
 }
 
-void DX12::SetDescriptorHeap(std::vector<boost::shared_ptr<DX12DescriptorHeap>>& _descHeap)
+void DX12::SetDescriptorHeap(boost::shared_ptr<DX12DescriptorHeap> _descHeap)
 {
 	mPimple->SetDescriptorHeap(_descHeap);
 }

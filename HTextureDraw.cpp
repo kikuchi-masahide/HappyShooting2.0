@@ -20,9 +20,7 @@ void HTextureDraw::DrawInRect(Game& _game, double _lx, double _rx, double _by, d
 	_game.mdx12.SetRootSignature(mRootSignature);
 	//ディスクリプタヒープのセット
 	//ルートシグネチャの構成はGraphicalInit参照
-	std::vector<boost::shared_ptr<DX12DescriptorHeap>> desc_heaps;
-	desc_heaps.push_back(mDescHeap);
-	_game.mdx12.SetDescriptorHeap(desc_heaps);
+	_game.mdx12.SetDescriptorHeap(mDescHeap);
 	_game.mdx12.SetGraphicsRootDescriptorTable(0, mDescHeap,0);
 	//プリミティブトポロジ
 	_game.mdx12.SetPrimitiveTopology(DX12Config::PrimitiveTopology::TRIANGLELIST);

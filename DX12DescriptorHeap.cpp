@@ -68,12 +68,10 @@ D3D12_DESCRIPTOR_HEAP_FLAGS DX12DescriptorHeap::mShaderVisibilityCorrespond[] = 
 	D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE
 };
 
-void DX12Pimple::SetDescriptorHeap(std::vector<boost::shared_ptr<DX12DescriptorHeap>>& _descHeap)
+void DX12Pimple::SetDescriptorHeap(boost::shared_ptr<DX12DescriptorHeap> _descHeap)
 {
-	ID3D12DescriptorHeap** desc_heaps = DBG_NEW ID3D12DescriptorHeap*[_descHeap.size()];
-	for (unsigned int n = 0; n < _descHeap.size(); n++)
-	{
-		desc_heaps[n] = _descHeap[n]->mDescHeap.Get();
-	}
-	mCmdList->SetDescriptorHeaps(_descHeap.size(),desc_heaps);
+	ID3D12DescriptorHeap* arr[1] = {
+		_descHeap->mDescHeap.Get()
+	};
+	mCmdList->SetDescriptorHeaps(1,arr);
 }

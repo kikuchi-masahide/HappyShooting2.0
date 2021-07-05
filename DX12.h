@@ -123,7 +123,7 @@ public:
 	/// <summary>
 	/// コマンドリストに対するディスクリプタヒープの指定
 	/// </summary>
-	void SetDescriptorHeap(std::vector<boost::shared_ptr<DX12DescriptorHeap>>& _descHeap);
+	void SetDescriptorHeap(boost::shared_ptr<DX12DescriptorHeap> _descHeap);
 	/// <summary>
 	/// ディスクリプタテーブルの設定
 	/// </summary>
