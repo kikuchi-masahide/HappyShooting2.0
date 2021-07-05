@@ -37,7 +37,7 @@ DX12GraphicsPipeline::DX12GraphicsPipeline(
 	gpipeline.BlendState = renderTargetBlendDesc;
 	//頂点レイアウトの配列をこちらで作り直す
 	unsigned int layoutNum = _vertexLayout.size();
-	D3D12_INPUT_ELEMENT_DESC* layouts = new D3D12_INPUT_ELEMENT_DESC[layoutNum];
+	D3D12_INPUT_ELEMENT_DESC* layouts = DBG_NEW D3D12_INPUT_ELEMENT_DESC[layoutNum];
 	for (unsigned int n = 0; n < layoutNum; n++) {
 		layouts[n] = {};
 		layouts[n].SemanticName = _vertexLayout[n].mSemanticName;
@@ -80,7 +80,7 @@ boost::shared_ptr<DX12GraphicsPipeline> DX12Pimple::CreateGraphicsPipeline(
 	DX12Config::PrimitiveTopologyType _primitive, UINT _numrt,
 	boost::shared_ptr<DX12RootSignature> _rootsignature, LPCWSTR _name) {
 		return boost::shared_ptr<DX12GraphicsPipeline>(
-			new DX12GraphicsPipeline(
+			DBG_NEW DX12GraphicsPipeline(
 				mDevice, _vertexShader, _pixelShader, _vertexLayout,_primitive, _numrt,
 				_rootsignature,_name)
 		);

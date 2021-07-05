@@ -49,7 +49,7 @@ D3D12_GPU_DESCRIPTOR_HANDLE DX12DescriptorHeap::GetGPUDescriptorHandle(unsigned 
 boost::shared_ptr<DX12DescriptorHeap> DX12Pimple::CreateDescriptorHeap(DX12Config::DescriptorHeapType _type, DX12Config::DescriptorHeapShaderVisibility _vis, unsigned int _num, LPCWSTR _name)
 {
 	return boost::shared_ptr<DX12DescriptorHeap>(
-		new DX12DescriptorHeap(_type, _vis, _num, mDevice, _name)
+		DBG_NEW DX12DescriptorHeap(_type, _vis, _num, mDevice, _name)
 		);
 }
 
@@ -70,7 +70,7 @@ D3D12_DESCRIPTOR_HEAP_FLAGS DX12DescriptorHeap::mShaderVisibilityCorrespond[] = 
 
 void DX12Pimple::SetDescriptorHeap(std::vector<boost::shared_ptr<DX12DescriptorHeap>>& _descHeap)
 {
-	ID3D12DescriptorHeap** desc_heaps = new ID3D12DescriptorHeap*[_descHeap.size()];
+	ID3D12DescriptorHeap** desc_heaps = DBG_NEW ID3D12DescriptorHeap*[_descHeap.size()];
 	for (unsigned int n = 0; n < _descHeap.size(); n++)
 	{
 		desc_heaps[n] = _descHeap[n]->mDescHeap.Get();

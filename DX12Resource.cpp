@@ -207,7 +207,7 @@ D3D12_RESOURCE_STATES DX12Resource::mResourceStateCorrespond[(unsigned char)DX12
 boost::shared_ptr<DX12Resource> DX12Pimple::CreateVertexBuffer(UINT64 _width, LPCWSTR _name = L"")
 {
 	return boost::shared_ptr<DX12Resource>(
-		new DX12Resource(mDevice, DX12Config::ResourceHeapType::UPLOAD, _width, _name)
+		DBG_NEW DX12Resource(mDevice, DX12Config::ResourceHeapType::UPLOAD, _width, _name)
 		);
 }
 
@@ -234,13 +234,13 @@ void DX12Pimple::SetIndexBuffers(boost::shared_ptr<DX12Resource> _resource, unsi
 boost::shared_ptr<DX12Resource> DX12Pimple::CreateIndexBuffer(unsigned int _vertnum, LPCWSTR _name)
 {
 	return boost::shared_ptr<DX12Resource>(
-		new DX12Resource(mDevice, DX12Config::ResourceHeapType::UPLOAD, sizeof(unsigned int) * _vertnum, 1, _name)
+		DBG_NEW DX12Resource(mDevice, DX12Config::ResourceHeapType::UPLOAD, sizeof(unsigned int) * _vertnum, 1, _name)
 		);
 }
 
 boost::shared_ptr<DX12Resource> DX12Pimple::CreateClearTexture(UINT64 _width, UINT64 _height, float _r, float _g, float _b, float _alpha, LPCWSTR _name)
 {
-	return boost::shared_ptr<DX12Resource>(new DX12Resource(
+	return boost::shared_ptr<DX12Resource>(DBG_NEW DX12Resource(
 		mDevice, _width, _height, _r, _g, _b, _alpha,_name
 	));
 }
@@ -257,7 +257,7 @@ void DX12Pimple::CreateShaderResourceView(boost::shared_ptr<DX12Resource> _resou
 
 boost::shared_ptr<DX12Resource> DX12Pimple::CreateConstBuffer(DX12Config::ResourceHeapType _resheaptype, UINT64 _bytesize, LPCWSTR _name)
 {
-	return boost::shared_ptr<DX12Resource>(new DX12Resource(mDevice,_resheaptype,_bytesize,_name));
+	return boost::shared_ptr<DX12Resource>(DBG_NEW DX12Resource(mDevice,_resheaptype,_bytesize,_name));
 }
 
 void DX12Pimple::Copy4x4Matrix(void* _map, MatVec::Matrix4x4 _mat)

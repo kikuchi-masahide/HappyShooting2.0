@@ -190,7 +190,7 @@ void DX12Pimple::FenceWaitingInProcessCommands()
 boost::shared_ptr<DX12Resource> DX12Pimple::CreateTextureUploadBuffer(unsigned int _rowpitch,unsigned int _height, LPCWSTR _name)
 {
 	auto aligned = _rowpitch + D3D12_TEXTURE_DATA_PITCH_ALIGNMENT - _rowpitch % D3D12_TEXTURE_DATA_PITCH_ALIGNMENT;
-	return boost::shared_ptr<DX12Resource>(new DX12Resource(
+	return boost::shared_ptr<DX12Resource>(DBG_NEW DX12Resource(
 		mDevice,DX12Config::ResourceHeapType::UPLOAD,aligned*_height,1,_name
 	));
 }
@@ -210,7 +210,7 @@ DX12Pimple::TextureInfo DX12Pimple::LoadTexture(const wchar_t* _filename, LPCWST
 
 	//読み取り用バッファ
 	auto texResource = boost::shared_ptr<DX12Resource>(
-		new DX12Resource(mDevice, metadata, _buffername)
+		DBG_NEW DX12Resource(mDevice, metadata, _buffername)
 		);
 
 	//転送用リソースにマップ

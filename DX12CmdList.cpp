@@ -61,7 +61,7 @@ void DX12Pimple::DrawInstanced(UINT vertex_count_per_instance, UINT instance_cou
 
 boost::shared_ptr<DX12SwapChain> DX12Pimple::CreateSwapChain(HWND _hwnd, UINT _width, UINT _height)
 {
-	return boost::shared_ptr<DX12SwapChain>(new DX12SwapChain(mFactory, mCmdQueue, mDevice, _hwnd, _width, _height));
+	return boost::shared_ptr<DX12SwapChain>(DBG_NEW DX12SwapChain(mFactory, mCmdQueue, mDevice, _hwnd, _width, _height));
 }
 
 void DX12Pimple::FlipSwapChain(boost::shared_ptr<DX12SwapChain> _swapchain)

@@ -4,7 +4,7 @@
 DX12::DX12() {}
 
 void DX12::Initialize() {
-	mPimple = new DX12Pimple();
+	mPimple = DBG_NEW DX12Pimple();
 	mPimple->Initialize();
 }
 
