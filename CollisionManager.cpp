@@ -5,6 +5,7 @@
 
 CollisionManager::CollisionManager()
 {
+	collision_comps_.reserve(5);
 }
 
 CollisionManager::~CollisionManager()
@@ -13,6 +14,8 @@ CollisionManager::~CollisionManager()
 
 void CollisionManager::AddCollisionComponent(ComponentHandle<CollisionComponent> collision_comp)
 {
+	std::vector<ComponentHandle<CollisionComponent>> vect;
+	vect.push_back(collision_comp);
 	collision_comps_.push_back(collision_comp);
 }
 

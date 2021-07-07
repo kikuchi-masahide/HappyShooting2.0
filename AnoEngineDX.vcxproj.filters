@@ -79,6 +79,9 @@
     <Filter Include="MainScene\MyselfAddNormalBulletComponent">
       <UniqueIdentifier>{1b0d6389-e5d3-487e-9c27-8fcb6317f41a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\CollisionComponent\MyselfCollisionComponent">
+      <UniqueIdentifier>{8d4a2bcc-41a3-4945-bcaf-e3a91f6697ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -208,6 +211,9 @@
     </ClCompile>
     <ClCompile Include="MyselfAddNormalBulletComponent.cpp">
       <Filter>MainScene\MyselfAddNormalBulletComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="MyselfCollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\MyselfCollisionComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -358,6 +364,9 @@
     </ClInclude>
     <ClInclude Include="MyselfAddNormalBulletComponent.h">
       <Filter>MainScene\MyselfAddNormalBulletComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="MyselfCollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\MyselfCollisionComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

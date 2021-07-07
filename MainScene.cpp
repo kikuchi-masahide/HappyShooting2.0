@@ -7,6 +7,7 @@
 #include "MyselfMediatorComponent.h"
 #include "DrawNormalBulletComponent.h"
 #include "MyselfAddNormalBulletComponent.h"
+#include "MyselfCollisionComponent.h"
 
 MainScene::MainScene(Game* game)
 	:Scene(game),layer_from_next_tick_(999)
@@ -62,6 +63,7 @@ void MainScene::AddMyself()
 	draw_texture_component->width_ = 40;
 	draw_texture_component->height_ = 40;
 	myself_pos_angle_handle_ = myself_handle_->AddUpdateComponent<MyselfPosAndAngleComponent>(myself_handle_, this);
-	myself_handle_->AddUpdateComponent<MyselfMediatorComponent>(draw_texture_component);
+	auto mediator = myself_handle_->AddUpdateComponent<MyselfMediatorComponent>(draw_texture_component,this);
 	myself_handle_->AddUpdateComponent<MyselfAddNormalBulletComponent>(myself_handle_, this);
+	myself_handle_->AddUpdateComponent<MyselfCollisionComponent>(this, myself_handle_, mediator);
 }

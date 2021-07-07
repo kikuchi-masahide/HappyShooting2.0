@@ -19,6 +19,10 @@ public:
 	/// 次tickからこのフレームを有効化する
 	/// </summary>
 	void SwapLayer(unsigned int ind);
+	//自機が含まれる方のCollisionManager
+	CollisionManager collision_myself_;
+	//敵機が含まれる方のCollisionManager
+	CollisionManager collision_enemy_;
 private:
 	//持っているレイヤーの内描画するもの
 	LayerHandle<MainSceneBaseLayer> active_layer_;

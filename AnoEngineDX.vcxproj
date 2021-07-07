@@ -193,6 +193,7 @@
     <ClCompile Include="MainSceneUIScreen.cpp" />
     <ClCompile Include="MatVec.cpp" />
     <ClCompile Include="MyselfAddNormalBulletComponent.cpp" />
+    <ClCompile Include="MyselfCollisionComponent.cpp" />
     <ClCompile Include="MyselfMediatorComponent.cpp" />
     <ClCompile Include="MyselfPosAndAngleComponent.cpp" />
     <ClCompile Include="Rect2.cpp" />
@@ -248,6 +249,7 @@
     <ClInclude Include="Math.h" />
     <ClInclude Include="MatVec.h" />
     <ClInclude Include="MyselfAddNormalBulletComponent.h" />
+    <ClInclude Include="MyselfCollisionComponent.h" />
     <ClInclude Include="MyselfMediatorComponent.h" />
     <ClInclude Include="MyselfPosAndAngleComponent.h" />
     <ClInclude Include="Rect2.h" />
