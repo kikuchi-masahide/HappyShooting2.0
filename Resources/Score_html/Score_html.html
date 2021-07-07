@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>resource</title>
+    </head>
+    <body>
+        <canvas id = "canvas" width = "80" height = "30"></canvas>
+        <script>
+            const context=document.getElementById("canvas").getContext("2d");
+            context.fillStyle = "black";
+            context.clearRect(0,0,80,30);
+            context.font = "24px 'Meiryo UI'";
+            context.textAlign = "center";
+            context.fillText("Score:",40,20);
+            
+        </script>
+    </body>
+</html>
