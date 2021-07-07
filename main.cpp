@@ -39,6 +39,7 @@ void LoadTextures(Game* _game)
 	_game->mTexManager.LoadTexture(L"Resources/TitlePage/Title.png", 2);
 	_game->mTexManager.LoadTexture(L"Resources/Cursor/cursor.png", 3);
 	_game->mTexManager.LoadTexture(L"Resources/myself1/myself1.png", 4);
+	_game->mTexManager.LoadTexture(L"Resources/Score_html/score_html.png", 5);
 }
 
 void LoadShaders(Game* _game)

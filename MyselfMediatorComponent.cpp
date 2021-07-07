@@ -2,6 +2,7 @@
 #include "MyselfMediatorComponent.h"
 
 #include "DrawTextureComponent.h"
+#include "MainScene.h"
 
 MyselfMediatorComponent::MyselfMediatorComponent(ComponentHandle<DrawTextureComponent> draw_texture_component, MainScene* scene)
 	:Component(50),draw_texture_component_(draw_texture_component),damage_counter_(-1),scene_(scene)
@@ -15,6 +16,7 @@ void MyselfMediatorComponent::Update()
 void MyselfMediatorComponent::CauseDamageToMyself(unsigned int point)
 {
 	damage_counter_ = 120;
+	scene_->AddScore(-1000);
 }
 
 MyselfMediatorComponent::~MyselfMediatorComponent()

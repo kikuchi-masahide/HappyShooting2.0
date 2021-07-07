@@ -56,6 +56,16 @@ void MainScene::SwapLayer(unsigned int ind)
 	layer_from_next_tick_ = ind;
 }
 
+void MainScene::AddScore(int add)
+{
+	score_ += add;
+}
+
+int MainScene::GetScore() const
+{
+	return score_;
+}
+
 void MainScene::AddMyself()
 {
 	myself_handle_ = AddObject(MatVec::Vector2(0, -275), 1.0, 0.0);

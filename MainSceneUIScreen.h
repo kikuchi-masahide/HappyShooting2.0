@@ -15,6 +15,8 @@ public:
     ~MainSceneUIScreen();
 private:
     HTextureDraw cursor_draw_;
+    //「Score:」の画像表示
+    HTextureDraw score_text_draw_;
     //得点表示枠
     HDrawLineFrame point_frame_;
     MainScene* scene_;
@@ -26,5 +28,11 @@ private:
     constexpr static double point_frame_width_ = 300 - 2;
     //得点表示枠の高さ
     constexpr static double point_frame_height_ = 250 - 2;
+    //「Score:」画像の幅
+    constexpr static unsigned int score_image_width_ = 80;
+    constexpr static unsigned int score_image_height_ = 30;
+    //「Score:」画像の表示座標
+    constexpr static unsigned int score_image_lux_ = 600 + 20 - 450;
+    constexpr static unsigned int score_image_luy_ = 900 - 20 - 450;
 };
 

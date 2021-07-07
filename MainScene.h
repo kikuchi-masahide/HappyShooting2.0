@@ -23,6 +23,9 @@ public:
 	CollisionManager collision_myself_;
 	//敵機が含まれる方のCollisionManager
 	CollisionManager collision_enemy_;
+	//スコアを加算
+	void AddScore(int add);
+	int GetScore() const;
 private:
 	//持っているレイヤーの内描画するもの
 	LayerHandle<MainSceneBaseLayer> active_layer_;
@@ -36,4 +39,6 @@ private:
 	ComponentHandle<MyselfPosAndAngleComponent> myself_pos_angle_handle_;
 	//シーンに自機を追加する
 	void AddMyself();
+	//現在のスコア
+	int score_;
 };
