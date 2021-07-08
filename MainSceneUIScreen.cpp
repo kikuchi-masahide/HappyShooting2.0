@@ -6,7 +6,7 @@
 MainSceneUIScreen::MainSceneUIScreen(MainScene* scene)
 	:UIScreen(true, true),
 	cursor_draw_(scene->mGame, 3),point_frame_(scene->mGame),score_text_draw_(scene->mGame,5),
-	scene_(scene)
+	scene_(scene),number_draw_(scene->mGame,font_size_,MatVec::Vector2(score_leftup_x_,score_leftup_y_),900,900,8)
 {
 }
 
@@ -32,6 +32,9 @@ void MainSceneUIScreen::Output()
 	score_text_draw_.DrawInRect(
 		game, score_image_lux_, score_image_lux_ + score_image_width_, score_image_luy_-score_image_height_, score_image_luy_, 900, 900
 	);
+	//スコア表示
+	int score = scene_->GetScore();
+	number_draw_.DrawNumber(scene_->mGame, score);
 
 	//RTVクローズ
 	scene_->mGame.CloseSwapChain();

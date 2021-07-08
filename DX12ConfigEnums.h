@@ -35,6 +35,7 @@ namespace DX12Config {
 		R32G32B32_FLOAT,
 		R8G8B8A8_UNORM,
 		R32G32_FLOAT,
+		R32_UINT,
 		size
 	};
 	//頂点レイアウトのinput_classificastion

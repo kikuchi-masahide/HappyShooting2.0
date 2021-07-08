@@ -40,6 +40,7 @@ void LoadTextures(Game* _game)
 	_game->mTexManager.LoadTexture(L"Resources/Cursor/cursor.png", 3);
 	_game->mTexManager.LoadTexture(L"Resources/myself1/myself1.png", 4);
 	_game->mTexManager.LoadTexture(L"Resources/Score_html/score_html.png", 5);
+	_game->mTexManager.LoadTexture(L"Resources/numbers/numbers.png", 6);
 }
 
 void LoadShaders(Game* _game)
@@ -54,4 +55,6 @@ void LoadShaders(Game* _game)
 	_game->mShaderManager.LoadShader(L"HTextureAlphaRotateDrawPixelShader.hlsl", DX12Config::ShaderType::PIXEL, 7);
 	_game->mShaderManager.LoadShader(L"DrawNormalBulletComponentVertexShader.hlsl", DX12Config::ShaderType::VERTEX, 8);
 	_game->mShaderManager.LoadShader(L"DrawNormalBulletComponentPixelShader.hlsl", DX12Config::ShaderType::PIXEL, 9);
+	_game->mShaderManager.LoadShader(L"HNumberDraw_vertex.hlsl", DX12Config::ShaderType::VERTEX, 10);
+	_game->mShaderManager.LoadShader(L"HNumberDraw_pixel.hlsl", DX12Config::ShaderType::PIXEL, 11);
 }

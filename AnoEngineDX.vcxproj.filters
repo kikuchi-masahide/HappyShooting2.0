@@ -82,6 +82,9 @@
     <Filter Include="MainScene\CollisionComponent\MyselfCollisionComponent">
       <UniqueIdentifier>{8d4a2bcc-41a3-4945-bcaf-e3a91f6697ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Helper\HNumberDraw">
+      <UniqueIdentifier>{5aafbd12-8ca9-405b-ab16-c35530c6d481}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -214,6 +217,9 @@
     </ClCompile>
     <ClCompile Include="MyselfCollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent\MyselfCollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="HNumberDraw.cpp">
+      <Filter>Helper\HNumberDraw</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -368,6 +374,9 @@
     <ClInclude Include="MyselfCollisionComponent.h">
       <Filter>MainScene\CollisionComponent\MyselfCollisionComponent</Filter>
     </ClInclude>
+    <ClInclude Include="HNumberDraw.h">
+      <Filter>Helper\HNumberDraw</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="HTextureDrawInclude.hlsli">
@@ -381,6 +390,9 @@
     </None>
     <None Include="DrawNormalBulletComponentHeader.hlsli">
       <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
+    </None>
+    <None Include="HNumberDraw_header.hlsli">
+      <Filter>Helper\HNumberDraw</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -413,6 +425,12 @@
     </FxCompile>
     <FxCompile Include="DrawNormalBulletComponentPixelShader.hlsl">
       <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
+    </FxCompile>
+    <FxCompile Include="HNumberDraw_vertex.hlsl">
+      <Filter>Helper\HNumberDraw</Filter>
+    </FxCompile>
+    <FxCompile Include="HNumberDraw_pixel.hlsl">
+      <Filter>Helper\HNumberDraw</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

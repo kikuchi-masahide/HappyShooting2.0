@@ -4,28 +4,32 @@
         <title>resource</title>
     </head>
     <body>
-        <canvas id = "canvas" width = "128" height = "30"></canvas>
+        <canvas id = "canvas" width = "288" height = "40"></canvas>
         <script>
             const context=document.getElementById("canvas").getContext("2d");
             context.fillStyle = "black";
-            context.clearRect(0,0,120,30);
-            context.font = "18px 'Meiryo UI'";
+            context.clearRect(0,0,288,60);
+            context.font = "36px 'Meiryo UI'";
             context.textAlign = "start";
             let width = 0;
             let matrics;
-            const y = 18;
+            const y = 30;
             let string = [
                 '0','1','2','3','4','5','6','7','8','9','-'
             ];
 
-            for(let i = 0;i < 11;i++)
+            for(let i = 0;i < 10;i++)
             {
                 metrics = context.measureText(string[i]);
                 console.log(Math.ceil(metrics.width));
                 context.fillText(string[i],width,y);
-                width += metrics.width;
+                width += 24;
                 width = Math.ceil(width);
             }
+            width += 4;
+            context.fillText('-',width,y);
+           
+
 
     console.log(width);
 </script>
