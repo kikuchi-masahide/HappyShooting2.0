@@ -40,6 +40,7 @@ void MainScene::UniqueUpdate()
 
 void MainScene::UniqueOutput()
 {
+	FindNearestEnemy();
 }
 
 MainScene::~MainScene()
@@ -66,6 +67,16 @@ int MainScene::GetScore() const
 	return score_;
 }
 
+void MainScene::AddDirectableEnemy(GameObjectHandle enemy)
+{
+	enemies_.push_back(enemy);
+}
+
+GameObjectHandle MainScene::GetNearestEnemy()
+{
+	return nearest_enemy_;
+}
+
 void MainScene::AddMyself()
 {
 	myself_handle_ = AddObject(MatVec::Vector2(0, -275), 1.0, 0.0);
@@ -76,4 +87,34 @@ void MainScene::AddMyself()
 	auto mediator = myself_handle_->AddUpdateComponent<MyselfMediatorComponent>(draw_texture_component,this);
 	myself_handle_->AddUpdateComponent<MyselfAddNormalBulletComponent>(myself_handle_, this);
 	myself_handle_->AddUpdateComponent<MyselfCollisionComponent>(this, myself_handle_, mediator);
+}
+
+void MainScene::FindNearestEnemy()
+{
+	//自機の位置
+	MatVec::Vector3 myself = myself_handle_->GetPosition();
+	//今までに見た敵機の中で，自機と最も近いものの，自機との距離二乗
+	double mind2 = 1e9;
+	//距離最小となる敵機
+	nearest_enemy_ = GameObjectHandle();
+	auto itr = enemies_.begin();
+	//死んでいるものチェックも同時に行う
+	while (itr != enemies_.begin())
+	{
+		if (!(*itr).IsValid())
+		{
+			itr = enemies_.erase(itr);
+		}
+		else {
+			MatVec::Vector3 pos = (*itr)->GetPosition();
+			pos -= myself;
+			double d2 = pos(0) * pos(0) + pos(1) * pos(1);
+			if (mind2 > d2)
+			{
+				mind2 = d2;
+				nearest_enemy_ = *itr;
+			}
+		}
+	}
+
 }

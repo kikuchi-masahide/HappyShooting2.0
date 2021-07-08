@@ -26,6 +26,15 @@ public:
 	//スコアを加算
 	void AddScore(int add);
 	int GetScore() const;
+	/// <summary>
+	/// 自機が狙いうる敵機の追加
+	/// </summary>
+	// TEST:敵機を追加したらテスト
+	void AddDirectableEnemy(GameObjectHandle enemy);
+	/// <summary>
+	/// 自機から最も近い敵機を返す(誰もいないならnull)
+	/// </summary>
+	GameObjectHandle GetNearestEnemy();
 private:
 	//持っているレイヤーの内描画するもの
 	LayerHandle<MainSceneBaseLayer> active_layer_;
@@ -41,4 +50,9 @@ private:
 	void AddMyself();
 	//現在のスコア
 	int score_;
+	std::list<GameObjectHandle> enemies_;
+	//前フレーム終了時での，自機に最も近かった敵機
+	GameObjectHandle nearest_enemy_;
+	//フレーム終わりで時期に最も近い敵機を見つける
+	void FindNearestEnemy();
 };
