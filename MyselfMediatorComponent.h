@@ -1,6 +1,8 @@
 #pragma once
 #include "Component.h"
 
+#include "GameObject.h"
+
 class MainScene;
 class DrawTextureComponent;
 
@@ -12,7 +14,7 @@ class MyselfMediatorComponent :
     public Component
 {
 public:
-    MyselfMediatorComponent(ComponentHandle<DrawTextureComponent> draw_texture_component, MainScene* scene);
+    MyselfMediatorComponent(GameObjectHandle myself, MainScene* scene);
     void Update() override;
     /// <summary>
     /// 自機にダメージを与える
@@ -29,5 +31,6 @@ private:
     //攻撃を受けた状況によって自身のαを変える
     void SetMyselfAlpha();
     MainScene* scene_;
+    GameObjectHandle myself_;
 };
 

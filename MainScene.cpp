@@ -6,8 +6,6 @@
 #include "MyselfPosAndAngleComponent.h"
 #include "MyselfMediatorComponent.h"
 #include "DrawNormalBulletComponent.h"
-#include "MyselfAddNormalBulletComponent.h"
-#include "MyselfCollisionComponent.h"
 
 MainScene::MainScene(Game* game)
 	:Scene(game),layer_from_next_tick_(999)
@@ -80,19 +78,16 @@ GameObjectHandle MainScene::GetNearestEnemy()
 void MainScene::AddMyself()
 {
 	myself_handle_ = AddObject(MatVec::Vector2(0, -275), 1.0, 0.0);
-	auto draw_texture_component = myself_handle_->AddOutputComponent<DrawTextureComponent>(this, 4, myself_handle_);
-	draw_texture_component->width_ = 40;
-	draw_texture_component->height_ = 40;
+	//このコンポーネントのみMainSceneが知っておかなければならないのでここで追加
 	myself_pos_angle_handle_ = myself_handle_->AddUpdateComponent<MyselfPosAndAngleComponent>(myself_handle_, this);
-	auto mediator = myself_handle_->AddUpdateComponent<MyselfMediatorComponent>(draw_texture_component,this);
-	myself_handle_->AddUpdateComponent<MyselfAddNormalBulletComponent>(myself_handle_, this);
-	myself_handle_->AddUpdateComponent<MyselfCollisionComponent>(this, myself_handle_, mediator);
+	//他のコンポーネントの追加はメディエータに任せる
+	myself_handle_->AddUpdateComponent<MyselfMediatorComponent>(myself_handle_,this);
 }
 
 void MainScene::FindNearestEnemy()
 {
 	//自機の位置
-	MatVec::Vector3 myself = myself_handle_->GetPosition();
+	MatVec::Vector2 myself = myself_handle_->GetPosition();
 	//今までに見た敵機の中で，自機と最も近いものの，自機との距離二乗
 	double mind2 = 1e9;
 	//距離最小となる敵機
@@ -106,7 +101,7 @@ void MainScene::FindNearestEnemy()
 			itr = enemies_.erase(itr);
 		}
 		else {
-			MatVec::Vector3 pos = (*itr)->GetPosition();
+			MatVec::Vector2 pos = (*itr)->GetPosition();
 			pos -= myself;
 			double d2 = pos(0) * pos(0) + pos(1) * pos(1);
 			if (mind2 > d2)
