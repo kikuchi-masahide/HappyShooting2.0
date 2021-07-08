@@ -85,6 +85,15 @@
     <Filter Include="Helper\HNumberDraw">
       <UniqueIdentifier>{5aafbd12-8ca9-405b-ab16-c35530c6d481}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\LinearRotateComponent">
+      <UniqueIdentifier>{77147f20-87a8-4304-b4ff-b3717aacd559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\CollisionComponent\Enemy1CollisionComponent">
+      <UniqueIdentifier>{0e409ff0-f1f1-4a67-8194-ae0e2efba72b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\EnemyHealthComponent">
+      <UniqueIdentifier>{e168a6cc-f142-4383-9573-920e2b2fd08d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -220,6 +229,15 @@
     </ClCompile>
     <ClCompile Include="HNumberDraw.cpp">
       <Filter>Helper\HNumberDraw</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearRotateComponent.cpp">
+      <Filter>MainScene\LinearRotateComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy1CollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\Enemy1CollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyHealthComponent.cpp">
+      <Filter>MainScene\EnemyHealthComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -376,6 +394,15 @@
     </ClInclude>
     <ClInclude Include="HNumberDraw.h">
       <Filter>Helper\HNumberDraw</Filter>
+    </ClInclude>
+    <ClInclude Include="LinearRotateComponent.h">
+      <Filter>MainScene\LinearRotateComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy1CollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\Enemy1CollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyHealthComponent.h">
+      <Filter>MainScene\EnemyHealthComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

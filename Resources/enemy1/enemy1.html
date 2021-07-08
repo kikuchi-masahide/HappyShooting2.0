@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>resource</title>
+    </head>
+    <body>
+        <canvas id = "canvas" width = "40" height = "40"></canvas>
+        <script>
+            const context=document.getElementById("canvas").getContext("2d");
+            context.fillStyle = "black";
+            context.clearRect(0,0,40,40);
+            context.beginPath();
+            for(let j = 0;j < 3;j++)
+            {
+                let theta = 2*Math.PI*j/3;
+                let center_x = 20+2*8*Math.cos(theta)/Math.sqrt(3);
+                let center_y = 20+2*8*Math.sin(theta)/Math.sqrt(3);
+                context.arc(center_x,center_y,8,2*Math.PI,false);
+            }
+            context.arc(20,20,4,Math.PI*2,false);
+            context.closePath();
+            context.fill();
+
+
+    console.log(width);
+</script>
+    </body>
+</html>

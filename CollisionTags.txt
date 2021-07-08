@@ -1,0 +1,3 @@
+MyselfCollisionComponent 0
+自機弾 1
+Enemy1CollisionComponent 2

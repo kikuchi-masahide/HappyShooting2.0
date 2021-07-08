@@ -6,6 +6,11 @@
 #include "MyselfPosAndAngleComponent.h"
 #include "MyselfMediatorComponent.h"
 #include "DrawNormalBulletComponent.h"
+#include "LinearMoveComponent.h"
+#include "LinearRotateComponent.h"
+#include "Enemy1CollisionComponent.h"
+#include "EnemyHealthComponent.h"
+#include "DrawTextureComponent.h"
 
 MainScene::MainScene(Game* game)
 	:Scene(game),layer_from_next_tick_(999)
@@ -22,6 +27,21 @@ MainScene::MainScene(Game* game)
 
 	//UIScreen
 	AddUIScreen<MainSceneUIScreen>(this);
+
+	//enemy1 test
+	double dist = sqrt(
+		300 * 300 + 450 * 450
+	);
+	double speedx = -dist * 2 / 120 / 5;
+	double speedy = -dist * 3 / 120 / 5;
+	auto e1 = AddObject(MatVec::Vector2(0, 450) + MatVec::Vector2(speedx, speedy) * 10, 1.0, 0.0);
+	e1->AddUpdateComponent<LinearMoveComponent>(e1, MatVec::Vector2(speedx, speedy), dist / 120 * 5);
+	e1->AddUpdateComponent<LinearRotateComponent>(e1, PI / 60);
+	auto health = e1->AddUpdateComponent<EnemyHealthComponent>(this, e1, 100);
+	e1->AddUpdateComponent<Enemy1CollisionComponent>(this, e1, health);
+	auto texture = e1->AddOutputComponent<DrawTextureComponent>(this, 7, e1);
+	texture->width_ = 40;
+	texture->height_ = 40;
 }
 
 void MainScene::UniqueUpdate()

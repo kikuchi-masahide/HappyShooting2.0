@@ -12,6 +12,11 @@ CircleGeometry::CircleGeometry(const CircleGeometry& circle)
 {
 }
 
+CircleGeometry::CircleGeometry()
+	:center_(MatVec::Vector2(0,0)),radius_(0),ICollisionGeometry(ComponentHandle<CollisionComponent>())
+{
+}
+
 CircleGeometry::~CircleGeometry()
 {
 }

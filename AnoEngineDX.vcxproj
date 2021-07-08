@@ -175,6 +175,8 @@
     <ClCompile Include="DX12RootSignature.cpp" />
     <ClCompile Include="DX12ShaderObject.cpp" />
     <ClCompile Include="DX12SwapChain.cpp" />
+    <ClCompile Include="Enemy1CollisionComponent.cpp" />
+    <ClCompile Include="EnemyHealthComponent.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectHandle.cpp" />
@@ -185,6 +187,7 @@
     <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="LinearMoveComponent.cpp" />
+    <ClCompile Include="LinearRotateComponent.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainScene.cpp" />
@@ -230,6 +233,8 @@
     <ClInclude Include="DX12ShaderObject.h" />
     <ClInclude Include="DX12SwapChain.h" />
     <ClInclude Include="DX12VertexLayoutUnit.h" />
+    <ClInclude Include="Enemy1CollisionComponent.h" />
+    <ClInclude Include="EnemyHealthComponent.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectHandle.h" />
@@ -242,6 +247,7 @@
     <ClInclude Include="Layer.h" />
     <ClInclude Include="LayerHandle.h" />
     <ClInclude Include="LinearMoveComponent.h" />
+    <ClInclude Include="LinearRotateComponent.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="MainSceneBaseLayer.h" />

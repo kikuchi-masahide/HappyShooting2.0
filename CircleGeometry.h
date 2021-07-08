@@ -8,6 +8,7 @@ class CircleGeometry final:
 public:
     CircleGeometry(ComponentHandle<CollisionComponent> parent_comp, MatVec::Vector2 center, double radius);
     CircleGeometry(const CircleGeometry& circle);
+    CircleGeometry();
     ~CircleGeometry();
     MatVec::Vector2 center_;
     double radius_;
