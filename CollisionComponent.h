@@ -15,16 +15,20 @@ public:
     const unsigned int tag_;
     unsigned int GetDamage();
     /// <summary>
-    /// 前フレームの更新結果衝突したcomponent全体
+    /// CollisionManagerに自身の持つ幾何図形を追加する
+    /// (単純なコピーとして追加するので，座標の更新はすべて終わらせておく必要がある)
     /// </summary>
-    std::vector<ComponentHandle<CollisionComponent>> hit_comps_;
     virtual void Update() = 0;
     /// <summary>
-    /// CollisionManagerに自身の持つ幾何図形を追加する
-    /// CollisionManager::AddCollisionComponentで自身を登録すると，この関数がCollisionManagerの当たり判定直前に呼び出される，
+    /// CheckHitComponent実行時，このsetに衝突した全CollisionComponentが納められる
     /// </summary>
-    /// <param name="manager">このコンポーネントが登録されたCollisionManager</param>
-    virtual void AddGeometryToManager(CollisionManager& manager) = 0;
+    std::set<ComponentHandle<CollisionComponent>> hit_comps_;
+    /// <summary>
+    /// CollisionComponentと衝突した際の処理
+    /// CollisionManagerがTraverseAll()をしている最中に呼び出される
+    /// </summary>
+    /// <param name="hit_comps">衝突した全CollisionComponent</param>
+    virtual void CheckHitComponent() = 0;
 protected:
     unsigned int damage_;
 };

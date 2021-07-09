@@ -20,7 +20,7 @@ public:
     static constexpr unsigned int damage_ = 200;
     ~MyselfCollisionComponent();
     void Update() override;
-    void AddGeometryToManager(CollisionManager& manager) override;
+    void CheckHitComponent() override;
     //“–‚½‚è”»’è‰~‚Ì”¼Œa
     static constexpr double circle_radius_ = 0.01;
 private:

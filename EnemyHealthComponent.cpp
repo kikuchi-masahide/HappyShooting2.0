@@ -12,16 +12,18 @@ EnemyHealthComponent::~EnemyHealthComponent()
 {
 }
 
-void EnemyHealthComponent::Damage(double damage)
+double EnemyHealthComponent::Damage(double damage)
 {
-	health_ -= damage;
-}
-
-void EnemyHealthComponent::Update()
-{
+	double real_damage = min(health_, damage);
+	health_ -= real_damage;
 	if (health_ <= 0)
 	{
 		object_->SetDeleteFlag();
 		// TODO:消滅エフェクトの追加
 	}
+	return real_damage;
+}
+
+void EnemyHealthComponent::Update()
+{
 }

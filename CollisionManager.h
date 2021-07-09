@@ -14,17 +14,11 @@ public:
 	CollisionManager();
 	~CollisionManager();
 	/// <summary>
-	/// 当たり判定すべきcomponentを追加(フレームごとに呼び出す)
-	/// </summary>
-	void AddCollisionComponent(ComponentHandle<CollisionComponent> collision_comp);
-	/// <summary>
 	/// 全componentが持つ図形同士の当たり判定を実行し，componentに衝突したcomponentを教える
 	/// </summary>
 	void TraverseAll();
 	std::vector<CircleGeometry> circles_;
 private:
-	//当たり判定すべきcomponent全体(各フレームでリセット)
-	std::vector<ComponentHandle<CollisionComponent>> collision_comps_;
 	//この幾何図形配列をAABB左x昇順でソートしたのち，左xがこの図形のそれ以上である図形との当たり判定を行う．
 	template<class T,class U>
 	void TraverseAllSub(T& geometry,std::vector<U>& geometry_arr);

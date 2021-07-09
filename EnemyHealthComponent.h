@@ -18,9 +18,10 @@ public:
     ~EnemyHealthComponent();
     /// <summary>
     /// ダメージを与える
-    /// 当たり判定から呼び出される
+    /// 主にCollisionComponent::CheckHitComponentから呼び出される
     /// </summary>
-    void Damage(double damage);
+    /// <returns>実際に喰らったダメージ(体力100で200ダメの弾を当てられると実ダメージは100)</returns>
+    double Damage(double damage);
     /// <summary>
     /// 体力チェック
     /// </summary>

@@ -88,9 +88,16 @@ public:
 	}
 	//指しているコンポーネントが同じならば等しい
 	bool operator==(const ComponentHandle<T>&handle);
+	bool operator<(const ComponentHandle<T>& handle)
+	{
+		return mComp < handle.mComp;
+	}
 private:
 	//ハンドルが指すコンポーネント
 	T* mComp;
+	//本当はやりたくない
+	template<class U>
+	friend bool operator<(const ComponentHandle<U>& handle1, const ComponentHandle<U>& handle2);
 	//mCompを指すハンドルのsetのポインタ(void*を使うのはできればやめたい)
 	std::set<void*>* mHandleSet;
 };
@@ -99,4 +106,11 @@ template<class T>
 inline bool ComponentHandle<T>::operator==(const ComponentHandle<T>& handle)
 {
 	return (mComp == handle.mComp);
+}
+
+template<class T>
+//std::set等などで使う際の予備
+bool operator<(const ComponentHandle<T>& handle1, const ComponentHandle<T>& handle2)
+{
+	return (handle1.mComp < handle2.mComp);
 }

@@ -18,22 +18,7 @@ Enemy1CollisionComponent::~Enemy1CollisionComponent()
 
 void Enemy1CollisionComponent::Update()
 {
-	for (auto comp : hit_comps_)
-	{
-		//Ž©‹@‚Ü‚½‚ÍŽ©‹@’e‚Æ‚ÌÕ“Ë
-		if (comp->tag_ == 0 || comp->tag_ == 1)
-		{
-			auto damage = comp->GetDamage();
-			health_component_->Damage(damage);
-			scene_->AddScore(damage);
-		}
-	}
-	hit_comps_.clear();
-	scene_->collision_manager_.AddCollisionComponent(This<CollisionComponent>());
-}
-
-void Enemy1CollisionComponent::AddGeometryToManager(CollisionManager& manager)
-{
+	auto& manager = scene_->collision_manager_;
 	MatVec::Vector2 center = object_->GetPosition();
 	double angle = object_->GetRotation();
 	double dist = (double)(2 * 8) / sqrt(3);
@@ -47,5 +32,19 @@ void Enemy1CollisionComponent::AddGeometryToManager(CollisionManager& manager)
 	manager.circles_.push_back(CircleGeometry(
 		This<CollisionComponent>(), center, 4
 	));
+}
+
+void Enemy1CollisionComponent::CheckHitComponent()
+{
+	for (auto comp : hit_comps_)
+	{
+		//Ž©‹@‚Ü‚½‚ÍŽ©‹@’e‚Æ‚ÌÕ“Ë
+		if (comp->tag_ == 0 || comp->tag_ == 1)
+		{
+			auto damage = comp->GetDamage();
+			auto real_damage = health_component_->Damage(damage);
+			scene_->AddScore(real_damage);
+		}
+	}
 }
 

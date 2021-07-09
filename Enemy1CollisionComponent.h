@@ -18,7 +18,7 @@ public:
 	Enemy1CollisionComponent(MainScene* scene,GameObjectHandle object,ComponentHandle<EnemyHealthComponent> health);
 	~Enemy1CollisionComponent();
 	void Update() override;
-	void AddGeometryToManager(CollisionManager& manager) override;
+	void CheckHitComponent() override;
 	//Õ“Ë‚Ìƒ_ƒ[ƒW
 	static constexpr double damage_ = 200;
 private:

@@ -19,19 +19,17 @@ MyselfCollisionComponent::~MyselfCollisionComponent()
 
 void MyselfCollisionComponent::Update()
 {
+	//円の位置更新
+	geometry_.center_ = myself_->GetPosition();
+	scene_->collision_manager_.circles_.push_back(geometry_);
+}
+
+void MyselfCollisionComponent::CheckHitComponent()
+{
 	//一発でも当たっていたらダメージを喰らう
 	if (hit_comps_.size() > 0)
 	{
-		mediator_->CauseDamageToMyself(hit_comps_[0]->GetDamage());
+		auto itr = hit_comps_.begin();
+		mediator_->CauseDamageToMyself((*itr)->GetDamage());
 	}
-	hit_comps_.clear();
-
-	//円の位置更新
-	geometry_.center_ = myself_->GetPosition();
-	scene_->collision_manager_.AddCollisionComponent(This<CollisionComponent>());
-}
-
-void MyselfCollisionComponent::AddGeometryToManager(CollisionManager& manager)
-{
-	manager.circles_.push_back(geometry_);
 }
