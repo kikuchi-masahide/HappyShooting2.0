@@ -6,6 +6,8 @@ class TitleScene :public Scene
 public:
 	TitleScene(Game* _game);
 	~TitleScene();
-	void UniqueUpdate();
-	void UniqueOutput();
+	void PriorUniqueUpdate() override;
+	void PosteriorUniqueUpdate() override;
+	void PriorUniqueOutput() override;
+	void PosteriorUniqueOutput() override;
 };

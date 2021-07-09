@@ -12,10 +12,18 @@ TitleScene::~TitleScene()
 {
 }
 
-void TitleScene::UniqueUpdate()
+void TitleScene::PriorUniqueUpdate()
 {
 }
 
-void TitleScene::UniqueOutput()
+void TitleScene::PosteriorUniqueUpdate()
+{
+}
+
+void TitleScene::PriorUniqueOutput()
+{
+}
+
+void TitleScene::PosteriorUniqueOutput()
 {
 }

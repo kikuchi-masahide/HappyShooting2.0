@@ -8,8 +8,10 @@ class MainScene :public Scene
 {
 public:
 	MainScene(Game* game);
-	void UniqueUpdate();
-	void UniqueOutput();
+	void PriorUniqueUpdate() override;
+	void PosteriorUniqueUpdate() override;
+	void PriorUniqueOutput() override;
+	void PosteriorUniqueOutput() override;
 	~MainScene();
 	/// <summary>
 	/// 今アクティブなレイヤーに描画コンポーネントを追加

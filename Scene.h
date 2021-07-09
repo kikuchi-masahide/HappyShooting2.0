@@ -21,7 +21,14 @@ public:
 	/// 更新関数
 	/// </summary>
 	void Update(InputSystem* _input);
-	virtual void UniqueUpdate();
+	/// <summary>
+	/// GameObjectやUIScreenや更新処理の前に実行される，override可能な独自処理
+	/// </summary>
+	virtual void PriorUniqueUpdate();
+	/// <summary>
+	/// GameObjectやUIScreenや更新処理の後に実行される，override可能な独自処理
+	/// </summary>
+	virtual void PosteriorUniqueUpdate();
 	/// <summary>
 	/// 出力関数 処理詳細:
 	/// OutputComponentsのUpdate()実行
@@ -30,7 +37,15 @@ public:
 	/// DeleteFlagの立つGameObject，Component，Layerの削除と保留していたものの追加
 	/// </summary>
 	void Output();
-	virtual void UniqueOutput();
+	/// <summary>
+	/// GameObject等のUpdateの前に実行される，override可能な独自処理
+	/// </summary>
+	virtual void PriorUniqueOutput();
+	/// <summary>
+	/// GameObject等のUpdateの後に実行される，override可能な独自処理
+	/// (このフレームでのGameObject，Component追加はまだ保留状態)
+	/// </summary>
+	virtual void PosteriorUniqueOutput();
 	GameObjectHandle AddObject(MatVec::Vector2 _pos, double _scale, double _angle);
 	Game &mGame;
 	bool GetDeleteFlag() const { return mDeleteFlag; };

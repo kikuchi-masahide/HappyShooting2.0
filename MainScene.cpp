@@ -44,7 +44,7 @@ MainScene::MainScene(Game* game)
 	texture->height_ = 40;
 }
 
-void MainScene::UniqueUpdate()
+void MainScene::PriorUniqueUpdate()
 {
 	//ÉåÉCÉÑÅ[ÇÃì¸ÇÍë÷Ç¶
 	if (layer_from_next_tick_ != 999)
@@ -58,9 +58,17 @@ void MainScene::UniqueUpdate()
 	collision_manager_.TraverseAll();
 }
 
-void MainScene::UniqueOutput()
+void MainScene::PosteriorUniqueUpdate()
 {
 	FindNearestEnemy();
+}
+
+void MainScene::PriorUniqueOutput()
+{
+}
+
+void MainScene::PosteriorUniqueOutput()
+{
 }
 
 MainScene::~MainScene()

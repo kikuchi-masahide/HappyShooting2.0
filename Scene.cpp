@@ -18,6 +18,8 @@ void Scene::Update(InputSystem* _input)
 	mInputSystem = _input;
 	//ここからしばらくの間，追加されるオブジェクト・コンポーネントは保留に入れる
 	mIsObjCompAddable = false;
+	//優先度の高い，独自更新処理
+	PriorUniqueUpdate();
 	//UIScreenにブロックされてなければUpdateを実行
 	if (mUpdateFlagForComps)
 	{
@@ -25,17 +27,24 @@ void Scene::Update(InputSystem* _input)
 		LaunchUpdateComponents();
 	}
 	LaunchUIScreenUpdate();
-	UniqueUpdate();
+	PosteriorUniqueUpdate();
 }
 
-void Scene::UniqueUpdate() {}
+void Scene::PriorUniqueUpdate()
+{
+}
+
+void Scene::PosteriorUniqueUpdate()
+{
+}
 
 void Scene::Output()
 {
+	PriorUniqueOutput();
 	LaunchOutputComponents();
 	OutputLayer();
 	LaunchOutputUIScreens();
-	UniqueOutput();
+	PosteriorUniqueOutput();
 	mGame.mdx12.ProcessCommands();
 	mIsObjCompAddable = true;
 	//保留していたオブジェクト・コンポーネントの処理を行う
@@ -44,7 +53,13 @@ void Scene::Output()
 	DeleteAndProcessPandingUIScreen();
 }
 
-void Scene::UniqueOutput() {}
+void Scene::PriorUniqueOutput()
+{
+}
+
+void Scene::PosteriorUniqueOutput()
+{
+}
 
 GameObjectHandle Scene::AddObject(MatVec::Vector2 _pos, double _scale, double _angle)
 {
