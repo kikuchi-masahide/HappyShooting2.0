@@ -94,6 +94,9 @@
     <Filter Include="MainScene\EnemyHealthComponent">
       <UniqueIdentifier>{e168a6cc-f142-4383-9573-920e2b2fd08d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\TimerComponent">
+      <UniqueIdentifier>{52f96d29-1727-4908-be9b-b3c8b590ebde}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -238,6 +241,9 @@
     </ClCompile>
     <ClCompile Include="EnemyHealthComponent.cpp">
       <Filter>MainScene\EnemyHealthComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerComponent.cpp">
+      <Filter>MainScene\TimerComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -403,6 +409,9 @@
     </ClInclude>
     <ClInclude Include="EnemyHealthComponent.h">
       <Filter>MainScene\EnemyHealthComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerComponent.h">
+      <Filter>MainScene\TimerComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

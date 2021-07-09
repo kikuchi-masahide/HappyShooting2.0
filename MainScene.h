@@ -55,4 +55,6 @@ private:
 	GameObjectHandle nearest_enemy_;
 	//フレーム終わりで時期に最も近い敵機を見つける
 	void FindNearestEnemy();
+	//enemy1群のみこちらで準備する
+	void PrepareEnemy1();
 };

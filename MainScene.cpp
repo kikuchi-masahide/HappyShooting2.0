@@ -11,12 +11,16 @@
 #include "Enemy1CollisionComponent.h"
 #include "EnemyHealthComponent.h"
 #include "DrawTextureComponent.h"
+#include "TimerComponent.h"
 
 MainScene::MainScene(Game* game)
 	:Scene(game),layer_from_next_tick_(999)
 {
 	//é©ã@í«â¡
 	AddMyself();
+
+	//enemy1åQí«â¡
+	PrepareEnemy1();
 
 	//ÉåÉCÉÑÅ[
 	auto layer0 = AddLayer<MainSceneBasicLayer>(this,myself_pos_angle_handle_);
@@ -27,21 +31,6 @@ MainScene::MainScene(Game* game)
 
 	//UIScreen
 	AddUIScreen<MainSceneUIScreen>(this);
-
-	//enemy1 test
-	double dist = sqrt(
-		300 * 300 + 450 * 450
-	);
-	double speedx = -dist * 2 / 600;
-	double speedy = -dist * 3 / 600;
-	auto e1 = AddObject(MatVec::Vector2(0, 450) - MatVec::Vector2(speedx, speedy) * 5, 1.0, 0.0);
-	e1->AddUpdateComponent<LinearMoveComponent>(e1, MatVec::Vector2(speedx, speedy), dist / 120 * 5);
-	e1->AddUpdateComponent<LinearRotateComponent>(e1, PI / 60);
-	auto health = e1->AddUpdateComponent<EnemyHealthComponent>(this, e1, 100);
-	e1->AddUpdateComponent<Enemy1CollisionComponent>(this, e1, health);
-	auto texture = e1->AddOutputComponent<DrawTextureComponent>(this, 7, e1);
-	texture->width_ = 40;
-	texture->height_ = 40;
 }
 
 void MainScene::PriorUniqueUpdate()
@@ -142,4 +131,28 @@ void MainScene::FindNearestEnemy()
 		}
 	}
 
+}
+
+void MainScene::PrepareEnemy1()
+{
+	auto lambda = [](MainScene* scene) {
+		double dist = sqrt(
+			300 * 300 + 450 * 450
+		);
+		double speedx = -dist * 2 / 600;
+		double speedy = -dist * 3 / 600;
+		auto e1 = scene->AddObject(MatVec::Vector2(0, 450) - MatVec::Vector2(speedx, speedy) * 5, 1.0, 0.0);
+		e1->AddUpdateComponent<LinearMoveComponent>(e1, MatVec::Vector2(speedx, speedy), dist / 120 * 5);
+		e1->AddUpdateComponent<LinearRotateComponent>(e1, PI / 60);
+		auto health = e1->AddUpdateComponent<EnemyHealthComponent>(scene, e1, 100);
+		e1->AddUpdateComponent<Enemy1CollisionComponent>(scene, e1, health);
+		auto texture = e1->AddOutputComponent<DrawTextureComponent>(scene, 7, e1);
+		texture->width_ = 40;
+		texture->height_ = 40;
+	};
+	for (unsigned int n = 0; n < 9; n++)
+	{
+		auto obj = AddObject(MatVec::Vector2(), 1.0, 0.0);
+		obj->AddUpdateComponent<TimerComponent>(this, obj, 30 + 20 * n, lambda);
+	}
 }
