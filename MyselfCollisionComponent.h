@@ -16,8 +16,8 @@ class MyselfCollisionComponent :
 public:
     MyselfCollisionComponent(MainScene* scene, GameObjectHandle myself, ComponentHandle<MyselfMediatorComponent> mediator);
     //Ž©‹@‚Ì“–‚½‚è”»’è˜g‚Ìƒ^ƒO
-    const unsigned int myself_tag_ = 0;
-    const unsigned int damage_ = 0;
+    static constexpr unsigned int myself_tag_ = 0;
+    static constexpr unsigned int damage_ = 200;
     ~MyselfCollisionComponent();
     void Update() override;
     void AddGeometryToManager(CollisionManager& manager) override;

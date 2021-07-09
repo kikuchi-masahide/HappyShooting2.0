@@ -20,9 +20,7 @@ public:
 	/// </summary>
 	void SwapLayer(unsigned int ind);
 	//自機が含まれる方のCollisionManager
-	CollisionManager collision_myself_;
-	//敵機が含まれる方のCollisionManager
-	CollisionManager collision_enemy_;
+	CollisionManager collision_manager_;
 	//スコアを加算
 	void AddScore(int add);
 	int GetScore() const;

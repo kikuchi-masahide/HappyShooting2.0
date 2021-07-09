@@ -28,7 +28,7 @@ void MyselfCollisionComponent::Update()
 
 	//‰~‚ÌˆÊ’uXV
 	geometry_.center_ = myself_->GetPosition();
-	scene_->collision_myself_.AddCollisionComponent(This<CollisionComponent>());
+	scene_->collision_manager_.AddCollisionComponent(This<CollisionComponent>());
 }
 
 void MyselfCollisionComponent::AddGeometryToManager(CollisionManager& manager)

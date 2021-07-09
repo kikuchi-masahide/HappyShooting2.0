@@ -4,7 +4,7 @@
 #include "MainScene.h"
 
 EnemyHealthComponent::EnemyHealthComponent(MainScene* scene, GameObjectHandle object, double health0)
-	:Component(50),health_(health0),scene_(scene)
+	:Component(50),health_(health0),scene_(scene),object_(object)
 {
 }
 

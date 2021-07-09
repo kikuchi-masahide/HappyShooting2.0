@@ -23,11 +23,13 @@ void Enemy1CollisionComponent::Update()
 		//Ž©‹@‚Ü‚½‚ÍŽ©‹@’e‚Æ‚ÌÕ“Ë
 		if (comp->tag_ == 0 || comp->tag_ == 1)
 		{
-			health_component_->Damage(comp->GetDamage());
+			auto damage = comp->GetDamage();
+			health_component_->Damage(damage);
+			scene_->AddScore(damage);
 		}
 	}
 	hit_comps_.clear();
-	scene_->collision_myself_.AddCollisionComponent(This<CollisionComponent>());
+	scene_->collision_manager_.AddCollisionComponent(This<CollisionComponent>());
 }
 
 void Enemy1CollisionComponent::AddGeometryToManager(CollisionManager& manager)

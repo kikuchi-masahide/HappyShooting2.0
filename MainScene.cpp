@@ -32,9 +32,9 @@ MainScene::MainScene(Game* game)
 	double dist = sqrt(
 		300 * 300 + 450 * 450
 	);
-	double speedx = -dist * 2 / 120 / 5;
-	double speedy = -dist * 3 / 120 / 5;
-	auto e1 = AddObject(MatVec::Vector2(0, 450) + MatVec::Vector2(speedx, speedy) * 10, 1.0, 0.0);
+	double speedx = -dist * 2 / 600;
+	double speedy = -dist * 3 / 600;
+	auto e1 = AddObject(MatVec::Vector2(0, 450) - MatVec::Vector2(speedx, speedy) * 5, 1.0, 0.0);
 	e1->AddUpdateComponent<LinearMoveComponent>(e1, MatVec::Vector2(speedx, speedy), dist / 120 * 5);
 	e1->AddUpdateComponent<LinearRotateComponent>(e1, PI / 60);
 	auto health = e1->AddUpdateComponent<EnemyHealthComponent>(this, e1, 100);
@@ -54,6 +54,8 @@ void MainScene::UniqueUpdate()
 		active_layer_->SetActive();
 		layer_from_next_tick_ = 999;
 	}
+
+	collision_manager_.TraverseAll();
 }
 
 void MainScene::UniqueOutput()
