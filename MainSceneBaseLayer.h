@@ -43,6 +43,7 @@ protected:
 	//このコンポーネントに毎tickレイヤーの変形を通知
 	ComponentHandle<MyselfPosAndAngleComponent> myself_pos_component_;
 private:
+	//TODO:z座標でソート!!!!!!!!!!!!!!!!
 	std::vector<ComponentHandle<MainSceneDrawComponent>> draw_components_;
 	//このレイヤーがアクティブになってから何度目のフレームか
 	//(1回目にUniqueDrawが呼び出されたときが0)

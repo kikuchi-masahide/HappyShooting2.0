@@ -97,6 +97,9 @@
     <Filter Include="MainScene\TimerComponent">
       <UniqueIdentifier>{52f96d29-1727-4908-be9b-b3c8b590ebde}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\MainSceneDrawComponent\DrawDeathEffectComponent">
+      <UniqueIdentifier>{72d61745-d3e2-4062-a710-d545b38eda8b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -244,6 +247,9 @@
     </ClCompile>
     <ClCompile Include="TimerComponent.cpp">
       <Filter>MainScene\TimerComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawDeathEffectComponent.cpp">
+      <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -413,6 +419,9 @@
     <ClInclude Include="TimerComponent.h">
       <Filter>MainScene\TimerComponent</Filter>
     </ClInclude>
+    <ClInclude Include="DrawDeathEffectComponent.h">
+      <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="HTextureDrawInclude.hlsli">
@@ -429,6 +438,9 @@
     </None>
     <None Include="HNumberDraw_header.hlsli">
       <Filter>Helper\HNumberDraw</Filter>
+    </None>
+    <None Include="DrawDeathEffectComponent_header.hlsli">
+      <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -467,6 +479,12 @@
     </FxCompile>
     <FxCompile Include="HNumberDraw_pixel.hlsl">
       <Filter>Helper\HNumberDraw</Filter>
+    </FxCompile>
+    <FxCompile Include="DrawDeathEffectComponent_pixel.hlsl">
+      <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
+    </FxCompile>
+    <FxCompile Include="DrawDeathEffectComponent_vertex.hlsl">
+      <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

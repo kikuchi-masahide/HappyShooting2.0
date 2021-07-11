@@ -58,4 +58,6 @@ void LoadShaders(Game* _game)
 	_game->mShaderManager.LoadShader(L"DrawNormalBulletComponentPixelShader.hlsl", DX12Config::ShaderType::PIXEL, 9);
 	_game->mShaderManager.LoadShader(L"HNumberDraw_vertex.hlsl", DX12Config::ShaderType::VERTEX, 10);
 	_game->mShaderManager.LoadShader(L"HNumberDraw_pixel.hlsl", DX12Config::ShaderType::PIXEL, 11);
+	_game->mShaderManager.LoadShader(L"DrawDeathEffectComponent_vertex.hlsl", DX12Config::ShaderType::VERTEX, 12);
+	_game->mShaderManager.LoadShader(L"DrawDeathEffectComponent_pixel.hlsl", DX12Config::ShaderType::PIXEL, 13);
 }

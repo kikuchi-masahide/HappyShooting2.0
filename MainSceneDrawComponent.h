@@ -7,7 +7,7 @@ class MainSceneDrawComponent :public Component
 {
 public:
 	MainSceneDrawComponent(MainScene* scene);
-	void Update();
+	void Update() final;
 	virtual ~MainSceneDrawComponent();
 	/// <summary>
 	/// Updateでシーンに自分のハンドルが投げられた後レイヤーから呼び出される，描画機能本体を担う関数．SRVは開いているとしてよい．

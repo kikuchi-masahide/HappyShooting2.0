@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "EnemyHealthComponent.h"
+#include "DrawDeathEffectComponent.h"
 
 #include "MainScene.h"
 
@@ -19,7 +20,8 @@ double EnemyHealthComponent::Damage(double damage)
 	if (health_ <= 0)
 	{
 		object_->SetDeleteFlag();
-		// TODO:消滅エフェクトの追加
+		auto death_effect = scene_->AddObject(object_->GetPosition(), 1.0, 0.0);
+		death_effect->AddOutputComponent<DrawDeathEffectComponent>(scene_, death_effect);
 	}
 	return real_damage;
 }

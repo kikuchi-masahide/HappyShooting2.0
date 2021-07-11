@@ -12,6 +12,7 @@
 #include "EnemyHealthComponent.h"
 #include "DrawTextureComponent.h"
 #include "TimerComponent.h"
+#include "DrawDeathEffectComponent.h"
 
 MainScene::MainScene(Game* game)
 	:Scene(game),layer_from_next_tick_(999)

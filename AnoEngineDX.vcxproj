@@ -164,6 +164,7 @@
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="DrawDeathEffectComponent.cpp" />
     <ClCompile Include="DrawNormalBulletComponent.cpp" />
     <ClCompile Include="DrawTextureComponent.cpp" />
     <ClCompile Include="DX12.cpp" />
@@ -220,6 +221,7 @@
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentHandle.h" />
+    <ClInclude Include="DrawDeathEffectComponent.h" />
     <ClInclude Include="DrawNormalBulletComponent.h" />
     <ClInclude Include="DrawTextureComponent.h" />
     <ClInclude Include="DX12.h" />
@@ -273,6 +275,7 @@
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DrawDeathEffectComponent_header.hlsli" />
     <None Include="DrawNormalBulletComponentHeader.hlsli" />
     <None Include="HNumberDraw_header.hlsli" />
     <None Include="HTextureAlphaRotateDrawHeader.hlsli" />
@@ -280,6 +283,18 @@
     <None Include="MainSceneBasicLayerHeader.hlsli" />
   </ItemGroup>
   <ItemGroup>
+    <FxCompile Include="DrawDeathEffectComponent_pixel.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="DrawDeathEffectComponent_vertex.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
     <FxCompile Include="DrawNormalBulletComponentPixelShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
