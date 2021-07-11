@@ -100,6 +100,9 @@
     <Filter Include="MainScene\MainSceneDrawComponent\DrawDeathEffectComponent">
       <UniqueIdentifier>{72d61745-d3e2-4062-a710-d545b38eda8b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\CollisionComponent\BulletCollisionComponent">
+      <UniqueIdentifier>{e47263de-357c-4f8e-9782-dc6dee019436}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -250,6 +253,9 @@
     </ClCompile>
     <ClCompile Include="DrawDeathEffectComponent.cpp">
       <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletCollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\BulletCollisionComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -421,6 +427,9 @@
     </ClInclude>
     <ClInclude Include="DrawDeathEffectComponent.h">
       <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletCollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\BulletCollisionComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

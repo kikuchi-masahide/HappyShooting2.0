@@ -26,10 +26,13 @@ void MyselfCollisionComponent::Update()
 
 void MyselfCollisionComponent::CheckHitComponent()
 {
-	//一発でも当たっていたらダメージを喰らう
-	if (hit_comps_.size() > 0)
+	//敵弾，敵機が一発でも当たっていたらダメージを喰らう
+	for (auto comp : hit_comps_)
 	{
-		auto itr = hit_comps_.begin();
-		mediator_->CauseDamageToMyself((*itr)->GetDamage());
+		if (comp->tag_ == 2)
+		{
+			mediator_->CauseDamageToMyself(comp->GetDamage());
+			break;
+		}
 	}
 }
