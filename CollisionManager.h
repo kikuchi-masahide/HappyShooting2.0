@@ -17,41 +17,44 @@ public:
 	/// 全componentが持つ図形同士の当たり判定を実行し，componentに衝突したcomponentを教える
 	/// </summary>
 	void TraverseAll();
-	std::vector<CircleGeometry> circles_;
+	//CircleGeometryの追加
+	void AddCircleGeometry(CircleGeometry& circle);
 private:
-	//この幾何図形配列をAABB左x昇順でソートしたのち，左xがこの図形のそれ以上である図形との当たり判定を行う．
+	//geometryと，geometry.aabb.lx <= geometry_arr[e].aabb.lxなるgeometry_arr要素との当たり判定
 	template<class T,class U>
-	void TraverseAllSub(T& geometry,std::vector<U>& geometry_arr);
-	//幾何図形配列全体をAABB左x昇順でソートしたのち，左xがこの図形のそれ以上である図形との当たり判定を行う．
+	void TraverseAllSub_leq(T& geometry, Rect2& aabb, std::vector<std::pair<U, Rect2>>& geometry_arr);
+	//geometry_arr[ind]と，それ以降の同配列要素との当たり判定
 	template<class T>
-	void TraverseAllSub(T& geometry);
+	void TraverseAllSub_same(std::vector<std::pair<T, Rect2>>& geometry_arr, unsigned int ind);
+	//geometryと，geometry.aabb.lx < geometry_arr[e].aabb.lxなるgeometry_arr要素との当たり判定
+	template<class T,class U>
+	void TraverseAllSub_less(T& geometry, Rect2& aabb, std::vector<std::pair<U, Rect2>>& geometry_arr);
 	//comp1とcomp2のhit_comps_に，お互いを追加する
 	void NoticeEachOther(ComponentHandle<CollisionComponent> comp1, ComponentHandle<CollisionComponent> comp2);
+	std::vector<std::pair<CircleGeometry, Rect2>> circles_;
 };
 
 template<class T,class U>
-inline void CollisionManager::TraverseAllSub(T& geometry, std::vector<U>& geometry_arr)
+inline void CollisionManager::TraverseAllSub_leq(T& geometry, Rect2& aabb, std::vector<std::pair<U,Rect2>>& geometry_arr)
 {
-	Rect2 aabb = geometry.GetAABB();
-
 	//CircleGeometry
 	int s = -1, e = geometry_arr.size();
 	//geometry_arr[s].左x < aabb.左x <= geometry_arr[e].左x
 	while (e - s > 1)
 	{
 		int m = (e + s) / 2;
-		Rect2 aabb2 = geometry_arr[m].GetAABB();
+		Rect2& aabb2 = geometry_arr[m].second;
 		if (aabb2.GetLD()(0) < aabb.GetLD()(0))s = m;
 		else e = m;
 	}
 	//geometry_arr[e]～の図形との当たり判定
-	for (unsigned int n = e; n < geometry_arr.size(); n++)
+	for (unsigned int n = e,; n < geometry_arr.size(); n++)
 	{
-		U& geometry2 = geometry_arr[n];
+		U& geometry2 = geometry_arr[n].first;
+		Rect2& aabb2 = geometry_arr[n].second;
 		//geometryの右x<geometry2の左xになったら終了
-		if (aabb.GetRU()(0) < aabb.GetLD()(0))break;
+		if (aabb.GetRU()(0) < aabb2.GetLD()(0))break;
 		//AABBが重ならなければ次へ(y座標を見る)
-		Rect2 aabb2 = geometry2.GetAABB();
 		if (
 			aabb.GetRU()(1) < aabb2.GetLD()(1) ||
 			aabb2.GetRU()(1) < aabb.GetLD()(1)
@@ -68,7 +71,61 @@ inline void CollisionManager::TraverseAllSub(T& geometry, std::vector<U>& geomet
 }
 
 template<class T>
-inline void CollisionManager::TraverseAllSub(T& geometry)
+inline void CollisionManager::TraverseAllSub_same(std::vector<std::pair<T, Rect2>>& geometry_arr, unsigned int ind)
 {
-	TraverseAllSub(geometry, circles_);
+	T& geometry = geometry_arr[ind].first;
+	Rect2& aabb = geometry_arr[ind].second;
+	for (unsigned int n = ind + 1; n < geometry_arr.size(); n++)
+	{
+		T& geometry2 = geometry_arr[n].first;
+		Rect2& aabb2 = geometry_arr[n].second;
+		if (aabb.GetRU()(0) < aabb2.GetLD()(0))break;
+		if (
+			aabb.GetRU()(1) < aabb2.GetLD()(1) ||
+			aabb2.GetRU()(1) < aabb.GetLD()(1)
+			)continue;
+		ComponentHandle<CollisionComponent> parent = geometry.GetParent();
+		ComponentHandle<CollisionComponent> parent2 = geometry2.GetParent();
+		if (parent == parent2)continue;
+		if (geometry.IsCrossing(geometry2))
+		{
+			NoticeEachOther(parent, parent2);
+		}
+	}
+}
+
+template<class T, class U>
+inline void CollisionManager::TraverseAllSub_less(T& geometry, Rect2& aabb, std::vector<std::pair<U, Rect2>>& geometry_arr)
+{
+	//CircleGeometry
+	int s = -1, e = geometry_arr.size();
+	//geometry_arr[s].左x <= aabb.左x < geometry_arr[e].左x
+	while (e - s > 1)
+	{
+		int m = (e + s) / 2;
+		Rect2& aabb2 = geometry_arr[m].second;
+		if (aabb2.GetLD()(0) < aabb.GetLD()(0))s = m;
+		else e = m;
+	}
+	//geometry_arr[e]～の図形との当たり判定
+	for (unsigned int n = e, ; n < geometry_arr.size(); n++)
+	{
+		U& geometry2 = geometry_arr[n].first;
+		Rect2& aabb2 = geometry_arr[n].second;
+		//geometryの右x<geometry2の左xになったら終了
+		if (aabb.GetRU()(0) < aabb2.GetLD()(0))break;
+		//AABBが重ならなければ次へ(y座標を見る)
+		if (
+			aabb.GetRU()(1) < aabb2.GetLD()(1) ||
+			aabb2.GetRU()(1) < aabb.GetLD()(1)
+			)continue;
+		//同じコンポーネント内の図形同士は衝突させない
+		ComponentHandle<CollisionComponent> parent = geometry.GetParent();
+		ComponentHandle<CollisionComponent> parent2 = geometry2.GetParent();
+		if (parent == parent2)continue;
+		if (geometry.IsCrossing(geometry2))
+		{
+			NoticeEachOther(parent, parent2);
+		}
+	}
 }

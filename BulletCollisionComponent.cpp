@@ -17,7 +17,7 @@ BulletCollisionComponent::~BulletCollisionComponent()
 void BulletCollisionComponent::Update()
 {
 	CircleGeometry circle(This<CollisionComponent>(), obj_->GetPosition(), radius_);
-	scene_->collision_manager_.circles_.push_back(circle);
+	scene_->collision_manager_.AddCircleGeometry(circle);
 }
 
 void BulletCollisionComponent::CheckHitComponent()

@@ -21,7 +21,7 @@ void MyselfCollisionComponent::Update()
 {
 	//‰~‚ÌˆÊ’uXV
 	geometry_.center_ = myself_->GetPosition();
-	scene_->collision_manager_.circles_.push_back(geometry_);
+	scene_->collision_manager_.AddCircleGeometry(geometry_);
 }
 
 void MyselfCollisionComponent::CheckHitComponent()

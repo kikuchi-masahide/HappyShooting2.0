@@ -24,14 +24,16 @@ void Enemy1CollisionComponent::Update()
 	double dist = (double)(2 * 8) / sqrt(3);
 	for (unsigned int n = 0; n < 3; n++)
 	{
-		manager.circles_.push_back(CircleGeometry(
+		CircleGeometry circle(
 			This<CollisionComponent>(), MatVec::Vector2(center(0) + dist * cos(angle), center(1) + dist * sin(angle)), 8
-		));
+		);
+		manager.AddCircleGeometry(circle);
 		angle += 2 * PI / 3;
 	}
-	manager.circles_.push_back(CircleGeometry(
+	CircleGeometry circle(
 		This<CollisionComponent>(), center, 4
-	));
+	);
+	manager.AddCircleGeometry(circle);
 }
 
 void Enemy1CollisionComponent::CheckHitComponent()

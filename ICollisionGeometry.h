@@ -13,7 +13,7 @@ public:
 	:parent_comp_(parent_comp){};
 	virtual ~ICollisionGeometry() {};
 	//この図形を含む，辺がx,y軸に平行な長方形を返す
-	virtual Rect2 GetAABB() const = 0;
+	virtual inline Rect2 GetAABB() const = 0;
 	ComponentHandle<CollisionComponent> GetParent() const
 	{
 		return parent_comp_;

@@ -12,12 +12,12 @@ Rect2::Rect2(double lx, double rx, double dy, double uy)
 	mRU(1) = uy;
 }
 
-MatVec::Vector2 Rect2::GetLD()
+MatVec::Vector2 Rect2::GetLD() const
 {
 	return mLD;
 }
 
-MatVec::Vector2 Rect2::GetRU()
+MatVec::Vector2 Rect2::GetRU() const
 {
 	return mRU;
 }

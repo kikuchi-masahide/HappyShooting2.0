@@ -161,6 +161,14 @@ void Game::RunLoop()
 		{
 			UpdateGame();
 			millisec -= mTimeEps;
+			auto period = timeGetTime() - now;
+			if (period != 0)
+			{
+				std::string str;
+				str += std::to_string(timeGetTime() - now);
+				Log::OutputTrivial(str);
+			}
+			now = timeGetTime();
 		}
 		if (!GenerateOutput())return;
 	}

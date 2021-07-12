@@ -21,11 +21,6 @@ CircleGeometry::~CircleGeometry()
 {
 }
 
-Rect2 CircleGeometry::GetAABB() const
-{
-	return Rect2(center_(0) - radius_, center_(0) + radius_, center_(1) - radius_, center_(1) + radius_);
-}
-
 bool CircleGeometry::IsCrossing(const CircleGeometry& circle2)
 {
 	MatVec::Vector2 center2 = circle2.center_;
