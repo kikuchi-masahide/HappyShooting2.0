@@ -132,6 +132,8 @@ void Game::RunLoop()
 		itr->second->ShowWindow();
 	}
 	DWORD start = timeGetTime();
+	unsigned int counter = 0;
+	DWORD sum = 0;
 	//メッセージループ
 	while (true)
 	{
@@ -159,16 +161,20 @@ void Game::RunLoop()
 		ProcessInput();
 		while (millisec > mTimeEps)
 		{
+			counter++;
+			DWORD period = timeGetTime();
 			UpdateGame();
 			millisec -= mTimeEps;
-			auto period = timeGetTime() - now;
-			if (period != 0)
+			period = timeGetTime() - period;
+			sum += period;
+			if (counter == 100)
 			{
 				std::string str;
-				str += std::to_string(timeGetTime() - now);
+				str += std::to_string(static_cast<unsigned long long>(sum));
 				Log::OutputTrivial(str);
+				counter = 0;
+				sum = 0;
 			}
-			now = timeGetTime();
 		}
 		if (!GenerateOutput())return;
 	}
