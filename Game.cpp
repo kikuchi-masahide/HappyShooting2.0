@@ -164,13 +164,13 @@ void Game::RunLoop()
 			counter++;
 			DWORD period = timeGetTime();
 			UpdateGame();
-			period -= timeGetTime();
-			sum += period;
 			millisec -= mTimeEps;
+			period = timeGetTime() - period;
+			sum += period;
 			if (counter == 100)
 			{
 				std::string str;
-				str += std::to_string(sum);
+				str += std::to_string(static_cast<unsigned long long>(sum));
 				Log::OutputTrivial(str);
 				counter = 0;
 				sum = 0;
