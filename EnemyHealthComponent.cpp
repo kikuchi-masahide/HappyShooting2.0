@@ -4,8 +4,8 @@
 
 #include "MainScene.h"
 
-EnemyHealthComponent::EnemyHealthComponent(MainScene* scene, GameObjectHandle object, double health0)
-	:Component(50),health_(health0),scene_(scene),object_(object)
+EnemyHealthComponent::EnemyHealthComponent(GameObjectHandle handle, MainScene* scene, double health0)
+	:Component(handle,50),health_(health0),scene_(scene)
 {
 }
 
@@ -19,9 +19,9 @@ double EnemyHealthComponent::Damage(double damage)
 	health_ -= real_damage;
 	if (health_ <= 0)
 	{
-		object_->SetDeleteFlag();
-		auto death_effect = scene_->AddObject(object_->GetPosition(), 1.0, 0.0);
-		death_effect->AddOutputComponent<DrawDeathEffectComponent>(scene_, death_effect);
+		mObj->SetDeleteFlag();
+		auto death_effect = scene_->AddObject(mObj->GetPosition(), 1.0, 0.0);
+		death_effect->AddOutputComponent<DrawDeathEffectComponent>(scene_);
 	}
 	return real_damage;
 }

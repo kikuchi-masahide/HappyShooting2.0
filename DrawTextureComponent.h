@@ -11,7 +11,7 @@ class DrawTextureComponent :
     public MainSceneDrawComponent
 {
 public:
-    DrawTextureComponent(MainScene* scene,unsigned int texture_id,GameObjectHandle object);
+    DrawTextureComponent(GameObjectHandle object, MainScene* scene, unsigned int texture_id);
     ~DrawTextureComponent();
     virtual void Draw();
     //描画中心の，オブジェクトの中心座標からのオフセット
@@ -26,7 +26,5 @@ public:
     double height_;
 private:
     HTextureAlphaRotateDraw draw_helper_;
-    //親オブジェクト
-    GameObjectHandle object_;
 };
 

@@ -3,8 +3,8 @@
 
 #include "EnemyHealthComponent.h"
 
-Enemy1CollisionComponent::Enemy1CollisionComponent(MainScene* scene, GameObjectHandle object, ComponentHandle<EnemyHealthComponent> health)
-	:CollisionComponent(100,2,damage_),scene_(scene),object_(object),health_component_(health)
+Enemy1CollisionComponent::Enemy1CollisionComponent(GameObjectHandle object, MainScene* scene, ComponentHandle<EnemyHealthComponent> health)
+	:CollisionComponent(object, 100, 2, damage_),scene_(scene),health_component_(health)
 {
 	circle_around_[0].radius_ = 8;
 	circle_around_[1].radius_ = 8;
@@ -19,8 +19,8 @@ Enemy1CollisionComponent::~Enemy1CollisionComponent()
 void Enemy1CollisionComponent::Update()
 {
 	auto& manager = scene_->collision_manager_;
-	MatVec::Vector2 center = object_->GetPosition();
-	double angle = object_->GetRotation();
+	MatVec::Vector2 center = mObj->GetPosition();
+	double angle = mObj->GetRotation();
 	double dist = (double)(2 * 8) / sqrt(3);
 	for (unsigned int n = 0; n < 3; n++)
 	{

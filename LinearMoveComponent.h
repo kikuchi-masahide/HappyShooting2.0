@@ -18,7 +18,6 @@ public:
     ~LinearMoveComponent();
     void Update() override;
 private:
-    GameObjectHandle object_;
     MatVec::Vector2 d_;
     double exist_limit_;
 };

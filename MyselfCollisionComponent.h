@@ -14,7 +14,7 @@ class MyselfCollisionComponent :
     public CollisionComponent
 {
 public:
-    MyselfCollisionComponent(MainScene* scene, GameObjectHandle myself, ComponentHandle<MyselfMediatorComponent> mediator);
+    MyselfCollisionComponent(GameObjectHandle myself, MainScene* scene, ComponentHandle<MyselfMediatorComponent> mediator);
     //Ž©‹@‚Ì“–‚½‚è”»’è˜g‚Ìƒ^ƒO
     static constexpr unsigned int myself_tag_ = 0;
     static constexpr unsigned int damage_ = 200;
@@ -26,7 +26,6 @@ public:
 private:
     MainScene* scene_;
     CircleGeometry geometry_;
-    GameObjectHandle myself_;
     ComponentHandle<MyselfMediatorComponent> mediator_;
 };
 

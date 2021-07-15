@@ -9,7 +9,7 @@ class MyselfAddNormalBulletComponent :
     public Component
 {
 public:
-    MyselfAddNormalBulletComponent(GameObjectHandle handle,MainScene* scene);
+    MyselfAddNormalBulletComponent(GameObjectHandle handle, MainScene* scene);
     ~MyselfAddNormalBulletComponent();
     void Update() override;
 private:
@@ -19,8 +19,6 @@ private:
     static constexpr double bullet_redius_ = 5;
     //このtick数おきに弾を追加
     static constexpr unsigned int period_to_fire_ = 8;
-    //親オブジェクト
-    GameObjectHandle object_;
     //親シーン
     MainScene* const scene_;
     //時間 Updateの最後で加算

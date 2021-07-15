@@ -2,8 +2,8 @@
 
 #include "MainScene.h"
 
-MainSceneDrawComponent::MainSceneDrawComponent(MainScene* scene)
-	:Component(0),scene_(scene)
+MainSceneDrawComponent::MainSceneDrawComponent(GameObjectHandle object, MainScene* scene)
+	:Component(object, 0),scene_(scene)
 {
 }
 

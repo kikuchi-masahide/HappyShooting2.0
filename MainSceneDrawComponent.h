@@ -6,7 +6,7 @@ class MainScene;
 class MainSceneDrawComponent :public Component
 {
 public:
-	MainSceneDrawComponent(MainScene* scene);
+	MainSceneDrawComponent(GameObjectHandle object, MainScene* scene);
 	void Update() final;
 	virtual ~MainSceneDrawComponent();
 	/// <summary>

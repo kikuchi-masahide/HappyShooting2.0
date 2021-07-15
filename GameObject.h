@@ -5,7 +5,6 @@
 
 class Scene;
 class Game;
-class GameObjectHandle;
 template<class T>
 class ComponentHandle;
 
@@ -27,13 +26,13 @@ public:
 	bool GetDeleteFlag() const { return mDeleteFlag; };
 	void SetDeleteFlag() { mDeleteFlag = true; };
 	/// <summary>
-	/// このオブジェクトにT型のUpdateComponentを追加(_argsはコンストラクタに渡す引数)
+	/// このオブジェクトにT型のUpdateComponentを追加(_argsはコンストラクタに渡す引数で，第一引数mObjを除いたもの)
 	/// concept等でTの正当性を後々(静的に)評価したい
 	/// </summary>
 	template<class T, class... Args>
 	ComponentHandle<T> AddUpdateComponent(Args... _args) {
 		//コンポーネント自身
-		T* comp = new T(_args...);
+		T* comp = new T(This(), _args...);
 		mUpdateComponents.push_back(comp);
 		ComponentHandle<T> handle = comp->This<T>();
 		//シーンに追加
@@ -41,13 +40,13 @@ public:
 		return handle;
 	}
 	/// <summary>
-	/// このオブジェクトにT型のOutputComponentを追加(_argsはコンストラクタに渡す引数)
+	/// このオブジェクトにT型のOutputComponentを追加(_argsはコンストラクタに渡す引数で，第一引数mObjを除いたもの)
 	/// concept等でTの正当性を後々(静的に)評価したい
 	/// </summary>
 	template<class T, class... Args>
 	ComponentHandle<T> AddOutputComponent(Args... _args) {
 		//コンポーネント自身
-		T* comp = new T(_args...);
+		T* comp = new T(This(), _args...);
 		mOutputComponents.push_back(comp);
 		ComponentHandle<T> handle = comp->This<T>();
 		//シーンに追加

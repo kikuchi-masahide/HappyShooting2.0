@@ -31,6 +31,5 @@ private:
     //UŒ‚‚ğó‚¯‚½ó‹µ‚É‚æ‚Á‚Ä©g‚Ìƒ¿‚ğ•Ï‚¦‚é
     void SetMyselfAlpha();
     MainScene* scene_;
-    GameObjectHandle myself_;
 };
 

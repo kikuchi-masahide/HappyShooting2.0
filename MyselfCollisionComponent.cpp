@@ -6,10 +6,10 @@
 
 #include "MainScene.h"
 
-MyselfCollisionComponent::MyselfCollisionComponent(MainScene* scene, GameObjectHandle myself, ComponentHandle<MyselfMediatorComponent> mediator)
-	:CollisionComponent(75,myself_tag_,damage_),
+MyselfCollisionComponent::MyselfCollisionComponent(GameObjectHandle myself, MainScene* scene, ComponentHandle<MyselfMediatorComponent> mediator)
+	:CollisionComponent(myself, 75,myself_tag_,damage_),
 	/*collision_manager_(collision_manager)*/scene_(scene),geometry_(This<CollisionComponent>(),
-	myself->GetPosition(),circle_radius_),myself_(myself),mediator_(mediator)
+	myself->GetPosition(),circle_radius_),mediator_(mediator)
 {
 }
 
@@ -20,7 +20,7 @@ MyselfCollisionComponent::~MyselfCollisionComponent()
 void MyselfCollisionComponent::Update()
 {
 	//‰~‚ÌˆÊ’uXV
-	geometry_.center_ = myself_->GetPosition();
+	geometry_.center_ = mObj->GetPosition();
 	scene_->collision_manager_.AddCircleGeometry(geometry_);
 }
 

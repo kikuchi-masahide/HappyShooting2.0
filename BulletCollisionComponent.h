@@ -15,7 +15,7 @@ public:
     /// <param name="damage">与えうるダメージ値</param>
     /// <param name="radius">円の半径[px]</param>
     /// <param name="double_suicide">対象に当たった後オブジェクトごと死ぬかどうか</param>
-    BulletCollisionComponent(MainScene* scene, GameObjectHandle obj, int upd_priority, unsigned int mytag, unsigned int enemytag, unsigned int damage, double radius, bool double_suicide = true);
+    BulletCollisionComponent(GameObjectHandle obj, MainScene* scene, int upd_priority, unsigned int mytag, unsigned int enemytag, unsigned int damage, double radius, bool double_suicide = true);
     ~BulletCollisionComponent();
     void Update();
     void CheckHitComponent();
@@ -24,6 +24,5 @@ private:
     double radius_;
     bool double_suicide_;
     MainScene* scene_;
-    GameObjectHandle obj_;
 };
 

@@ -140,7 +140,7 @@ MatVec::Matrix4x4 MatVec::Rotate(Quaternion _q)
 MatVec::Quaternion MatVec::Slerp(MatVec::Quaternion _q1, MatVec::Quaternion _q2, double t)
 {
 	//_q1‚Æ_q2‚ÌŠÔ‚ÌŠp“x
-	double omega = acos(_q1.dot(_q2));
+	double omega = acos(Dot(_q1,_q2));
 	return sin((1 - t) * omega) / sin(omega) * _q1 + sin(t * omega) / sin(omega) * _q2;
 }
 
@@ -242,6 +242,21 @@ XMFLOAT2 MatVec::ConvertToXMFLOAT2(Vector2 vec2)
 XMFLOAT3 MatVec::ConvertToXMFLOAT3(Vector3 vec3)
 {
 	return DirectX::XMFLOAT3(vec3(0),vec3(1),vec3(2));
+}
+
+double MatVec::Dot(Vector2 v1, Vector2 v2)
+{
+	return (v1.v[0] * v2.v[0] + v1.v[1] * v2.v[1]);
+}
+
+double MatVec::Dot(Vector3 v1, Vector3 v2)
+{
+	return (v1.v[0]*v2.v[0]+v1.v[1]*v2.v[1]+v1.v[2]*v2.v[2]);
+}
+
+double MatVec::Dot(Vector4 v1, Vector4 v2)
+{
+	return (v1.v[0]*v2.v[0]+v1.v[1]*v2.v[1]+v1.v[2]*v2.v[2]+v1.v[3]*v2.v[3]);
 }
 
 MatVec::Vector2::Vector2()

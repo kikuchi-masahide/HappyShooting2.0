@@ -18,9 +18,9 @@ namespace {
 	};
 }
 
-DrawDeathEffectComponent::DrawDeathEffectComponent(MainScene* scene, GameObjectHandle obj, double max_radius, bool will_kill_object, MatVec::Vector2 offset)
-	:MainSceneDrawComponent(scene),
-	obj_(obj), max_radius_(max_radius),will_kill_object_(will_kill_object),offset_(offset),time_(0)
+DrawDeathEffectComponent::DrawDeathEffectComponent(GameObjectHandle obj, MainScene* scene, double max_radius, bool will_kill_object, MatVec::Vector2 offset)
+	:MainSceneDrawComponent(obj, scene),
+	max_radius_(max_radius),will_kill_object_(will_kill_object),offset_(offset),time_(0)
 {
 	if (pipeline_ == nullptr)
 	{
@@ -36,7 +36,7 @@ DrawDeathEffectComponent::~DrawDeathEffectComponent()
 void DrawDeathEffectComponent::Draw()
 {
 	InfoToShader* map = static_cast<InfoToShader*>(const_buffer_map_);
-	MatVec::Vector2 center = obj_->GetPosition() + offset_;
+	MatVec::Vector2 center = mObj->GetPosition() + offset_;
 	MatVec::Matrix4x4 exp = MatVec::Expand(max_radius_, max_radius_, 1.0);
 	MatVec::Matrix4x4 trans_ortho =
 		MatVec::GetOrthoGraphicProjection(600, 900, 0.0, 1.0) *
@@ -63,7 +63,7 @@ void DrawDeathEffectComponent::Draw()
 	{
 		SetDeleteFlag();
 		if (will_kill_object_) {
-			obj_->SetDeleteFlag();
+			mObj->SetDeleteFlag();
 		}
 	}
 

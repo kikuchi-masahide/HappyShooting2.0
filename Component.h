@@ -1,10 +1,10 @@
 #pragma once
 
-class GameObject;
 class Scene;
 class Game;
 
 #include "ComponentHandle.h"
+#include "GameObjectHandle.h"
 
 /// <summary>
 /// オブジェクトの機能を表すクラス
@@ -13,7 +13,7 @@ class Game;
 class Component {
 public:
 	/// <param name="_order">優先度 高いほど先に呼び出される</param>
-	Component(int _order = 0);
+	Component(GameObjectHandle _handle, int _order = 0);
 	/// <summary>
 	/// コンポ－ネントの更新処理
 	/// </summary>
@@ -21,6 +21,7 @@ public:
 	bool GetDeleteFlag() const { return mDeleteFlag; };
 	void SetDeleteFlag() { mDeleteFlag = true; };
 	const int mUpdPriority;
+	const GameObjectHandle mObj;
 protected:
 	virtual ~Component();
 	bool mDeleteFlag;

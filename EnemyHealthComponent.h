@@ -14,7 +14,7 @@ public:
     /// <param name="scene">消滅オブジェクト追加用シーンポインタ</param>
     /// <param name="object">親オブジェクト</param>
     /// <param name="health0">開始時体力</param>
-    EnemyHealthComponent(MainScene* scene, GameObjectHandle object, double health0);
+    EnemyHealthComponent(GameObjectHandle handle, MainScene* scene, double health0);
     ~EnemyHealthComponent();
     /// <summary>
     /// ダメージを与える
@@ -28,7 +28,6 @@ public:
     void Update() override;
 private:
     double health_;
-    GameObjectHandle object_;
     MainScene* scene_;
 };
 

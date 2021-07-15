@@ -24,8 +24,8 @@ Component::~Component() {
 	//}
 }
 
-Component::Component(int _order)
-	: mUpdPriority(_order), mDeleteFlag(false),mDeleteCheck(false)
+Component::Component(GameObjectHandle _handle, int _order)
+	: mUpdPriority(_order), mObj(_handle), mDeleteFlag(false),mDeleteCheck(false)
 {
 }
 

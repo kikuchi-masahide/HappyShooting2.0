@@ -19,8 +19,8 @@ namespace{
 	};
 }
 
-DrawNormalBulletComponent::DrawNormalBulletComponent(MainScene* scene, GameObjectHandle object, double radius, MatVec::Vector3 edge_rgb, double edge_alpha)
-	: MainSceneDrawComponent(scene), object_handle_(object), radius_(radius), edge_rgb_(edge_rgb),edge_alpha_(edge_alpha)
+DrawNormalBulletComponent::DrawNormalBulletComponent(GameObjectHandle object, MainScene* scene, double radius, MatVec::Vector3 edge_rgb, double edge_alpha)
+	: MainSceneDrawComponent(object, scene), radius_(radius), edge_rgb_(edge_rgb),edge_alpha_(edge_alpha)
 {
 	if (graphics_pipeline_ == nullptr)
 	{
@@ -103,7 +103,7 @@ void DrawNormalBulletComponent::Draw()
 	//定数バッファ
 	MatVec::Matrix4x4 matrix = MatVec::Expand(radius_, radius_, 1.0);
 	//円の中心
-	MatVec::Vector2 center = object_handle_->GetPosition() + center_offset_;
+	MatVec::Vector2 center = mObj->GetPosition() + center_offset_;
 	matrix = MatVec::Translation(MatVec::XY0(center)) * matrix;
 	matrix = MatVec::GetOrthoGraphicProjection(600, 900, 0.0, 1.0) * matrix;
 	InfoToShader info;

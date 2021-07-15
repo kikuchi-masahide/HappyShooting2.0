@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "CollisionComponent.h"
 
-CollisionComponent::CollisionComponent(int upd_priority, unsigned int tag, unsigned int damage)
-	:Component(upd_priority),
+CollisionComponent::CollisionComponent(GameObjectHandle handle, int upd_priority, unsigned int tag, unsigned int damage)
+	:Component(handle, upd_priority),
 	tag_(tag),damage_(damage)
 {
 }

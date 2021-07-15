@@ -9,7 +9,7 @@ class MyselfPosAndAngleComponent :
 {
 public:
     //activeレイヤーから現在の変形状況を受け取り，それを基に自機の位置と向きを決定するUpdateComponent
-    MyselfPosAndAngleComponent(GameObjectHandle handle,MainScene* scene);
+    MyselfPosAndAngleComponent(GameObjectHandle handle, MainScene* scene);
     void Update() override;
     ~MyselfPosAndAngleComponent();
     /// <summary>
@@ -20,7 +20,6 @@ public:
     void SetLayerTransform(MatVec::Matrix4x4 matrix);
 private:
     MatVec::Matrix4x4 layer_transform_;
-    GameObjectHandle gameobject_handle_;
     MainScene* main_scene_;
     //1tickあたりの移動距離
     constexpr static double moving_dist_ = 3.45;

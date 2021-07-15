@@ -7,13 +7,13 @@
 #include "MyselfCollisionComponent.h"
 
 MyselfMediatorComponent::MyselfMediatorComponent(GameObjectHandle myself, MainScene* scene)
-	:Component(50),myself_(myself),damage_counter_(-1),scene_(scene)
+	:Component(myself, 50),damage_counter_(-1),scene_(scene)
 {
-	draw_texture_component_ = myself->AddOutputComponent<DrawTextureComponent>(scene_, 4, myself_);
+	draw_texture_component_ = myself->AddOutputComponent<DrawTextureComponent>(scene_, 4);
 	draw_texture_component_->width_ = 40;
 	draw_texture_component_->height_ = 40;
-	myself_->AddUpdateComponent<MyselfAddNormalBulletComponent>(myself_, scene_);
-	myself_->AddUpdateComponent<MyselfCollisionComponent>(scene_, myself_, This<MyselfMediatorComponent>());
+	mObj->AddUpdateComponent<MyselfAddNormalBulletComponent>(scene_);
+	mObj->AddUpdateComponent<MyselfCollisionComponent>(scene_, This<MyselfMediatorComponent>());
 }
 
 void MyselfMediatorComponent::Update()

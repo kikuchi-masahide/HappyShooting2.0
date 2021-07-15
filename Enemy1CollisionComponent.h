@@ -15,7 +15,7 @@ class Enemy1CollisionComponent
 	:public CollisionComponent
 {
 public:
-	Enemy1CollisionComponent(MainScene* scene,GameObjectHandle object,ComponentHandle<EnemyHealthComponent> health);
+	Enemy1CollisionComponent(GameObjectHandle object, MainScene* scene, ComponentHandle<EnemyHealthComponent> health);
 	~Enemy1CollisionComponent();
 	void Update() override;
 	void CheckHitComponent() override;
@@ -27,7 +27,6 @@ private:
 	//中心の円の方の円形当たり判定
 	CircleGeometry circle_center_;
 	MainScene* scene_;
-	GameObjectHandle object_;
 	//ダメージ報告用
 	ComponentHandle<EnemyHealthComponent> health_component_;
 };

@@ -5,15 +5,15 @@
 #include "GameObject.h"
 
 MyselfPosAndAngleComponent::MyselfPosAndAngleComponent(GameObjectHandle handle, MainScene* scene)
-	:Component(100),
-	layer_transform_(MatVec::Identity4x4()),gameobject_handle_(handle),main_scene_(scene)
+	:Component(handle, 100),
+	layer_transform_(MatVec::Identity4x4()),main_scene_(scene)
 {
 }
 
 void MyselfPosAndAngleComponent::Update()
 {
 	//移動後の座標を求める
-	auto after_pos = gameobject_handle_->GetPosition();
+	auto after_pos = mObj->GetPosition();
 	if (main_scene_->GetKeyState('A') == ButtonState::Pressed ||
 		main_scene_->GetKeyState('A') == ButtonState::Held)
 	{
@@ -39,7 +39,7 @@ void MyselfPosAndAngleComponent::Update()
 	after_pos(0) = Min(after_pos(0), 300.0);
 	after_pos(1) = Max(after_pos(1), -450.0);
 	after_pos(1) = Min(after_pos(1), 450.0);
-	gameobject_handle_->SetPosition(after_pos);
+	mObj->SetPosition(after_pos);
 
 	//自機に変形layer_transform_をかけた後カーソル位置を向いているようにしたい
 	//LU分解でlayer_transform_の逆行列を求める
@@ -53,9 +53,9 @@ void MyselfPosAndAngleComponent::Update()
 	MatVec::Vector2 cursor_pos_before(
 		cursor_pos_xyzw(0)/ cursor_pos_xyzw(3), cursor_pos_xyzw(1)/cursor_pos_xyzw(3)
 	);
-	auto myself_pos = gameobject_handle_->GetPosition();
+	auto myself_pos = mObj->GetPosition();
 	//角度をセット
-	gameobject_handle_->SetRotation(std::atan2(
+	mObj->SetRotation(std::atan2(
 		cursor_pos_before(1) - myself_pos(1), cursor_pos_before(0) - myself_pos(0)
 	));
 }

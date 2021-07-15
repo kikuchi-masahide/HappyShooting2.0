@@ -99,9 +99,9 @@ void MainScene::AddMyself()
 {
 	myself_handle_ = AddObject(MatVec::Vector2(0, -275), 1.0, 0.0);
 	//このコンポーネントのみMainSceneが知っておかなければならないのでここで追加
-	myself_pos_angle_handle_ = myself_handle_->AddUpdateComponent<MyselfPosAndAngleComponent>(myself_handle_, this);
+	myself_pos_angle_handle_ = myself_handle_->AddUpdateComponent<MyselfPosAndAngleComponent>(this);
 	//他のコンポーネントの追加はメディエータに任せる
-	myself_handle_->AddUpdateComponent<MyselfMediatorComponent>(myself_handle_,this);
+	myself_handle_->AddUpdateComponent<MyselfMediatorComponent>(this);
 }
 
 void MainScene::FindNearestEnemy()
@@ -143,17 +143,17 @@ void MainScene::PrepareEnemy1()
 		double speedx = -dist * 2 / 600;
 		double speedy = -dist * 3 / 600;
 		auto e1 = scene->AddObject(MatVec::Vector2(0, 450) - MatVec::Vector2(speedx, speedy) * 5, 1.0, 0.0);
-		e1->AddUpdateComponent<LinearMoveComponent>(e1, MatVec::Vector2(speedx, speedy), dist / 120 * 5);
-		e1->AddUpdateComponent<LinearRotateComponent>(e1, PI / 60);
-		auto health = e1->AddUpdateComponent<EnemyHealthComponent>(scene, e1, 100);
-		e1->AddUpdateComponent<Enemy1CollisionComponent>(scene, e1, health);
-		auto texture = e1->AddOutputComponent<DrawTextureComponent>(scene, 7, e1);
+		e1->AddUpdateComponent<LinearMoveComponent>(MatVec::Vector2(speedx, speedy), dist / 120 * 5);
+		e1->AddUpdateComponent<LinearRotateComponent>(PI / 60);
+		auto health = e1->AddUpdateComponent<EnemyHealthComponent>(scene, 100);
+		e1->AddUpdateComponent<Enemy1CollisionComponent>(scene, health);
+		auto texture = e1->AddOutputComponent<DrawTextureComponent>(scene, 7);
 		texture->width_ = 40;
 		texture->height_ = 40;
 	};
 	for (unsigned int n = 0; n < 9; n++)
 	{
 		auto obj = AddObject(MatVec::Vector2(), 1.0, 0.0);
-		obj->AddUpdateComponent<TimerComponent>(this, obj, 30 + 20 * n, lambda);
+		obj->AddUpdateComponent<TimerComponent>(this, 30 + 20 * n, lambda);
 	}
 }

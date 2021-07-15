@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "TimerComponent.h"
 
-TimerComponent::TimerComponent(MainScene* scene, GameObjectHandle object, unsigned int time_limit, std::function<void(MainScene*)> lambda)
-	:Component(0),scene_(scene),object_(object),lambda_(lambda),time_limit_(time_limit),time_(0)
+TimerComponent::TimerComponent(GameObjectHandle object, MainScene* scene, unsigned int time_limit, std::function<void(MainScene*)> lambda)
+	:Component(object, 0),scene_(scene),lambda_(lambda),time_limit_(time_limit),time_(0)
 {
 }
 
@@ -15,7 +15,7 @@ void TimerComponent::Update()
 	if (time_ == time_limit_)
 	{
 		lambda_(scene_);
-		object_->SetDeleteFlag();
+		mObj->SetDeleteFlag();
 	}
 	time_++;
 }

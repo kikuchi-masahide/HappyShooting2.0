@@ -14,7 +14,6 @@ public:
     ~LinearRotateComponent();
     void Update() override;
 private:
-    GameObjectHandle object_;
     double theta_;
 };
 

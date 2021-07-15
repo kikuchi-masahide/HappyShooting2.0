@@ -138,7 +138,7 @@ namespace MatVec
 	/// <summary>
 	/// quaternionは4次元ベクトルを流用
 	/// </summary>
-	using Quaternion = Eigen::Vector4d;
+	using Quaternion = Vector4;
 	/// <summary>
 	/// 回転軸と角度を指定してquaternionを取得
 	/// </summary>
@@ -166,4 +166,16 @@ namespace MatVec
 	XMMATRIX ConvertToXMMATRIX(Matrix4x4 mat);
 	XMFLOAT2 ConvertToXMFLOAT2(Vector2 vec2);
 	XMFLOAT3 ConvertToXMFLOAT3(Vector3 vec3);
+	/// <summary>
+	/// 内積を求める
+	/// </summary>
+	inline double Dot(Vector2 v1, Vector2 v2);
+	/// <summary>
+	/// 内積を求める
+	/// </summary>
+	inline double Dot(Vector3 v1, Vector3 v2);
+	/// <summary>
+	/// 内積を求める
+	/// </summary>
+	inline double Dot(Vector4 v1, Vector4 v2);
 }

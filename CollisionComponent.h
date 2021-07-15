@@ -9,7 +9,7 @@ class CollisionComponent :
     public Component
 {
 public:
-    CollisionComponent(int upd_priority, unsigned int tag, unsigned int damage);
+    CollisionComponent(GameObjectHandle handle, int upd_priority, unsigned int tag, unsigned int damage);
     virtual ~CollisionComponent();
     /// é©êgÇÃÉ^ÉO
     const unsigned int tag_;
