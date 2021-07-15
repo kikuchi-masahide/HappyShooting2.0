@@ -2,17 +2,102 @@
 
 namespace MatVec
 {
-	using Matrix3x3 = Eigen::Matrix3d;
-	using Matrix4x4 = Eigen::Matrix4d;
-	using Vector2 = Eigen::Vector2d;
-	/// <summary>
-	/// 右手系縦3次元ベクトル
-	/// </summary>
-	using Vector3 = Eigen::Vector3d;
-	/// <summary>
-	/// 縦4次元ベクトル
-	/// </summary>
-	using Vector4 = Eigen::Vector4d;
+	class Matrix4x4 {
+	public:
+		Matrix4x4();
+		~Matrix4x4();
+		double m[4][4];
+		double& operator()(unsigned int i, unsigned int j);
+		Matrix4x4 operator+();
+		Matrix4x4 operator-();
+		Matrix4x4& operator*=(double d);
+		Matrix4x4& operator/=(double d);
+		Matrix4x4& operator+=(const Matrix4x4& v2);
+		Matrix4x4& operator-=(const Matrix4x4& v2);
+	};
+	Matrix4x4 operator*(const Matrix4x4& v, const double& d);
+	Matrix4x4 operator*(double d, const Matrix4x4& v);
+	Matrix4x4 operator*(const Matrix4x4& a, const Matrix4x4& b);
+	Matrix4x4 operator/(const Matrix4x4& v, double d);
+	Matrix4x4 operator+(const Matrix4x4& v1, const Matrix4x4& v2);
+	Matrix4x4 operator-(const Matrix4x4& v1, const Matrix4x4& v2);
+	bool operator==(const Matrix4x4& v1, const Matrix4x4& v2);
+	bool operator!=(const Matrix4x4& v1, const Matrix4x4& v2);
+	
+	class Vector2 {
+	public:
+		Vector2();
+		Vector2(double x, double y);
+		~Vector2();
+		double v[2];
+		double& operator()(unsigned int ind);
+		Vector2 operator+() const;
+		Vector2 operator-() const;
+		Vector2& operator*=(double d);
+		Vector2& operator/=(double d);
+		Vector2& operator+=(const Vector2& v2);
+		Vector2& operator-=(const Vector2& v2);
+		double Norm();
+		void Normalize();
+	};
+	Vector2 operator*(const Vector2& v, double d);
+	Vector2 operator*(double d, const Vector2& v);
+	Vector2 operator/(const Vector2& v, double d);
+	Vector2 operator+(const Vector2& v1, const Vector2& v2);
+	Vector2 operator-(const Vector2& v1, const Vector2& v2);
+	bool operator==(const Vector2& v1, const Vector2& v2);
+	bool operator!=(const Vector2& v1, const Vector2& v2);
+
+	class Vector3 {
+	public:
+		Vector3();
+		Vector3(double x, double y, double z);
+		~Vector3();
+		double v[3];
+		double& operator()(unsigned int ind);
+		Vector3 operator+() const;
+		Vector3 operator-() const;
+		Vector3& operator*=(double d);
+		Vector3& operator/=(double d);
+		Vector3& operator+=(const Vector3& v2);
+		Vector3& operator-=(const Vector3& v2);
+		double Norm();
+		void Normalize();
+	};
+	Vector3 operator*(const Vector3& v, double d);
+	Vector3 operator*(double d, const Vector3& v);
+	Vector3 operator/(const Vector3& v, double d);
+	Vector3 operator+(const Vector3& v1, const Vector3& v2);
+	Vector3 operator-(const Vector3& v1, const Vector3& v2);
+	bool operator==(const Vector3& v1, const Vector3& v2);
+	bool operator!=(const Vector3& v1, const Vector3& v2);
+
+	class Vector4 {
+	public:
+		Vector4();
+		Vector4(double x, double y, double z, double w);
+		~Vector4();
+		double v[4];
+		double& operator()(unsigned int ind);
+		Vector4 operator+() const;
+		Vector4 operator-() const;
+		Vector4& operator*=(double d);
+		Vector4& operator/=(double d);
+		Vector4& operator+=(const Vector4& v2);
+		Vector4& operator-=(const Vector4& v2);
+		double Norm();
+		void Normalize();
+	};
+	Vector4 operator*(const Vector4& v, double d);
+	Vector4 operator*(double d, const Vector4& v);
+	Vector4 operator/(const Vector4& v, double d);
+	Vector4 operator+(const Vector4& v1, const Vector4& v2);
+	Vector4 operator-(const Vector4& v1, const Vector4& v2);
+	bool operator==(const Vector4& v1, const Vector4& v2);
+	bool operator!=(const Vector4& v1, const Vector4& v2);
+
+	Vector4 operator*(const Matrix4x4& m, const Vector4& v);
+
 	/// <summary>
 	/// (x,y,z)を(x,y,z,1)に拡張
 	/// </summary>
@@ -30,10 +115,6 @@ namespace MatVec
 	/// (x,y)を(x,y,0)に変換
 	/// </summary>
 	Vector3 XY0(Vector2 _vec2);
-	/// <summary>
-	/// 3x3単位行列
-	/// </summary>
-	Matrix3x3 Identity3x3();
 	/// <summary>
 	/// 4x4単位行列
 	/// </summary>
@@ -82,7 +163,7 @@ namespace MatVec
 	/// LU分解で逆行列を求める
 	/// </summary>
 	Matrix4x4 GetInverseMatrix(Matrix4x4& mat);
-	XMMATRIX ConvertToXMMATRIX(const Matrix4x4& mat);
-	XMFLOAT2 ConvertToXMFLOAT2(const Vector2& vec2);
-	XMFLOAT3 ConvertToXMFLOAT3(const Vector3& vec3);
+	XMMATRIX ConvertToXMMATRIX(Matrix4x4 mat);
+	XMFLOAT2 ConvertToXMFLOAT2(Vector2 vec2);
+	XMFLOAT3 ConvertToXMFLOAT3(Vector3 vec3);
 }

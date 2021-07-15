@@ -12,7 +12,7 @@ public:
     ~CircleGeometry();
     MatVec::Vector2 center_;
     double radius_;
-    inline Rect2 GetAABB() const override
+    inline Rect2 GetAABB() override
     {
         double x = center_(0);
         double y = center_(1);
