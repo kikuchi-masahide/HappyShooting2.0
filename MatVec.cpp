@@ -275,14 +275,14 @@ Vector2 MatVec::Vector2::operator-() const
 	return Vector2(-v[0],-v[1]);
 }
 
-Vector2& MatVec::Vector2::operator*=(const double& d)
+Vector2& MatVec::Vector2::operator*=(double d)
 {
 	v[0] *= d;
 	v[1] *= d;
 	return *this;
 }
 
-Vector2& MatVec::Vector2::operator/=(const double& d)
+Vector2& MatVec::Vector2::operator/=(double d)
 {
 	v[0] /= d;
 	v[1] /= d;
@@ -314,17 +314,17 @@ void MatVec::Vector2::Normalize()
 	*this /= norm;
 }
 
-Vector2 MatVec::operator*(const Vector2& v, const double& d)
+Vector2 MatVec::operator*(const Vector2& v, double d)
 {
 	return Vector2(v.v[0] * d, v.v[1] * d);
 }
 
-Vector2 MatVec::operator*(const double& d, const Vector2& v)
+Vector2 MatVec::operator*(double d, const Vector2& v)
 {
 	return Vector2(v.v[0]*d,v.v[1]*d);
 }
 
-Vector2 MatVec::operator/(const Vector2& v, const double& d)
+Vector2 MatVec::operator/(const Vector2& v, double d)
 {
 	return Vector2(v.v[0]/d,v.v[1]/d);
 }
@@ -382,7 +382,7 @@ Vector3 MatVec::Vector3::operator-() const
 	return Vector3(-v[0], -v[1], -v[2]);
 }
 
-Vector3& MatVec::Vector3::operator*=(const double& d)
+Vector3& MatVec::Vector3::operator*=(double d)
 {
 	v[0] *= d;
 	v[1] *= d;
@@ -390,7 +390,7 @@ Vector3& MatVec::Vector3::operator*=(const double& d)
 	return *this;
 }
 
-Vector3& MatVec::Vector3::operator/=(const double& d)
+Vector3& MatVec::Vector3::operator/=(double d)
 {
 	v[0] /= d;
 	v[1] /= d;
@@ -425,17 +425,17 @@ void MatVec::Vector3::Normalize()
 	*this /= norm;
 }
 
-Vector3 MatVec::operator*(const Vector3& v, const double& d)
+Vector3 MatVec::operator*(const Vector3& v, double d)
 {
 	return Vector3(v.v[0] * d, v.v[1] * d, v.v[2] * d);
 }
 
-Vector3 MatVec::operator*(const double& d, const Vector3& v)
+Vector3 MatVec::operator*(double d, const Vector3& v)
 {
 	return Vector3(v.v[0] * d, v.v[1] * d, v.v[2] * d);
 }
 
-Vector3 MatVec::operator/(const Vector3& v, const double& d)
+Vector3 MatVec::operator/(const Vector3& v, double d)
 {
 	return Vector3(v.v[0] / d, v.v[1] / d, v.v[2] / d);
 }
@@ -495,7 +495,7 @@ Vector4 MatVec::Vector4::operator-() const
 	return Vector4(-v[0], -v[1], -v[2], -v[3]);
 }
 
-Vector4& MatVec::Vector4::operator*=(const double& d)
+Vector4& MatVec::Vector4::operator*=(double d)
 {
 	v[0] *= d;
 	v[1] *= d;
@@ -504,7 +504,7 @@ Vector4& MatVec::Vector4::operator*=(const double& d)
 	return *this;
 }
 
-Vector4& MatVec::Vector4::operator/=(const double& d)
+Vector4& MatVec::Vector4::operator/=(double d)
 {
 	v[0] /= d;
 	v[1] /= d;
@@ -542,17 +542,17 @@ void MatVec::Vector4::Normalize()
 	*this /= norm;
 }
 
-Vector4 MatVec::operator*(const Vector4& v, const double& d)
+Vector4 MatVec::operator*(const Vector4& v, double d)
 {
 	return Vector4(v.v[0] * d, v.v[1] * d, v.v[2] * d, v.v[3] * d);
 }
 
-Vector4 MatVec::operator*(const double& d, const Vector4& v)
+Vector4 MatVec::operator*(double d, const Vector4& v)
 {
 	return Vector4(v.v[0] * d, v.v[1] * d, v.v[2] * d, v.v[3] * d);
 }
 
-Vector4 MatVec::operator/(const Vector4& v, const double& d)
+Vector4 MatVec::operator/(const Vector4& v, double d)
 {
 	return Vector4(v.v[0] / d, v.v[1] / d, v.v[2] / d , v.v[3] / d);
 }
@@ -631,7 +631,7 @@ Matrix4x4 MatVec::Matrix4x4::operator-()
 	return *this;
 }
 
-Matrix4x4& MatVec::Matrix4x4::operator*=(const double& d)
+Matrix4x4& MatVec::Matrix4x4::operator*=(double d)
 {
 	m[0][0] *= d;
 	m[0][1] *= d;
@@ -656,7 +656,7 @@ Matrix4x4& MatVec::Matrix4x4::operator*=(const double& d)
 	return *this;
 }
 
-Matrix4x4& MatVec::Matrix4x4::operator/=(const double& d)
+Matrix4x4& MatVec::Matrix4x4::operator/=(double d)
 {
 	m[0][0] /= d;
 	m[0][1] /= d;
@@ -738,7 +738,7 @@ Matrix4x4 MatVec::operator*(const Matrix4x4& v, const double& d)
 	return v2;
 }
 
-Matrix4x4 MatVec::operator*(const double& d, const Matrix4x4& v)
+Matrix4x4 MatVec::operator*(double d, const Matrix4x4& v)
 {
 	Matrix4x4 v2 = v;
 	v2 *= d;
@@ -771,7 +771,7 @@ Matrix4x4 MatVec::operator*(const Matrix4x4& a, const Matrix4x4& b)
 	return m;
 }
 
-Matrix4x4 MatVec::operator/(const Matrix4x4& v, const double& d)
+Matrix4x4 MatVec::operator/(const Matrix4x4& v, double d)
 {
 	Matrix4x4 m = v;
 	m /= d;
