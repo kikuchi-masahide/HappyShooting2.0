@@ -57,7 +57,8 @@ void HDrawLineFrame::GraphicInit(Game& game)
 		"POSITION", DX12Config::VertexLayoutFormat::R32G32B32_FLOAT, 0, DX12Config::VertexLayoutInputClassification::INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0
 	));
 
-	std::vector<DX12RootParameter> root_parameters;
+	DX12RootParameter root_parameters;
+	root_parameters.mShaderVisibility = DX12Config::RootParameterShaderVisibility::ALL;
 	root_signature_ = game.mdx12.CreateRootSignature(root_parameters,false);
 
 	pipeline_ = game.mdx12.CreateGraphicsPipeline(

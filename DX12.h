@@ -61,8 +61,12 @@ public:
 		boost::shared_ptr<DX12ShaderObject> _pixelShader, DX12VertexLayout& _vertexLayout,
 		DX12Config::PrimitiveTopologyType _primitive, UINT _numrt,
 		boost::shared_ptr<DX12RootSignature> _rootsignature, LPCWSTR _name);
-	//ルートシグネチャの作成(暫定)
-	boost::shared_ptr<DX12RootSignature> CreateRootSignature(std::vector<DX12RootParameter>& _rootparams,bool _hasSampler = true);
+	/// <summary>
+	/// ディスクリプタヒープのためのルートパラメタのみを持つルートシグネチャを作成する
+	/// </summary>
+	/// <param name="_descheap_rootparam">ディスクリプタヒープのためのルートパラメタ</param>
+	/// <param name="_hasSampler">サンプラーを作るかどうか</param>
+	boost::shared_ptr<DX12RootSignature> CreateRootSignature(DX12RootParameter& _descheap_rootparam,bool _hasSampler = true);
 	//パイプラインステートのセット
 	void SetGraphicsPipeline(boost::shared_ptr<DX12GraphicsPipeline> _pipeline);
 	//ルートシグネチャのセット

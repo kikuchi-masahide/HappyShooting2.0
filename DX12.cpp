@@ -50,9 +50,9 @@ boost::shared_ptr<DX12GraphicsPipeline> DX12::CreateGraphicsPipeline(boost::shar
 	return mPimple->CreateGraphicsPipeline(_vertexShader, _pixelShader, _vertexLayout, _primitive, _numrt, _rootsignature, _name);
 }
 
-boost::shared_ptr<DX12RootSignature> DX12::CreateRootSignature(std::vector<DX12RootParameter>& _rootparams,bool _hasSampler)
+boost::shared_ptr<DX12RootSignature> DX12::CreateRootSignature(DX12RootParameter& _descheap_rootparam,bool _hasSampler)
 {
-	return mPimple->CreateRootSignature(_rootparams,_hasSampler);
+	return mPimple->CreateRootSignature(_descheap_rootparam,_hasSampler);
 }
 
 void DX12::SetGraphicsPipeline(boost::shared_ptr<DX12GraphicsPipeline> _pipeline)

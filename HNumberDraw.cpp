@@ -105,15 +105,15 @@ void HNumberDraw::StaticGraphicInit(Game& game)
 		"LEFT_INDEX", DX12Config::VertexLayoutFormat::R32_UINT , 0, DX12Config::VertexLayoutInputClassification::INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0
 	));
 
-	std::vector<DX12RootParameter> root_params(1);
-	root_params.back().mShaderVisibility = DX12Config::RootParameterShaderVisibility::ALL;
-	root_params.back().mDescRanges.push_back(DX12DescriptorRange(
+	DX12RootParameter root_param;
+	root_param.mShaderVisibility = DX12Config::RootParameterShaderVisibility::ALL;
+	root_param.mDescRanges.push_back(DX12DescriptorRange(
 		1, DX12Config::DescriptorRangeType::SRV, 0, 0
 	));
-	root_params.back().mDescRanges.push_back(DX12DescriptorRange(
+	root_param.mDescRanges.push_back(DX12DescriptorRange(
 		1, DX12Config::DescriptorRangeType::CBV, 0, 0
 	));
-	root_signature_ = game.mdx12.CreateRootSignature(root_params);
+	root_signature_ = game.mdx12.CreateRootSignature(root_param);
 
 	pipeline_ = game.mdx12.CreateGraphicsPipeline(
 		vertex_shader, pixel_shader, vertex_layout, 

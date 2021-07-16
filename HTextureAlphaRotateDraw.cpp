@@ -60,15 +60,15 @@ void HTextureAlphaRotateDraw::StaticGraphicInit(Game& game)
 	//ルートパラメタ0:
 	//	レンジ0:SRV,t0~t0 <---> SRV
 	//	レンジ1:CRV,b0~b0 <---> CRV
-	std::vector<DX12RootParameter> root_params(1);
-	root_params[0].mShaderVisibility = DX12Config::RootParameterShaderVisibility::ALL;
-	root_params[0].mDescRanges.push_back(DX12DescriptorRange(
+	DX12RootParameter root_param;
+	root_param.mShaderVisibility = DX12Config::RootParameterShaderVisibility::ALL;
+	root_param.mDescRanges.push_back(DX12DescriptorRange(
 		1, DX12Config::DescriptorRangeType::SRV, 0, 0
 	));
-	root_params[0].mDescRanges.push_back(DX12DescriptorRange(
+	root_param.mDescRanges.push_back(DX12DescriptorRange(
 		1, DX12Config::DescriptorRangeType::CBV, 0, 0
 	));
-	rootsignature_ = game.mdx12.CreateRootSignature(root_params);
+	rootsignature_ = game.mdx12.CreateRootSignature(root_param);
 
 	//インデックスバッファ
 	index_buffer_ = game.mdx12.CreateIndexBuffer(6, L"HTextureAlphaRotateDraw IndexBuffer");

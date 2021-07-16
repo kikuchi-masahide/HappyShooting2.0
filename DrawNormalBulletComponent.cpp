@@ -44,13 +44,12 @@ void DrawNormalBulletComponent::StaticGraphicalInit(MainScene* scene)
 		"TEXCOORD", DX12Config::VertexLayoutFormat::R32G32_FLOAT, 0, DX12Config::VertexLayoutInputClassification::INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0
 	));
 
-	std::vector<DX12RootParameter> root_params;
-	root_params.push_back(DX12RootParameter());
-	root_params.back().mShaderVisibility = DX12Config::RootParameterShaderVisibility::ALL;
-	root_params.back().mDescRanges.push_back(DX12DescriptorRange(
+	DX12RootParameter root_param;
+	root_param.mShaderVisibility = DX12Config::RootParameterShaderVisibility::ALL;
+	root_param.mDescRanges.push_back(DX12DescriptorRange(
 		1, DX12Config::DescriptorRangeType::CBV, 0, 0
 	));
-	root_signature_ = game.mdx12.CreateRootSignature(root_params);
+	root_signature_ = game.mdx12.CreateRootSignature(root_param);
 	
 	graphics_pipeline_ = game.mdx12.CreateGraphicsPipeline(
 		vertex_shader,pixel_shader,vertex_layout,

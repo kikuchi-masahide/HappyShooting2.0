@@ -53,12 +53,12 @@ void MainSceneBasicLayer::GraphicsInit()
 	));
 
 	//ルートパラメータはペラポリゴンのみ
-	std::vector<DX12RootParameter> root_parameters(1);
-	root_parameters[0].mShaderVisibility = DX12Config::RootParameterShaderVisibility::ALL;
-	root_parameters[0].mDescRanges.push_back(DX12DescriptorRange(
+	DX12RootParameter root_parameter;
+	root_parameter.mShaderVisibility = DX12Config::RootParameterShaderVisibility::ALL;
+	root_parameter.mDescRanges.push_back(DX12DescriptorRange(
 		1, DX12Config::DescriptorRangeType::SRV, 0, 0
 	));
-	rootsignature_ = game.mdx12.CreateRootSignature(root_parameters);
+	rootsignature_ = game.mdx12.CreateRootSignature(root_parameter);
 
 	graphics_pipeline_ = game.mdx12.CreateGraphicsPipeline(vertex_shader, pixel_shader,
 		vertex_layout, DX12Config::PrimitiveTopologyType::TRIANGLE, 1, rootsignature_,

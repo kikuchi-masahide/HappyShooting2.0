@@ -101,13 +101,12 @@ void DrawDeathEffectComponent::StaticGraphicInit(Game& game)
 	index_map[5] = 3;
 	game.mdx12.Unmap(index_buffer_);
 
-	std::vector<DX12RootParameter> root_params;
-	root_params.push_back(DX12RootParameter());
-	root_params.back().mShaderVisibility = DX12Config::RootParameterShaderVisibility::ALL;
-	root_params.back().mDescRanges.push_back(DX12DescriptorRange(
+	DX12RootParameter root_param;
+	root_param.mShaderVisibility = DX12Config::RootParameterShaderVisibility::ALL;
+	root_param.mDescRanges.push_back(DX12DescriptorRange(
 		1, DX12Config::DescriptorRangeType::CBV, 0, 0
 	));
-	root_signature_ = game.mdx12.CreateRootSignature(root_params);
+	root_signature_ = game.mdx12.CreateRootSignature(root_param);
 
 	DX12VertexLayout vertex_layout;
 	vertex_layout.push_back(DX12VertexLayoutUnit(

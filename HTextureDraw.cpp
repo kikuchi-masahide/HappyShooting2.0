@@ -71,10 +71,8 @@ void HTextureDraw::GraphicInit(Game& _game)
 	root_param.mDescRanges.push_back(DX12DescriptorRange(
 		1, DX12Config::DescriptorRangeType::CBV, 0, 0
 	));
-	std::vector<DX12RootParameter> root_params(1);
-	root_params[0] = root_param;
 	//ルートシグネチャ
-	mRootSignature = _game.mdx12.CreateRootSignature(root_params);
+	mRootSignature = _game.mdx12.CreateRootSignature(root_param);
 
 	//インデックスバッファ
 	mIndexBuffer = _game.mdx12.CreateIndexBuffer(6, L"HTextureDraw IndexBuffer");
