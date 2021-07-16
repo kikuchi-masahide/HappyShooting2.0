@@ -1,8 +1,8 @@
 #pragma once
 #include "UIScreen.h"
-#include "HTextureDraw.h"
-#include "HDrawLineFrame.h"
-#include "HNumberDraw.h"
+#include "Helpers/HTextureDraw.h"
+#include "Helpers/HDrawLineFrame.h"
+#include "Helpers/HNumberDraw.h"
 
 class MainScene;
 

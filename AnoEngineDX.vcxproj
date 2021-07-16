@@ -184,10 +184,10 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectHandle.cpp" />
-    <ClCompile Include="HDrawLineFrame.cpp" />
-    <ClCompile Include="HNumberDraw.cpp" />
-    <ClCompile Include="HTextureAlphaRotateDraw.cpp" />
-    <ClCompile Include="HTextureDraw.cpp" />
+    <ClCompile Include="Helpers\HDrawLineFrame.cpp" />
+    <ClCompile Include="Helpers\HNumberDraw.cpp" />
+    <ClCompile Include="Helpers\HTextureAlphaRotateDraw.cpp" />
+    <ClCompile Include="Helpers\HTextureDraw.cpp" />
     <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="LinearMoveComponent.cpp" />
@@ -245,10 +245,10 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectHandle.h" />
-    <ClInclude Include="HDrawLineFrame.h" />
-    <ClInclude Include="HNumberDraw.h" />
-    <ClInclude Include="HTextureAlphaRotateDraw.h" />
-    <ClInclude Include="HTextureDraw.h" />
+    <ClInclude Include="Helpers\HDrawLineFrame.h" />
+    <ClInclude Include="Helpers\HNumberDraw.h" />
+    <ClInclude Include="Helpers\HTextureAlphaRotateDraw.h" />
+    <ClInclude Include="Helpers\HTextureDraw.h" />
     <ClInclude Include="ICollisionGeometry.h" />
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="Layer.h" />
@@ -281,9 +281,9 @@
   <ItemGroup>
     <None Include="DrawDeathEffectComponent_header.hlsli" />
     <None Include="DrawNormalBulletComponentHeader.hlsli" />
-    <None Include="HNumberDraw_header.hlsli" />
-    <None Include="HTextureAlphaRotateDrawHeader.hlsli" />
-    <None Include="HTextureDrawInclude.hlsli" />
+    <None Include="Helpers\HNumberDraw_header.hlsli" />
+    <None Include="Helpers\HTextureAlphaRotateDrawHeader.hlsli" />
+    <None Include="Helpers\HTextureDrawInclude.hlsli" />
     <None Include="MainSceneBasicLayerHeader.hlsli" />
   </ItemGroup>
   <ItemGroup>
@@ -311,53 +311,29 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
-    <FxCompile Include="HDrawLineFrameVertexShader.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-    </FxCompile>
-    <FxCompile Include="HDrawLineFramePixelShader.hlsl">
+    <FxCompile Include="Helpers\HDrawLineFramePixelShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
     </FxCompile>
-    <FxCompile Include="HNumberDraw_pixel.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-    </FxCompile>
-    <FxCompile Include="HNumberDraw_vertex.hlsl">
+    <FxCompile Include="Helpers\HDrawLineFrameVertexShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
-    <FxCompile Include="HTextureAlphaRotateDrawPixelShader.hlsl">
+    <FxCompile Include="Helpers\HNumberDraw_pixel.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
     </FxCompile>
-    <FxCompile Include="HTextureAlphaRotateDrawVertexShader.hlsl">
+    <FxCompile Include="Helpers\HNumberDraw_vertex.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
-    <FxCompile Include="HTextureDrawPixelShader.hlsl">
+    <FxCompile Include="Helpers\HTextureAlphaRotateDrawPixelShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
     </FxCompile>
-    <FxCompile Include="HTextureDrawVertexShader.hlsl">
+    <FxCompile Include="Helpers\HTextureAlphaRotateDrawVertexShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Helpers\HTextureDrawPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Helpers\HTextureDrawVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
     </FxCompile>
     <FxCompile Include="MainSceneBasicLayerPixelShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
