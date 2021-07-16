@@ -25,6 +25,6 @@ public:
     //•`‰æ‚‚³
     double height_;
 private:
-    HTextureAlphaRotateDraw draw_helper_;
+    Helpers::HTextureAlphaRotateDraw draw_helper_;
 };
 

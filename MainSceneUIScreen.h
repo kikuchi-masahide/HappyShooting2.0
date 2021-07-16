@@ -15,11 +15,11 @@ public:
     void Output() override;
     ~MainSceneUIScreen();
 private:
-    HTextureDraw cursor_draw_;
+    Helpers::HTextureDraw cursor_draw_;
     //「Score:」の画像表示
-    HTextureDraw score_text_draw_;
+    Helpers::HTextureDraw score_text_draw_;
     //得点表示枠
-    HDrawLineFrame point_frame_;
+    Helpers::HDrawLineFrame point_frame_;
     MainScene* scene_;
     //得点表示枠の中心x
     constexpr static double point_frame_cx_ = 750-450;
@@ -36,7 +36,7 @@ private:
     constexpr static unsigned int score_image_lux_ = 600 + 20 - 450;
     constexpr static unsigned int score_image_luy_ = 900 - 20 - 450;
     //スコア表示用
-    HNumberDraw number_draw_;
+    Helpers::HNumberDraw number_draw_;
     //スコア表示座標
     constexpr static double score_leftup_x_ = score_image_lux_;
     constexpr static double score_leftup_y_ = score_image_luy_ - score_image_height_;
