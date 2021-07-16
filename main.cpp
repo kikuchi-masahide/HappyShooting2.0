@@ -46,18 +46,18 @@ void LoadTextures(Game* _game)
 
 void LoadShaders(Game* _game)
 {
-	_game->mShaderManager.LoadShader(L"Helpers/HTextureDrawVertexShader.hlsl", DX12Config::ShaderType::VERTEX, 0);
-	_game->mShaderManager.LoadShader(L"Helpers/HTextureDrawPixelShader.hlsl", DX12Config::ShaderType::PIXEL, 1);
+	_game->mShaderManager.LoadShader(L"HTextureDrawVertexShader.hlsl", DX12Config::ShaderType::VERTEX, 0);
+	_game->mShaderManager.LoadShader(L"HTextureDrawPixelShader.hlsl", DX12Config::ShaderType::PIXEL, 1);
 	_game->mShaderManager.LoadShader(L"MainSceneBasicLayerVertexShader.hlsl", DX12Config::ShaderType::VERTEX, 2);
 	_game->mShaderManager.LoadShader(L"MainSceneBasicLayerPixelShader.hlsl", DX12Config::ShaderType::PIXEL, 3);
-	_game->mShaderManager.LoadShader(L"Helpers/HDrawLineFrameVertexShader.hlsl", DX12Config::ShaderType::VERTEX, 4);
-	_game->mShaderManager.LoadShader(L"Helpers/HDrawLineFramePixelShader.hlsl", DX12Config::ShaderType::PIXEL, 5);
-	_game->mShaderManager.LoadShader(L"Helpers/HTextureAlphaRotateDrawVertexShader.hlsl", DX12Config::ShaderType::VERTEX, 6);
-	_game->mShaderManager.LoadShader(L"Helpers/HTextureAlphaRotateDrawPixelShader.hlsl", DX12Config::ShaderType::PIXEL, 7);
+	_game->mShaderManager.LoadShader(L"HDrawLineFrameVertexShader.hlsl", DX12Config::ShaderType::VERTEX, 4);
+	_game->mShaderManager.LoadShader(L"HDrawLineFramePixelShader.hlsl", DX12Config::ShaderType::PIXEL, 5);
+	_game->mShaderManager.LoadShader(L"HTextureAlphaRotateDrawVertexShader.hlsl", DX12Config::ShaderType::VERTEX, 6);
+	_game->mShaderManager.LoadShader(L"HTextureAlphaRotateDrawPixelShader.hlsl", DX12Config::ShaderType::PIXEL, 7);
 	_game->mShaderManager.LoadShader(L"DrawNormalBulletComponentVertexShader.hlsl", DX12Config::ShaderType::VERTEX, 8);
 	_game->mShaderManager.LoadShader(L"DrawNormalBulletComponentPixelShader.hlsl", DX12Config::ShaderType::PIXEL, 9);
-	_game->mShaderManager.LoadShader(L"Helpers/HNumberDraw_vertex.hlsl", DX12Config::ShaderType::VERTEX, 10);
-	_game->mShaderManager.LoadShader(L"Helpers/HNumberDraw_pixel.hlsl", DX12Config::ShaderType::PIXEL, 11);
+	_game->mShaderManager.LoadShader(L"HNumberDraw_vertex.hlsl", DX12Config::ShaderType::VERTEX, 10);
+	_game->mShaderManager.LoadShader(L"HNumberDraw_pixel.hlsl", DX12Config::ShaderType::PIXEL, 11);
 	_game->mShaderManager.LoadShader(L"DrawDeathEffectComponent_vertex.hlsl", DX12Config::ShaderType::VERTEX, 12);
 	_game->mShaderManager.LoadShader(L"DrawDeathEffectComponent_pixel.hlsl", DX12Config::ShaderType::PIXEL, 13);
 }

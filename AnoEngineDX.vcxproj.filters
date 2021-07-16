@@ -176,6 +176,12 @@
     <ClCompile Include="Rect2.cpp">
       <Filter>Engine\Math</Filter>
     </ClCompile>
+    <ClCompile Include="HTextureDraw.cpp">
+      <Filter>Helper\HTextureDraw</Filter>
+    </ClCompile>
+    <ClCompile Include="HDrawLineFrame.cpp">
+      <Filter>Helper\HDrawLineFrame</Filter>
+    </ClCompile>
     <ClCompile Include="TitleScene.cpp">
       <Filter>TitleScene\TitleScene</Filter>
     </ClCompile>
@@ -193,6 +199,9 @@
     </ClCompile>
     <ClCompile Include="MainSceneDrawComponent.cpp">
       <Filter>MainScene\MainSceneDrawComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="HTextureAlphaRotateDraw.cpp">
+      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
     </ClCompile>
     <ClCompile Include="DrawTextureComponent.cpp">
       <Filter>MainScene\MainSceneDrawComponent\DrawTextureComponent</Filter>
@@ -227,6 +236,9 @@
     <ClCompile Include="MyselfCollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent\MyselfCollisionComponent</Filter>
     </ClCompile>
+    <ClCompile Include="HNumberDraw.cpp">
+      <Filter>Helper\HNumberDraw</Filter>
+    </ClCompile>
     <ClCompile Include="LinearRotateComponent.cpp">
       <Filter>MainScene\LinearRotateComponent</Filter>
     </ClCompile>
@@ -244,18 +256,6 @@
     </ClCompile>
     <ClCompile Include="BulletCollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent\BulletCollisionComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="Helpers\HDrawLineFrame.cpp">
-      <Filter>Helper\HDrawLineFrame</Filter>
-    </ClCompile>
-    <ClCompile Include="Helpers\HNumberDraw.cpp">
-      <Filter>Helper\HNumberDraw</Filter>
-    </ClCompile>
-    <ClCompile Include="Helpers\HTextureAlphaRotateDraw.cpp">
-      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
-    </ClCompile>
-    <ClCompile Include="Helpers\HTextureDraw.cpp">
-      <Filter>Helper\HTextureDraw</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -347,6 +347,12 @@
     <ClInclude Include="Rect2.h">
       <Filter>Engine\Math</Filter>
     </ClInclude>
+    <ClInclude Include="HTextureDraw.h">
+      <Filter>Helper\HTextureDraw</Filter>
+    </ClInclude>
+    <ClInclude Include="HDrawLineFrame.h">
+      <Filter>Helper\HDrawLineFrame</Filter>
+    </ClInclude>
     <ClInclude Include="TitleScene.h">
       <Filter>TitleScene\TitleScene</Filter>
     </ClInclude>
@@ -364,6 +370,9 @@
     </ClInclude>
     <ClInclude Include="MainSceneDrawComponent.h">
       <Filter>MainScene\MainSceneDrawComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="HTextureAlphaRotateDraw.h">
+      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
     </ClInclude>
     <ClInclude Include="DrawTextureComponent.h">
       <Filter>MainScene\MainSceneDrawComponent\DrawTextureComponent</Filter>
@@ -401,6 +410,9 @@
     <ClInclude Include="MyselfCollisionComponent.h">
       <Filter>MainScene\CollisionComponent\MyselfCollisionComponent</Filter>
     </ClInclude>
+    <ClInclude Include="HNumberDraw.h">
+      <Filter>Helper\HNumberDraw</Filter>
+    </ClInclude>
     <ClInclude Include="LinearRotateComponent.h">
       <Filter>MainScene\LinearRotateComponent</Filter>
     </ClInclude>
@@ -419,45 +431,51 @@
     <ClInclude Include="BulletCollisionComponent.h">
       <Filter>MainScene\CollisionComponent\BulletCollisionComponent</Filter>
     </ClInclude>
-    <ClInclude Include="Helpers\HDrawLineFrame.h">
-      <Filter>Helper\HDrawLineFrame</Filter>
-    </ClInclude>
-    <ClInclude Include="Helpers\HNumberDraw.h">
-      <Filter>Helper\HNumberDraw</Filter>
-    </ClInclude>
-    <ClInclude Include="Helpers\HTextureAlphaRotateDraw.h">
-      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
-    </ClInclude>
-    <ClInclude Include="Helpers\HTextureDraw.h">
-      <Filter>Helper\HTextureDraw</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="HTextureDrawInclude.hlsli">
+      <Filter>Helper\HTextureDraw</Filter>
+    </None>
     <None Include="MainSceneBasicLayerHeader.hlsli">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
+    </None>
+    <None Include="HTextureAlphaRotateDrawHeader.hlsli">
+      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
     </None>
     <None Include="DrawNormalBulletComponentHeader.hlsli">
       <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
     </None>
+    <None Include="HNumberDraw_header.hlsli">
+      <Filter>Helper\HNumberDraw</Filter>
+    </None>
     <None Include="DrawDeathEffectComponent_header.hlsli">
       <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
     </None>
-    <None Include="Helpers\HNumberDraw_header.hlsli">
-      <Filter>Helper\HNumberDraw</Filter>
-    </None>
-    <None Include="Helpers\HTextureAlphaRotateDrawHeader.hlsli">
-      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
-    </None>
-    <None Include="Helpers\HTextureDrawInclude.hlsli">
-      <Filter>Helper\HTextureDraw</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
+    <FxCompile Include="HTextureDrawPixelShader.hlsl">
+      <Filter>Helper\HTextureDraw</Filter>
+    </FxCompile>
+    <FxCompile Include="HTextureDrawVertexShader.hlsl">
+      <Filter>Helper\HTextureDraw</Filter>
+    </FxCompile>
+    <FxCompile Include="HDrawLineFrameVertexShader.hlsl">
+      <Filter>Helper\HDrawLineFrame</Filter>
+    </FxCompile>
+    <FxCompile Include="HDrawLineFramePixelShader.hlsl">
+      <Filter>Helper\HDrawLineFrame</Filter>
+    </FxCompile>
     <FxCompile Include="MainSceneBasicLayerPixelShader.hlsl">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
     </FxCompile>
     <FxCompile Include="MainSceneBasicLayerVertexShader.hlsl">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
+    </FxCompile>
+    <FxCompile Include="HTextureAlphaRotateDrawPixelShader.hlsl">
+      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
+    </FxCompile>
+    <FxCompile Include="HTextureAlphaRotateDrawVertexShader.hlsl">
+      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
     </FxCompile>
     <FxCompile Include="DrawNormalBulletComponentVertexShader.hlsl">
       <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
@@ -465,35 +483,17 @@
     <FxCompile Include="DrawNormalBulletComponentPixelShader.hlsl">
       <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
     </FxCompile>
+    <FxCompile Include="HNumberDraw_vertex.hlsl">
+      <Filter>Helper\HNumberDraw</Filter>
+    </FxCompile>
+    <FxCompile Include="HNumberDraw_pixel.hlsl">
+      <Filter>Helper\HNumberDraw</Filter>
+    </FxCompile>
     <FxCompile Include="DrawDeathEffectComponent_pixel.hlsl">
       <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
     </FxCompile>
     <FxCompile Include="DrawDeathEffectComponent_vertex.hlsl">
       <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
-    </FxCompile>
-    <FxCompile Include="Helpers\HDrawLineFramePixelShader.hlsl">
-      <Filter>Helper\HDrawLineFrame</Filter>
-    </FxCompile>
-    <FxCompile Include="Helpers\HDrawLineFrameVertexShader.hlsl">
-      <Filter>Helper\HDrawLineFrame</Filter>
-    </FxCompile>
-    <FxCompile Include="Helpers\HNumberDraw_pixel.hlsl">
-      <Filter>Helper\HNumberDraw</Filter>
-    </FxCompile>
-    <FxCompile Include="Helpers\HNumberDraw_vertex.hlsl">
-      <Filter>Helper\HNumberDraw</Filter>
-    </FxCompile>
-    <FxCompile Include="Helpers\HTextureAlphaRotateDrawPixelShader.hlsl">
-      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
-    </FxCompile>
-    <FxCompile Include="Helpers\HTextureAlphaRotateDrawVertexShader.hlsl">
-      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
-    </FxCompile>
-    <FxCompile Include="Helpers\HTextureDrawPixelShader.hlsl">
-      <Filter>Helper\HTextureDraw</Filter>
-    </FxCompile>
-    <FxCompile Include="Helpers\HTextureDrawVertexShader.hlsl">
-      <Filter>Helper\HTextureDraw</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

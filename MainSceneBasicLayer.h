@@ -1,7 +1,7 @@
 #pragma once
 #include "MainSceneBaseLayer.h"
 #include "Game.h"
-#include "Helpers/HDrawLineFrame.h"
+#include "HDrawLineFrame.h"
 
 //ペラポリゴンに枠線を付けてそのまま出力するレイヤー
 class MainSceneBasicLayer :

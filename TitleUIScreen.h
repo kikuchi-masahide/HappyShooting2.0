@@ -1,7 +1,7 @@
 #pragma once
 #include "UIScreen.h"
-#include "Helpers/HTextureDraw.h"
-#include "Helpers/HTextureAlphaRotateDraw.h"
+#include "HTextureDraw.h"
+#include "HTextureAlphaRotateDraw.h"
 
 class TitleScene;
 

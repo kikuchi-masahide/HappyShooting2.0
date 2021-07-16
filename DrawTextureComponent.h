@@ -1,7 +1,7 @@
 #pragma once
 #include "MainSceneDrawComponent.h"
 
-#include "Helpers/HTextureAlphaRotateDraw.h"
+#include "HTextureAlphaRotateDraw.h"
 #include "GameObjectHandle.h"
 
 /// <summary>
