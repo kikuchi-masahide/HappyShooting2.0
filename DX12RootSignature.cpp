@@ -1,5 +1,6 @@
 #include "DX12RootSignature.h"
 #include "DX12Pimple.h"
+#include "Log.h"
 
 DX12RootSignature::DX12RootSignature(ComPtr<ID3D12Device> _device, DX12RootParameter& _descheap_rootparam, bool _hasSampler)
 {

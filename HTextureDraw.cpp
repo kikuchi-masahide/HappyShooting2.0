@@ -2,20 +2,25 @@
 
 namespace Helpers {
 
+	namespace {
+		struct InfoToShader {
+		public:
+			XMMATRIX matrix;
+		};
+	}
+
 	void HTextureDraw::DrawInRect(Game& _game, double _lx, double _rx, double _by, double _ty, unsigned int _rtwidth, unsigned int _rtheight)
 	{
+		//TODO:?
 		//変形行列をセットする
-		//座標を-1~1に変換
-		_lx = 2 * _lx / _rtwidth;
-		_rx = 2 * _rx / _rtwidth;
-		_ty = 2 * _ty / _rtheight;
-		_by = 2 * _by / _rtheight;
 		//拡大
 		MatVec::Matrix4x4 mat = MatVec::Expand(_rx - _lx, _ty - _by, 1);
 		//平行移動
 		mat = MatVec::Translation((_lx + _rx) / 2, (_by + _ty) / 2, 0) * mat;
+		mat = MatVec::GetOrthoGraphicProjection(_rtwidth, _rtheight, 0.0, 1.0) * mat;
 		//定数バッファにマップ
-		_game.mdx12.Copy4x4Matrix(matrix_map, mat);
+		InfoToShader* matmap = static_cast<InfoToShader*>(matrix_map);
+		matmap->matrix = MatVec::ConvertToXMMATRIX(mat);
 		//パイプライン
 		_game.mdx12.SetGraphicsPipeline(mGPipeline);
 		//ルートシグネチャ
@@ -129,7 +134,7 @@ namespace Helpers {
 	void HTextureDraw::InitializeConstBuffer(Game& game)
 	{
 		//定数バッファ作成
-		mMatrixBuffer = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(double) * 16, L"HTextureDraw ConstBuffer");
+		mMatrixBuffer = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(InfoToShader), L"HTextureDraw ConstBuffer");
 		//行列マップ先を設定
 		matrix_map = game.mdx12.Map(mMatrixBuffer);
 	}

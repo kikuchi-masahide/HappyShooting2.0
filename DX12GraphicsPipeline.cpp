@@ -2,6 +2,7 @@
 #include "DX12ShaderObject.h"
 #include "DX12RootSignature.h"
 #include "DX12Pimple.h"
+#include "Log.h"
 
 DX12GraphicsPipeline::DX12GraphicsPipeline(
 	ComPtr<ID3D12Device> _device, boost::shared_ptr<DX12ShaderObject> _vertexShader,

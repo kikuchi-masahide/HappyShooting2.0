@@ -1,9 +1,5 @@
-#include "MatVec.h"
-
-#include <Eigen/Dense>
-#include <Eigen/LU>
-
 #include "Math.h"
+#include "Log.h"
 
 using namespace MatVec;
 

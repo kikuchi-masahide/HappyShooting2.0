@@ -1,6 +1,8 @@
 #pragma once
 #include "Component.h"
+
 #include "GameObjectHandle.h"
+#include "Math.h"
 
 class MainScene;
 

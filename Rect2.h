@@ -1,4 +1,5 @@
 #pragma once
+#include "MatVec.h"
 
 struct Rect2 {
 private:

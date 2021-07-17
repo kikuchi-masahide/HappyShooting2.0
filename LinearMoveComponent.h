@@ -2,6 +2,7 @@
 #include "Component.h"
 
 #include "GameObjectHandle.h"
+#include "Math.h"
 
 //自分のオブジェクトを線形に移動させる
 class LinearMoveComponent :

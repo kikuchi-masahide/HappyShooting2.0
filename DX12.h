@@ -1,5 +1,6 @@
 #pragma once
 
+
 #include "DX12ConfigEnums.h"
 #include "DX12VertexLayoutUnit.h"
 #include "DX12RootParameter.h"
@@ -177,10 +178,6 @@ public:
 	/// </summary>
 	/// <param name="_bytesize">必要サイズ(256アラインメントは必要ない)</param>
 	boost::shared_ptr<DX12Resource> CreateConstBuffer(DX12Config::ResourceHeapType _heaptype,UINT64 _bytesize, LPCWSTR _name);
-	/// <summary>
-	/// ポインタ_mapに行列をコピー このとき行列は自動的に転置される
-	/// </summary>
-	void Copy4x4Matrix(void* _map, MatVec::Matrix4x4 _mat);
 	/// <summary>
 	/// ディスクリプタヒープ_descheapの_n番目スロットに定数バッファ_resourceに対するCBVを作成
 	/// </summary>

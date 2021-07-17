@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Component.h"
+
+#include "Rect2.h"
 class CollisionComponent;
 
 /// <summary>

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Math.h"
+
 class Scene;
 class DX12Resource;
 class DX12DescriptorHeap;

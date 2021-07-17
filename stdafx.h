@@ -33,8 +33,3 @@
 using DirectX::XMMATRIX;
 using DirectX::XMFLOAT2;
 using DirectX::XMFLOAT3;
-
-#include "Log.h"
-#include "Math.h"
-#include "MatVec.h"
-#include "Rect2.h"

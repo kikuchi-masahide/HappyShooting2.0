@@ -1,5 +1,7 @@
 #pragma once
 #include <cmath>
+#include "MatVec.h"
+#include "Rect2.h"
 
 /// <summary>
 /// _d‚ª‚Ù‚Ú0‚Å‚ ‚é‚©‚Ç‚¤‚©”»’è‚·‚é

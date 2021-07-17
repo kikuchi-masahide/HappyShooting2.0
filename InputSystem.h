@@ -1,5 +1,7 @@
 #pragma once
 
+#include "MatVec.h"
+
 class Game;
 
 /// <summary>

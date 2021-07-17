@@ -1,3 +1,5 @@
+#include "Log.h"
+
 #include <boost/log/trivial.hpp>
 #include <boost/log/utility/setup/file.hpp>
 #include <boost/log/attributes.hpp>

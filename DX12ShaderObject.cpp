@@ -1,5 +1,6 @@
 #include "DX12ShaderObject.h"
 #include "DX12Pimple.h"
+#include "Log.h"
 
 DX12ShaderObject::DX12ShaderObject(LPCWSTR _filename, DX12Config::ShaderType _shaderType)
 {

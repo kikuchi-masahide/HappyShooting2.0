@@ -5,6 +5,7 @@
 #include "Layer.h"
 #include "LayerHandle.h"
 #include "InputSystem.h"
+#include "Math.h"
 
 class Game;
 class UIScreen;
