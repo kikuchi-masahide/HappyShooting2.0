@@ -199,6 +199,7 @@
     <ClCompile Include="MainSceneBasicLayer.cpp" />
     <ClCompile Include="MainSceneDrawComponent.cpp" />
     <ClCompile Include="MainSceneUIScreen.cpp" />
+    <ClCompile Include="Matrix4x4.cpp" />
     <ClCompile Include="MatVec.cpp" />
     <ClCompile Include="MyselfAddNormalBulletComponent.cpp" />
     <ClCompile Include="MyselfCollisionComponent.cpp" />
@@ -216,6 +217,9 @@
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="TitleUIScreen.cpp" />
     <ClCompile Include="UIScreen.cpp" />
+    <ClCompile Include="Vector2.cpp" />
+    <ClCompile Include="Vector3.cpp" />
+    <ClCompile Include="Vector4.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -262,6 +266,8 @@
     <ClInclude Include="MainSceneDrawComponent.h" />
     <ClInclude Include="MainSceneUIScreen.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="MathMacro.h" />
+    <ClInclude Include="Matrix4x4.h" />
     <ClInclude Include="MatVec.h" />
     <ClInclude Include="MyselfAddNormalBulletComponent.h" />
     <ClInclude Include="MyselfCollisionComponent.h" />
@@ -276,6 +282,9 @@
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="TitleUIScreen.h" />
     <ClInclude Include="UIScreen.h" />
+    <ClInclude Include="Vector2.h" />
+    <ClInclude Include="Vector3.h" />
+    <ClInclude Include="Vector4.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>

@@ -257,6 +257,18 @@
     <ClCompile Include="BulletCollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent\BulletCollisionComponent</Filter>
     </ClCompile>
+    <ClCompile Include="Matrix4x4.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector4.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -337,9 +349,6 @@
     </ClInclude>
     <ClInclude Include="DX12VertexLayoutUnit.h">
       <Filter>Engine\DX12</Filter>
-    </ClInclude>
-    <ClInclude Include="Math.h">
-      <Filter>Engine\Math</Filter>
     </ClInclude>
     <ClInclude Include="MatVec.h">
       <Filter>Engine\Math</Filter>
@@ -430,6 +439,24 @@
     </ClInclude>
     <ClInclude Include="BulletCollisionComponent.h">
       <Filter>MainScene\CollisionComponent\BulletCollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4x4.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="MathMacro.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>Engine\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
