@@ -3,7 +3,7 @@
 Output main( float4 pos : POSITION,float2 uv : TEXCOORD )
 {
 	Output output;
-	output.svpos = mul(mat, pos);
+	output.svpos = mul(pos, mat);
 	output.uv = uv;
 	return output;
 }
