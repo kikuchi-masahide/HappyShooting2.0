@@ -374,3 +374,6 @@ latex/
 html/
 Doxyfile
 index.html - ショートカット.lnk
+
+# debug x64.exe copy for pix debug
+HappyShooting2.0.exe
