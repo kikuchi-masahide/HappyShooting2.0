@@ -2,14 +2,19 @@
 #include "MainSceneBasicLayer.h"
 #include "MainScene.h"
 
-MainSceneBasicLayer::MainSceneBasicLayer(MainScene* scene, ComponentHandle<MyselfPosAndAngleComponent> myself_pos_component)
-	:MainSceneBaseLayer(scene,myself_pos_component),line_frame(scene->mGame)
+MainSceneBasicLayer::MainSceneBasicLayer(Scene* scene)
+	:MainSceneBaseLayer(scene),line_frame(scene->mGame)
 {
 	GraphicsInit();
 }
 
 MainSceneBasicLayer::~MainSceneBasicLayer()
 {
+}
+
+MatVec::Matrix4x4 MainSceneBasicLayer::GetLayerTransform()
+{
+	return MatVec::Identity4x4();
 }
 
 void MainSceneBasicLayer::UniqueDraw()

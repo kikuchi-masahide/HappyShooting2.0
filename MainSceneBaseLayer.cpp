@@ -1,9 +1,10 @@
 #include "MainSceneBaseLayer.h"
 #include "MainScene.h"
 #include "Game.h"
+#include "MainSceneDrawComponent.h"
 
-MainSceneBaseLayer::MainSceneBaseLayer(MainScene* scene, ComponentHandle<MyselfPosAndAngleComponent> myself_pos_component)
-	:Layer(Rect2(0, 600, 0, 900), 0, 0), is_active_(false),layer_t_(0),scene_(scene),myself_pos_component_(myself_pos_component)
+MainSceneBaseLayer::MainSceneBaseLayer(Scene* scene)
+	:Layer(Rect2(0, 600, 0, 900), 0, 0), is_active_(false),layer_t_(0),scene_(scene)
 {
 	GraphicsInit();
 }

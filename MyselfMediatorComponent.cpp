@@ -9,7 +9,7 @@
 MyselfMediatorComponent::MyselfMediatorComponent(GameObjectHandle myself, MainScene* scene)
 	:Component(myself, 50),damage_counter_(-1),scene_(scene)
 {
-	draw_texture_component_ = myself->AddOutputComponent<DrawTextureComponent>(scene_, 4);
+	draw_texture_component_ = myself->AddOutputComponent<DrawTextureComponent>(scene->GetLayerManager(), 4);
 	draw_texture_component_->width_ = 40;
 	draw_texture_component_->height_ = 40;
 	mObj->AddUpdateComponent<MyselfAddNormalBulletComponent>(scene_);

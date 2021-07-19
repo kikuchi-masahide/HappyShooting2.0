@@ -19,17 +19,17 @@ namespace{
 	};
 }
 
-DrawNormalBulletComponent::DrawNormalBulletComponent(GameObjectHandle object, MainScene* scene, double radius, MatVec::Vector3 edge_rgb, double edge_alpha)
-	: MainSceneDrawComponent(object, scene), radius_(radius), edge_rgb_(edge_rgb),edge_alpha_(edge_alpha)
+DrawNormalBulletComponent::DrawNormalBulletComponent(GameObjectHandle object, boost::shared_ptr<LayerManager> layer_manager, double radius, MatVec::Vector3 edge_rgb, double edge_alpha)
+	: MainSceneDrawComponent(object, layer_manager), radius_(radius), edge_rgb_(edge_rgb),edge_alpha_(edge_alpha)
 {
 	if (graphics_pipeline_ == nullptr)
 	{
-		StaticGraphicalInit(scene_);
+		StaticGraphicalInit(layer_manager_->scene_);
 	}
 	NonstaticGraphicalInit();
 }
 
-void DrawNormalBulletComponent::StaticGraphicalInit(MainScene* scene)
+void DrawNormalBulletComponent::StaticGraphicalInit(Scene* scene)
 {
 	Game& game = scene->mGame;
 	
@@ -87,7 +87,7 @@ void DrawNormalBulletComponent::StaticGraphicalInit(MainScene* scene)
 
 void DrawNormalBulletComponent::NonstaticGraphicalInit()
 {
-	Game& game = scene_->mGame;
+	Game& game = layer_manager_->scene_->mGame;
 
 	crv_resource_ = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(InfoToShader), L"DrawNormalBulletComponent Const Buffer");
 	crv_desc_heap_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1, L"DrawNormalBulletComponent::crv_desc_heap_");
@@ -97,7 +97,7 @@ void DrawNormalBulletComponent::NonstaticGraphicalInit()
 
 void DrawNormalBulletComponent::Draw()
 {
-	Game& game = scene_->mGame;
+	Game& game = layer_manager_->scene_->mGame;
 
 	//定数バッファ
 	MatVec::Matrix4x4 matrix = MatVec::Expand(radius_, radius_, 1.0);

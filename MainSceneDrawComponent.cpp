@@ -2,14 +2,14 @@
 
 #include "MainScene.h"
 
-MainSceneDrawComponent::MainSceneDrawComponent(GameObjectHandle object, MainScene* scene)
-	:Component(object, 0),scene_(scene)
+MainSceneDrawComponent::MainSceneDrawComponent(GameObjectHandle object, boost::shared_ptr<LayerManager> layer_manager)
+	:Component(object, 0), layer_manager_(layer_manager)
 {
 }
 
 void MainSceneDrawComponent::Update()
 {
-	scene_->AddComponentToLayer(This<MainSceneDrawComponent>());
+	layer_manager_->AddComponentToLayer(This<MainSceneDrawComponent>());
 }
 
 MainSceneDrawComponent::~MainSceneDrawComponent()

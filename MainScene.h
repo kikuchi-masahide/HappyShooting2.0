@@ -3,6 +3,7 @@
 #include "LayerHandle.h"
 #include "MainSceneBaseLayer.h"
 #include "CollisionManager.h"
+#include "LayerManager.h"
 
 class MainScene :public Scene
 {
@@ -13,14 +14,6 @@ public:
 	void PriorUniqueOutput() override;
 	void PosteriorUniqueOutput() override;
 	~MainScene();
-	/// <summary>
-	/// 今アクティブなレイヤーに描画コンポーネントを追加
-	/// </summary>
-	void AddComponentToLayer(ComponentHandle<MainSceneDrawComponent> component);
-	/// <summary>
-	/// 次tickからこのフレームを有効化する
-	/// </summary>
-	void SwapLayer(unsigned int ind);
 	//自機が含まれる方のCollisionManager
 	CollisionManager collision_manager_;
 	//スコアを加算
@@ -35,13 +28,9 @@ public:
 	/// 自機から最も近い敵機を返す(誰もいないならnull)
 	/// </summary>
 	GameObjectHandle GetNearestEnemy();
+	//TODO:そのうち消す
+	boost::shared_ptr<LayerManager> GetLayerManager();
 private:
-	//持っているレイヤーの内描画するもの
-	LayerHandle<MainSceneBaseLayer> active_layer_;
-	//使えるレイヤーの一覧
-	LayerHandle<MainSceneBaseLayer> available_layers_[1];
-	//次のtickから使うレイヤー(none:999)
-	unsigned int layer_from_next_tick_;
 	//自機オブジェクトのハンドル
 	GameObjectHandle myself_handle_;
 	//自機の位置角度変更コンポーネント
@@ -57,4 +46,5 @@ private:
 	void FindNearestEnemy();
 	//enemy1群のみこちらで準備する
 	void PrepareEnemy1();
+	boost::shared_ptr<LayerManager> layer_manager_;
 };

@@ -103,6 +103,9 @@
     <Filter Include="MainScene\CollisionComponent\BulletCollisionComponent">
       <UniqueIdentifier>{e47263de-357c-4f8e-9782-dc6dee019436}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\LayerManager">
+      <UniqueIdentifier>{57b17c4a-3ae0-4af6-895d-63badbf30272}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -268,6 +271,9 @@
     </ClCompile>
     <ClCompile Include="Vector4.cpp">
       <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="LayerManager.cpp">
+      <Filter>MainScene\LayerManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -457,6 +463,9 @@
     </ClInclude>
     <ClInclude Include="Math.h">
       <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="LayerManager.h">
+      <Filter>MainScene\LayerManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

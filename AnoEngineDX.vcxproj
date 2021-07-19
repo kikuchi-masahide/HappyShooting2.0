@@ -190,6 +190,7 @@
     <ClCompile Include="HTextureDraw.cpp" />
     <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="Layer.cpp" />
+    <ClCompile Include="LayerManager.cpp" />
     <ClCompile Include="LinearMoveComponent.cpp" />
     <ClCompile Include="LinearRotateComponent.cpp" />
     <ClCompile Include="Log.cpp" />
@@ -257,6 +258,7 @@
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="LayerHandle.h" />
+    <ClInclude Include="LayerManager.h" />
     <ClInclude Include="LinearMoveComponent.h" />
     <ClInclude Include="LinearRotateComponent.h" />
     <ClInclude Include="Log.h" />

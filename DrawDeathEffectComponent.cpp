@@ -18,15 +18,15 @@ namespace {
 	};
 }
 
-DrawDeathEffectComponent::DrawDeathEffectComponent(GameObjectHandle obj, MainScene* scene, double max_radius, bool will_kill_object, MatVec::Vector2 offset)
-	:MainSceneDrawComponent(obj, scene),
+DrawDeathEffectComponent::DrawDeathEffectComponent(GameObjectHandle obj, boost::shared_ptr<LayerManager> layer_manager, double max_radius, bool will_kill_object, MatVec::Vector2 offset)
+	:MainSceneDrawComponent(obj, layer_manager),
 	max_radius_(max_radius),will_kill_object_(will_kill_object),offset_(offset),time_(0)
 {
 	if (pipeline_ == nullptr)
 	{
-		StaticGraphicInit(scene_->mGame);
+		StaticGraphicInit(layer_manager_->scene_->mGame);
 	}
-	NonstaticGraphicInit(scene_->mGame);
+	NonstaticGraphicInit(layer_manager_->scene_->mGame);
 }
 
 DrawDeathEffectComponent::~DrawDeathEffectComponent()
@@ -46,7 +46,7 @@ void DrawDeathEffectComponent::Draw()
 	map->radius_ = max_radius_ * time_ / 30;
 	map->alpha_ = 1.0 - (double)time_ / 30;
 	
-	Game& game = scene_->mGame;
+	Game& game = layer_manager_->scene_->mGame;
 	game.mdx12.SetGraphicsPipeline(pipeline_);
 	game.mdx12.SetRootSignature(root_signature_);
 	game.mdx12.SetDescriptorHeap(crv_heap_);

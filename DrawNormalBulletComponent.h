@@ -12,7 +12,7 @@ public:
     /// <param name="radius">半径[px]</param>
     /// <param name="edge_rgb">円の縁の色(rgb)</param>
     /// <param name="edge_alpha">円の縁の不透明度</param>
-    DrawNormalBulletComponent(GameObjectHandle object, MainScene* scene, double radius,MatVec::Vector3 edge_rgb,double edge_alpha);
+    DrawNormalBulletComponent(GameObjectHandle object, boost::shared_ptr<LayerManager> layer_manager, double radius,MatVec::Vector3 edge_rgb,double edge_alpha);
     ~DrawNormalBulletComponent();
     virtual void Draw();
     //描画中心の，オブジェクトの中心座標からのオフセット
@@ -33,7 +33,7 @@ private:
     boost::shared_ptr<DX12Resource> crv_resource_;
     //定数バッファマップ用ポインタ
     void* crv_map_;
-    static void StaticGraphicalInit(MainScene* scene);
+    static void StaticGraphicalInit(Scene* scene);
     void NonstaticGraphicalInit();
 };
 

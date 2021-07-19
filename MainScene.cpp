@@ -15,20 +15,17 @@
 #include "DrawDeathEffectComponent.h"
 
 MainScene::MainScene(Game* game)
-	:Scene(game),layer_from_next_tick_(999)
+	:Scene(game)
 {
+	//レイヤー
+	layer_manager_ = boost::shared_ptr<LayerManager>(new LayerManager(this));
+
 	//自機追加
 	AddMyself();
 
 	//enemy1群追加
 	PrepareEnemy1();
 
-	//レイヤー
-	auto layer0 = AddLayer<MainSceneBasicLayer>(this,myself_pos_angle_handle_);
-	available_layers_[0] = static_cast<LayerHandle<MainSceneBaseLayer>>(layer0);
-	//始めはレイヤー0を有効化
-	active_layer_ = available_layers_[0];
-	active_layer_->SetActive();
 
 	//UIScreen
 	AddUIScreen<MainSceneUIScreen>(this);
@@ -37,13 +34,7 @@ MainScene::MainScene(Game* game)
 void MainScene::PriorUniqueUpdate()
 {
 	//レイヤーの入れ替え
-	if (layer_from_next_tick_ != 999)
-	{
-		active_layer_->SetUnActive();
-		active_layer_ = available_layers_[layer_from_next_tick_];
-		active_layer_->SetActive();
-		layer_from_next_tick_ = 999;
-	}
+	layer_manager_->PriorUniqueUpdate();
 }
 
 void MainScene::PosteriorUniqueUpdate()
@@ -65,16 +56,6 @@ MainScene::~MainScene()
 {
 }
 
-void MainScene::AddComponentToLayer(ComponentHandle<MainSceneDrawComponent> component)
-{
-	active_layer_->AddComponent(component);
-}
-
-void MainScene::SwapLayer(unsigned int ind)
-{
-	layer_from_next_tick_ = ind;
-}
-
 void MainScene::AddScore(int add)
 {
 	score_ += add;
@@ -93,6 +74,11 @@ void MainScene::AddDirectableEnemy(GameObjectHandle enemy)
 GameObjectHandle MainScene::GetNearestEnemy()
 {
 	return nearest_enemy_;
+}
+
+boost::shared_ptr<LayerManager> MainScene::GetLayerManager()
+{
+	return layer_manager_;
 }
 
 void MainScene::AddMyself()
@@ -147,7 +133,7 @@ void MainScene::PrepareEnemy1()
 		e1->AddUpdateComponent<LinearRotateComponent>(PI / 60);
 		auto health = e1->AddUpdateComponent<EnemyHealthComponent>(scene, 100);
 		e1->AddUpdateComponent<Enemy1CollisionComponent>(scene, health);
-		auto texture = e1->AddOutputComponent<DrawTextureComponent>(scene, 7);
+		auto texture = e1->AddOutputComponent<DrawTextureComponent>(scene->GetLayerManager(), 7);
 		texture->width_ = 40;
 		texture->height_ = 40;
 	};

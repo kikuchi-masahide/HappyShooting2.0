@@ -2,14 +2,14 @@
 #include "Layer.h"
 #include "Game.h"
 #include "ComponentHandle.h"
-#include "MainSceneDrawComponent.h"
 
+class MainSceneDrawComponent;
 class MyselfPosAndAngleComponent;
 
 class MainSceneBaseLayer :public Layer
 {
 public:
-	MainSceneBaseLayer(MainScene* scene, ComponentHandle<MyselfPosAndAngleComponent> myself_pos_component);
+	MainSceneBaseLayer(Scene* scene);
 	virtual ~MainSceneBaseLayer();
 	void Draw();
 	/// <summary>
@@ -31,6 +31,11 @@ public:
 	/// layer_t_(アクティブになってからの時間)を取得
 	/// </summary>
 	unsigned int GetLayert();
+	/// <summary>
+	/// このレイヤーの変形行列を受け取る(activeな時のみ呼び出されうる)
+	/// </summary>
+	/// <returns></returns>
+	virtual MatVec::Matrix4x4 GetLayerTransform() = 0;
 protected:
 	//ペラポリゴン
 	boost::shared_ptr<DX12Resource> pera_texture_;
@@ -39,9 +44,7 @@ protected:
 	//ペラポリゴンのSRV;
 	boost::shared_ptr<DX12DescriptorHeap> pera_srv_;
 	Game& GetGame();
-	MainScene* const scene_;
-	//このコンポーネントに毎tickレイヤーの変形を通知
-	ComponentHandle<MyselfPosAndAngleComponent> myself_pos_component_;
+	Scene* const scene_;
 private:
 	//TODO:z座標でソート!!!!!!!!!!!!!!!!
 	std::vector<ComponentHandle<MainSceneDrawComponent>> draw_components_;

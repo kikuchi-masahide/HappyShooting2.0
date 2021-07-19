@@ -8,8 +8,9 @@ class MainSceneBasicLayer :
     public MainSceneBaseLayer
 {
 public:
-    MainSceneBasicLayer(MainScene* scene, ComponentHandle<MyselfPosAndAngleComponent> myself_pos_component);
+    MainSceneBasicLayer(Scene* scene);
     virtual ~MainSceneBasicLayer();
+    MatVec::Matrix4x4 GetLayerTransform();
     void UniqueDraw();
 private:
     boost::shared_ptr<DX12GraphicsPipeline> graphics_pipeline_;
