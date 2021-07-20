@@ -4,6 +4,7 @@
 #include "MainSceneBaseLayer.h"
 #include "CollisionManager.h"
 #include "LayerManager.h"
+#include "ScoreManager.h"
 
 class MainScene :public Scene
 {
@@ -16,9 +17,6 @@ public:
 	~MainScene();
 	//自機が含まれる方のCollisionManager
 	CollisionManager collision_manager_;
-	//スコアを加算
-	void AddScore(int add);
-	int GetScore() const;
 	/// <summary>
 	/// 自機が狙いうる敵機の追加
 	/// </summary>
@@ -30,6 +28,8 @@ public:
 	GameObjectHandle GetNearestEnemy();
 	//TODO:そのうち消す
 	boost::shared_ptr<LayerManager> GetLayerManager();
+	//TODO:そのうち消す
+	boost::shared_ptr<ScoreManager> GetScoreManager();
 private:
 	//自機オブジェクトのハンドル
 	GameObjectHandle myself_handle_;
@@ -47,4 +47,5 @@ private:
 	//enemy1群のみこちらで準備する
 	void PrepareEnemy1();
 	boost::shared_ptr<LayerManager> layer_manager_;
+	boost::shared_ptr<ScoreManager> score_manager_;
 };

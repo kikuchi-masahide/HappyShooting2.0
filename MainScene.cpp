@@ -19,6 +19,8 @@ MainScene::MainScene(Game* game)
 {
 	//レイヤー
 	layer_manager_ = boost::shared_ptr<LayerManager>(new LayerManager(this));
+	//スコア
+	score_manager_ = boost::shared_ptr<ScoreManager>(new ScoreManager);
 
 	//自機追加
 	AddMyself();
@@ -56,16 +58,6 @@ MainScene::~MainScene()
 {
 }
 
-void MainScene::AddScore(int add)
-{
-	score_ += add;
-}
-
-int MainScene::GetScore() const
-{
-	return score_;
-}
-
 void MainScene::AddDirectableEnemy(GameObjectHandle enemy)
 {
 	enemies_.push_back(enemy);
@@ -79,6 +71,11 @@ GameObjectHandle MainScene::GetNearestEnemy()
 boost::shared_ptr<LayerManager> MainScene::GetLayerManager()
 {
 	return layer_manager_;
+}
+
+boost::shared_ptr<ScoreManager> MainScene::GetScoreManager()
+{
+	return score_manager_;
 }
 
 void MainScene::AddMyself()

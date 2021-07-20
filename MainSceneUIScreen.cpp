@@ -33,7 +33,7 @@ void MainSceneUIScreen::Output()
 		game, score_image_lux_, score_image_lux_ + score_image_width_, score_image_luy_-score_image_height_, score_image_luy_, 900, 900
 	);
 	//スコア表示
-	int score = scene_->GetScore();
+	int score = scene_->GetScoreManager()->GetScore();
 	number_draw_.DrawNumber(scene_->mGame, score);
 
 	//RTVクローズ

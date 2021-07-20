@@ -106,6 +106,9 @@
     <Filter Include="MainScene\LayerManager">
       <UniqueIdentifier>{57b17c4a-3ae0-4af6-895d-63badbf30272}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\ScoreManager">
+      <UniqueIdentifier>{2be2d8f4-4f2f-4e2b-975c-bd9e2f5952ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -274,6 +277,9 @@
     </ClCompile>
     <ClCompile Include="LayerManager.cpp">
       <Filter>MainScene\LayerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreManager.cpp">
+      <Filter>MainScene\ScoreManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -466,6 +472,9 @@
     </ClInclude>
     <ClInclude Include="LayerManager.h">
       <Filter>MainScene\LayerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreManager.h">
+      <Filter>MainScene\ScoreManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

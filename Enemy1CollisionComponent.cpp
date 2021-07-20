@@ -45,7 +45,7 @@ void Enemy1CollisionComponent::CheckHitComponent()
 		{
 			auto damage = comp->GetDamage();
 			auto real_damage = health_component_->Damage(damage);
-			scene_->AddScore(real_damage);
+			scene_->GetScoreManager()->AddScore(real_damage);
 		}
 	}
 }

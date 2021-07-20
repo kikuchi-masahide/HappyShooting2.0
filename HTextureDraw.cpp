@@ -11,7 +11,6 @@ namespace Helpers {
 
 	void HTextureDraw::DrawInRect(Game& _game, double _lx, double _rx, double _by, double _ty, unsigned int _rtwidth, unsigned int _rtheight)
 	{
-		//TODO:?
 		//変形行列をセットする
 		//拡大
 		MatVec::Matrix4x4 mat = MatVec::Expand(_rx - _lx, _ty - _by, 1);

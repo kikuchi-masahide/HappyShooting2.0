@@ -23,7 +23,7 @@ void MyselfMediatorComponent::Update()
 void MyselfMediatorComponent::CauseDamageToMyself(unsigned int point)
 {
 	damage_counter_ = 120;
-	scene_->AddScore(-1000);
+	scene_->GetScoreManager()->AddScore(-1000);
 }
 
 MyselfMediatorComponent::~MyselfMediatorComponent()
