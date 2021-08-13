@@ -568,4 +568,7 @@
       <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
     </FxCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CollisionTags.txt" />
+  </ItemGroup>
 </Project>

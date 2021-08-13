@@ -15,7 +15,7 @@ public:
     /// <param name="radius">半径[px](省略時50)</param>
     /// <param name="will_kill_object">描画終了時オブジェクトと心中するか否か(省略でtrue)</param>
     /// <param name="offset">円中心の，親オブジェクト位置からのオフセット(省略時(0,0))</param>
-    DrawDeathEffectComponent(GameObjectHandle obj, boost::shared_ptr<LayerManager> layer_manager, double max_radius = 50.0, bool will_kill_object = true, MatVec::Vector2 offset = MatVec::Vector2(0,0));
+    DrawDeathEffectComponent(GameObjectHandle obj, boost::shared_ptr<LayerManager> layer_manager, double z, double max_radius = 50.0, bool will_kill_object = true, MatVec::Vector2 offset = MatVec::Vector2(0,0));
     ~DrawDeathEffectComponent();
     void Draw() override;
 private:

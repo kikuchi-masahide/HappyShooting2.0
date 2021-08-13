@@ -19,8 +19,8 @@ namespace{
 	};
 }
 
-DrawNormalBulletComponent::DrawNormalBulletComponent(GameObjectHandle object, boost::shared_ptr<LayerManager> layer_manager, double radius, MatVec::Vector3 edge_rgb, double edge_alpha)
-	: MainSceneDrawComponent(object, layer_manager), radius_(radius), edge_rgb_(edge_rgb),edge_alpha_(edge_alpha)
+DrawNormalBulletComponent::DrawNormalBulletComponent(GameObjectHandle object, boost::shared_ptr<LayerManager> layer_manager, double radius, MatVec::Vector3 edge_rgb, double edge_alpha,double z)
+	: MainSceneDrawComponent(object, layer_manager, z), radius_(radius), edge_rgb_(edge_rgb),edge_alpha_(edge_alpha)
 {
 	if (graphics_pipeline_ == nullptr)
 	{

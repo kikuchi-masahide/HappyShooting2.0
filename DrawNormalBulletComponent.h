@@ -12,7 +12,7 @@ public:
     /// <param name="radius">半径[px]</param>
     /// <param name="edge_rgb">円の縁の色(rgb)</param>
     /// <param name="edge_alpha">円の縁の不透明度</param>
-    DrawNormalBulletComponent(GameObjectHandle object, boost::shared_ptr<LayerManager> layer_manager, double radius,MatVec::Vector3 edge_rgb,double edge_alpha);
+    DrawNormalBulletComponent(GameObjectHandle object, boost::shared_ptr<LayerManager> layer_manager, double radius,MatVec::Vector3 edge_rgb,double edge_alpha,double z);
     ~DrawNormalBulletComponent();
     virtual void Draw();
     //描画中心の，オブジェクトの中心座標からのオフセット

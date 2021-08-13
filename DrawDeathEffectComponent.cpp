@@ -18,8 +18,8 @@ namespace {
 	};
 }
 
-DrawDeathEffectComponent::DrawDeathEffectComponent(GameObjectHandle obj, boost::shared_ptr<LayerManager> layer_manager, double max_radius, bool will_kill_object, MatVec::Vector2 offset)
-	:MainSceneDrawComponent(obj, layer_manager),
+DrawDeathEffectComponent::DrawDeathEffectComponent(GameObjectHandle obj, boost::shared_ptr<LayerManager> layer_manager, double z, double max_radius, bool will_kill_object, MatVec::Vector2 offset)
+	:MainSceneDrawComponent(obj, layer_manager, z),
 	max_radius_(max_radius),will_kill_object_(will_kill_object),offset_(offset),time_(0)
 {
 	if (pipeline_ == nullptr)

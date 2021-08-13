@@ -11,7 +11,7 @@ class DrawTextureComponent :
     public MainSceneDrawComponent
 {
 public:
-    DrawTextureComponent(GameObjectHandle object, boost::shared_ptr<LayerManager> layer_manager, unsigned int texture_id);
+    DrawTextureComponent(GameObjectHandle object, boost::shared_ptr<LayerManager> layer_manager, unsigned int texture_id,double z);
     ~DrawTextureComponent();
     virtual void Draw();
     //描画中心の，オブジェクトの中心座標からのオフセット

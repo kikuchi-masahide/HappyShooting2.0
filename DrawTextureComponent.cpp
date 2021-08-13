@@ -4,8 +4,8 @@
 #include "MainScene.h"
 #include "GameObject.h"
 
-DrawTextureComponent::DrawTextureComponent(GameObjectHandle object, boost::shared_ptr<LayerManager> layer_manager, unsigned int texture_id)
-	:MainSceneDrawComponent(object, layer_manager),
+DrawTextureComponent::DrawTextureComponent(GameObjectHandle object, boost::shared_ptr<LayerManager> layer_manager, unsigned int texture_id, double z)
+	:MainSceneDrawComponent(object, layer_manager, z),
 	draw_helper_(layer_manager->scene_->mGame, texture_id),
 	center_offset_(),angle_offset_(0),alpha_(1.0),width_(0.0),height_(0.0)
 {

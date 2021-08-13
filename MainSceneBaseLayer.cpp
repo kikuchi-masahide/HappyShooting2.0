@@ -23,6 +23,12 @@ void MainSceneBaseLayer::Draw()
 			DX12Config::ResourceBarrierState::RENDER_TARGET);
 		game.mdx12.OpenRenderTarget(pera_rtv_,0);
 		game.mdx12.ClearRenderTarget(pera_rtv_, 0, 1.0f, 1.0f, 1.0f, 1.0f);
+		//zç~èáÇ…É\Å[Ég
+		std::sort(draw_components_.begin(), draw_components_.end(), [](
+			const ComponentHandle<MainSceneDrawComponent>& a, const ComponentHandle<MainSceneDrawComponent>& b
+			) {
+			return a->z_ > b->z_;
+		});
 		for (auto component : draw_components_)
 		{
 			component->Draw();
