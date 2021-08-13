@@ -181,6 +181,9 @@
     <ClCompile Include="DX12SwapChain.cpp" />
     <ClCompile Include="Enemy1CollisionComponent.cpp" />
     <ClCompile Include="EnemyHealthComponent.cpp" />
+    <ClCompile Include="EnemyWave1.cpp" />
+    <ClCompile Include="EnemyWaveBase.cpp" />
+    <ClCompile Include="EnemyWaveManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectHandle.cpp" />
@@ -248,6 +251,9 @@
     <ClInclude Include="DX12VertexLayoutUnit.h" />
     <ClInclude Include="Enemy1CollisionComponent.h" />
     <ClInclude Include="EnemyHealthComponent.h" />
+    <ClInclude Include="EnemyWave1.h" />
+    <ClInclude Include="EnemyWaveBase.h" />
+    <ClInclude Include="EnemyWaveManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectHandle.h" />

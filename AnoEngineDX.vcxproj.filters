@@ -109,6 +109,15 @@
     <Filter Include="MainScene\ScoreManager">
       <UniqueIdentifier>{2be2d8f4-4f2f-4e2b-975c-bd9e2f5952ba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\EnemyWaveManager">
+      <UniqueIdentifier>{cf2ef5b2-84d5-43a9-bedb-54c996de4704}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\EnemyWaveBase">
+      <UniqueIdentifier>{b63a714d-1efc-4b60-b92a-0c1cd7863ffa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\EnemyWaveBase\EnemyWave1">
+      <UniqueIdentifier>{5e9df286-bbe7-4778-8806-93f483fa455f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -280,6 +289,15 @@
     </ClCompile>
     <ClCompile Include="ScoreManager.cpp">
       <Filter>MainScene\ScoreManager</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyWaveManager.cpp">
+      <Filter>MainScene\EnemyWaveManager</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyWaveBase.cpp">
+      <Filter>MainScene\EnemyWaveBase</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyWave1.cpp">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave1</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -475,6 +493,15 @@
     </ClInclude>
     <ClInclude Include="ScoreManager.h">
       <Filter>MainScene\ScoreManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyWaveManager.h">
+      <Filter>MainScene\EnemyWaveManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyWaveBase.h">
+      <Filter>MainScene\EnemyWaveBase</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyWave1.h">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave1</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

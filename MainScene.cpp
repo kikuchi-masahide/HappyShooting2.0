@@ -13,6 +13,7 @@
 #include "DrawTextureComponent.h"
 #include "TimerComponent.h"
 #include "DrawDeathEffectComponent.h"
+#include "EnemyWaveManager.h"
 
 MainScene::MainScene(Game* game)
 	:Scene(game)
@@ -25,8 +26,10 @@ MainScene::MainScene(Game* game)
 	//自機追加
 	AddMyself();
 
-	//enemy1群追加
-	PrepareEnemy1();
+	enemy_wave_manager_ = boost::shared_ptr<EnemyWaveManager>(new EnemyWaveManager(this));
+
+	////enemy1群追加
+	//PrepareEnemy1();
 
 
 	//UIScreen
@@ -52,6 +55,7 @@ void MainScene::PosteriorUniqueOutput()
 {
 	//全Updateが終わったあと当たり判定だけ処理させ，死ぬべきオブジェクトを死なせる
 	collision_manager_.TraverseAll();
+	enemy_wave_manager_->Update();
 }
 
 MainScene::~MainScene()

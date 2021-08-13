@@ -5,6 +5,7 @@
 #include "CollisionManager.h"
 #include "LayerManager.h"
 #include "ScoreManager.h"
+#include "EnemyWaveManager.h"
 
 class MainScene :public Scene
 {
@@ -26,13 +27,13 @@ public:
 	/// 自機から最も近い敵機を返す(誰もいないならnull)
 	/// </summary>
 	GameObjectHandle GetNearestEnemy();
-	//TODO:そのうち消す
+	//TODO:そのうち消す?
 	boost::shared_ptr<LayerManager> GetLayerManager();
-	//TODO:そのうち消す
+	//TODO:そのうち消す?
 	boost::shared_ptr<ScoreManager> GetScoreManager();
-private:
 	//自機オブジェクトのハンドル
 	GameObjectHandle myself_handle_;
+private:
 	//自機の位置角度変更コンポーネント
 	ComponentHandle<MyselfPosAndAngleComponent> myself_pos_angle_handle_;
 	//シーンに自機を追加する
@@ -48,4 +49,5 @@ private:
 	void PrepareEnemy1();
 	boost::shared_ptr<LayerManager> layer_manager_;
 	boost::shared_ptr<ScoreManager> score_manager_;
+	boost::shared_ptr<EnemyWaveManager> enemy_wave_manager_;
 };
