@@ -6,14 +6,14 @@
 #include "MyselfAddNormalBulletComponent.h"
 #include "MyselfCollisionComponent.h"
 
-MyselfMediatorComponent::MyselfMediatorComponent(GameObjectHandle myself, MainScene* scene)
-	:Component(myself, 50),damage_counter_(-1),scene_(scene)
+MyselfMediatorComponent::MyselfMediatorComponent(GameObjectHandle myself, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager)
+	:Component(myself, 50), damage_counter_(-1), layer_manager_(layer_manager), score_manager_(score_manager),collision_manager_(collision_manager)
 {
-	draw_texture_component_ = myself->AddOutputComponent<DrawTextureComponent>(scene->GetLayerManager(), 4);
+	draw_texture_component_ = myself->AddOutputComponent<DrawTextureComponent>(layer_manager_, 4);
 	draw_texture_component_->width_ = 40;
 	draw_texture_component_->height_ = 40;
-	mObj->AddUpdateComponent<MyselfAddNormalBulletComponent>(scene_);
-	mObj->AddUpdateComponent<MyselfCollisionComponent>(scene_, This<MyselfMediatorComponent>());
+	mObj->AddUpdateComponent<MyselfAddNormalBulletComponent>(layer_manager_,collision_manager_);
+	mObj->AddUpdateComponent<MyselfCollisionComponent>(collision_manager_, This<MyselfMediatorComponent>());
 }
 
 void MyselfMediatorComponent::Update()
@@ -23,7 +23,7 @@ void MyselfMediatorComponent::Update()
 void MyselfMediatorComponent::CauseDamageToMyself(unsigned int point)
 {
 	damage_counter_ = 120;
-	scene_->GetScoreManager()->AddScore(-1000);
+	score_manager_->AddScore(-1000);
 }
 
 MyselfMediatorComponent::~MyselfMediatorComponent()

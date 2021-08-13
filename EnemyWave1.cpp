@@ -21,8 +21,8 @@ EnemyWave1::EnemyWave1(unsigned int tick_after_clear, EnemyWaveManager* manager)
 	auto e1 = scene->AddObject(MatVec::Vector2(0, 450) - MatVec::Vector2(speedx, speedy) * 5, 1.0, 0.0);
 	e1->AddUpdateComponent<LinearMoveComponent>(MatVec::Vector2(speedx, speedy), dist / 120 * 5);
 	e1->AddUpdateComponent<LinearRotateComponent>(PI / 60);
-	auto health = e1->AddUpdateComponent<EnemyHealthComponent>(scene, 100);
-	e1->AddUpdateComponent<Enemy1CollisionComponent>(scene, health);
+	auto health = e1->AddUpdateComponent<EnemyHealthComponent>(scene->GetLayerManager(), 100);
+	e1->AddUpdateComponent<Enemy1CollisionComponent>(scene->GetCollisionManager(), scene->GetScoreManager(), health);
 	auto texture = e1->AddOutputComponent<DrawTextureComponent>(scene->GetLayerManager(), 7);
 	texture->width_ = 40;
 	texture->height_ = 40;

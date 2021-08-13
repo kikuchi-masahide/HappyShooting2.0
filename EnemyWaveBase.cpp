@@ -9,7 +9,7 @@
 EnemyWaveBase::EnemyWaveBase(unsigned int tick_after_clear, EnemyWaveManager* manager)
 	:tick_after_clear_(tick_after_clear), counter_(-1), manager_(manager)
 {
-	myself_handle_ = manager_->scene_->myself_handle_;
+	myself_handle_ = manager_->scene_->GetMyselfHandle();
 }
 
 EnemyWaveBase::~EnemyWaveBase()

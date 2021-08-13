@@ -2,10 +2,11 @@
 #include "EnemyHealthComponent.h"
 #include "DrawDeathEffectComponent.h"
 
-#include "MainScene.h"
+#include "LayerManager.h"
+#include "Scene.h"
 
-EnemyHealthComponent::EnemyHealthComponent(GameObjectHandle handle, MainScene* scene, double health0)
-	:Component(handle,50),health_(health0),scene_(scene)
+EnemyHealthComponent::EnemyHealthComponent(GameObjectHandle handle, boost::shared_ptr<LayerManager> layer_manager, double health0)
+	:Component(handle,50),health_(health0),layer_manager_(layer_manager)
 {
 }
 
@@ -20,8 +21,8 @@ double EnemyHealthComponent::Damage(double damage)
 	if (health_ <= 0)
 	{
 		mObj->SetDeleteFlag();
-		auto death_effect = scene_->AddObject(mObj->GetPosition(), 1.0, 0.0);
-		death_effect->AddOutputComponent<DrawDeathEffectComponent>(scene_->GetLayerManager());
+		auto death_effect = mObj->mScene->AddObject(mObj->GetPosition(), 1.0, 0.0);
+		death_effect->AddOutputComponent<DrawDeathEffectComponent>(layer_manager_);
 	}
 	return real_damage;
 }

@@ -6,10 +6,9 @@
 
 #include "MainScene.h"
 
-MyselfCollisionComponent::MyselfCollisionComponent(GameObjectHandle myself, MainScene* scene, ComponentHandle<MyselfMediatorComponent> mediator)
-	:CollisionComponent(myself, 75,myself_tag_,damage_),
-	/*collision_manager_(collision_manager)*/scene_(scene),geometry_(This<CollisionComponent>(),
-	myself->GetPosition(),circle_radius_),mediator_(mediator)
+MyselfCollisionComponent::MyselfCollisionComponent(GameObjectHandle myself, boost::shared_ptr<CollisionManager> manager, ComponentHandle<MyselfMediatorComponent> mediator)
+	:CollisionComponent(myself, manager, 75,myself_tag_,damage_),
+	geometry_(This<CollisionComponent>(), myself->GetPosition(),circle_radius_),mediator_(mediator)
 {
 }
 
@@ -21,7 +20,7 @@ void MyselfCollisionComponent::Update()
 {
 	//‰~‚ÌˆÊ’uXV
 	geometry_.center_ = mObj->GetPosition();
-	scene_->collision_manager_.AddCircleGeometry(geometry_);
+	manager_->AddCircleGeometry(geometry_);
 }
 
 void MyselfCollisionComponent::CheckHitComponent()

@@ -55,9 +55,9 @@ public:
 		return handle;
 	};
 	Game& GetGame();
+	Scene* const mScene;
 private:
 	friend class Scene;
-	Scene* mScene;
 	~GameObject();
 	//フラグが立っているコンポーネントを削除
 	void DeleteFlagedComponents();

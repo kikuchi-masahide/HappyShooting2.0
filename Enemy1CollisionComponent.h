@@ -6,6 +6,7 @@
 #include "GameObject.h"
 
 class EnemyHealthComponent;
+class ScoreManager;
 
 /// <summary>
 /// enemy1本体用の当たり判定
@@ -15,7 +16,7 @@ class Enemy1CollisionComponent
 	:public CollisionComponent
 {
 public:
-	Enemy1CollisionComponent(GameObjectHandle object, MainScene* scene, ComponentHandle<EnemyHealthComponent> health);
+	Enemy1CollisionComponent(GameObjectHandle object, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<ScoreManager> score_manager, ComponentHandle<EnemyHealthComponent> health);
 	~Enemy1CollisionComponent();
 	void Update() override;
 	void CheckHitComponent() override;
@@ -26,8 +27,9 @@ private:
 	CircleGeometry circle_around_[3];
 	//中心の円の方の円形当たり判定
 	CircleGeometry circle_center_;
-	MainScene* scene_;
 	//ダメージ報告用
 	ComponentHandle<EnemyHealthComponent> health_component_;
+	//スコア報告用
+	boost::shared_ptr<ScoreManager> score_manager_;
 };
 

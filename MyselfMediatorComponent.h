@@ -3,7 +3,9 @@
 
 #include "GameObject.h"
 
-class MainScene;
+class LayerManager;
+class ScoreManager;
+class CollisionManager;
 class DrawTextureComponent;
 
 //自機の複数コンポーネントをまとめるコンポーネント それらのブジェクトへの追加は行わない
@@ -14,7 +16,7 @@ class MyselfMediatorComponent :
     public Component
 {
 public:
-    MyselfMediatorComponent(GameObjectHandle myself, MainScene* scene);
+    MyselfMediatorComponent(GameObjectHandle myself, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager);
     void Update() override;
     /// <summary>
     /// 自機にダメージを与える
@@ -30,6 +32,8 @@ private:
     int damage_counter_;
     //攻撃を受けた状況によって自身のαを変える
     void SetMyselfAlpha();
-    MainScene* scene_;
+    boost::shared_ptr<LayerManager> layer_manager_;
+    boost::shared_ptr<ScoreManager> score_manager_;
+    boost::shared_ptr<CollisionManager> collision_manager_;
 };
 

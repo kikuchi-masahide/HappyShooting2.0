@@ -3,7 +3,7 @@
 
 #include "GameObjectHandle.h"
 
-class MainScene;
+class LayerManager;
 
 //敵機用体力管理コンポーネント
 //0未満になるとオブジェクトを消滅させ，消滅エフェクトを追加する
@@ -14,7 +14,7 @@ public:
     /// <param name="scene">消滅オブジェクト追加用シーンポインタ</param>
     /// <param name="object">親オブジェクト</param>
     /// <param name="health0">開始時体力</param>
-    EnemyHealthComponent(GameObjectHandle handle, MainScene* scene, double health0);
+    EnemyHealthComponent(GameObjectHandle handle, boost::shared_ptr<LayerManager> layer_manager, double health0);
     ~EnemyHealthComponent();
     /// <summary>
     /// ダメージを与える
@@ -28,6 +28,6 @@ public:
     void Update() override;
 private:
     double health_;
-    MainScene* scene_;
+    boost::shared_ptr<LayerManager> layer_manager_;
 };
 

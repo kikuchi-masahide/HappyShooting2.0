@@ -14,7 +14,7 @@ class MyselfCollisionComponent :
     public CollisionComponent
 {
 public:
-    MyselfCollisionComponent(GameObjectHandle myself, MainScene* scene, ComponentHandle<MyselfMediatorComponent> mediator);
+    MyselfCollisionComponent(GameObjectHandle myself, boost::shared_ptr<CollisionManager> manager, ComponentHandle<MyselfMediatorComponent> mediator);
     //Ž©‹@‚Ì“–‚½‚è”»’è˜g‚Ìƒ^ƒO
     static constexpr unsigned int myself_tag_ = 0;
     static constexpr unsigned int damage_ = 200;
@@ -24,7 +24,6 @@ public:
     //“–‚½‚è”»’è‰~‚Ì”¼Œa
     static constexpr double circle_radius_ = 0.01;
 private:
-    MainScene* scene_;
     CircleGeometry geometry_;
     ComponentHandle<MyselfMediatorComponent> mediator_;
 };

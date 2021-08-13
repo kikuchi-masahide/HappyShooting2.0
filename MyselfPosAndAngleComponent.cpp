@@ -3,10 +3,11 @@
 
 #include "MainScene.h"
 #include "GameObject.h"
+#include "LayerManager.h"
 
-MyselfPosAndAngleComponent::MyselfPosAndAngleComponent(GameObjectHandle handle, MainScene* scene)
+MyselfPosAndAngleComponent::MyselfPosAndAngleComponent(GameObjectHandle handle, boost::shared_ptr<LayerManager> layer_manager)
 	:Component(handle, 100),
-	layer_transform_(MatVec::Identity4x4()),main_scene_(scene)
+	layer_manager_(layer_manager)
 {
 }
 
@@ -14,23 +15,24 @@ void MyselfPosAndAngleComponent::Update()
 {
 	//移動後の座標を求める
 	auto after_pos = mObj->GetPosition();
-	if (main_scene_->GetKeyState('A') == ButtonState::Pressed ||
-		main_scene_->GetKeyState('A') == ButtonState::Held)
+	auto scene = mObj->mScene;
+	if (scene->GetKeyState('A') == ButtonState::Pressed ||
+		scene->GetKeyState('A') == ButtonState::Held)
 	{
 		after_pos(0) -= moving_dist_;
 	}
-	if (main_scene_->GetKeyState('D') == ButtonState::Pressed ||
-		main_scene_->GetKeyState('D') == ButtonState::Held)
+	if (scene->GetKeyState('D') == ButtonState::Pressed ||
+		scene->GetKeyState('D') == ButtonState::Held)
 	{
 		after_pos(0) += moving_dist_;
 	}
-	if (main_scene_->GetKeyState('W') == ButtonState::Pressed ||
-		main_scene_->GetKeyState('W') == ButtonState::Held)
+	if (scene->GetKeyState('W') == ButtonState::Pressed ||
+		scene->GetKeyState('W') == ButtonState::Held)
 	{
 		after_pos(1) += moving_dist_;
 	}
-	if (main_scene_->GetKeyState('S') == ButtonState::Pressed ||
-		main_scene_->GetKeyState('S') == ButtonState::Held)
+	if (scene->GetKeyState('S') == ButtonState::Pressed ||
+		scene->GetKeyState('S') == ButtonState::Held)
 	{
 		after_pos(1) -= moving_dist_;
 	}
@@ -43,9 +45,10 @@ void MyselfPosAndAngleComponent::Update()
 
 	//自機に変形layer_transform_をかけた後カーソル位置を向いているようにしたい
 	//LU分解でlayer_transform_の逆行列を求める
+	MatVec::Matrix4x4 layer_transform_ = layer_manager_->GetLayerTransform();
 	MatVec::Matrix4x4 layer_transform_inv = MatVec::GetInverseMatrix(layer_transform_);
 	//カーソル位置を，(300,450)を中心とする左手系座標に変換
-	auto cursor_pos_xy = main_scene_->GetMouseClientPos(0);
+	auto cursor_pos_xy = scene->GetMouseClientPos(0);
 	cursor_pos_xy -= MatVec::Vector2(300.0, 450.0);
 	auto cursor_pos_xyzw = MatVec::Vector4(cursor_pos_xy(0), cursor_pos_xy(1), 0.0, 1.0);
 	//カーソル位置を，レイヤー変形前の位置に変換
@@ -62,9 +65,4 @@ void MyselfPosAndAngleComponent::Update()
 
 MyselfPosAndAngleComponent::~MyselfPosAndAngleComponent()
 {
-}
-
-void MyselfPosAndAngleComponent::SetLayerTransform(MatVec::Matrix4x4 matrix)
-{
-	layer_transform_ = matrix;
 }

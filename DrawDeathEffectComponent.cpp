@@ -24,9 +24,9 @@ DrawDeathEffectComponent::DrawDeathEffectComponent(GameObjectHandle obj, boost::
 {
 	if (pipeline_ == nullptr)
 	{
-		StaticGraphicInit(layer_manager_->scene_->mGame);
+		StaticGraphicInit(mObj->mScene->mGame);
 	}
-	NonstaticGraphicInit(layer_manager_->scene_->mGame);
+	NonstaticGraphicInit(mObj->mScene->mGame);
 }
 
 DrawDeathEffectComponent::~DrawDeathEffectComponent()

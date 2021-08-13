@@ -9,7 +9,7 @@ class CollisionComponent :
     public Component
 {
 public:
-    CollisionComponent(GameObjectHandle handle, int upd_priority, unsigned int tag, unsigned int damage);
+    CollisionComponent(GameObjectHandle handle, boost::shared_ptr<CollisionManager> manager, int upd_priority, unsigned int tag, unsigned int damage);
     virtual ~CollisionComponent();
     /// é©êgÇÃÉ^ÉO
     const unsigned int tag_;
@@ -31,5 +31,6 @@ public:
     virtual void CheckHitComponent() = 0;
 protected:
     unsigned int damage_;
+    boost::shared_ptr<CollisionManager> manager_;
 };
 

@@ -13,10 +13,6 @@ public:
 	void SetWave(boost::shared_ptr<EnemyWaveBase> wave);
 	GameObjectHandle SolveNearestEnemy();
 	/// <summary>
-	/// ©‹@‚ÌˆÊ’u‚ğ•Ô‚·
-	/// </summary>
-	MatVec::Vector2 GetMyPosition();
-	/// <summary>
 	/// Scene‚©‚ç–ˆtickŒÄ‚Ño‚·
 	/// </summary>
 	void Update();

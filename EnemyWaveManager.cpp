@@ -28,11 +28,6 @@ GameObjectHandle EnemyWaveManager::SolveNearestEnemy()
 	return wave_->SolveNearestEnemy();
 }
 
-MatVec::Vector2 EnemyWaveManager::GetMyPosition()
-{
-	return scene_->myself_handle_->GetPosition();
-}
-
 void EnemyWaveManager::Update()
 {
 	if (wave_ != nullptr) {
