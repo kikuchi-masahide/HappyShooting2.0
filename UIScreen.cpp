@@ -1,7 +1,7 @@
 #include "UIScreen.h"
 
-UIScreen::UIScreen(bool _inputflag, bool _updateflag)
-	:mDeleteFlag(false),mDoesInputGoThrough(_inputflag),mDoesUpdateComp(_updateflag)
+UIScreen::UIScreen(Scene* _scene, bool _inputflag, bool _updateflag)
+	:mDeleteFlag(false),mDoesInputGoThrough(_inputflag),mDoesUpdateComp(_updateflag),mScene(_scene)
 {
 }
 

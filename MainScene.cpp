@@ -27,7 +27,7 @@ MainScene::MainScene(Game* game)
 
 
 	//UIScreen
-	AddUIScreen<MainSceneUIScreen>(this);
+	AddUIScreen<MainSceneUIScreen>(score_manager_);
 }
 
 void MainScene::PriorUniqueUpdate()

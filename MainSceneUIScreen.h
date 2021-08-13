@@ -4,13 +4,13 @@
 #include "HDrawLineFrame.h"
 #include "HNumberDraw.h"
 
-class MainScene;
+class ScoreManager;
 
 class MainSceneUIScreen :
     public UIScreen
 {
 public:
-    MainSceneUIScreen(MainScene* scene);
+    MainSceneUIScreen(Scene* scene, boost::shared_ptr<ScoreManager> score_manager);
     void Update() override;
     void Output() override;
     ~MainSceneUIScreen();
@@ -20,7 +20,6 @@ private:
     Helpers::HTextureDraw score_text_draw_;
     //得点表示枠
     Helpers::HDrawLineFrame point_frame_;
-    MainScene* scene_;
     //得点表示枠の中心x
     constexpr static double point_frame_cx_ = 750-450;
     //得点表示枠の中心y
@@ -42,5 +41,6 @@ private:
     constexpr static double score_leftup_y_ = score_image_luy_ - score_image_height_;
     //フォントサイズ
     constexpr static double font_size_ = 24.0;
+    boost::shared_ptr<ScoreManager> score_manager_;
 };
 

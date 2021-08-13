@@ -9,7 +9,7 @@ class TitleScene;
 class TitleUIScreen :public UIScreen
 {
 public:
-	TitleUIScreen(TitleScene* scene);
+	TitleUIScreen(Scene* scene);
 	void Update();
 	void Output();
 	~TitleUIScreen();

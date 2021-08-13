@@ -83,13 +83,13 @@ public:
 			{
 				mPrevMousePosForUIScreens.push_back(mPrevMousePosForUIScreens.back());
 			}
-			mUIScreens.push_back(new T(_args...));
+			mUIScreens.push_back(new T(this,_args...));
 			mUpdateFlagForUIScreens.push_back(true);
 			mInputFlagForUIScreens.push_back(true);
 		}
 		else
 		{
-			mPandingUIScreens.push_back(new T(_args...));
+			mPandingUIScreens.push_back(new T(this,_args...));
 		}
 	}
 	/// <summary>

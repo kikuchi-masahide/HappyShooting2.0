@@ -5,7 +5,7 @@
 TitleScene::TitleScene(Game* _game)
 	:Scene(_game)
 {
-	AddUIScreen<TitleUIScreen>(this);
+	AddUIScreen<TitleUIScreen>();
 }
 
 TitleScene::~TitleScene()

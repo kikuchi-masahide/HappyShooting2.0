@@ -1,9 +1,11 @@
 #pragma once
 
+class Scene;
+
 class UIScreen
 {
 public:
-	UIScreen(bool _inputflag, bool _updateflag);
+	UIScreen(Scene* _scene, bool _inputflag, bool _updateflag);
 	virtual void Update() = 0;
 	virtual void Output() = 0;
 	void SetDeleteFlag();
@@ -25,6 +27,8 @@ public:
 	/// Comp‚ğUpdate‚·‚é‚©”Û‚©‚ğ•ÏX‚·‚é
 	/// </summary>
 	void SetCompUpdateFlag(bool _flag);
+protected:
+	Scene* const mScene;
 private:
 	bool mDeleteFlag;
 	//Input‚ğ‰œ‚É—¬‚·‚©‚Ç‚¤‚©

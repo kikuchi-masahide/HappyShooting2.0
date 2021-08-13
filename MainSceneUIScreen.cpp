@@ -3,10 +3,11 @@
 
 #include "MainScene.h"
 
-MainSceneUIScreen::MainSceneUIScreen(MainScene* scene)
-	:UIScreen(true, true),
+MainSceneUIScreen::MainSceneUIScreen(Scene* scene, boost::shared_ptr<ScoreManager> score_manager)
+	:UIScreen(scene, true, true),
 	cursor_draw_(scene->mGame, 3),point_frame_(scene->mGame),score_text_draw_(scene->mGame,5),
-	scene_(scene),number_draw_(scene->mGame,font_size_,MatVec::Vector2(score_leftup_x_,score_leftup_y_),900,900,8)
+	number_draw_(scene->mGame,font_size_,MatVec::Vector2(score_leftup_x_,score_leftup_y_),900,900,8),
+	score_manager_(score_manager)
 {
 }
 
@@ -16,13 +17,13 @@ void MainSceneUIScreen::Update()
 
 void MainSceneUIScreen::Output()
 {
-	Game& game = scene_->mGame;
+	Game& game = mScene->mGame;
 
 	//RTVオープン
 	game.OpenSwapChain(0);
 
 	//カーソル描画
-	auto cursor = scene_->GetMouseClientPos(0);
+	auto cursor = mScene->GetMouseClientPos(0);
 	cursor -= MatVec::Vector2(450, 450);
 	cursor_draw_.DrawCenter(game, cursor(0), cursor(1), 20, 20, 900, 900);
 
@@ -33,11 +34,11 @@ void MainSceneUIScreen::Output()
 		game, score_image_lux_, score_image_lux_ + score_image_width_, score_image_luy_-score_image_height_, score_image_luy_, 900, 900
 	);
 	//スコア表示
-	int score = scene_->GetScoreManager()->GetScore();
-	number_draw_.DrawNumber(scene_->mGame, score);
+	int score = score_manager_->GetScore();
+	number_draw_.DrawNumber(game, score);
 
 	//RTVクローズ
-	scene_->mGame.CloseSwapChain();
+	mScene->mGame.CloseSwapChain();
 }
 
 MainSceneUIScreen::~MainSceneUIScreen()
