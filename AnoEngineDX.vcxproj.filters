@@ -43,9 +43,6 @@
     <Filter Include="MainScene\MainSceneUIScreen">
       <UniqueIdentifier>{dfb53f11-bea0-4e83-9d87-83c7cb5b6809}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainScene\MyselfPosAndAngleComponent">
-      <UniqueIdentifier>{f9e22681-427b-4292-ab66-85de6e5cae57}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MainScene\MyselfMediatorComponent">
       <UniqueIdentifier>{255faa76-3831-4638-ab09-889acfa3fa8b}</UniqueIdentifier>
     </Filter>
@@ -123,6 +120,15 @@
     </Filter>
     <Filter Include="MainScene\MyselfAngleComponent">
       <UniqueIdentifier>{8ee26f0c-e3f1-420e-8f20-b27bb66a8a45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\MyselfConditionBase">
+      <UniqueIdentifier>{0cdddcbe-e252-48a8-bc42-826e3f53f62b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\MyselfConditionBase\MyselfRevivingPosState">
+      <UniqueIdentifier>{1dc461a5-fbd3-4106-9604-8452cd072e9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\MyselfConditionBase\MyselfNormalCondition">
+      <UniqueIdentifier>{d090818c-f99d-4025-8316-dd8ad27b5e74}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -230,9 +236,6 @@
     <ClCompile Include="MainSceneUIScreen.cpp">
       <Filter>MainScene\MainSceneUIScreen</Filter>
     </ClCompile>
-    <ClCompile Include="MyselfPosAndAngleComponent.cpp">
-      <Filter>MainScene\MyselfPosAndAngleComponent</Filter>
-    </ClCompile>
     <ClCompile Include="MyselfMediatorComponent.cpp">
       <Filter>MainScene\MyselfMediatorComponent</Filter>
     </ClCompile>
@@ -310,6 +313,15 @@
     </ClCompile>
     <ClCompile Include="MyselfAngleComponent.cpp">
       <Filter>MainScene\MyselfAngleComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="MyselfConditionBase.cpp">
+      <Filter>MainScene\MyselfConditionBase</Filter>
+    </ClCompile>
+    <ClCompile Include="MyselfNormalCondition.cpp">
+      <Filter>MainScene\MyselfConditionBase\MyselfNormalCondition</Filter>
+    </ClCompile>
+    <ClCompile Include="MyselfRevivingCondition.cpp">
+      <Filter>MainScene\MyselfConditionBase\MyselfRevivingPosState</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -431,9 +443,6 @@
     <ClInclude Include="MainSceneUIScreen.h">
       <Filter>MainScene\MainSceneUIScreen</Filter>
     </ClInclude>
-    <ClInclude Include="MyselfPosAndAngleComponent.h">
-      <Filter>MainScene\MyselfPosAndAngleComponent</Filter>
-    </ClInclude>
     <ClInclude Include="MyselfMediatorComponent.h">
       <Filter>MainScene\MyselfMediatorComponent</Filter>
     </ClInclude>
@@ -520,6 +529,15 @@
     </ClInclude>
     <ClInclude Include="MyselfAngleComponent.h">
       <Filter>MainScene\MyselfAngleComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="MyselfConditionBase.h">
+      <Filter>MainScene\MyselfConditionBase</Filter>
+    </ClInclude>
+    <ClInclude Include="MyselfNormalCondition.h">
+      <Filter>MainScene\MyselfConditionBase\MyselfNormalCondition</Filter>
+    </ClInclude>
+    <ClInclude Include="MyselfRevivingCondition.h">
+      <Filter>MainScene\MyselfConditionBase\MyselfRevivingPosState</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

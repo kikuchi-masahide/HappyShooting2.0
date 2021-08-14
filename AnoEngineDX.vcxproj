@@ -210,7 +210,9 @@
     <ClCompile Include="MyselfAngleComponent.cpp" />
     <ClCompile Include="MyselfCollisionComponent.cpp" />
     <ClCompile Include="MyselfMediatorComponent.cpp" />
-    <ClCompile Include="MyselfPosAndAngleComponent.cpp" />
+    <ClCompile Include="MyselfNormalCondition.cpp" />
+    <ClCompile Include="MyselfConditionBase.cpp" />
+    <ClCompile Include="MyselfRevivingCondition.cpp" />
     <ClCompile Include="Rect2.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ScoreManager.cpp" />
@@ -285,7 +287,9 @@
     <ClInclude Include="MyselfAngleComponent.h" />
     <ClInclude Include="MyselfCollisionComponent.h" />
     <ClInclude Include="MyselfMediatorComponent.h" />
-    <ClInclude Include="MyselfPosAndAngleComponent.h" />
+    <ClInclude Include="MyselfNormalCondition.h" />
+    <ClInclude Include="MyselfConditionBase.h" />
+    <ClInclude Include="MyselfRevivingCondition.h" />
     <ClInclude Include="Rect2.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="ScoreManager.h" />
