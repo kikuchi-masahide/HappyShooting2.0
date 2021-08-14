@@ -5,6 +5,8 @@
 #include "MainScene.h"
 #include "MyselfAddNormalBulletComponent.h"
 #include "MyselfCollisionComponent.h"
+#include "MyselfPosAndAngleComponent.h"
+#include "MyselfAngleComponent.h"
 
 MyselfMediatorComponent::MyselfMediatorComponent(GameObjectHandle myself, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager)
 	:Component(myself, 50), damage_counter_(-1), layer_manager_(layer_manager), score_manager_(score_manager),collision_manager_(collision_manager)
@@ -14,6 +16,8 @@ MyselfMediatorComponent::MyselfMediatorComponent(GameObjectHandle myself, boost:
 	draw_texture_component_->height_ = 40;
 	mObj->AddUpdateComponent<MyselfAddNormalBulletComponent>(layer_manager_,collision_manager_);
 	mObj->AddUpdateComponent<MyselfCollisionComponent>(collision_manager_, This<MyselfMediatorComponent>());
+	mObj->AddUpdateComponent<MyselfPosAndAngleComponent>(layer_manager_);
+	mObj->AddUpdateComponent<MyselfAngleComponent>(layer_manager_);
 }
 
 void MyselfMediatorComponent::Update()

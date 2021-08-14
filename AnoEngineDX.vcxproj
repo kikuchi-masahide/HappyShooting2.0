@@ -207,6 +207,7 @@
     <ClCompile Include="Matrix4x4.cpp" />
     <ClCompile Include="MatVec.cpp" />
     <ClCompile Include="MyselfAddNormalBulletComponent.cpp" />
+    <ClCompile Include="MyselfAngleComponent.cpp" />
     <ClCompile Include="MyselfCollisionComponent.cpp" />
     <ClCompile Include="MyselfMediatorComponent.cpp" />
     <ClCompile Include="MyselfPosAndAngleComponent.cpp" />
@@ -281,6 +282,7 @@
     <ClInclude Include="Matrix4x4.h" />
     <ClInclude Include="MatVec.h" />
     <ClInclude Include="MyselfAddNormalBulletComponent.h" />
+    <ClInclude Include="MyselfAngleComponent.h" />
     <ClInclude Include="MyselfCollisionComponent.h" />
     <ClInclude Include="MyselfMediatorComponent.h" />
     <ClInclude Include="MyselfPosAndAngleComponent.h" />

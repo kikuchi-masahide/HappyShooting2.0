@@ -22,8 +22,6 @@ public:
 	boost::shared_ptr<CollisionManager> GetCollisionManager();
 	GameObjectHandle GetMyselfHandle();
 private:
-	//自機の位置角度変更コンポーネント
-	ComponentHandle<MyselfPosAndAngleComponent> myself_pos_angle_handle_;
 	//シーンに自機を追加する
 	void AddMyself();
 	//現在のスコア

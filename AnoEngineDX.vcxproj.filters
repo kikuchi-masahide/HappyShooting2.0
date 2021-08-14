@@ -121,6 +121,9 @@
     <Filter Include="MainScene\Enemy1MoveComponent">
       <UniqueIdentifier>{523a6666-e795-442e-ac16-f3b324907507}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\MyselfAngleComponent">
+      <UniqueIdentifier>{8ee26f0c-e3f1-420e-8f20-b27bb66a8a45}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -304,6 +307,9 @@
     </ClCompile>
     <ClCompile Include="Enemy1MoveComponent.cpp">
       <Filter>MainScene\Enemy1MoveComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="MyselfAngleComponent.cpp">
+      <Filter>MainScene\MyselfAngleComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -511,6 +517,9 @@
     </ClInclude>
     <ClInclude Include="Enemy1MoveComponent.h">
       <Filter>MainScene\Enemy1MoveComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="MyselfAngleComponent.h">
+      <Filter>MainScene\MyselfAngleComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

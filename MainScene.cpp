@@ -83,8 +83,6 @@ GameObjectHandle MainScene::GetMyselfHandle()
 void MainScene::AddMyself()
 {
 	myself_handle_ = AddObject(MatVec::Vector2(0, -275), 1.0, 0.0);
-	//このコンポーネントのみMainSceneが知っておかなければならないのでここで追加
-	myself_pos_angle_handle_ = myself_handle_->AddUpdateComponent<MyselfPosAndAngleComponent>(layer_manager_);
 	//他のコンポーネントの追加はメディエータに任せる
 	myself_handle_->AddUpdateComponent<MyselfMediatorComponent>(layer_manager_,score_manager_,collision_manager_);
 }
