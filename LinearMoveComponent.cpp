@@ -18,8 +18,34 @@ void LinearMoveComponent::Update()
 	auto pos = mObj->GetPosition();
 	pos += d_;
 	mObj->SetPosition(pos);
-	//位置のチェック
-	if (abs(pos(0)) > 300 + exist_limit_ || abs(pos(1)) > 450 + exist_limit_)
+	//位置のチェック...これから先画面外に現れることがないならば死ぬ
+	int txbo = -1e7;
+	int txto = 1e7;
+	int tybo = -1e7;
+	int tyto = 1e7;
+	if (!Zero(d_(0)))
+	{
+		if (d_(0) > 0) {
+			txbo = ceil((-exist_limit_ - 300 - pos(0)) / d_(0));
+			txto = floor((exist_limit_ + 300 - pos(0)) / d_(0));
+		}
+		else {
+			txbo = ceil((exist_limit_ + 300 - pos(0)) / d_(0));
+			txto = floor((-exist_limit_ - 300 - pos(0)) / d_(0));
+		}
+	}
+	if (!Zero(d_(1)))
+	{
+		if (d_(1) > 0) {
+			txbo = ceil((-exist_limit_ - 450 - pos(1)) / d_(1));
+			txto = floor((exist_limit_ + 450 - pos(1)) / d_(1));
+		}
+		else {
+			txbo = ceil((exist_limit_ + 450 - pos(1)) / d_(1));
+			txto = floor((-exist_limit_ - 450 - pos(1)) / d_(1));
+		}
+	}
+	if (max(txbo, tybo) > min(txto, tyto) || min(txto, tyto) < 0)
 	{
 		mObj->SetDeleteFlag();
 	}
