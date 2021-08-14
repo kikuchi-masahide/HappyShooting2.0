@@ -46,7 +46,6 @@ protected:
 	Game& GetGame();
 	Scene* const scene_;
 private:
-	//TODO:z座標でソート!!!!!!!!!!!!!!!!
 	std::vector<ComponentHandle<MainSceneDrawComponent>> draw_components_;
 	//このレイヤーがアクティブになってから何度目のフレームか
 	//(1回目にUniqueDrawが呼び出されたときが0)

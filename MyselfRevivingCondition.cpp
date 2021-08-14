@@ -23,7 +23,8 @@ void MyselfRevivingCondition::Update()
 	MatVec::Vector2 pos(0, last_y_);
 	pos(1) -= delta_y_ * (whole_time_ - counter_ - 1);
 	mObj->SetPosition(pos);
-	mediator_->SetAlpha(cos(delta_alpha_theta_ * counter_));
+	auto theta = delta_alpha_theta_ * counter_;
+	mediator_->SetAlpha((1 + cos(theta))/2);
 	counter_++;
 	if (counter_ == whole_time_)
 	{

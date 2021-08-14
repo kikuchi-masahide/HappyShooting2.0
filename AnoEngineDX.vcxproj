@@ -222,7 +222,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TextureManager.cpp" />
-    <ClCompile Include="TimerComponent.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="TitleUIScreen.cpp" />
     <ClCompile Include="UIScreen.cpp" />
@@ -296,7 +295,6 @@
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TextureManager.h" />
-    <ClInclude Include="TimerComponent.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="TitleUIScreen.h" />
     <ClInclude Include="UIScreen.h" />
