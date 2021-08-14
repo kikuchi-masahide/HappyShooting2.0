@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "EnemyWave1.h"
+#include "EnemyWave2.h"
 
 #include "EnemyWaveManager.h"
 #include "MainScene.h"
@@ -7,15 +7,14 @@
 #include "EnemyHealthComponent.h"
 #include "Enemy1CollisionComponent.h"
 #include "DrawTextureComponent.h"
-#include "EnemyWave2.h"
 
-EnemyWave1::EnemyWave1(unsigned int tick_after_clear, EnemyWaveManager* manager)
-	:EnemyWaveBase(tick_after_clear,manager)
+EnemyWave2::EnemyWave2(unsigned int tick_after_clear, EnemyWaveManager* manager)
+	:EnemyWaveBase(tick_after_clear, manager)
 {
 	MainScene* scene = manager->scene_;
 	for (unsigned int index = 0; index < all_number_; index++)
 	{
-		auto e1 = scene->AddObject(MatVec::Vector2(0, 450) - MatVec::Vector2(speedx_, speedy_) * (5+period_*index), 1.0, 0.0);
+		auto e1 = scene->AddObject(MatVec::Vector2(0, 450) - MatVec::Vector2(speedx_, speedy_) * (5 + period_ * index), 1.0, 0.0);
 		e1->AddUpdateComponent<Enemy1MoveComponent>(0, MatVec::Vector2(speedx_, speedy_), angle_);
 		auto health = e1->AddUpdateComponent<EnemyHealthComponent>(scene->GetLayerManager(), 100);
 		e1->AddUpdateComponent<Enemy1CollisionComponent>(scene->GetCollisionManager(), scene->GetScoreManager(), health);
@@ -26,13 +25,11 @@ EnemyWave1::EnemyWave1(unsigned int tick_after_clear, EnemyWaveManager* manager)
 	}
 }
 
-EnemyWave1::~EnemyWave1()
+EnemyWave2::~EnemyWave2()
 {
 }
 
-void EnemyWave1::OnDelete()
+void EnemyWave2::OnDelete()
 {
-	manager_->SetWave(boost::shared_ptr<EnemyWave2>(
-		new EnemyWave2(30,manager_))
-	);
+	manager_->SetWave(nullptr);
 }

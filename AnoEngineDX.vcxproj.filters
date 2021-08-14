@@ -127,6 +127,9 @@
     <Filter Include="MainScene\MyselfConditionBase\MyselfNormalCondition">
       <UniqueIdentifier>{d090818c-f99d-4025-8316-dd8ad27b5e74}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\EnemyWaveBase\EnemyWave2">
+      <UniqueIdentifier>{cb1ddebc-3319-4714-8350-ad007959f625}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -316,6 +319,9 @@
     </ClCompile>
     <ClCompile Include="MyselfRevivingCondition.cpp">
       <Filter>MainScene\MyselfConditionBase\MyselfRevivingPosState</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyWave2.cpp">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave2</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -529,6 +535,9 @@
     </ClInclude>
     <ClInclude Include="MyselfRevivingCondition.h">
       <Filter>MainScene\MyselfConditionBase\MyselfRevivingPosState</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyWave2.h">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave2</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
