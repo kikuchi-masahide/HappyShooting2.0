@@ -22,4 +22,4 @@ inline double Min(double _a, double _b)
 	return _b;
 }
 
-const double PI = 3.1415926535;
+constexpr double PI = 3.1415926535;

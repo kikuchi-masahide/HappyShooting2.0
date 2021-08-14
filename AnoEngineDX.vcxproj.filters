@@ -118,6 +118,9 @@
     <Filter Include="MainScene\EnemyWaveBase\EnemyWave1">
       <UniqueIdentifier>{5e9df286-bbe7-4778-8806-93f483fa455f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Enemy1MoveComponent">
+      <UniqueIdentifier>{523a6666-e795-442e-ac16-f3b324907507}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -298,6 +301,9 @@
     </ClCompile>
     <ClCompile Include="EnemyWave1.cpp">
       <Filter>MainScene\EnemyWaveBase\EnemyWave1</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy1MoveComponent.cpp">
+      <Filter>MainScene\Enemy1MoveComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -502,6 +508,9 @@
     </ClInclude>
     <ClInclude Include="EnemyWave1.h">
       <Filter>MainScene\EnemyWaveBase\EnemyWave1</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy1MoveComponent.h">
+      <Filter>MainScene\Enemy1MoveComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

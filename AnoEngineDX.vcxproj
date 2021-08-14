@@ -180,6 +180,7 @@
     <ClCompile Include="DX12ShaderObject.cpp" />
     <ClCompile Include="DX12SwapChain.cpp" />
     <ClCompile Include="Enemy1CollisionComponent.cpp" />
+    <ClCompile Include="Enemy1MoveComponent.cpp" />
     <ClCompile Include="EnemyHealthComponent.cpp" />
     <ClCompile Include="EnemyWave1.cpp" />
     <ClCompile Include="EnemyWaveBase.cpp" />
@@ -250,6 +251,7 @@
     <ClInclude Include="DX12SwapChain.h" />
     <ClInclude Include="DX12VertexLayoutUnit.h" />
     <ClInclude Include="Enemy1CollisionComponent.h" />
+    <ClInclude Include="Enemy1MoveComponent.h" />
     <ClInclude Include="EnemyHealthComponent.h" />
     <ClInclude Include="EnemyWave1.h" />
     <ClInclude Include="EnemyWaveBase.h" />
