@@ -50,9 +50,9 @@ DX12RootSignature::DX12RootSignature(ComPtr<ID3D12Device> _device, DX12RootParam
 		RSDesc.NumParameters = 1;
 	}
 
+	D3D12_STATIC_SAMPLER_DESC samplerDesc = {};
 	if (_hasSampler) {
 		//ÉTÉìÉvÉâÅ[ê›íË
-		D3D12_STATIC_SAMPLER_DESC samplerDesc = {};
 		samplerDesc.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
 		samplerDesc.AddressV = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
 		samplerDesc.AddressW = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
@@ -60,7 +60,7 @@ DX12RootSignature::DX12RootSignature(ComPtr<ID3D12Device> _device, DX12RootParam
 		samplerDesc.Filter = D3D12_FILTER_MIN_MAG_MIP_LINEAR;
 		samplerDesc.MaxLOD = D3D12_FLOAT32_MAX;
 		samplerDesc.MinLOD = 0.0f;
-		samplerDesc.ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
+		samplerDesc.ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 		samplerDesc.ComparisonFunc = D3D12_COMPARISON_FUNC_NEVER;
 
 		RSDesc.pStaticSamplers = &samplerDesc;

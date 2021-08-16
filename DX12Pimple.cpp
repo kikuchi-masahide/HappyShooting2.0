@@ -62,7 +62,7 @@ void DX12Pimple::Initialize() {
 #else
 			if (FAILED(
 				CreateDXGIFactory1(
-					IID_PPV_ARGS(_factory.ReleaseAndGetAddressOf())
+					IID_PPV_ARGS(mFactory.ReleaseAndGetAddressOf())
 				)
 			))
 			{
