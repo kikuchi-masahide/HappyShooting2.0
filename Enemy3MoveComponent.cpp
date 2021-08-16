@@ -20,5 +20,10 @@ void Enemy3MoveComponent::Update()
 	MatVec::Vector2 pos = lambda_(angle);
 	mObj->SetPosition(pos);
 	mObj->SetRotation(angle);
+	//‰æ–ÊŠO
+	double x = pos(0);
+	if (abs(x) > 300.0 + 20.0) {
+		mObj->SetDeleteFlag();
+	}
 	counter_++;
 }
