@@ -162,7 +162,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BulletCollisionComponent.cpp" />
+    <ClCompile Include="MyBulletCollisionComponent.cpp" />
     <ClCompile Include="CircleGeometry.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
@@ -235,7 +235,7 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BulletCollisionComponent.h" />
+    <ClInclude Include="MyBulletCollisionComponent.h" />
     <ClInclude Include="CircleGeometry.h" />
     <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="CollisionManager.h" />

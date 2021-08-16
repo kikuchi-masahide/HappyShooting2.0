@@ -94,9 +94,6 @@
     <Filter Include="MainScene\MainSceneDrawComponent\DrawDeathEffectComponent">
       <UniqueIdentifier>{72d61745-d3e2-4062-a710-d545b38eda8b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainScene\CollisionComponent\BulletCollisionComponent">
-      <UniqueIdentifier>{e47263de-357c-4f8e-9782-dc6dee019436}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MainScene\LayerManager">
       <UniqueIdentifier>{57b17c4a-3ae0-4af6-895d-63badbf30272}</UniqueIdentifier>
     </Filter>
@@ -138,6 +135,9 @@
     </Filter>
     <Filter Include="MainScene\CollisionComponent\Enemy3CollisionComponent">
       <UniqueIdentifier>{9f55002a-00c5-4326-a241-5d4e0e4cced9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\CollisionComponent\MyBulletCollisionComponent">
+      <UniqueIdentifier>{e47263de-357c-4f8e-9782-dc6dee019436}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -284,9 +284,6 @@
     <ClCompile Include="DrawDeathEffectComponent.cpp">
       <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
     </ClCompile>
-    <ClCompile Include="BulletCollisionComponent.cpp">
-      <Filter>MainScene\CollisionComponent\BulletCollisionComponent</Filter>
-    </ClCompile>
     <ClCompile Include="Matrix4x4.cpp">
       <Filter>Engine\Math</Filter>
     </ClCompile>
@@ -340,6 +337,9 @@
     </ClCompile>
     <ClCompile Include="Enemy3CollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent\Enemy3CollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="MyBulletCollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\MyBulletCollisionComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -503,9 +503,6 @@
     <ClInclude Include="DrawDeathEffectComponent.h">
       <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
     </ClInclude>
-    <ClInclude Include="BulletCollisionComponent.h">
-      <Filter>MainScene\CollisionComponent\BulletCollisionComponent</Filter>
-    </ClInclude>
     <ClInclude Include="Matrix4x4.h">
       <Filter>Engine\Math</Filter>
     </ClInclude>
@@ -565,6 +562,9 @@
     </ClInclude>
     <ClInclude Include="Enemy3CollisionComponent.h">
       <Filter>MainScene\CollisionComponent\Enemy3CollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="MyBulletCollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\MyBulletCollisionComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

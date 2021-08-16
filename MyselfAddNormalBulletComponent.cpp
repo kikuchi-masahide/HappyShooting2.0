@@ -5,7 +5,7 @@
 #include "Scene.h"
 #include "LinearMoveComponent.h"
 #include "DrawNormalBulletComponent.h"
-#include "BulletCollisionComponent.h"
+#include "MyBulletCollisionComponent.h"
 
 MyselfAddNormalBulletComponent::MyselfAddNormalBulletComponent(GameObjectHandle handle, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<CollisionManager> collision_manager)
 	:Component(handle, 30),
@@ -28,7 +28,7 @@ void MyselfAddNormalBulletComponent::Update()
 		bullet->AddUpdateComponent<LinearMoveComponent>(
 			dist, bullet_redius_
 		);
-		bullet->AddUpdateComponent<BulletCollisionComponent>(collision_manager_, 50, 1, 2, 100, bullet_redius_);
+		bullet->AddUpdateComponent<MyBulletCollisionComponent>(collision_manager_, 100, bullet_redius_);
 		bullet->AddOutputComponent<DrawNormalBulletComponent>(
 			layer_manager_, bullet_redius_, MatVec::Vector3(0.0, 0.0, 1.0), 1.0, -1.0
 		);
