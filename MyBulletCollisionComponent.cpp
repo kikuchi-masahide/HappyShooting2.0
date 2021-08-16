@@ -24,7 +24,7 @@ void MyBulletCollisionComponent::CheckHitComponent()
 {
 	for (auto comp : hit_comps_)
 	{
-		if (comp->tag_ != 0 && comp->tag_ != 1)
+		if (comp->tag_ == 2)
 		{
 			SetDeleteFlag();
 			mObj->SetDeleteFlag();

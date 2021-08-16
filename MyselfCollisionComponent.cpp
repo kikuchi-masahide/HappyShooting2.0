@@ -30,7 +30,13 @@ void MyselfCollisionComponent::CheckHitComponent()
 	if (mediator_->IsInvincible())return;
 	//Žn‚ß‚ÌˆêŒ‚‚Ì‚Ý‚ðŠ¨ˆÄ‚·‚é
 	auto comp = *(hit_comps_.begin());
+	//“G‹@‚Æ“–‚½‚Á‚½ê‡
 	if (comp->tag_ == 2)
+	{
+		mediator_->CauseDamageToMyself(comp->GetDamage());
+	}
+	//“G’e‚Æ“–‚½‚Á‚½ê‡
+	if (comp->tag_ == 100)
 	{
 		mediator_->CauseDamageToMyself(comp->GetDamage());
 		comp->SetDeleteFlag();
