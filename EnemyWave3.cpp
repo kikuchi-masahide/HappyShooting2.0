@@ -7,6 +7,7 @@
 #include "DrawTextureComponent.h"
 #include "EnemyHealthComponent.h"
 #include "Enemy3CollisionComponent.h"
+#include "NormalShootComponent.h"
 
 EnemyWave3::EnemyWave3(EnemyWaveManager* manager)
 	:EnemyWaveBase(60,manager)
@@ -25,6 +26,14 @@ EnemyWave3::EnemyWave3(EnemyWaveManager* manager)
 		draw->height_ = 40;
 		auto health = obj->AddUpdateComponent<EnemyHealthComponent>(scene->GetLayerManager(), 300);
 		obj->AddUpdateComponent<Enemy3CollisionComponent>(scene->GetCollisionManager(), scene->GetScoreManager(), health);
+		for (int d = 0; d < 4; d++)
+		{
+			MatVec::Vector2 direct(cos(d * PI / 2), sin(d * PI / 2));
+			direct *= bullet_speed_;
+			obj->AddUpdateComponent<NormalShootComponent>(
+				50, direct, bullet_size_, 60, bullet_attack_, scene->GetLayerManager(), scene->GetCollisionManager()
+				);
+		}
 	}
 	auto lambda2 = [](double angle)
 	{
@@ -39,6 +48,14 @@ EnemyWave3::EnemyWave3(EnemyWaveManager* manager)
 		draw->height_ = 40;
 		auto health = obj->AddUpdateComponent<EnemyHealthComponent>(scene->GetLayerManager(), 300);
 		obj->AddUpdateComponent<Enemy3CollisionComponent>(scene->GetCollisionManager(), scene->GetScoreManager(), health);
+		for (int d = 0; d < 4; d++)
+		{
+			MatVec::Vector2 direct(cos(d * PI / 2), sin(d * PI / 2));
+			direct *= bullet_speed_;
+			obj->AddUpdateComponent<NormalShootComponent>(
+				50, direct, bullet_size_, 60, bullet_attack_, scene->GetLayerManager(), scene->GetCollisionManager()
+				);
+		}
 	}
 }
 
