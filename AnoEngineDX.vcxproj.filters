@@ -130,6 +130,15 @@
     <Filter Include="MainScene\EnemyWaveBase\EnemyWave2">
       <UniqueIdentifier>{cb1ddebc-3319-4714-8350-ad007959f625}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Enemy3MoveComponent">
+      <UniqueIdentifier>{2bc9285b-7887-45ce-a066-38f7ede54b41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\EnemyWaveBase\EnemyWave3">
+      <UniqueIdentifier>{37875d69-45f9-4369-9201-3e17cb4d562a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\CollisionComponent\Enemy3CollisionComponent">
+      <UniqueIdentifier>{9f55002a-00c5-4326-a241-5d4e0e4cced9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -322,6 +331,15 @@
     </ClCompile>
     <ClCompile Include="EnemyWave2.cpp">
       <Filter>MainScene\EnemyWaveBase\EnemyWave2</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy3MoveComponent.cpp">
+      <Filter>MainScene\Enemy3MoveComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyWave3.cpp">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave3</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy3CollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\Enemy3CollisionComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -538,6 +556,15 @@
     </ClInclude>
     <ClInclude Include="EnemyWave2.h">
       <Filter>MainScene\EnemyWaveBase\EnemyWave2</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy3MoveComponent.h">
+      <Filter>MainScene\Enemy3MoveComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyWave3.h">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave3</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy3CollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\Enemy3CollisionComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

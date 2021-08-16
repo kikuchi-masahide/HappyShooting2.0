@@ -5,6 +5,7 @@
 
 class LayerManager;
 
+//TODO:(このコンポーネントなんで作ったんだっけ...?)
 //敵機用体力管理コンポーネント
 //0未満になるとオブジェクトを消滅させ，消滅エフェクトを追加する
 class EnemyHealthComponent :

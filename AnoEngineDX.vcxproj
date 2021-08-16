@@ -181,9 +181,12 @@
     <ClCompile Include="DX12SwapChain.cpp" />
     <ClCompile Include="Enemy1CollisionComponent.cpp" />
     <ClCompile Include="Enemy1MoveComponent.cpp" />
+    <ClCompile Include="Enemy3CollisionComponent.cpp" />
+    <ClCompile Include="Enemy3MoveComponent.cpp" />
     <ClCompile Include="EnemyHealthComponent.cpp" />
     <ClCompile Include="EnemyWave1.cpp" />
     <ClCompile Include="EnemyWave2.cpp" />
+    <ClCompile Include="EnemyWave3.cpp" />
     <ClCompile Include="EnemyWaveBase.cpp" />
     <ClCompile Include="EnemyWaveManager.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -255,9 +258,12 @@
     <ClInclude Include="DX12VertexLayoutUnit.h" />
     <ClInclude Include="Enemy1CollisionComponent.h" />
     <ClInclude Include="Enemy1MoveComponent.h" />
+    <ClInclude Include="Enemy3CollisionComponent.h" />
+    <ClInclude Include="Enemy3MoveComponent.h" />
     <ClInclude Include="EnemyHealthComponent.h" />
     <ClInclude Include="EnemyWave1.h" />
     <ClInclude Include="EnemyWave2.h" />
+    <ClInclude Include="EnemyWave3.h" />
     <ClInclude Include="EnemyWaveBase.h" />
     <ClInclude Include="EnemyWaveManager.h" />
     <ClInclude Include="Game.h" />

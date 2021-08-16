@@ -5,10 +5,14 @@
 #include "EnemyWaveBase.h"
 #include "EnemyWave1.h"
 
+#include "EnemyWave3.h"
+
 EnemyWaveManager::EnemyWaveManager(MainScene* scene)
 	:scene_(scene)
 {
-	wave_ = boost::shared_ptr<EnemyWave1>(new EnemyWave1(30, this));
+	//TODO:Š®¬‚Í–ß‚·
+	//wave_ = boost::shared_ptr<EnemyWave1>(new EnemyWave1(30, this));
+	wave_ = boost::shared_ptr<EnemyWave3>(new EnemyWave3(this));
 }
 
 EnemyWaveManager::~EnemyWaveManager()

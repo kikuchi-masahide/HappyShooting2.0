@@ -7,6 +7,7 @@
 #include "EnemyHealthComponent.h"
 #include "Enemy1CollisionComponent.h"
 #include "DrawTextureComponent.h"
+#include "EnemyWave3.h"
 
 EnemyWave2::EnemyWave2(unsigned int tick_after_clear, EnemyWaveManager* manager)
 	:EnemyWaveBase(tick_after_clear, manager)
@@ -31,5 +32,7 @@ EnemyWave2::~EnemyWave2()
 
 void EnemyWave2::OnDelete()
 {
-	manager_->SetWave(nullptr);
+	manager_->SetWave(boost::shared_ptr<EnemyWave3>(
+		new EnemyWave3(manager_)
+	));
 }
