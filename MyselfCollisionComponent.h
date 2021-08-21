@@ -15,8 +15,6 @@ class MyselfCollisionComponent :
 {
 public:
     MyselfCollisionComponent(GameObjectHandle myself, boost::shared_ptr<CollisionManager> manager, ComponentHandle<MyselfMediatorComponent> mediator);
-    //Ž©‹@‚Ì“–‚½‚è”»’è˜g‚Ìƒ^ƒO
-    static constexpr unsigned int myself_tag_ = 0;
     static constexpr unsigned int damage_ = 200;
     ~MyselfCollisionComponent();
     void Update() override;

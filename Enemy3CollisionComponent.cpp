@@ -7,7 +7,7 @@
 #include "ScoreManager.h"
 
 Enemy3CollisionComponent::Enemy3CollisionComponent(GameObjectHandle object, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<ScoreManager> score_manager, ComponentHandle<EnemyHealthComponent> health)
-	:CollisionComponent(object, collision_manager, 100, 2, damage_),
+	:CollisionComponent(object, collision_manager, 100, CollisionManager::Tag::EnemyBody, damage_),
 	health_component_(health), score_manager_(score_manager),
 	circle_(This<CollisionComponent>(),MatVec::Vector2(),20)
 {
@@ -28,7 +28,7 @@ void Enemy3CollisionComponent::CheckHitComponent()
 {
 	for (auto comp : hit_comps_)
 	{
-		if (comp->tag_ == 0 || comp->tag_ == 1)
+		if (comp->tag_ == CollisionManager::Tag::Myself || comp->tag_ == CollisionManager::Tag::MyBullet)
 		{
 			auto damage = comp->GetDamage();
 			auto real_damage = health_component_->Damage(damage);

@@ -19,6 +19,12 @@ public:
 	void TraverseAll();
 	//CircleGeometryÇÃí«â¡
 	void AddCircleGeometry(CircleGeometry& circle);
+	enum class Tag :unsigned char {
+		Myself,
+		MyBullet,
+		EnemyBody,
+		EnemyBullet
+	};
 private:
 	//geometryÇ∆ÅCgeometry.aabb.lx <= geometry_arr[e].aabb.lxÇ»ÇÈgeometry_arróvëfÇ∆ÇÃìñÇΩÇËîªíË
 	template<class T,class U>
@@ -63,6 +69,16 @@ inline void CollisionManager::TraverseAllSub_leq(T& geometry, Rect2& aabb, std::
 		ComponentHandle<CollisionComponent> parent = geometry.GetParent();
 		ComponentHandle<CollisionComponent> parent2 = geometry2.GetParent();
 		if (parent == parent2)continue;
+		//TODO:...
+		//é©ã@íeìØémÅCìGíeìØémÇ»Ç«ÇÃìñÇΩÇËîªíËÇèúäO
+		if (
+			(parent->tag_ == Tag::Myself || parent->tag_ == Tag::MyBullet) &&
+			(parent2->tag_ == Tag::Myself || parent2->tag_ == Tag::MyBullet)
+			)continue;
+		if (
+			(parent->tag_ == Tag::EnemyBody || parent->tag_ == Tag::EnemyBullet) &&
+			(parent2->tag_ == Tag::EnemyBody || parent2->tag_ == Tag::EnemyBullet)
+			)continue;
 		if (geometry.IsCrossing(geometry2))
 		{
 			NoticeEachOther(parent,parent2);
@@ -87,6 +103,15 @@ inline void CollisionManager::TraverseAllSub_same(std::vector<std::pair<T, Rect2
 		ComponentHandle<CollisionComponent> parent = geometry.GetParent();
 		ComponentHandle<CollisionComponent> parent2 = geometry2.GetParent();
 		if (parent == parent2)continue;
+		//é©ã@íeìØémÅCìGíeìØémÇ»Ç«ÇÃìñÇΩÇËîªíËÇèúäO
+		if (
+			(parent->tag_ == Tag::Myself || parent->tag_ == Tag::MyBullet) &&
+			(parent2->tag_ == Tag::Myself || parent2->tag_ == Tag::MyBullet)
+			)continue;
+		if (
+			(parent->tag_ == Tag::EnemyBody || parent->tag_ == Tag::EnemyBullet) &&
+			(parent2->tag_ == Tag::EnemyBody || parent2->tag_ == Tag::EnemyBullet)
+			)continue;
 		if (geometry.IsCrossing(geometry2))
 		{
 			NoticeEachOther(parent, parent2);
@@ -123,6 +148,15 @@ inline void CollisionManager::TraverseAllSub_less(T& geometry, Rect2& aabb, std:
 		ComponentHandle<CollisionComponent> parent = geometry.GetParent();
 		ComponentHandle<CollisionComponent> parent2 = geometry2.GetParent();
 		if (parent == parent2)continue;
+		//é©ã@íeìØémÅCìGíeìØémÇ»Ç«ÇÃìñÇΩÇËîªíËÇèúäO
+		if (
+			(parent->tag_ == Tag::Myself || parent->tag_ == Tag::MyBullet) &&
+			(parent2->tag_ == Tag::Myself || parent2->tag_ == Tag::MyBullet)
+			)continue;
+		if (
+			(parent->tag_ == Tag::EnemyBody || parent->tag_ == Tag::EnemyBullet) &&
+			(parent2->tag_ == Tag::EnemyBody || parent2->tag_ == Tag::EnemyBullet)
+			)continue;
 		if (geometry.IsCrossing(geometry2))
 		{
 			NoticeEachOther(parent, parent2);

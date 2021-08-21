@@ -5,7 +5,7 @@
 #include "MainScene.h"
 
 MyBulletCollisionComponent::MyBulletCollisionComponent(GameObjectHandle obj, boost::shared_ptr<CollisionManager> manager, unsigned int damage, double radius)
-	:CollisionComponent(obj, manager, 50, 1,damage),
+	:CollisionComponent(obj, manager, 50, CollisionManager::Tag::MyBullet,damage),
 	radius_(radius)
 {
 }
@@ -24,7 +24,7 @@ void MyBulletCollisionComponent::CheckHitComponent()
 {
 	for (auto comp : hit_comps_)
 	{
-		if (comp->tag_ == 2)
+		if (comp->tag_ == CollisionManager::Tag::EnemyBody)
 		{
 			SetDeleteFlag();
 			mObj->SetDeleteFlag();

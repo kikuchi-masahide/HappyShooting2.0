@@ -4,7 +4,7 @@
 #include "EnemyHealthComponent.h"
 
 Enemy1CollisionComponent::Enemy1CollisionComponent(GameObjectHandle object, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<ScoreManager> score_manager, ComponentHandle<EnemyHealthComponent> health)
-	:CollisionComponent(object, collision_manager, 100, 2, damage_),
+	:CollisionComponent(object, collision_manager, 100, CollisionManager::Tag::EnemyBody, damage_),
 	health_component_(health), score_manager_(score_manager)
 {
 	circle_around_[0].radius_ = 8;
@@ -41,7 +41,7 @@ void Enemy1CollisionComponent::CheckHitComponent()
 	for (auto comp : hit_comps_)
 	{
 		//Ž©‹@‚Ü‚½‚ÍŽ©‹@’e‚Æ‚ÌÕ“Ë
-		if (comp->tag_ == 0 || comp->tag_ == 1)
+		if (comp->tag_ == CollisionManager::Tag::Myself || comp->tag_ == CollisionManager::Tag::MyBullet)
 		{
 			auto damage = comp->GetDamage();
 			auto real_damage = health_component_->Damage(damage);

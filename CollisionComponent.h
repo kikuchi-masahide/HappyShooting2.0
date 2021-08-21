@@ -9,10 +9,10 @@ class CollisionComponent :
     public Component
 {
 public:
-    CollisionComponent(GameObjectHandle handle, boost::shared_ptr<CollisionManager> manager, int upd_priority, unsigned int tag, unsigned int damage);
+    CollisionComponent(GameObjectHandle handle, boost::shared_ptr<CollisionManager> manager, int upd_priority, CollisionManager::Tag tag, unsigned int damage);
     virtual ~CollisionComponent();
     /// 自身のタグ
-    const unsigned int tag_;
+    const CollisionManager::Tag tag_;
     unsigned int GetDamage();
     /// <summary>
     /// CollisionManagerに自身の持つ幾何図形を追加する

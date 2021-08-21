@@ -4,7 +4,7 @@
 #include "GameObject.h"
 
 NormalBulletCollisionComponent::NormalBulletCollisionComponent(GameObjectHandle obj, double radius, unsigned int damage, boost::shared_ptr<CollisionManager> collision_manager)
-	:CollisionComponent(obj,collision_manager,50,100,damage)
+	:CollisionComponent(obj,collision_manager,50,CollisionManager::Tag::EnemyBullet,damage)
 {
 	circle_ = CircleGeometry(This<CollisionComponent>(), mObj->GetPosition(), radius);
 }
