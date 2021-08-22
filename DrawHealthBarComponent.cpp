@@ -53,7 +53,7 @@ void DrawHealthBarComponent::Draw()
 	game.mdx12.SetScissorrect(0, 900, 0, 600);
 	game.mdx12.DrawIndexedInstanced(6, 1, 0, 0, 0);
 
-	frame_.DrawFrame(game, center(0), center(1), width_, height_, 0.0, 600, 900);
+	frame_.DrawFrame(game, center(0), center(1), width_, height_, 0.0, 600, 900,MatVec::Vector4(0.0,1.0,0.0,0.5));
 }
 
 DrawHealthBarComponent::~DrawHealthBarComponent()

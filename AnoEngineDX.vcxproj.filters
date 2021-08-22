@@ -616,6 +616,9 @@
     <None Include="DrawHealthBarComponent_header.hlsli">
       <Filter>MainScene\MainSceneDrawComponent\DrawHealthBarComponent</Filter>
     </None>
+    <None Include="HDrawLineFrameHeader.hlsli">
+      <Filter>Helper\HDrawLineFrame</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="HTextureDrawPixelShader.hlsl">

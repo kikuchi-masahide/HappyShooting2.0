@@ -323,6 +323,7 @@
     <None Include="DrawDeathEffectComponent_header.hlsli" />
     <None Include="DrawHealthBarComponent_header.hlsli" />
     <None Include="DrawNormalBulletComponentHeader.hlsli" />
+    <None Include="HDrawLineFrameHeader.hlsli" />
     <None Include="HNumberDraw_header.hlsli" />
     <None Include="HTextureAlphaRotateDrawHeader.hlsli" />
     <None Include="HTextureDrawInclude.hlsli" />

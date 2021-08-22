@@ -39,7 +39,7 @@ namespace Helpers {
 		boost::shared_ptr<DX12Resource> mMatrixBuffer;
 		boost::shared_ptr<DX12DescriptorHeap> mDescHeap;
 		//パイプライン等の初期化
-		static void GraphicInit(Game& _game);
+		static void StaticGraphicInit(Game& _game);
 		void InitializeDescHeap(Game& _game, unsigned int _textureid);
 		//コンストラクタで呼び出され，定数バッファとそのCRVの初期化を行う
 		void InitializeConstBuffer(Game& game);

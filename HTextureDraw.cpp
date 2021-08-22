@@ -55,13 +55,13 @@ namespace Helpers {
 		//初期設定が終わっていない場合のみ呼び出す
 		if (mGPipeline == nullptr)
 		{
-			GraphicInit(_game);
+			StaticGraphicInit(_game);
 		}
 		InitializeConstBuffer(_game);
 		InitializeDescHeap(_game, _textureid);
 	}
 
-	void HTextureDraw::GraphicInit(Game& _game)
+	void HTextureDraw::StaticGraphicInit(Game& _game)
 	{
 		//ルートパラメタ0:
 		//	レンジ0:SRV,t0~t0 <---> テクスチャのヒープ
