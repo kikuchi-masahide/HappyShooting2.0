@@ -162,6 +162,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DrawHealthBarComponent.cpp" />
     <ClCompile Include="MyBulletCollisionComponent.cpp" />
     <ClCompile Include="CircleGeometry.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
@@ -239,6 +240,7 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DrawHealthBarComponent.h" />
     <ClInclude Include="MyBulletCollisionComponent.h" />
     <ClInclude Include="CircleGeometry.h" />
     <ClInclude Include="CollisionComponent.h" />
@@ -319,6 +321,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="DrawDeathEffectComponent_header.hlsli" />
+    <None Include="DrawHealthBarComponent_header.hlsli" />
     <None Include="DrawNormalBulletComponentHeader.hlsli" />
     <None Include="HNumberDraw_header.hlsli" />
     <None Include="HTextureAlphaRotateDrawHeader.hlsli" />
@@ -336,6 +339,18 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="DrawHealthBarComponent_pixel.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="DrawHealthBarComponent_vertex.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
     <FxCompile Include="DrawNormalBulletComponentPixelShader.hlsl">

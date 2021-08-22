@@ -6,7 +6,7 @@
 #include "Scene.h"
 
 EnemyHealthComponent::EnemyHealthComponent(GameObjectHandle handle, boost::shared_ptr<LayerManager> layer_manager, double health0)
-	:Component(handle,50),health_(health0),layer_manager_(layer_manager)
+	:Component(handle,50),health_(health0),layer_manager_(layer_manager),all_health_(health0)
 {
 }
 
@@ -29,4 +29,9 @@ double EnemyHealthComponent::Damage(double damage)
 
 void EnemyHealthComponent::Update()
 {
+}
+
+double EnemyHealthComponent::GetHealthRate()
+{
+	return health_ / all_health_;
 }

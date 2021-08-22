@@ -27,7 +27,12 @@ public:
     /// 体力チェック
     /// </summary>
     void Update() override;
+    /// <summary>
+    /// 残りの体力が，全体力に占める割合を返す
+    /// </summary>
+    double GetHealthRate();
 private:
+    double all_health_;
     double health_;
     boost::shared_ptr<LayerManager> layer_manager_;
 };

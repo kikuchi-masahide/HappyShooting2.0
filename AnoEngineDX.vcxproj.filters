@@ -145,6 +145,9 @@
     <Filter Include="MainScene\CollisionComponent\NormalBulletCollisionComponent">
       <UniqueIdentifier>{f1996106-cf08-4189-a371-b6f5d7f8980b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\MainSceneDrawComponent\DrawHealthBarComponent">
+      <UniqueIdentifier>{6acba187-d05d-4e45-8951-46d1d8e70e58}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -352,6 +355,9 @@
     </ClCompile>
     <ClCompile Include="NormalBulletCollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent\NormalBulletCollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawHealthBarComponent.cpp">
+      <Filter>MainScene\MainSceneDrawComponent\DrawHealthBarComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -584,6 +590,9 @@
     <ClInclude Include="NormalBulletCollisionComponent.h">
       <Filter>MainScene\CollisionComponent\NormalBulletCollisionComponent</Filter>
     </ClInclude>
+    <ClInclude Include="DrawHealthBarComponent.h">
+      <Filter>MainScene\MainSceneDrawComponent\DrawHealthBarComponent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="HTextureDrawInclude.hlsli">
@@ -603,6 +612,9 @@
     </None>
     <None Include="DrawDeathEffectComponent_header.hlsli">
       <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
+    </None>
+    <None Include="DrawHealthBarComponent_header.hlsli">
+      <Filter>MainScene\MainSceneDrawComponent\DrawHealthBarComponent</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -647,6 +659,12 @@
     </FxCompile>
     <FxCompile Include="DrawDeathEffectComponent_vertex.hlsl">
       <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
+    </FxCompile>
+    <FxCompile Include="DrawHealthBarComponent_pixel.hlsl">
+      <Filter>MainScene\MainSceneDrawComponent\DrawHealthBarComponent</Filter>
+    </FxCompile>
+    <FxCompile Include="DrawHealthBarComponent_vertex.hlsl">
+      <Filter>MainScene\MainSceneDrawComponent\DrawHealthBarComponent</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>

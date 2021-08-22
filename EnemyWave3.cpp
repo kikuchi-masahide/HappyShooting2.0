@@ -8,6 +8,7 @@
 #include "EnemyHealthComponent.h"
 #include "Enemy3CollisionComponent.h"
 #include "NormalShootComponent.h"
+#include "DrawHealthBarComponent.h"
 
 EnemyWave3::EnemyWave3(EnemyWaveManager* manager)
 	:EnemyWaveBase(60,manager)
@@ -26,6 +27,7 @@ EnemyWave3::EnemyWave3(EnemyWaveManager* manager)
 		draw->height_ = 40;
 		auto health = obj->AddUpdateComponent<EnemyHealthComponent>(scene->GetLayerManager(), 300);
 		obj->AddUpdateComponent<Enemy3CollisionComponent>(scene->GetCollisionManager(), scene->GetScoreManager(), health);
+		obj->AddOutputComponent<DrawHealthBarComponent>(scene->GetLayerManager(), health, MatVec::Vector2(0, 30));
 		for (int d = 0; d < 4; d++)
 		{
 			MatVec::Vector2 direct(cos(d * PI / 2), sin(d * PI / 2));
@@ -48,6 +50,7 @@ EnemyWave3::EnemyWave3(EnemyWaveManager* manager)
 		draw->height_ = 40;
 		auto health = obj->AddUpdateComponent<EnemyHealthComponent>(scene->GetLayerManager(), 300);
 		obj->AddUpdateComponent<Enemy3CollisionComponent>(scene->GetCollisionManager(), scene->GetScoreManager(), health);
+		obj->AddOutputComponent<DrawHealthBarComponent>(scene->GetLayerManager(), health, MatVec::Vector2(0, 30));
 		for (int d = 0; d < 4; d++)
 		{
 			MatVec::Vector2 direct(cos(d * PI / 2), sin(d * PI / 2));
