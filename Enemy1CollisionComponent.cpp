@@ -7,10 +7,10 @@ Enemy1CollisionComponent::Enemy1CollisionComponent(GameObjectHandle object, boos
 	:CollisionComponent(object, collision_manager, 100, CollisionManager::Tag::EnemyBody, damage_),
 	health_component_(health), score_manager_(score_manager)
 {
-	circle_around_[0].radius_ = 8;
-	circle_around_[1].radius_ = 8;
-	circle_around_[2].radius_ = 8;
-	circle_center_.radius_ = 4;
+	circle_around_[0] = CircleGeometry(This<CollisionComponent>(), MatVec::Vector2(), 8);
+	circle_around_[1] = CircleGeometry(This<CollisionComponent>(), MatVec::Vector2(), 8);
+	circle_around_[2] = CircleGeometry(This<CollisionComponent>(), MatVec::Vector2(), 8);
+	circle_center_ = CircleGeometry(This<CollisionComponent>(), MatVec::Vector2(), 4);
 }
 
 Enemy1CollisionComponent::~Enemy1CollisionComponent()
@@ -24,16 +24,14 @@ void Enemy1CollisionComponent::Update()
 	double dist = (double)(2 * 8) / sqrt(3);
 	for (unsigned int n = 0; n < 3; n++)
 	{
-		CircleGeometry circle(
-			This<CollisionComponent>(), MatVec::Vector2(center(0) + dist * cos(angle), center(1) + dist * sin(angle)), 8
-		);
-		manager_->AddCircleGeometry(circle);
+		circle_around_[n].center_ = MatVec::Vector2(center(0) + dist * cos(angle), center(1) + dist * sin(angle));
+		manager_->AddCircleGeometry(&(circle_around_[n]));
 		angle += 2 * PI / 3;
 	}
 	CircleGeometry circle(
 		This<CollisionComponent>(), center, 4
 	);
-	manager_->AddCircleGeometry(circle);
+	manager_->AddCircleGeometry(&circle_center_);
 }
 
 void Enemy1CollisionComponent::CheckHitComponent()

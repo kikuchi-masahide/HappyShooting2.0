@@ -19,5 +19,6 @@ public:
     void CheckHitComponent();
 private:
     double radius_;
+    CircleGeometry circle_;
 };
 

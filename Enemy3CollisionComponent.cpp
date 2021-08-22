@@ -21,7 +21,7 @@ void Enemy3CollisionComponent::Update()
 {
 	MatVec::Vector2 center = mObj->GetPosition();
 	circle_.center_ = center;
-	manager_->AddCircleGeometry(circle_);
+	manager_->AddCircleGeometry(&circle_);
 }
 
 void Enemy3CollisionComponent::CheckHitComponent()

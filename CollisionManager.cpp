@@ -3,7 +3,7 @@
 
 #include "CollisionComponent.h"
 
-using CircleGeometry_AABB = std::pair<CircleGeometry, Rect2>;
+using CircleGeometry_AABB = std::pair<CircleGeometry*, Rect2>;
 
 CollisionManager::CollisionManager()
 {
@@ -34,7 +34,7 @@ void CollisionManager::TraverseAll()
 	//‘S}Œ`‚Ì“–‚½‚è”»’è
 	for (unsigned int n = 0; n < circles_.size(); n++)
 	{
-		all_comps.insert(circles_[n].first.GetParent());
+		all_comps.insert(circles_[n].first->GetParent());
 		TraverseAllSub_same(circles_, n);
 	}
 
@@ -49,9 +49,9 @@ void CollisionManager::TraverseAll()
 
 }
 
-void CollisionManager::AddCircleGeometry(CircleGeometry& circle)
+void CollisionManager::AddCircleGeometry(CircleGeometry* circle)
 {
-	circles_.emplace_back(circle, circle.GetAABB());
+	circles_.emplace_back(circle, circle->GetAABB());
 }
 
 void CollisionManager::NoticeEachOther(ComponentHandle<CollisionComponent> comp1, ComponentHandle<CollisionComponent> comp2)

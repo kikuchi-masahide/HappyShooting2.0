@@ -16,7 +16,7 @@ NormalBulletCollisionComponent::~NormalBulletCollisionComponent()
 void NormalBulletCollisionComponent::Update()
 {
 	circle_.center_ = mObj->GetPosition();
-	manager_->AddCircleGeometry(circle_);
+	manager_->AddCircleGeometry(&circle_);
 }
 
 void NormalBulletCollisionComponent::CheckHitComponent()

@@ -8,6 +8,7 @@ MyBulletCollisionComponent::MyBulletCollisionComponent(GameObjectHandle obj, boo
 	:CollisionComponent(obj, manager, 50, CollisionManager::Tag::MyBullet,damage),
 	radius_(radius)
 {
+	circle_ = CircleGeometry(This<CollisionComponent>(), mObj->GetPosition(), radius_);
 }
 
 MyBulletCollisionComponent::~MyBulletCollisionComponent()
@@ -16,8 +17,8 @@ MyBulletCollisionComponent::~MyBulletCollisionComponent()
 
 void MyBulletCollisionComponent::Update()
 {
-	CircleGeometry circle(This<CollisionComponent>(), mObj->GetPosition(), radius_);
-	manager_->AddCircleGeometry(circle);
+	circle_.center_ = mObj->GetPosition();
+	manager_->AddCircleGeometry(&circle_);
 }
 
 void MyBulletCollisionComponent::CheckHitComponent()
