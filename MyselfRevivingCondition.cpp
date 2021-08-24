@@ -11,7 +11,7 @@ MyselfRevivingCondition::MyselfRevivingCondition(GameObjectHandle handle, Compon
 {
 	//Ž€–S‰‰o‚ðCŒ»À•W‚Å‰Á‚¦‚Ä‚¨‚­
 	auto obj = mObj->mScene->AddObject(mObj->GetPosition(), 1.0, 0.0);
-	obj->AddOutputComponent<DrawDeathEffectComponent>(mediator_->layer_manager_,-9,75);
+	obj->AddOutputComponent<DrawDeathEffectComponent>(mediator_->layer_manager_);
 }
 
 MyselfRevivingCondition::~MyselfRevivingCondition()

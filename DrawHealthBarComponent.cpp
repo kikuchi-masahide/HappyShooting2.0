@@ -21,7 +21,7 @@ namespace{
 }
 
 DrawHealthBarComponent::DrawHealthBarComponent(GameObjectHandle object, boost::shared_ptr<LayerManager> layer_manager, ComponentHandle<EnemyHealthComponent> health, MatVec::Vector2 offset, double width, double height)
-	:MainSceneDrawComponent(object,layer_manager,-20),
+	:MainSceneDrawComponent(object,layer_manager,15),
 	center_offset_(offset),width_(width),height_(height),const_buffer_map_(nullptr),frame_(object->mScene->mGame),health_component_(health)
 {
 	Game& game = mObj->mScene->mGame;

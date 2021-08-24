@@ -26,7 +26,7 @@ void NormalShootComponent::Update()
 		auto scene = mObj->mScene;
 		auto obj = scene->AddObject(mObj->GetPosition(), 1.0, 0.0);
 		obj->AddUpdateComponent<LinearMoveComponent>(direction_, radius_);
-		obj->AddOutputComponent<DrawNormalBulletComponent>(layer_manager_, radius_, edge_rgb_, edge_alpha_, -8.0);
+		obj->AddOutputComponent<DrawNormalBulletComponent>(layer_manager_, radius_, edge_rgb_, edge_alpha_, -10.0);
 		obj->AddUpdateComponent<NormalBulletCollisionComponent>(radius_, attack_, collision_manager_);
 		counter_ = 0;
 	}

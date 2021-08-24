@@ -22,7 +22,7 @@ EnemyWave3::EnemyWave3(EnemyWaveManager* manager)
 	{
 		auto obj = scene->AddObject(MatVec::Vector2(), 0.0, 1.0);
 		obj->AddUpdateComponent<Enemy3MoveComponent>(-i * 30, lambda,PI/600);
-		auto draw = obj->AddOutputComponent<DrawTextureComponent>(scene->GetLayerManager(), 8, -10);
+		auto draw = obj->AddOutputComponent<DrawTextureComponent>(scene->GetLayerManager(), 8, -5);
 		draw->width_ = 40;
 		draw->height_ = 40;
 		auto health = obj->AddUpdateComponent<EnemyHealthComponent>(scene->GetLayerManager(), 300);
@@ -45,7 +45,7 @@ EnemyWave3::EnemyWave3(EnemyWaveManager* manager)
 	{
 		auto obj = scene->AddObject(MatVec::Vector2(), 0.0, 1.0);
 		obj->AddUpdateComponent<Enemy3MoveComponent>(-i * 30, lambda2, PI / 600);
-		auto draw = obj->AddOutputComponent<DrawTextureComponent>(scene->GetLayerManager(), 8, -10);
+		auto draw = obj->AddOutputComponent<DrawTextureComponent>(scene->GetLayerManager(), 8, -5);
 		draw->width_ = 40;
 		draw->height_ = 40;
 		auto health = obj->AddUpdateComponent<EnemyHealthComponent>(scene->GetLayerManager(), 300);

@@ -30,7 +30,7 @@ void MyselfAddNormalBulletComponent::Update()
 		);
 		bullet->AddUpdateComponent<MyBulletCollisionComponent>(collision_manager_, 100, bullet_redius_);
 		bullet->AddOutputComponent<DrawNormalBulletComponent>(
-			layer_manager_, bullet_redius_, MatVec::Vector3(0.0, 0.0, 1.0), 1.0, -1.0
+			layer_manager_, bullet_redius_, MatVec::Vector3(0.0, 0.0, 1.0), 1.0, 10.0
 		);
 		time_ = 0;
 	}

@@ -22,7 +22,7 @@ double EnemyHealthComponent::Damage(double damage)
 	{
 		mObj->SetDeleteFlag();
 		auto death_effect = mObj->mScene->AddObject(mObj->GetPosition(), 1.0, 0.0);
-		death_effect->AddOutputComponent<DrawDeathEffectComponent>(layer_manager_,-9.0);
+		death_effect->AddOutputComponent<DrawDeathEffectComponent>(layer_manager_);
 	}
 	return real_damage;
 }

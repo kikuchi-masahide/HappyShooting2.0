@@ -11,8 +11,8 @@ EnemyWaveManager::EnemyWaveManager(MainScene* scene)
 	:scene_(scene)
 {
 	//TODO:Š®¬‚Í–ß‚·
-	//wave_ = boost::shared_ptr<EnemyWave1>(new EnemyWave1(30, this));
-	wave_ = boost::shared_ptr<EnemyWave3>(new EnemyWave3(this));
+	wave_ = boost::shared_ptr<EnemyWave1>(new EnemyWave1(30, this));
+	//wave_ = boost::shared_ptr<EnemyWave3>(new EnemyWave3(this));
 }
 
 EnemyWaveManager::~EnemyWaveManager()
