@@ -162,6 +162,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DrawAnimationComponent.cpp" />
     <ClCompile Include="DrawHealthBarComponent.cpp" />
     <ClCompile Include="Enemy5MoveComponent.cpp" />
     <ClCompile Include="Enemy5ShootComponent.cpp" />
@@ -243,6 +244,7 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DrawAnimationComponent.h" />
     <ClInclude Include="DrawHealthBarComponent.h" />
     <ClInclude Include="Enemy5MoveComponent.h" />
     <ClInclude Include="Enemy5ShootComponent.h" />
@@ -326,6 +328,7 @@
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DrawAnimationComponent_header.hlsli" />
     <None Include="DrawDeathEffectComponent_header.hlsli" />
     <None Include="DrawHealthBarComponent_header.hlsli" />
     <None Include="DrawNormalBulletComponentHeader.hlsli" />
@@ -336,6 +339,18 @@
     <None Include="MainSceneBasicLayerHeader.hlsli" />
   </ItemGroup>
   <ItemGroup>
+    <FxCompile Include="DrawAnimationComponent_pixel.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="DrawAnimationComponent_vertex.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
     <FxCompile Include="DrawDeathEffectComponent_pixel.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>

@@ -157,6 +157,9 @@
     <Filter Include="MainScene\EnemyWaveBase\EnemyWave45">
       <UniqueIdentifier>{87f48547-81aa-4f14-9070-b8ce6673cf47}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\MainSceneDrawComponent\DrawAnimationComponent">
+      <UniqueIdentifier>{a80406c6-6613-4c99-9c70-e0ac3d6dcaad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -376,6 +379,9 @@
     </ClCompile>
     <ClCompile Include="EnemyWave45.cpp">
       <Filter>MainScene\EnemyWaveBase\EnemyWave45</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawAnimationComponent.cpp">
+      <Filter>MainScene\MainSceneDrawComponent\DrawAnimationComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -620,6 +626,9 @@
     <ClInclude Include="EnemyWave45.h">
       <Filter>MainScene\EnemyWaveBase\EnemyWave45</Filter>
     </ClInclude>
+    <ClInclude Include="DrawAnimationComponent.h">
+      <Filter>MainScene\MainSceneDrawComponent\DrawAnimationComponent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="HTextureDrawInclude.hlsli">
@@ -645,6 +654,9 @@
     </None>
     <None Include="HDrawLineFrameHeader.hlsli">
       <Filter>Helper\HDrawLineFrame</Filter>
+    </None>
+    <None Include="DrawAnimationComponent_header.hlsli">
+      <Filter>MainScene\MainSceneDrawComponent\DrawAnimationComponent</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -695,6 +707,12 @@
     </FxCompile>
     <FxCompile Include="DrawHealthBarComponent_vertex.hlsl">
       <Filter>MainScene\MainSceneDrawComponent\DrawHealthBarComponent</Filter>
+    </FxCompile>
+    <FxCompile Include="DrawAnimationComponent_vertex.hlsl">
+      <Filter>MainScene\MainSceneDrawComponent\DrawAnimationComponent</Filter>
+    </FxCompile>
+    <FxCompile Include="DrawAnimationComponent_pixel.hlsl">
+      <Filter>MainScene\MainSceneDrawComponent\DrawAnimationComponent</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>

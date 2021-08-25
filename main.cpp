@@ -63,4 +63,6 @@ void LoadShaders(Game* _game)
 	_game->mShaderManager.LoadShader(L"DrawDeathEffectComponent_pixel.hlsl", DX12Config::ShaderType::PIXEL, 13);
 	_game->mShaderManager.LoadShader(L"DrawHealthBarComponent_vertex.hlsl", DX12Config::ShaderType::VERTEX, 14);
 	_game->mShaderManager.LoadShader(L"DrawHealthBarComponent_pixel.hlsl", DX12Config::ShaderType::PIXEL, 15);
+	_game->mShaderManager.LoadShader(L"DrawAnimationComponent_vertex.hlsl", DX12Config::ShaderType::VERTEX, 16);
+	_game->mShaderManager.LoadShader(L"DrawAnimationComponent_pixel.hlsl", DX12Config::ShaderType::PIXEL, 17);
 }
