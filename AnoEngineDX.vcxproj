@@ -163,6 +163,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DrawHealthBarComponent.cpp" />
+    <ClCompile Include="Enemy5MoveComponent.cpp" />
+    <ClCompile Include="Enemy5ShootComponent.cpp" />
+    <ClCompile Include="EnemyWave45.cpp" />
     <ClCompile Include="MyBulletCollisionComponent.cpp" />
     <ClCompile Include="CircleGeometry.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
@@ -241,6 +244,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DrawHealthBarComponent.h" />
+    <ClInclude Include="Enemy5MoveComponent.h" />
+    <ClInclude Include="Enemy5ShootComponent.h" />
+    <ClInclude Include="EnemyWave45.h" />
     <ClInclude Include="MyBulletCollisionComponent.h" />
     <ClInclude Include="CircleGeometry.h" />
     <ClInclude Include="CollisionComponent.h" />

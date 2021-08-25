@@ -148,6 +148,15 @@
     <Filter Include="MainScene\MainSceneDrawComponent\DrawHealthBarComponent">
       <UniqueIdentifier>{6acba187-d05d-4e45-8951-46d1d8e70e58}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Enemy5MoveComponent">
+      <UniqueIdentifier>{17ca9ca7-1a6c-4543-8bc2-1e5eb28a9e81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\Enemy5ShootComponent">
+      <UniqueIdentifier>{d8ae5571-9213-4b48-9c2b-c7b84b3e03a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\EnemyWaveBase\EnemyWave45">
+      <UniqueIdentifier>{87f48547-81aa-4f14-9070-b8ce6673cf47}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -358,6 +367,15 @@
     </ClCompile>
     <ClCompile Include="DrawHealthBarComponent.cpp">
       <Filter>MainScene\MainSceneDrawComponent\DrawHealthBarComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy5MoveComponent.cpp">
+      <Filter>MainScene\Enemy5MoveComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy5ShootComponent.cpp">
+      <Filter>MainScene\Enemy5ShootComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyWave45.cpp">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave45</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -592,6 +610,15 @@
     </ClInclude>
     <ClInclude Include="DrawHealthBarComponent.h">
       <Filter>MainScene\MainSceneDrawComponent\DrawHealthBarComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy5MoveComponent.h">
+      <Filter>MainScene\Enemy5MoveComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy5ShootComponent.h">
+      <Filter>MainScene\Enemy5ShootComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyWave45.h">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave45</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

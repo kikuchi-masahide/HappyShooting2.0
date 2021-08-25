@@ -9,6 +9,7 @@
 #include "Enemy3CollisionComponent.h"
 #include "NormalShootComponent.h"
 #include "DrawHealthBarComponent.h"
+#include "EnemyWave45.h"
 
 EnemyWave3::EnemyWave3(EnemyWaveManager* manager)
 	:EnemyWaveBase(60,manager)
@@ -36,6 +37,7 @@ EnemyWave3::EnemyWave3(EnemyWaveManager* manager)
 				50, direct, bullet_size_, 60, bullet_attack_, scene->GetLayerManager(), scene->GetCollisionManager()
 				);
 		}
+		AddEnemy(obj);
 	}
 	auto lambda2 = [](double angle)
 	{
@@ -59,6 +61,7 @@ EnemyWave3::EnemyWave3(EnemyWaveManager* manager)
 				50, direct, bullet_size_, 60, bullet_attack_, scene->GetLayerManager(), scene->GetCollisionManager()
 				);
 		}
+		AddEnemy(obj);
 	}
 }
 
@@ -68,5 +71,7 @@ EnemyWave3::~EnemyWave3()
 
 void EnemyWave3::OnDelete()
 {
-	manager_->SetWave(nullptr);
+	manager_->SetWave(boost::shared_ptr<EnemyWave45>(
+		new EnemyWave45(manager_)
+		));
 }
