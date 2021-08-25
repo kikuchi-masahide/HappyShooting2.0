@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>resource</title>
+    </head>
+    <body>
+        <canvas id = "canvas" width = "320" height = "2100"></canvas>
+        <script>
+            const context=document.getElementById("canvas").getContext("2d");
+            context.fillStyle = "black";
+            context.lineWidth = 2;
+            let t = 60;
+            let u = 40;
+            let r = u*Math.SQRT2;
+                    let x = 0+40;
+                    let y = 0+40;
+                    let deg1 = 5*Math.PI/4-Math.PI*t/240;
+                    let deg2 = Math.PI/4+Math.PI*t/240;
+                    context.beginPath();
+                    context.arc(x,y,u,0,Math.PI,true);
+                    context.moveTo(x+u,y);
+                    context.lineTo(x+u,y+u);
+                    context.lineTo(x-u,y+u);
+                    context.lineTo(x-u,y);
+                    context.closePath();
+                    context.fill();
+                    context.beginPath();
+                    context.moveTo(x+u,y+u);
+                    context.lineTo(x+u+r*Math.cos(deg1),y+u+r*Math.sin(deg1));
+                    context.lineTo(x+u+r*Math.cos(deg1-Math.PI/2),y+u+r*Math.sin(deg1-Math.PI/2));
+                    context.closePath();
+                    context.fill();
+                    context.beginPath();
+                    context.moveTo(x-u,y+u);
+                    context.lineTo(x-u+r*Math.cos(deg2-Math.PI/2),y+u+r*Math.sin(deg2-Math.PI/2));
+                    context.lineTo(x-u+r*Math.cos(deg2),y+u+r*Math.sin(deg2));
+                    context.closePath();
+                    context.fill();
+                    t++;
+
+    console.log(width);
+</script>
+    </body>
+</html>
