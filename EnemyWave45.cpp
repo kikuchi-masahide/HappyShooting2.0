@@ -9,7 +9,7 @@
 #include "Enemy3CollisionComponent.h"
 #include "DrawHealthBarComponent.h"
 #include "Enemy5ShootComponent.h"
-#include "DrawAnimationComponent.h"
+#include "Enemy4BehaviorComponent.h"
 
 EnemyWave45::EnemyWave45(EnemyWaveManager* manager)
 	:EnemyWaveBase(120,manager)
@@ -29,8 +29,10 @@ EnemyWave45::EnemyWave45(EnemyWaveManager* manager)
 	//	obj->AddUpdateComponent<Enemy5ShootComponent>(50, scene->GetMyselfHandle(), 10, 4, 60, 0, 100, scene->GetLayerManager(), scene->GetCollisionManager());
 	//	AddEnemy(obj);
 	//}
-	auto obj = scene->AddObject(MatVec::Vector2(), 1.0, 0.0);
-	obj->AddUpdateComponent<DrawAnimationComponent>(scene->GetLayerManager(), 10, 80.0, 140.0, 4, 15, -5.0, MatVec::Vector2(0.0, -30.0), 60);
+	auto enemy4_1 = scene->AddObject(MatVec::Vector2(), 1.0, 0.0);
+	enemy4_1->AddUpdateComponent<Enemy4BehaviorComponent>(scene->GetCollisionManager(), scene->GetLayerManager(), 1);
+	auto enemy4_2 = scene->AddObject(MatVec::Vector2(), 1.0, 0.0);
+	enemy4_2->AddUpdateComponent<Enemy4BehaviorComponent>(scene->GetCollisionManager(), scene->GetLayerManager(), -1);
 }
 
 EnemyWave45::~EnemyWave45()

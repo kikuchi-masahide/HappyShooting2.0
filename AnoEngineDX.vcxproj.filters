@@ -160,6 +160,9 @@
     <Filter Include="MainScene\MainSceneDrawComponent\DrawAnimationComponent">
       <UniqueIdentifier>{a80406c6-6613-4c99-9c70-e0ac3d6dcaad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Enemy4BehaviorComponent">
+      <UniqueIdentifier>{5a97a715-382d-4e0a-8690-a91704dd63c2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -382,6 +385,9 @@
     </ClCompile>
     <ClCompile Include="DrawAnimationComponent.cpp">
       <Filter>MainScene\MainSceneDrawComponent\DrawAnimationComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy4BehaviorComponent.cpp">
+      <Filter>MainScene\Enemy4BehaviorComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -628,6 +634,9 @@
     </ClInclude>
     <ClInclude Include="DrawAnimationComponent.h">
       <Filter>MainScene\MainSceneDrawComponent\DrawAnimationComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy4BehaviorComponent.h">
+      <Filter>MainScene\Enemy4BehaviorComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
