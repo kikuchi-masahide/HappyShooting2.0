@@ -10,6 +10,7 @@ DX12GraphicsPipeline::DX12GraphicsPipeline(
 	DX12Config::PrimitiveTopologyType _primitive, UINT _numrt,
 	boost::shared_ptr<DX12RootSignature> _rootsignature, LPCWSTR _name)
 {
+	//TODO:ƒ¿=0‚Ì•`‰æ‚ª‚¨‚©‚µ‚¢?
 	D3D12_GRAPHICS_PIPELINE_STATE_DESC gpipeline = {};
 	gpipeline.pRootSignature = nullptr;
 	gpipeline.VS.pShaderBytecode = _vertexShader->GetBufferPointer();

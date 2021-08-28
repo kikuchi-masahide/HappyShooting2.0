@@ -1,7 +1,10 @@
 cbuffer cbuff0 : register(b0)
 {
     matrix pos_matrix_;
-    matrix uv_matrix_;
+    float uv_x_;
+    float uv_y_;
+    float uv_w_;
+    float uv_h_;
 }
 
 struct Output

@@ -18,10 +18,7 @@ public:
     /// <param name="row">元テクスチャが何行に渡りコマを含むか</param>
     /// <param name="offset">画像の描画中心位置の，親オブジェクト位置からのずれ</param>
     /// <param name="flame_num">1ループが何フレームか</param>
-    /// <param name="loop">ループするか否か(省略時true)</param>
-    /// <param name="terminal">ループしない場合のアニメーション終了時の処理(このオブジェクトのハンドルが引数として渡される)
-    /// ループしない場合実行されない</param>
-    DrawAnimationComponent(GameObjectHandle obj, boost::shared_ptr<LayerManager> layer_manager, unsigned int texture_id, double flame_width, double flame_height, unsigned int column, unsigned int row, double z, MatVec::Vector2 offset, unsigned int flame_num, bool loop = true, std::function<void(GameObjectHandle)> terminal = [](GameObjectHandle handle) {});
+    DrawAnimationComponent(GameObjectHandle obj, boost::shared_ptr<LayerManager> layer_manager, unsigned int texture_id, double flame_width, double flame_height, unsigned int column, unsigned int row, double z, MatVec::Vector2 offset, unsigned int flame_num);
     ~DrawAnimationComponent();
     void Draw() override;
     MatVec::Vector2 center_offset_;
@@ -32,8 +29,6 @@ private:
     unsigned int column_;
     unsigned int row_;
     unsigned int flame_num_;
-    bool loop_;
-    std::function<void(GameObjectHandle handle)> terminal_;
     int counter_;
     static boost::shared_ptr<DX12GraphicsPipeline> graphics_pipeline_;
     static boost::shared_ptr<DX12RootSignature> root_signature_;

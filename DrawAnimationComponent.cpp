@@ -11,14 +11,17 @@ namespace {
 	};
 	struct InfoToShader {
 		XMMATRIX pos_matrix_;
-		XMMATRIX uv_matrix_;
+		float uv_x_;   //左上の点のuv座標x
+		float uv_y_;   //左上の点のuv座標y
+		float uv_w_;   //左上の点と右上の点のx座標差
+		float uv_h_;   //左上の点と左下の点のy座標差
 	};
 }
 
-DrawAnimationComponent::DrawAnimationComponent(GameObjectHandle obj, boost::shared_ptr<LayerManager> layer_manager, unsigned int texture_id, double flame_width, double flame_height, unsigned int column, unsigned int row, double z, MatVec::Vector2 offset, unsigned int flame_num, bool loop, std::function<void(GameObjectHandle)> terminal)
+DrawAnimationComponent::DrawAnimationComponent(GameObjectHandle obj, boost::shared_ptr<LayerManager> layer_manager, unsigned int texture_id, double flame_width, double flame_height, unsigned int column, unsigned int row, double z, MatVec::Vector2 offset, unsigned int flame_num)
 	:MainSceneDrawComponent(obj, layer_manager, z),
 	center_offset_(offset),flame_width_(flame_width),flame_height_(flame_height),
-	column_(column),row_(row),flame_num_(flame_num),loop_(loop),terminal_(terminal),counter_(0)
+	column_(column),row_(row),flame_num_(flame_num),counter_(0)
 {
 	if (graphics_pipeline_ == nullptr)
 	{
@@ -39,19 +42,14 @@ void DrawAnimationComponent::Draw()
 	pos_matrix = MatVec::Translation(MatVec::XY0(mObj->GetPosition() + center_offset_))*pos_matrix;
 	pos_matrix = MatVec::GetOrthoGraphicProjection(600, 900, 0.0, 1.0)*pos_matrix;
 
-	//描画する画像の位置を求める行列
-	MatVec::Matrix4x4 uv_matrix = MatVec::Expand(1.0 / column_, 1.0 / row_, 1.0);
-	//表示する画像は左からcounter_%column_，上からcounter_/column_番目(0-index)
-	//UV座標はもともと左上を(0,0)としている
-	uv_matrix = MatVec::Translation(
-		static_cast<double>(counter_ % column_) / column_,
-		static_cast<double>(counter_ / column_) / row_,
-		0.0
-	)*uv_matrix;
-
 	InfoToShader* info_map = static_cast<InfoToShader*>(const_buffer_map_);
 	info_map->pos_matrix_ = MatVec::ConvertToXMMATRIX(pos_matrix);
-	info_map->uv_matrix_ = MatVec::ConvertToXMMATRIX(uv_matrix);
+	//表示する画像は左からcounter_%column_，上からcounter_/column_番目(0-index)
+	//頂点設定では，UV座標は左上を(0,0)，右下を(1,1)としている
+	info_map->uv_x_ = static_cast<double>(counter_ % column_) / column_;
+	info_map->uv_y_ = static_cast<double>(counter_ / column_) / row_;
+	info_map->uv_w_ = 1.0 / column_;
+	info_map->uv_h_ = 1.0 / row_;
 
 	Game& game = mObj->mScene->mGame;
 	game.mdx12.SetGraphicsPipeline(graphics_pipeline_);
@@ -68,13 +66,7 @@ void DrawAnimationComponent::Draw()
 	counter_++;
 	if (counter_ == flame_num_)
 	{
-		if (!loop_) {
-			terminal_(mObj);
-			SetDeleteFlag();
-		}
-		else {
-			counter_ -= flame_num_;
-		}
+		counter_ = 0;
 	}
 }
 
@@ -140,3 +132,8 @@ void DrawAnimationComponent::NonstaticGraphicInit(Game& game, unsigned int textu
 	game.mdx12.CreateConstBufferView(const_buffer_, desc_heap_, 1);
 	const_buffer_map_ = game.mdx12.Map(const_buffer_);
 }
+
+boost::shared_ptr<DX12GraphicsPipeline> DrawAnimationComponent::graphics_pipeline_ = nullptr;
+boost::shared_ptr<DX12RootSignature> DrawAnimationComponent::root_signature_ = nullptr;
+boost::shared_ptr<DX12Resource> DrawAnimationComponent::index_buffer_ = nullptr;
+boost::shared_ptr<DX12Resource> DrawAnimationComponent::vertex_buffer_ = nullptr;

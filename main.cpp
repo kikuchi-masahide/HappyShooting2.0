@@ -43,6 +43,9 @@ void LoadTextures(Game* _game)
 	_game->mTexManager.LoadTexture(L"Resources/numbers/numbers.png", 6);
 	_game->mTexManager.LoadTexture(L"Resources/enemy1/enemy1.png", 7);
 	_game->mTexManager.LoadTexture(L"Resources/enemy3/enemy3.png", 8);
+	_game->mTexManager.LoadTexture(L"Resources/Enemy4/Enemy4_form0.png", 9);
+	_game->mTexManager.LoadTexture(L"Resources/Enemy4/Enemy4.png", 10);
+	_game->mTexManager.LoadTexture(L"Resources/Enemy4/Enemy4_form1.png", 11);
 }
 
 void LoadShaders(Game* _game)

@@ -2,5 +2,10 @@
 
 float4 main(Output input):SV_Target
 {
-    return tex.Sample(smp, input.uv);
+    float4 color = tex.Sample(smp, input.uv);
+    if(color.w == 0)
+    {
+        discard;
+    }
+    return color;
 }
