@@ -2,6 +2,8 @@
 #include "ComponentHandle.h"
 
 #include "Math.h"
+#include "CircleGeometry.h"
+#include "PolygonGeometry.h"
 
 class CollisionComponent;
 class CircleGeometry;
@@ -57,7 +59,7 @@ inline void CollisionManager::TraverseAllSub_leq(T* geometry, Rect2& aabb, std::
 		else e = m;
 	}
 	//geometry_arr[e]`‚Ì}Œ`‚Æ‚Ì“–‚½‚è”»’è
-	for (unsigned int n = e,; n < geometry_arr.size(); n++)
+	for (unsigned int n = e; n < geometry_arr.size(); n++)
 	{
 		U* geometry2 = geometry_arr[n].first;
 		Rect2& aabb2 = geometry_arr[n].second;
@@ -136,7 +138,7 @@ inline void CollisionManager::TraverseAllSub_less(T* geometry, Rect2& aabb, std:
 		else e = m;
 	}
 	//geometry_arr[e]`‚Ì}Œ`‚Æ‚Ì“–‚½‚è”»’è
-	for (unsigned int n = e, ; n < geometry_arr.size(); n++)
+	for (unsigned int n = e; n < geometry_arr.size(); n++)
 	{
 		U* geometry2 = geometry_arr[n].first;
 		Rect2& aabb2 = geometry_arr[n].second;

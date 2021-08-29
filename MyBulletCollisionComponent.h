@@ -2,6 +2,7 @@
 #include "CollisionComponent.h"
 
 #include "GameObject.h"
+#include "CircleGeometry.h"
 
 class MainScene;
 

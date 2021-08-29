@@ -1,6 +1,8 @@
 #pragma once
 #include "CollisionComponent.h"
 
+#include "CircleGeometry.h"
+
 class EnemyHealthComponent;
 class ScoreManager;
 

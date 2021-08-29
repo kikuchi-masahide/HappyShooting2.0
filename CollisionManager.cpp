@@ -44,7 +44,7 @@ void CollisionManager::TraverseAll()
 	{
 		all_comps.insert(circles_[n].first->GetParent());
 		TraverseAllSub_same(circles_, n);
-		TraverseAllSub_leq(circles_[n].first, circles_[n].second, polygons_);
+		TraverseAllSub_leq<CircleGeometry,PolygonGeometry>(circles_[n].first, circles_[n].second, polygons_);
 	}
 	for (unsigned int n = 0; n < polygons_.size(); n++)
 	{
