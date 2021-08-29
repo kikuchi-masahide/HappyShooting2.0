@@ -16,6 +16,10 @@ float4 main(Output input):SV_Target
     else if(uv.x < -length_/2)
     {
         l = sqrt((uv.x + length_ / 2) * (uv.x + length_ / 2) + uv.y * uv.y);
+        if(l > r_)
+        {
+            discard;
+        }
     }
     else
     {

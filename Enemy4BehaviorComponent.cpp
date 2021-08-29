@@ -56,7 +56,7 @@ void Enemy4BehaviorComponent::Update()
 			//レーザー描画
 			lazer_draw_ = mObj->AddOutputComponent<DrawLazerComponent>(layer_manager_, -10);
 			//レーザー円の中心
-			MatVec::Vector2 circle_center((300 - sqrt(2) * 20) * flag_, 330 - 40 * sqrt(2));
+			MatVec::Vector2 circle_center((300 - sqrt(2) * 20) * flag_, 370 - 40 * sqrt(2));
 			lazer_draw_->a_ = circle_center;
 			lazer_draw_->b_ = circle_center;
 			lazer_draw_->b_(1) = -500;
