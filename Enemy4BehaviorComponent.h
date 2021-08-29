@@ -5,6 +5,7 @@
 class LayerManager;
 class DrawAnimationComponent;
 class DrawTextureComponent;
+class DrawLazerComponent;
 
 /// <summary>
 /// 時間によりかわるEnemy4の位置，描画，当たり判定の初期化と管理を行う
@@ -25,6 +26,7 @@ private:
     ComponentHandle<DrawTextureComponent> texture0_;
     ComponentHandle<DrawAnimationComponent> animation_;
     ComponentHandle<DrawTextureComponent> texture1_;
+    ComponentHandle<DrawLazerComponent> lazer_draw_;
     boost::shared_ptr<LayerManager> layer_manager_;
 };
 

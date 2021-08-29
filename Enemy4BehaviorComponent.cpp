@@ -5,6 +5,7 @@
 #include "GameObject.h"
 #include "DrawTextureComponent.h"
 #include "DrawAnimationComponent.h"
+#include "DrawLazerComponent.h"
 
 Enemy4BehaviorComponent::Enemy4BehaviorComponent(GameObjectHandle obj, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<LayerManager> layer_manager, int flag)
 	:CollisionComponent(obj,collision_manager,100,CollisionManager::Tag::EnemyBody,100),
@@ -52,6 +53,13 @@ void Enemy4BehaviorComponent::Update()
 			texture1_->width_ = 80.0;
 			texture1_->height_ = 140.0;
 			texture1_->center_offset_ = MatVec::Vector2(0.0, -30.0);
+			//レーザー描画
+			lazer_draw_ = mObj->AddOutputComponent<DrawLazerComponent>(layer_manager_, -10);
+			//レーザー円の中心
+			MatVec::Vector2 circle_center((300 - sqrt(2) * 20) * flag_, 330 - 40 * sqrt(2));
+			lazer_draw_->a_ = circle_center;
+			lazer_draw_->b_ = circle_center;
+			lazer_draw_->b_(1) = -500;
 			mode_ = 2;
 			counter_ = 0;
 		}
@@ -60,6 +68,8 @@ void Enemy4BehaviorComponent::Update()
 	{
 		//レーザーを出す
 		//円の半径を，60tickで0から20√2まで増加させる
+		double r = sqrt(2) * counter_ / 3;
+		lazer_draw_->r_ = r;
 		counter_++;
 		if (counter_ == 60)
 		{
@@ -72,6 +82,9 @@ void Enemy4BehaviorComponent::Update()
 		MatVec::Vector2 pos = mObj->GetPosition();
 		pos(0) -= 1.0 * flag_;
 		mObj->SetPosition(pos);
+		//レーザーも同じように移動させる
+		lazer_draw_->a_(0) = pos(0);
+		lazer_draw_->b_(0) = pos(0);
 		counter_++;
 		if (counter_ == 60 * 3)
 		{
