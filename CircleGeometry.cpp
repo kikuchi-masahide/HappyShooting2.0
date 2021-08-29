@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "CircleGeometry.h"
 
+#include "PolygonGeometry.h"
+
 CircleGeometry::CircleGeometry(ComponentHandle<CollisionComponent> parent_comp, MatVec::Vector2 center, double radius)
 	:ICollisionGeometry(parent_comp),
 	center_(center),radius_(radius)
@@ -21,7 +23,7 @@ CircleGeometry::~CircleGeometry()
 {
 }
 
-bool CircleGeometry::IsCrossing(const CircleGeometry& circle2)
+bool CircleGeometry::IsCrossing(CircleGeometry& circle2)
 {
 	MatVec::Vector2 center2 = circle2.center_;
 	double radius2 = circle2.radius_;
@@ -29,4 +31,9 @@ bool CircleGeometry::IsCrossing(const CircleGeometry& circle2)
 	return (
 		d2 <= (radius_ + radius2) * (radius_ + radius2)
 	);
+}
+
+bool CircleGeometry::IsCrossing(PolygonGeometry& polygon)
+{
+	return polygon.IsCrossing(*this);
 }

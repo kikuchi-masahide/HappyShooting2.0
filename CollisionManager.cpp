@@ -2,8 +2,11 @@
 #include "CollisionManager.h"
 
 #include "CollisionComponent.h"
+#include "CircleGeometry.h"
+#include "PolygonGeometry.h"
 
 using CircleGeometry_AABB = std::pair<CircleGeometry*, Rect2>;
+using PolygonGeometry_AABB = std::pair<PolygonGeometry*, Rect2>;
 
 CollisionManager::CollisionManager()
 {
@@ -17,6 +20,11 @@ void CollisionManager::TraverseAll()
 {
 	//AABBÇÃç∂xç¿ïWè∏èáÇ≈ï¿Ç—ë÷Ç¶
 	std::sort(circles_.begin(), circles_.end(), [](const CircleGeometry_AABB& left, const CircleGeometry_AABB& right) {
+		const Rect2& left_aabb = left.second;
+		const Rect2& right_aabb = right.second;
+		return left_aabb.GetLD()(0) < right_aabb.GetLD()(0);
+	});
+	std::sort(polygons_.begin(), polygons_.end(), [](const PolygonGeometry_AABB& left, const PolygonGeometry_AABB& right) {
 		const Rect2& left_aabb = left.second;
 		const Rect2& right_aabb = right.second;
 		return left_aabb.GetLD()(0) < right_aabb.GetLD()(0);
@@ -36,6 +44,13 @@ void CollisionManager::TraverseAll()
 	{
 		all_comps.insert(circles_[n].first->GetParent());
 		TraverseAllSub_same(circles_, n);
+		TraverseAllSub_leq(circles_[n].first, circles_[n].second, polygons_);
+	}
+	for (unsigned int n = 0; n < polygons_.size(); n++)
+	{
+		all_comps.insert(polygons_[n].first->GetParent());
+		TraverseAllSub_less(polygons_[n].first, polygons_[n].second, circles_);
+		TraverseAllSub_same(polygons_, n);
 	}
 
 	//ëSCollisionComponentÇÃCheckHitComponentÇåƒÇ—èoÇ∑
@@ -52,6 +67,11 @@ void CollisionManager::TraverseAll()
 void CollisionManager::AddCircleGeometry(CircleGeometry* circle)
 {
 	circles_.emplace_back(circle, circle->GetAABB());
+}
+
+void CollisionManager::AddPolygonGeometry(PolygonGeometry* polygon)
+{
+	polygons_.emplace_back(polygon, polygon->GetAABB());
 }
 
 void CollisionManager::NoticeEachOther(ComponentHandle<CollisionComponent> comp1, ComponentHandle<CollisionComponent> comp2)

@@ -1,9 +1,11 @@
 #pragma once
 #include "ComponentHandle.h"
 
-#include "CircleGeometry.h"
+#include "Math.h"
 
 class CollisionComponent;
+class CircleGeometry;
+class PolygonGeometry;
 
 /// <summary>
 /// 当たり判定コンポーネントと当たり判定図形を管理し，各コンポーネントに全フレームで衝突したコンポーネントを渡す
@@ -17,8 +19,8 @@ public:
 	/// 全componentが持つ図形同士の当たり判定を実行し，componentに衝突したcomponentを教える
 	/// </summary>
 	void TraverseAll();
-	//CircleGeometryの追加
 	void AddCircleGeometry(CircleGeometry* circle);
+	void AddPolygonGeometry(PolygonGeometry* polygon);
 	enum class Tag :unsigned char {
 		Myself,
 		MyBullet,
@@ -38,6 +40,7 @@ private:
 	//comp1とcomp2のhit_comps_に，お互いを追加する
 	void NoticeEachOther(ComponentHandle<CollisionComponent> comp1, ComponentHandle<CollisionComponent> comp2);
 	std::vector<std::pair<CircleGeometry*, Rect2>> circles_;
+	std::vector<std::pair<PolygonGeometry*, Rect2>> polygons_;
 };
 
 template<class T,class U>

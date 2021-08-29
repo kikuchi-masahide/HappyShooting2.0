@@ -17,6 +17,7 @@ namespace MatVec
 		Vector3& operator+=(const Vector3& v2);
 		Vector3& operator-=(const Vector3& v2);
 		double Norm();
+		double Norm2();
 		void Normalize();
 	};
 	Vector3 operator*(const Vector3& v, double d);

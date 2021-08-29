@@ -1,6 +1,8 @@
 #pragma once
 #include "ICollisionGeometry.h"
 
+class PolygonGeometry;
+
 //円形領域を表す当たり判定図形(内部含)
 class CircleGeometry final:
     public ICollisionGeometry
@@ -21,6 +23,7 @@ public:
     /// <summary>
     /// この円と交差・衝突しているか否かを返す
     /// </summary>
-    bool IsCrossing(const CircleGeometry& circle2);
+    bool IsCrossing(CircleGeometry& circle2);
+    bool IsCrossing(PolygonGeometry& polygon);
 };
 

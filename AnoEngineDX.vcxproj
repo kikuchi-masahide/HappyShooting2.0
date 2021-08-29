@@ -226,6 +226,7 @@
     <ClCompile Include="MyselfRevivingCondition.cpp" />
     <ClCompile Include="NormalBulletCollisionComponent.cpp" />
     <ClCompile Include="NormalShootComponent.cpp" />
+    <ClCompile Include="PolygonGeometry.cpp" />
     <ClCompile Include="Rect2.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ScoreManager.cpp" />
@@ -317,6 +318,7 @@
     <ClInclude Include="MyselfRevivingCondition.h" />
     <ClInclude Include="NormalBulletCollisionComponent.h" />
     <ClInclude Include="NormalShootComponent.h" />
+    <ClInclude Include="PolygonGeometry.h" />
     <ClInclude Include="Rect2.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="ScoreManager.h" />

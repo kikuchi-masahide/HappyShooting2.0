@@ -166,6 +166,9 @@
     <Filter Include="MainScene\MainSceneDrawComponent\DrawLazerComponent">
       <UniqueIdentifier>{e3c1af76-c324-4dfb-a819-7733bd68d9e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\ICollisionGeometry\PolygonGeometry">
+      <UniqueIdentifier>{01fd345e-6d97-4fce-b038-91470e1852e6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -394,6 +397,9 @@
     </ClCompile>
     <ClCompile Include="DrawLazerComponent.cpp">
       <Filter>MainScene\MainSceneDrawComponent\DrawLazerComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonGeometry.cpp">
+      <Filter>MainScene\ICollisionGeometry\PolygonGeometry</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -646,6 +652,9 @@
     </ClInclude>
     <ClInclude Include="DrawLazerComponent.h">
       <Filter>MainScene\MainSceneDrawComponent\DrawLazerComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonGeometry.h">
+      <Filter>MainScene\ICollisionGeometry\PolygonGeometry</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

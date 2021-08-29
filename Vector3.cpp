@@ -72,6 +72,11 @@ namespace MatVec {
 		return sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
 	}
 
+	double Vector3::Norm2()
+	{
+		return v[0] * v[0] + v[1] * v[1] + v[2] * v[2];
+	}
+
 	void MatVec::Vector3::Normalize()
 	{
 		double norm = Norm();

@@ -16,6 +16,7 @@ namespace MatVec
 		Vector2& operator+=(const Vector2& v2);
 		Vector2& operator-=(const Vector2& v2);
 		double Norm();
+		double Norm2();
 		void Normalize();
 	};
 	Vector2 operator*(const Vector2& v, double d);
@@ -32,5 +33,11 @@ namespace MatVec
 	{
 		return (v1.v[0] * v2.v[0] + v1.v[1] * v2.v[1]);
 	}
-
+	/// <summary>
+	/// ŠOÏ‚ğ‹‚ß‚é
+	/// </summary>
+	inline double Cross(Vector2 v1, Vector2 v2)
+	{
+		return v1(0) * v2(1) - v1(1) * v2(0);
+	}
 }
