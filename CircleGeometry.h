@@ -2,6 +2,7 @@
 #include "ICollisionGeometry.h"
 
 class PolygonGeometry;
+class CupsuleGeometry;
 
 //‰~Œ`—Ìˆæ‚ğ•\‚·“–‚½‚è”»’è}Œ`(“à•”ŠÜ)
 class CircleGeometry final:
@@ -25,5 +26,6 @@ public:
     /// </summary>
     bool IsCrossing(CircleGeometry& circle2);
     bool IsCrossing(PolygonGeometry& polygon);
+    bool IsCrossing(CupsuleGeometry& cupsule);
 };
 

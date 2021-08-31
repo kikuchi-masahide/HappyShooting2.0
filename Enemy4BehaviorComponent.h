@@ -13,7 +13,7 @@ class EnemyHealthComponent;
 class ScoreManager;
 
 /// <summary>
-/// 時間によりかわるEnemy4の位置，体力，描画，当たり判定の初期化と管理を行う
+/// 時間によりかわるEnemy4本体・レーザーの位置，体力，描画，当たり判定の初期化と管理を行う
 /// </summary>
 // TODO:当たり判定とレーザーの描画追加
 class Enemy4BehaviorComponent :

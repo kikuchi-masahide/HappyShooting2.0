@@ -4,9 +4,11 @@
 #include "CollisionComponent.h"
 #include "CircleGeometry.h"
 #include "PolygonGeometry.h"
+#include "CupsuleGeometry.h"
 
 using CircleGeometry_AABB = std::pair<CircleGeometry*, Rect2>;
 using PolygonGeometry_AABB = std::pair<PolygonGeometry*, Rect2>;
+using CupsuleGeometry_AABB = std::pair<CupsuleGeometry*, Rect2>;
 
 CollisionManager::CollisionManager()
 {
@@ -29,6 +31,11 @@ void CollisionManager::TraverseAll()
 		const Rect2& right_aabb = right.second;
 		return left_aabb.GetLD()(0) < right_aabb.GetLD()(0);
 	});
+	std::sort(cupsules_.begin(), cupsules_.end(), [](const CupsuleGeometry_AABB& left, const CupsuleGeometry_AABB& right) {
+		const Rect2& left_aabb = left.second;
+		const Rect2& right_aabb = right.second;
+		return left_aabb.GetLD()(0) < right_aabb.GetLD()(0);
+	});
 	//全CollisionComponentの集合
 	std::set<ComponentHandle<CollisionComponent>> all_comps;
 
@@ -44,13 +51,22 @@ void CollisionManager::TraverseAll()
 	{
 		all_comps.insert(circles_[n].first->GetParent());
 		TraverseAllSub_same(circles_, n);
-		TraverseAllSub_leq<CircleGeometry,PolygonGeometry>(circles_[n].first, circles_[n].second, polygons_);
+		TraverseAllSub_leq(circles_[n].first, circles_[n].second, polygons_);
+		TraverseAllSub_leq(circles_[n].first, circles_[n].second, cupsules_);
 	}
 	for (unsigned int n = 0; n < polygons_.size(); n++)
 	{
 		all_comps.insert(polygons_[n].first->GetParent());
 		TraverseAllSub_less(polygons_[n].first, polygons_[n].second, circles_);
 		TraverseAllSub_same(polygons_, n);
+		TraverseAllSub_leq(polygons_[n].first, polygons_[n].second, cupsules_);
+	}
+	for (unsigned int n = 0; n < cupsules_.size(); n++)
+	{
+		all_comps.insert(cupsules_[n].first->GetParent());
+		TraverseAllSub_less(cupsules_[n].first, cupsules_[n].second, circles_);
+		TraverseAllSub_less(cupsules_[n].first, cupsules_[n].second, circles_);
+		TraverseAllSub_same(cupsules_, n);
 	}
 
 	//全CollisionComponentのCheckHitComponentを呼び出す
@@ -72,6 +88,11 @@ void CollisionManager::AddCircleGeometry(CircleGeometry* circle)
 void CollisionManager::AddPolygonGeometry(PolygonGeometry* polygon)
 {
 	polygons_.emplace_back(polygon, polygon->GetAABB());
+}
+
+void CollisionManager::AddCupsuleGeometry(CupsuleGeometry* cupsule)
+{
+	cupsules_.emplace_back(cupsule, cupsule->GetAABB());
 }
 
 void CollisionManager::NoticeEachOther(ComponentHandle<CollisionComponent> comp1, ComponentHandle<CollisionComponent> comp2)

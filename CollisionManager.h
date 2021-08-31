@@ -8,6 +8,7 @@
 class CollisionComponent;
 class CircleGeometry;
 class PolygonGeometry;
+class CupsuleGeometry;
 
 /// <summary>
 /// 当たり判定コンポーネントと当たり判定図形を管理し，各コンポーネントに全フレームで衝突したコンポーネントを渡す
@@ -23,6 +24,7 @@ public:
 	void TraverseAll();
 	void AddCircleGeometry(CircleGeometry* circle);
 	void AddPolygonGeometry(PolygonGeometry* polygon);
+	void AddCupsuleGeometry(CupsuleGeometry* cupsule);
 	enum class Tag :unsigned char {
 		Myself,
 		MyBullet,
@@ -43,6 +45,7 @@ private:
 	void NoticeEachOther(ComponentHandle<CollisionComponent> comp1, ComponentHandle<CollisionComponent> comp2);
 	std::vector<std::pair<CircleGeometry*, Rect2>> circles_;
 	std::vector<std::pair<PolygonGeometry*, Rect2>> polygons_;
+	std::vector<std::pair<CupsuleGeometry*, Rect2>> cupsules_;
 };
 
 template<class T,class U>

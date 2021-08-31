@@ -2,6 +2,7 @@
 #include "CircleGeometry.h"
 
 #include "PolygonGeometry.h"
+#include "CupsuleGeometry.h"
 
 CircleGeometry::CircleGeometry(ComponentHandle<CollisionComponent> parent_comp, MatVec::Vector2 center, double radius)
 	:ICollisionGeometry(parent_comp),
@@ -36,4 +37,9 @@ bool CircleGeometry::IsCrossing(CircleGeometry& circle2)
 bool CircleGeometry::IsCrossing(PolygonGeometry& polygon)
 {
 	return polygon.IsCrossing(*this);
+}
+
+bool CircleGeometry::IsCrossing(CupsuleGeometry& cupsule)
+{
+	return cupsule.IsCrossing(*this);
 }

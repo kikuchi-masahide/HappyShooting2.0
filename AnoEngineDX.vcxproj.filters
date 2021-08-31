@@ -169,6 +169,9 @@
     <Filter Include="MainScene\CollisionComponent\Enemy4BehaviorComponent">
       <UniqueIdentifier>{5a97a715-382d-4e0a-8690-a91704dd63c2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\ICollisionGeometry\CupsuleGeometry">
+      <UniqueIdentifier>{62c6cb4a-6dfa-48ca-8cab-cc1e82f8af91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -400,6 +403,9 @@
     </ClCompile>
     <ClCompile Include="PolygonGeometry.cpp">
       <Filter>MainScene\ICollisionGeometry\PolygonGeometry</Filter>
+    </ClCompile>
+    <ClCompile Include="CupsuleGeometry.cpp">
+      <Filter>MainScene\ICollisionGeometry\CupsuleGeometry</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -655,6 +661,9 @@
     </ClInclude>
     <ClInclude Include="PolygonGeometry.h">
       <Filter>MainScene\ICollisionGeometry\PolygonGeometry</Filter>
+    </ClInclude>
+    <ClInclude Include="CupsuleGeometry.h">
+      <Filter>MainScene\ICollisionGeometry\CupsuleGeometry</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

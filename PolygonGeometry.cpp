@@ -2,6 +2,7 @@
 #include "PolygonGeometry.h"
 
 #include "CircleGeometry.h"
+#include "CupsuleGeometry.h"
 
 PolygonGeometry::PolygonGeometry(ComponentHandle<CollisionComponent> parent_comp, unsigned int points_num)
 	:ICollisionGeometry(parent_comp)
@@ -53,6 +54,11 @@ bool PolygonGeometry::IsCrossing(PolygonGeometry& polygon)
 {
 	//¡Polygon‚Í“G‹@‚Ì‚İ‚ª‚Â“–‚½‚è”»’è‚È‚Ì‚ÅC‚Æ‚è‚ ‚¦‚¸false
 	return false;
+}
+
+bool PolygonGeometry::IsCrossing(CupsuleGeometry& cupsule)
+{
+	return cupsule.IsCrossing(*this);
 }
 
 double PolygonGeometry::Dist2(MatVec::Vector2 p, MatVec::Vector2 a, MatVec::Vector2 b)
