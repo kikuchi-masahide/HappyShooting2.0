@@ -160,14 +160,14 @@
     <Filter Include="MainScene\MainSceneDrawComponent\DrawAnimationComponent">
       <UniqueIdentifier>{a80406c6-6613-4c99-9c70-e0ac3d6dcaad}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainScene\Enemy4BehaviorComponent">
-      <UniqueIdentifier>{5a97a715-382d-4e0a-8690-a91704dd63c2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MainScene\MainSceneDrawComponent\DrawLazerComponent">
       <UniqueIdentifier>{e3c1af76-c324-4dfb-a819-7733bd68d9e5}</UniqueIdentifier>
     </Filter>
     <Filter Include="MainScene\ICollisionGeometry\PolygonGeometry">
       <UniqueIdentifier>{01fd345e-6d97-4fce-b038-91470e1852e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\CollisionComponent\Enemy4BehaviorComponent">
+      <UniqueIdentifier>{5a97a715-382d-4e0a-8690-a91704dd63c2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -393,7 +393,7 @@
       <Filter>MainScene\MainSceneDrawComponent\DrawAnimationComponent</Filter>
     </ClCompile>
     <ClCompile Include="Enemy4BehaviorComponent.cpp">
-      <Filter>MainScene\Enemy4BehaviorComponent</Filter>
+      <Filter>MainScene\CollisionComponent\Enemy4BehaviorComponent</Filter>
     </ClCompile>
     <ClCompile Include="DrawLazerComponent.cpp">
       <Filter>MainScene\MainSceneDrawComponent\DrawLazerComponent</Filter>
@@ -648,7 +648,7 @@
       <Filter>MainScene\MainSceneDrawComponent\DrawAnimationComponent</Filter>
     </ClInclude>
     <ClInclude Include="Enemy4BehaviorComponent.h">
-      <Filter>MainScene\Enemy4BehaviorComponent</Filter>
+      <Filter>MainScene\CollisionComponent\Enemy4BehaviorComponent</Filter>
     </ClInclude>
     <ClInclude Include="DrawLazerComponent.h">
       <Filter>MainScene\MainSceneDrawComponent\DrawLazerComponent</Filter>

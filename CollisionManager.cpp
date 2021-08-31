@@ -61,7 +61,7 @@ void CollisionManager::TraverseAll()
 	}
 
 	circles_.clear();
-
+	polygons_.clear();
 }
 
 void CollisionManager::AddCircleGeometry(CircleGeometry* circle)

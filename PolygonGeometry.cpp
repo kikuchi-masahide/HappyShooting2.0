@@ -3,9 +3,10 @@
 
 #include "CircleGeometry.h"
 
-PolygonGeometry::PolygonGeometry(ComponentHandle<CollisionComponent> parent_comp)
+PolygonGeometry::PolygonGeometry(ComponentHandle<CollisionComponent> parent_comp, unsigned int points_num)
 	:ICollisionGeometry(parent_comp)
 {
+	points_.resize(points_num);
 }
 
 PolygonGeometry::PolygonGeometry(const PolygonGeometry& polygon)

@@ -8,7 +8,8 @@ class PolygonGeometry final:
     public ICollisionGeometry
 {
 public:
-    PolygonGeometry(ComponentHandle<CollisionComponent> parent_comp);
+    /// <param name="points_num">’¸“_”</param>
+    PolygonGeometry(ComponentHandle<CollisionComponent> parent_comp,unsigned int points_num);
     PolygonGeometry(const PolygonGeometry& polygon);
     PolygonGeometry();
     //’¸“_(”½Œv‰ñ‚è)

@@ -6,16 +6,25 @@
 #include "DrawTextureComponent.h"
 #include "DrawAnimationComponent.h"
 #include "DrawLazerComponent.h"
+#include "EnemyHealthComponent.h"
+#include "DrawHealthBarComponent.h"
+#include "ScoreManager.h"
 
-Enemy4BehaviorComponent::Enemy4BehaviorComponent(GameObjectHandle obj, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<LayerManager> layer_manager, int flag)
-	:CollisionComponent(obj,collision_manager,100,CollisionManager::Tag::EnemyBody,100),
-	counter_(0),mode_(0),
-	flag_(flag),layer_manager_(layer_manager)
+Enemy4BehaviorComponent::Enemy4BehaviorComponent(GameObjectHandle obj, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, int flag)
+	:CollisionComponent(obj, collision_manager, 100, CollisionManager::Tag::EnemyBody, 100),
+	counter_(0), mode_(0),
+	flag_(flag), layer_manager_(layer_manager),score_manager_(score_manager)
 {
-	texture0_ = mObj->AddUpdateComponent<DrawTextureComponent>(layer_manager_, 9, -5.0);
+	texture0_ = mObj->AddOutputComponent<DrawTextureComponent>(layer_manager_, 9, -5.0);
 	texture0_->width_ = 80.0;
 	texture0_->height_ = 140.0;
 	texture0_->center_offset_ = MatVec::Vector2(0.0, -30.0);
+	health_ = mObj->AddUpdateComponent<EnemyHealthComponent>(layer_manager_, 9000.0);
+	mObj->AddOutputComponent<DrawHealthBarComponent>(layer_manager_, health_, MatVec::Vector2(0, 25));
+	tail_ = CircleGeometry(This<CollisionComponent>(), MatVec::Vector2(), 40);
+	center_square_ = PolygonGeometry(This<CollisionComponent>(), 4);
+	mouce_left_ = PolygonGeometry(This<CollisionComponent>(), 3);
+	mouce_right_ = PolygonGeometry(This<CollisionComponent>(), 3);
 }
 
 Enemy4BehaviorComponent::~Enemy4BehaviorComponent()
@@ -29,6 +38,7 @@ void Enemy4BehaviorComponent::Update()
 		//スタート位置から下に降りてくる
 		MatVec::Vector2 pos((300-sqrt(2)* 20)*flag_, 500.0 - 5.0 * (double)counter_ / 4);
 		mObj->SetPosition(pos);
+		RegCollisionGeometry(pos, 0);
 		counter_++;
 		if (counter_ == 72)
 		{
@@ -44,6 +54,7 @@ void Enemy4BehaviorComponent::Update()
 		MatVec::Vector2 pos((300 - sqrt(2) * 20) * flag_, 410.0);
 		mObj->SetPosition(MatVec::Vector2((300 - sqrt(2) * 20) * flag_, 410.0));
 		//三角形2つをパカッと開く 60tick
+		RegCollisionGeometry(pos, counter_);
 		counter_++;
 		if (counter_ == 60)
 		{
@@ -70,6 +81,7 @@ void Enemy4BehaviorComponent::Update()
 		//円の半径を，60tickで0から20√2まで増加させる
 		double r = sqrt(2) * counter_ / 3;
 		lazer_draw_->r_ = r;
+		RegCollisionGeometry(MatVec::Vector2((300 - sqrt(2) * 20) * flag_, 410.0), 60);
 		counter_++;
 		if (counter_ == 60)
 		{
@@ -82,6 +94,7 @@ void Enemy4BehaviorComponent::Update()
 		MatVec::Vector2 pos = mObj->GetPosition();
 		pos(0) -= 1.0 * flag_;
 		mObj->SetPosition(pos);
+		RegCollisionGeometry(pos, 60);
 		//レーザーも同じように移動させる
 		lazer_draw_->a_(0) = pos(0);
 		lazer_draw_->b_(0) = pos(0);
@@ -93,15 +106,52 @@ void Enemy4BehaviorComponent::Update()
 		}
 	}
 	else {
+		RegCollisionGeometry(mObj->GetPosition(), 60);
 		counter_++;
 		if (counter_ == 60*10)
 		{
+			//自滅
+			health_->Damage(9000);
 			Log::OutputCritical("Enemy4 delete");
-			mObj->SetDeleteFlag();
 		}
 	}
 }
 
 void Enemy4BehaviorComponent::CheckHitComponent()
 {
+	for (auto comp : hit_comps_)
+	{
+		auto damage = comp->GetDamage();
+		auto real_damage = health_->Damage(damage);
+		score_manager_->AddScore(real_damage);
+	}
+}
+
+void Enemy4BehaviorComponent::RegCollisionGeometry(MatVec::Vector2 center, int deg_counter)
+{
+	tail_.center_ = center + MatVec::Vector2(0, 40);
+	center_square_.points_[0] = center + MatVec::Vector2(-40, +40);
+	center_square_.points_[1] = center + MatVec::Vector2(-40, -40);
+	center_square_.points_[2] = center + MatVec::Vector2(+40, -40);
+	center_square_.points_[3] = center + MatVec::Vector2(+40, +40);
+	//直角三角形の斜辺じゃない方の辺の長さ
+	double l = 40.0 * sqrt(2.0);
+	double deg1 = 3 * PI / 4 + PI * deg_counter / 240;
+	mouce_right_.points_[0] = center + MatVec::Vector2(+40, -40);
+	mouce_right_.points_[1](0) = mouce_right_.points_[0](0) + l * cos(deg1);
+	mouce_right_.points_[1](1) = mouce_right_.points_[0](1) + l * sin(deg1);
+	deg1 += PI / 2;
+	mouce_right_.points_[2](0) = mouce_right_.points_[0](0) + l * cos(deg1);
+	mouce_right_.points_[2](1) = mouce_right_.points_[0](1) + l * sin(deg1);
+	double deg2 = 7 * PI / 4 - PI * deg_counter / 240;
+	mouce_left_.points_[0] = center + MatVec::Vector2(-40, -40);
+	mouce_left_.points_[1](0) = mouce_left_.points_[0](0) + l * cos(deg2);
+	mouce_left_.points_[1](1) = mouce_left_.points_[0](1) + l * sin(deg2);
+	deg2 += PI / 2;
+	mouce_left_.points_[2](0) = mouce_left_.points_[0](0) + l * cos(deg2);
+	mouce_left_.points_[2](1) = mouce_left_.points_[0](1) + l * sin(deg2);
+	manager_->AddCircleGeometry(&tail_);
+	manager_->AddPolygonGeometry(&center_square_);
+	manager_->AddPolygonGeometry(&mouce_left_);
+	manager_->AddPolygonGeometry(&mouce_right_);
 }
