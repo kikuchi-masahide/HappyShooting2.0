@@ -54,5 +54,7 @@ private:
     ComponentHandle<EnemyHealthComponent> health_;
     //「本体にあたった」のと「レーザーに当たった」のを分けたいので
     ComponentHandle<LazerCollisionComponent> lazer_collision_;
+    //死に際に通常弾をまきちらす
+    void DeathAttack();
 };
 

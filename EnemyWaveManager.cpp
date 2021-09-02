@@ -10,9 +10,11 @@
 EnemyWaveManager::EnemyWaveManager(MainScene* scene)
 	:scene_(scene)
 {
-	//TODO:Š®¬‚Í–ß‚·
-	//wave_ = boost::shared_ptr<EnemyWave1>(new EnemyWave1(30, this));
+#ifndef _DEBUG
+	wave_ = boost::shared_ptr<EnemyWave1>(new EnemyWave1(30, this));
+#else
 	wave_ = boost::shared_ptr<EnemyWave45>(new EnemyWave45(this));
+#endif
 }
 
 EnemyWaveManager::~EnemyWaveManager()

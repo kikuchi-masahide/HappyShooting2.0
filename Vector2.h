@@ -40,4 +40,11 @@ namespace MatVec
 	{
 		return v1(0) * v2(1) - v1(1) * v2(0);
 	}
+	/// <summary>
+	/// x²‚Æ‚È‚·Šp‚ªangle‚Å‚ ‚éC’·‚³1‚ÌVector2‚ğ•Ô‚·
+	/// </summary>
+	inline Vector2 DirectionVector(double angle)
+	{
+		return Vector2(cos(angle), sin(angle));
+	}
 }

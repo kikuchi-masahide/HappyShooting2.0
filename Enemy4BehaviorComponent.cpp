@@ -11,6 +11,10 @@
 #include "ScoreManager.h"
 #include "LazerCollisionComponent.h"
 #include "CupsuleGeometry.h"
+#include "Scene.h"
+#include "LinearMoveComponent.h"
+#include "DrawNormalBulletComponent.h"
+#include "NormalBulletCollisionComponent.h"
 
 Enemy4BehaviorComponent::Enemy4BehaviorComponent(GameObjectHandle obj, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, int flag)
 	:CollisionComponent(obj, collision_manager, 100, CollisionManager::Tag::EnemyBody, 100),
@@ -32,6 +36,8 @@ Enemy4BehaviorComponent::Enemy4BehaviorComponent(GameObjectHandle obj, boost::sh
 
 Enemy4BehaviorComponent::~Enemy4BehaviorComponent()
 {
+	//アポトーシスでも，普通に倒されても，死に際に通常弾をまき散らす
+	DeathAttack();
 }
 
 void Enemy4BehaviorComponent::Update()
@@ -99,7 +105,7 @@ void Enemy4BehaviorComponent::Update()
 	{
 		//左(flag_ == -1ならば右)に移動
 		MatVec::Vector2 pos = mObj->GetPosition();
-		pos(0) -= 1.0 * flag_;
+		pos(0) -= 0.5 * flag_;
 		mObj->SetPosition(pos);
 		RegCollisionGeometry(pos, 60);
 		//レーザーも同じように移動させる
@@ -117,7 +123,7 @@ void Enemy4BehaviorComponent::Update()
 	else {
 		RegCollisionGeometry(mObj->GetPosition(), 60);
 		counter_++;
-		if (counter_ == 60*10)
+		if (counter_ == 60*12)
 		{
 			//自滅
 			health_->Damage(9000);
@@ -163,4 +169,18 @@ void Enemy4BehaviorComponent::RegCollisionGeometry(MatVec::Vector2 center, int d
 	manager_->AddPolygonGeometry(&center_square_);
 	manager_->AddPolygonGeometry(&mouce_left_);
 	manager_->AddPolygonGeometry(&mouce_right_);
+}
+
+void Enemy4BehaviorComponent::DeathAttack()
+{
+	Scene* scene = mObj->mScene;
+	MatVec::Vector2 objpos = mObj->GetPosition();
+	for (int n = 0; n < 8; n++)
+	{
+		//TODO:タイミングによってAdd~Componentが死ぬのを修正する
+		//auto obj = scene->AddObject(objpos, 1.0, 0.0);
+		//obj->AddUpdateComponent<LinearMoveComponent>(MatVec::DirectionVector(PI * n / 4)*10.0, 10);
+		//obj->AddOutputComponent<DrawNormalBulletComponent>(layer_manager_, 10.0, MatVec::Vector3(0.0, 1.0, 0.0), 1.0, -10);
+		//obj->AddUpdateComponent<NormalBulletCollisionComponent>(10.0, 100, collision_manager_);
+	}
 }
