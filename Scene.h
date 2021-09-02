@@ -142,8 +142,8 @@ private:
 	void LaunchOutputComponents();
 	//コンポーネント・オブジェクトを直接リストに入れられるか?
 	bool mIsObjCompAddable;
-	//Deleteフラグが立っているコンポーネント・オブジェクトや保留中のそれらの処理
-	void DeleteAndProcessPandingObjComp();
+	//Deleteフラグが立っているコンポーネント・オブジェクトを削除
+	void DeleteObjComp();
 	GameObject* operator&() const noexcept;
 	//Z座標昇順で取り出す(右手系!)
 	std::set<Layer*, LayerCompare> mLayers;
@@ -151,7 +151,7 @@ private:
 	//自分の持つLayerのOutputを行う
 	void OutputLayer();
 	//DeleteFlag立ってるLayerの処理
-	void DeleteAndProcessPandingLayers();
+	void DeleteLayers();
 	//持っているUIScreen群(添え字の大きいものが後に追加されたUIScreen)
 	std::vector<UIScreen*> mUIScreens;
 	//保留UIScreen
@@ -173,7 +173,7 @@ private:
 	MatVec::Vector2 mPrevMousePosForComps;
 	//UIScreenにとっての前tickマウス位置(左上原点スクリーン座標)
 	std::vector<MatVec::Vector2> mPrevMousePosForUIScreens;
-	void DeleteAndProcessPandingUIScreen();
+	void DeleteUIScreen();
 	//UIScreenのUpdateを奥から呼び出す
 	void LaunchUIScreenUpdate();
 	//UIScreenのOutputを奥から呼び出す
@@ -182,4 +182,6 @@ private:
 	void DeleteObject(GameObject* _object);
 	//このレイヤーのポインタをdeleteしデストラクタを呼ぶ
 	void DeleteLayer(Layer* _layer);
+	//保留中のオブジェクト等をマージ
+	void ProcessPandings();
 };

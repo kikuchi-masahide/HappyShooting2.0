@@ -46,11 +46,12 @@ void Scene::Output()
 	LaunchOutputUIScreens();
 	PosteriorUniqueOutput();
 	mGame.mdx12.ProcessCommands();
-	mIsObjCompAddable = true;
 	//保留していたオブジェクト・コンポーネントの処理を行う
-	DeleteAndProcessPandingObjComp();
-	DeleteAndProcessPandingLayers();
-	DeleteAndProcessPandingUIScreen();
+	DeleteObjComp();
+	DeleteLayers();
+	DeleteUIScreen();
+	mIsObjCompAddable = true;
+	ProcessPandings();
 }
 
 void Scene::PriorUniqueOutput()
@@ -197,21 +198,8 @@ void Scene::LaunchOutputComponents()
 	}
 }
 
-void Scene::DeleteAndProcessPandingObjComp()
+void Scene::DeleteObjComp()
 {
-	//保留していたオブジェクト・コンポーネントを追加
-	for (auto& obj : mPandingObjs) {
-		mObjs.push_back(obj);
-	}
-	mPandingObjs.clear();
-	for (auto& handle : mPandingUpdateComponents) {
-		mUpdateComponents.insert(handle);
-	}
-	mPandingUpdateComponents.clear();
-	for (auto& handle : mPandingOutputComponents) {
-		mOutputComponents.insert(handle);
-	}
-	mPandingOutputComponents.clear();
 	//全オブジェクトを回る
 	auto objitr = mObjs.begin();
 	while (objitr != mObjs.end()) {
@@ -273,19 +261,10 @@ void Scene::OutputLayer()
 	}
 }
 
-void Scene::DeleteAndProcessPandingLayers()
+void Scene::DeleteLayers()
 {
-	//PandingのLayerをフラッシュしmLayerに追加
-	auto itr = mPandingLayers.begin();
-	while (itr != mPandingLayers.end())
-	{
-		(*itr)->FlushZRectChange(*itr);
-		mLayers.insert(*itr);
-		itr++;
-	}
-	mPandingLayers.clear();
 	//DeleteフラグついてるLayerを削除
-	itr = mLayers.begin();
+	auto itr = mLayers.begin();
 	while (itr != mLayers.end())
 	{
 		if ((*itr)->GetDeleteFlag())
@@ -299,7 +278,7 @@ void Scene::DeleteAndProcessPandingLayers()
 	}
 }
 
-void Scene::DeleteAndProcessPandingUIScreen()
+void Scene::DeleteUIScreen()
 {
 	int n = mUIScreens.size() - 1;
 	//添え字が大きい方から見て消すべきUIScreenを削除
@@ -312,15 +291,6 @@ void Scene::DeleteAndProcessPandingUIScreen()
 		mInputFlagForUIScreens.erase(mInputFlagForUIScreens.begin() + n);
 		mUpdateFlagForUIScreens.erase(mUpdateFlagForUIScreens.begin() + n);
 	}
-	//PandingにあるUIScreenの追加
-	for (n = 0; n < mPandingUIScreens.size(); n++)
-	{
-		mUIScreens.push_back(mPandingUIScreens[n]);
-		mPrevMousePosForUIScreens.push_back(GetMouseScreenPos());
-		mUpdateFlagForUIScreens.push_back(true);
-		mInputFlagForUIScreens.push_back(true);
-	}
-	mPandingUIScreens.clear();
 	//mMousePosFor~の更新
 	for (n = 0; n < mUIScreens.size(); n++)
 	{
@@ -409,4 +379,41 @@ void Scene::DeleteLayer(Layer* _layer)
 {
 	_layer->mDeleteCheck = true;
 	delete _layer;
+}
+
+void Scene::ProcessPandings()
+{
+	//保留していたオブジェクト・コンポーネントを追加
+	for (auto& obj : mPandingObjs) {
+		mObjs.push_back(obj);
+	}
+	mPandingObjs.clear();
+	for (auto& handle : mPandingUpdateComponents) {
+		mUpdateComponents.insert(handle);
+	}
+	mPandingUpdateComponents.clear();
+	for (auto& handle : mPandingOutputComponents) {
+		mOutputComponents.insert(handle);
+	}
+	mPandingOutputComponents.clear();
+
+	//PandingのLayerをフラッシュしmLayerに追加
+	auto itr = mPandingLayers.begin();
+	while (itr != mPandingLayers.end())
+	{
+		(*itr)->FlushZRectChange(*itr);
+		mLayers.insert(*itr);
+		itr++;
+	}
+	mPandingLayers.clear();
+
+	//PandingにあるUIScreenの追加
+	for (int n = 0; n < mPandingUIScreens.size(); n++)
+	{
+		mUIScreens.push_back(mPandingUIScreens[n]);
+		mPrevMousePosForUIScreens.push_back(GetMouseScreenPos());
+		mUpdateFlagForUIScreens.push_back(true);
+		mInputFlagForUIScreens.push_back(true);
+	}
+	mPandingUIScreens.clear();
 }
