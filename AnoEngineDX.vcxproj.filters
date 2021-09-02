@@ -172,6 +172,9 @@
     <Filter Include="MainScene\ICollisionGeometry\CupsuleGeometry">
       <UniqueIdentifier>{62c6cb4a-6dfa-48ca-8cab-cc1e82f8af91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\CollisionComponent\LazerCollisionComponent">
+      <UniqueIdentifier>{a3552b47-6f3a-409d-b05c-dcff9f63f834}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -406,6 +409,9 @@
     </ClCompile>
     <ClCompile Include="CupsuleGeometry.cpp">
       <Filter>MainScene\ICollisionGeometry\CupsuleGeometry</Filter>
+    </ClCompile>
+    <ClCompile Include="LazerCollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\LazerCollisionComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -664,6 +670,9 @@
     </ClInclude>
     <ClInclude Include="CupsuleGeometry.h">
       <Filter>MainScene\ICollisionGeometry\CupsuleGeometry</Filter>
+    </ClInclude>
+    <ClInclude Include="LazerCollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\LazerCollisionComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

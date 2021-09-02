@@ -25,11 +25,20 @@ public:
 	void AddCircleGeometry(CircleGeometry* circle);
 	void AddPolygonGeometry(PolygonGeometry* polygon);
 	void AddCupsuleGeometry(CupsuleGeometry* cupsule);
+	//TODO:このTagに(クラス等で?)親子関係を導入し，例えば
+	//My::body
+	//  ::bullet
+	//Enemy::body
+	//     ::bullet
+	//     ::lazer
+	//として，「敵が持つ・敵が出した当たり判定である <==> tag == Tag::Enemy」のように書けないか?
+	//(たぶんコレでそこまでやる必要はないとおもうが)
 	enum class Tag :unsigned char {
 		Myself,
 		MyBullet,
 		EnemyBody,
-		EnemyBullet
+		EnemyBullet,
+		EnemyLazer
 	};
 private:
 	//geometryと，geometry.aabb.lx <= geometry_arr[e].aabb.lxなるgeometry_arr要素との当たり判定
@@ -84,8 +93,8 @@ inline void CollisionManager::TraverseAllSub_leq(T* geometry, Rect2& aabb, std::
 			(parent2->tag_ == Tag::Myself || parent2->tag_ == Tag::MyBullet)
 			)continue;
 		if (
-			(parent->tag_ == Tag::EnemyBody || parent->tag_ == Tag::EnemyBullet) &&
-			(parent2->tag_ == Tag::EnemyBody || parent2->tag_ == Tag::EnemyBullet)
+			(parent->tag_ == Tag::EnemyBody || parent->tag_ == Tag::EnemyBullet || parent->tag_ == Tag::EnemyBody) &&
+			(parent2->tag_ == Tag::EnemyBody || parent2->tag_ == Tag::EnemyBullet || parent->tag_ == Tag::EnemyBody)
 			)continue;
 		if (geometry->IsCrossing(*geometry2))
 		{
@@ -117,8 +126,8 @@ inline void CollisionManager::TraverseAllSub_same(std::vector<std::pair<T*, Rect
 			(parent2->tag_ == Tag::Myself || parent2->tag_ == Tag::MyBullet)
 			)continue;
 		if (
-			(parent->tag_ == Tag::EnemyBody || parent->tag_ == Tag::EnemyBullet) &&
-			(parent2->tag_ == Tag::EnemyBody || parent2->tag_ == Tag::EnemyBullet)
+			(parent->tag_ == Tag::EnemyBody || parent->tag_ == Tag::EnemyBullet || parent->tag_ == Tag::EnemyBody) &&
+			(parent2->tag_ == Tag::EnemyBody || parent2->tag_ == Tag::EnemyBullet || parent->tag_ == Tag::EnemyBody)
 			)continue;
 		if (geometry->IsCrossing(*geometry2))
 		{
@@ -162,8 +171,8 @@ inline void CollisionManager::TraverseAllSub_less(T* geometry, Rect2& aabb, std:
 			(parent2->tag_ == Tag::Myself || parent2->tag_ == Tag::MyBullet)
 			)continue;
 		if (
-			(parent->tag_ == Tag::EnemyBody || parent->tag_ == Tag::EnemyBullet) &&
-			(parent2->tag_ == Tag::EnemyBody || parent2->tag_ == Tag::EnemyBullet)
+			(parent->tag_ == Tag::EnemyBody || parent->tag_ == Tag::EnemyBullet || parent->tag_ == Tag::EnemyBody) &&
+			(parent2->tag_ == Tag::EnemyBody || parent2->tag_ == Tag::EnemyBullet || parent->tag_ == Tag::EnemyBody)
 			)continue;
 		if (geometry->IsCrossing(*geometry2))
 		{

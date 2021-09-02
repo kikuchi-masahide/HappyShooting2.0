@@ -11,6 +11,7 @@ class DrawTextureComponent;
 class DrawLazerComponent;
 class EnemyHealthComponent;
 class ScoreManager;
+class LazerCollisionComponent;
 
 /// <summary>
 /// 時間によりかわるEnemy4本体・レーザーの位置，体力，描画，当たり判定の初期化と管理を行う
@@ -34,6 +35,7 @@ private:
     ComponentHandle<DrawLazerComponent> lazer_draw_;
     boost::shared_ptr<LayerManager> layer_manager_;
     boost::shared_ptr<ScoreManager> score_manager_;
+    boost::shared_ptr<CollisionManager> collision_manager_;
     //しっぽの半円
     CircleGeometry tail_;
     //真ん中の正方形
@@ -50,5 +52,7 @@ private:
     void RegCollisionGeometry(MatVec::Vector2 center, int deg_counter);
     //自滅するときのために保持
     ComponentHandle<EnemyHealthComponent> health_;
+    //「本体にあたった」のと「レーザーに当たった」のを分けたいので
+    ComponentHandle<LazerCollisionComponent> lazer_collision_;
 };
 

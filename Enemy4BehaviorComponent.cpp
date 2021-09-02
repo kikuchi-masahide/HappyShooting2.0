@@ -9,11 +9,14 @@
 #include "EnemyHealthComponent.h"
 #include "DrawHealthBarComponent.h"
 #include "ScoreManager.h"
+#include "LazerCollisionComponent.h"
+#include "CupsuleGeometry.h"
 
 Enemy4BehaviorComponent::Enemy4BehaviorComponent(GameObjectHandle obj, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, int flag)
 	:CollisionComponent(obj, collision_manager, 100, CollisionManager::Tag::EnemyBody, 100),
 	counter_(0), mode_(0),
-	flag_(flag), layer_manager_(layer_manager),score_manager_(score_manager)
+	flag_(flag), layer_manager_(layer_manager),score_manager_(score_manager),
+	collision_manager_(collision_manager)
 {
 	texture0_ = mObj->AddOutputComponent<DrawTextureComponent>(layer_manager_, 9, -5.0);
 	texture0_->width_ = 80.0;
@@ -71,6 +74,9 @@ void Enemy4BehaviorComponent::Update()
 			lazer_draw_->a_ = circle_center;
 			lazer_draw_->b_ = circle_center;
 			lazer_draw_->b_(1) = -500;
+			lazer_collision_ = mObj->AddUpdateComponent<LazerCollisionComponent>(collision_manager_);
+			lazer_collision_->cupsule_.a_ = lazer_draw_->a_;
+			lazer_collision_->cupsule_.b_ = lazer_draw_->b_;
 			mode_ = 2;
 			counter_ = 0;
 		}
@@ -81,6 +87,7 @@ void Enemy4BehaviorComponent::Update()
 		//‰~‚Ì”¼Œa‚ðC60tick‚Å0‚©‚ç20ã2‚Ü‚Å‘‰Á‚³‚¹‚é
 		double r = sqrt(2) * counter_ / 3;
 		lazer_draw_->r_ = r;
+		lazer_collision_->cupsule_.r_ = r;
 		RegCollisionGeometry(MatVec::Vector2((300 - sqrt(2) * 20) * flag_, 410.0), 60);
 		counter_++;
 		if (counter_ == 60)
@@ -98,6 +105,8 @@ void Enemy4BehaviorComponent::Update()
 		//ƒŒ[ƒU[‚à“¯‚¶‚æ‚¤‚ÉˆÚ“®‚³‚¹‚é
 		lazer_draw_->a_(0) = pos(0);
 		lazer_draw_->b_(0) = pos(0);
+		lazer_collision_->cupsule_.a_(0) = pos(0);
+		lazer_collision_->cupsule_.b_(0) = pos(0);
 		counter_++;
 		if (counter_ == 60 * 3)
 		{

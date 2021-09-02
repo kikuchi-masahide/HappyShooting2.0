@@ -30,8 +30,8 @@ void MyselfCollisionComponent::CheckHitComponent()
 	if (mediator_->IsInvincible())return;
 	//始めの一撃のみを勘案する
 	auto comp = *(hit_comps_.begin());
-	//敵機と当たった場合
-	if (comp->tag_ == CollisionManager::Tag::EnemyBody)
+	//敵機またはレーザーと当たった場合
+	if (comp->tag_ == CollisionManager::Tag::EnemyBody || comp->tag_ == CollisionManager::Tag::EnemyLazer)
 	{
 		mediator_->CauseDamageToMyself(comp->GetDamage());
 	}
@@ -39,6 +39,6 @@ void MyselfCollisionComponent::CheckHitComponent()
 	if (comp->tag_ == CollisionManager::Tag::EnemyBullet)
 	{
 		mediator_->CauseDamageToMyself(comp->GetDamage());
-		comp->SetDeleteFlag();
+		comp->mObj->SetDeleteFlag();
 	}
 }
