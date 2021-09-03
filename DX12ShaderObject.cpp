@@ -12,7 +12,7 @@ DX12ShaderObject::DX12ShaderObject(LPCWSTR _filename, DX12Config::ShaderType _sh
 		&mBlob, &errorBlob
 	);
 	if (FAILED(result)) {
-		if (result == ERROR_FILE_NOT_FOUND)
+		if (result == HRESULT_FROM_WIN32(ERROR_FILE_NOT_FOUND))
 		{
 			Log::OutputCritical("shader file not found");
 		}

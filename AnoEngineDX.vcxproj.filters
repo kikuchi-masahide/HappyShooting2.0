@@ -676,97 +676,97 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="HTextureDrawInclude.hlsli">
-      <Filter>Helper\HTextureDraw</Filter>
-    </None>
-    <None Include="MainSceneBasicLayerHeader.hlsli">
-      <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
-    </None>
-    <None Include="HTextureAlphaRotateDrawHeader.hlsli">
-      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
-    </None>
-    <None Include="DrawNormalBulletComponentHeader.hlsli">
-      <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
-    </None>
-    <None Include="HNumberDraw_header.hlsli">
-      <Filter>Helper\HNumberDraw</Filter>
-    </None>
-    <None Include="DrawDeathEffectComponent_header.hlsli">
-      <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
-    </None>
-    <None Include="DrawHealthBarComponent_header.hlsli">
+    <None Include="Shader\DrawHealthBarComponent_header.hlsli">
       <Filter>MainScene\MainSceneDrawComponent\DrawHealthBarComponent</Filter>
     </None>
-    <None Include="HDrawLineFrameHeader.hlsli">
-      <Filter>Helper\HDrawLineFrame</Filter>
-    </None>
-    <None Include="DrawAnimationComponent_header.hlsli">
+    <None Include="Shader\DrawAnimationComponent_header.hlsli">
       <Filter>MainScene\MainSceneDrawComponent\DrawAnimationComponent</Filter>
     </None>
-    <None Include="DrawLazerComponent_header.hlsli">
+    <None Include="Shader\DrawDeathEffectComponent_header.hlsli">
+      <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
+    </None>
+    <None Include="Shader\DrawLazerComponent_header.hlsli">
       <Filter>MainScene\MainSceneDrawComponent\DrawLazerComponent</Filter>
+    </None>
+    <None Include="Shader\DrawNormalBulletComponentHeader.hlsli">
+      <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
+    </None>
+    <None Include="Shader\HDrawLineFrameHeader.hlsli">
+      <Filter>Helper\HDrawLineFrame</Filter>
+    </None>
+    <None Include="Shader\HNumberDraw_header.hlsli">
+      <Filter>Helper\HNumberDraw</Filter>
+    </None>
+    <None Include="Shader\HTextureAlphaRotateDrawHeader.hlsli">
+      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
+    </None>
+    <None Include="Shader\HTextureDrawInclude.hlsli">
+      <Filter>Helper\HTextureDraw</Filter>
+    </None>
+    <None Include="Shader\MainSceneBasicLayerHeader.hlsli">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="HTextureDrawPixelShader.hlsl">
-      <Filter>Helper\HTextureDraw</Filter>
-    </FxCompile>
-    <FxCompile Include="HTextureDrawVertexShader.hlsl">
-      <Filter>Helper\HTextureDraw</Filter>
-    </FxCompile>
-    <FxCompile Include="HDrawLineFrameVertexShader.hlsl">
-      <Filter>Helper\HDrawLineFrame</Filter>
-    </FxCompile>
-    <FxCompile Include="HDrawLineFramePixelShader.hlsl">
-      <Filter>Helper\HDrawLineFrame</Filter>
-    </FxCompile>
-    <FxCompile Include="MainSceneBasicLayerPixelShader.hlsl">
-      <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
-    </FxCompile>
-    <FxCompile Include="MainSceneBasicLayerVertexShader.hlsl">
-      <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
-    </FxCompile>
-    <FxCompile Include="HTextureAlphaRotateDrawPixelShader.hlsl">
-      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
-    </FxCompile>
-    <FxCompile Include="HTextureAlphaRotateDrawVertexShader.hlsl">
-      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
-    </FxCompile>
-    <FxCompile Include="DrawNormalBulletComponentVertexShader.hlsl">
-      <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
-    </FxCompile>
-    <FxCompile Include="DrawNormalBulletComponentPixelShader.hlsl">
-      <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
-    </FxCompile>
-    <FxCompile Include="HNumberDraw_vertex.hlsl">
-      <Filter>Helper\HNumberDraw</Filter>
-    </FxCompile>
-    <FxCompile Include="HNumberDraw_pixel.hlsl">
-      <Filter>Helper\HNumberDraw</Filter>
-    </FxCompile>
-    <FxCompile Include="DrawDeathEffectComponent_pixel.hlsl">
-      <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
-    </FxCompile>
-    <FxCompile Include="DrawDeathEffectComponent_vertex.hlsl">
-      <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
-    </FxCompile>
-    <FxCompile Include="DrawHealthBarComponent_pixel.hlsl">
+    <FxCompile Include="Shader\DrawHealthBarComponent_vertex.hlsl">
       <Filter>MainScene\MainSceneDrawComponent\DrawHealthBarComponent</Filter>
     </FxCompile>
-    <FxCompile Include="DrawHealthBarComponent_vertex.hlsl">
+    <FxCompile Include="Shader\DrawHealthBarComponent_pixel.hlsl">
       <Filter>MainScene\MainSceneDrawComponent\DrawHealthBarComponent</Filter>
     </FxCompile>
-    <FxCompile Include="DrawAnimationComponent_vertex.hlsl">
+    <FxCompile Include="Shader\DrawAnimationComponent_vertex.hlsl">
       <Filter>MainScene\MainSceneDrawComponent\DrawAnimationComponent</Filter>
     </FxCompile>
-    <FxCompile Include="DrawAnimationComponent_pixel.hlsl">
+    <FxCompile Include="Shader\DrawAnimationComponent_pixel.hlsl">
       <Filter>MainScene\MainSceneDrawComponent\DrawAnimationComponent</Filter>
     </FxCompile>
-    <FxCompile Include="DrawLazerComponent_vertex.hlsl">
+    <FxCompile Include="Shader\DrawDeathEffectComponent_vertex.hlsl">
+      <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\DrawDeathEffectComponent_pixel.hlsl">
+      <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\DrawLazerComponent_vertex.hlsl">
       <Filter>MainScene\MainSceneDrawComponent\DrawLazerComponent</Filter>
     </FxCompile>
-    <FxCompile Include="DrawLazerComponent_pixel.hlsl">
+    <FxCompile Include="Shader\DrawLazerComponent_pixel.hlsl">
       <Filter>MainScene\MainSceneDrawComponent\DrawLazerComponent</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\DrawNormalBulletComponentVertexShader.hlsl">
+      <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\DrawNormalBulletComponentPixelShader.hlsl">
+      <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\HDrawLineFrameVertexShader.hlsl">
+      <Filter>Helper\HDrawLineFrame</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\HDrawLineFramePixelShader.hlsl">
+      <Filter>Helper\HDrawLineFrame</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\HNumberDraw_vertex.hlsl">
+      <Filter>Helper\HNumberDraw</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\HNumberDraw_pixel.hlsl">
+      <Filter>Helper\HNumberDraw</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\HTextureAlphaRotateDrawVertexShader.hlsl">
+      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\HTextureAlphaRotateDrawPixelShader.hlsl">
+      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\HTextureDrawVertexShader.hlsl">
+      <Filter>Helper\HTextureDraw</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\HTextureDrawPixelShader.hlsl">
+      <Filter>Helper\HTextureDraw</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneBasicLayerVertexShader.hlsl">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneBasicLayerPixelShader.hlsl">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
