@@ -60,6 +60,10 @@ public:
 	template<class T, class... Args>
 	LayerHandle<T> AddLayer(Args... _args)
 	{
+		if (is_executing_destructor_)
+		{
+			return LayerHandle<T>();
+		}
 		T* layerp= new T(_args...);
 		//直接追加してよいならばそうする
 		if (mIsObjCompAddable)mLayers.insert(layerp);
@@ -73,6 +77,10 @@ public:
 	template<class T,class... Args>
 	void AddUIScreen(Args... _args)
 	{
+		if (is_executing_destructor_)
+		{
+			return;
+		}
 		if (mIsObjCompAddable)
 		{
 			if (mUIScreens.size() == 0)
@@ -184,4 +192,6 @@ private:
 	void DeleteLayer(Layer* _layer);
 	//保留中のオブジェクト等をマージ
 	void ProcessPandings();
+	//デストラクタ実行時のみtrue
+	bool is_executing_destructor_;
 };

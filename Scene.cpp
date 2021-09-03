@@ -8,7 +8,7 @@
 #include "window.h"
 
 Scene::Scene(Game* _game)
-	:mGame(*_game), mIsObjCompAddable(true), mInputSystem(nullptr), mPrevMousePos(MatVec::Vector2(0, 0)), mInputFlag(true), mInputFlagForComps(true), mUpdateFlagForComps(true), mDeleteCheck(false)
+	:mGame(*_game), mIsObjCompAddable(true), mInputSystem(nullptr), mPrevMousePos(MatVec::Vector2(0, 0)), mInputFlag(true), mInputFlagForComps(true), mUpdateFlagForComps(true), mDeleteCheck(false),is_executing_destructor_(false)
 {
 	BOOST_ASSERT(_game != nullptr);
 }
@@ -64,6 +64,11 @@ void Scene::PosteriorUniqueOutput()
 
 GameObjectHandle Scene::AddObject(MatVec::Vector2 _pos, double _scale, double _angle)
 {
+	//デストラクタ実行中に呼び出されたら何もしない
+	if (is_executing_destructor_)
+	{
+		return GameObjectHandle();
+	}
 	//追加するオブジェクト
 	GameObject* objp(new GameObject(this, _pos, _scale, _angle));
 	//直接追加してよいならばそうする
@@ -93,6 +98,15 @@ void Scene::AddOutputComponent(GameObject* _obj, ComponentHandle<Component> _han
 
 Scene::~Scene() {
 	BOOST_ASSERT_MSG(mDeleteCheck == true, "irregal destructor call without Game permission");
+	//HACK:この関数内でオブジェクトなどのデストラクタを呼び出している最中に，AddObjectなどを呼び出されると，
+	//どうせ使わないのにインスタンス生成をすることになるのに加え，
+	//新しいインスタンスのデストラクタからさらに新しいインスタンスができたりと，かなり面倒なことに
+	//なりそうなので，is_executing_destructor_次第では生成を止めるように現状している．
+	//同様のことはGameでも行っている．
+	//ただこの場合，AddObject等から返されるハンドルがvalidか確かめなくてはいけなくなるのが難点．
+	//オブジェクトのデストラクタを実行する前の終了処理を2種類に分ければ解決するかもしれないが，
+	//現状そのチェック機構が設けられないため見送り
+	is_executing_destructor_ = true;
 	//GameObjectの削除処理
 	for (auto object : mObjs)
 	{

@@ -27,6 +27,7 @@ bool Game::Initialize()
 /// </summary>
 void Game::Shutdown()
 {
+	is_executing_destructor_ = true;
 	//ƒV[ƒ“‚Ìíœ
 	DeleteScene(mCurrentScene);
 	if (mPandingScene != nullptr)
@@ -39,7 +40,7 @@ void Game::Shutdown()
 }
 
 Game::Game()
-	:mTexManager(this),mShaderManager(this),mInputSystem(this)
+	:mTexManager(this),mShaderManager(this),mInputSystem(this),is_executing_destructor_(false)
 {
 }
 

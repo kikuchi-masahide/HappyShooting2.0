@@ -19,6 +19,10 @@ public:
 	/// </summary>
 	template<class S, class... Args>
 	void ChangeScene(Args... _args) {
+		if (is_executing_destructor_)
+		{
+			return;
+		}
 		if (!mIsSceneChangable) {
 			if (mPandingScene != nullptr)DeleteScene(mPandingScene);
 			mPandingScene = new S(this, _args...);
@@ -65,4 +69,5 @@ private:
 	InputSystem mInputSystem;
 	//このポインタをdeleteしデストラクタを呼ぶ
 	void DeleteScene(Scene* _scene);
+	bool is_executing_destructor_;
 };

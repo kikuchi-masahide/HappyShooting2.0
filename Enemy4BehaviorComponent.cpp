@@ -179,6 +179,10 @@ void Enemy4BehaviorComponent::DeathAttack()
 	{
 		//TODO:タイミングによってAdd~Componentが死ぬのを修正する
 		auto obj = scene->AddObject(objpos, 1.0, 0.0);
+		if (!obj.IsValid())
+		{
+			return;
+		}
 		obj->AddUpdateComponent<LinearMoveComponent>(MatVec::DirectionVector(PI * n / 4)*4.0, 10);
 		obj->AddOutputComponent<DrawNormalBulletComponent>(layer_manager_, 10.0, MatVec::Vector3(0.0, 1.0, 0.0), 1.0, -10);
 		obj->AddUpdateComponent<NormalBulletCollisionComponent>(10.0, 100, collision_manager_);
