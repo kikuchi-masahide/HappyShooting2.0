@@ -34,18 +34,18 @@ LRESULT WindowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
 
 void LoadTextures(Game* _game)
 {
-	_game->mTexManager.LoadTexture(L"Resources/TitlePage/ButtonMouseAway.png", 0);
-	_game->mTexManager.LoadTexture(L"Resources/TitlePage/ButtonMouseOn.png", 1);
-	_game->mTexManager.LoadTexture(L"Resources/TitlePage/Title.png", 2);
-	_game->mTexManager.LoadTexture(L"Resources/Cursor/cursor.png", 3);
-	_game->mTexManager.LoadTexture(L"Resources/myself1/myself1.png", 4);
-	_game->mTexManager.LoadTexture(L"Resources/Score_html/score_html.png", 5);
-	_game->mTexManager.LoadTexture(L"Resources/numbers/numbers.png", 6);
-	_game->mTexManager.LoadTexture(L"Resources/enemy1/enemy1.png", 7);
-	_game->mTexManager.LoadTexture(L"Resources/enemy3/enemy3.png", 8);
-	_game->mTexManager.LoadTexture(L"Resources/Enemy4/Enemy4_form0.png", 9);
-	_game->mTexManager.LoadTexture(L"Resources/Enemy4/Enemy4.png", 10);
-	_game->mTexManager.LoadTexture(L"Resources/Enemy4/Enemy4_form1.png", 11);
+	_game->mTexManager.LoadTexture(L"Resources/images/ButtonMouseAway.png", 0);
+	_game->mTexManager.LoadTexture(L"Resources/images/ButtonMouseOn.png", 1);
+	_game->mTexManager.LoadTexture(L"Resources/images/Title.png", 2);
+	_game->mTexManager.LoadTexture(L"Resources/images/cursor.png", 3);
+	_game->mTexManager.LoadTexture(L"Resources/images/myself1.png", 4);
+	_game->mTexManager.LoadTexture(L"Resources/images/score_html.png", 5);
+	_game->mTexManager.LoadTexture(L"Resources/images/numbers.png", 6);
+	_game->mTexManager.LoadTexture(L"Resources/images/enemy1.png", 7);
+	_game->mTexManager.LoadTexture(L"Resources/images/enemy3.png", 8);
+	_game->mTexManager.LoadTexture(L"Resources/images/Enemy4_form0.png", 9);
+	_game->mTexManager.LoadTexture(L"Resources/images/Enemy4.png", 10);
+	_game->mTexManager.LoadTexture(L"Resources/images/Enemy4_form1.png", 11);
 }
 
 void LoadShaders(Game* _game)
