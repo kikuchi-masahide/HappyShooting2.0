@@ -5,7 +5,6 @@
 
 class LayerManager;
 
-//TODO:(このコンポーネントなんで作ったんだっけ...?)
 //敵機用体力管理コンポーネント
 //0未満になるとオブジェクトを消滅させ，消滅エフェクトを追加する
 class EnemyHealthComponent :
@@ -15,7 +14,7 @@ public:
     /// <param name="scene">消滅オブジェクト追加用シーンポインタ</param>
     /// <param name="object">親オブジェクト</param>
     /// <param name="health0">開始時体力</param>
-    EnemyHealthComponent(GameObjectHandle handle, boost::shared_ptr<LayerManager> layer_manager, double health0);
+    EnemyHealthComponent(GameObjectHandle handle, boost::shared_ptr<LayerManager> layer_manager, double health0, double death_effect_radius = 50.0);
     ~EnemyHealthComponent();
     /// <summary>
     /// ダメージを与える
@@ -35,5 +34,7 @@ private:
     double all_health_;
     double health_;
     boost::shared_ptr<LayerManager> layer_manager_;
+    //死亡演出半径
+    double death_effect_radius_;
 };
 

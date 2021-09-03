@@ -9,7 +9,6 @@ class CollisionManager;
 /// <summary>
 /// 自機狙い弾を一定間隔で撃つコンポーネント
 /// </summary>
-//TODO:Enemy5に限らず他でも使えるコンポーネントなので，名前を考える
 class Enemy5ShootComponent :
     public Component
 {

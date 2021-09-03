@@ -26,7 +26,7 @@ Enemy4BehaviorComponent::Enemy4BehaviorComponent(GameObjectHandle obj, boost::sh
 	texture0_->width_ = 80.0;
 	texture0_->height_ = 140.0;
 	texture0_->center_offset_ = MatVec::Vector2(0.0, -30.0);
-	health_ = mObj->AddUpdateComponent<EnemyHealthComponent>(layer_manager_, 9000.0);
+	health_ = mObj->AddUpdateComponent<EnemyHealthComponent>(layer_manager_, 9000.0, 240.0);
 	mObj->AddOutputComponent<DrawHealthBarComponent>(layer_manager_, health_, MatVec::Vector2(0, 25));
 	tail_ = CircleGeometry(This<CollisionComponent>(), MatVec::Vector2(), 40);
 	center_square_ = PolygonGeometry(This<CollisionComponent>(), 4);
@@ -177,7 +177,6 @@ void Enemy4BehaviorComponent::DeathAttack()
 	MatVec::Vector2 objpos = mObj->GetPosition();
 	for (int n = 0; n < 8; n++)
 	{
-		//TODO:タイミングによってAdd~Componentが死ぬのを修正する
 		auto obj = scene->AddObject(objpos, 1.0, 0.0);
 		if (!obj.IsValid())
 		{
