@@ -15,10 +15,10 @@ bool Game::Initialize()
 	mIsSceneChangable = true;
 	mCurrentSwapChain = -1;
 	//カーソルの表示を消す
-	int cursor_counter;
-	do {
-		cursor_counter = ShowCursor(FALSE);
-	} while (cursor_counter >= 0);
+	//int cursor_counter;
+	//do {
+	//	cursor_counter = ShowCursor(FALSE);
+	//} while (cursor_counter >= 0);
 	return true;
 }
 

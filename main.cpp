@@ -37,7 +37,6 @@ void LoadTextures(Game* _game)
 	_game->mTexManager.LoadTexture(L"Resources/images/ButtonMouseAway.png", 0);
 	_game->mTexManager.LoadTexture(L"Resources/images/ButtonMouseOn.png", 1);
 	_game->mTexManager.LoadTexture(L"Resources/images/Title.png", 2);
-	_game->mTexManager.LoadTexture(L"Resources/images/cursor.png", 3);
 	_game->mTexManager.LoadTexture(L"Resources/images/myself1.png", 4);
 	_game->mTexManager.LoadTexture(L"Resources/images/score_html.png", 5);
 	_game->mTexManager.LoadTexture(L"Resources/images/numbers.png", 6);

@@ -27,12 +27,8 @@ private:
 	const double kTitleCenterX_ = 0;
 	const double kTitleWidth_ = 300;
 	const double KTitleHeight_ = 30;
-	//カーソル表示
-	Helpers::HTextureDraw cursor_draw_helper_;
 	//親Sceneインスタンス
 	Scene* scene_;
 	//MainSceneクラスへ移行するための関数
 	void TransToMainScene();
-
-	Helpers::HTextureAlphaRotateDraw test;
 };

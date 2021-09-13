@@ -15,7 +15,6 @@ public:
     void Output() override;
     ~MainSceneUIScreen();
 private:
-    Helpers::HTextureDraw cursor_draw_;
     //「Score:」の画像表示
     Helpers::HTextureDraw score_text_draw_;
     //得点表示枠

@@ -5,7 +5,7 @@
 
 MainSceneUIScreen::MainSceneUIScreen(Scene* scene, boost::shared_ptr<ScoreManager> score_manager)
 	:UIScreen(scene, true, true),
-	cursor_draw_(scene->mGame, 3),point_frame_(scene->mGame),score_text_draw_(scene->mGame,5),
+	point_frame_(scene->mGame),score_text_draw_(scene->mGame,5),
 	number_draw_(scene->mGame,font_size_,MatVec::Vector2(score_leftup_x_,score_leftup_y_),900,900,8),
 	score_manager_(score_manager)
 {
@@ -21,11 +21,6 @@ void MainSceneUIScreen::Output()
 
 	//RTVオープン
 	game.OpenSwapChain(0);
-
-	//カーソル描画
-	auto cursor = mScene->GetMouseClientPos(0);
-	cursor -= MatVec::Vector2(450, 450);
-	cursor_draw_.DrawCenter(game, cursor(0), cursor(1), 20, 20, 900, 900);
 
 	//ポイント表示枠描画
 	point_frame_.DrawFrame(game, point_frame_cx_, point_frame_cy_, point_frame_width_, point_frame_height_, 0.0, 900, 900);

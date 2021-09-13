@@ -21,9 +21,13 @@ void Window::Create(WNDPROC _wndproc, LPCWSTR _classID, int _width, int _height,
 	mWindowClass.cbSize = sizeof(WNDCLASSEX);
 	mWindowClass.lpfnWndProc = (WNDPROC)_wndproc;
 	mWindowClass.lpszClassName = _classID;
+	mWindowClass.hCursor = (HCURSOR)LoadImage(
+		NULL, MAKEINTRESOURCE(IDC_ARROW), IMAGE_CURSOR, 0, 0, LR_DEFAULTSIZE | LR_SHARED
+	);
 	RegisterClassEx(&mWindowClass);
 	mHwnd = CreateWindow(
-		mWindowClass.lpszClassName, _windowTitle, WS_OVERLAPPEDWINDOW,
+		mWindowClass.lpszClassName, _windowTitle, 
+		WS_OVERLAPPEDWINDOW ^ WS_MAXIMIZEBOX ^ WS_THICKFRAME | WS_VISIBLE,
 		CW_USEDEFAULT, CW_USEDEFAULT, wrc.right - wrc.left, wrc.bottom - wrc.top,
 		nullptr, nullptr, mWindowClass.hInstance, nullptr
 	);
