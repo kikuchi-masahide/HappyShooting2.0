@@ -27,8 +27,8 @@ public:
 	/// Comp‚ğUpdate‚·‚é‚©”Û‚©‚ğ•ÏX‚·‚é
 	/// </summary>
 	void SetCompUpdateFlag(bool _flag);
-protected:
 	Scene* const mScene;
+protected:
 private:
 	bool mDeleteFlag;
 	//Input‚ğ‰œ‚É—¬‚·‚©‚Ç‚¤‚©

@@ -175,6 +175,9 @@
     <Filter Include="MainScene\CollisionComponent\LazerCollisionComponent">
       <UniqueIdentifier>{a3552b47-6f3a-409d-b05c-dcff9f63f834}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Helper\UIButton">
+      <UniqueIdentifier>{dae66620-0e4d-4998-9a3b-1faa9d8bdab5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -412,6 +415,9 @@
     </ClCompile>
     <ClCompile Include="LazerCollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent\LazerCollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="HUIButton.cpp">
+      <Filter>Helper\UIButton</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -673,6 +679,9 @@
     </ClInclude>
     <ClInclude Include="LazerCollisionComponent.h">
       <Filter>MainScene\CollisionComponent\LazerCollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="HUIButton.h">
+      <Filter>Helper\UIButton</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -39,6 +39,7 @@ DX12RootSignature::DX12RootSignature(ComPtr<ID3D12Device> _device, DX12RootParam
 				//シェーダレジスタのどこからか
 				range_to.BaseShaderRegister = range_from.mBaseShaderRegister;
 				//ディスクリプタヒープのどこからか
+				//HACK:とりあえずはoffset_appendでいいが，
 				range_to.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;//range_from.mBaseHeapRegister;
 				range_to.RegisterSpace = 0;
 			}

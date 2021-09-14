@@ -2,6 +2,7 @@
 #include "UIScreen.h"
 #include "HTextureDraw.h"
 #include "HTextureAlphaRotateDraw.h"
+#include "HUIButton.h"
 
 class TitleScene;
 
@@ -14,13 +15,12 @@ public:
 	void Output();
 	~TitleUIScreen();
 private:
-	//ボタン描画のための情報
-	Helpers::HTextureDraw button_draw_helper_away_;
-	Helpers::HTextureDraw button_draw_helper_on_;
+	//ボタン
 	const double kButtonCenterY_ = -250;
 	const double kButtonCenterX_ = 0;
 	const double kButtonWidth_ = 200;
 	const double kButtonHeight_ = 200;
+	HUIButton start_button_;
 	//タイトル描画のための情報
 	Helpers::HTextureDraw title_draw_helper_;
 	const double kTitleCenterY_ = 150;
@@ -29,6 +29,4 @@ private:
 	const double KTitleHeight_ = 30;
 	//親Sceneインスタンス
 	Scene* scene_;
-	//MainSceneクラスへ移行するための関数
-	void TransToMainScene();
 };

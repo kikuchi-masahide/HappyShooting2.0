@@ -75,7 +75,7 @@ namespace Helpers {
 			1, DX12Config::DescriptorRangeType::SRV, 0, 0
 		));
 		root_param.mDescRanges.push_back(DX12DescriptorRange(
-			1, DX12Config::DescriptorRangeType::CBV, 0, 0
+			1, DX12Config::DescriptorRangeType::CBV, 0, 1
 		));
 		//ルートシグネチャ
 		mRootSignature = _game.mdx12.CreateRootSignature(root_param);
