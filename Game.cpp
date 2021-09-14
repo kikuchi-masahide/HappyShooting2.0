@@ -84,6 +84,16 @@ void Game::CloseSwapChain()
 	}
 }
 
+//Game::~Game()
+//{
+//	Shutdown();
+//}
+//
+void Game::Terminate()
+{
+	terminate_flag_ = true;
+}
+
 /// <summary>
 /// “ü—Íˆ—
 /// </summary>
@@ -164,6 +174,13 @@ void Game::RunLoop()
 			millisec -= mTimeEps;
 		}
 		if (!GenerateOutput())return;
+		if (terminate_flag_)
+		{
+			for (auto window : mWindows)
+			{
+				DestroyWindow(window.second->GetWindowHandle());
+			}
+		}
 	}
 }
 

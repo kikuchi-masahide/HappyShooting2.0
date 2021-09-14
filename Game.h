@@ -11,7 +11,6 @@ class Game {
 public:
 	bool Initialize();
 	void RunLoop();
-	void Shutdown();
 	Game();
 	/// <summary>
 	/// 次フレームからどのシーンに移行するか指定する．
@@ -53,6 +52,10 @@ public:
 	void CloseSwapChain();
 	TextureManager mTexManager;
 	ShaderManager mShaderManager;
+	//~Game();
+	//次のOutput終了後RunLoopを脱出し，プログラムを終了させる
+	void Terminate();
+	void Shutdown();
 private:
 	void ProcessInput();
 	void UpdateGame();
@@ -70,4 +73,5 @@ private:
 	//このポインタをdeleteしデストラクタを呼ぶ
 	void DeleteScene(Scene* _scene);
 	bool is_executing_destructor_;
+	bool terminate_flag_;
 };

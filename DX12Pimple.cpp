@@ -136,6 +136,9 @@ void DX12Pimple::Initialize() {
 }
 
 void DX12Pimple::CleanUp() {
+	//HACK:最後にもういちどチェックを踏まないと，ウィンドウ削除以外でループを抜けようとした際
+	//「OBJECT_DELETED_WHILE_STILL_IN_USE」で怒られるので
+	ProcessCommands();
 }
 
 DX12Pimple::~DX12Pimple()
