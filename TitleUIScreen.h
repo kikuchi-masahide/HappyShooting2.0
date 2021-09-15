@@ -15,12 +15,16 @@ public:
 	void Output();
 	~TitleUIScreen();
 private:
-	//ボタン
-	const double kButtonCenterY_ = -250;
-	const double kButtonCenterX_ = 0;
-	const double kButtonWidth_ = 200;
-	const double kButtonHeight_ = 200;
+	//スタートボタン
+	const double kStartButtonCenterY_ = -150;
+	const double kStartButtonCenterX_ = 0;
+	const double kButtonWidth_ = 150;
+	const double kButtonHeight_ = 150;
 	HUIButton start_button_;
+	//終了ボタン
+	const double kQuitButtonCenterY_ = -325;
+	const double kQuitButtonCenterX_ = 0;
+	HUIButton quit_button_;
 	//タイトル描画のための情報
 	Helpers::HTextureDraw title_draw_helper_;
 	const double kTitleCenterY_ = 150;
