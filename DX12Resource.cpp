@@ -176,8 +176,12 @@ void DX12Resource::SetResourceBarrier(ComPtr<ID3D12GraphicsCommandList> _list, D
 void DX12Resource::CreateRenderTargetView(ComPtr<ID3D12Device> _device, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n)
 {
 	BOOST_ASSERT_MSG(_descheap->GetDescriptorHeapType() == DX12Config::DescriptorHeapType::RTV,"DescriptorHeapType incorrect");
+	//SRGBレンダーターゲットビュー設定
+	D3D12_RENDER_TARGET_VIEW_DESC rtvdesc = {};
+	rtvdesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM_SRGB;
+	rtvdesc.ViewDimension = D3D12_RTV_DIMENSION_TEXTURE2D;
 	auto handle = _descheap->GetCPUDescriptorHandle(_n);
-	_device->CreateRenderTargetView(mResource.Get(), nullptr, handle);
+	_device->CreateRenderTargetView(mResource.Get(), &rtvdesc, handle);
 }
 
 void DX12Resource::CreateShaderResourceView(ComPtr<ID3D12Device> _device, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n, unsigned char _format)
