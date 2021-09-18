@@ -175,7 +175,10 @@
     <Filter Include="MainScene\CollisionComponent\LazerCollisionComponent">
       <UniqueIdentifier>{a3552b47-6f3a-409d-b05c-dcff9f63f834}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Helper\UIButton">
+    <Filter Include="MainScene\PauseUIScreen">
+      <UniqueIdentifier>{a8739d27-075a-4007-80c7-cb52a0b60e5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helper\HUIButton">
       <UniqueIdentifier>{dae66620-0e4d-4998-9a3b-1faa9d8bdab5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -417,7 +420,10 @@
       <Filter>MainScene\CollisionComponent\LazerCollisionComponent</Filter>
     </ClCompile>
     <ClCompile Include="HUIButton.cpp">
-      <Filter>Helper\UIButton</Filter>
+      <Filter>Helper\HUIButton</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseUIScreen.cpp">
+      <Filter>MainScene\PauseUIScreen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -681,7 +687,10 @@
       <Filter>MainScene\CollisionComponent\LazerCollisionComponent</Filter>
     </ClInclude>
     <ClInclude Include="HUIButton.h">
-      <Filter>Helper\UIButton</Filter>
+      <Filter>Helper\HUIButton</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseUIScreen.h">
+      <Filter>MainScene\PauseUIScreen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

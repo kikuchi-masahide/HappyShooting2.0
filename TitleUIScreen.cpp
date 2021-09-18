@@ -8,11 +8,11 @@ TitleUIScreen::TitleUIScreen(Scene* scene)
 //下部オブジェクトのアップデートは許可，入力は渡さない
 	:UIScreen(scene, false, true), scene_(scene),
 	start_button_(this, 0, 1, kStartButtonCenterX_,  kButtonWidth_, kStartButtonCenterY_, kButtonHeight_,
-		[](HUIButton* button) {
+		[](Helpers::HUIButton* button) {
 		button->screen_->mScene->mGame.ChangeScene<MainScene>();
 	}),
 	quit_button_(this, 12, 13, kQuitButtonCenterX_, kButtonWidth_, kQuitButtonCenterY_, kButtonHeight_,
-		[](HUIButton* button) {
+		[](Helpers::HUIButton* button) {
 		button->screen_->mScene->mGame.Terminate();
 	}),
 	title_draw_helper_(scene->mGame, 2)

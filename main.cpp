@@ -47,6 +47,11 @@ void LoadTextures(Game* _game)
 	_game->mTexManager.LoadTexture(L"Resources/images/Enemy4_form1.png", 11);
 	_game->mTexManager.LoadTexture(L"Resources/images/TitleQuitButton_away.png", 12);
 	_game->mTexManager.LoadTexture(L"Resources/images/TitleQuitButton_over.png", 13);
+	_game->mTexManager.LoadTexture(L"Resources/images/Pause.png", 14);
+	_game->mTexManager.LoadTexture(L"Resources/images/MainResumeButton_away.png", 15);
+	_game->mTexManager.LoadTexture(L"Resources/images/MainResumeButton_over.png", 16);
+	_game->mTexManager.LoadTexture(L"Resources/images/TitleQuitButton_away.png", 17);
+	_game->mTexManager.LoadTexture(L"Resources/images/TitleQuitButton_over.png", 18);
 }
 
 void LoadShaders(Game* _game)

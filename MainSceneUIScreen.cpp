@@ -2,6 +2,7 @@
 #include "MainSceneUIScreen.h"
 
 #include "MainScene.h"
+#include "PauseUIScreen.h"
 
 MainSceneUIScreen::MainSceneUIScreen(Scene* scene, boost::shared_ptr<ScoreManager> score_manager)
 	:UIScreen(scene, true, true),
@@ -13,6 +14,12 @@ MainSceneUIScreen::MainSceneUIScreen(Scene* scene, boost::shared_ptr<ScoreManage
 
 void MainSceneUIScreen::Update()
 {
+	//Esc‚ª‰Ÿ‚³‚ê‚½‚çƒ|[ƒY‚É”ò‚Ô
+	auto esc = mScene->GetKeyState(VK_ESCAPE);
+	if (esc == ButtonState::Released)
+	{
+		mScene->AddUIScreen<PauseUIScreen>();
+	}
 }
 
 void MainSceneUIScreen::Output()

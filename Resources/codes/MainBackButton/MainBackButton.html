@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>resource</title>
+    </head>
+    <body>
+        <canvas id = "canvas1" width = "150" height = "150"></canvas>
+        <canvas id = "canvas2" width = "150" height = "150"></canvas>
+        <script>
+            const context=document.getElementById("canvas1").getContext("2d");
+            context.fillStyle = "rgba(255,255,255,1.0)";
+            context.fillRect(0,0,150,150);
+            context.fillStyle = "rgba(96,96,192,1.0)";
+            //context.fillStyle = "rgba(32,32,192,1.0)";
+            context.fillRect(0,0,150,150);
+            context.fillStyle = "black";
+            context.font = "30px 'Meiryo UI'";
+            context.textAlign = "center";
+            context.textBaseline = "middle";
+            context.fillText("Back to",75,55);
+            context.fillText("Title",75,85);
+
+        </script>
+    </body>
+</html>

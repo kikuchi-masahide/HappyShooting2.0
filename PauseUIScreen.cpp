@@ -1,0 +1,36 @@
+#include "stdafx.h"
+#include "PauseUIScreen.h"
+
+#include "Scene.h"
+#include "Game.h"
+#include "TitleScene.h"
+
+PauseUIScreen::PauseUIScreen(Scene* scene)
+	:UIScreen(scene, false, false),
+	pause_(scene->mGame, 14),
+	resume_button_(this, 15, 16, resume_button_centerx_, resume_button_width_, resume_button_centery_, resume_button_height_, [](Helpers::HUIButton* button) {
+	button->screen_->SetDeleteFlag();
+}),
+back_button_(this, 17, 18, back_button_centerx_, back_button_width_, back_button_centery_, back_button_height_, [](Helpers::HUIButton* button) {
+	auto& game = button->screen_->mScene->mGame;
+	game.ChangeScene<TitleScene>();
+})
+{
+}
+
+void PauseUIScreen::Update()
+{
+	resume_button_.Update();
+	back_button_.Update();
+}
+
+void PauseUIScreen::Output()
+{
+	pause_.DrawCenter(mScene->mGame, pause_text_centerx_, pause_text_centery_, pause_text_width_, pause_text_height_, 900.0, 900.0);
+	resume_button_.Output();
+	back_button_.Output();
+}
+
+PauseUIScreen::~PauseUIScreen()
+{
+}

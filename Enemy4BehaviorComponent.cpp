@@ -22,6 +22,7 @@ Enemy4BehaviorComponent::Enemy4BehaviorComponent(GameObjectHandle obj, boost::sh
 	flag_(flag), layer_manager_(layer_manager),score_manager_(score_manager),
 	collision_manager_(collision_manager)
 {
+	//TODO:ポーズにいくと，描画が切れるのはなぜか．
 	texture0_ = mObj->AddOutputComponent<DrawTextureComponent>(layer_manager_, 9, -5.0);
 	texture0_->width_ = 80.0;
 	texture0_->height_ = 140.0;

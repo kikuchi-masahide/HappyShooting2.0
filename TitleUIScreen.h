@@ -20,11 +20,11 @@ private:
 	const double kStartButtonCenterX_ = 0;
 	const double kButtonWidth_ = 150;
 	const double kButtonHeight_ = 150;
-	HUIButton start_button_;
+	Helpers::HUIButton start_button_;
 	//終了ボタン
 	const double kQuitButtonCenterY_ = -325;
 	const double kQuitButtonCenterX_ = 0;
-	HUIButton quit_button_;
+	Helpers::HUIButton quit_button_;
 	//タイトル描画のための情報
 	Helpers::HTextureDraw title_draw_helper_;
 	const double kTitleCenterY_ = 150;

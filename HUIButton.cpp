@@ -4,6 +4,8 @@
 #include "UIScreen.h"
 #include "Scene.h"
 
+using namespace Helpers;
+
 namespace {
 	struct Vertex {
 	public:
