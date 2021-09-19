@@ -167,6 +167,7 @@
     <ClCompile Include="DrawHealthBarComponent.cpp" />
     <ClCompile Include="DrawLazerComponent.cpp" />
     <ClCompile Include="Enemy4BehaviorComponent.cpp" />
+    <ClCompile Include="HBetapaint.cpp" />
     <ClCompile Include="HUIButton.cpp" />
     <ClCompile Include="LazerCollisionComponent.cpp" />
     <ClCompile Include="Enemy5MoveComponent.cpp" />
@@ -256,6 +257,7 @@
     <ClInclude Include="DrawHealthBarComponent.h" />
     <ClInclude Include="DrawLazerComponent.h" />
     <ClInclude Include="Enemy4BehaviorComponent.h" />
+    <ClInclude Include="HBetapaint.h" />
     <ClInclude Include="HUIButton.h" />
     <ClInclude Include="LazerCollisionComponent.h" />
     <ClInclude Include="Enemy5MoveComponent.h" />
@@ -347,6 +349,7 @@
     <None Include="Shader\DrawHealthBarComponent_header.hlsli" />
     <None Include="Shader\DrawLazerComponent_header.hlsli" />
     <None Include="Shader\DrawNormalBulletComponentHeader.hlsli" />
+    <None Include="Shader\HBetapaint_header.hlsli" />
     <None Include="Shader\HDrawLineFrameHeader.hlsli" />
     <None Include="Shader\HNumberDraw_header.hlsli" />
     <None Include="Shader\HTextureAlphaRotateDrawHeader.hlsli" />
@@ -409,6 +412,18 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
     </FxCompile>
     <FxCompile Include="Shader\DrawNormalBulletComponentVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\HBetapaint_pixel.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\HBetapaint_vertex.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>

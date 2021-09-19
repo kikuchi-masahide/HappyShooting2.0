@@ -181,6 +181,9 @@
     <Filter Include="Helper\HUIButton">
       <UniqueIdentifier>{dae66620-0e4d-4998-9a3b-1faa9d8bdab5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Helper\HBetapaint">
+      <UniqueIdentifier>{c6e86603-9580-472c-acc0-700cc0fc62fe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -424,6 +427,9 @@
     </ClCompile>
     <ClCompile Include="PauseUIScreen.cpp">
       <Filter>MainScene\PauseUIScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="HBetapaint.cpp">
+      <Filter>Helper\HBetapaint</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -692,6 +698,9 @@
     <ClInclude Include="PauseUIScreen.h">
       <Filter>MainScene\PauseUIScreen</Filter>
     </ClInclude>
+    <ClInclude Include="HBetapaint.h">
+      <Filter>Helper\HBetapaint</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\DrawHealthBarComponent_header.hlsli">
@@ -723,6 +732,9 @@
     </None>
     <None Include="Shader\MainSceneBasicLayerHeader.hlsli">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
+    </None>
+    <None Include="Shader\HBetapaint_header.hlsli">
+      <Filter>Helper\HBetapaint</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -785,6 +797,12 @@
     </FxCompile>
     <FxCompile Include="Shader\MainSceneBasicLayerPixelShader.hlsl">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\HBetapaint_pixel.hlsl">
+      <Filter>Helper\HBetapaint</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\HBetapaint_vertex.hlsl">
+      <Filter>Helper\HBetapaint</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>

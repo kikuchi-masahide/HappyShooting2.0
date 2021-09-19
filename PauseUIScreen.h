@@ -13,8 +13,6 @@ public:
     void Output() override;
     ~PauseUIScreen();
 private:
-    //TODO:一面にベタ塗りをするヘルパーを作り追加する
-    //暇ならフェードアウトしてからタイトルに戻るようにする
     Helpers::HTextureDraw pause_;
     Helpers::HUIButton resume_button_;
     Helpers::HUIButton back_button_;
