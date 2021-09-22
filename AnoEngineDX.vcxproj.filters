@@ -187,6 +187,9 @@
     <Filter Include="MainScene\TransGradUIScreen">
       <UniqueIdentifier>{acb4fedb-904c-4cae-bb08-38f009c1c8ef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\MainSceneDrawComponent\DrawBoss1Component">
+      <UniqueIdentifier>{bfb6d9ba-5edd-4951-9836-828d48dd820d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -436,6 +439,9 @@
     </ClCompile>
     <ClCompile Include="TransGradUIScreen.cpp">
       <Filter>MainScene\TransGradUIScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawBoss1Component.cpp">
+      <Filter>MainScene\MainSceneDrawComponent\DrawBoss1Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -709,6 +715,9 @@
     </ClInclude>
     <ClInclude Include="TransGradUIScreen.h">
       <Filter>MainScene\TransGradUIScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawBoss1Component.h">
+      <Filter>MainScene\MainSceneDrawComponent\DrawBoss1Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

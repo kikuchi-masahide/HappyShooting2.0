@@ -11,6 +11,8 @@
 #include "Enemy5ShootComponent.h"
 #include "Enemy4BehaviorComponent.h"
 
+#include "DrawBoss1Component.h"
+
 EnemyWave45::EnemyWave45(EnemyWaveManager* manager)
 	:EnemyWaveBase(120,manager)
 {
