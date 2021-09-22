@@ -245,6 +245,7 @@
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="TitleUIScreen.cpp" />
+    <ClCompile Include="TransGradUIScreen.cpp" />
     <ClCompile Include="UIScreen.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Vector3.cpp" />
@@ -337,6 +338,7 @@
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="TitleUIScreen.h" />
+    <ClInclude Include="TransGradUIScreen.h" />
     <ClInclude Include="UIScreen.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />

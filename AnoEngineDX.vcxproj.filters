@@ -184,6 +184,9 @@
     <Filter Include="Helper\HBetapaint">
       <UniqueIdentifier>{c6e86603-9580-472c-acc0-700cc0fc62fe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\TransGradUIScreen">
+      <UniqueIdentifier>{acb4fedb-904c-4cae-bb08-38f009c1c8ef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -430,6 +433,9 @@
     </ClCompile>
     <ClCompile Include="HBetapaint.cpp">
       <Filter>Helper\HBetapaint</Filter>
+    </ClCompile>
+    <ClCompile Include="TransGradUIScreen.cpp">
+      <Filter>MainScene\TransGradUIScreen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -700,6 +706,9 @@
     </ClInclude>
     <ClInclude Include="HBetapaint.h">
       <Filter>Helper\HBetapaint</Filter>
+    </ClInclude>
+    <ClInclude Include="TransGradUIScreen.h">
+      <Filter>MainScene\TransGradUIScreen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

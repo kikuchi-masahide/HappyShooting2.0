@@ -22,6 +22,8 @@ public:
     ~DrawAnimationComponent();
     void Draw() override;
     MatVec::Vector2 center_offset_;
+    //UpdateComponentから++するようにしないと，ポーズ時などに再生が停止しない
+    int counter_;
 private:
     //1フレーム分の絵の幅，高さ
     double flame_width_;
@@ -29,7 +31,6 @@ private:
     unsigned int column_;
     unsigned int row_;
     unsigned int flame_num_;
-    int counter_;
     static boost::shared_ptr<DX12GraphicsPipeline> graphics_pipeline_;
     static boost::shared_ptr<DX12RootSignature> root_signature_;
     static boost::shared_ptr<DX12Resource> index_buffer_;

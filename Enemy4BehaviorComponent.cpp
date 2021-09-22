@@ -54,7 +54,7 @@ void Enemy4BehaviorComponent::Update()
 		{
 			//描画方法を変える
 			texture0_->SetDeleteFlag();
-			animation_ = mObj->AddUpdateComponent<DrawAnimationComponent>(layer_manager_, 10, 80.0, 140.0, 4, 15, -5.0, MatVec::Vector2(0.0, -30.0), 60);
+			animation_ = mObj->AddOutputComponent<DrawAnimationComponent>(layer_manager_, 10, 80.0, 140.0, 4, 15, -5.0, MatVec::Vector2(0.0, -30.0), 60);
 			mode_ = 1;
 			counter_ = 0;
 		}
@@ -65,12 +65,13 @@ void Enemy4BehaviorComponent::Update()
 		mObj->SetPosition(MatVec::Vector2((300 - sqrt(2) * 20) * flag_, 410.0));
 		//三角形2つをパカッと開く 60tick
 		RegCollisionGeometry(pos, counter_);
+		animation_->counter_ = counter_;
 		counter_++;
 		if (counter_ == 60)
 		{
 			//アニメーション終了
 			animation_->SetDeleteFlag();
-			texture1_ = mObj->AddUpdateComponent<DrawTextureComponent>(layer_manager_, 11, -5.0);
+			texture1_ = mObj->AddOutputComponent<DrawTextureComponent>(layer_manager_, 11, -5.0);
 			texture1_->width_ = 80.0;
 			texture1_->height_ = 140.0;
 			texture1_->center_offset_ = MatVec::Vector2(0.0, -30.0);

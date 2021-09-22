@@ -62,12 +62,6 @@ void DrawAnimationComponent::Draw()
 	game.mdx12.SetViewports(600, 900, 0, 0, 0.0, 1.0);
 	game.mdx12.SetScissorrect(0.0f,900.0f,0.0f,600.0f);
 	game.mdx12.DrawIndexedInstanced(6, 1, 0, 0, 0);
-
-	counter_++;
-	if (counter_ == flame_num_)
-	{
-		counter_ = 0;
-	}
 }
 
 void DrawAnimationComponent::StaticGraphicInit(Game& game)
