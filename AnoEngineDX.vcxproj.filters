@@ -190,6 +190,12 @@
     <Filter Include="MainScene\MainSceneDrawComponent\DrawBoss1Component">
       <UniqueIdentifier>{bfb6d9ba-5edd-4951-9836-828d48dd820d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Boss1MediatorComponent">
+      <UniqueIdentifier>{c7a65786-3b11-4400-afdc-a10755b13030}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\Boss1StateBase">
+      <UniqueIdentifier>{89dd4ba0-eb6c-42b2-9135-56bbab54f6ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -442,6 +448,12 @@
     </ClCompile>
     <ClCompile Include="DrawBoss1Component.cpp">
       <Filter>MainScene\MainSceneDrawComponent\DrawBoss1Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss1MediatorComponent.cpp">
+      <Filter>MainScene\Boss1MediatorComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss1StateBase.cpp">
+      <Filter>MainScene\Boss1StateBase</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -718,6 +730,12 @@
     </ClInclude>
     <ClInclude Include="DrawBoss1Component.h">
       <Filter>MainScene\MainSceneDrawComponent\DrawBoss1Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss1MediatorComponent.h">
+      <Filter>MainScene\Boss1MediatorComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss1StateBase.h">
+      <Filter>MainScene\Boss1StateBase</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -162,6 +162,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Boss1MediatorComponent.cpp" />
+    <ClCompile Include="Boss1StateBase.cpp" />
     <ClCompile Include="CupsuleGeometry.cpp" />
     <ClCompile Include="DrawAnimationComponent.cpp" />
     <ClCompile Include="DrawBoss1Component.cpp" />
@@ -254,6 +256,8 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Boss1MediatorComponent.h" />
+    <ClInclude Include="Boss1StateBase.h" />
     <ClInclude Include="CupsuleGeometry.h" />
     <ClInclude Include="DrawAnimationComponent.h" />
     <ClInclude Include="DrawBoss1Component.h" />
