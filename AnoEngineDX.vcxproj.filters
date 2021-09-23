@@ -196,6 +196,12 @@
     <Filter Include="MainScene\Boss1StateBase">
       <UniqueIdentifier>{89dd4ba0-eb6c-42b2-9135-56bbab54f6ad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Boss1StateBase\Boss1StateEntering">
+      <UniqueIdentifier>{31bc2567-116d-4126-91fa-0473fa5ba0a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\EnemyWaveBase\EnemyWaveBoss1">
+      <UniqueIdentifier>{ca09e353-a6a4-4180-8a2d-fe2bab47bc79}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -454,6 +460,12 @@
     </ClCompile>
     <ClCompile Include="Boss1StateBase.cpp">
       <Filter>MainScene\Boss1StateBase</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss1StateEntering.cpp">
+      <Filter>MainScene\Boss1StateBase\Boss1StateEntering</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyWaveBoss1.cpp">
+      <Filter>MainScene\EnemyWaveBase\EnemyWaveBoss1</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -736,6 +748,12 @@
     </ClInclude>
     <ClInclude Include="Boss1StateBase.h">
       <Filter>MainScene\Boss1StateBase</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss1StateEntering.h">
+      <Filter>MainScene\Boss1StateBase\Boss1StateEntering</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyWaveBoss1.h">
+      <Filter>MainScene\EnemyWaveBase\EnemyWaveBoss1</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -162,6 +162,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Boss1StateEntering.cpp" />
     <ClCompile Include="Boss1MediatorComponent.cpp" />
     <ClCompile Include="Boss1StateBase.cpp" />
     <ClCompile Include="CupsuleGeometry.cpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="DrawHealthBarComponent.cpp" />
     <ClCompile Include="DrawLazerComponent.cpp" />
     <ClCompile Include="Enemy4BehaviorComponent.cpp" />
+    <ClCompile Include="EnemyWaveBoss1.cpp" />
     <ClCompile Include="HBetapaint.cpp" />
     <ClCompile Include="HUIButton.cpp" />
     <ClCompile Include="LazerCollisionComponent.cpp" />
@@ -256,6 +258,7 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Boss1StateEntering.h" />
     <ClInclude Include="Boss1MediatorComponent.h" />
     <ClInclude Include="Boss1StateBase.h" />
     <ClInclude Include="CupsuleGeometry.h" />
@@ -264,6 +267,7 @@
     <ClInclude Include="DrawHealthBarComponent.h" />
     <ClInclude Include="DrawLazerComponent.h" />
     <ClInclude Include="Enemy4BehaviorComponent.h" />
+    <ClInclude Include="EnemyWaveBoss1.h" />
     <ClInclude Include="HBetapaint.h" />
     <ClInclude Include="HUIButton.h" />
     <ClInclude Include="LazerCollisionComponent.h" />

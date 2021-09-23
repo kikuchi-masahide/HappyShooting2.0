@@ -10,8 +10,7 @@
 #include "DrawHealthBarComponent.h"
 #include "Enemy5ShootComponent.h"
 #include "Enemy4BehaviorComponent.h"
-
-#include "DrawBoss1Component.h"
+#include "EnemyWaveBoss1.h"
 
 EnemyWave45::EnemyWave45(EnemyWaveManager* manager)
 	:EnemyWaveBase(120,manager)
@@ -43,5 +42,5 @@ EnemyWave45::~EnemyWave45()
 
 void EnemyWave45::OnDelete()
 {
-	manager_->SetWave(nullptr);
+	manager_->SetWave(boost::shared_ptr<EnemyWaveBase>(new EnemyWaveBoss1(manager_)));
 }
