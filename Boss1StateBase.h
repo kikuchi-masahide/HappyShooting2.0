@@ -16,6 +16,8 @@ public:
 	~Boss1StateBase();
 	//親mediatorから毎tick呼び出される．
 	virtual void Update() = 0;
+	//コリジョンを有効ににするか否か
+	virtual bool IsCollisionActive();
 protected:
 	ComponentHandle<Boss1MediatorComponent> mediator_;
 	boost::shared_ptr<LayerManager> layer_manager_;

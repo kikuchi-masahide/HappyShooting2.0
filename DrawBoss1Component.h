@@ -14,6 +14,14 @@ public:
     void Draw() override;
     //UpdateするComponentから変更する
     int t_;
+    //四角形の角度を得る
+    double GetDegree();
+    //オブジェクト座標と四角形の中心の距離
+    double GetSquareCenterDist();
+    //四角形1つの幅
+    static constexpr double square_w_ = 100.0;
+    //1tickの回転角度
+    static constexpr double delta_theta_ = PI / 120;
 private:
     //四角形をひとつづつ描写する．計4回実行
     boost::shared_ptr<DX12GraphicsPipeline> graphics_pipeline_;
@@ -24,9 +32,5 @@ private:
     boost::shared_ptr<DX12DescriptorHeap> desc_heap_[4];
     void* const_map_[4];
     void GraphicsInit();
-    //四角形1つの幅
-    static constexpr double square_w_ = 100.0;
-    //1tickの回転角度
-    static constexpr double delta_theta_ = PI / 120;
 };
 

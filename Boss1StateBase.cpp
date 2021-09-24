@@ -9,3 +9,8 @@ Boss1StateBase::Boss1StateBase(ComponentHandle<Boss1MediatorComponent> mediator,
 Boss1StateBase::~Boss1StateBase()
 {
 }
+
+bool Boss1StateBase::IsCollisionActive()
+{
+	return true;
+}

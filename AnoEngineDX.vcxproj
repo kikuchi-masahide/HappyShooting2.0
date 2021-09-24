@@ -162,6 +162,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Boss1CollisionComponent.cpp" />
     <ClCompile Include="Boss1StateEntering.cpp" />
     <ClCompile Include="Boss1MediatorComponent.cpp" />
     <ClCompile Include="Boss1StateBase.cpp" />
@@ -258,6 +259,7 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Boss1CollisionComponent.h" />
     <ClInclude Include="Boss1StateEntering.h" />
     <ClInclude Include="Boss1MediatorComponent.h" />
     <ClInclude Include="Boss1StateBase.h" />

@@ -18,6 +18,15 @@ public:
     void ChangeState(Boss1StateBase* next_state);
     //アニメーションをストップする(pause == true -> ストップする)
     void PauseAnimation(bool pause);
+    //四角形の回転角度を得る
+    double GetSquareGrad();
+    //四角形の中心とオブジェクト座標の距離を得る
+    double GetSquareCenterDist();
+    //コリジョンを有効にするか返す
+    bool IsCollisionActive();
+    //Boss1にダメージを与える
+    //TODO:HealthComponentを乗せたら処理内容を書く
+    void GetDamaged(unsigned int damage);
 private:
     boost::shared_ptr<LayerManager> layer_manager_;
     boost::shared_ptr<ScoreManager> score_manager_;

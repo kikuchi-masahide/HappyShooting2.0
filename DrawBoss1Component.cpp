@@ -27,9 +27,9 @@ DrawBoss1Component::~DrawBoss1Component()
 void DrawBoss1Component::Draw()
 {
 	//‰ñ“]Šp“x
-	double deg = delta_theta_ * t_;
+	double deg = GetDegree();
 	//ŽlŠpŒ`‚ð’†S‚©‚ç‚Ç‚ê‚¾‚¯—£‚·‚©
-	double w = square_w_ * (cos(deg) + 1) / 2;
+	double w = GetSquareCenterDist();
 	auto& game = mObj->mScene->mGame;
 	game.mdx12.SetGraphicsPipeline(graphics_pipeline_);
 	game.mdx12.SetRootSignature(root_signature_);
@@ -48,6 +48,16 @@ void DrawBoss1Component::Draw()
 		game.mdx12.SetGraphicsRootDescriptorTable(0, desc_heap_[i], 0);
 		game.mdx12.DrawInstanced(5, 1, 0, 0);
 	}
+}
+
+double DrawBoss1Component::GetDegree()
+{
+	return delta_theta_ * t_;
+}
+
+double DrawBoss1Component::GetSquareCenterDist()
+{
+	return square_w_ * (cos(GetDegree()) + 1) / 2;
 }
 
 void DrawBoss1Component::GraphicsInit()

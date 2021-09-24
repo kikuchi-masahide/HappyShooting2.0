@@ -202,6 +202,9 @@
     <Filter Include="MainScene\EnemyWaveBase\EnemyWaveBoss1">
       <UniqueIdentifier>{ca09e353-a6a4-4180-8a2d-fe2bab47bc79}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\CollisionComponent\Boss1CollisionComponent">
+      <UniqueIdentifier>{5ab9c813-6008-484c-9de5-235e9d651063}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -466,6 +469,9 @@
     </ClCompile>
     <ClCompile Include="EnemyWaveBoss1.cpp">
       <Filter>MainScene\EnemyWaveBase\EnemyWaveBoss1</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss1CollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\Boss1CollisionComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -754,6 +760,9 @@
     </ClInclude>
     <ClInclude Include="EnemyWaveBoss1.h">
       <Filter>MainScene\EnemyWaveBase\EnemyWaveBoss1</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss1CollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\Boss1CollisionComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
