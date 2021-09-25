@@ -211,6 +211,9 @@
     <Filter Include="MainScene\PolygonGeometryDrawer">
       <UniqueIdentifier>{6508c226-cc9b-48cd-95d8-5bbbfab952cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Boss1StateBase\Boss1StateNormal">
+      <UniqueIdentifier>{040d3a32-c3a3-4927-8706-d208036967a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -484,6 +487,9 @@
     </ClCompile>
     <ClCompile Include="PolygonGeometryDrawer.cpp">
       <Filter>MainScene\PolygonGeometryDrawer</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss1StateNormal.cpp">
+      <Filter>MainScene\Boss1StateBase\Boss1StateNormal</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -781,6 +787,9 @@
     </ClInclude>
     <ClInclude Include="PolygonGeometryDrawer.h">
       <Filter>MainScene\PolygonGeometryDrawer</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss1StateNormal.h">
+      <Filter>MainScene\Boss1StateBase\Boss1StateNormal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

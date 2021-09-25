@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>resource</title>
+    </head>
+    <body>
+        <canvas id = "canvas" width = "40" height = "40"></canvas>
+        <script>
+            const context=document.getElementById("canvas").getContext("2d");
+            context.fillStyle = "black";
+            context.lineWidth = 2;
+
+            let size = 20;
+            let x = 20;
+            let y = 20;
+
+            let p0x = x-size;
+            let p0y = y-11*size/15;
+
+            let p0_x = p0x;
+            let p0_y = 2*y-p0y;
+
+            let p1x = x+size;
+            let p1y = y;
+
+            let cx = x+5*size/6;
+            let cy = y - 13*size/30;
+
+            let c_x = cx;
+            let c_y = 2*y-cy;
+
+            let p2x = x-size/2;
+            let p2y = y;
+
+            let dist = Math.sqrt(
+                (x-p0x)*(x-p0x)+(y-p0y)*(y-p0y)
+            );
+
+            let grad = context.createRadialGradient(x,y,0,x,y,dist);
+            grad.addColorStop(0,"rgba(255,0,0,0)");
+            grad.addColorStop(1,"rgba(255,0,0,1)");
+
+            context.fillStyle = grad;
+            context.beginPath();
+            context.moveTo(p0x,p0y);
+            context.quadraticCurveTo(cx,cy,p1x,p1y);
+            context.quadraticCurveTo(c_x,c_y,p0_x,p0_y);
+            context.lineTo(p2x,p2y);
+            context.lineTo(p0x,p0y);
+            context.fill();
+            context.lineWidth = 0.5;
+            context.strokeStyle = "red";
+            context.stroke();
+            context.closePath();
+        </script>
+    </body>
+</html>

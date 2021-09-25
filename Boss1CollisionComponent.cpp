@@ -42,13 +42,10 @@ void Boss1CollisionComponent::Update()
 
 void Boss1CollisionComponent::CheckHitComponent()
 {
-	Log::OutputTrivial("check");
 	for (auto comp : hit_comps_)
 	{
 		auto damage = comp->GetDamage();
 		mediator_->GetDamaged(damage);
-
-		Log::OutputTrivial("Hit");
 	}
 }
 

@@ -166,6 +166,7 @@
     <ClCompile Include="Boss1StateEntering.cpp" />
     <ClCompile Include="Boss1MediatorComponent.cpp" />
     <ClCompile Include="Boss1StateBase.cpp" />
+    <ClCompile Include="Boss1StateNormal.cpp" />
     <ClCompile Include="CollisionUIScreen.cpp" />
     <ClCompile Include="CupsuleGeometry.cpp" />
     <ClCompile Include="DrawAnimationComponent.cpp" />
@@ -265,6 +266,7 @@
     <ClInclude Include="Boss1StateEntering.h" />
     <ClInclude Include="Boss1MediatorComponent.h" />
     <ClInclude Include="Boss1StateBase.h" />
+    <ClInclude Include="Boss1StateNormal.h" />
     <ClInclude Include="CollisionUIScreen.h" />
     <ClInclude Include="CupsuleGeometry.h" />
     <ClInclude Include="DrawAnimationComponent.h" />

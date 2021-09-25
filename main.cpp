@@ -52,6 +52,7 @@ void LoadTextures(Game* _game)
 	_game->mTexManager.LoadTexture(L"Resources/images/MainResumeButton_over.png", 16);
 	_game->mTexManager.LoadTexture(L"Resources/images/TitleQuitButton_away.png", 17);
 	_game->mTexManager.LoadTexture(L"Resources/images/TitleQuitButton_over.png", 18);
+	_game->mTexManager.LoadTexture(L"Resources/images/Boss1Ball1.png", 19);
 }
 
 void LoadShaders(Game* _game)

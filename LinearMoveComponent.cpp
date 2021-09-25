@@ -25,24 +25,28 @@ void LinearMoveComponent::Update()
 	int tyto = 1e7;
 	if (!Zero(d_(0)))
 	{
-		if (d_(0) > 0) {
-			txbo = ceil((-exist_limit_ - 300 - pos(0)) / d_(0));
-			txto = floor((exist_limit_ + 300 - pos(0)) / d_(0));
-		}
-		else {
-			txbo = ceil((exist_limit_ + 300 - pos(0)) / d_(0));
-			txto = floor((-exist_limit_ - 300 - pos(0)) / d_(0));
+		int minus = ceil((-exist_limit_ - 300 - pos(0)) / d_(0));
+		int plus = floor((exist_limit_ + 300 - pos(0)) / d_(0));
+		txbo = min(minus, plus);
+		txto = max(minus, plus);
+	}
+	else {
+		if (pos(0) < -300 - exist_limit_ || pos(0) > 300 + exist_limit_)
+		{
+			mObj->SetDeleteFlag();
 		}
 	}
 	if (!Zero(d_(1)))
 	{
-		if (d_(1) > 0) {
-			txbo = ceil((-exist_limit_ - 450 - pos(1)) / d_(1));
-			txto = floor((exist_limit_ + 450 - pos(1)) / d_(1));
-		}
-		else {
-			txbo = ceil((exist_limit_ + 450 - pos(1)) / d_(1));
-			txto = floor((-exist_limit_ - 450 - pos(1)) / d_(1));
+		int minus = ceil((-exist_limit_ - 450 - pos(1)) / d_(1));
+		int plus = floor((exist_limit_ + 450 - pos(1)) / d_(1));
+		tybo = min(minus, plus);
+		tyto = max(minus, plus);
+	}
+	else {
+		if (pos(1) < -450 - exist_limit_ || pos(1) > 450 + exist_limit_)
+		{
+			mObj->SetDeleteFlag();
 		}
 	}
 	if (max(txbo, tybo) > min(txto, tyto) || min(txto, tyto) < 0)
