@@ -205,6 +205,12 @@
     <Filter Include="MainScene\CollisionComponent\Boss1CollisionComponent">
       <UniqueIdentifier>{5ab9c813-6008-484c-9de5-235e9d651063}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\CollisionUIScreen">
+      <UniqueIdentifier>{ab442823-1918-4373-b112-dbdc9c51735c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\PolygonGeometryDrawer">
+      <UniqueIdentifier>{6508c226-cc9b-48cd-95d8-5bbbfab952cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -472,6 +478,12 @@
     </ClCompile>
     <ClCompile Include="Boss1CollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent\Boss1CollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionUIScreen.cpp">
+      <Filter>MainScene\CollisionUIScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonGeometryDrawer.cpp">
+      <Filter>MainScene\PolygonGeometryDrawer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -764,6 +776,12 @@
     <ClInclude Include="Boss1CollisionComponent.h">
       <Filter>MainScene\CollisionComponent\Boss1CollisionComponent</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionUIScreen.h">
+      <Filter>MainScene\CollisionUIScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonGeometryDrawer.h">
+      <Filter>MainScene\PolygonGeometryDrawer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\DrawHealthBarComponent_header.hlsli">
@@ -798,6 +816,9 @@
     </None>
     <None Include="Shader\HBetapaint_header.hlsli">
       <Filter>Helper\HBetapaint</Filter>
+    </None>
+    <None Include="Shader\PolygonGeometryDrawer_header.hlsli">
+      <Filter>MainScene\PolygonGeometryDrawer</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -866,6 +887,12 @@
     </FxCompile>
     <FxCompile Include="Shader\HBetapaint_vertex.hlsl">
       <Filter>Helper\HBetapaint</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\PolygonGeometryDrawer_pixel.hlsl">
+      <Filter>MainScene\PolygonGeometryDrawer</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\PolygonGeometryDrawer_vertex.hlsl">
+      <Filter>MainScene\PolygonGeometryDrawer</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>

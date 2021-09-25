@@ -7,6 +7,7 @@
 #include "MyselfMediatorComponent.h"
 #include "DrawNormalBulletComponent.h"
 #include "EnemyWaveManager.h"
+#include "CollisionUIScreen.h"
 
 MainScene::MainScene(Game* game)
 	:Scene(game)
@@ -15,12 +16,7 @@ MainScene::MainScene(Game* game)
 	layer_manager_ = boost::shared_ptr<LayerManager>(new LayerManager(this));
 	//スコア
 	score_manager_ = boost::shared_ptr<ScoreManager>(new ScoreManager);
-	collision_manager_ = boost::shared_ptr<CollisionManager>(new CollisionManager());
 
-	//自機追加
-	AddMyself();
-
-	enemy_wave_manager_ = boost::shared_ptr<EnemyWaveManager>(new EnemyWaveManager(this));
 
 	////enemy1群追加
 	//PrepareEnemy1();
@@ -28,6 +24,13 @@ MainScene::MainScene(Game* game)
 
 	//UIScreen
 	AddUIScreen<MainSceneUIScreen>(score_manager_);
+
+	CollisionUIScreen* collision_ui = AddUIScreen<CollisionUIScreen>();
+	collision_manager_ = boost::shared_ptr<CollisionManager>(new CollisionManager(collision_ui));
+
+	//自機追加
+	AddMyself();
+	enemy_wave_manager_ = boost::shared_ptr<EnemyWaveManager>(new EnemyWaveManager(this));
 }
 
 void MainScene::PriorUniqueUpdate()

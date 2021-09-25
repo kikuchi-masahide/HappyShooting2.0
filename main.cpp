@@ -78,4 +78,6 @@ void LoadShaders(Game* _game)
 	_game->mShaderManager.LoadShader(L"Shader/DrawLazerComponent_pixel.hlsl", DX12Config::ShaderType::PIXEL, 19);
 	_game->mShaderManager.LoadShader(L"Shader/HBetapaint_vertex.hlsl", DX12Config::ShaderType::VERTEX, 20);
 	_game->mShaderManager.LoadShader(L"Shader/HBetapaint_pixel.hlsl", DX12Config::ShaderType::PIXEL, 21);
+	_game->mShaderManager.LoadShader(L"Shader/PolygonGeometryDrawer_vertex.hlsl", DX12Config::ShaderType::VERTEX, 22);
+	_game->mShaderManager.LoadShader(L"Shader/PolygonGeometryDrawer_pixel.hlsl", DX12Config::ShaderType::PIXEL, 23);
 }

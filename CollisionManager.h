@@ -5,6 +5,7 @@
 #include "CircleGeometry.h"
 #include "PolygonGeometry.h"
 
+class CollisionUIScreen;
 class CollisionComponent;
 class CircleGeometry;
 class PolygonGeometry;
@@ -16,7 +17,7 @@ class CupsuleGeometry;
 class CollisionManager
 {
 public:
-	CollisionManager();
+	CollisionManager(CollisionUIScreen* screen);
 	~CollisionManager();
 	/// <summary>
 	/// 全componentが持つ図形同士の当たり判定を実行し，componentに衝突したcomponentを教える
@@ -40,6 +41,7 @@ public:
 		EnemyBullet,
 		EnemyLazer
 	};
+	CollisionUIScreen* const collision_ui_;
 private:
 	//geometryと，geometry.aabb.lx <= geometry_arr[e].aabb.lxなるgeometry_arr要素との当たり判定
 	template<class T,class U>

@@ -10,7 +10,8 @@ using CircleGeometry_AABB = std::pair<CircleGeometry*, Rect2>;
 using PolygonGeometry_AABB = std::pair<PolygonGeometry*, Rect2>;
 using CupsuleGeometry_AABB = std::pair<CupsuleGeometry*, Rect2>;
 
-CollisionManager::CollisionManager()
+CollisionManager::CollisionManager(CollisionUIScreen* screen)
+	:collision_ui_(screen)
 {
 }
 

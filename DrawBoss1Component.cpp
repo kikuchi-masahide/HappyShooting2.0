@@ -40,7 +40,7 @@ void DrawBoss1Component::Draw()
 	for (int i = 0; i < 4; i++)
 	{
 		MatVec::Matrix4x4 mat = MatVec::Translation(w, 0.0, 0.0);
-		mat = MatVec::Rotate(MatVec::GetQuaternion(MatVec::Vector3(0.0, 0.0, 1.0), deg+ PI*i/2)) * mat;
+		mat = MatVec::Rotate(MatVec::GetQuaternion(MatVec::Vector3(0.0, 0.0, -1.0), deg+ PI*i/2)) * mat;
 		mat = MatVec::Translation(MatVec::XY0(mObj->GetPosition())) * mat;
 		mat = MatVec::GetOrthoGraphicProjection(600.0, 900.0, 0.0, 1.0) * mat;
 		static_cast<InfoToShader*>(const_map_[i])->conv_ = MatVec::ConvertToXMMATRIX(mat);

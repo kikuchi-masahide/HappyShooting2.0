@@ -75,11 +75,11 @@ public:
 	/// </summary>
 	/// <param name="..._args">コンストラクタに渡す引数</param>
 	template<class T,class... Args>
-	void AddUIScreen(Args... _args)
+	T* AddUIScreen(Args... _args)
 	{
 		if (is_executing_destructor_)
 		{
-			return;
+			return nullptr;
 		}
 		if (mIsObjCompAddable)
 		{
@@ -91,13 +91,17 @@ public:
 			{
 				mPrevMousePosForUIScreens.push_back(mPrevMousePosForUIScreens.back());
 			}
-			mUIScreens.push_back(new T(this,_args...));
+			auto ptr = new T(this, _args...);
+			mUIScreens.push_back(ptr);
 			mUpdateFlagForUIScreens.push_back(true);
 			mInputFlagForUIScreens.push_back(true);
+			return ptr;
 		}
 		else
 		{
-			mPandingUIScreens.push_back(new T(this,_args...));
+			auto ptr = new T(this, _args...);
+			mPandingUIScreens.push_back(ptr);
+			return ptr;
 		}
 	}
 	/// <summary>
