@@ -18,6 +18,7 @@
 #include <vector>
 #include <list>
 #include <set>
+#include <unordered_set>
 #include <typeinfo>
 
 #include <boost/noncopyable.hpp>

@@ -36,7 +36,7 @@ private:
 	bool mDeleteCheck;
 	friend class GameObject;
 	//自分を指すハンドルの集合のポインタ(void*を使うのは何というかやめたい)
-	std::set<void*> mHandles;
+	std::unordered_set<void*> mHandles;
 	//&でインスタンスのポインタを取得させない
 	Component* operator&() const noexcept;
 };

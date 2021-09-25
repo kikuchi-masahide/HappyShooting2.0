@@ -16,7 +16,7 @@ public:
 		}
 	}
 	//GameObjectのAddChildでのみ使われるコンストラクタ
-	ComponentHandle(T* _obj, std::set<void*>* _set)
+	ComponentHandle(T* _obj, std::unordered_set<void*>* _set)
 		:mComp(_obj), mHandleSet(_set)
 	{
 		if (mComp != nullptr) {
@@ -100,7 +100,7 @@ private:
 	template<class U>
 	friend bool operator<(const ComponentHandle<U>& handle1, const ComponentHandle<U>& handle2);
 	//mCompを指すハンドルのsetのポインタ(void*を使うのはできればやめたい)
-	std::set<void*>* mHandleSet;
+	std::unordered_set<void*>* mHandleSet;
 };
 
 template<class T>
