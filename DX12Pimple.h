@@ -17,6 +17,7 @@ private:
 	ComPtr<ID3D12GraphicsCommandList> mCmdList;
 	ComPtr<ID3D12CommandQueue> mCmdQueue;
 	ComPtr<ID3D12Device> mDevice;
+	ComPtr<ID3D12InfoQueue> mInfoQueue;   //レンダーターゲットクリア色違いの警告抑制のため
 	ComPtr<IDXGIFactory6> mFactory;
 	void FenceWaitingInProcessCommands();
 	boost::shared_ptr<DX12Resource> CreateTextureUploadBuffer(unsigned int _rowpitch, unsigned int _height, LPCWSTR _name);

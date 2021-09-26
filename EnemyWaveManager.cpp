@@ -13,7 +13,8 @@ EnemyWaveManager::EnemyWaveManager(MainScene* scene)
 #ifndef _DEBUG
 	wave_ = boost::shared_ptr<EnemyWave1>(new EnemyWave1(30, this));
 #else
-	wave_ = boost::shared_ptr<EnemyWaveBoss1>(new EnemyWaveBoss1(this));
+	//wave_ = boost::shared_ptr<EnemyWaveBoss1>(new EnemyWaveBoss1(this));
+	wave_ = boost::shared_ptr<EnemyWave1>(new EnemyWave1(30, this));
 #endif
 }
 

@@ -11,10 +11,6 @@ DrawTextureComponent::DrawTextureComponent(GameObjectHandle object, boost::share
 {
 }
 
-DrawTextureComponent::~DrawTextureComponent()
-{
-}
-
 void DrawTextureComponent::Draw()
 {
 	auto center = mObj->GetPosition()+center_offset_;

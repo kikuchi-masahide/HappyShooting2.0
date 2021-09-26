@@ -14,7 +14,7 @@ DX12Pimple::DX12Pimple()
 
 void DX12Pimple::Initialize() {
 	//デバッグレイヤの有効化
-#ifdef _DEBUG
+//#ifdef _DEBUG
 	try {
 		{
 			ComPtr<ID3D12Debug1> debugLayer;
@@ -35,17 +35,32 @@ void DX12Pimple::Initialize() {
 	{
 		throw;
 	}
-#endif
+//#endif
 	try {
 		//デバイス初期化
 		{
-			if (FAILED(
-				D3D12CreateDevice(
-					nullptr, D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(mDevice.ReleaseAndGetAddressOf())
-				)
-			))
+			D3D_FEATURE_LEVEL levels[] = {
+				D3D_FEATURE_LEVEL_12_1,
+				D3D_FEATURE_LEVEL_12_0,
+				D3D_FEATURE_LEVEL_11_1,
+				D3D_FEATURE_LEVEL_11_0
+			};
+			auto succeed_level = D3D_FEATURE_LEVEL_10_1;
+			for (auto lv : levels)
 			{
-				Log::OutputCritical("ID3D12Device Initialization failed");
+				if (SUCCEEDED(
+					D3D12CreateDevice(
+						nullptr, lv, IID_PPV_ARGS(mDevice.ReleaseAndGetAddressOf())
+					)
+				))
+				{
+					succeed_level = lv;
+					break;
+				}
+			}
+			if (succeed_level == D3D_FEATURE_LEVEL_10_1)
+			{
+				Log::OutputCritical("D3D12CreateDevice() failed\n");
 				throw 0;
 			}
 		}
@@ -128,6 +143,21 @@ void DX12Pimple::Initialize() {
 			dred_settings->SetBreadcrumbContextEnablement(D3D12_DRED_ENABLEMENT_FORCED_ON);
 			dred_settings->SetPageFaultEnablement(D3D12_DRED_ENABLEMENT_FORCED_ON);
 		}
+		mDevice.As(&mInfoQueue);
+		D3D12_MESSAGE_ID deny_ids[] = {
+			D3D12_MESSAGE_ID_CLEARRENDERTARGETVIEW_MISMATCHINGCLEARVALUE
+		};
+		D3D12_MESSAGE_SEVERITY severities[] = {
+			D3D12_MESSAGE_SEVERITY_INFO
+		};
+		D3D12_INFO_QUEUE_FILTER filter{};
+		filter.DenyList.NumIDs = _countof(deny_ids);
+		filter.DenyList.pIDList = deny_ids;
+		filter.DenyList.NumSeverities = _countof(severities);
+		filter.DenyList.pSeverityList = severities;
+		mInfoQueue->PushStorageFilter(&filter);
+		//D3D12のエラー時に止めるようにする
+		mInfoQueue->SetBreakOnSeverity(D3D12_MESSAGE_SEVERITY_ERROR, TRUE);
 	}
 	catch (...)
 	{

@@ -54,7 +54,7 @@ DX12GraphicsPipeline::DX12GraphicsPipeline(
 	gpipeline.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;
 	gpipeline.PrimitiveTopologyType = mPrimitiveTopologyTypeCorrespond[(unsigned char)_primitive];
 	gpipeline.NumRenderTargets = _numrt;
-	gpipeline.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
+	gpipeline.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM_SRGB;
 	gpipeline.SampleDesc.Count = 1;
 	gpipeline.SampleDesc.Quality = 0;
 	gpipeline.pRootSignature = _rootsignature->mRootSignature.Get();

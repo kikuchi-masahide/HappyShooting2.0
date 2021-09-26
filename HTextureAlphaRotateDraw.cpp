@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "HTextureAlphaRotateDraw.h"
 
+#include "Log.h"
+
 namespace Helpers {
 
 	//このファイル内で使う構造体の定義
@@ -22,7 +24,7 @@ namespace Helpers {
 	HTextureAlphaRotateDraw::HTextureAlphaRotateDraw(Game& game, unsigned int textureid)
 	{
 		//通算1つ目のインスタンス
-		if (info_to_shader_ == nullptr)
+		if (graphics_pipeline_ == nullptr)
 		{
 			StaticGraphicInit(game);
 		}

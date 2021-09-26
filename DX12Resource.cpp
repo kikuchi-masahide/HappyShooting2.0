@@ -90,7 +90,7 @@ DX12Resource::DX12Resource(ComPtr<ID3D12Device> _device, UINT64 _width, UINT64 _
 	resdesc.Height = _height;
 	resdesc.DepthOrArraySize = 1;
 	resdesc.MipLevels = 1;
-	resdesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+	resdesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM_SRGB;
 	resdesc.SampleDesc.Count = 1;
 	resdesc.SampleDesc.Quality = 0;
 	resdesc.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN;
