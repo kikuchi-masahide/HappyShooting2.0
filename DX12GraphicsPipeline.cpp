@@ -108,5 +108,7 @@ D3D12_PRIMITIVE_TOPOLOGY_TYPE DX12GraphicsPipeline::mPrimitiveTopologyTypeCorres
 
 void DX12Pimple::SetGraphicsPipeline(boost::shared_ptr<DX12GraphicsPipeline> _pipeline)
 {
+	if (current_pipeline_ == _pipeline)return;
 	_pipeline->SetGraphicsPipeline(mCmdList);
+	current_pipeline_ = _pipeline;
 }

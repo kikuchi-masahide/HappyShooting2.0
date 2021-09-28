@@ -170,10 +170,20 @@ void Game::RunLoop()
 		ProcessInput();
 		while (millisec > mTimeEps)
 		{
+			DWORD update_start = timeGetTime();
 			UpdateGame();
+			DWORD update_end = timeGetTime();
+			std::string output("Update Time:");
+			output += std::to_string(update_end - update_start);
+			Log::OutputTrivial(output);
 			millisec -= mTimeEps;
 		}
+		DWORD output_start = timeGetTime();
 		if (!GenerateOutput())return;
+		DWORD output_end = timeGetTime();
+		std::string output("Output Time:");
+		output += std::to_string(output_end - output_start);
+		Log::OutputTrivial(output);
 		if (terminate_flag_)
 		{
 			for (auto window : mWindows)

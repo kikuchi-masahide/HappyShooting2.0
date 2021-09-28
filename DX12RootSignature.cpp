@@ -124,5 +124,7 @@ boost::shared_ptr<DX12RootSignature> DX12Pimple::CreateRootSignature(DX12RootPar
 
 void DX12Pimple::SetRootSignature(boost::shared_ptr<DX12RootSignature> _root)
 {
+	if (current_rootsign_ == _root)return;
 	_root->SetRootSignature(mCmdList);
+	current_rootsign_ = _root;
 }

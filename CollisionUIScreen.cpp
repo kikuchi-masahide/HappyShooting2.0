@@ -24,10 +24,12 @@ void CollisionUIScreen::Update()
 void CollisionUIScreen::Output()
 {
 	Game& game = mScene->mGame;
+	game.OpenSwapChain(0);
 	for (auto itr = polygon_drawers_.begin(); itr != polygon_drawers_.end(); itr++)
 	{
 		itr->second.Output(game);
 	}
+	game.CloseSwapChain();
 }
 
 void CollisionUIScreen::AddPolygonGeometry(PolygonGeometry* polygon, MatVec::Vector3 color)

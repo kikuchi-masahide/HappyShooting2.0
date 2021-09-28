@@ -13,7 +13,9 @@ D3D12_PRIMITIVE_TOPOLOGY PrimitiveTopologyTypeCorrespond[(unsigned char)DX12Conf
 
 void DX12Pimple::SetPrimitiveTopology(DX12Config::PrimitiveTopology _prim)
 {
+	if (current_primitivetop_ == _prim)return;
 	mCmdList->IASetPrimitiveTopology(PrimitiveTopologyTypeCorrespond[(unsigned char)_prim]);
+	current_primitivetop_ = _prim;
 }
 
 void DX12Pimple::DrawIndexedInstanced(UINT _indexnumperinst, UINT _instnum, UINT _indoffset, UINT _vdataoffset, UINT _instoffset)

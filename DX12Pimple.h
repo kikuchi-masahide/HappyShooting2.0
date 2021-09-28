@@ -21,6 +21,15 @@ private:
 	ComPtr<IDXGIFactory6> mFactory;
 	void FenceWaitingInProcessCommands();
 	boost::shared_ptr<DX12Resource> CreateTextureUploadBuffer(unsigned int _rowpitch, unsigned int _height, LPCWSTR _name);
+	//連続して同じものをセットしないように保存しておく(tick切り替わったらもう一度設定しないといけない)
+	boost::shared_ptr<DX12GraphicsPipeline> current_pipeline_;
+	boost::shared_ptr<DX12RootSignature> current_rootsign_;
+	boost::shared_ptr<DX12DescriptorHeap> current_descheap_;
+	DX12Config::PrimitiveTopology current_primitivetop_;
+	boost::shared_ptr<DX12Resource> current_vertexbuffer_;
+	boost::shared_ptr<DX12Resource> current_indexbuffer_;
+	//全current_を初期化する
+	void ClearCurrentConfig();
 public:
 	DX12Pimple();
 	void Initialize();

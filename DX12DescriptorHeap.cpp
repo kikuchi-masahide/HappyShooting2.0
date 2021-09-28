@@ -70,8 +70,10 @@ D3D12_DESCRIPTOR_HEAP_FLAGS DX12DescriptorHeap::mShaderVisibilityCorrespond[] = 
 
 void DX12Pimple::SetDescriptorHeap(boost::shared_ptr<DX12DescriptorHeap> _descHeap)
 {
+	if (current_descheap_ == _descHeap)return;
 	ID3D12DescriptorHeap* arr[1] = {
 		_descHeap->mDescHeap.Get()
 	};
 	mCmdList->SetDescriptorHeaps(1,arr);
+	current_descheap_ = _descHeap;
 }

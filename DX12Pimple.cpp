@@ -9,7 +9,17 @@
 #include "Log.h"
 #include <DirectXMath.h>
 
-DX12Pimple::DX12Pimple() 
+void DX12Pimple::ClearCurrentConfig()
+{
+	current_pipeline_ = nullptr;
+	current_rootsign_ = nullptr;
+	current_descheap_ = nullptr;
+	current_primitivetop_ = DX12Config::PrimitiveTopology::size;
+	current_vertexbuffer_ = nullptr;
+	current_indexbuffer_ = nullptr;
+}
+
+DX12Pimple::DX12Pimple()
 {}
 
 void DX12Pimple::Initialize() {
@@ -163,6 +173,7 @@ void DX12Pimple::Initialize() {
 	{
 		throw;
 	}
+	ClearCurrentConfig();
 }
 
 void DX12Pimple::CleanUp() {
@@ -190,6 +201,7 @@ void DX12Pimple::ProcessCommands()
 	mCmdAllocator->Reset();
 	//再びコマンドリストをためる準備
 	ResetCmdAllocator();
+	ClearCurrentConfig();
 }
 
 void DX12Pimple::ResetCmdAllocator()

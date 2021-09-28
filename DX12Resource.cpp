@@ -228,12 +228,16 @@ void DX12Pimple::Unmap(boost::shared_ptr<DX12Resource> _resource) {
 void DX12Pimple::SetVertexBuffers(boost::shared_ptr<DX12Resource> _resource, unsigned int _slotid,
 	SIZE_T _allsize, SIZE_T _sizepervertex)
 {
+	if (current_vertexbuffer_ == _resource)return;
 	_resource->SetVertexBuffers(mCmdList, _slotid, _allsize, _sizepervertex);
+	current_vertexbuffer_ = _resource;
 }
 
 void DX12Pimple::SetIndexBuffers(boost::shared_ptr<DX12Resource> _resource, unsigned int _vertnum)
 {
+	if (current_indexbuffer_ == _resource)return;
 	_resource->SetIndexBuffers(mCmdList, _vertnum);
+	current_indexbuffer_ = _resource;
 }
 
 boost::shared_ptr<DX12Resource> DX12Pimple::CreateIndexBuffer(unsigned int _vertnum, LPCWSTR _name)
