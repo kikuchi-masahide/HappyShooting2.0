@@ -491,7 +491,9 @@
     <ClCompile Include="Boss1StateNormal.cpp">
       <Filter>MainScene\Boss1StateBase\Boss1StateNormal</Filter>
     </ClCompile>
-    <ClCompile Include="PerformanceProfiler.cpp" />
+    <ClCompile Include="PerformanceProfiler.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -792,7 +794,9 @@
     <ClInclude Include="Boss1StateNormal.h">
       <Filter>MainScene\Boss1StateBase\Boss1StateNormal</Filter>
     </ClInclude>
-    <ClInclude Include="PerformanceProfiler.h" />
+    <ClInclude Include="PerformanceProfiler.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\DrawHealthBarComponent_header.hlsli">
