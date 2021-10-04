@@ -17,7 +17,7 @@ public:
 	/// <summary>
 	/// テクスチャのz座標(左手系なので大きいほど奥)
 	/// </summary>
-	double z_;
+	const double z_;
 protected:
 	const boost::shared_ptr<LayerManager> layer_manager_;
 };

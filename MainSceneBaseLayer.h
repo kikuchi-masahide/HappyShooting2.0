@@ -6,12 +6,30 @@
 class MainSceneDrawComponent;
 class MyselfPosAndAngleComponent;
 
+//draw_components_で保存するときのためのクラス
+class DrawComponentUnit
+{
+public:
+	DrawComponentUnit(ComponentHandle<MainSceneDrawComponent> handle);
+	ComponentHandle<MainSceneDrawComponent> handle_;
+	double z_;
+};
+
+//draw_components_用の比較関数
+class DrawComponentCompare {
+public:
+	bool operator()(const DrawComponentUnit& left, const DrawComponentUnit& right) const
+	{
+		return left.z_ < right.z_;
+	}
+};
+
 class MainSceneBaseLayer :public Layer
 {
 public:
 	MainSceneBaseLayer(Scene* scene);
 	virtual ~MainSceneBaseLayer();
-	void Draw();
+	void Draw() final;
 	/// <summary>
 	/// Draw()から呼び出される，ペラポリゴンを実際にウィンドウへ描画するための関数
 	/// ペラポリゴンは，全componentの描画が済んだ状態になっており，シェーダーリソース状態にするバリア実行済
@@ -46,7 +64,7 @@ protected:
 	Game& GetGame();
 	Scene* const scene_;
 private:
-	std::vector<ComponentHandle<MainSceneDrawComponent>> draw_components_;
+	std::multiset<DrawComponentUnit,DrawComponentCompare> draw_components_;
 	//このレイヤーがアクティブになってから何度目のフレームか
 	//(1回目にUniqueDrawが呼び出されたときが0)
 	unsigned int layer_t_;
