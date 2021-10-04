@@ -22,7 +22,7 @@ void Boss1StateEntering::Update()
 	counter_++;
 	if (counter_ == period_)
 	{
-		mediator_->ChangeState(new Boss1StateNormal(
+		mediator_->ChangeState(DBG_NEW Boss1StateNormal(
 			mediator_,layer_manager_,score_manager_,collision_manager_
 		));
 	}

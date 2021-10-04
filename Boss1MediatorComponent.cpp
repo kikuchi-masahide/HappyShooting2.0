@@ -18,6 +18,7 @@ Boss1MediatorComponent::Boss1MediatorComponent(GameObjectHandle object, boost::s
 
 Boss1MediatorComponent::~Boss1MediatorComponent()
 {
+	delete current_state_;
 }
 
 void Boss1MediatorComponent::Update()

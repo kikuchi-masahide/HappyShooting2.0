@@ -22,11 +22,11 @@ DX12SwapChain::DX12SwapChain(ComPtr<IDXGIFactory6> _factory, ComPtr<ID3D12Comman
 	std::string msg("IDXGISwapChain1 Initialization successed");
 	Log::OutputTrivial(msg);
 #endif
-	mDescHeap = boost::shared_ptr<DX12DescriptorHeap>(new DX12DescriptorHeap(DX12Config::DescriptorHeapType::RTV, DX12Config::DescriptorHeapShaderVisibility::NONE, 2,_device, L"SwapChain"));
+	mDescHeap = boost::shared_ptr<DX12DescriptorHeap>(DBG_NEW DX12DescriptorHeap(DX12Config::DescriptorHeapType::RTV, DX12Config::DescriptorHeapShaderVisibility::NONE, 2,_device, L"SwapChain"));
 	//ディスクリプタヒープにレンダーターゲットを作成しスワップチェーンと紐づけ
 	for (UINT n = 0; n < 2; n++) {
 		ComPtr<ID3D12Resource> _backbuffer;
-		mBuffers[n] = boost::shared_ptr<DX12Resource>(new DX12Resource(mSwapChain, n));
+		mBuffers[n] = boost::shared_ptr<DX12Resource>(DBG_NEW DX12Resource(mSwapChain, n));
 		mBuffers[n]->CreateRenderTargetView(_device, mDescHeap, n);
 	}
 }

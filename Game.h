@@ -24,11 +24,11 @@ public:
 		}
 		if (!mIsSceneChangable) {
 			if (mPandingScene != nullptr)DeleteScene(mPandingScene);
-			mPandingScene = new S(this, _args...);
+			mPandingScene = DBG_NEW S(this, _args...);
 		}
 		else {
 			if (mCurrentScene != nullptr)DeleteScene(mCurrentScene);
-			mCurrentScene = new S(this, _args...);
+			mCurrentScene = DBG_NEW S(this, _args...);
 		}
 	};
 	/// <summary>

@@ -13,9 +13,9 @@ MainScene::MainScene(Game* game)
 	:Scene(game)
 {
 	//レイヤー
-	layer_manager_ = boost::shared_ptr<LayerManager>(new LayerManager(this));
+	layer_manager_ = boost::shared_ptr<LayerManager>(DBG_NEW LayerManager(this));
 	//スコア
-	score_manager_ = boost::shared_ptr<ScoreManager>(new ScoreManager);
+	score_manager_ = boost::shared_ptr<ScoreManager>(DBG_NEW ScoreManager);
 
 
 	////enemy1群追加
@@ -26,11 +26,11 @@ MainScene::MainScene(Game* game)
 	AddUIScreen<MainSceneUIScreen>(score_manager_);
 
 	CollisionUIScreen* collision_ui = AddUIScreen<CollisionUIScreen>();
-	collision_manager_ = boost::shared_ptr<CollisionManager>(new CollisionManager(collision_ui));
+	collision_manager_ = boost::shared_ptr<CollisionManager>(DBG_NEW CollisionManager(collision_ui));
 
 	//自機追加
 	AddMyself();
-	enemy_wave_manager_ = boost::shared_ptr<EnemyWaveManager>(new EnemyWaveManager(this));
+	enemy_wave_manager_ = boost::shared_ptr<EnemyWaveManager>(DBG_NEW EnemyWaveManager(this));
 }
 
 void MainScene::PriorUniqueUpdate()
