@@ -15,19 +15,37 @@ Scene::Scene(Game* _game)
 
 void Scene::Update(InputSystem* _input)
 {
+	auto start = timeGetTime();
+	auto end = start;
+	auto& profiler = mGame.profiler_;
 	mInputSystem = _input;
 	//ここからしばらくの間，追加されるオブジェクト・コンポーネントは保留に入れる
 	mIsObjCompAddable = false;
+
 	//優先度の高い，独自更新処理
 	PriorUniqueUpdate();
+	end = timeGetTime();
+	profiler.SetPriorUniqueUpdateTime(end - start);
+	start = end;
+
 	//UIScreenにブロックされてなければUpdateを実行
 	if (mUpdateFlagForComps)
 	{
 		mInputFlag = mInputFlagForComps;
 		LaunchUpdateComponents();
+		end = timeGetTime();
+		profiler.SetLaunchUpdateComponentsTime(end - start);
+		start = end;
 	}
+
 	LaunchUIScreenUpdate();
+	end = timeGetTime();
+	profiler.SetLaunchUIScreenUpdateTime(end - start);
+	start = end;
+
 	PosteriorUniqueUpdate();
+	end = timeGetTime();
+	profiler.SetPosteriorUniqueUpdateTime(end - start);
 }
 
 void Scene::PriorUniqueUpdate()
@@ -40,18 +58,60 @@ void Scene::PosteriorUniqueUpdate()
 
 void Scene::Output()
 {
+	auto start = timeGetTime();
+	auto end = start;
+	auto& profiler = mGame.profiler_;
+
 	PriorUniqueOutput();
+	end = timeGetTime();
+	profiler.SetPriorUniqueOutputTime(end - start);
+	start = end;
+
 	LaunchOutputComponents();
+	end = timeGetTime();
+	profiler.SetLaunchOutputComponentsTime(end - start);
+	start = end;
+
 	OutputLayer();
+	end = timeGetTime();
+	profiler.SetOutputLayerTime(end - start);
+	start = end;
+
 	LaunchOutputUIScreens();
+	end = timeGetTime();
+	profiler.SetLaunchOutputUIScreensTime(end - start);
+	start = end;
+
 	PosteriorUniqueOutput();
+	end = timeGetTime();
+	profiler.SetPosteriorUniqueOutputTime(end - start);
+	start = end;
+
 	mGame.mdx12.ProcessCommands();
+	end = timeGetTime();
+	profiler.SetProcessCommandsTime(end - start);
+	start = end;
+
 	//保留していたオブジェクト・コンポーネントの処理を行う
 	DeleteObjComp();
+	end = timeGetTime();
+	profiler.SetDeleteObjCompTime(end - start);
+	start = end;
+
 	DeleteLayers();
+	end = timeGetTime();
+	profiler.SetDeleteLayersTime(end - start);
+	start = end;
+
 	DeleteUIScreen();
+	end = timeGetTime();
+	profiler.SetDeleteUIScreenTime(end - start);
+	start = end;
+
 	mIsObjCompAddable = true;
 	ProcessPandings();
+	end = timeGetTime();
+	profiler.SetProcessPandingsTime(end - start);
 }
 
 void Scene::PriorUniqueOutput()

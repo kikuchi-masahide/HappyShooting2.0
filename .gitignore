@@ -377,3 +377,6 @@ index.html - ショートカット.lnk
 
 # debug x64.exe copy for pix debug
 HappyShooting2.0.exe
+
+#performance profile
+performance_profiler.txt

@@ -48,4 +48,6 @@ void Boss1StateNormal::AddBullet()
 		texture->height_ = 20.0;
 		deg += delta;
 	}
+	auto& profiler = obj->mScene->mGame.profiler_;
+	profiler.SetRecordName("add_bullet");
 }

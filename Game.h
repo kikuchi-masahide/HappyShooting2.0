@@ -3,6 +3,7 @@
 #include "TextureManager.h"
 #include "ShaderManager.h"
 #include "InputSystem.h"
+#include "PerformanceProfiler.h"
 
 class Scene;
 class Window;
@@ -56,6 +57,7 @@ public:
 	//次のOutput終了後RunLoopを脱出し，プログラムを終了させる
 	void Terminate();
 	void Shutdown();
+	PerformanceProfiler::PerformanceProfiler profiler_;
 private:
 	void ProcessInput();
 	void UpdateGame();

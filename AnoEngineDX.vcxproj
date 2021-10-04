@@ -241,6 +241,7 @@
     <ClCompile Include="NormalBulletCollisionComponent.cpp" />
     <ClCompile Include="NormalShootComponent.cpp" />
     <ClCompile Include="PauseUIScreen.cpp" />
+    <ClCompile Include="PerformanceProfiler.cpp" />
     <ClCompile Include="PolygonGeometry.cpp" />
     <ClCompile Include="PolygonGeometryDrawer.cpp" />
     <ClCompile Include="Rect2.cpp" />
@@ -348,6 +349,7 @@
     <ClInclude Include="NormalBulletCollisionComponent.h" />
     <ClInclude Include="NormalShootComponent.h" />
     <ClInclude Include="PauseUIScreen.h" />
+    <ClInclude Include="PerformanceProfiler.h" />
     <ClInclude Include="PolygonGeometry.h" />
     <ClInclude Include="PolygonGeometryDrawer.h" />
     <ClInclude Include="Rect2.h" />
