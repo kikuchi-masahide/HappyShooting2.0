@@ -217,20 +217,18 @@ void DX12Pimple::ExecuteCmdLists()
 
 void DX12Pimple::FenceWaitingInProcessCommands()
 {
+	//HACK:CPUとGPUを並列に動かして寝かせなくてもいいようにするには，コマンドリストを複数持つことが必要?
+	//https://shobomaru.wordpress.com/2015/07/12/d3d12-fence/
 	static ComPtr<ID3D12Fence> fence = nullptr;
 	static UINT64 fenceVal = 0;
+	static auto fence_event = CreateEvent(NULL, FALSE, FALSE, NULL);
 	//初実行時のみ初期化
 	if (!fence) {
 		mDevice->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(fence.ReleaseAndGetAddressOf()));
 	}
-	mCmdQueue->Signal(fence.Get(), ++fenceVal);
-	if (fence->GetCompletedValue() != fenceVal)
-	{
-		auto event = CreateEvent(nullptr, false, false, nullptr);
-		fence->SetEventOnCompletion(fenceVal, event);
-		WaitForSingleObject(event, INFINITE);
-		CloseHandle(event);
-	}
+	fence->SetEventOnCompletion(++fenceVal, fence_event);
+	mCmdQueue->Signal(fence.Get(), fenceVal);
+	WaitForSingleObject(fence_event, INFINITE);
 }
 
 boost::shared_ptr<DX12Resource> DX12Pimple::CreateTextureUploadBuffer(unsigned int _rowpitch,unsigned int _height, LPCWSTR _name)
