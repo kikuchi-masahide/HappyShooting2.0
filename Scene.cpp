@@ -258,17 +258,32 @@ MatVec::Vector2 Scene::GetMouseScreenPos()
 
 void Scene::LaunchUpdateComponents()
 {
-	for (auto itr = mUpdateComponents.begin(); itr != mUpdateComponents.end(); itr++)
+	for (auto itr = mUpdateComponents.begin(); itr != mUpdateComponents.end();)
 	{
-		(*itr)->Update();
+		//前tickのcomponent削除で無を指しているハンドルを削除
+		if (!(itr->IsValid()))
+		{
+			itr = mUpdateComponents.erase(itr);
+		}
+		else {
+			(*itr)->Update();
+			itr++;
+		}
 	}
 }
 
 void Scene::LaunchOutputComponents()
 {
-	for (auto itr = mOutputComponents.begin(); itr != mOutputComponents.end(); itr++)
+	for (auto itr = mOutputComponents.begin(); itr != mOutputComponents.end();)
 	{
-		(*itr)->Update();
+		if (!(itr->IsValid()))
+		{
+			itr = mOutputComponents.erase(itr);
+		}
+		else {
+			(*itr)->Update();
+			itr++;
+		}
 	}
 }
 
@@ -287,17 +302,6 @@ void Scene::DeleteObjComp()
 			(*objitr)->DeleteFlagedComponents();
 			objitr++;
 		}
-	}
-	//ダングリングハンドル削除
-	auto itr = mUpdateComponents.begin();
-	while (itr != mUpdateComponents.end()) {
-		if (!(itr->IsValid()))itr = mUpdateComponents.erase(itr);
-		else itr++;
-	}
-	itr = mOutputComponents.begin();
-	while (itr != mOutputComponents.end()) {
-		if (!(itr->IsValid()))itr = mOutputComponents.erase(itr);
-		else itr++;
 	}
 }
 
