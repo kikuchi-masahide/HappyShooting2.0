@@ -74,7 +74,7 @@ private:
 	std::list<Component*> mUpdateComponents;
 	std::list<Component*> mOutputComponents;
 	//このオブジェクトを指すハンドルのset
-	std::set<GameObjectHandle*> mHandles;
+	std::unordered_set<GameObjectHandle*> mHandles;
 	bool mDeleteFlag;
 	GameObject* operator&() const noexcept;
 	//AddUpdateComponent内で呼ばれる

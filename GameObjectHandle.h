@@ -12,7 +12,7 @@ public:
 	/// <summary>
 	/// SceneのAddChild内でのみ呼び出されるコンストラクタ
 	/// </summary>
-	GameObjectHandle(GameObject* _obj, std::set<GameObjectHandle*>* _set);
+	GameObjectHandle(GameObject* _obj, std::unordered_set<GameObjectHandle*>* _set);
 	GameObjectHandle();
 	~GameObjectHandle();
 	//このオブジェクトハンドルをクリアし，nullハンドルにする
@@ -24,5 +24,5 @@ private:
 	//このハンドルが指すオブジェクト
 	GameObject* mObject;
 	//mObjectを指すハンドルのstd::setのポインタ
-	std::set<GameObjectHandle*>* mHandleSet;
+	std::unordered_set<GameObjectHandle*>* mHandleSet;
 };

@@ -9,7 +9,7 @@ GameObjectHandle::GameObjectHandle(const GameObjectHandle& _handle)
 	}
 }
 
-GameObjectHandle::GameObjectHandle(GameObject* _obj, std::set<GameObjectHandle*>* _set)
+GameObjectHandle::GameObjectHandle(GameObject* _obj, std::unordered_set<GameObjectHandle*>* _set)
 	:mObject(_obj), mHandleSet(_set)
 {
 	mHandleSet->insert(this);
