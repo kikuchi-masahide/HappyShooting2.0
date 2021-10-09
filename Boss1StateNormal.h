@@ -2,6 +2,8 @@
 #include "Boss1StateBase.h"
 
 #include "Math.h"
+#include "GameObject.h"
+#include "DrawTextureComponent.h"
 
 /// <summary>
 /// –c‚ç‚ñ‚¾OŠpŒ`‚Ì’Êí’e‚ğŒ‚‚¿‘±‚¯‚éƒ‚[ƒh
@@ -26,7 +28,9 @@ private:
     static constexpr int mode_period_ = 480;
     //’e‘¬
     static constexpr double bullet_speed_ = 4.0;
-    //’e‚ğˆêü•ª(bullet_num_ŒÂ)’Ç‰Á‚·‚é
-    void AddBullet();
+    std::vector<GameObjectHandle> next_bullet_;
+    std::vector<ComponentHandle<DrawTextureComponent>> bullet_texture_;
+    //next_bullet_[configured_]‚Ü‚Å’e‚ğ’Ç‰ÁÏ‚İ
+    int configured_;
 };
 
