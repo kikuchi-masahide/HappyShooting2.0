@@ -19,6 +19,7 @@
 #include <list>
 #include <set>
 #include <unordered_set>
+#include <queue>
 #include <typeinfo>
 
 #include <boost/noncopyable.hpp>

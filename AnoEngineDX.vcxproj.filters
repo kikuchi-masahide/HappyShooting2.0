@@ -220,6 +220,9 @@
     <Filter Include="MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy3CollisionComponent">
       <UniqueIdentifier>{9f55002a-00c5-4326-a241-5d4e0e4cced9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\MainSceneDrawComponent\DrawBoss1Bullet">
+      <UniqueIdentifier>{e0e74a21-de62-4d58-9b52-dc936bc63f4e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -509,6 +512,7 @@
     <ClCompile Include="Boss1BulletCollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent\Boss1BulletCollisionComponent</Filter>
     </ClCompile>
+    <ClCompile Include="DrawBoss1BulletComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -818,6 +822,7 @@
     <ClInclude Include="Boss1BulletCollisionComponent.h">
       <Filter>MainScene\CollisionComponent\Boss1BulletCollisionComponent</Filter>
     </ClInclude>
+    <ClInclude Include="DrawBoss1BulletComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\DrawHealthBarComponent_header.hlsli">

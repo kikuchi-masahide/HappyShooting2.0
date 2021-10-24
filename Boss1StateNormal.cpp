@@ -7,6 +7,7 @@
 #include "LinearMoveComponent.h"
 #include "DrawTextureComponent.h"
 #include "Boss1BulletCollisionComponent.h"
+#include "DrawBoss1BulletComponent.h"
 
 Boss1StateNormal::Boss1StateNormal(ComponentHandle<Boss1MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager)
 	:Boss1StateBase(mediator,layer_manager,score_manager,collision_manager),
@@ -29,10 +30,10 @@ void Boss1StateNormal::Update()
 		double delta = 2 * PI / bullet_num_;
 		for (int n = 0; n < bullet_num_; n++)
 		{
-			bullet_texture_[n]->width_ = 20.0;
-			bullet_texture_[n]->height_ = 20.0;
+			//bullet_texture_[n]->width_ = 20.0;
+			//bullet_texture_[n]->height_ = 20.0;
 			next_bullet_[n]->AddUpdateComponent<LinearMoveComponent>(MatVec::Vector2(cos(deg), sin(deg)) * bullet_speed_, 20.0);
-			next_bullet_[n]->AddUpdateComponent<Boss1BulletCollisionComponent>(collision_manager_);
+			//next_bullet_[n]->AddUpdateComponent<Boss1BulletCollisionComponent>(collision_manager_);
 			deg += delta;
 		}
 		configured_ = -1;
@@ -53,8 +54,9 @@ void Boss1StateNormal::Update()
 			}
 			double deg = deg_+delta*configured_;
 			next_bullet_[configured_] = obj->mScene->AddObject(objpos, 1.0, deg);
-			bullet_texture_[configured_] = next_bullet_[configured_]->AddOutputComponent<DrawTextureComponent>(layer_manager_, 19, -10.0);
-			bullet_texture_[configured_]->alpha_ = 1.0;
+			//bullet_texture_[configured_] = next_bullet_[configured_]->AddOutputComponent<DrawTextureComponent>(layer_manager_, 19, -10.0);
+			//bullet_texture_[configured_]->alpha_ = 1.0;
+			bullet_texture_[configured_] = next_bullet_[configured_]->AddUpdateComponent<DrawBoss1BulletComponent>(layer_manager_);
 		}
 	}
 	if (counter_ == mode_period_ - 1)

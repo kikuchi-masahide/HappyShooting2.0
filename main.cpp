@@ -1,6 +1,7 @@
 #include "window.h"
 #include "Game.h"
 #include "TitleScene.h"
+#include "DrawBoss1BulletComponent.h"
 
 LRESULT WindowProcedure(HWND, UINT, WPARAM, LPARAM);
 void LoadTextures(Game* _game);
@@ -16,6 +17,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	game->Initialize();
 	LoadTextures(game);
 	LoadShaders(game);
+	//TODO:ƒRƒR?
+	DrawBoss1BulletComponent::StaticGraphicInit(*game);
 	game->AddWindow(WindowProcedure, TEXT("WndClass"), 900, 900, TEXT("HAPPY Shooting"), 0);
 	game->ChangeScene<TitleScene>();
 	game->RunLoop();
