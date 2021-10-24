@@ -13,6 +13,7 @@ class EnemyHealthComponent;
 class ScoreManager;
 class LazerCollisionComponent;
 
+//TODO:CollisionComponentにmediator機能まで持たせたの，普通に悪手だった気がする(ならどうする?)
 /// <summary>
 /// 時間によりかわるEnemy4本体・レーザーの位置，体力，描画，当たり判定の初期化と管理を行う
 /// </summary>

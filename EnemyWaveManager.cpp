@@ -7,6 +7,8 @@
 
 #include "EnemyWaveBoss1.h"
 
+#include "EnemyWave45.h"
+
 EnemyWaveManager::EnemyWaveManager(MainScene* scene)
 	:scene_(scene)
 {
@@ -14,7 +16,8 @@ EnemyWaveManager::EnemyWaveManager(MainScene* scene)
 	//wave_ = boost::shared_ptr<EnemyWave1>(DBG_NEW EnemyWave1(30, this));
 	wave_ = boost::shared_ptr<EnemyWaveBoss1>(DBG_NEW EnemyWaveBoss1(this));
 #else
-	wave_ = boost::shared_ptr<EnemyWaveBoss1>(DBG_NEW EnemyWaveBoss1(this));
+	//wave_ = boost::shared_ptr<EnemyWaveBoss1>(DBG_NEW EnemyWaveBoss1(this));
+	wave_ = boost::shared_ptr<EnemyWave45>(DBG_NEW EnemyWave45(this));
 #endif
 }
 

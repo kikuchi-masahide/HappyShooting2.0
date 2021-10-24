@@ -176,6 +176,7 @@
     <ClCompile Include="DrawHealthBarComponent.cpp" />
     <ClCompile Include="DrawLazerComponent.cpp" />
     <ClCompile Include="Enemy4BehaviorComponent.cpp" />
+    <ClCompile Include="EnemyBodyCollisionComponent.cpp" />
     <ClCompile Include="EnemyWaveBoss1.cpp" />
     <ClCompile Include="HBetapaint.cpp" />
     <ClCompile Include="HUIButton.cpp" />
@@ -278,6 +279,7 @@
     <ClInclude Include="DrawHealthBarComponent.h" />
     <ClInclude Include="DrawLazerComponent.h" />
     <ClInclude Include="Enemy4BehaviorComponent.h" />
+    <ClInclude Include="EnemyBodyCollisionComponent.h" />
     <ClInclude Include="EnemyWaveBoss1.h" />
     <ClInclude Include="HBetapaint.h" />
     <ClInclude Include="HUIButton.h" />

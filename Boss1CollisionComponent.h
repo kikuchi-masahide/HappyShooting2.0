@@ -5,6 +5,7 @@
 
 class Boss1MediatorComponent;
 
+//TODO:HealthComponentçÏÇ¡ÇΩÇÁEnemyBodyCollisionComponentÇ…à∆ë÷Ç¶Ç∑ÇÈ
 class Boss1CollisionComponent :
     public CollisionComponent
 {

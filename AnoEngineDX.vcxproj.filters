@@ -85,9 +85,6 @@
     <Filter Include="MainScene\LinearRotateComponent">
       <UniqueIdentifier>{77147f20-87a8-4304-b4ff-b3717aacd559}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainScene\CollisionComponent\Enemy1CollisionComponent">
-      <UniqueIdentifier>{0e409ff0-f1f1-4a67-8194-ae0e2efba72b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MainScene\EnemyHealthComponent">
       <UniqueIdentifier>{e168a6cc-f142-4383-9573-920e2b2fd08d}</UniqueIdentifier>
     </Filter>
@@ -132,9 +129,6 @@
     </Filter>
     <Filter Include="MainScene\EnemyWaveBase\EnemyWave3">
       <UniqueIdentifier>{37875d69-45f9-4369-9201-3e17cb4d562a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MainScene\CollisionComponent\Enemy3CollisionComponent">
-      <UniqueIdentifier>{9f55002a-00c5-4326-a241-5d4e0e4cced9}</UniqueIdentifier>
     </Filter>
     <Filter Include="MainScene\CollisionComponent\MyBulletCollisionComponent">
       <UniqueIdentifier>{e47263de-357c-4f8e-9782-dc6dee019436}</UniqueIdentifier>
@@ -216,6 +210,15 @@
     </Filter>
     <Filter Include="MainScene\CollisionComponent\Boss1BulletCollisionComponent">
       <UniqueIdentifier>{a94cacf3-6427-4ddd-8389-12c424cbe79c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\CollisionComponent\EnemyBodyCollisionComponent">
+      <UniqueIdentifier>{2a525ae7-18d5-43b5-b1b5-b52767b6769a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy1CollisionComponent">
+      <UniqueIdentifier>{0e409ff0-f1f1-4a67-8194-ae0e2efba72b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy3CollisionComponent">
+      <UniqueIdentifier>{9f55002a-00c5-4326-a241-5d4e0e4cced9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -354,7 +357,7 @@
       <Filter>MainScene\LinearRotateComponent</Filter>
     </ClCompile>
     <ClCompile Include="Enemy1CollisionComponent.cpp">
-      <Filter>MainScene\CollisionComponent\Enemy1CollisionComponent</Filter>
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy1CollisionComponent</Filter>
     </ClCompile>
     <ClCompile Include="EnemyHealthComponent.cpp">
       <Filter>MainScene\EnemyHealthComponent</Filter>
@@ -414,7 +417,7 @@
       <Filter>MainScene\EnemyWaveBase\EnemyWave3</Filter>
     </ClCompile>
     <ClCompile Include="Enemy3CollisionComponent.cpp">
-      <Filter>MainScene\CollisionComponent\Enemy3CollisionComponent</Filter>
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy3CollisionComponent</Filter>
     </ClCompile>
     <ClCompile Include="MyBulletCollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent\MyBulletCollisionComponent</Filter>
@@ -497,7 +500,12 @@
     <ClCompile Include="PerformanceProfiler.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="ICollisionGeometry.cpp" />
+    <ClCompile Include="EnemyBodyCollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="ICollisionGeometry.cpp">
+      <Filter>MainScene\ICollisionGeometry</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -652,7 +660,7 @@
       <Filter>MainScene\LinearRotateComponent</Filter>
     </ClInclude>
     <ClInclude Include="Enemy1CollisionComponent.h">
-      <Filter>MainScene\CollisionComponent\Enemy1CollisionComponent</Filter>
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy1CollisionComponent</Filter>
     </ClInclude>
     <ClInclude Include="EnemyHealthComponent.h">
       <Filter>MainScene\EnemyHealthComponent</Filter>
@@ -718,7 +726,7 @@
       <Filter>MainScene\EnemyWaveBase\EnemyWave3</Filter>
     </ClInclude>
     <ClInclude Include="Enemy3CollisionComponent.h">
-      <Filter>MainScene\CollisionComponent\Enemy3CollisionComponent</Filter>
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy3CollisionComponent</Filter>
     </ClInclude>
     <ClInclude Include="MyBulletCollisionComponent.h">
       <Filter>MainScene\CollisionComponent\MyBulletCollisionComponent</Filter>
@@ -800,6 +808,9 @@
     </ClInclude>
     <ClInclude Include="PerformanceProfiler.h">
       <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBodyCollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

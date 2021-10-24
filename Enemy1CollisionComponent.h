@@ -1,5 +1,5 @@
 #pragma once
-#include "CollisionComponent.h"
+#include "EnemyBodyCollisionComponent.h"
 
 #include "CircleGeometry.h"
 #include "MainScene.h"
@@ -13,13 +13,12 @@ class ScoreManager;
 /// 自機，自機弾に当たったら体力減
 /// </summary>
 class Enemy1CollisionComponent
-	:public CollisionComponent
+	:public EnemyBodyCollisionComponent
 {
 public:
 	Enemy1CollisionComponent(GameObjectHandle object, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<ScoreManager> score_manager, ComponentHandle<EnemyHealthComponent> health);
 	~Enemy1CollisionComponent();
 	void Update() override;
-	void CheckHitComponent() override;
 	//衝突時のダメージ
 	static constexpr double damage_ = 200;
 private:
@@ -27,9 +26,5 @@ private:
 	CircleGeometry circle_around_[3];
 	//中心の円の方の円形当たり判定
 	CircleGeometry circle_center_;
-	//ダメージ報告用
-	ComponentHandle<EnemyHealthComponent> health_component_;
-	//スコア報告用
-	boost::shared_ptr<ScoreManager> score_manager_;
 };
 
