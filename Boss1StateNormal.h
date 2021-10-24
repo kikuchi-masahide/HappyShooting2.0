@@ -3,8 +3,6 @@
 
 #include "Math.h"
 #include "GameObject.h"
-#include "DrawTextureComponent.h"
-#include "DrawBoss1BulletComponent.h"
 
 /// <summary>
 /// –c‚ç‚ñ‚¾OŠpŒ`‚Ì’Êí’e‚ğŒ‚‚¿‘±‚¯‚éƒ‚[ƒh
@@ -29,9 +27,5 @@ private:
     static constexpr int mode_period_ = 480;
     //’e‘¬
     static constexpr double bullet_speed_ = 4.0;
-    std::vector<GameObjectHandle> next_bullet_;
-    std::vector<ComponentHandle<DrawBoss1BulletComponent>> bullet_texture_;
-    //next_bullet_[configured_]‚Ü‚Å’e‚ğ’Ç‰ÁÏ‚İ
-    int configured_;
 };
 
