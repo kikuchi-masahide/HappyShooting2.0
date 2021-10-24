@@ -3,6 +3,11 @@
 #include "Component.h"
 
 #include "Rect2.h"
+
+class CircleGeometry;
+class CupsuleGeometry;
+class PolygonGeometry;
+
 class CollisionComponent;
 
 /// <summary>
@@ -20,6 +25,16 @@ public:
 	{
 		return parent_comp_;
 	}
+	//‚±‚Ì}Œ`‚Æ‚Ì“–‚½‚è”»’è(double dispatch)
+	virtual bool Dispatch(ICollisionGeometry* geometry) = 0;
+	//‚±‚ÌŒ^‚Ì}Œ`‚Æ‚Ì“–‚½‚è”»’è
+	virtual bool IsInCollision(CircleGeometry* circle) = 0;
+	virtual bool IsInCollision(CupsuleGeometry* cupsule) = 0;
+	virtual bool IsInCollision(PolygonGeometry* polygon) = 0;
+	//“_p‚Æü•ªab‚Ì‹——£‚Ì2æ
+	static double Dist2(MatVec::Vector2 p, MatVec::Vector2 a, MatVec::Vector2 b);
+	//‚±‚Ì“_‚ª’¼üab‚Ì¶‘¤‚É‚ ‚é‚©”Û‚©”»’è
+	static bool IsPointOnLeft(MatVec::Vector2 p, MatVec::Vector2 a, MatVec::Vector2 b);
 private:
 	ComponentHandle<CollisionComponent> parent_comp_;
 };

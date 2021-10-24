@@ -214,6 +214,9 @@
     <Filter Include="MainScene\Boss1StateBase\Boss1StateNormal">
       <UniqueIdentifier>{040d3a32-c3a3-4927-8706-d208036967a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\CollisionComponent\Boss1BulletCollisionComponent">
+      <UniqueIdentifier>{a94cacf3-6427-4ddd-8389-12c424cbe79c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -494,6 +497,7 @@
     <ClCompile Include="PerformanceProfiler.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
+    <ClCompile Include="ICollisionGeometry.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />

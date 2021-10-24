@@ -18,11 +18,9 @@ public:
     inline Rect2 GetAABB() {
         return Rect2(min(a_(0), b_(0)) - r_, max(a_(0), b_(0)) + r_, min(a_(1), b_(1)) - r_, max(a_(1), b_(1)) + r_);
     }
-    bool IsCrossing(CircleGeometry& circle);
-    bool IsCrossing(PolygonGeometry& polygon);
-    bool IsCrossing(CupsuleGeometry& cupsule);
-private:
-    //ì_pÇ∆ê¸ï™abÇÃãóó£ÇÃ2èÊ
-    static double Dist2(MatVec::Vector2 p, MatVec::Vector2 a, MatVec::Vector2 b);
+    bool Dispatch(ICollisionGeometry* geometry) override;
+    bool IsInCollision(CircleGeometry* circle) override;
+    bool IsInCollision(CupsuleGeometry* cupsule) override;
+    bool IsInCollision(PolygonGeometry* polygon) override;
 };
 

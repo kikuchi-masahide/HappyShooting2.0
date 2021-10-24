@@ -32,13 +32,9 @@ public:
         }
         return Rect2(xmin, xmax, ymin, ymax);
     }
-    bool IsCrossing(CircleGeometry& circle);
-    bool IsCrossing(PolygonGeometry& polygon);
-    bool IsCrossing(CupsuleGeometry& cupsule);
-private:
-    //“_p‚Æü•ªab‚Ì‹——£‚Ì2æ
-    static double Dist2(MatVec::Vector2 p, MatVec::Vector2 a, MatVec::Vector2 b);
-    //‚±‚Ì“_‚ª’¼üab‚Ì¶‘¤‚É‚ ‚é‚©”Û‚©”»’è
-    static bool IsPointOnLeft(MatVec::Vector2 p, MatVec::Vector2 a, MatVec::Vector2 b);
+    bool Dispatch(ICollisionGeometry* geometry) override;
+    bool IsInCollision(CircleGeometry* circle) override;
+    bool IsInCollision(CupsuleGeometry* cupsule) override;
+    bool IsInCollision(PolygonGeometry* polygon) override;
 };
 

@@ -179,6 +179,7 @@
     <ClCompile Include="EnemyWaveBoss1.cpp" />
     <ClCompile Include="HBetapaint.cpp" />
     <ClCompile Include="HUIButton.cpp" />
+    <ClCompile Include="ICollisionGeometry.cpp" />
     <ClCompile Include="LazerCollisionComponent.cpp" />
     <ClCompile Include="Enemy5MoveComponent.cpp" />
     <ClCompile Include="Enemy5ShootComponent.cpp" />

@@ -21,11 +21,9 @@ public:
         double y = center_(1);
         return Rect2(x - radius_, x + radius_, y - radius_, y + radius_);
     };
-    /// <summary>
-    /// Ç±ÇÃâ~Ç∆åç∑ÅEè’ìÀÇµÇƒÇ¢ÇÈÇ©î€Ç©Çï‘Ç∑
-    /// </summary>
-    bool IsCrossing(CircleGeometry& circle2);
-    bool IsCrossing(PolygonGeometry& polygon);
-    bool IsCrossing(CupsuleGeometry& cupsule);
+    bool Dispatch(ICollisionGeometry* geometry) override;
+    bool IsInCollision(CircleGeometry* circle) override;
+    bool IsInCollision(CupsuleGeometry* cupsule) override;
+    bool IsInCollision(PolygonGeometry* polygon) override;
 };
 

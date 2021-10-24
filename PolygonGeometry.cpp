@@ -21,20 +21,27 @@ PolygonGeometry::PolygonGeometry()
 {
 }
 
-bool PolygonGeometry::IsCrossing(CircleGeometry& circle)
+bool PolygonGeometry::Dispatch(ICollisionGeometry* geometry)
 {
+	return geometry->IsInCollision(this);
+}
+
+bool PolygonGeometry::IsInCollision(CircleGeometry* circle)
+{
+	auto circle_center = circle->center_;
+	auto circle_radius = circle->radius_;
 	//各辺と円の当たり判定
 	//円の中心との距離が半径以下になる辺が一つでも存在すれば衝突
-	for (int n = 0; n < points_.size()-1; n++)
+	for (int n = 0; n < points_.size() - 1; n++)
 	{
-		double dist2 = Dist2(circle.center_, points_[n], points_[n + 1]);
-		if (dist2 <= circle.radius_ * circle.radius_)
+		double dist2 = ICollisionGeometry::Dist2(circle_center, points_[n], points_[n + 1]);
+		if (dist2 <= circle_radius * circle_radius)
 		{
 			return true;
 		}
 	}
-	double dist2 = Dist2(circle.center_, points_.back(), points_[0]);
-	if (dist2 <= circle.radius_ * circle.radius_)
+	double dist2 = ICollisionGeometry::Dist2(circle_center, points_.back(), points_[0]);
+	if (dist2 <= circle_radius * circle_radius)
 	{
 		return true;
 	}
@@ -42,45 +49,22 @@ bool PolygonGeometry::IsCrossing(CircleGeometry& circle)
 	//すべての辺から見て円の中心が左側にいれば衝突
 	for (int n = 0; n < points_.size() - 1; n++)
 	{
-		if (!IsPointOnLeft(circle.center_, points_[n], points_[n + 1]))
+		if (!ICollisionGeometry::IsPointOnLeft(circle_center, points_[n], points_[n + 1]))
 		{
 			return false;
 		}
 	}
-	return IsPointOnLeft(circle.center_, points_.back(), points_[0]);
+	return ICollisionGeometry::IsPointOnLeft(circle_center, points_.back(), points_[0]);
 }
 
-bool PolygonGeometry::IsCrossing(PolygonGeometry& polygon)
+bool PolygonGeometry::IsInCollision(CupsuleGeometry* cupsule)
 {
-	//今Polygonは敵機のみが持つ当たり判定なので，とりあえずfalse
+	//味方が敵に多角形の当たり判定を出すことはないため
 	return false;
 }
 
-bool PolygonGeometry::IsCrossing(CupsuleGeometry& cupsule)
+bool PolygonGeometry::IsInCollision(PolygonGeometry* polygon)
 {
-	return cupsule.IsCrossing(*this);
-}
-
-double PolygonGeometry::Dist2(MatVec::Vector2 p, MatVec::Vector2 a, MatVec::Vector2 b)
-{
-	//d=(b-a)/|b-a|
-	MatVec::Vector2 d = b - a;
-	d.Normalize();
-	double ddotap = MatVec::Dot(d, p - a);
-	if (ddotap < 0)
-	{
-		return (p - a).Norm2();
-	}
-	double ddotbp = MatVec::Dot(d, p - b);
-	if (ddotbp > 0)
-	{
-		return (p - b).Norm2();
-	}
-	double cross = MatVec::Cross(d, p - a);
-	return cross * cross;
-}
-
-bool PolygonGeometry::IsPointOnLeft(MatVec::Vector2 p, MatVec::Vector2 a, MatVec::Vector2 b)
-{
-	return (MatVec::Cross(b - a, p - a) > 0);
+	//味方が敵に多角形の当たり判定を出すことはないため
+	return false;
 }
