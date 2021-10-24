@@ -13,7 +13,7 @@ LazerCollisionComponent::~LazerCollisionComponent()
 
 void LazerCollisionComponent::Update()
 {
-	manager_->AddCupsuleGeometry(&cupsule_);
+	manager_->AddGeometry(&cupsule_);
 }
 
 void LazerCollisionComponent::CheckHitComponent()

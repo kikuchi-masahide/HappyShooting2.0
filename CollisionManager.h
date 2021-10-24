@@ -23,9 +23,8 @@ public:
 	/// ‘Scomponent‚ª‚Â}Œ`“¯m‚Ì“–‚½‚è”»’è‚ğÀs‚µCcomponent‚ÉÕ“Ë‚µ‚½component‚ğ‹³‚¦‚é
 	/// </summary>
 	void TraverseAll();
-	void AddCircleGeometry(CircleGeometry* circle);
-	void AddPolygonGeometry(PolygonGeometry* polygon);
-	void AddCupsuleGeometry(CupsuleGeometry* cupsule);
+	//‚±‚Ì}Œ`‚Ì“–‚½‚è”»’è‚ğ‰Á‚¦‚é
+	void AddGeometry(ICollisionGeometry* geometry);
 	//TODO:‚±‚ÌTag‚É(ƒNƒ‰ƒX“™‚Å?)eqŠÖŒW‚ğ“±“ü‚µC—á‚¦‚Î
 	//My::body
 	//  ::bullet
@@ -43,142 +42,9 @@ public:
 	};
 	CollisionUIScreen* const collision_ui_;
 private:
-	//geometry‚ÆCgeometry.aabb.lx <= geometry_arr[e].aabb.lx‚È‚égeometry_arr—v‘f‚Æ‚Ì“–‚½‚è”»’è
-	template<class T,class U>
-	void TraverseAllSub_leq(T* geometry, Rect2& aabb, std::vector<std::pair<U*, Rect2>>& geometry_arr);
-	//geometry_arr[ind]‚ÆC‚»‚êˆÈ~‚Ì“¯”z—ñ—v‘f‚Æ‚Ì“–‚½‚è”»’è
-	template<class T>
-	void TraverseAllSub_same(std::vector<std::pair<T*, Rect2>>& geometry_arr, unsigned int ind);
-	//geometry‚ÆCgeometry.aabb.lx < geometry_arr[e].aabb.lx‚È‚égeometry_arr—v‘f‚Æ‚Ì“–‚½‚è”»’è
-	template<class T,class U>
-	void TraverseAllSub_less(T* geometry, Rect2& aabb, std::vector<std::pair<U*, Rect2>>& geometry_arr);
 	//comp1‚Æcomp2‚Ìhit_comps_‚ÉC‚¨Œİ‚¢‚ğ’Ç‰Á‚·‚é
 	void NoticeEachOther(ComponentHandle<CollisionComponent> comp1, ComponentHandle<CollisionComponent> comp2);
-	std::vector<std::pair<CircleGeometry*, Rect2>> circles_;
-	std::vector<std::pair<PolygonGeometry*, Rect2>> polygons_;
-	std::vector<std::pair<CupsuleGeometry*, Rect2>> cupsules_;
+	std::vector<std::pair<ICollisionGeometry*, Rect2>> geometries_;
+	//geometries_[n]‚Ægeometries_[n+1]~geometries_.back()‘S‘Ì‚Æ‚Ì“–‚½‚è”»’è
+	void TraverseAllAgainst(int target);
 };
-
-template<class T,class U>
-inline void CollisionManager::TraverseAllSub_leq(T* geometry, Rect2& aabb, std::vector<std::pair<U*,Rect2>>& geometry_arr)
-{
-	//CircleGeometry
-	int s = -1, e = geometry_arr.size();
-	//geometry_arr[s].¶x < aabb.¶x <= geometry_arr[e].¶x
-	while (e - s > 1)
-	{
-		int m = (e + s) / 2;
-		Rect2& aabb2 = geometry_arr[m].second;
-		if (aabb2.GetLD()(0) < aabb.GetLD()(0))s = m;
-		else e = m;
-	}
-	//geometry_arr[e]`‚Ì}Œ`‚Æ‚Ì“–‚½‚è”»’è
-	for (unsigned int n = e; n < geometry_arr.size(); n++)
-	{
-		U* geometry2 = geometry_arr[n].first;
-		Rect2& aabb2 = geometry_arr[n].second;
-		//geometry‚Ì‰Ex<geometry2‚Ì¶x‚É‚È‚Á‚½‚çI—¹
-		if (aabb.GetRU()(0) < aabb2.GetLD()(0))break;
-		//AABB‚ªd‚È‚ç‚È‚¯‚ê‚ÎŸ‚Ö(yÀ•W‚ğŒ©‚é)
-		if (
-			aabb.GetRU()(1) < aabb2.GetLD()(1) ||
-			aabb2.GetRU()(1) < aabb.GetLD()(1)
-			)continue;
-		//“¯‚¶ƒRƒ“ƒ|[ƒlƒ“ƒg“à‚Ì}Œ`“¯m‚ÍÕ“Ë‚³‚¹‚È‚¢
-		ComponentHandle<CollisionComponent> parent = geometry->GetParent();
-		ComponentHandle<CollisionComponent> parent2 = geometry2->GetParent();
-		if (parent == parent2)continue;
-		//TODO:...
-		//©‹@’e“¯mC“G’e“¯m‚È‚Ç‚Ì“–‚½‚è”»’è‚ğœŠO
-		if (
-			(parent->tag_ == Tag::Myself || parent->tag_ == Tag::MyBullet) &&
-			(parent2->tag_ == Tag::Myself || parent2->tag_ == Tag::MyBullet)
-			)continue;
-		if (
-			(parent->tag_ == Tag::EnemyBody || parent->tag_ == Tag::EnemyBullet || parent->tag_ == Tag::EnemyBody) &&
-			(parent2->tag_ == Tag::EnemyBody || parent2->tag_ == Tag::EnemyBullet || parent->tag_ == Tag::EnemyBody)
-			)continue;
-		if (geometry->IsCrossing(*geometry2))
-		{
-			NoticeEachOther(parent,parent2);
-		}
-	}
-}
-
-template<class T>
-inline void CollisionManager::TraverseAllSub_same(std::vector<std::pair<T*, Rect2>>& geometry_arr, unsigned int ind)
-{
-	T* geometry = geometry_arr[ind].first;
-	Rect2& aabb = geometry_arr[ind].second;
-	for (unsigned int n = ind + 1; n < geometry_arr.size(); n++)
-	{
-		T* geometry2 = geometry_arr[n].first;
-		Rect2& aabb2 = geometry_arr[n].second;
-		if (aabb.GetRU()(0) < aabb2.GetLD()(0))break;
-		if (
-			aabb.GetRU()(1) < aabb2.GetLD()(1) ||
-			aabb2.GetRU()(1) < aabb.GetLD()(1)
-			)continue;
-		ComponentHandle<CollisionComponent> parent = geometry->GetParent();
-		ComponentHandle<CollisionComponent> parent2 = geometry2->GetParent();
-		if (parent == parent2)continue;
-		//©‹@’e“¯mC“G’e“¯m‚È‚Ç‚Ì“–‚½‚è”»’è‚ğœŠO
-		if (
-			(parent->tag_ == Tag::Myself || parent->tag_ == Tag::MyBullet) &&
-			(parent2->tag_ == Tag::Myself || parent2->tag_ == Tag::MyBullet)
-			)continue;
-		if (
-			(parent->tag_ == Tag::EnemyBody || parent->tag_ == Tag::EnemyBullet || parent->tag_ == Tag::EnemyBody) &&
-			(parent2->tag_ == Tag::EnemyBody || parent2->tag_ == Tag::EnemyBullet || parent->tag_ == Tag::EnemyBody)
-			)continue;
-		if (geometry->IsCrossing(*geometry2))
-		{
-			NoticeEachOther(parent, parent2);
-		}
-	}
-}
-
-template<class T, class U>
-inline void CollisionManager::TraverseAllSub_less(T* geometry, Rect2& aabb, std::vector<std::pair<U*, Rect2>>& geometry_arr)
-{
-	//CircleGeometry
-	int s = -1, e = geometry_arr.size();
-	//geometry_arr[s].¶x <= aabb.¶x < geometry_arr[e].¶x
-	while (e - s > 1)
-	{
-		int m = (e + s) / 2;
-		Rect2& aabb2 = geometry_arr[m].second;
-		if (aabb2.GetLD()(0) < aabb.GetLD()(0))s = m;
-		else e = m;
-	}
-	//geometry_arr[e]`‚Ì}Œ`‚Æ‚Ì“–‚½‚è”»’è
-	for (unsigned int n = e; n < geometry_arr.size(); n++)
-	{
-		U* geometry2 = geometry_arr[n].first;
-		Rect2& aabb2 = geometry_arr[n].second;
-		//geometry‚Ì‰Ex<geometry2‚Ì¶x‚É‚È‚Á‚½‚çI—¹
-		if (aabb.GetRU()(0) < aabb2.GetLD()(0))break;
-		//AABB‚ªd‚È‚ç‚È‚¯‚ê‚ÎŸ‚Ö(yÀ•W‚ğŒ©‚é)
-		if (
-			aabb.GetRU()(1) < aabb2.GetLD()(1) ||
-			aabb2.GetRU()(1) < aabb.GetLD()(1)
-			)continue;
-		//“¯‚¶ƒRƒ“ƒ|[ƒlƒ“ƒg“à‚Ì}Œ`“¯m‚ÍÕ“Ë‚³‚¹‚È‚¢
-		ComponentHandle<CollisionComponent> parent = geometry->GetParent();
-		ComponentHandle<CollisionComponent> parent2 = geometry2->GetParent();
-		if (parent == parent2)continue;
-		//©‹@’e“¯mC“G’e“¯m‚È‚Ç‚Ì“–‚½‚è”»’è‚ğœŠO
-		if (
-			(parent->tag_ == Tag::Myself || parent->tag_ == Tag::MyBullet) &&
-			(parent2->tag_ == Tag::Myself || parent2->tag_ == Tag::MyBullet)
-			)continue;
-		if (
-			(parent->tag_ == Tag::EnemyBody || parent->tag_ == Tag::EnemyBullet || parent->tag_ == Tag::EnemyBody) &&
-			(parent2->tag_ == Tag::EnemyBody || parent2->tag_ == Tag::EnemyBullet || parent->tag_ == Tag::EnemyBody)
-			)continue;
-		if (geometry->IsCrossing(*geometry2))
-		{
-			NoticeEachOther(parent, parent2);
-		}
-	}
-}

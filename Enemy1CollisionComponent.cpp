@@ -25,13 +25,13 @@ void Enemy1CollisionComponent::Update()
 	for (unsigned int n = 0; n < 3; n++)
 	{
 		circle_around_[n].center_ = MatVec::Vector2(center(0) + dist * cos(angle), center(1) + dist * sin(angle));
-		manager_->AddCircleGeometry(&(circle_around_[n]));
+		manager_->AddGeometry(&(circle_around_[n]));
 		angle += 2 * PI / 3;
 	}
 	CircleGeometry circle(
 		This<CollisionComponent>(), center, 4
 	);
-	manager_->AddCircleGeometry(&circle_center_);
+	manager_->AddGeometry(&circle_center_);
 }
 
 void Enemy1CollisionComponent::CheckHitComponent()
