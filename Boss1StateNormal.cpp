@@ -6,7 +6,7 @@
 #include "Scene.h"
 #include "LinearMoveComponent.h"
 #include "DrawTextureComponent.h"
-
+#include "Boss1BulletCollisionComponent.h"
 
 Boss1StateNormal::Boss1StateNormal(ComponentHandle<Boss1MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager)
 	:Boss1StateBase(mediator,layer_manager,score_manager,collision_manager),
@@ -32,6 +32,7 @@ void Boss1StateNormal::Update()
 			bullet_texture_[n]->width_ = 20.0;
 			bullet_texture_[n]->height_ = 20.0;
 			next_bullet_[n]->AddUpdateComponent<LinearMoveComponent>(MatVec::Vector2(cos(deg), sin(deg)) * bullet_speed_, 20.0);
+			next_bullet_[n]->AddUpdateComponent<Boss1BulletCollisionComponent>(collision_manager_);
 			deg += delta;
 		}
 		configured_ = -1;

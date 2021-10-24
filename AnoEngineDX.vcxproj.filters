@@ -506,6 +506,9 @@
     <ClCompile Include="ICollisionGeometry.cpp">
       <Filter>MainScene\ICollisionGeometry</Filter>
     </ClCompile>
+    <ClCompile Include="Boss1BulletCollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\Boss1BulletCollisionComponent</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -811,6 +814,9 @@
     </ClInclude>
     <ClInclude Include="EnemyBodyCollisionComponent.h">
       <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss1BulletCollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\Boss1BulletCollisionComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
