@@ -1,7 +1,7 @@
 #include "code/Engine/window.h"
 #include "code/Engine/Game.h"
 #include "code/TitleScene/TitleScene.h"
-#include "DrawBoss1BulletComponent.h"
+#include "code/MainScene/DrawBoss1BulletComponent.h"
 
 LRESULT WindowProcedure(HWND, UINT, WPARAM, LPARAM);
 void LoadTextures(Game* _game);

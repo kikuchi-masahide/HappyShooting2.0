@@ -228,191 +228,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="MainScene.cpp">
-      <Filter>MainScene\MainScene</Filter>
-    </ClCompile>
-    <ClCompile Include="MainSceneBaseLayer.cpp">
-      <Filter>MainScene\MainSceneBaseLayer</Filter>
-    </ClCompile>
-    <ClCompile Include="MainSceneBasicLayer.cpp">
-      <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
-    </ClCompile>
-    <ClCompile Include="MainSceneDrawComponent.cpp">
-      <Filter>MainScene\MainSceneDrawComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="DrawTextureComponent.cpp">
-      <Filter>MainScene\MainSceneDrawComponent\DrawTextureComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="MainSceneUIScreen.cpp">
-      <Filter>MainScene\MainSceneUIScreen</Filter>
-    </ClCompile>
-    <ClCompile Include="MyselfMediatorComponent.cpp">
-      <Filter>MainScene\MyselfMediatorComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="DrawNormalBulletComponent.cpp">
-      <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="LinearMoveComponent.cpp">
-      <Filter>MainScene\LinearMoveComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionManager.cpp">
-      <Filter>MainScene\CollisionManager</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionComponent.cpp">
-      <Filter>MainScene\CollisionComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="CircleGeometry.cpp">
-      <Filter>MainScene\ICollisionGeometry\CircleGeometry</Filter>
-    </ClCompile>
-    <ClCompile Include="MyselfAddNormalBulletComponent.cpp">
-      <Filter>MainScene\MyselfAddNormalBulletComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="MyselfCollisionComponent.cpp">
-      <Filter>MainScene\CollisionComponent\MyselfCollisionComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="LinearRotateComponent.cpp">
-      <Filter>MainScene\LinearRotateComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy1CollisionComponent.cpp">
-      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy1CollisionComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyHealthComponent.cpp">
-      <Filter>MainScene\EnemyHealthComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="DrawDeathEffectComponent.cpp">
-      <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="LayerManager.cpp">
-      <Filter>MainScene\LayerManager</Filter>
-    </ClCompile>
-    <ClCompile Include="ScoreManager.cpp">
-      <Filter>MainScene\ScoreManager</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyWaveManager.cpp">
-      <Filter>MainScene\EnemyWaveManager</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyWaveBase.cpp">
-      <Filter>MainScene\EnemyWaveBase</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyWave1.cpp">
-      <Filter>MainScene\EnemyWaveBase\EnemyWave1</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy1MoveComponent.cpp">
-      <Filter>MainScene\Enemy1MoveComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="MyselfAngleComponent.cpp">
-      <Filter>MainScene\MyselfAngleComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="MyselfConditionBase.cpp">
-      <Filter>MainScene\MyselfConditionBase</Filter>
-    </ClCompile>
-    <ClCompile Include="MyselfNormalCondition.cpp">
-      <Filter>MainScene\MyselfConditionBase\MyselfNormalCondition</Filter>
-    </ClCompile>
-    <ClCompile Include="MyselfRevivingCondition.cpp">
-      <Filter>MainScene\MyselfConditionBase\MyselfRevivingPosState</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyWave2.cpp">
-      <Filter>MainScene\EnemyWaveBase\EnemyWave2</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy3MoveComponent.cpp">
-      <Filter>MainScene\Enemy3MoveComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyWave3.cpp">
-      <Filter>MainScene\EnemyWaveBase\EnemyWave3</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy3CollisionComponent.cpp">
-      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy3CollisionComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="MyBulletCollisionComponent.cpp">
-      <Filter>MainScene\CollisionComponent\MyBulletCollisionComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="NormalShootComponent.cpp">
-      <Filter>MainScene\NormalShootComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="NormalBulletCollisionComponent.cpp">
-      <Filter>MainScene\CollisionComponent\NormalBulletCollisionComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="DrawHealthBarComponent.cpp">
-      <Filter>MainScene\MainSceneDrawComponent\DrawHealthBarComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy5MoveComponent.cpp">
-      <Filter>MainScene\Enemy5MoveComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy5ShootComponent.cpp">
-      <Filter>MainScene\Enemy5ShootComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyWave45.cpp">
-      <Filter>MainScene\EnemyWaveBase\EnemyWave45</Filter>
-    </ClCompile>
-    <ClCompile Include="DrawAnimationComponent.cpp">
-      <Filter>MainScene\MainSceneDrawComponent\DrawAnimationComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy4BehaviorComponent.cpp">
-      <Filter>MainScene\CollisionComponent\Enemy4BehaviorComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="DrawLazerComponent.cpp">
-      <Filter>MainScene\MainSceneDrawComponent\DrawLazerComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="PolygonGeometry.cpp">
-      <Filter>MainScene\ICollisionGeometry\PolygonGeometry</Filter>
-    </ClCompile>
-    <ClCompile Include="CupsuleGeometry.cpp">
-      <Filter>MainScene\ICollisionGeometry\CupsuleGeometry</Filter>
-    </ClCompile>
-    <ClCompile Include="LazerCollisionComponent.cpp">
-      <Filter>MainScene\CollisionComponent\LazerCollisionComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="PauseUIScreen.cpp">
-      <Filter>MainScene\PauseUIScreen</Filter>
-    </ClCompile>
-    <ClCompile Include="TransGradUIScreen.cpp">
-      <Filter>MainScene\TransGradUIScreen</Filter>
-    </ClCompile>
-    <ClCompile Include="DrawBoss1Component.cpp">
-      <Filter>MainScene\MainSceneDrawComponent\DrawBoss1Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss1MediatorComponent.cpp">
-      <Filter>MainScene\Boss1MediatorComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss1StateBase.cpp">
-      <Filter>MainScene\Boss1StateBase</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss1StateEntering.cpp">
-      <Filter>MainScene\Boss1StateBase\Boss1StateEntering</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyWaveBoss1.cpp">
-      <Filter>MainScene\EnemyWaveBase\EnemyWaveBoss1</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss1CollisionComponent.cpp">
-      <Filter>MainScene\CollisionComponent\Boss1CollisionComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionUIScreen.cpp">
-      <Filter>MainScene\CollisionUIScreen</Filter>
-    </ClCompile>
-    <ClCompile Include="PolygonGeometryDrawer.cpp">
-      <Filter>MainScene\PolygonGeometryDrawer</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss1StateNormal.cpp">
-      <Filter>MainScene\Boss1StateBase\Boss1StateNormal</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyBodyCollisionComponent.cpp">
-      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="ICollisionGeometry.cpp">
-      <Filter>MainScene\ICollisionGeometry</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss1BulletCollisionComponent.cpp">
-      <Filter>MainScene\CollisionComponent\Boss1BulletCollisionComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="AABBTree.cpp">
-      <Filter>MainScene\AABBTree</Filter>
-    </ClCompile>
-    <ClCompile Include="DrawBoss1BulletComponent.cpp">
-      <Filter>MainScene\MainSceneDrawComponent\DrawBoss1Bullet</Filter>
-    </ClCompile>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
       <Filter>TitleScene\TitleScene</Filter>
     </ClCompile>
@@ -521,192 +336,193 @@
     <ClCompile Include="code\Engine\window.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
+    <ClCompile Include="code\MainScene\AABBTree.cpp">
+      <Filter>MainScene\AABBTree</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss1MediatorComponent.cpp">
+      <Filter>MainScene\Boss1MediatorComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss1StateBase.cpp">
+      <Filter>MainScene\Boss1StateBase</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss1StateNormal.cpp">
+      <Filter>MainScene\Boss1StateBase\Boss1StateNormal</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss1StateEntering.cpp">
+      <Filter>MainScene\Boss1StateBase\Boss1StateEntering</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\CollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss1BulletCollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\Boss1BulletCollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss1CollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\Boss1CollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Enemy4BehaviorComponent.cpp">
+      <Filter>MainScene\CollisionComponent\Enemy4BehaviorComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Enemy1CollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy1CollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Enemy3CollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy3CollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\EnemyBodyCollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\LazerCollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\LazerCollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MyBulletCollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\MyBulletCollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MyselfCollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\MyselfCollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\NormalBulletCollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\NormalBulletCollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\CollisionManager.cpp">
+      <Filter>MainScene\CollisionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\CollisionUIScreen.cpp">
+      <Filter>MainScene\CollisionUIScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Enemy1MoveComponent.cpp">
+      <Filter>MainScene\Enemy1MoveComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Enemy3MoveComponent.cpp">
+      <Filter>MainScene\Enemy3MoveComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Enemy5MoveComponent.cpp">
+      <Filter>MainScene\Enemy5MoveComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Enemy5ShootComponent.cpp">
+      <Filter>MainScene\Enemy5ShootComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\EnemyHealthComponent.cpp">
+      <Filter>MainScene\EnemyHealthComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\EnemyWave1.cpp">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave1</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\EnemyWave2.cpp">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave2</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\EnemyWave3.cpp">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave3</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\EnemyWave45.cpp">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave45</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\EnemyWaveBoss1.cpp">
+      <Filter>MainScene\EnemyWaveBase\EnemyWaveBoss1</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\EnemyWaveBase.cpp">
+      <Filter>MainScene\EnemyWaveBase</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\EnemyWaveManager.cpp">
+      <Filter>MainScene\EnemyWaveManager</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\CircleGeometry.cpp">
+      <Filter>MainScene\ICollisionGeometry\CircleGeometry</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\CupsuleGeometry.cpp">
+      <Filter>MainScene\ICollisionGeometry\CupsuleGeometry</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\PolygonGeometry.cpp">
+      <Filter>MainScene\ICollisionGeometry\PolygonGeometry</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\ICollisionGeometry.cpp">
+      <Filter>MainScene\ICollisionGeometry</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\LayerManager.cpp">
+      <Filter>MainScene\LayerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\LinearMoveComponent.cpp">
+      <Filter>MainScene\LinearMoveComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\LinearRotateComponent.cpp">
+      <Filter>MainScene\LinearRotateComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MainScene.cpp">
+      <Filter>MainScene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MainSceneBasicLayer.cpp">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MainSceneBaseLayer.cpp">
+      <Filter>MainScene\MainSceneBaseLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\DrawAnimationComponent.cpp">
+      <Filter>MainScene\MainSceneDrawComponent\DrawAnimationComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\DrawBoss1BulletComponent.cpp">
+      <Filter>MainScene\MainSceneDrawComponent\DrawBoss1Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\DrawBoss1Component.cpp">
+      <Filter>MainScene\MainSceneDrawComponent\DrawBoss1Component</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\DrawDeathEffectComponent.cpp">
+      <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\DrawHealthBarComponent.cpp">
+      <Filter>MainScene\MainSceneDrawComponent\DrawHealthBarComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\DrawLazerComponent.cpp">
+      <Filter>MainScene\MainSceneDrawComponent\DrawLazerComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\DrawNormalBulletComponent.cpp">
+      <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\DrawTextureComponent.cpp">
+      <Filter>MainScene\MainSceneDrawComponent\DrawTextureComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MainSceneDrawComponent.cpp">
+      <Filter>MainScene\MainSceneDrawComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MainSceneUIScreen.cpp">
+      <Filter>MainScene\MainSceneUIScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MyselfAddNormalBulletComponent.cpp">
+      <Filter>MainScene\MyselfAddNormalBulletComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MyselfAngleComponent.cpp">
+      <Filter>MainScene\MyselfAngleComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MyselfNormalCondition.cpp">
+      <Filter>MainScene\MyselfConditionBase\MyselfNormalCondition</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MyselfRevivingCondition.cpp">
+      <Filter>MainScene\MyselfConditionBase\MyselfRevivingPosState</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MyselfConditionBase.cpp">
+      <Filter>MainScene\MyselfConditionBase</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MyselfMediatorComponent.cpp">
+      <Filter>MainScene\MyselfMediatorComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\NormalShootComponent.cpp">
+      <Filter>MainScene\NormalShootComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\PauseUIScreen.cpp">
+      <Filter>MainScene\PauseUIScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\PolygonGeometryDrawer.cpp">
+      <Filter>MainScene\PolygonGeometryDrawer</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\ScoreManager.cpp">
+      <Filter>MainScene\ScoreManager</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\TransGradUIScreen.cpp">
+      <Filter>MainScene\TransGradUIScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="MainScene.h">
-      <Filter>MainScene\MainScene</Filter>
-    </ClInclude>
-    <ClInclude Include="MainSceneBaseLayer.h">
-      <Filter>MainScene\MainSceneBaseLayer</Filter>
-    </ClInclude>
-    <ClInclude Include="MainSceneBasicLayer.h">
-      <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
-    </ClInclude>
-    <ClInclude Include="MainSceneDrawComponent.h">
-      <Filter>MainScene\MainSceneDrawComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="DrawTextureComponent.h">
-      <Filter>MainScene\MainSceneDrawComponent\DrawTextureComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="MainSceneUIScreen.h">
-      <Filter>MainScene\MainSceneUIScreen</Filter>
-    </ClInclude>
-    <ClInclude Include="MyselfMediatorComponent.h">
-      <Filter>MainScene\MyselfMediatorComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="DrawNormalBulletComponent.h">
-      <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="LinearMoveComponent.h">
-      <Filter>MainScene\LinearMoveComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionManager.h">
-      <Filter>MainScene\CollisionManager</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionComponent.h">
-      <Filter>MainScene\CollisionComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="ICollisionGeometry.h">
-      <Filter>MainScene\ICollisionGeometry</Filter>
-    </ClInclude>
-    <ClInclude Include="CircleGeometry.h">
-      <Filter>MainScene\ICollisionGeometry\CircleGeometry</Filter>
-    </ClInclude>
-    <ClInclude Include="MyselfAddNormalBulletComponent.h">
-      <Filter>MainScene\MyselfAddNormalBulletComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="MyselfCollisionComponent.h">
-      <Filter>MainScene\CollisionComponent\MyselfCollisionComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="LinearRotateComponent.h">
-      <Filter>MainScene\LinearRotateComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy1CollisionComponent.h">
-      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy1CollisionComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyHealthComponent.h">
-      <Filter>MainScene\EnemyHealthComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="DrawDeathEffectComponent.h">
-      <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="LayerManager.h">
-      <Filter>MainScene\LayerManager</Filter>
-    </ClInclude>
-    <ClInclude Include="ScoreManager.h">
-      <Filter>MainScene\ScoreManager</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyWaveManager.h">
-      <Filter>MainScene\EnemyWaveManager</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyWaveBase.h">
-      <Filter>MainScene\EnemyWaveBase</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyWave1.h">
-      <Filter>MainScene\EnemyWaveBase\EnemyWave1</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy1MoveComponent.h">
-      <Filter>MainScene\Enemy1MoveComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="MyselfAngleComponent.h">
-      <Filter>MainScene\MyselfAngleComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="MyselfConditionBase.h">
-      <Filter>MainScene\MyselfConditionBase</Filter>
-    </ClInclude>
-    <ClInclude Include="MyselfNormalCondition.h">
-      <Filter>MainScene\MyselfConditionBase\MyselfNormalCondition</Filter>
-    </ClInclude>
-    <ClInclude Include="MyselfRevivingCondition.h">
-      <Filter>MainScene\MyselfConditionBase\MyselfRevivingPosState</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyWave2.h">
-      <Filter>MainScene\EnemyWaveBase\EnemyWave2</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy3MoveComponent.h">
-      <Filter>MainScene\Enemy3MoveComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyWave3.h">
-      <Filter>MainScene\EnemyWaveBase\EnemyWave3</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy3CollisionComponent.h">
-      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy3CollisionComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="MyBulletCollisionComponent.h">
-      <Filter>MainScene\CollisionComponent\MyBulletCollisionComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="NormalShootComponent.h">
-      <Filter>MainScene\NormalShootComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="NormalBulletCollisionComponent.h">
-      <Filter>MainScene\CollisionComponent\NormalBulletCollisionComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="DrawHealthBarComponent.h">
-      <Filter>MainScene\MainSceneDrawComponent\DrawHealthBarComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy5MoveComponent.h">
-      <Filter>MainScene\Enemy5MoveComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy5ShootComponent.h">
-      <Filter>MainScene\Enemy5ShootComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyWave45.h">
-      <Filter>MainScene\EnemyWaveBase\EnemyWave45</Filter>
-    </ClInclude>
-    <ClInclude Include="DrawAnimationComponent.h">
-      <Filter>MainScene\MainSceneDrawComponent\DrawAnimationComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy4BehaviorComponent.h">
-      <Filter>MainScene\CollisionComponent\Enemy4BehaviorComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="DrawLazerComponent.h">
-      <Filter>MainScene\MainSceneDrawComponent\DrawLazerComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="PolygonGeometry.h">
-      <Filter>MainScene\ICollisionGeometry\PolygonGeometry</Filter>
-    </ClInclude>
-    <ClInclude Include="CupsuleGeometry.h">
-      <Filter>MainScene\ICollisionGeometry\CupsuleGeometry</Filter>
-    </ClInclude>
-    <ClInclude Include="LazerCollisionComponent.h">
-      <Filter>MainScene\CollisionComponent\LazerCollisionComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="PauseUIScreen.h">
-      <Filter>MainScene\PauseUIScreen</Filter>
-    </ClInclude>
-    <ClInclude Include="TransGradUIScreen.h">
-      <Filter>MainScene\TransGradUIScreen</Filter>
-    </ClInclude>
-    <ClInclude Include="DrawBoss1Component.h">
-      <Filter>MainScene\MainSceneDrawComponent\DrawBoss1Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss1MediatorComponent.h">
-      <Filter>MainScene\Boss1MediatorComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss1StateBase.h">
-      <Filter>MainScene\Boss1StateBase</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss1StateEntering.h">
-      <Filter>MainScene\Boss1StateBase\Boss1StateEntering</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyWaveBoss1.h">
-      <Filter>MainScene\EnemyWaveBase\EnemyWaveBoss1</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss1CollisionComponent.h">
-      <Filter>MainScene\CollisionComponent\Boss1CollisionComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionUIScreen.h">
-      <Filter>MainScene\CollisionUIScreen</Filter>
-    </ClInclude>
-    <ClInclude Include="PolygonGeometryDrawer.h">
-      <Filter>MainScene\PolygonGeometryDrawer</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss1StateNormal.h">
-      <Filter>MainScene\Boss1StateBase\Boss1StateNormal</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyBodyCollisionComponent.h">
-      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss1BulletCollisionComponent.h">
-      <Filter>MainScene\CollisionComponent\Boss1BulletCollisionComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="AABBTree.h">
-      <Filter>MainScene\AABBTree</Filter>
-    </ClInclude>
-    <ClInclude Include="DrawBoss1BulletComponent.h">
-      <Filter>MainScene\MainSceneDrawComponent\DrawBoss1Bullet</Filter>
-    </ClInclude>
     <ClInclude Include="code\TitleScene\TitleScene.h">
       <Filter>TitleScene\TitleScene</Filter>
     </ClInclude>
@@ -836,6 +652,190 @@
     <ClInclude Include="code\Engine\window.h">
       <Filter>Engine</Filter>
     </ClInclude>
+    <ClInclude Include="code\MainScene\AABBTree.h">
+      <Filter>MainScene\AABBTree</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss1MediatorComponent.h">
+      <Filter>MainScene\Boss1MediatorComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss1StateBase.h">
+      <Filter>MainScene\Boss1StateBase</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss1StateNormal.h">
+      <Filter>MainScene\Boss1StateBase\Boss1StateNormal</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss1StateEntering.h">
+      <Filter>MainScene\Boss1StateBase\Boss1StateEntering</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\CollisionComponent.h">
+      <Filter>MainScene\CollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss1BulletCollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\Boss1BulletCollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss1CollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\Boss1CollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Enemy4BehaviorComponent.h">
+      <Filter>MainScene\CollisionComponent\Enemy4BehaviorComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Enemy1CollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy1CollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Enemy3CollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy3CollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\EnemyBodyCollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\LazerCollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\LazerCollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MyBulletCollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\MyBulletCollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MyselfCollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\MyselfCollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\NormalBulletCollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\NormalBulletCollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\CollisionManager.h">
+      <Filter>MainScene\CollisionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\CollisionUIScreen.h">
+      <Filter>MainScene\CollisionUIScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Enemy1MoveComponent.h">
+      <Filter>MainScene\Enemy1MoveComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Enemy3MoveComponent.h">
+      <Filter>MainScene\Enemy3MoveComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Enemy5MoveComponent.h">
+      <Filter>MainScene\Enemy5MoveComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Enemy5ShootComponent.h">
+      <Filter>MainScene\Enemy5ShootComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\EnemyHealthComponent.h">
+      <Filter>MainScene\EnemyHealthComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\EnemyWave1.h">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave1</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\EnemyWave2.h">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave2</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\EnemyWave3.h">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave3</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\EnemyWave45.h">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave45</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\EnemyWaveBoss1.h">
+      <Filter>MainScene\EnemyWaveBase\EnemyWaveBoss1</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\EnemyWaveBase.h">
+      <Filter>MainScene\EnemyWaveBase</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\EnemyWaveManager.h">
+      <Filter>MainScene\EnemyWaveManager</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\CircleGeometry.h">
+      <Filter>MainScene\ICollisionGeometry\CircleGeometry</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\CupsuleGeometry.h">
+      <Filter>MainScene\ICollisionGeometry\CupsuleGeometry</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\PolygonGeometry.h">
+      <Filter>MainScene\ICollisionGeometry\PolygonGeometry</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\ICollisionGeometry.h">
+      <Filter>MainScene\ICollisionGeometry</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\LayerManager.h">
+      <Filter>MainScene\LayerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\LinearMoveComponent.h">
+      <Filter>MainScene\LinearMoveComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\LinearRotateComponent.h">
+      <Filter>MainScene\LinearRotateComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MainScene.h">
+      <Filter>MainScene\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MainSceneBasicLayer.h">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneBasicLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MainSceneBaseLayer.h">
+      <Filter>MainScene\MainSceneBaseLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\DrawAnimationComponent.h">
+      <Filter>MainScene\MainSceneDrawComponent\DrawAnimationComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\DrawBoss1BulletComponent.h">
+      <Filter>MainScene\MainSceneDrawComponent\DrawBoss1Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\DrawBoss1Component.h">
+      <Filter>MainScene\MainSceneDrawComponent\DrawBoss1Component</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\DrawDeathEffectComponent.h">
+      <Filter>MainScene\MainSceneDrawComponent\DrawDeathEffectComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\DrawHealthBarComponent.h">
+      <Filter>MainScene\MainSceneDrawComponent\DrawHealthBarComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\DrawLazerComponent.h">
+      <Filter>MainScene\MainSceneDrawComponent\DrawLazerComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\DrawNormalBulletComponent.h">
+      <Filter>MainScene\MainSceneDrawComponent\DrawNormalBulletComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\DrawTextureComponent.h">
+      <Filter>MainScene\MainSceneDrawComponent\DrawTextureComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MainSceneDrawComponent.h">
+      <Filter>MainScene\MainSceneDrawComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MainSceneUIScreen.h">
+      <Filter>MainScene\MainSceneUIScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MyselfAddNormalBulletComponent.h">
+      <Filter>MainScene\MyselfAddNormalBulletComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MyselfAngleComponent.h">
+      <Filter>MainScene\MyselfAngleComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MyselfNormalCondition.h">
+      <Filter>MainScene\MyselfConditionBase\MyselfNormalCondition</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MyselfRevivingCondition.h">
+      <Filter>MainScene\MyselfConditionBase\MyselfRevivingPosState</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MyselfConditionBase.h">
+      <Filter>MainScene\MyselfConditionBase</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MyselfMediatorComponent.h">
+      <Filter>MainScene\MyselfMediatorComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\NormalShootComponent.h">
+      <Filter>MainScene\NormalShootComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\PauseUIScreen.h">
+      <Filter>MainScene\PauseUIScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\PolygonGeometryDrawer.h">
+      <Filter>MainScene\PolygonGeometryDrawer</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\ScoreManager.h">
+      <Filter>MainScene\ScoreManager</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\TransGradUIScreen.h">
+      <Filter>MainScene\TransGradUIScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\DrawHealthBarComponent_header.hlsli">

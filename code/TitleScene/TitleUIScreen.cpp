@@ -2,7 +2,7 @@
 
 #include "TitleScene.h"
 #include "../Engine/Game.h"
-#include "../MainScene.h"
+#include "../MainScene/MainScene.h"
 
 TitleUIScreen::TitleUIScreen(Scene* scene)
 //下部オブジェクトのアップデートは許可，入力は渡さない
