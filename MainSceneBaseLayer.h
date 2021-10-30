@@ -1,7 +1,7 @@
 #pragma once
-#include "Layer.h"
-#include "Game.h"
-#include "ComponentHandle.h"
+#include "code/Engine/Layer.h"
+#include "code/Engine/Game.h"
+#include "code/Engine/Component.h"
 
 class MainSceneDrawComponent;
 class MyselfPosAndAngleComponent;

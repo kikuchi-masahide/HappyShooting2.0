@@ -1,6 +1,5 @@
 #include "ShaderManager.h"
 #include "Game.h"
-#include "DX12ConfigEnums.h"
 #include "Log.h"
 
 ShaderManager::ShaderManager(Game* const _game)

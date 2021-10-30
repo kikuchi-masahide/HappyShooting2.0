@@ -2,7 +2,7 @@
 #include "MyselfAngleComponent.h"
 
 #include "LayerManager.h"
-#include "Scene.h"
+#include "code/Engine/Scene.h"
 
 MyselfAngleComponent::MyselfAngleComponent(GameObjectHandle handle, boost::shared_ptr<LayerManager> layer_manager)
 	:Component(handle,90),

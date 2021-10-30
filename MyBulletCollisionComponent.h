@@ -1,7 +1,7 @@
 #pragma once
 #include "CollisionComponent.h"
 
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 #include "CircleGeometry.h"
 
 class MainScene;

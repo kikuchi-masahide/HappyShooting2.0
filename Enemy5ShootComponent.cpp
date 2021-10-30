@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "Enemy5ShootComponent.h"
 
-#include "GameObject.h"
-#include "Scene.h"
+#include "code/Engine/GameObject.h"
+#include "code/Engine/Scene.h"
 #include "LinearMoveComponent.h"
 #include "DrawNormalBulletComponent.h"
 #include "NormalBulletCollisionComponent.h"

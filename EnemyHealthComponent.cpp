@@ -3,7 +3,7 @@
 #include "DrawDeathEffectComponent.h"
 
 #include "LayerManager.h"
-#include "Scene.h"
+#include "code/Engine/Scene.h"
 
 EnemyHealthComponent::EnemyHealthComponent(GameObjectHandle handle, boost::shared_ptr<LayerManager> layer_manager, double health0, double death_effect_radius)
 	:Component(handle,50),health_(health0),layer_manager_(layer_manager),all_health_(health0),

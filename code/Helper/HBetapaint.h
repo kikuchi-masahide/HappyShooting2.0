@@ -1,5 +1,5 @@
 #pragma once
-#include "../../Game.h"
+#include "../Engine/Game.h"
 
 //画面一面にベタ塗するヘルパ(同tickに複数実行することは想定していないのでstaticとしている)
 class HBetapaint

@@ -1,8 +1,8 @@
 #pragma once
 #include "MainSceneDrawComponent.h"
 
-#include "GameObjectHandle.h"
-#include "Game.h"
+#include "code/Engine/GameObject.h"
+#include "code/Engine/Game.h"
 #include "Math.h"
 
 class DrawBoss1Component :

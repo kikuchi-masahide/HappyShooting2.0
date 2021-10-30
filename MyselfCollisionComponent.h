@@ -2,7 +2,7 @@
 #include "CollisionComponent.h"
 
 #include "CircleGeometry.h"
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 
 class MyselfMediatorComponent;
 class MainScene;

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "LinearRotateComponent.h"
 
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 
 LinearRotateComponent::LinearRotateComponent(GameObjectHandle object, double theta)
 	:Component(object, 100),theta_(theta)

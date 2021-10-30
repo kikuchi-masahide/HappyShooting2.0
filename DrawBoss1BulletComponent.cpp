@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "DrawBoss1BulletComponent.h"
 
-#include "GameObject.h"
-#include "Scene.h"
-#include "Game.h"
+#include "code/Engine/GameObject.h"
+#include "code/Engine/Scene.h"
+#include "code/Engine/Game.h"
 
 namespace {
 	struct Vertex {

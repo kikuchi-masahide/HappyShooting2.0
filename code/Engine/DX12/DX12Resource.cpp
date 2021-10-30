@@ -1,7 +1,7 @@
 #include "DX12Resource.h"
 #include "DX12Pimple.h"
 #include "DX12DescriptorHeap.h"
-#include "Log.h"
+#include "../Log.h"
 
 DX12Resource::DX12Resource(ComPtr<ID3D12Device> _device, DX12Config::ResourceHeapType _heaptype, UINT64 _width, UINT _height, LPCWSTR _name)
 {

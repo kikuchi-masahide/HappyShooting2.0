@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "LinearMoveComponent.h"
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 
 LinearMoveComponent::LinearMoveComponent(GameObjectHandle object, MatVec::Vector2 d, double exist_limit)
 	:Component(object, 100),

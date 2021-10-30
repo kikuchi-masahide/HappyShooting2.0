@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Enemy1MoveComponent.h"
 
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 
 Enemy1MoveComponent::Enemy1MoveComponent(GameObjectHandle handle, unsigned int wait_count, MatVec::Vector2 direct, double angle)
 	:Component(handle,100),

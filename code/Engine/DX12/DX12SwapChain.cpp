@@ -2,7 +2,7 @@
 #include "DX12Resource.h"
 #include "DX12DescriptorHeap.h"
 #include "DX12Pimple.h"
-#include "Log.h"
+#include "../Log.h"
 
 DX12SwapChain::DX12SwapChain(ComPtr<IDXGIFactory6> _factory, ComPtr<ID3D12CommandQueue> _cmdqueue, ComPtr<ID3D12Device> _device, HWND _hwnd, UINT _width, UINT _height)
 {

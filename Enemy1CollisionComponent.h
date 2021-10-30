@@ -3,7 +3,7 @@
 
 #include "CircleGeometry.h"
 #include "MainScene.h"
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 
 class EnemyHealthComponent;
 class ScoreManager;

@@ -2,7 +2,7 @@
 #include "Boss1StateBase.h"
 
 #include "Math.h"
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 
 /// <summary>
 /// 膨らんだ三角形の通常弾を撃ち続けるモード

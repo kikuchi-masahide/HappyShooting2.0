@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "MyselfNormalCondition.h"
 
-#include "GameObject.h"
-#include "Scene.h"
+#include "code/Engine/GameObject.h"
+#include "code/Engine/Scene.h"
 #include "MyselfMediatorComponent.h"
 #include "MyselfRevivingCondition.h"
 

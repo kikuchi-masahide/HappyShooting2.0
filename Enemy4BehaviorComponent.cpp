@@ -2,7 +2,7 @@
 #include "Enemy4BehaviorComponent.h"
 
 #include "CollisionManager.h"
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 #include "DrawTextureComponent.h"
 #include "DrawAnimationComponent.h"
 #include "DrawLazerComponent.h"
@@ -11,7 +11,7 @@
 #include "ScoreManager.h"
 #include "LazerCollisionComponent.h"
 #include "CupsuleGeometry.h"
-#include "Scene.h"
+#include "code/Engine/Scene.h"
 #include "LinearMoveComponent.h"
 #include "DrawNormalBulletComponent.h"
 #include "NormalBulletCollisionComponent.h"

@@ -6,7 +6,7 @@
 #include "DX12RootSignature.h"
 #include "DX12ShaderObject.h"
 #include "DX12VertexLayoutUnit.h"
-#include "Log.h"
+#include "../Log.h"
 #include <DirectXMath.h>
 
 void DX12Pimple::ClearCurrentConfig()

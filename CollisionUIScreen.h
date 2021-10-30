@@ -1,7 +1,7 @@
 #pragma once
-#include "UIScreen.h"
+#include "code/Engine/UIScreen.h"
 
-#include "Math.h"
+#include "code/Engine/Math/Math.h"
 
 class PolygonGeometry;
 class PolygonGeometryDrawer;

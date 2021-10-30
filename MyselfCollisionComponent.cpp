@@ -2,7 +2,7 @@
 #include "MyselfCollisionComponent.h"
 
 #include "MyselfMediatorComponent.h"
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 
 #include "MainScene.h"
 

@@ -2,7 +2,7 @@
 #include "DrawTextureComponent.h"
 
 #include "MainScene.h"
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 
 DrawTextureComponent::DrawTextureComponent(GameObjectHandle object, boost::shared_ptr<LayerManager> layer_manager, unsigned int texture_id, double z)
 	:MainSceneDrawComponent(object, layer_manager, z),

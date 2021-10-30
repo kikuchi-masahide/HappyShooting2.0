@@ -2,7 +2,7 @@
 #include "MainSceneDrawComponent.h"
 
 #include "Math.h"
-#include "Game.h"
+#include "code/Engine/Game.h"
 
 /// <summary>
 /// 両端が半円になっているレーザーの描画

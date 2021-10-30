@@ -1,8 +1,8 @@
 #pragma once
 #include "MainSceneDrawComponent.h"
 
-#include "Game.h"
-#include "GameObjectHandle.h"
+#include "code/Engine/Game.h"
+#include "code/Engine/GameObject.h"
 
 //中心α:0->1:円周 の，通常弾用放射状グラデーション描画用コンポーネント
 class DrawNormalBulletComponent :

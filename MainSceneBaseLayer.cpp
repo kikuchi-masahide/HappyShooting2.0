@@ -1,6 +1,5 @@
 #include "MainSceneBaseLayer.h"
 #include "MainScene.h"
-#include "Game.h"
 #include "MainSceneDrawComponent.h"
 
 MainSceneBaseLayer::MainSceneBaseLayer(Scene* scene)

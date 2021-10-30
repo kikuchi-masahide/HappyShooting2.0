@@ -1,8 +1,8 @@
 #pragma once
 #include "MainSceneBaseLayer.h"
-#include "LayerHandle.h"
+#include "code/Engine/Layer.h"
 #include "Math.h"
-#include "ComponentHandle.h"
+#include "code/Engine/Component.h"
 
 class MainSceneDrawComponent;
 class Scene;

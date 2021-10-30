@@ -1,6 +1,6 @@
 #include "MatVec.h"
 #include "MathMacro.h"
-#include "Log.h"
+#include "../Log.h"
 
 using namespace MatVec;
 

@@ -2,8 +2,8 @@
 #include "Boss1StateNormal.h"
 
 #include "Boss1MediatorComponent.h"
-#include "GameObject.h"
-#include "Scene.h"
+#include "code/Engine/GameObject.h"
+#include "code/Engine/Scene.h"
 #include "LinearMoveComponent.h"
 #include "Boss1BulletCollisionComponent.h"
 #include "DrawBoss1BulletComponent.h"

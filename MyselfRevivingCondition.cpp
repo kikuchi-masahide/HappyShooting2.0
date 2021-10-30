@@ -4,7 +4,7 @@
 #include "MyselfMediatorComponent.h"
 #include "MyselfNormalCondition.h"
 #include "DrawDeathEffectComponent.h"
-#include "Scene.h"
+#include "code/Engine/Scene.h"
 
 MyselfRevivingCondition::MyselfRevivingCondition(GameObjectHandle handle, ComponentHandle<MyselfMediatorComponent> mediator)
 	:MyselfConditionBase(handle,mediator),counter_(0)

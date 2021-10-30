@@ -2,7 +2,7 @@
 #include "TransGradUIScreen.h"
 
 #include "code/Helper/HBetapaint.h"
-#include "Scene.h"
+#include "code/Engine/Scene.h"
 
 TransGradUIScreen::TransGradUIScreen(Scene* scene, bool input, bool update, MatVec::Vector4 start, MatVec::Vector4 end, unsigned int time, std::function<void(TransGradUIScreen*)> terminate)
 	:UIScreen(scene,input,update),

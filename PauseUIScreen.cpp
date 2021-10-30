@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "PauseUIScreen.h"
 
-#include "Scene.h"
-#include "Game.h"
+#include "code/Engine/Scene.h"
+#include "code/Engine/Game.h"
 #include "code/TitleScene/TitleScene.h"
 #include "code/Helper/HBetapaint.h"
 #include "TransGradUIScreen.h"

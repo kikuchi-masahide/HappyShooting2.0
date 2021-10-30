@@ -1,7 +1,7 @@
 #pragma once
 #include "MainSceneDrawComponent.h"
 
-#include "Game.h"
+#include "code/Engine/Game.h"
 
 //Boss1の通常弾描画専用のクラス
 //定数バッファをあらかじめ大量に用意しておき，処理高速化を目指す

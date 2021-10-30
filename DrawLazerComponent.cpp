@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "DrawLazerComponent.h"
 
-#include "GameObject.h"
-#include "Scene.h"
+#include "code/Engine/GameObject.h"
+#include "code/Engine/Scene.h"
 
 namespace {
 	struct Vertex {

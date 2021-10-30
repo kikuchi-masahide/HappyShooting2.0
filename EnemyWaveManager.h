@@ -1,5 +1,5 @@
 #pragma once
-#include "GameObjectHandle.h"
+#include "code/Engine/GameObject.h"
 #include "Math.h"
 
 class EnemyWaveBase;

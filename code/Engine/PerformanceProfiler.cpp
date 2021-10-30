@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "PerformanceProfiler.h"
 
 PerformanceProfiler::ProfileUnit::ProfileUnit()

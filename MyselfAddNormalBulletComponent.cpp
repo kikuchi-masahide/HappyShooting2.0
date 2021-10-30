@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "MyselfAddNormalBulletComponent.h"
 
-#include "GameObject.h"
-#include "Scene.h"
+#include "code/Engine/Game.h"
+#include "code/Engine/Scene.h"
 #include "LinearMoveComponent.h"
 #include "DrawNormalBulletComponent.h"
 #include "MyBulletCollisionComponent.h"

@@ -2,7 +2,7 @@
 #include "EnemyWaveBase.h"
 
 #include "Math.h"
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 #include "EnemyWaveManager.h"
 #include "MainScene.h"
 

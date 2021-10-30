@@ -1,7 +1,7 @@
 #pragma once
 #include "MyselfConditionBase.h"
 
-#include "Math.h"
+#include "code/Engine/Math/Math.h"
 
 class MyselfRevivingCondition :
     public MyselfConditionBase

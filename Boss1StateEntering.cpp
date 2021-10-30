@@ -2,7 +2,7 @@
 #include "Boss1StateEntering.h"
 
 #include "Boss1MediatorComponent.h"
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 #include "Boss1StateNormal.h"
 
 Boss1StateEntering::Boss1StateEntering(ComponentHandle<Boss1MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager)

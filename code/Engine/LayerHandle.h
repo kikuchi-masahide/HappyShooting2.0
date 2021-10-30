@@ -1,6 +1,8 @@
 #pragma once
 
-#include "Layer.h"
+#include "Log.h"
+
+class Layer;
 
 template<class T>
 class LayerHandle {

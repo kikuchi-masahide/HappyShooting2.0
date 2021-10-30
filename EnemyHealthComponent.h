@@ -1,7 +1,7 @@
 #pragma once
-#include "Component.h"
+#include "code/Engine/Component.h"
 
-#include "GameObjectHandle.h"
+#include "code/Engine/GameObject.h"
 
 class LayerManager;
 

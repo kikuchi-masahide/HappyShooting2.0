@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "NormalBulletCollisionComponent.h"
 
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 
 NormalBulletCollisionComponent::NormalBulletCollisionComponent(GameObjectHandle obj, double radius, unsigned int damage, boost::shared_ptr<CollisionManager> collision_manager)
 	:CollisionComponent(obj,collision_manager,50,CollisionManager::Tag::EnemyBullet,damage)

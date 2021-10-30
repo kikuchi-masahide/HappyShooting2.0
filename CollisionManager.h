@@ -1,5 +1,5 @@
 #pragma once
-#include "ComponentHandle.h"
+#include "code/Engine/Component.h"
 
 #include "Math.h"
 #include "CircleGeometry.h"

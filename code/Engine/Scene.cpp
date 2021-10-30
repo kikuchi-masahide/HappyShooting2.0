@@ -1,8 +1,6 @@
 #include "Scene.h"
 #include "GameObject.h"
-#include "GameObjectHandle.h"
 #include "Component.h"
-#include "ComponentHandle.h"
 #include "UIScreen.h"
 #include "Game.h"
 #include "window.h"

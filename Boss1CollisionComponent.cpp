@@ -2,7 +2,7 @@
 #include "Boss1CollisionComponent.h"
 
 #include "Boss1MediatorComponent.h"
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 #include "DrawBoss1Component.h"
 #include "CollisionUIScreen.h"
 

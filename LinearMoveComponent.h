@@ -1,8 +1,8 @@
 #pragma once
-#include "Component.h"
+#include "code/Engine/Component.h"
 
-#include "GameObjectHandle.h"
-#include "Math.h"
+#include "code/Engine/GameObject.h"
+#include "code/Engine/Math/Math.h"
 
 //自分のオブジェクトを線形に移動させる
 class LinearMoveComponent :

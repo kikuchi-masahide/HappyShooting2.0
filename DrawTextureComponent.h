@@ -2,7 +2,7 @@
 #include "MainSceneDrawComponent.h"
 
 #include "code/Helper/HTextureAlphaRotateDraw.h"
-#include "GameObjectHandle.h"
+#include "code/Engine/GameObject.h"
 
 /// <summary>
 /// テクスチャを描画するコンポーネント

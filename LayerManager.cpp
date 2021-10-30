@@ -2,7 +2,7 @@
 #include "LayerManager.h"
 
 #include "MainSceneBasicLayer.h"
-#include "Scene.h"
+#include "code/Engine/Scene.h"
 
 LayerManager::LayerManager(Scene* scene)
 	:layer_from_next_tick_(999),scene_(scene)

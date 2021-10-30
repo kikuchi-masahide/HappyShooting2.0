@@ -1,6 +1,6 @@
 #pragma once
-#include "UIScreen.h"
-#include "Math.h"
+#include "code/Engine/UIScreen.h"
+#include "code/Engine/Math/Math.h"
 
 /// <summary>
 /// 画面全体でリニアなグラデーション変化をするUIScreen

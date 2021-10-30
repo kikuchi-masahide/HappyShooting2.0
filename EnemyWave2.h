@@ -1,6 +1,7 @@
 #pragma once
 #include "EnemyWaveBase.h"
-#include "Math.h"
+
+#include "code/Engine/Math/Math.h"
 
 class EnemyWave2 :
     public EnemyWaveBase

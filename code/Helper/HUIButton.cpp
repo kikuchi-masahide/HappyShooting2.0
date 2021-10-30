@@ -1,7 +1,7 @@
 #include "HUIButton.h"
 
-#include "../UIScreen.h"
-#include "../Scene.h"
+#include "../Engine/UIScreen.h"
+#include "../Engine/Scene.h"
 
 using namespace Helpers;
 

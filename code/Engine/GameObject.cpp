@@ -1,7 +1,6 @@
 #include "GameObject.h"
 #include "GameObjectHandle.h"
 #include "Component.h"
-#include "ComponentHandle.h"
 #include "Scene.h"
 #include "Game.h"
 

@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "DrawHealthBarComponent.h"
 
-#include "GameObject.h"
-#include "Scene.h"
+#include "code/Engine/GameObject.h"
+#include "code/Engine/Scene.h"
 #include "EnemyHealthComponent.h"
 
 namespace{

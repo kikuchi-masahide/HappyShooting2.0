@@ -2,7 +2,7 @@
 #include "Enemy3MoveComponent.h"
 
 #include "Math.h"
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 
 Enemy3MoveComponent::Enemy3MoveComponent(GameObjectHandle obj, int counter0, std::function<MatVec::Vector2(double)> lambda, double angle_delta)
 	:Component(obj),

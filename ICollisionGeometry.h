@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Component.h"
+#include "code/Engine/Component.h"
 
-#include "Rect2.h"
+#include "code/Engine/Math/Math.h"
 
 class CircleGeometry;
 class CupsuleGeometry;

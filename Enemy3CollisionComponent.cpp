@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Enemy3CollisionComponent.h"
 
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 #include "Math.h"
 #include "EnemyHealthComponent.h"
 #include "ScoreManager.h"

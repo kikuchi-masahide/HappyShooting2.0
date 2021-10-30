@@ -1,11 +1,9 @@
 #pragma once
 
 #include "GameObject.h"
-#include "GameObjectHandle.h"
 #include "Layer.h"
-#include "LayerHandle.h"
 #include "InputSystem.h"
-#include "Math.h"
+#include "Math/Math.h"
 
 class Game;
 class UIScreen;

@@ -2,7 +2,7 @@
 #include "Enemy5MoveComponent.h"
 
 #include "Math.h"
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 
 Enemy5MoveComponent::Enemy5MoveComponent(GameObjectHandle obj, int counter0)
 	:Component(obj),

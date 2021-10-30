@@ -1,5 +1,5 @@
 #include "Matrix4x4.h"
-#include "Log.h"
+#include "../Log.h"
 #include "Math.h"
 
 namespace MatVec {

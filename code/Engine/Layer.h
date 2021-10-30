@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Math.h"
+#include "Math/Math.h"
+#include "LayerHandle.h"
 
 class Scene;
 class DX12Resource;

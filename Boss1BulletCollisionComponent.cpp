@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Boss1BulletCollisionComponent.h"
 
-#include "GameObject.h"
+#include "code/Engine/GameObject.h"
 
 Boss1BulletCollisionComponent::Boss1BulletCollisionComponent(GameObjectHandle obj, boost::shared_ptr<CollisionManager> collision_manager)
 	:CollisionComponent(obj, collision_manager,100,CollisionManager::Tag::EnemyBullet,100),

@@ -2,7 +2,7 @@
 
 #include "Component.h"
 #include "GameObjectHandle.h"
-#include "Math.h"
+#include "Math/Math.h"
 
 class Scene;
 class Game;

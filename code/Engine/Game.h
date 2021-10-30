@@ -1,5 +1,5 @@
 #pragma once
-#include "DX12.h"
+#include "DX12/DX12.h"
 #include "TextureManager.h"
 #include "ShaderManager.h"
 #include "InputSystem.h"

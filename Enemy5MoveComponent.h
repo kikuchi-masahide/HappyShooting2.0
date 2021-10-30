@@ -1,5 +1,5 @@
 #pragma once
-#include "Component.h"
+#include "code/Engine/Component.h"
 
 class Enemy5MoveComponent :
     public Component

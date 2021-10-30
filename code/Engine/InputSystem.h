@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MatVec.h"
+#include "Math/Math.h"
 
 class Game;
 

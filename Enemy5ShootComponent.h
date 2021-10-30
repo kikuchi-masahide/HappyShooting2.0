@@ -1,7 +1,7 @@
 #pragma once
-#include "Component.h"
+#include "code/Engine/Component.h"
 
-#include "Math.h"
+#include "code/Engine/Math/Math.h"
 
 class LayerManager;
 class CollisionManager;

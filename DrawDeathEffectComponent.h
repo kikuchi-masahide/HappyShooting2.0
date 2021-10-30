@@ -1,8 +1,8 @@
 #pragma once
 #include "MainSceneDrawComponent.h"
 
-#include "Game.h"
-#include "GameObject.h"
+#include "code/Engine/Game.h"
+#include "code/Engine/GameObject.h"
 
 /// <summary>
 /// 死亡エフェクトを描画
