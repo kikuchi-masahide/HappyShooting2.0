@@ -10,6 +10,8 @@ public:
 	Rect2(double lx,double rx,double dy,double uy);
 	MatVec::Vector2 GetLD() const;
 	MatVec::Vector2 GetRU() const;
+	MatVec::Vector2& LD();
+	MatVec::Vector2& RU();
 	double GetWidth();
 	double GetHeight();
 	MatVec::Vector2 GetCenter();

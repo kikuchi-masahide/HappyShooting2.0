@@ -22,6 +22,16 @@ MatVec::Vector2 Rect2::GetRU() const
 	return mRU;
 }
 
+MatVec::Vector2& Rect2::LD()
+{
+	return mLD;
+}
+
+MatVec::Vector2& Rect2::RU()
+{
+	return mRU;
+}
+
 double Rect2::GetWidth()
 {
 	return mRU(0) - mLD(0);

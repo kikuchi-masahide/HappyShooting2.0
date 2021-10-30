@@ -164,6 +164,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AABBTree.cpp" />
     <ClCompile Include="Boss1BulletCollisionComponent.cpp" />
     <ClCompile Include="Boss1CollisionComponent.cpp" />
     <ClCompile Include="Boss1StateEntering.cpp" />
@@ -269,6 +270,7 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AABBTree.h" />
     <ClInclude Include="Boss1BulletCollisionComponent.h" />
     <ClInclude Include="Boss1CollisionComponent.h" />
     <ClInclude Include="Boss1StateEntering.h" />

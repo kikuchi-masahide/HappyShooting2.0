@@ -223,6 +223,9 @@
     <Filter Include="MainScene\MainSceneDrawComponent\DrawBoss1Bullet">
       <UniqueIdentifier>{e0e74a21-de62-4d58-9b52-dc936bc63f4e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\AABBTree">
+      <UniqueIdentifier>{a057d845-b49e-4330-8d08-11280584ba93}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -513,6 +516,9 @@
       <Filter>MainScene\CollisionComponent\Boss1BulletCollisionComponent</Filter>
     </ClCompile>
     <ClCompile Include="DrawBoss1BulletComponent.cpp" />
+    <ClCompile Include="AABBTree.cpp">
+      <Filter>MainScene\AABBTree</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -823,6 +829,9 @@
       <Filter>MainScene\CollisionComponent\Boss1BulletCollisionComponent</Filter>
     </ClInclude>
     <ClInclude Include="DrawBoss1BulletComponent.h" />
+    <ClInclude Include="AABBTree.h">
+      <Filter>MainScene\AABBTree</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\DrawHealthBarComponent_header.hlsli">
