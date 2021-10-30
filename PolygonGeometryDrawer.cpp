@@ -4,7 +4,7 @@
 #include "PolygonGeometry.h"
 
 PolygonGeometryDrawer::PolygonGeometryDrawer(PolygonGeometry* polygon, MatVec::Vector3 color, Game& game)
-	:polygon_(polygon),color_(color),vertex_map_(nullptr),v_(polygon->points_.size())
+	:polygon_(polygon),color_(color),vertex_map_(nullptr),v_(polygon->points_.size()),frame_(game)
 {
 	if (graphics_pipeline_ == nullptr)
 	{
@@ -37,6 +37,10 @@ void PolygonGeometryDrawer::Output(Game& game)
 	game.mdx12.SetViewports(900, 900, 0, 0, 0.0f, 1.0f);
 	game.mdx12.SetScissorrect(0.0f, 900.0f, 0.0f, 900.0f);
 	game.mdx12.DrawIndexedInstanced(3 * (v_ - 2), 1, 0, 0, 0);
+	Rect2 aabb = polygon_->GetAABB();
+	auto center = aabb.GetCenter();
+	center += MatVec::Vector2(-150.0, 0.0);
+	frame_.DrawFrame(game, center(0), center(1), aabb.GetWidth(), aabb.GetHeight(), 0.0, 900.0, 900.0, MatVec::XYZ1(color_));
 }
 
 void PolygonGeometryDrawer::StaticGraphicInit(Game& game)

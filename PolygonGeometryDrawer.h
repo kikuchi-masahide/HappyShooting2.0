@@ -1,5 +1,6 @@
 #pragma once
 #include "Game.h"
+#include "HDrawLineFrame.h"
 
 class PolygonGeometry;
 
@@ -31,5 +32,7 @@ private:
 	boost::shared_ptr<DX12Resource> index_buffer_;
 	//í∏ì_êî
 	int v_;
+	//AABBògï`âÊóp
+	Helpers::HDrawLineFrame frame_;
 };
 

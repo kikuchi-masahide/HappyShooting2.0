@@ -44,6 +44,7 @@ void CollisionManager::TraverseAll()
 				NoticeEachOther(friendly_geometries_[index]->GetParent(), enemy_geometries_[enemy]->GetParent());
 			}
 		}
+		hit_indexs_.clear();
 	}
 	//‘SCheckHitComponent‚ÌÀs
 	for (auto comp : friendly_comps_)

@@ -35,7 +35,7 @@ private:
 	//base‚ğCbase‚Ætarget—¼•û‚ğŠÜ‚ŞAABB‚É•ÏX
 	static inline void Merge(Rect2& base, const Rect2& target)
 	{
-		base.LD() = MatVec::Vector2(min(base.LD()(0), target.GetLD()(0)), min(base.LD()(1), target.GetLD()(0)));
+		base.LD() = MatVec::Vector2(min(base.LD()(0), target.GetLD()(0)), min(base.LD()(1), target.GetLD()(1)));
 		base.RU() = MatVec::Vector2(max(base.RU()(0), target.GetRU()(0)), max(base.RU()(1), target.GetRU()(1)));
 	}
 	//a‚Æb‚ª‹¤’Ê•”‚ğ‚Â‚©”Û‚©
