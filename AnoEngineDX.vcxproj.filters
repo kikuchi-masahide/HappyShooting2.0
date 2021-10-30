@@ -515,10 +515,10 @@
     <ClCompile Include="DrawBoss1BulletComponent.cpp">
       <Filter>MainScene\MainSceneDrawComponent\DrawBoss1Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="TitleScene\TitleScene.cpp">
+    <ClCompile Include="code\TitleScene\TitleScene.cpp">
       <Filter>TitleScene\TitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="TitleScene\TitleUIScreen.cpp">
+    <ClCompile Include="code\TitleScene\TitleUIScreen.cpp">
       <Filter>TitleScene\TitleUIScreen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -830,10 +830,10 @@
     <ClInclude Include="DrawBoss1BulletComponent.h">
       <Filter>MainScene\MainSceneDrawComponent\DrawBoss1Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="TitleScene\TitleScene.h">
+    <ClInclude Include="code\TitleScene\TitleScene.h">
       <Filter>TitleScene\TitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="TitleScene\TitleUIScreen.h">
+    <ClInclude Include="code\TitleScene\TitleUIScreen.h">
       <Filter>TitleScene\TitleUIScreen</Filter>
     </ClInclude>
   </ItemGroup>

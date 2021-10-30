@@ -262,6 +262,8 @@ DX12Pimple::TextureInfo DX12Pimple::LoadTexture(const wchar_t* _filename, LPCWST
 	auto srcAddress = img->pixels;
 	auto rowPitch = alignmentedSize;
 	for (int y = 0; y < img->height; ++y) {
+		//TODO:たまにここらへんでコケることがある
+		//0xC0000005: 場所 0x000001DBD4B24000 の読み取り中にアクセス違反が発生しました
 		std::copy_n(srcAddress,
 			rowPitch, 
 			mapforImg);//コピー

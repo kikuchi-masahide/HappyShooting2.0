@@ -1,6 +1,6 @@
 #include "window.h"
 #include "Game.h"
-#include "TitleScene/TitleScene.h"
+#include "code/TitleScene/TitleScene.h"
 #include "DrawBoss1BulletComponent.h"
 
 LRESULT WindowProcedure(HWND, UINT, WPARAM, LPARAM);
