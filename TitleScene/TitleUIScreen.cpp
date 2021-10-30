@@ -1,8 +1,8 @@
 #include "TitleUIScreen.h"
 
 #include "TitleScene.h"
-#include "Game.h"
-#include "MainScene.h"
+#include "../Game.h"
+#include "../MainScene.h"
 
 TitleUIScreen::TitleUIScreen(Scene* scene)
 //下部オブジェクトのアップデートは許可，入力は渡さない

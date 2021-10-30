@@ -305,12 +305,6 @@
     <ClCompile Include="HDrawLineFrame.cpp">
       <Filter>Helper\HDrawLineFrame</Filter>
     </ClCompile>
-    <ClCompile Include="TitleScene.cpp">
-      <Filter>TitleScene\TitleScene</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleUIScreen.cpp">
-      <Filter>TitleScene\TitleUIScreen</Filter>
-    </ClCompile>
     <ClCompile Include="MainScene.cpp">
       <Filter>MainScene\MainScene</Filter>
     </ClCompile>
@@ -515,9 +509,17 @@
     <ClCompile Include="Boss1BulletCollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent\Boss1BulletCollisionComponent</Filter>
     </ClCompile>
-    <ClCompile Include="DrawBoss1BulletComponent.cpp" />
     <ClCompile Include="AABBTree.cpp">
       <Filter>MainScene\AABBTree</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawBoss1BulletComponent.cpp">
+      <Filter>MainScene\MainSceneDrawComponent\DrawBoss1Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene\TitleScene.cpp">
+      <Filter>TitleScene\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene\TitleUIScreen.cpp">
+      <Filter>TitleScene\TitleUIScreen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -611,12 +613,6 @@
     </ClInclude>
     <ClInclude Include="HDrawLineFrame.h">
       <Filter>Helper\HDrawLineFrame</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleScene.h">
-      <Filter>TitleScene\TitleScene</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleUIScreen.h">
-      <Filter>TitleScene\TitleUIScreen</Filter>
     </ClInclude>
     <ClInclude Include="MainScene.h">
       <Filter>MainScene\MainScene</Filter>
@@ -828,9 +824,17 @@
     <ClInclude Include="Boss1BulletCollisionComponent.h">
       <Filter>MainScene\CollisionComponent\Boss1BulletCollisionComponent</Filter>
     </ClInclude>
-    <ClInclude Include="DrawBoss1BulletComponent.h" />
     <ClInclude Include="AABBTree.h">
       <Filter>MainScene\AABBTree</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawBoss1BulletComponent.h">
+      <Filter>MainScene\MainSceneDrawComponent\DrawBoss1Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene\TitleScene.h">
+      <Filter>TitleScene\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene\TitleUIScreen.h">
+      <Filter>TitleScene\TitleUIScreen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
