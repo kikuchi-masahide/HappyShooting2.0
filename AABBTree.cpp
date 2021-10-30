@@ -6,7 +6,7 @@ void AABBTree::TraverseAgainst(Rect2 query, std::vector<unsigned int>& hit_ids)
 	TraverseAgainst(query, 1, hit_ids);
 }
 
-void AABBTree::ConstructAABBTree(std::vector<Rect2>& nodes)
+void AABBTree::ConstructAABBTree(const std::vector<Rect2>& nodes)
 {
 	//AABBの数が0ならば，どっか遠いところにAABBを設定しておく
 	if (nodes.size() == 0)
@@ -37,6 +37,12 @@ void AABBTree::ConstructAABBTree(std::vector<Rect2>& nodes)
 			Merge(tree_[1].aabb_, nodes[n]);
 		}
 		tree_[1].id_ = -1;
+
+		std::sort(copy.begin(), copy.end(), [](const AABBTreeNode& left, const AABBTreeNode& right) {
+			return left.aabb_.GetLD()(0) < right.aabb_.GetLD()(0);
+		});
+
+
 		ConstructAABBTree(copy, 0, copy.size() - 1, 1);
 	}
 }
@@ -73,32 +79,34 @@ void AABBTree::ConstructAABBTree(std::vector<AABBTreeNode>& nodes, unsigned int 
 		return left.aabb_.GetLD()(1) < right.aabb_.GetLD()(1);
 	};
 	//共通部最小となったlambdas
-	unsigned int min_lambda = 4;
+	unsigned int min_lambda = 0;// 4;
 	//その面積
 	double min_lambda_a = 1e9;
-	for (unsigned int l = 0; l < 4; l++)
-	{
-		std::sort(nodes.begin() + left, nodes.begin() + right + 1, lambdas[l]);
-		//tree_[2*id].aabb_とtree_[2*id].aabb_を仮変更する
-		tree_[2 * id].aabb_ = nodes[left].aabb_;
-		for (int n = left+1; n < left + Na; n++)
-		{
-			Merge(tree_[2 * id].aabb_, nodes[n].aabb_);
-		}
-		tree_[2 * id + 1].aabb_ = nodes[left + Na].aabb_;
-		for (int n = left + Na+1; n <= right; n++)
-		{
-			Merge(tree_[2 * id + 1].aabb_, nodes[n].aabb_);
-		}
-		double shared_a = GetSharedSurface(nodes[2 * id].aabb_, nodes[2 * id + 1].aabb_);
-		if (shared_a < min_lambda_a)
-		{
-			min_lambda = l;
-			min_lambda_a = shared_a;
-		}
-	}
+	//TODO:Releaseだと以下のコメントを外して毎ループソートをしてもある程度の速度で動くが，
+	//Debugだとどうしようもないぐらい遅くなるので外してる あのさあ
+	//for (unsigned int l = 0; l < 4; l++)
+	//{
+	//	std::sort(nodes.begin() + left, nodes.begin() + right + 1, lambdas[l]);
+	//	//tree_[2*id].aabb_とtree_[2*id].aabb_を仮変更する
+	//	tree_[2 * id].aabb_ = nodes[left].aabb_;
+	//	for (int n = left+1; n < left + Na; n++)
+	//	{
+	//		Merge(tree_[2 * id].aabb_, nodes[n].aabb_);
+	//	}
+	//	tree_[2 * id + 1].aabb_ = nodes[left + Na].aabb_;
+	//	for (int n = left + Na+1; n <= right; n++)
+	//	{
+	//		Merge(tree_[2 * id + 1].aabb_, nodes[n].aabb_);
+	//	}
+	//	double shared_a = GetSharedSurface(tree_[2 * id].aabb_, tree_[2 * id + 1].aabb_);
+	//	if (shared_a < min_lambda_a)
+	//	{
+	//		min_lambda = l;
+	//		min_lambda_a = shared_a;
+	//	}
+	//}
 	//最終的なソートと子の設定
-	std::sort(nodes.begin() + left, nodes.begin() + right + 1, lambdas[min_lambda]);
+	//std::sort(nodes.begin() + left, nodes.begin() + right + 1, lambdas[min_lambda]);
 	tree_[2 * id].aabb_ = nodes[left].aabb_;
 	for (int n = left + 1; n < left + Na; n++)
 	{
@@ -116,7 +124,7 @@ void AABBTree::ConstructAABBTree(std::vector<AABBTreeNode>& nodes, unsigned int 
 	{
 		Merge(tree_[2 * id + 1].aabb_, nodes[n].aabb_);
 	}
-	if (Nb != -1)
+	if (Nb != 1)
 	{
 		tree_[2 * id + 1].id_ = -1;
 		ConstructAABBTree(nodes, left + Na, right, 2 * id + 1);

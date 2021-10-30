@@ -18,7 +18,7 @@ MyBulletCollisionComponent::~MyBulletCollisionComponent()
 void MyBulletCollisionComponent::Update()
 {
 	circle_.center_ = mObj->GetPosition();
-	manager_->AddGeometry(&circle_);
+	manager_->AddFriendlyGeometry(&circle_);
 }
 
 void MyBulletCollisionComponent::CheckHitComponent()

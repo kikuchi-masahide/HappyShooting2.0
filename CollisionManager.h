@@ -4,6 +4,7 @@
 #include "Math.h"
 #include "CircleGeometry.h"
 #include "PolygonGeometry.h"
+#include "AABBTree.h"
 
 class CollisionUIScreen;
 class CollisionComponent;
@@ -23,8 +24,10 @@ public:
 	/// 全componentが持つ図形同士の当たり判定を実行し，componentに衝突したcomponentを教える
 	/// </summary>
 	void TraverseAll();
-	//この図形の当たり判定を加える
-	void AddGeometry(ICollisionGeometry* geometry);
+	//自機，自機弾等の当たり判定図形を加える
+	void AddFriendlyGeometry(ICollisionGeometry* geometry);
+	//敵機，敵機弾等の当たり判定図形を加える
+	void AddEnemyGeometry(ICollisionGeometry* geometry);
 	//TODO:このTagに(クラス等で?)親子関係を導入し，例えば
 	//My::body
 	//  ::bullet
@@ -44,7 +47,13 @@ public:
 private:
 	//comp1とcomp2のhit_comps_に，お互いを追加する
 	void NoticeEachOther(ComponentHandle<CollisionComponent> comp1, ComponentHandle<CollisionComponent> comp2);
-	std::vector<std::pair<ICollisionGeometry*, Rect2>> geometries_;
-	//geometries_[n]とgeometries_[n+1]~geometries_.back()全体との当たり判定
-	void TraverseAllAgainst(int target);
+	//自機，自機弾等の，敵機に攻撃する種類の当たり判定図形とそのAABBの配列
+	std::vector<ICollisionGeometry*> friendly_geometries_;
+	std::vector<Rect2> friendly_aabbs_;
+	std::set<ComponentHandle<CollisionComponent>> friendly_comps_;
+	//敵機，敵機弾等の，自機に攻撃する種類の当たり判定図形とそのAABB配列
+	std::vector<ICollisionGeometry*> enemy_geometries_;
+	std::vector<Rect2> enemy_aabbs_;
+	std::set<ComponentHandle<CollisionComponent>> enemy_comps_;
+	AABBTree aabb_tree_;
 };

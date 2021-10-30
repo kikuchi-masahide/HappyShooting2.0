@@ -35,7 +35,7 @@ void Boss1CollisionComponent::Update()
 	{
 		SetPolygonCoord();
 		for (int n = 0; n < 4; n++) {
-			manager_->AddGeometry(&(polygon_[n]));
+			manager_->AddEnemyGeometry(&(polygon_[n]));
 		}
 	}
 }

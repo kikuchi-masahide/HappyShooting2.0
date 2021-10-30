@@ -17,14 +17,14 @@ public:
 	//(インデックスは，構築時渡された配列のもの)
 	void TraverseAgainst(Rect2 query,std::vector<unsigned int>& hit_ids);
 	//このAABBの配列からAABB木を構築する
-	void ConstructAABBTree(std::vector<Rect2>& nodes);
+	void ConstructAABBTree(const std::vector<Rect2>& nodes);
 private:
 	//AABBの最大保持個数
 	static constexpr unsigned int maxaabb_ = 1024;
 	//木の実体(tree_[1]を根，tree_[n]の子はtree_[2*n]とtree_[2*n+1]とする)
 	AABBTreeNode tree_[maxaabb_ * 2];
 	//2つのAABBの共通範囲の面積
-	static inline double GetSharedSurface(Rect2& const a, Rect2& const b)
+	static inline double GetSharedSurface(const Rect2& a, const Rect2& b)
 	{
 		double lx = max(a.GetLD()(0), b.GetLD()(0));
 		double rx = min(a.GetRU()(0), b.GetRU()(0));
@@ -33,19 +33,19 @@ private:
 		return min(rx - lx, 0.0) * min(uy - dy, 0.0);
 	}
 	//baseを，baseとtarget両方を含むAABBに変更
-	static inline void Merge(Rect2& base, Rect2& const target)
+	static inline void Merge(Rect2& base, const Rect2& target)
 	{
-		base.LD() = MatVec::Vector2(min(base.LD()(0), target.LD()(0)), min(base.LD()(1), target.LD()(0)));
-		base.RU() = MatVec::Vector2(max(base.RU()(0), target.RU()(0)), max(base.RU()(1), target.RU()(1)));
+		base.LD() = MatVec::Vector2(min(base.LD()(0), target.GetLD()(0)), min(base.LD()(1), target.GetLD()(0)));
+		base.RU() = MatVec::Vector2(max(base.RU()(0), target.GetRU()(0)), max(base.RU()(1), target.GetRU()(1)));
 	}
 	//aとbが共通部を持つか否か
-	static inline bool IsCrossing(Rect2& const a, Rect2& const b)
+	static inline bool IsCrossing(const Rect2& a, const Rect2& b)
 	{
 		return !(
-			a.LD()(0) > b.RU()(0) ||
-			a.RU()(0) < b.LD()(0) ||
-			a.LD()(1) > b.RU()(1) ||
-			a.RU()(1) < b.LD()(1)
+			a.GetLD()(0) > b.GetRU()(0) ||
+			a.GetRU()(0) < b.GetLD()(0) ||
+			a.GetLD()(1) > b.GetRU()(1) ||
+			a.GetRU()(1) < b.GetLD()(1)
 			);
 	}
 	//ConstructAABBTreeのサブ関数

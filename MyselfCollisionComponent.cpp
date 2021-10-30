@@ -20,7 +20,7 @@ void MyselfCollisionComponent::Update()
 {
 	//‰~‚ÌˆÊ’uXV
 	geometry_.center_ = mObj->GetPosition();
-	manager_->AddGeometry(&geometry_);
+	manager_->AddFriendlyGeometry(&geometry_);
 }
 
 void MyselfCollisionComponent::CheckHitComponent()

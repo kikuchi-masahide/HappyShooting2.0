@@ -31,7 +31,7 @@ void Boss1BulletCollisionComponent::Update()
 	for (int n = 0; n < 4; n++) {
 		polygon_.points_[n] = template_.points_[n] + objpos;
 	}
-	manager_->AddGeometry(&polygon_);
+	manager_->AddEnemyGeometry(&polygon_);
 }
 
 void Boss1BulletCollisionComponent::CheckHitComponent()

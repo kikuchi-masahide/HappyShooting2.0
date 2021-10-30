@@ -167,10 +167,10 @@ void Enemy4BehaviorComponent::RegCollisionGeometry(MatVec::Vector2 center, int d
 	deg2 += PI / 2;
 	mouce_left_.points_[2](0) = mouce_left_.points_[0](0) + l * cos(deg2);
 	mouce_left_.points_[2](1) = mouce_left_.points_[0](1) + l * sin(deg2);
-	manager_->AddGeometry(&tail_);
-	manager_->AddGeometry(&center_square_);
-	manager_->AddGeometry(&mouce_left_);
-	manager_->AddGeometry(&mouce_right_);
+	manager_->AddEnemyGeometry(&tail_);
+	manager_->AddEnemyGeometry(&center_square_);
+	manager_->AddEnemyGeometry(&mouce_left_);
+	manager_->AddEnemyGeometry(&mouce_right_);
 }
 
 void Enemy4BehaviorComponent::DeathAttack()

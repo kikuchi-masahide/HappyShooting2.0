@@ -32,7 +32,7 @@ void Boss1StateNormal::Update()
 		{
 			auto bullet = scene->AddObject(objpos, 1.0, deg);
 			bullet->AddUpdateComponent<LinearMoveComponent>(MatVec::Vector2(cos(deg), sin(deg)) * bullet_speed_, 20.0);
-			//bullet->AddUpdateComponent<Boss1BulletCollisionComponent>(collision_manager_);
+			bullet->AddUpdateComponent<Boss1BulletCollisionComponent>(collision_manager_);
 			bullet->AddOutputComponent<DrawBoss1BulletComponent>(layer_manager_);
 			deg += delta;
 		}
