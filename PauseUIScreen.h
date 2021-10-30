@@ -1,8 +1,8 @@
 #pragma once
 #include "UIScreen.h"
 
-#include "HTextureDraw.h"
-#include "HUIButton.h"
+#include "code/Helper/HTextureDraw.h"
+#include "code/Helper/HUIButton.h"
 
 class PauseUIScreen :
     public UIScreen

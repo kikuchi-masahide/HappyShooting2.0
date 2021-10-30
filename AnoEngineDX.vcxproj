@@ -171,6 +171,12 @@
     <ClCompile Include="Boss1MediatorComponent.cpp" />
     <ClCompile Include="Boss1StateBase.cpp" />
     <ClCompile Include="Boss1StateNormal.cpp" />
+    <ClCompile Include="code\Helper\HBetapaint.cpp" />
+    <ClCompile Include="code\Helper\HDrawLineFrame.cpp" />
+    <ClCompile Include="code\Helper\HNumberDraw.cpp" />
+    <ClCompile Include="code\Helper\HTextureAlphaRotateDraw.cpp" />
+    <ClCompile Include="code\Helper\HTextureDraw.cpp" />
+    <ClCompile Include="code\Helper\HUIButton.cpp" />
     <ClCompile Include="code\TitleScene\TitleScene.cpp" />
     <ClCompile Include="code\TitleScene\TitleUIScreen.cpp" />
     <ClCompile Include="CollisionUIScreen.cpp" />
@@ -183,8 +189,6 @@
     <ClCompile Include="Enemy4BehaviorComponent.cpp" />
     <ClCompile Include="EnemyBodyCollisionComponent.cpp" />
     <ClCompile Include="EnemyWaveBoss1.cpp" />
-    <ClCompile Include="HBetapaint.cpp" />
-    <ClCompile Include="HUIButton.cpp" />
     <ClCompile Include="ICollisionGeometry.cpp" />
     <ClCompile Include="LazerCollisionComponent.cpp" />
     <ClCompile Include="Enemy5MoveComponent.cpp" />
@@ -220,10 +224,6 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectHandle.cpp" />
-    <ClCompile Include="HDrawLineFrame.cpp" />
-    <ClCompile Include="HNumberDraw.cpp" />
-    <ClCompile Include="HTextureAlphaRotateDraw.cpp" />
-    <ClCompile Include="HTextureDraw.cpp" />
     <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="LayerManager.cpp" />
@@ -277,6 +277,12 @@
     <ClInclude Include="Boss1MediatorComponent.h" />
     <ClInclude Include="Boss1StateBase.h" />
     <ClInclude Include="Boss1StateNormal.h" />
+    <ClInclude Include="code\Helper\HBetapaint.h" />
+    <ClInclude Include="code\Helper\HDrawLineFrame.h" />
+    <ClInclude Include="code\Helper\HNumberDraw.h" />
+    <ClInclude Include="code\Helper\HTextureAlphaRotateDraw.h" />
+    <ClInclude Include="code\Helper\HTextureDraw.h" />
+    <ClInclude Include="code\Helper\HUIButton.h" />
     <ClInclude Include="code\TitleScene\TitleScene.h" />
     <ClInclude Include="code\TitleScene\TitleUIScreen.h" />
     <ClInclude Include="CollisionUIScreen.h" />
@@ -289,8 +295,6 @@
     <ClInclude Include="Enemy4BehaviorComponent.h" />
     <ClInclude Include="EnemyBodyCollisionComponent.h" />
     <ClInclude Include="EnemyWaveBoss1.h" />
-    <ClInclude Include="HBetapaint.h" />
-    <ClInclude Include="HUIButton.h" />
     <ClInclude Include="LazerCollisionComponent.h" />
     <ClInclude Include="Enemy5MoveComponent.h" />
     <ClInclude Include="Enemy5ShootComponent.h" />
@@ -329,10 +333,6 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectHandle.h" />
-    <ClInclude Include="HDrawLineFrame.h" />
-    <ClInclude Include="HNumberDraw.h" />
-    <ClInclude Include="HTextureAlphaRotateDraw.h" />
-    <ClInclude Include="HTextureDraw.h" />
     <ClInclude Include="ICollisionGeometry.h" />
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="Layer.h" />

@@ -1,8 +1,8 @@
 #pragma once
 #include "UIScreen.h"
-#include "HTextureDraw.h"
-#include "HDrawLineFrame.h"
-#include "HNumberDraw.h"
+#include "code/Helper/HTextureDraw.h"
+#include "code/Helper/HDrawLineFrame.h"
+#include "code/Helper/HNumberDraw.h"
 
 class ScoreManager;
 

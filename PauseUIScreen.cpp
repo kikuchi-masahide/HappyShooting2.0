@@ -4,7 +4,7 @@
 #include "Scene.h"
 #include "Game.h"
 #include "code/TitleScene/TitleScene.h"
-#include "HBetapaint.h"
+#include "code/Helper/HBetapaint.h"
 #include "TransGradUIScreen.h"
 
 PauseUIScreen::PauseUIScreen(Scene* scene)

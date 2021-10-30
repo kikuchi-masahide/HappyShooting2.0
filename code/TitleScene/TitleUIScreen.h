@@ -1,8 +1,8 @@
 #pragma once
 #include "../UIScreen.h"
-#include "../HTextureDraw.h"
-#include "../HTextureAlphaRotateDraw.h"
-#include "../HUIButton.h"
+#include "../Helper/HTextureDraw.h"
+#include "../Helper/HTextureAlphaRotateDraw.h"
+#include "../Helper/HUIButton.h"
 
 class TitleScene;
 

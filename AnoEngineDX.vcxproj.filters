@@ -299,12 +299,6 @@
     <ClCompile Include="Rect2.cpp">
       <Filter>Engine\Math</Filter>
     </ClCompile>
-    <ClCompile Include="HTextureDraw.cpp">
-      <Filter>Helper\HTextureDraw</Filter>
-    </ClCompile>
-    <ClCompile Include="HDrawLineFrame.cpp">
-      <Filter>Helper\HDrawLineFrame</Filter>
-    </ClCompile>
     <ClCompile Include="MainScene.cpp">
       <Filter>MainScene\MainScene</Filter>
     </ClCompile>
@@ -316,9 +310,6 @@
     </ClCompile>
     <ClCompile Include="MainSceneDrawComponent.cpp">
       <Filter>MainScene\MainSceneDrawComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="HTextureAlphaRotateDraw.cpp">
-      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
     </ClCompile>
     <ClCompile Include="DrawTextureComponent.cpp">
       <Filter>MainScene\MainSceneDrawComponent\DrawTextureComponent</Filter>
@@ -349,9 +340,6 @@
     </ClCompile>
     <ClCompile Include="MyselfCollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent\MyselfCollisionComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="HNumberDraw.cpp">
-      <Filter>Helper\HNumberDraw</Filter>
     </ClCompile>
     <ClCompile Include="LinearRotateComponent.cpp">
       <Filter>MainScene\LinearRotateComponent</Filter>
@@ -458,14 +446,8 @@
     <ClCompile Include="LazerCollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent\LazerCollisionComponent</Filter>
     </ClCompile>
-    <ClCompile Include="HUIButton.cpp">
-      <Filter>Helper\HUIButton</Filter>
-    </ClCompile>
     <ClCompile Include="PauseUIScreen.cpp">
       <Filter>MainScene\PauseUIScreen</Filter>
-    </ClCompile>
-    <ClCompile Include="HBetapaint.cpp">
-      <Filter>Helper\HBetapaint</Filter>
     </ClCompile>
     <ClCompile Include="TransGradUIScreen.cpp">
       <Filter>MainScene\TransGradUIScreen</Filter>
@@ -520,6 +502,24 @@
     </ClCompile>
     <ClCompile Include="code\TitleScene\TitleUIScreen.cpp">
       <Filter>TitleScene\TitleUIScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Helper\HBetapaint.cpp">
+      <Filter>Helper\HBetapaint</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Helper\HDrawLineFrame.cpp">
+      <Filter>Helper\HDrawLineFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Helper\HNumberDraw.cpp">
+      <Filter>Helper\HNumberDraw</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Helper\HTextureAlphaRotateDraw.cpp">
+      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Helper\HTextureDraw.cpp">
+      <Filter>Helper\HTextureDraw</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Helper\HUIButton.cpp">
+      <Filter>Helper\HUIButton</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -608,12 +608,6 @@
     <ClInclude Include="Rect2.h">
       <Filter>Engine\Math</Filter>
     </ClInclude>
-    <ClInclude Include="HTextureDraw.h">
-      <Filter>Helper\HTextureDraw</Filter>
-    </ClInclude>
-    <ClInclude Include="HDrawLineFrame.h">
-      <Filter>Helper\HDrawLineFrame</Filter>
-    </ClInclude>
     <ClInclude Include="MainScene.h">
       <Filter>MainScene\MainScene</Filter>
     </ClInclude>
@@ -625,9 +619,6 @@
     </ClInclude>
     <ClInclude Include="MainSceneDrawComponent.h">
       <Filter>MainScene\MainSceneDrawComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="HTextureAlphaRotateDraw.h">
-      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
     </ClInclude>
     <ClInclude Include="DrawTextureComponent.h">
       <Filter>MainScene\MainSceneDrawComponent\DrawTextureComponent</Filter>
@@ -661,9 +652,6 @@
     </ClInclude>
     <ClInclude Include="MyselfCollisionComponent.h">
       <Filter>MainScene\CollisionComponent\MyselfCollisionComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="HNumberDraw.h">
-      <Filter>Helper\HNumberDraw</Filter>
     </ClInclude>
     <ClInclude Include="LinearRotateComponent.h">
       <Filter>MainScene\LinearRotateComponent</Filter>
@@ -776,14 +764,8 @@
     <ClInclude Include="LazerCollisionComponent.h">
       <Filter>MainScene\CollisionComponent\LazerCollisionComponent</Filter>
     </ClInclude>
-    <ClInclude Include="HUIButton.h">
-      <Filter>Helper\HUIButton</Filter>
-    </ClInclude>
     <ClInclude Include="PauseUIScreen.h">
       <Filter>MainScene\PauseUIScreen</Filter>
-    </ClInclude>
-    <ClInclude Include="HBetapaint.h">
-      <Filter>Helper\HBetapaint</Filter>
     </ClInclude>
     <ClInclude Include="TransGradUIScreen.h">
       <Filter>MainScene\TransGradUIScreen</Filter>
@@ -835,6 +817,24 @@
     </ClInclude>
     <ClInclude Include="code\TitleScene\TitleUIScreen.h">
       <Filter>TitleScene\TitleUIScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Helper\HBetapaint.h">
+      <Filter>Helper\HBetapaint</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Helper\HDrawLineFrame.h">
+      <Filter>Helper\HDrawLineFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Helper\HNumberDraw.h">
+      <Filter>Helper\HNumberDraw</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Helper\HTextureAlphaRotateDraw.h">
+      <Filter>Helper\HTextureAlphaRotateDraw</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Helper\HTextureDraw.h">
+      <Filter>Helper\HTextureDraw</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Helper\HUIButton.h">
+      <Filter>Helper\HUIButton</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
