@@ -41,6 +41,9 @@ void MainScene::PriorUniqueUpdate()
 
 void MainScene::PosteriorUniqueUpdate()
 {
+	//全Updateが終わったあと当たり判定だけ処理させ，死ぬべきオブジェクトを死なせる
+	collision_manager_->TraverseAll();
+	enemy_wave_manager_->Update();
 }
 
 void MainScene::PriorUniqueOutput()
@@ -49,9 +52,6 @@ void MainScene::PriorUniqueOutput()
 
 void MainScene::PosteriorUniqueOutput()
 {
-	//全Updateが終わったあと当たり判定だけ処理させ，死ぬべきオブジェクトを死なせる
-	collision_manager_->TraverseAll();
-	enemy_wave_manager_->Update();
 }
 
 MainScene::~MainScene()
