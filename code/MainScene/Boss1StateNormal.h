@@ -11,13 +11,16 @@ class Boss1StateNormal :
     public Boss1StateBase
 {
 public:
-    Boss1StateNormal(ComponentHandle<Boss1MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager);
+    /// <param name="next_state">‚±‚Ìƒ‚[ƒh‚ªI—¹‚µ‚½‚ ‚ÆCBoss1State1,3‚Ì‚Ç‚¿‚ç‚É‘JˆÚ‚·‚é‚©</param>
+    Boss1StateNormal(ComponentHandle<Boss1MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, unsigned int next_state);
     ~Boss1StateNormal();
     void Update() override;
 private:
     int counter_;
     //’e‚ğŒ‚‚Â•ûŒü
     double deg_;
+    //ŸBoss1State1~3‚Ì‚Ç‚¿‚ç‚É‘JˆÚ‚·‚é‚©
+    unsigned int next_state_;
     static constexpr double delta_deg_ = PI/120;
     //‰½ŒÂ‚Ì’e‚ğŒ‚‚Â‚©
     static constexpr int bullet_num_ = 96;

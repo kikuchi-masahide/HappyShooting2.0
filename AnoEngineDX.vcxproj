@@ -205,6 +205,8 @@
     <ClCompile Include="code\MainScene\Boss1MediatorComponent.cpp" />
     <ClCompile Include="code\MainScene\Boss1State1.cpp" />
     <ClCompile Include="code\MainScene\Boss1State1MasterBullet.cpp" />
+    <ClCompile Include="code\MainScene\Boss1State2.cpp" />
+    <ClCompile Include="code\MainScene\Boss1State2Bullet.cpp" />
     <ClCompile Include="code\MainScene\Boss1StateBase.cpp" />
     <ClCompile Include="code\MainScene\Boss1StateEntering.cpp" />
     <ClCompile Include="code\MainScene\Boss1StateNormal.cpp" />
@@ -321,6 +323,8 @@
     <ClInclude Include="code\MainScene\Boss1MediatorComponent.h" />
     <ClInclude Include="code\MainScene\Boss1State1.h" />
     <ClInclude Include="code\MainScene\Boss1State1MasterBullet.h" />
+    <ClInclude Include="code\MainScene\Boss1State2.h" />
+    <ClInclude Include="code\MainScene\Boss1State2Bullet.h" />
     <ClInclude Include="code\MainScene\Boss1StateBase.h" />
     <ClInclude Include="code\MainScene\Boss1StateEntering.h" />
     <ClInclude Include="code\MainScene\Boss1StateNormal.h" />

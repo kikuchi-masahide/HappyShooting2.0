@@ -20,7 +20,7 @@ public:
 	void ConstructAABBTree(const std::vector<Rect2>& nodes);
 private:
 	//AABB‚ÌÅ‘å•ÛŒÂ”
-	static constexpr unsigned int maxaabb_ = 1024;
+	static constexpr unsigned int maxaabb_ = 2048;
 	//–Ø‚ÌÀ‘Ì(tree_[1]‚ğªCtree_[n]‚Ìq‚Ítree_[2*n]‚Ætree_[2*n+1]‚Æ‚·‚é)
 	AABBTreeNode tree_[maxaabb_ * 2];
 	//2‚Â‚ÌAABB‚Ì‹¤’Ê”ÍˆÍ‚Ì–ÊÏ

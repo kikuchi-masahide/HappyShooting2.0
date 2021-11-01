@@ -35,7 +35,7 @@ void Boss1State1::Update()
 	}
 	else if (counter_ == terminal_counter_)
 	{
-		mediator_->ChangeState(new Boss1StateNormal(mediator_, layer_manager_, score_manager_, collision_manager_));
+		mediator_->ChangeState(new Boss1StateNormal(mediator_, layer_manager_, score_manager_, collision_manager_, 2));
 	}
 	counter_++;
 }

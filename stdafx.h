@@ -21,6 +21,7 @@
 #include <unordered_set>
 #include <queue>
 #include <typeinfo>
+#include <random>
 
 #include <boost/noncopyable.hpp>
 

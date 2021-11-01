@@ -235,6 +235,12 @@
     <Filter Include="MainScene\AcceleratedMoveComponent">
       <UniqueIdentifier>{303f100a-e75d-4b5f-bbb7-ad8374056e52}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Boss1StateBase\Boss1State2">
+      <UniqueIdentifier>{207ea295-60c3-4ee8-bd10-42784c867722}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\Boss1State2Bullet">
+      <UniqueIdentifier>{cd687115-7bd0-4bc9-83a1-5dbb982e0590}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -538,6 +544,12 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\AcceleratedMoveComponent.cpp">
       <Filter>MainScene\AcceleratedMoveComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss1State2.cpp">
+      <Filter>MainScene\Boss1StateBase\Boss1State2</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss1State2Bullet.cpp">
+      <Filter>MainScene\Boss1State2Bullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -862,6 +874,12 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\AcceleratedMoveComponent.h">
       <Filter>MainScene\AcceleratedMoveComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss1State2.h">
+      <Filter>MainScene\Boss1StateBase\Boss1State2</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss1State2Bullet.h">
+      <Filter>MainScene\Boss1State2Bullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
