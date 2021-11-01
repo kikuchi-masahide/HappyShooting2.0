@@ -23,17 +23,23 @@ public:
     MatVec::Vector3 edge_rgb_;
     //円周の不透明度
     double edge_alpha_;
+    //最初に定数バッファ一括確保をするために，起動時に呼び出す
+    static void StaticGraphicalInit(Game& game);
 private:
     static boost::shared_ptr<DX12GraphicsPipeline> graphics_pipeline_;
     static boost::shared_ptr<DX12RootSignature> root_signature_;
     static boost::shared_ptr<DX12Resource> index_buffer_;
     static boost::shared_ptr<DX12Resource> vertex_buffer_;
-    //色，α格納用のバッファとCRV
-    boost::shared_ptr<DX12DescriptorHeap> crv_desc_heap_;
-    boost::shared_ptr<DX12Resource> crv_resource_;
+    //定数バッファとディスクリプタヒープ(あらかじめ作っておく)
+    static std::vector<boost::shared_ptr<DX12Resource>> const_buffers_;
+    static std::vector<boost::shared_ptr<DX12DescriptorHeap>> desc_heaps_;
+    //maxで定数バッファを何個使えるか
+    static constexpr unsigned int max_buffers_num_ = 1500;
+    //次インスタンス作成時，desc_heaps_およびconst_buffers_の何番目を割り当てるか
+    static std::queue<unsigned int> next_descheap_index_;
+    //このインスタンスでdesc_heaps_の何番目を使うか
+    unsigned int descheap_index_;
     //定数バッファマップ用ポインタ
     void* crv_map_;
-    static void StaticGraphicalInit(Scene* scene);
     void NonstaticGraphicalInit();
 };
-

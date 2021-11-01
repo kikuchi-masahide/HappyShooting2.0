@@ -21,17 +21,11 @@ namespace{
 DrawNormalBulletComponent::DrawNormalBulletComponent(GameObjectHandle object, boost::shared_ptr<LayerManager> layer_manager, double radius, MatVec::Vector3 edge_rgb, double edge_alpha,double z)
 	: MainSceneDrawComponent(object, layer_manager, z), radius_(radius), edge_rgb_(edge_rgb),edge_alpha_(edge_alpha)
 {
-	if (graphics_pipeline_ == nullptr)
-	{
-		StaticGraphicalInit(layer_manager_->scene_);
-	}
 	NonstaticGraphicalInit();
 }
 
-void DrawNormalBulletComponent::StaticGraphicalInit(Scene* scene)
+void DrawNormalBulletComponent::StaticGraphicalInit(Game& game)
 {
-	Game& game = scene->mGame;
-	
 	auto vertex_shader = game.mShaderManager.GetDX12ShaderObject(8);
 	auto pixel_shader = game.mShaderManager.GetDX12ShaderObject(9);
 
@@ -48,7 +42,10 @@ void DrawNormalBulletComponent::StaticGraphicalInit(Scene* scene)
 	root_param.mDescRanges.push_back(DX12DescriptorRange(
 		1, DX12Config::DescriptorRangeType::CBV, 0, 0
 	));
-	root_signature_ = game.mdx12.CreateRootSignature(root_param);
+	root_param.mDescRanges.push_back(DX12DescriptorRange(
+		1, DX12Config::DescriptorRangeType::SRV, 0, 0
+	));
+	root_signature_ = game.mdx12.CreateRootSignature(root_param,true);
 	
 	graphics_pipeline_ = game.mdx12.CreateGraphicsPipeline(
 		vertex_shader,pixel_shader,vertex_layout,
@@ -82,16 +79,33 @@ void DrawNormalBulletComponent::StaticGraphicalInit(Scene* scene)
 	void* vertex_map = game.mdx12.Map(vertex_buffer_);
 	std::memcpy(vertex_map, vertexs, sizeof(vertexs));
 	game.mdx12.Unmap(vertex_buffer_);
+
+	//定数バッファとディスクリプタヒープ群の設定
+	const_buffers_.resize(max_buffers_num_);
+	desc_heaps_.resize(max_buffers_num_);
+	for (unsigned int n = 0; n < max_buffers_num_; n++)
+	{
+		std::wstring name(L"DrawNormalBulletComponent::const_buffers_[");
+		name += std::to_wstring(n);
+		name += L"]";
+		const_buffers_[n] = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(InfoToShader), name.c_str());
+		name = L"DrawNormalBulletComponent::desc_heaps_[";
+		name += std::to_wstring(n);
+		name += L"]";
+		desc_heaps_[n] = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 2, name.c_str());
+		game.mdx12.CreateConstBufferView(const_buffers_[n], desc_heaps_[n], 0);
+		game.mTexManager.CreateSRVof(20, desc_heaps_[n], 1);
+		next_descheap_index_.push(n);
+	}
 }
 
 void DrawNormalBulletComponent::NonstaticGraphicalInit()
 {
 	Game& game = layer_manager_->scene_->mGame;
 
-	crv_resource_ = game.mdx12.CreateConstBuffer(DX12Config::ResourceHeapType::UPLOAD, sizeof(InfoToShader), L"DrawNormalBulletComponent Const Buffer");
-	crv_desc_heap_ = game.mdx12.CreateDescriptorHeap(DX12Config::DescriptorHeapType::CBV_SRV_UAV, DX12Config::DescriptorHeapShaderVisibility::SHADER_VISIBLE, 1, L"DrawNormalBulletComponent::crv_desc_heap_");
-	game.mdx12.CreateConstBufferView(crv_resource_, crv_desc_heap_, 0);
-	crv_map_ = game.mdx12.Map(crv_resource_);
+	descheap_index_ = next_descheap_index_.front();
+	next_descheap_index_.pop();
+	crv_map_ = game.mdx12.Map(const_buffers_[descheap_index_]);
 }
 
 void DrawNormalBulletComponent::Draw()
@@ -113,8 +127,8 @@ void DrawNormalBulletComponent::Draw()
 	//もろもろセット
 	game.mdx12.SetGraphicsPipeline(graphics_pipeline_);
 	game.mdx12.SetRootSignature(root_signature_);
-	game.mdx12.SetDescriptorHeap(crv_desc_heap_);
-	game.mdx12.SetGraphicsRootDescriptorTable(0, crv_desc_heap_, 0);
+	game.mdx12.SetDescriptorHeap(desc_heaps_[descheap_index_]);
+	game.mdx12.SetGraphicsRootDescriptorTable(0, desc_heaps_[descheap_index_], 0);
 	game.mdx12.SetPrimitiveTopology(DX12Config::PrimitiveTopology::TRIANGLELIST);
 	game.mdx12.SetVertexBuffers(vertex_buffer_, 0, sizeof(Vertex) * 4, sizeof(Vertex));
 	game.mdx12.SetIndexBuffers(index_buffer_,6);
@@ -125,9 +139,13 @@ void DrawNormalBulletComponent::Draw()
 
 DrawNormalBulletComponent::~DrawNormalBulletComponent()
 {
+	next_descheap_index_.push(descheap_index_);
 }
 
 boost::shared_ptr<DX12GraphicsPipeline> DrawNormalBulletComponent::graphics_pipeline_ = nullptr;
 boost::shared_ptr<DX12RootSignature> DrawNormalBulletComponent::root_signature_ = nullptr;
 boost::shared_ptr<DX12Resource> DrawNormalBulletComponent::index_buffer_ = nullptr;
 boost::shared_ptr<DX12Resource> DrawNormalBulletComponent::vertex_buffer_ = nullptr;
+std::vector<boost::shared_ptr<DX12Resource>> DrawNormalBulletComponent::const_buffers_;
+std::vector<boost::shared_ptr<DX12DescriptorHeap>> DrawNormalBulletComponent::desc_heaps_;
+std::queue<unsigned int> DrawNormalBulletComponent::next_descheap_index_;

@@ -2,6 +2,7 @@
 #include "code/Engine/Game.h"
 #include "code/TitleScene/TitleScene.h"
 #include "code/MainScene/DrawBoss1BulletComponent.h"
+#include "code/MainScene/DrawNormalBulletComponent.h"
 
 LRESULT WindowProcedure(HWND, UINT, WPARAM, LPARAM);
 void LoadTextures(Game* _game);
@@ -19,6 +20,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	LoadShaders(game);
 	//TODO:ƒRƒR?
 	DrawBoss1BulletComponent::StaticGraphicInit(*game);
+	DrawNormalBulletComponent::StaticGraphicalInit(*game);
 	game->AddWindow(WindowProcedure, TEXT("WndClass"), 900, 900, TEXT("HAPPY Shooting"), 0);
 	game->ChangeScene<TitleScene>();
 	game->RunLoop();
@@ -56,6 +58,7 @@ void LoadTextures(Game* _game)
 	_game->mTexManager.LoadTexture(L"Resources/images/TitleQuitButton_away.png", 17);
 	_game->mTexManager.LoadTexture(L"Resources/images/TitleQuitButton_over.png", 18);
 	_game->mTexManager.LoadTexture(L"Resources/images/Boss1Ball1.png", 19);
+	_game->mTexManager.LoadTexture(L"Resources/images/NormalBallTemplate.png", 20);
 }
 
 void LoadShaders(Game* _game)

@@ -2,16 +2,7 @@
 
 float4 main(Output input) : SV_TARGET
 {
-	float u = input.uv.x;
-	float v = input.uv.y;
-	//‰~’†S‚©‚ç‚±‚Ì“_‚Ü‚Å‚Ì‹——£(uvÀ•W‚Å)
-	float d = sqrt((u - 0.5) * (u - 0.5) + (v - 0.5) * (v - 0.5));
-	//‰~ŠO
-	if (d > 0.5)
-	{
-		discard;
-	}
-	//‹——£‚ðŠ„‡‚É’¼‚·(‰~Žü->1.0,’†S->0.0)
-	d /= 0.5;
-	return float4(rgb_, alpha_ * d);
+    float4 texcolor = tex.Sample(smp, input.uv);
+    return float4(rgb_, alpha_) * texcolor.w;
+
 }
