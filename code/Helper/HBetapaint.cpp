@@ -1,5 +1,7 @@
 #include "HBetapaint.h"
 
+#include "../Engine/window.h"
+
 namespace {
 	struct InfoToShader {
 	public:

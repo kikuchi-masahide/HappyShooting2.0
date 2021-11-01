@@ -31,8 +31,10 @@ EnemyWave45::EnemyWave45(EnemyWaveManager* manager)
 	}
 	auto enemy4_1 = scene->AddObject(MatVec::Vector2(), 1.0, 0.0);
 	enemy4_1->AddUpdateComponent<Enemy4BehaviorComponent>(scene->GetCollisionManager(), scene->GetLayerManager(), scene->GetScoreManager(), 1);
+	AddEnemy(enemy4_1);
 	auto enemy4_2 = scene->AddObject(MatVec::Vector2(), 1.0, 0.0);
 	enemy4_2->AddUpdateComponent<Enemy4BehaviorComponent>(scene->GetCollisionManager(), scene->GetLayerManager(), scene->GetScoreManager(), -1);
+	AddEnemy(enemy4_2);
 }
 
 EnemyWave45::~EnemyWave45()

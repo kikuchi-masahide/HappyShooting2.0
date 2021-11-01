@@ -9,7 +9,7 @@
 #include "EnemyWave45.h"
 
 EnemyWaveManager::EnemyWaveManager(MainScene* scene)
-	:scene_(scene)
+	:scene_(scene),has_switched_(false)
 {
 #ifndef _DEBUG
 	//wave_ = boost::shared_ptr<EnemyWave1>(DBG_NEW EnemyWave1(30, this));

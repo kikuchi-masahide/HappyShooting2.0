@@ -50,8 +50,6 @@ void Boss1CollisionComponent::CheckHitComponent()
 
 void Boss1CollisionComponent::SetPolygonCoord()
 {
-	//TODO:座標設定がおかしい?
-	//この機にGeometryの位置を表示するためのUIScreenを追加した方がよさそう
 	double deg = mediator_->GetSquareGrad();
 	double dist = mediator_->GetSquareCenterDist();
 	auto obj_pos = mediator_->mObj->GetPosition();

@@ -8,8 +8,6 @@
 #include "DrawTextureComponent.h"
 #include "EnemyWave2.h"
 
-//TODO:Wave1‚ÉŒÀ‚ç‚¸‘SWave€‚ÉØ‚Á‚Ä‚È‚¢‚Á‚Û‚¢ ‚È‚ñ‚Å
-//TODO_:Wave1‚ªˆê¶€‚ÉØ‚ç‚È‚¢ ‚È‚º
 EnemyWave1::EnemyWave1(unsigned int tick_after_clear, EnemyWaveManager* manager)
 	:EnemyWaveBase(tick_after_clear,manager)
 {

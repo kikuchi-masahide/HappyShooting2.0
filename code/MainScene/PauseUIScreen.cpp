@@ -35,10 +35,12 @@ void PauseUIScreen::Update()
 
 void PauseUIScreen::Output()
 {
+	mScene->mGame.OpenSwapChain(0);
 	HBetapaint::Beta(mScene->mGame, MatVec::Vector4(0.5, 0.5, 0.5, 0.5));
 	pause_.DrawCenter(mScene->mGame, pause_text_centerx_, pause_text_centery_, pause_text_width_, pause_text_height_, 900.0, 900.0);
 	resume_button_.Output();
 	back_button_.Output();
+	mScene->mGame.CloseSwapChain();
 }
 
 PauseUIScreen::~PauseUIScreen()

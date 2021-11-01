@@ -20,7 +20,6 @@ void DX12Pimple::SetPrimitiveTopology(DX12Config::PrimitiveTopology _prim)
 
 void DX12Pimple::DrawIndexedInstanced(UINT _indexnumperinst, UINT _instnum, UINT _indoffset, UINT _vdataoffset, UINT _instoffset)
 {
-	//TODO:メインシーンでesc押すと，バリアかなんかで止まる
 	mCmdList->DrawIndexedInstanced(_indexnumperinst, _instnum, _indoffset, _vdataoffset, _instoffset);
 }
 

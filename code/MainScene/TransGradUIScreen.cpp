@@ -28,5 +28,7 @@ void TransGradUIScreen::Output()
 	double t = sin(theta);
 	t = t * t;
 	MatVec::Vector4 color = start_ * (1.0 - t) + end_ * t;
+	mScene->mGame.OpenSwapChain(0);
 	HBetapaint::Beta(mScene->mGame, color);
+	mScene->mGame.CloseSwapChain();
 }
