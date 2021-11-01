@@ -199,9 +199,12 @@
     <ClCompile Include="code\Helper\HTextureDraw.cpp" />
     <ClCompile Include="code\Helper\HUIButton.cpp" />
     <ClCompile Include="code\MainScene\AABBTree.cpp" />
+    <ClCompile Include="code\MainScene\AcceleratedMoveComponent.cpp" />
     <ClCompile Include="code\MainScene\Boss1BulletCollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\Boss1CollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\Boss1MediatorComponent.cpp" />
+    <ClCompile Include="code\MainScene\Boss1State1.cpp" />
+    <ClCompile Include="code\MainScene\Boss1State1MasterBullet.cpp" />
     <ClCompile Include="code\MainScene\Boss1StateBase.cpp" />
     <ClCompile Include="code\MainScene\Boss1StateEntering.cpp" />
     <ClCompile Include="code\MainScene\Boss1StateNormal.cpp" />
@@ -312,9 +315,12 @@
     <ClInclude Include="code\Helper\HTextureDraw.h" />
     <ClInclude Include="code\Helper\HUIButton.h" />
     <ClInclude Include="code\MainScene\AABBTree.h" />
+    <ClInclude Include="code\MainScene\AcceleratedMoveComponent.h" />
     <ClInclude Include="code\MainScene\Boss1BulletCollisionComponent.h" />
     <ClInclude Include="code\MainScene\Boss1CollisionComponent.h" />
     <ClInclude Include="code\MainScene\Boss1MediatorComponent.h" />
+    <ClInclude Include="code\MainScene\Boss1State1.h" />
+    <ClInclude Include="code\MainScene\Boss1State1MasterBullet.h" />
     <ClInclude Include="code\MainScene\Boss1StateBase.h" />
     <ClInclude Include="code\MainScene\Boss1StateEntering.h" />
     <ClInclude Include="code\MainScene\Boss1StateNormal.h" />

@@ -226,6 +226,15 @@
     <Filter Include="MainScene\AABBTree">
       <UniqueIdentifier>{a057d845-b49e-4330-8d08-11280584ba93}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Boss1StateBase\Boss1State1">
+      <UniqueIdentifier>{edb50553-cc88-4eaa-aa34-651a4c8b69e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\Boss1State1Bullet">
+      <UniqueIdentifier>{e16b7420-eafc-4e88-8169-1e28f2462086}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\AcceleratedMoveComponent">
+      <UniqueIdentifier>{303f100a-e75d-4b5f-bbb7-ad8374056e52}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -521,6 +530,15 @@
     </ClCompile>
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="code\MainScene\Boss1State1.cpp">
+      <Filter>MainScene\Boss1StateBase\Boss1State1</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss1State1MasterBullet.cpp">
+      <Filter>MainScene\Boss1State1Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\AcceleratedMoveComponent.cpp">
+      <Filter>MainScene\AcceleratedMoveComponent</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\TitleScene\TitleScene.h">
@@ -836,6 +854,15 @@
       <Filter>MainScene\TransGradUIScreen</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="code\MainScene\Boss1State1.h">
+      <Filter>MainScene\Boss1StateBase\Boss1State1</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss1State1MasterBullet.h">
+      <Filter>MainScene\Boss1State1Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\AcceleratedMoveComponent.h">
+      <Filter>MainScene\AcceleratedMoveComponent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\DrawHealthBarComponent_header.hlsli">

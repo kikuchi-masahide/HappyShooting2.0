@@ -6,6 +6,7 @@
 #include "LinearMoveComponent.h"
 #include "Boss1BulletCollisionComponent.h"
 #include "DrawBoss1BulletComponent.h"
+#include "Boss1State1.h"
 
 Boss1StateNormal::Boss1StateNormal(ComponentHandle<Boss1MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager)
 	:Boss1StateBase(mediator,layer_manager,score_manager,collision_manager),
@@ -40,7 +41,7 @@ void Boss1StateNormal::Update()
 	}
 	if (counter_ == mode_period_ - 1)
 	{
-		mediator_->ChangeState(nullptr);
+		mediator_->ChangeState(new Boss1State1(mediator_,layer_manager_,score_manager_,collision_manager_));
 	}
 	counter_++;
 }

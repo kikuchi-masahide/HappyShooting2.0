@@ -25,12 +25,6 @@ void CollisionManager::TraverseAll()
 	aabb_tree_.ConstructAABBTree(enemy_aabbs_);
 	std::vector<unsigned int> hit_indexs_;
 	//自機側を順にチェックし，敵側との当たり判定を行う．
-	std::string output("friendly:");
-	output += std::to_string(friendly_geometries_.size());
-	output += "\nenemy:";
-	output += std::to_string(enemy_geometries_.size());
-	output += "\n";
-	Log::OutputTrivial(output);
 	for (int index = 0; index < friendly_geometries_.size(); index++)
 	{
 		//AABBが衝突した敵側をhit_indexs_に入れる
