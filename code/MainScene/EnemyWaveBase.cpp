@@ -5,10 +5,10 @@
 #include "EnemyWaveManager.h"
 #include "MainScene.h"
 
-EnemyWaveBase::EnemyWaveBase(unsigned int tick_after_clear, EnemyWaveManager* manager)
-	:tick_after_clear_(tick_after_clear), counter_(-1), manager_(manager)
+EnemyWaveBase::EnemyWaveBase(unsigned int tick_after_clear, MainScene* main_scene)
+	:tick_after_clear_(tick_after_clear), counter_(-1), main_scene_(main_scene)
 {
-	myself_handle_ = manager_->scene_->GetMyselfHandle();
+	myself_handle_ = main_scene_->GetMyselfHandle();
 }
 
 EnemyWaveBase::~EnemyWaveBase()

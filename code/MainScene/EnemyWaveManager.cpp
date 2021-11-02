@@ -11,17 +11,19 @@
 EnemyWaveManager::EnemyWaveManager(MainScene* scene)
 	:scene_(scene),has_switched_(false)
 {
-#ifndef _DEBUG
-	//wave_ = boost::shared_ptr<EnemyWave1>(DBG_NEW EnemyWave1(30, this));
-	wave_ = boost::shared_ptr<EnemyWaveBoss1>(DBG_NEW EnemyWaveBoss1(this));
-#else
-	wave_ = boost::shared_ptr<EnemyWaveBoss1>(DBG_NEW EnemyWaveBoss1(this));
-	//wave_ = boost::shared_ptr<EnemyWave45>(DBG_NEW EnemyWave45(this));
-#endif
 }
 
 EnemyWaveManager::~EnemyWaveManager()
 {
+	if (wave_)
+	{
+		//Manager‚ÆWave‚ª‚»‚ê‚¼‚ê‚ğboost::shared_ptr‚Å‚Á‚Ä‚¢‚é‚Ì‚ÅC
+		wave_.reset();
+	}
+	if (next_wave_)
+	{
+		next_wave_.reset();
+	}
 }
 
 void EnemyWaveManager::SetWave(boost::shared_ptr<EnemyWaveBase> wave)
@@ -47,4 +49,9 @@ void EnemyWaveManager::Update()
 		next_wave_ = nullptr;
 		has_switched_ = false;
 	}
+}
+
+GameObjectHandle EnemyWaveManager::GetMyselfHandle()
+{
+	return scene_->GetMyselfHandle();
 }

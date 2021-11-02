@@ -18,7 +18,7 @@ private:
     //実体化(不透明度0->1)に何tickかけるか
     static constexpr unsigned int visualization_period_ = 60;
     //消滅するまでの自由な移動を何tick行うか.
-    static constexpr unsigned int freemove_period_ = 60 * 22;
+    static constexpr unsigned int freemove_period_ = 60 * 20;
     //移動を終えてから消滅まで何tickかけるか
     static constexpr unsigned int unvisualization_period_ = 60;
     //半径

@@ -6,8 +6,8 @@
 #include "Boss1StateNormal.h"
 #include "Boss1State1MasterBullet.h"
 
-Boss1State1::Boss1State1(ComponentHandle<Boss1MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager)
-	:Boss1StateBase(mediator,layer_manager,score_manager,collision_manager),
+Boss1State1::Boss1State1(ComponentHandle<Boss1MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<EnemyWaveManager> enemywave_manager)
+	:Boss1StateBase(mediator,layer_manager,score_manager,collision_manager, enemywave_manager),
 	counter_(0)
 {
 }
@@ -35,7 +35,7 @@ void Boss1State1::Update()
 	}
 	else if (counter_ == terminal_counter_)
 	{
-		mediator_->ChangeState(new Boss1StateNormal(mediator_, layer_manager_, score_manager_, collision_manager_, 2));
+		mediator_->ChangeState(DBG_NEW Boss1StateNormal(mediator_, layer_manager_, score_manager_, collision_manager_,enemywave_manager_, 2));
 	}
 	counter_++;
 }

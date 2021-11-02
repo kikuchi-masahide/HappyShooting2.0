@@ -6,7 +6,7 @@ class Boss1State1 :
     public Boss1StateBase
 {
 public:
-    Boss1State1(ComponentHandle<Boss1MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager);
+    Boss1State1(ComponentHandle<Boss1MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<EnemyWaveManager> enemywave_manager);
     ~Boss1State1();
     void Update() override;
     bool IsCollisionActive() override;

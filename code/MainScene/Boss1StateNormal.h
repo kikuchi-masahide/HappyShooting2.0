@@ -12,7 +12,7 @@ class Boss1StateNormal :
 {
 public:
     /// <param name="next_state">このモードが終了したあと，Boss1State1,3のどちらに遷移するか</param>
-    Boss1StateNormal(ComponentHandle<Boss1MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, unsigned int next_state);
+    Boss1StateNormal(ComponentHandle<Boss1MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<EnemyWaveManager> enemywave_manager, unsigned int next_state);
     ~Boss1StateNormal();
     void Update() override;
 private:

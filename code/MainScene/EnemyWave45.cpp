@@ -11,10 +11,10 @@
 #include "Enemy4BehaviorComponent.h"
 #include "EnemyWaveBoss1.h"
 
-EnemyWave45::EnemyWave45(EnemyWaveManager* manager)
-	:EnemyWaveBase(120,manager)
+EnemyWave45::EnemyWave45(MainScene* main_scene)
+	:EnemyWaveBase(120, main_scene)
 {
-	auto scene = manager_->scene_;
+	auto scene = main_scene;
 	for (int i = 0; i < 8; i++)
 	{
 		auto obj = scene->AddObject(MatVec::Vector2(), 1.0, 0.0);
@@ -43,5 +43,5 @@ EnemyWave45::~EnemyWave45()
 
 void EnemyWave45::OnDelete()
 {
-	manager_->SetWave(boost::shared_ptr<EnemyWaveBase>(new EnemyWaveBoss1(manager_)));
+	main_scene_->GetEnemyWaveManager()->SetWave(boost::shared_ptr<EnemyWaveBase>(DBG_NEW EnemyWaveBoss1(main_scene_)));
 }

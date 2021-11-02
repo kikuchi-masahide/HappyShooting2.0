@@ -8,6 +8,7 @@
 #include "DrawNormalBulletComponent.h"
 #include "EnemyWaveManager.h"
 #include "CollisionUIScreen.h"
+#include "EnemyWaveBoss1.h"
 
 MainScene::MainScene(Game* game)
 	:Scene(game)
@@ -31,6 +32,7 @@ MainScene::MainScene(Game* game)
 	//Ž©‹@’Ç‰Á
 	AddMyself();
 	enemy_wave_manager_ = boost::shared_ptr<EnemyWaveManager>(DBG_NEW EnemyWaveManager(this));
+	enemy_wave_manager_->SetWave(boost::shared_ptr<EnemyWaveBase>(DBG_NEW EnemyWaveBoss1(this)));
 }
 
 void MainScene::PriorUniqueUpdate()

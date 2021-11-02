@@ -5,7 +5,7 @@ class EnemyWave3 :
     public EnemyWaveBase
 {
 public:
-    EnemyWave3(EnemyWaveManager* manager);
+    EnemyWave3(MainScene* main_scene);
     ~EnemyWave3();
 protected:
     void OnDelete() override;

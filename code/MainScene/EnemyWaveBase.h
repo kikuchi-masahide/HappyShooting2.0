@@ -7,7 +7,7 @@ class EnemyWaveManager;
 class EnemyWaveBase
 {
 public:
-	EnemyWaveBase(unsigned int tick_after_clear, EnemyWaveManager* manager);
+	EnemyWaveBase(unsigned int tick_after_clear, MainScene* main_scene);
 	virtual ~EnemyWaveBase();
 	/// <summary>
 	/// EnemyWaveManager経由で毎tick呼び出される
@@ -26,7 +26,7 @@ protected:
 	/// 監視対象にこのオブジェクトを追加
 	/// </summary>
 	void AddEnemy(GameObjectHandle object);
-	EnemyWaveManager* const manager_;
+	MainScene* main_scene_;
 private:
 	std::vector<GameObjectHandle> enemies_;
 	//このWaveが全滅して何tick後にデストラクタを呼び出すか(0ならば全滅したtickで呼び出す)

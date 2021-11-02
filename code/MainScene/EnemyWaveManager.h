@@ -16,6 +16,8 @@ public:
 	/// Sceneから毎tick呼び出す
 	/// </summary>
 	void Update();
+	//自機のオブジェクトハンドルを返す
+	GameObjectHandle GetMyselfHandle();
 	MainScene* const scene_;
 private:
 	//今見ているWave
