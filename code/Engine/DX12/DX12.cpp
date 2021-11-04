@@ -191,5 +191,6 @@ void DX12::DrawInstanced(UINT vertex_count_per_instance, UINT instance_count, UI
 
 void DX12::CreateShaderResourceViewForClearTexture(boost::shared_ptr<DX12Resource> _resource, boost::shared_ptr<DX12DescriptorHeap> _descheap, int _n)
 {
+	//HACK:何だこの28とかいうマジックナンバー
 	CreateShaderResourceView(_resource, _descheap, _n, 28);
 }

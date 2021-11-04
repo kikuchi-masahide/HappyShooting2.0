@@ -8,7 +8,7 @@ class MainSceneBasicLayer :
     public MainSceneBaseLayer
 {
 public:
-    MainSceneBasicLayer(Scene* scene);
+    MainSceneBasicLayer(Scene* scene, DrawComponentsMultiset* draw_components);
     virtual ~MainSceneBasicLayer();
     MatVec::Matrix4x4 GetLayerTransform();
     void UniqueDraw();

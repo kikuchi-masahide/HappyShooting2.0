@@ -1,8 +1,8 @@
 #include "MainSceneBasicLayer.h"
 #include "MainScene.h"
 
-MainSceneBasicLayer::MainSceneBasicLayer(Scene* scene)
-	:MainSceneBaseLayer(scene),line_frame(scene->mGame)
+MainSceneBasicLayer::MainSceneBasicLayer(Scene* scene, DrawComponentsMultiset* draw_components)
+	:MainSceneBaseLayer(scene,draw_components),line_frame(scene->mGame)
 {
 	GraphicsInit();
 }

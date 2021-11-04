@@ -241,6 +241,9 @@
     <Filter Include="MainScene\Boss1State2Bullet">
       <UniqueIdentifier>{cd687115-7bd0-4bc9-83a1-5dbb982e0590}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\MainSceneBaseLayer\MainSceneClippingLayer">
+      <UniqueIdentifier>{af061795-9aee-4f18-91f1-7b29c615f68e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -550,6 +553,9 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\Boss1State2Bullet.cpp">
       <Filter>MainScene\Boss1State2Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MainSceneClippingLayer.cpp">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneClippingLayer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -881,6 +887,9 @@
     <ClInclude Include="code\MainScene\Boss1State2Bullet.h">
       <Filter>MainScene\Boss1State2Bullet</Filter>
     </ClInclude>
+    <ClInclude Include="code\MainScene\MainSceneClippingLayer.h">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneClippingLayer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\DrawHealthBarComponent_header.hlsli">
@@ -918,6 +927,9 @@
     </None>
     <None Include="Shader\PolygonGeometryDrawer_header.hlsli">
       <Filter>MainScene\PolygonGeometryDrawer</Filter>
+    </None>
+    <None Include="Shader\MainSceneClippingLayer_header.hlsli">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneClippingLayer</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -992,6 +1004,12 @@
     </FxCompile>
     <FxCompile Include="Shader\PolygonGeometryDrawer_vertex.hlsl">
       <Filter>MainScene\PolygonGeometryDrawer</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneClippingLayer_pixel.hlsl">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneClippingLayer</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneClippingLayer_vertex.hlsl">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneClippingLayer</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>

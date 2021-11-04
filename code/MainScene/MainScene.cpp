@@ -31,6 +31,9 @@ MainScene::MainScene(Game* game)
 
 	//Ž©‹@’Ç‰Á
 	AddMyself();
+	layer_manager_->SetMyselfHandle(myself_handle_);
+	layer_manager_->InitLayers();
+
 	enemy_wave_manager_ = boost::shared_ptr<EnemyWaveManager>(DBG_NEW EnemyWaveManager(this));
 	enemy_wave_manager_->SetWave(boost::shared_ptr<EnemyWaveBase>(DBG_NEW EnemyWaveBoss1(this)));
 }

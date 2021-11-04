@@ -6,6 +6,7 @@
 #include "Boss1StateNormal.h"
 #include "Boss1State2Bullet.h"
 #include "EnemyWaveManager.h"
+#include "LayerManager.h"
 
 Boss1State2::Boss1State2(ComponentHandle<Boss1MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<EnemyWaveManager> enemywave_manager)
 	:Boss1StateBase(mediator, layer_manager, score_manager, collision_manager,enemywave_manager),
@@ -24,12 +25,17 @@ Boss1State2::~Boss1State2()
 			handle->SetDeleteFlag();
 		}
 	}
+	layer_manager_->SwapLayer(0);
 }
 
 void Boss1State2::Update()
 {
 	if (counter_ >= 0 && counter_ <= bulletspawn_timelag_ * (bullet_num_y_ - 1) && counter_ % bulletspawn_timelag_ == 0)
 	{
+		if (counter_ == 0)
+		{
+			layer_manager_->SwapLayer(1);
+		}
 		auto scene = mediator_->mObj->mScene;
 		auto myself_pos = enemywave_manager_->GetMyselfHandle()->GetPosition();
 		//’e‚ð’Ç‰Á‚·‚é

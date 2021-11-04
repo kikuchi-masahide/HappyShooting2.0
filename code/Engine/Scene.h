@@ -158,8 +158,8 @@ private:
 	void DeleteObjComp();
 	GameObject* operator&() const noexcept;
 	//Z座標昇順で取り出す(右手系!)
-	std::set<Layer*, LayerCompare> mLayers;
-	std::set<Layer*, LayerCompare> mPandingLayers;
+	std::multiset<Layer*, LayerCompare> mLayers;
+	std::multiset<Layer*, LayerCompare> mPandingLayers;
 	//自分の持つLayerのOutputを行う
 	void OutputLayer();
 	//DeleteFlag立ってるLayerの処理

@@ -247,6 +247,7 @@
     <ClCompile Include="code\MainScene\MainScene.cpp" />
     <ClCompile Include="code\MainScene\MainSceneBaseLayer.cpp" />
     <ClCompile Include="code\MainScene\MainSceneBasicLayer.cpp" />
+    <ClCompile Include="code\MainScene\MainSceneClippingLayer.cpp" />
     <ClCompile Include="code\MainScene\MainSceneDrawComponent.cpp" />
     <ClCompile Include="code\MainScene\MainSceneUIScreen.cpp" />
     <ClCompile Include="code\MainScene\MyBulletCollisionComponent.cpp" />
@@ -365,6 +366,7 @@
     <ClInclude Include="code\MainScene\MainScene.h" />
     <ClInclude Include="code\MainScene\MainSceneBaseLayer.h" />
     <ClInclude Include="code\MainScene\MainSceneBasicLayer.h" />
+    <ClInclude Include="code\MainScene\MainSceneClippingLayer.h" />
     <ClInclude Include="code\MainScene\MainSceneDrawComponent.h" />
     <ClInclude Include="code\MainScene\MainSceneUIScreen.h" />
     <ClInclude Include="code\MainScene\MyBulletCollisionComponent.h" />
@@ -398,6 +400,7 @@
     <None Include="Shader\HTextureAlphaRotateDrawHeader.hlsli" />
     <None Include="Shader\HTextureDrawInclude.hlsli" />
     <None Include="Shader\MainSceneBasicLayerHeader.hlsli" />
+    <None Include="Shader\MainSceneClippingLayer_header.hlsli" />
     <None Include="Shader\PolygonGeometryDrawer_header.hlsli" />
   </ItemGroup>
   <ItemGroup>
@@ -528,6 +531,18 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
     </FxCompile>
     <FxCompile Include="Shader\MainSceneBasicLayerVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneClippingLayer_pixel.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneClippingLayer_vertex.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>

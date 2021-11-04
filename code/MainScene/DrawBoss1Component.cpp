@@ -38,11 +38,11 @@ void DrawBoss1Component::Draw()
 	game.mdx12.SetScissorrect(0.0f, 900.0f, 0.0f, 600.0f);
 	for (int i = 0; i < 4; i++)
 	{
-		MatVec::Matrix4x4 mat = MatVec::Translation(w, 0.0, 0.0);
-		mat = MatVec::Rotate(MatVec::GetQuaternion(MatVec::Vector3(0.0, 0.0, -1.0), deg+ PI*i/2)) * mat;
-		mat = MatVec::Translation(MatVec::XY0(mObj->GetPosition())) * mat;
-		mat = MatVec::GetOrthoGraphicProjection(600.0, 900.0, 0.0, 1.0) * mat;
-		static_cast<InfoToShader*>(const_map_[i])->conv_ = MatVec::ConvertToXMMATRIX(mat);
+		MatVec::Matrix4x4 mat_ = MatVec::Translation(w, 0.0, 0.0);
+		mat_ = MatVec::Rotate(MatVec::GetQuaternion(MatVec::Vector3(0.0, 0.0, -1.0), deg+ PI*i/2)) * mat_;
+		mat_ = MatVec::Translation(MatVec::XY0(mObj->GetPosition())) * mat_;
+		mat_ = MatVec::GetOrthoGraphicProjection(600.0, 900.0, 0.0, 1.0) * mat_;
+		static_cast<InfoToShader*>(const_map_[i])->conv_ = MatVec::ConvertToXMMATRIX(mat_);
 		game.mdx12.SetDescriptorHeap(desc_heap_[i]);
 		game.mdx12.SetGraphicsRootDescriptorTable(0, desc_heap_[i], 0);
 		game.mdx12.DrawInstanced(5, 1, 0, 0);

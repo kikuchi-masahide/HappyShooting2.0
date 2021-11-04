@@ -4,30 +4,15 @@
 #include "../Engine/Component.h"
 
 class MainSceneDrawComponent;
+class DrawComponentUnit;
+class DrawComponentCompare;
+using DrawComponentsMultiset = std::multiset<DrawComponentUnit, DrawComponentCompare>;
 class MyselfPosAndAngleComponent;
-
-//draw_components_で保存するときのためのクラス
-class DrawComponentUnit
-{
-public:
-	DrawComponentUnit(ComponentHandle<MainSceneDrawComponent> handle);
-	ComponentHandle<MainSceneDrawComponent> handle_;
-	double z_;
-};
-
-//draw_components_用の比較関数
-class DrawComponentCompare {
-public:
-	bool operator()(const DrawComponentUnit& left, const DrawComponentUnit& right) const
-	{
-		return left.z_ < right.z_;
-	}
-};
 
 class MainSceneBaseLayer :public Layer
 {
 public:
-	MainSceneBaseLayer(Scene* scene);
+	MainSceneBaseLayer(Scene* scene, DrawComponentsMultiset* draw_components);
 	virtual ~MainSceneBaseLayer();
 	void Draw() final;
 	/// <summary>
@@ -41,10 +26,6 @@ public:
 	/// </summary>
 	void SetActive();
 	void SetUnActive();
-	/// <summary>
-	/// MainSceneから呼び出される，Drawコールが必要なコンポーネントの追加関数
-	/// </summary>
-	void AddComponent(ComponentHandle<MainSceneDrawComponent> component);
 	/// <summary>
 	/// layer_t_(アクティブになってからの時間)を取得
 	/// </summary>
@@ -64,7 +45,8 @@ protected:
 	Game& GetGame();
 	Scene* const scene_;
 private:
-	std::multiset<DrawComponentUnit,DrawComponentCompare> draw_components_;
+	//Drawで呼び出すcomponent群
+	DrawComponentsMultiset* draw_components_;
 	//このレイヤーがアクティブになってから何度目のフレームか
 	//(1回目にUniqueDrawが呼び出されたときが0)
 	unsigned int layer_t_;

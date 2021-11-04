@@ -1,25 +1,34 @@
 #include "LayerManager.h"
 
 #include "MainSceneBasicLayer.h"
+#include "MainSceneClippingLayer.h"
 #include "../Engine/Scene.h"
+#include "MainSceneDrawComponent.h"
 
 LayerManager::LayerManager(Scene* scene)
 	:layer_from_next_tick_(999),scene_(scene)
 {
-	auto layer0 = scene->AddLayer<MainSceneBasicLayer>(scene);
-	available_layers_[0] = static_cast<LayerHandle<MainSceneBaseLayer>>(layer0);
-	//始めはレイヤー0を有効化
-	active_layer_ = available_layers_[0];
-	active_layer_->SetActive();
 }
 
 LayerManager::~LayerManager()
 {
 }
 
+void LayerManager::InitLayers()
+{
+	auto layer0 = scene_->AddLayer<MainSceneBasicLayer>(scene_,&draw_components_);
+	available_layers_[0] = static_cast<LayerHandle<MainSceneBaseLayer>>(layer0);
+	//始めはレイヤー0を有効化
+	active_layer_ = available_layers_[0];
+	active_layer_->SetActive();
+
+	auto layer1 = scene_->AddLayer<MainSceneClippingLayer>(scene_,&draw_components_, myself_);
+	available_layers_[1] = static_cast<LayerHandle<MainSceneBaseLayer>>(layer1);
+}
+
 void LayerManager::AddComponentToLayer(ComponentHandle<MainSceneDrawComponent> component)
 {
-	active_layer_->AddComponent(component);
+	draw_components_.emplace(component);
 }
 
 void LayerManager::SwapLayer(unsigned int ind)
@@ -41,4 +50,19 @@ void LayerManager::PriorUniqueUpdate()
 		active_layer_->SetActive();
 		layer_from_next_tick_ = 999;
 	}
+}
+
+void LayerManager::SetMyselfHandle(GameObjectHandle handle)
+{
+	myself_ = handle;
+}
+
+DrawComponentUnit::DrawComponentUnit(ComponentHandle<MainSceneDrawComponent> comp)
+	:comp_(comp),z_(comp->z_)
+{
+}
+
+bool DrawComponentCompare::operator()(const DrawComponentUnit& left, const DrawComponentUnit& right) const
+{
+	return left.z_ < right.z_;
 }
