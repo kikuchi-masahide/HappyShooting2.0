@@ -200,6 +200,7 @@
     <ClCompile Include="code\Helper\HUIButton.cpp" />
     <ClCompile Include="code\MainScene\AABBTree.cpp" />
     <ClCompile Include="code\MainScene\AcceleratedMoveComponent.cpp" />
+    <ClCompile Include="code\MainScene\AddOneComponent.cpp" />
     <ClCompile Include="code\MainScene\Boss1BulletCollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\Boss1CollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\Boss1MediatorComponent.cpp" />
@@ -319,6 +320,7 @@
     <ClInclude Include="code\Helper\HUIButton.h" />
     <ClInclude Include="code\MainScene\AABBTree.h" />
     <ClInclude Include="code\MainScene\AcceleratedMoveComponent.h" />
+    <ClInclude Include="code\MainScene\AddOneComponent.h" />
     <ClInclude Include="code\MainScene\Boss1BulletCollisionComponent.h" />
     <ClInclude Include="code\MainScene\Boss1CollisionComponent.h" />
     <ClInclude Include="code\MainScene\Boss1MediatorComponent.h" />

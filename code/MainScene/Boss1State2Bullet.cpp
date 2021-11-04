@@ -30,7 +30,7 @@ void Boss1State2Bullet::Update()
 	}
 	else if (counter_ < visualization_period_ + freemove_period_)
 	{
-		//TODO:移動ルーチンの改善(思ってたより早い)+切りぬきlayerの追加
+		//TODO:移動ルーチンの改善(思ってたより早い)
 		auto pos = mObj->GetPosition();
 		dx_ += (dist_(engine_) - 0.5) * 0.2;
 		if (dx_ > 2.0 || pos(0) <= -300.0)

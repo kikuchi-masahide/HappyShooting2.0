@@ -244,6 +244,9 @@
     <Filter Include="MainScene\MainSceneBaseLayer\MainSceneClippingLayer">
       <UniqueIdentifier>{af061795-9aee-4f18-91f1-7b29c615f68e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\AddOneComponent">
+      <UniqueIdentifier>{5f68d0bc-247b-4f3f-b75f-1a5b58a432b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -556,6 +559,9 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\MainSceneClippingLayer.cpp">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneClippingLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\AddOneComponent.cpp">
+      <Filter>MainScene\AddOneComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -889,6 +895,9 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\MainSceneClippingLayer.h">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneClippingLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\AddOneComponent.h">
+      <Filter>MainScene\AddOneComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

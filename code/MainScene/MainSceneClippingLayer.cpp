@@ -49,8 +49,8 @@ void MainSceneClippingLayer::UniqueDraw()
 		const_map->r_ = (900.0 - min_r_) * (t - shrinking_period_ - maintain_period_) / (clearing_period_ - 1) + min_r_;
 		const_map->r_ = min(900.0, const_map->r_);
 	}
-	std::string output("r:");
-	output += std::to_string(const_map->r_);
+	std::string output("t:");
+	output += std::to_string(t);
 	Log::OutputTrivial(output);
 	const_map->myself_ = MatVec::ConvertToXMFLOAT2(myself_->GetPosition());
 	game.mdx12.Unmap(const_buffer_);

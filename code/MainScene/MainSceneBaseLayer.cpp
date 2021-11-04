@@ -1,6 +1,7 @@
 #include "MainSceneBaseLayer.h"
 #include "MainScene.h"
 #include "MainSceneDrawComponent.h"
+#include "AddOneComponent.h"
 
 MainSceneBaseLayer::MainSceneBaseLayer(Scene* scene, DrawComponentsMultiset* draw_components)
 	:Layer(Rect2(0, 600, 0, 900), 0, 0),
@@ -42,22 +43,25 @@ void MainSceneBaseLayer::Draw()
 			DX12Config::ResourceBarrierState::PIXEL_SHADER_RESOURCE);
 		//ペラポリゴンをウィンドウに描画
 		UniqueDraw();
-		layer_t_++;
 	}
 }
 
 void MainSceneBaseLayer::SetActive()
 {
 	is_active_ = true;
-	layer_t_ = 0;
+	//次のUpdateで++すると，Outputでちょうど0になる
+	layer_t_ = -1;
+	addone_obj_ = scene_->AddObject(MatVec::Vector2(), 1.0, 0.0);
+	addone_comp_ = addone_obj_->AddUpdateComponent<AddOneComponent<int>>(0, &layer_t_);
 }
 
 void MainSceneBaseLayer::SetUnActive()
 {
 	is_active_ = false;
+	addone_obj_->SetDeleteFlag();
 }
 
-unsigned int MainSceneBaseLayer::GetLayert()
+int MainSceneBaseLayer::GetLayert()
 {
 	return layer_t_;
 }

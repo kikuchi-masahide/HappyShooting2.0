@@ -8,6 +8,9 @@ class DrawComponentUnit;
 class DrawComponentCompare;
 using DrawComponentsMultiset = std::multiset<DrawComponentUnit, DrawComponentCompare>;
 class MyselfPosAndAngleComponent;
+//内部カウンタをUpdate毎に増やすため
+template<class T>
+class AddOneComponent;
 
 class MainSceneBaseLayer :public Layer
 {
@@ -29,12 +32,15 @@ public:
 	/// <summary>
 	/// layer_t_(アクティブになってからの時間)を取得
 	/// </summary>
-	unsigned int GetLayert();
+	int GetLayert();
 	/// <summary>
 	/// このレイヤーの変形行列を受け取る(activeな時のみ呼び出されうる)
 	/// </summary>
 	/// <returns></returns>
 	virtual MatVec::Matrix4x4 GetLayerTransform() = 0;
+	//このレイヤーがアクティブになってから何度目のフレームか
+	//(1回目にUniqueDrawが呼び出されたときが0)
+	int layer_t_;
 protected:
 	//ペラポリゴン
 	boost::shared_ptr<DX12Resource> pera_texture_;
@@ -47,11 +53,11 @@ protected:
 private:
 	//Drawで呼び出すcomponent群
 	DrawComponentsMultiset* draw_components_;
-	//このレイヤーがアクティブになってから何度目のフレームか
-	//(1回目にUniqueDrawが呼び出されたときが0)
-	unsigned int layer_t_;
 	//このレイヤーがアクティブか否か
 	bool is_active_;
 	//MainSceneBaseLayerのグラフィックス初期化
 	void GraphicsInit();
+	//Update毎にlayer_t_++;する
+	GameObjectHandle addone_obj_;
+	ComponentHandle<AddOneComponent<int>> addone_comp_;
 };

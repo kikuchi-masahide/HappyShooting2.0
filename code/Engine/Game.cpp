@@ -123,6 +123,7 @@ bool Game::GenerateOutput()
 	if (!AfterOutput())return false;
 	if (mPandingScene) {
 		DeleteScene(mCurrentScene);
+		//HACK:‚±‚Ì‘ã“ü‚ÅCmPandingScene‚Ìcomponent‚È‚Ç‚ª‚Á‚Ä‚¢‚éQÆ‚Ìs‚«æ‚ª‚¨‚©‚µ‚­‚È‚Á‚Ä‚¢‚é‚ç‚µ‚¢ ‰½ŒÌ?
 		mCurrentScene = mPandingScene;
 		mPandingScene = nullptr;
 	}

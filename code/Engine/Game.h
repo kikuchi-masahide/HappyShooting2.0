@@ -8,6 +8,7 @@
 class Scene;
 class Window;
 
+//HACK:初期化処理などもGameで完結させる方が分かりやすいなど，Gameを派生したクラスに実装を乗せる形にした方がベターか?
 class Game {
 public:
 	bool Initialize();
