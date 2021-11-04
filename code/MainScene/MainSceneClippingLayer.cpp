@@ -49,6 +49,9 @@ void MainSceneClippingLayer::UniqueDraw()
 		const_map->r_ = (900.0 - min_r_) * (t - shrinking_period_ - maintain_period_) / (clearing_period_ - 1) + min_r_;
 		const_map->r_ = min(900.0, const_map->r_);
 	}
+	std::string output("r:");
+	output += std::to_string(const_map->r_);
+	Log::OutputTrivial(output);
 	const_map->myself_ = MatVec::ConvertToXMFLOAT2(myself_->GetPosition());
 	game.mdx12.Unmap(const_buffer_);
 
@@ -60,8 +63,8 @@ void MainSceneClippingLayer::UniqueDraw()
 	game.mdx12.SetPrimitiveTopology(DX12Config::PrimitiveTopology::TRIANGLELIST);
 	game.mdx12.SetVertexBuffers(vertex_buffer_,0,sizeof(Vertex)*4,sizeof(Vertex));
 	game.mdx12.SetIndexBuffers(index_buffer_,6);
-	game.mdx12.SetViewports(900, 900, 0, 0, 0.0f, 1.0f);
-	game.mdx12.SetScissorrect(0.0f, 900.0f, 0.0f, 900.0f);
+	game.mdx12.SetViewports(900, 900, 0, 0, 1.0f, 0.0f);
+	game.mdx12.SetScissorrect(0.0f, 900.0f, 0.0f, 600.0f);
 	game.mdx12.DrawIndexedInstanced(6, 1, 0, 0, 0);
 	game.CloseSwapChain();
 }
@@ -95,10 +98,10 @@ void MainSceneClippingLayer::GraphicInit()
 
 	vertex_buffer_ = game.mdx12.CreateVertexBuffer(sizeof(Vertex) * 4, L"MainSceneClippingLayer::vertex_buffer_");
 	auto vertex_map = static_cast<Vertex*>(game.mdx12.Map(vertex_buffer_));
-	vertex_map[0].pos_ = XMFLOAT3(-300.0f, +450.0f, 0.0f);
-	vertex_map[1].pos_ = XMFLOAT3(-300.0f, -450.0f, 0.0f);
-	vertex_map[2].pos_ = XMFLOAT3(+300.0f, -450.0f, 0.0f);
-	vertex_map[3].pos_ = XMFLOAT3(+300.0f, +450.0f, 0.0f);
+	vertex_map[0].pos_ = XMFLOAT3(-450.0f, +450.0f, 0.0f);
+	vertex_map[1].pos_ = XMFLOAT3(-450.0f, -450.0f, 0.0f);
+	vertex_map[2].pos_ = XMFLOAT3(+150.0f, -450.0f, 0.0f);
+	vertex_map[3].pos_ = XMFLOAT3(+150.0f, +450.0f, 0.0f);
 	vertex_map[0].uv_ = XMFLOAT2(0.0f, 0.0f);
 	vertex_map[1].uv_ = XMFLOAT2(0.0f, 1.0f);
 	vertex_map[2].uv_ = XMFLOAT2(1.0f, 1.0f);
@@ -121,9 +124,9 @@ void MainSceneClippingLayer::GraphicInit()
 	game.mdx12.CreateShaderResourceView(pera_texture_, desc_heap_, 1, 28);
 	//çsóÒílÇÕïsïœÇ»ÇÃÇ≈
 	InfoToShader* const_map = static_cast<InfoToShader*>(game.mdx12.Map(const_buffer_));
-	MatVec::Matrix4x4 mat = MatVec::GetOrthoGraphicProjection(600.0, 900.0, 0.0, 1.0);
+	MatVec::Matrix4x4 mat = MatVec::GetOrthoGraphicProjection(900.0, 900.0, 0.0, 1.0);
 	const_map->mat_ = MatVec::ConvertToXMMATRIX(mat);
-	MatVec::Matrix4x4 uv_exp = MatVec::Translation(-300.0, -450.0, 0.0) * MatVec::Expand(600.0, 900.0, 1.0);
+	MatVec::Matrix4x4 uv_exp = MatVec::Translation(-300.0, +450.0, 0.0) * MatVec::Expand(600.0, -900.0, 1.0);
 	const_map->uv_exp_ = MatVec::ConvertToXMMATRIX(uv_exp);
 	game.mdx12.Unmap(const_buffer_);
 }

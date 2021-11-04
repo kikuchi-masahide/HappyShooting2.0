@@ -14,10 +14,10 @@ public:
 private:
     //‰½tick‚ÌŠÔ‰~‚ğûk‚³‚¹CƒNƒŠƒbƒv‚ğˆÛ‚µCŒ³‚Ìó‘Ô‚É–ß‚·‚©
     static constexpr unsigned int shrinking_period_ = 120;
-    static constexpr unsigned int maintain_period_ = 60 * 20;
+    static constexpr unsigned int maintain_period_ = 60 * 18;
     static constexpr unsigned int clearing_period_ = 120;
     //”¼Œa‚ğ‰½‚Ü‚Åk‚ß‚é‚©
-    static constexpr double min_r_ = 30.0;
+    static constexpr double min_r_ = 60.0;
     boost::shared_ptr<DX12GraphicsPipeline> graphics_pipeline_;
     boost::shared_ptr<DX12RootSignature> root_signature_;
     boost::shared_ptr<DX12DescriptorHeap> desc_heap_;
