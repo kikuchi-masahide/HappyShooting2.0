@@ -12,8 +12,8 @@ public:
     bool IsCollisionActive() override;
 private:
     //x軸方向，y軸方向に弾をいくつ並べるか
-    static constexpr unsigned int bullet_num_x_ = 15+1;
-    static constexpr unsigned int bullet_num_y_ = 15+1;
+    static constexpr unsigned int bullet_num_x_ = 10+1;
+    static constexpr unsigned int bullet_num_y_ = 10+1;
     //上から下にグラデーションのように弾をスポーンさせる際，何tickの時間差を置いてスポーンさせるか
     static constexpr unsigned int bulletspawn_timelag_ = 10;
     //自機との距離がこれ以下である弾はスポーンさせない

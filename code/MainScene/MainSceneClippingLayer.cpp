@@ -22,7 +22,7 @@ namespace {
 
 MainSceneClippingLayer::MainSceneClippingLayer(Scene* scene, DrawComponentsMultiset* draw_components, GameObjectHandle myself)
 	:MainSceneBaseLayer(scene,draw_components),
-	myself_(myself)
+	myself_(myself),frame_(scene->mGame)
 {
 	GraphicInit();
 }
@@ -49,9 +49,6 @@ void MainSceneClippingLayer::UniqueDraw()
 		const_map->r_ = (900.0 - min_r_) * (t - shrinking_period_ - maintain_period_) / (clearing_period_ - 1) + min_r_;
 		const_map->r_ = min(900.0, const_map->r_);
 	}
-	std::string output("t:");
-	output += std::to_string(t);
-	Log::OutputTrivial(output);
 	const_map->myself_ = MatVec::ConvertToXMFLOAT2(myself_->GetPosition());
 	game.mdx12.Unmap(const_buffer_);
 
@@ -66,6 +63,9 @@ void MainSceneClippingLayer::UniqueDraw()
 	game.mdx12.SetViewports(900, 900, 0, 0, 1.0f, 0.0f);
 	game.mdx12.SetScissorrect(0.0f, 900.0f, 0.0f, 600.0f);
 	game.mdx12.DrawIndexedInstanced(6, 1, 0, 0, 0);
+
+	frame_.DrawFrame(scene_->mGame, -150.0, 0.0, 600.0, 900.0, 0.0, 900.0, 900.0);
+
 	game.CloseSwapChain();
 }
 

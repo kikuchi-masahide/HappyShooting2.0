@@ -22,15 +22,17 @@ private:
     //移動を終えてから消滅まで何tickかけるか
     static constexpr unsigned int unvisualization_period_ = 60;
     //半径
-    static constexpr double size_ = 20;
+    static constexpr double size_ = 30;
     unsigned int counter_;
     //αをこちらで変更する
     ComponentHandle<DrawNormalBulletComponent> draw_component_;
     //実体化が終わった瞬間追加し，移動が終わった瞬間消す
     ComponentHandle<NormalBulletCollisionComponent> collision_component_;
     boost::shared_ptr<CollisionManager> collision_manager_;
-    //次tickの移動距離
+    //移動距離
     double dx_, dy_;
+    //各軸速度絶対値のmax
+    static constexpr double max_speed_ = 0.75;
     //乱数生成用
     static std::random_device seed_gen_;
     static std::mt19937 engine_;

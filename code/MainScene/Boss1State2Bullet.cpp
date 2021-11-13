@@ -30,28 +30,47 @@ void Boss1State2Bullet::Update()
 	}
 	else if (counter_ < visualization_period_ + freemove_period_)
 	{
-		//TODO:ˆÚ“®ƒ‹[ƒ`ƒ“‚Ì‰ü‘P(Žv‚Á‚Ä‚½‚æ‚è‘‚¢)
 		auto pos = mObj->GetPosition();
 		dx_ += (dist_(engine_) - 0.5) * 0.2;
-		if (dx_ > 2.0 || pos(0) <= -300.0)
+		if (dx_ > max_speed_)
 		{
-			dx_ = 0.3;
+			dx_ = max_speed_;
 		}
-		if (dx_ < -2.0 || pos(0) >= 300.0)
+		else if (dx_ < -max_speed_)
 		{
-			dx_ = -0.3;
-		}
-		dy_ += (dist_(engine_) - 0.5) * 0.2;
-		if (dy_ > 2.0 || pos(0) <= -450.0)
-		{
-			dy_ = 0.3;
-		}
-		if (dy_ < -2.0 || pos(0) >= 450.0)
-		{
-			dy_ = -0.3;
+			dx_ = -max_speed_;
 		}
 		pos(0) += dx_;
+		if (pos(0) > 300.0)
+		{
+			pos(0) = 300.0;
+			dx_ *= -0.5;
+		}
+		else if (pos(0) < -300.0)
+		{
+			pos(0) = -300.0;
+			dx_ *= -0.5;
+		}
+		dy_ += (dist_(engine_) - 0.5) * 0.2;
+		if (dy_ > max_speed_)
+		{
+			dy_ = max_speed_;
+		}
+		else if (dy_ < -max_speed_)
+		{
+			dy_ = -max_speed_;
+		}
 		pos(1) += dy_;
+		if (pos(1) > 450.0)
+		{
+			pos(1) = 450.0;
+			dy_ *= -0.5;
+		}
+		else if (pos(1) < -450.0)
+		{
+			pos(1) = -450.0;
+			dy_ *= -0.5;
+		}
 		mObj->SetPosition(pos);
 		if (counter_ == visualization_period_ + freemove_period_ - 1)
 		{

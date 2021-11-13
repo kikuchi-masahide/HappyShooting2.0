@@ -2,6 +2,7 @@
 #include "MainSceneBaseLayer.h"
 
 #include "../Engine/Game.h"
+#include "../Helper/HDrawLineFrame.h"
 
 class MainSceneClippingLayer :
     public MainSceneBaseLayer
@@ -26,5 +27,6 @@ private:
     boost::shared_ptr<DX12Resource> index_buffer_;
     void GraphicInit();
     GameObjectHandle myself_;
+    Helpers::HDrawLineFrame frame_;
 };
 
