@@ -247,6 +247,9 @@
     <Filter Include="MainScene\AddOneComponent">
       <UniqueIdentifier>{5f68d0bc-247b-4f3f-b75f-1a5b58a432b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\MyselfPosAdjustComponent">
+      <UniqueIdentifier>{b01f5f24-94fb-433b-b029-a68a31c0e240}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -562,6 +565,9 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\AddOneComponent.cpp">
       <Filter>MainScene\AddOneComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MyselfPosAdjustComponent.cpp">
+      <Filter>MainScene\MyselfPosAdjustComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -898,6 +904,9 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\AddOneComponent.h">
       <Filter>MainScene\AddOneComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MyselfPosAdjustComponent.h">
+      <Filter>MainScene\MyselfPosAdjustComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -4,15 +4,30 @@
 #include "../Engine/Scene.h"
 #include "MyselfMediatorComponent.h"
 #include "MyselfRevivingCondition.h"
+#include "MyselfPosAdjustComponent.h"
 
 MyselfNormalCondition::MyselfNormalCondition(GameObjectHandle handle, ComponentHandle<MyselfMediatorComponent> mediator)
 	:MyselfConditionBase(handle,mediator)
 {
 	scene_ = mObj->mScene;
+	pos_adjust_[0] = mObj->AddUpdateComponent<MyselfPosAdjustComponent>(mObj, MatVec::Vector2(-300.0, -450.0), MatVec::Vector2(-300.0, +450.0));
+	pos_adjust_[1] = mObj->AddUpdateComponent<MyselfPosAdjustComponent>(mObj, MatVec::Vector2(+300.0, -450.0), MatVec::Vector2(-300.0, -450.0));
+	pos_adjust_[2] = mObj->AddUpdateComponent<MyselfPosAdjustComponent>(mObj, MatVec::Vector2(+300.0, +450.0), MatVec::Vector2(+300.0, -450.0));
+	pos_adjust_[3] = mObj->AddUpdateComponent<MyselfPosAdjustComponent>(mObj, MatVec::Vector2(-300.0, +450.0), MatVec::Vector2(+300.0, +450.0));
 }
 
 MyselfNormalCondition::~MyselfNormalCondition()
 {
+	for (int n = 0; n < 4; n++)
+	{
+		//HACK:プログラム終了時，デストラクタの実行順でこのハンドルが生きてるか否かが左右され，
+		//このような場合分けをすることが必須になっている
+		//例えばDEBUG_では画面上にダングリングを参照した行を表示するのみ，
+		//RELEASE_では適当な空オブジェクトを操作するようにする，などにした方がよいか?
+		if (pos_adjust_[n].IsValid()) {
+			pos_adjust_[n]->SetDeleteFlag();
+		}
+	}
 }
 
 void MyselfNormalCondition::Update()
@@ -39,11 +54,6 @@ void MyselfNormalCondition::Update()
 	{
 		after_pos(1) -= moving_dist_;
 	}
-	//画面内にとどまらせる
-	after_pos(0) = Max(after_pos(0), -300.0);
-	after_pos(0) = Min(after_pos(0), 300.0);
-	after_pos(1) = Max(after_pos(1), -450.0);
-	after_pos(1) = Min(after_pos(1), 450.0);
 	mObj->SetPosition(after_pos);
 	mediator_->SetAlpha(1.0);
 }

@@ -258,6 +258,7 @@
     <ClCompile Include="code\MainScene\MyselfConditionBase.cpp" />
     <ClCompile Include="code\MainScene\MyselfMediatorComponent.cpp" />
     <ClCompile Include="code\MainScene\MyselfNormalCondition.cpp" />
+    <ClCompile Include="code\MainScene\MyselfPosAdjustComponent.cpp" />
     <ClCompile Include="code\MainScene\MyselfRevivingCondition.cpp" />
     <ClCompile Include="code\MainScene\NormalBulletCollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\NormalShootComponent.cpp" />
@@ -378,6 +379,7 @@
     <ClInclude Include="code\MainScene\MyselfConditionBase.h" />
     <ClInclude Include="code\MainScene\MyselfMediatorComponent.h" />
     <ClInclude Include="code\MainScene\MyselfNormalCondition.h" />
+    <ClInclude Include="code\MainScene\MyselfPosAdjustComponent.h" />
     <ClInclude Include="code\MainScene\MyselfRevivingCondition.h" />
     <ClInclude Include="code\MainScene\NormalBulletCollisionComponent.h" />
     <ClInclude Include="code\MainScene\NormalShootComponent.h" />
