@@ -12,6 +12,7 @@ class DrawLazerComponent;
 class EnemyHealthComponent;
 class ScoreManager;
 class LazerCollisionComponent;
+class MyselfPosAdjustComponent;
 
 //TODO:CollisionComponentにmediator機能まで持たせたの，普通に悪手だった気がする(ならどうする?)
 /// <summary>
@@ -21,7 +22,7 @@ class Enemy4BehaviorComponent :
     public CollisionComponent
 {
 public:
-    Enemy4BehaviorComponent(GameObjectHandle obj, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<LayerManager> layer_manager,boost::shared_ptr<ScoreManager> score_manager,int flag);
+    Enemy4BehaviorComponent(GameObjectHandle obj, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<LayerManager> layer_manager,boost::shared_ptr<ScoreManager> score_manager, GameObjectHandle myself, int flag);
     ~Enemy4BehaviorComponent();
     void Update() override;
     void CheckHitComponent() override;
@@ -56,5 +57,8 @@ private:
     ComponentHandle<LazerCollisionComponent> lazer_collision_;
     //死に際に通常弾をまきちらす
     void DeathAttack();
+    //自機，自機の移動制限
+    GameObjectHandle myself_;
+    ComponentHandle<MyselfPosAdjustComponent> myself_pos_;
 };
 

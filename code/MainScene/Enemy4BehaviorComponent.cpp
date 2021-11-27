@@ -14,10 +14,11 @@
 #include "LinearMoveComponent.h"
 #include "DrawNormalBulletComponent.h"
 #include "NormalBulletCollisionComponent.h"
+#include "MyselfPosAdjustComponent.h"
 
-Enemy4BehaviorComponent::Enemy4BehaviorComponent(GameObjectHandle obj, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, int flag)
+Enemy4BehaviorComponent::Enemy4BehaviorComponent(GameObjectHandle obj, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, GameObjectHandle myself, int flag)
 	:CollisionComponent(obj, collision_manager, 100, CollisionManager::Tag::EnemyBody, 100),
-	counter_(0), mode_(0),
+	counter_(0), mode_(0),myself_(myself),
 	flag_(flag), layer_manager_(layer_manager),score_manager_(score_manager),
 	collision_manager_(collision_manager)
 {
@@ -37,6 +38,11 @@ Enemy4BehaviorComponent::~Enemy4BehaviorComponent()
 {
 	//アポトーシスでも，普通に倒されても，死に際に通常弾をまき散らす
 	DeathAttack();
+	//移動領域制限の解除
+	if (myself_pos_.IsValid())
+	{
+		myself_pos_->SetDeleteFlag();
+	}
 }
 
 void Enemy4BehaviorComponent::Update()
@@ -85,6 +91,7 @@ void Enemy4BehaviorComponent::Update()
 			lazer_collision_->cupsule_.b_ = lazer_draw_->b_;
 			mode_ = 2;
 			counter_ = 0;
+			myself_pos_ = mObj->AddUpdateComponent<MyselfPosAdjustComponent>(myself_, MatVec::Vector2(300 - sqrt(2) * 20 - 0.01, +450.0) * flag_, MatVec::Vector2(300 - sqrt(2) * 20 - 0.01, -450.0) * flag_);
 		}
 	}
 	else if (mode_ == 2)
@@ -95,6 +102,7 @@ void Enemy4BehaviorComponent::Update()
 		lazer_draw_->r_ = r;
 		lazer_collision_->cupsule_.r_ = r;
 		RegCollisionGeometry(MatVec::Vector2((300 - sqrt(2) * 20) * flag_, 410.0), 60);
+		myself_pos_->SetAnchorPoint(MatVec::Vector2(300 - sqrt(2) * 20 - r - 0.01, +450.0) * flag_, MatVec::Vector2(300 - sqrt(2) * 20 - r - 0.01, -450.0) * flag_);
 		counter_++;
 		if (counter_ == 60)
 		{
@@ -113,6 +121,7 @@ void Enemy4BehaviorComponent::Update()
 		lazer_draw_->b_(0) = pos(0);
 		lazer_collision_->cupsule_.a_(0) = pos(0);
 		lazer_collision_->cupsule_.b_(0) = pos(0);
+		myself_pos_->SetAnchorPoint(MatVec::Vector2(pos(0) - (20 * sqrt(2) + 0.01) * flag_, +450.0 * flag_), MatVec::Vector2(pos(0) - (20 * sqrt(2) + 0.01) * flag_, -450.0 * flag_));
 		counter_++;
 		if (counter_ == 60 * 3)
 		{
