@@ -65,3 +65,8 @@ bool Boss1State2::IsCollisionActive()
 {
 	return true;
 }
+
+bool Boss1State2::IsInvincible()
+{
+	return false;
+}

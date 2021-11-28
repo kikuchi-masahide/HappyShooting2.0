@@ -31,3 +31,8 @@ void Boss1StateEntering::Update()
 		));
 	}
 }
+
+bool Boss1StateEntering::IsInvincible()
+{
+	return true;
+}

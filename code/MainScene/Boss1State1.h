@@ -10,6 +10,7 @@ public:
     ~Boss1State1();
     void Update() override;
     bool IsCollisionActive() override;
+    bool IsInvincible() override;
 private:
     //Update()の実行回数カウント(1回目のUpdate実行の間counter_は0である)
     unsigned int counter_;

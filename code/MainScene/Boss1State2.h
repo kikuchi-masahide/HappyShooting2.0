@@ -10,6 +10,7 @@ public:
     ~Boss1State2();
     void Update() override;
     bool IsCollisionActive() override;
+    bool IsInvincible() override;
 private:
     //x²•ûŒüCy²•ûŒü‚É’e‚ğ‚¢‚­‚Â•À‚×‚é‚©
     static constexpr unsigned int bullet_num_x_ = 10+1;

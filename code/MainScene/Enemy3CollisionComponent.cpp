@@ -6,7 +6,7 @@
 #include "ScoreManager.h"
 
 Enemy3CollisionComponent::Enemy3CollisionComponent(GameObjectHandle object, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<ScoreManager> score_manager, ComponentHandle<EnemyHealthComponent> health)
-	:EnemyBodyCollisionComponent(object, collision_manager, score_manager, health, damage_, 100),
+	:EnemyBodyCollisionComponent<EnemyHealthComponent>(object, collision_manager, score_manager, health, damage_, 100),
 	circle_(This<CollisionComponent>(),MatVec::Vector2(),20)
 {
 }

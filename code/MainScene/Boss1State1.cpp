@@ -45,6 +45,11 @@ bool Boss1State1::IsCollisionActive()
 	return true;
 }
 
+bool Boss1State1::IsInvincible()
+{
+	return false;
+}
+
 void Boss1State1::AddMasterBullet(double x)
 {
 	auto bullet = mediator_->mObj->mScene->AddObject(MatVec::Vector2(), 1.0, 0.0);

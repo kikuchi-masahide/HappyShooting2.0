@@ -13,6 +13,7 @@ public:
 	~Boss1State3();
 	void Update() override;
 	bool IsCollisionActive() override;
+	bool IsInvincible() override;
 private:
 	//‚Í‚¶‚ß‚Ä‚ÌUpdate()ÀsCcounter_initial_‚É‚Ğ‚Æ‚µ‚¢
 	int counter_;

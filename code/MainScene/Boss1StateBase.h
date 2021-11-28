@@ -19,6 +19,8 @@ public:
 	virtual void Update() = 0;
 	//ƒRƒŠƒWƒ‡ƒ“‚ð—LŒø‚É‚É‚·‚é‚©”Û‚©
 	virtual bool IsCollisionActive();
+	//–³“G‚Å‚ ‚é‚©”Û‚©
+	virtual bool IsInvincible() = 0;
 protected:
 	ComponentHandle<Boss1MediatorComponent> mediator_;
 	boost::shared_ptr<LayerManager> layer_manager_;

@@ -7,7 +7,7 @@ class EnemyHealthComponent;
 class ScoreManager;
 
 class Enemy3CollisionComponent :
-    public EnemyBodyCollisionComponent
+    public EnemyBodyCollisionComponent<EnemyHealthComponent>
 {
 public:
     Enemy3CollisionComponent(GameObjectHandle object, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<ScoreManager> score_manager, ComponentHandle<EnemyHealthComponent> health);

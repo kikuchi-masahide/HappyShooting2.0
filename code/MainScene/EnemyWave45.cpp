@@ -26,7 +26,7 @@ EnemyWave45::EnemyWave45(MainScene* main_scene)
 		auto health = obj->AddUpdateComponent<EnemyHealthComponent>(scene->GetLayerManager(), 300);
 		//Enemy3‚ÆŒ`‚ªˆê‚È‚Ì‚Å“–‚½‚è”»’è‚àˆê
 		obj->AddUpdateComponent<Enemy3CollisionComponent>(scene->GetCollisionManager(), scene->GetScoreManager(), health);
-		obj->AddOutputComponent<DrawHealthBarComponent>(scene->GetLayerManager(), health, MatVec::Vector2(0, 30));
+		obj->AddOutputComponent<DrawHealthBarComponent<EnemyHealthComponent>>(scene->GetLayerManager(), health, MatVec::Vector2(0, 30));
 		obj->AddUpdateComponent<Enemy5ShootComponent>(50, scene->GetMyselfHandle(), 10, 4, 60, -30 * (i + 6), 100, scene->GetLayerManager(), scene->GetCollisionManager());
 		AddEnemy(obj);
 	}

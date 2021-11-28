@@ -1,19 +1,18 @@
 #pragma once
-#include "CollisionComponent.h"
+#include "EnemyBodyCollisionComponent.h"
 
 #include "PolygonGeometry.h"
 
 class Boss1MediatorComponent;
+class ScoreManager;
 
-//TODO:HealthComponentçÏÇ¡ÇΩÇÁEnemyBodyCollisionComponentÇ…à∆ë÷Ç¶Ç∑ÇÈ
 class Boss1CollisionComponent :
-    public CollisionComponent
+    public EnemyBodyCollisionComponent<Boss1MediatorComponent>
 {
 public:
-    Boss1CollisionComponent(GameObjectHandle handle, boost::shared_ptr<CollisionManager> manager, ComponentHandle<Boss1MediatorComponent> mediator);
+    Boss1CollisionComponent(GameObjectHandle handle, boost::shared_ptr<CollisionManager> manager, boost::shared_ptr<ScoreManager> score_manager, ComponentHandle<Boss1MediatorComponent> mediator);
     ~Boss1CollisionComponent();
     void Update() override;
-    void CheckHitComponent() override;
 private:
     ComponentHandle<Boss1MediatorComponent> mediator_;
     PolygonGeometry polygon_[4];

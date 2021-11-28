@@ -13,7 +13,7 @@ class ScoreManager;
 /// ©‹@C©‹@’e‚É“–‚½‚Á‚½‚ç‘Ì—ÍŒ¸
 /// </summary>
 class Enemy1CollisionComponent
-	:public EnemyBodyCollisionComponent
+	:public EnemyBodyCollisionComponent<EnemyHealthComponent>
 {
 public:
 	Enemy1CollisionComponent(GameObjectHandle object, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<ScoreManager> score_manager, ComponentHandle<EnemyHealthComponent> health);

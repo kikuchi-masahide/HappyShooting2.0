@@ -3,7 +3,7 @@
 #include "EnemyHealthComponent.h"
 
 Enemy1CollisionComponent::Enemy1CollisionComponent(GameObjectHandle object, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<ScoreManager> score_manager, ComponentHandle<EnemyHealthComponent> health)
-	:EnemyBodyCollisionComponent(object, collision_manager, score_manager, health, damage_, 100)
+	:EnemyBodyCollisionComponent<EnemyHealthComponent>(object, collision_manager, score_manager, health, damage_, 100)
 {
 	circle_around_[0] = CircleGeometry(This<CollisionComponent>(), MatVec::Vector2(), 8);
 	circle_around_[1] = CircleGeometry(This<CollisionComponent>(), MatVec::Vector2(), 8);

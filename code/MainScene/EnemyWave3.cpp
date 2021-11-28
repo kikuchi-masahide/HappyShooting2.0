@@ -26,7 +26,7 @@ EnemyWave3::EnemyWave3(MainScene* main_scene)
 		draw->height_ = 40;
 		auto health = obj->AddUpdateComponent<EnemyHealthComponent>(main_scene->GetLayerManager(), 300);
 		obj->AddUpdateComponent<Enemy3CollisionComponent>(main_scene->GetCollisionManager(), main_scene->GetScoreManager(), health);
-		obj->AddOutputComponent<DrawHealthBarComponent>(main_scene->GetLayerManager(), health, MatVec::Vector2(0, 30));
+		obj->AddOutputComponent<DrawHealthBarComponent<EnemyHealthComponent>>(main_scene->GetLayerManager(), health, MatVec::Vector2(0, 30));
 		for (int d = 0; d < 4; d++)
 		{
 			MatVec::Vector2 direct(cos(d * PI / 2), sin(d * PI / 2));
@@ -50,7 +50,7 @@ EnemyWave3::EnemyWave3(MainScene* main_scene)
 		draw->height_ = 40;
 		auto health = obj->AddUpdateComponent<EnemyHealthComponent>(main_scene->GetLayerManager(), 300);
 		obj->AddUpdateComponent<Enemy3CollisionComponent>(main_scene->GetCollisionManager(), main_scene->GetScoreManager(), health);
-		obj->AddOutputComponent<DrawHealthBarComponent>(main_scene->GetLayerManager(), health, MatVec::Vector2(0, 30));
+		obj->AddOutputComponent<DrawHealthBarComponent<EnemyHealthComponent>>(main_scene->GetLayerManager(), health, MatVec::Vector2(0, 30));
 		for (int d = 0; d < 4; d++)
 		{
 			MatVec::Vector2 direct(cos(d * PI / 2), sin(d * PI / 2));

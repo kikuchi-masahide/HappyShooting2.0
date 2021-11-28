@@ -104,6 +104,11 @@ bool Boss1State3::IsCollisionActive()
 	return true;
 }
 
+bool Boss1State3::IsInvincible()
+{
+	return false;
+}
+
 void Boss1State3::AddBullet()
 {
 	auto myself_pos = enemywave_manager_->GetMyselfHandle()->GetPosition();

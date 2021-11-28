@@ -27,7 +27,7 @@ Enemy4BehaviorComponent::Enemy4BehaviorComponent(GameObjectHandle obj, boost::sh
 	texture0_->height_ = 140.0;
 	texture0_->center_offset_ = MatVec::Vector2(0.0, -30.0);
 	health_ = mObj->AddUpdateComponent<EnemyHealthComponent>(layer_manager_, 9000.0, 240.0);
-	mObj->AddOutputComponent<DrawHealthBarComponent>(layer_manager_, health_, MatVec::Vector2(0, 25));
+	mObj->AddOutputComponent<DrawHealthBarComponent<EnemyHealthComponent>>(layer_manager_, health_, MatVec::Vector2(0, 25));
 	tail_ = CircleGeometry(This<CollisionComponent>(), MatVec::Vector2(), 40);
 	center_square_ = PolygonGeometry(This<CollisionComponent>(), 4);
 	mouce_left_ = PolygonGeometry(This<CollisionComponent>(), 3);

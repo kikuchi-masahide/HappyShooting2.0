@@ -55,3 +55,8 @@ void Boss1StateNormal::Update()
 	}
 	counter_++;
 }
+
+bool Boss1StateNormal::IsInvincible()
+{
+	return false;
+}
