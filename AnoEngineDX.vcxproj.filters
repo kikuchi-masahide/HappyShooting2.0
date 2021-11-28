@@ -250,6 +250,9 @@
     <Filter Include="MainScene\MyselfPosAdjustComponent">
       <UniqueIdentifier>{b01f5f24-94fb-433b-b029-a68a31c0e240}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Boss1StateBase\Boss1State3">
+      <UniqueIdentifier>{88c63bfc-c2c0-44d0-8192-bb7c24a7bf65}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -568,6 +571,9 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\MyselfPosAdjustComponent.cpp">
       <Filter>MainScene\MyselfPosAdjustComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss1State3.cpp">
+      <Filter>MainScene\Boss1StateBase\Boss1State3</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -907,6 +913,9 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\MyselfPosAdjustComponent.h">
       <Filter>MainScene\MyselfPosAdjustComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss1State3.h">
+      <Filter>MainScene\Boss1StateBase\Boss1State3</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
