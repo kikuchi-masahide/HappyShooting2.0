@@ -7,15 +7,28 @@
 #include "LinearMoveComponent.h"
 #include "DrawNormalBulletComponent.h"
 #include "NormalBulletCollisionComponent.h"
+#include "MyselfPosAdjustComponent.h"
 
 Boss1State3::Boss1State3(ComponentHandle<Boss1MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<EnemyWaveManager> enemywave_manager)
 	:Boss1StateBase(mediator,layer_manager,score_manager,collision_manager,enemywave_manager),
 	counter_(counter_initial_)
 {
+	auto myself = enemywave_manager_->GetMyselfHandle();
+	auto obj = mediator_->mObj;
+	pos_adjust_[0] = obj->AddUpdateComponent<MyselfPosAdjustComponent>(myself, MatVec::Vector2(-300.0, -450.0), MatVec::Vector2(-300.0, +450.0));
+	pos_adjust_[1] = obj->AddUpdateComponent<MyselfPosAdjustComponent>(myself, MatVec::Vector2(-300.0, +450.0), MatVec::Vector2(+300.0, +450.0));
+	pos_adjust_[2] = obj->AddUpdateComponent<MyselfPosAdjustComponent>(myself, MatVec::Vector2(+300.0, +450.0), MatVec::Vector2(+300.0, -450.0));
+	pos_adjust_[3] = obj->AddUpdateComponent<MyselfPosAdjustComponent>(myself, MatVec::Vector2(+300.0, -450.0), MatVec::Vector2(-300.0, -450.0));
 }
 
 Boss1State3::~Boss1State3()
 {
+	for (int n = 0; n < 4; n++) {
+		if (pos_adjust_[n].IsValid())
+		{
+			pos_adjust_[n]->SetDeleteFlag();
+		}
+	}
 }
 
 void Boss1State3::Update()
@@ -33,6 +46,43 @@ void Boss1State3::Update()
 		{
 			AddBullet();
 		}
+	}
+	//自機移動制限
+	double rotate;
+	double expand;
+	if (counter_ < shrink_period_)
+	{
+		rotate = max_rotate_angle_ * counter_ / shrink_period_;
+		expand = (1.0 * (shrink_period_ - counter_) + max_expand_ratio_ * counter_) / shrink_period_;
+	}
+	else if (counter_ < whole_period_ + 1 - shrink_period_)
+	{
+		rotate = max_rotate_angle_;
+		expand = max_expand_ratio_;
+	}
+	else {
+		int c = whole_period_ + 1 - counter_;
+		rotate = max_rotate_angle_ * c / shrink_period_;
+		expand = (1.0 * (shrink_period_ - c) + max_expand_ratio_ * c) / shrink_period_;
+	}
+	//pos_adjust_[n]はanchor[n]をa_，anchor[n+1]をb_とする
+	MatVec::Vector2 anchor[5];
+	anchor[0] = MatVec::Vector2(-300.0, -450.0);
+	anchor[1] = MatVec::Vector2(-300.0, +450.0);
+	anchor[2] = MatVec::Vector2(+300.0, +450.0);
+	anchor[3] = MatVec::Vector2(+300.0, -450.0);
+	anchor[4] = MatVec::Vector2(-300.0, -450.0);
+	//anchorを回転，拡大縮小させる
+	for (int n = 0; n < 5; n++)
+	{
+		anchor[n] *= expand;
+		double x = anchor[n](0);
+		double y = anchor[n](1);
+		anchor[n] = MatVec::Vector2(x * cos(rotate) - y * sin(rotate), x * sin(rotate) + y * cos(rotate));
+	}
+	for (int n = 0; n < 4; n++)
+	{
+		pos_adjust_[n]->SetAnchorPoint(anchor[n], anchor[n + 1]);
 	}
 	//このモード終了
 	if (counter_ == whole_period_)

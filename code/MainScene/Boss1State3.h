@@ -3,6 +3,8 @@
 
 #include "../Engine/Math/Math.h"
 
+class MyselfPosAdjustComponent;
+
 class Boss1State3 :
     public Boss1StateBase
 {
@@ -27,5 +29,12 @@ private:
 	static constexpr unsigned int launch_repeat_time_ = 12;
 	//©‹@‘_‚¢’eC‚»‚Ì¶‰E‚Ì’e‚ÌŒv3‚Â‚ğ’Ç‰Á‚·‚é
 	void AddBullet();
+	//©‹@ˆÚ“®—Ìˆæk¬CÄŠg‘å‚É‰½tick‚©‚¯‚é‚©
+	static constexpr unsigned int shrink_period_ = 240;
+	//‚±‚ÌŠp“x‚Ü‚ÅˆÚ“®—Ìˆæ‚ğŒX‚¯‚é
+	static constexpr double max_rotate_angle_ = -PI / 3;
+	//ˆÚ“®—Ìˆæ‚ğ‰½”{‚ÉŠg‘å‚·‚é‚©
+	static constexpr double max_expand_ratio_ = 0.4;
+	ComponentHandle<MyselfPosAdjustComponent> pos_adjust_[4];
 };
 
