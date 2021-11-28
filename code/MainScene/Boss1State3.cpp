@@ -8,6 +8,7 @@
 #include "DrawNormalBulletComponent.h"
 #include "NormalBulletCollisionComponent.h"
 #include "MyselfPosAdjustComponent.h"
+#include "LayerManager.h"
 
 Boss1State3::Boss1State3(ComponentHandle<Boss1MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<EnemyWaveManager> enemywave_manager)
 	:Boss1StateBase(mediator,layer_manager,score_manager,collision_manager,enemywave_manager),
@@ -29,6 +30,7 @@ Boss1State3::~Boss1State3()
 			pos_adjust_[n]->SetDeleteFlag();
 		}
 	}
+	layer_manager_->SwapLayer(0);
 }
 
 void Boss1State3::Update()
@@ -37,6 +39,11 @@ void Boss1State3::Update()
 	if (counter_ < 0)
 	{
 		counter_++;
+		//ŽŸUpdate‚©‚ç•`‰æ‚ð‹·‚ß‚Ä‚¢‚­‚Ì‚Å
+		if (counter_ == 0)
+		{
+			layer_manager_->SwapLayer(2);
+		}
 		return;
 	}
 	//n•b+0,3,6,...,30tick(n=0,...,launch_repeat_time_-1)‚Ìƒ^ƒCƒ~ƒ“ƒO‚Å’e‚ðŒ‚‚Â

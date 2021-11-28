@@ -253,6 +253,9 @@
     <Filter Include="MainScene\Boss1StateBase\Boss1State3">
       <UniqueIdentifier>{88c63bfc-c2c0-44d0-8192-bb7c24a7bf65}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\MainSceneBaseLayer\MainSceneShrinkLayer">
+      <UniqueIdentifier>{9a000a06-9c4a-4dc4-b6b9-8eb7b5908906}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -574,6 +577,9 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\Boss1State3.cpp">
       <Filter>MainScene\Boss1StateBase\Boss1State3</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MainSceneShrinkLayer.cpp">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneShrinkLayer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -917,6 +923,9 @@
     <ClInclude Include="code\MainScene\Boss1State3.h">
       <Filter>MainScene\Boss1StateBase\Boss1State3</Filter>
     </ClInclude>
+    <ClInclude Include="code\MainScene\MainSceneShrinkLayer.h">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneShrinkLayer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\DrawHealthBarComponent_header.hlsli">
@@ -957,6 +966,9 @@
     </None>
     <None Include="Shader\MainSceneClippingLayer_header.hlsli">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneClippingLayer</Filter>
+    </None>
+    <None Include="Shader\MainSceneShrinkLayer_header.hlsli">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneShrinkLayer</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -1037,6 +1049,12 @@
     </FxCompile>
     <FxCompile Include="Shader\MainSceneClippingLayer_vertex.hlsl">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneClippingLayer</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneShrinkLayer_pixel.hlsl">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneShrinkLayer</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneShrinkLayer_vertex.hlsl">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneShrinkLayer</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>

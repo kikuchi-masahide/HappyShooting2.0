@@ -251,6 +251,7 @@
     <ClCompile Include="code\MainScene\MainSceneBasicLayer.cpp" />
     <ClCompile Include="code\MainScene\MainSceneClippingLayer.cpp" />
     <ClCompile Include="code\MainScene\MainSceneDrawComponent.cpp" />
+    <ClCompile Include="code\MainScene\MainSceneShrinkLayer.cpp" />
     <ClCompile Include="code\MainScene\MainSceneUIScreen.cpp" />
     <ClCompile Include="code\MainScene\MyBulletCollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\MyselfAddNormalBulletComponent.cpp" />
@@ -373,6 +374,7 @@
     <ClInclude Include="code\MainScene\MainSceneBasicLayer.h" />
     <ClInclude Include="code\MainScene\MainSceneClippingLayer.h" />
     <ClInclude Include="code\MainScene\MainSceneDrawComponent.h" />
+    <ClInclude Include="code\MainScene\MainSceneShrinkLayer.h" />
     <ClInclude Include="code\MainScene\MainSceneUIScreen.h" />
     <ClInclude Include="code\MainScene\MyBulletCollisionComponent.h" />
     <ClInclude Include="code\MainScene\MyselfAddNormalBulletComponent.h" />
@@ -407,6 +409,7 @@
     <None Include="Shader\HTextureDrawInclude.hlsli" />
     <None Include="Shader\MainSceneBasicLayerHeader.hlsli" />
     <None Include="Shader\MainSceneClippingLayer_header.hlsli" />
+    <None Include="Shader\MainSceneShrinkLayer_header.hlsli" />
     <None Include="Shader\PolygonGeometryDrawer_header.hlsli" />
   </ItemGroup>
   <ItemGroup>
@@ -549,6 +552,18 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
     </FxCompile>
     <FxCompile Include="Shader\MainSceneClippingLayer_vertex.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneShrinkLayer_pixel.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneShrinkLayer_vertex.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>

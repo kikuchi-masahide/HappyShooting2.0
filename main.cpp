@@ -89,4 +89,6 @@ void LoadShaders(Game* _game)
 	_game->mShaderManager.LoadShader(L"Shader/PolygonGeometryDrawer_pixel.hlsl", DX12Config::ShaderType::PIXEL, 23);
 	_game->mShaderManager.LoadShader(L"Shader/MainSceneClippingLayer_vertex.hlsl", DX12Config::ShaderType::VERTEX, 24);
 	_game->mShaderManager.LoadShader(L"Shader/MainSceneClippingLayer_pixel.hlsl", DX12Config::ShaderType::PIXEL, 25);
+	_game->mShaderManager.LoadShader(L"Shader/MainSceneShrinkLayer_vertex.hlsl", DX12Config::ShaderType::VERTEX, 26);
+	_game->mShaderManager.LoadShader(L"Shader/MainSceneShrinkLayer_pixel.hlsl", DX12Config::ShaderType::PIXEL, 27);
 }
