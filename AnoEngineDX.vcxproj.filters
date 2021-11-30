@@ -256,6 +256,9 @@
     <Filter Include="MainScene\MainSceneBaseLayer\MainSceneShrinkLayer">
       <UniqueIdentifier>{9a000a06-9c4a-4dc4-b6b9-8eb7b5908906}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Boss1StateBase\Boss1StateBeaten">
+      <UniqueIdentifier>{1890c3c8-56dd-4564-9deb-33c23267312e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -580,6 +583,9 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\MainSceneShrinkLayer.cpp">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneShrinkLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss1StateBeaten.cpp">
+      <Filter>MainScene\Boss1StateBase\Boss1StateBeaten</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -925,6 +931,9 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\MainSceneShrinkLayer.h">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneShrinkLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss1StateBeaten.h">
+      <Filter>MainScene\Boss1StateBase\Boss1StateBeaten</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,7 @@
 #include "Boss1CollisionComponent.h"
 #include "DrawHealthBarComponent.h"
 #include "../Engine/Scene.h"
+#include "Boss1StateBeaten.h"
 
 Boss1MediatorComponent::Boss1MediatorComponent(GameObjectHandle object, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<EnemyWaveManager> enemywave_manager, boost::shared_ptr<CollisionManager> collision_manager)
 	:Component(object,100),
@@ -22,6 +23,7 @@ Boss1MediatorComponent::Boss1MediatorComponent(GameObjectHandle object, boost::s
 Boss1MediatorComponent::~Boss1MediatorComponent()
 {
 	if(current_state_)delete current_state_;
+	healthbar_object_->SetDeleteFlag();
 }
 
 void Boss1MediatorComponent::Update()
@@ -79,7 +81,7 @@ double Boss1MediatorComponent::Damage(double damage)
 	//‘Ì—Í0‚É‚È‚Á‚½‚ç€–S‰‰o‚ÉˆÚs‚·‚é
 	if (health_ <= 0)
 	{
-		PauseAnimation(true);
+		ChangeState(DBG_NEW Boss1StateBeaten(This<Boss1MediatorComponent>(), layer_manager_, score_manager_, collision_manager_, enemywave_manager_));
 	}
 	return real_damage;
 }
