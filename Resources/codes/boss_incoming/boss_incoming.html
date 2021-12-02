@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>resource</title>
+    </head>
+    <body>
+        <canvas id = "canvas" width = "400" height = "60"></canvas>
+        <script>
+            const context=document.getElementById("canvas").getContext("2d");
+            context.fillStyle = "black";
+            context.clearRect(0,0,400,60);
+            context.font = "45px 'Meiryo UI'";
+            context.textAlign = "center";
+            context.textBaseline = "middle";
+            context.fillStyle = "red";
+            context.fillText("Boss Incoming",200,30);
+            
+        </script>
+    </body>
+</html>

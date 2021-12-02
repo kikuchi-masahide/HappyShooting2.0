@@ -259,6 +259,9 @@
     <Filter Include="MainScene\Boss1StateBase\Boss1StateBeaten">
       <UniqueIdentifier>{1890c3c8-56dd-4564-9deb-33c23267312e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\BossIncomingUpdate">
+      <UniqueIdentifier>{d7ce0fd8-fc2e-429c-9972-aea7ebd2e5d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -586,6 +589,9 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\Boss1StateBeaten.cpp">
       <Filter>MainScene\Boss1StateBase\Boss1StateBeaten</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\BossIncomingUpdate.cpp">
+      <Filter>MainScene\BossIncomingUpdate</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -934,6 +940,9 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\Boss1StateBeaten.h">
       <Filter>MainScene\Boss1StateBase\Boss1StateBeaten</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\BossIncomingUpdate.h">
+      <Filter>MainScene\BossIncomingUpdate</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

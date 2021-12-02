@@ -213,6 +213,7 @@
     <ClCompile Include="code\MainScene\Boss1StateBeaten.cpp" />
     <ClCompile Include="code\MainScene\Boss1StateEntering.cpp" />
     <ClCompile Include="code\MainScene\Boss1StateNormal.cpp" />
+    <ClCompile Include="code\MainScene\BossIncomingUpdate.cpp" />
     <ClCompile Include="code\MainScene\CircleGeometry.cpp" />
     <ClCompile Include="code\MainScene\CollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\CollisionManager.cpp" />
@@ -337,6 +338,7 @@
     <ClInclude Include="code\MainScene\Boss1StateBeaten.h" />
     <ClInclude Include="code\MainScene\Boss1StateEntering.h" />
     <ClInclude Include="code\MainScene\Boss1StateNormal.h" />
+    <ClInclude Include="code\MainScene\BossIncomingUpdate.h" />
     <ClInclude Include="code\MainScene\CircleGeometry.h" />
     <ClInclude Include="code\MainScene\CollisionComponent.h" />
     <ClInclude Include="code\MainScene\CollisionManager.h" />

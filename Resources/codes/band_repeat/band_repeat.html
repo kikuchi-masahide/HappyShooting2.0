@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>resource</title>
+    </head>
+    <body>
+        <canvas id = "canvas" width = "60" height = "30"></canvas>
+        <script>
+            const context=document.getElementById("canvas").getContext("2d");
+            context.clearRect(0,0,60,30);
+            context.fillStyle = "red";
+            context.beginPath();
+            context.moveTo(30,0);
+            context.lineTo(60,30);
+            context.lineTo(30,30);
+            context.lineTo(0,0);
+            context.closePath();
+            context.fill();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>resource</title>
+    </head>
+    <body>
+        <canvas id = "canvas1" width = "100" height = "100"></canvas>
+        <script>
+            const context=document.getElementById("canvas1").getContext("2d");
+            context.fillStyle = "rgba(255,255,255,1.0)";
+           context.fillRect(0,0,150,150);
+            context.fillStyle = "rgba(255,0,0,0.5)";
+            context.strokeStyle = "rgba(255,0,0,1.0)";
+            context.lineWidth = 8.0;
+            context.lineCap = "round";
+            context.lineJoin = "round";
+            context.beginPath();
+            let s = 40;
+            let cx = 50.0;
+            let cy = 50.0+s/4;
+            context.moveTo(cx,cy-s);
+            context.lineTo(cx+s*Math.cos(Math.PI/6),cy+s*Math.sin(Math.PI/6));
+            context.lineTo(cx+s*Math.cos(Math.PI*5/6),cy+s*Math.sin(Math.PI*5/6));
+            context.lineTo(cx,cy-s);
+            context.closePath();
+            context.stroke();
+            context.fill();
+            context.textAlign = "center";
+            context.textBaseline = "middle";
+            context.font = "50px sans-serif";
+            context.fillText('!',cx,cy-5);
+        </script>
+    </body>
+</html>
