@@ -262,6 +262,12 @@
     <Filter Include="MainScene\BossIncomingUpdate">
       <UniqueIdentifier>{d7ce0fd8-fc2e-429c-9972-aea7ebd2e5d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Helper\HSquareRepeatPattern">
+      <UniqueIdentifier>{d7f72cbb-887f-4b74-a7eb-694100213b21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\MainSceneDrawComponent\DrawSquareRepeatPattern">
+      <UniqueIdentifier>{388f54ad-2d17-4b5d-a599-a44bcc5e631b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -592,6 +598,12 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\BossIncomingUpdate.cpp">
       <Filter>MainScene\BossIncomingUpdate</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Helper\HSquareRepeatPattern.cpp">
+      <Filter>Helper\HSquareRepeatPattern</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\DrawSquareRepeatPattern.cpp">
+      <Filter>MainScene\MainSceneDrawComponent\DrawSquareRepeatPattern</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -943,6 +955,12 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\BossIncomingUpdate.h">
       <Filter>MainScene\BossIncomingUpdate</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Helper\HSquareRepeatPattern.h">
+      <Filter>Helper\HSquareRepeatPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\DrawSquareRepeatPattern.h">
+      <Filter>MainScene\MainSceneDrawComponent\DrawSquareRepeatPattern</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

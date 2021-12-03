@@ -195,6 +195,7 @@
     <ClCompile Include="code\Helper\HBetapaint.cpp" />
     <ClCompile Include="code\Helper\HDrawLineFrame.cpp" />
     <ClCompile Include="code\Helper\HNumberDraw.cpp" />
+    <ClCompile Include="code\Helper\HSquareRepeatPattern.cpp" />
     <ClCompile Include="code\Helper\HTextureAlphaRotateDraw.cpp" />
     <ClCompile Include="code\Helper\HTextureDraw.cpp" />
     <ClCompile Include="code\Helper\HUIButton.cpp" />
@@ -226,6 +227,7 @@
     <ClCompile Include="code\MainScene\DrawHealthBarComponent.cpp" />
     <ClCompile Include="code\MainScene\DrawLazerComponent.cpp" />
     <ClCompile Include="code\MainScene\DrawNormalBulletComponent.cpp" />
+    <ClCompile Include="code\MainScene\DrawSquareRepeatPattern.cpp" />
     <ClCompile Include="code\MainScene\DrawTextureComponent.cpp" />
     <ClCompile Include="code\MainScene\Enemy1CollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\Enemy1MoveComponent.cpp" />
@@ -320,6 +322,7 @@
     <ClInclude Include="code\Helper\HBetapaint.h" />
     <ClInclude Include="code\Helper\HDrawLineFrame.h" />
     <ClInclude Include="code\Helper\HNumberDraw.h" />
+    <ClInclude Include="code\Helper\HSquareRepeatPattern.h" />
     <ClInclude Include="code\Helper\HTextureAlphaRotateDraw.h" />
     <ClInclude Include="code\Helper\HTextureDraw.h" />
     <ClInclude Include="code\Helper\HUIButton.h" />
@@ -351,6 +354,7 @@
     <ClInclude Include="code\MainScene\DrawHealthBarComponent.h" />
     <ClInclude Include="code\MainScene\DrawLazerComponent.h" />
     <ClInclude Include="code\MainScene\DrawNormalBulletComponent.h" />
+    <ClInclude Include="code\MainScene\DrawSquareRepeatPattern.h" />
     <ClInclude Include="code\MainScene\DrawTextureComponent.h" />
     <ClInclude Include="code\MainScene\Enemy1CollisionComponent.h" />
     <ClInclude Include="code\MainScene\Enemy1MoveComponent.h" />
