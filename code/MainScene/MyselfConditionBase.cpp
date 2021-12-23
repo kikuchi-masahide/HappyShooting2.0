@@ -8,3 +8,8 @@ MyselfConditionBase::MyselfConditionBase(GameObjectHandle handle, ComponentHandl
 MyselfConditionBase::~MyselfConditionBase()
 {
 }
+
+bool MyselfConditionBase::IsShooterActive()
+{
+	return true;
+}

@@ -8,7 +8,6 @@ class CollisionManager;
 class Boss1StateBase;
 class DrawBoss1Component;
 
-//TODO:‘Ì—Í‚ğ‚Â‚¯‚½‚Ì‚ÅC€–S‰‰o‚ğ‰Á‚¦‚é
 class Boss1MediatorComponent :
     public Component
 {

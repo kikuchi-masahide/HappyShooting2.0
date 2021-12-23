@@ -245,6 +245,7 @@
     <ClCompile Include="code\MainScene\EnemyWaveBase.cpp" />
     <ClCompile Include="code\MainScene\EnemyWaveBoss1.cpp" />
     <ClCompile Include="code\MainScene\EnemyWaveManager.cpp" />
+    <ClCompile Include="code\MainScene\GameOverUI.cpp" />
     <ClCompile Include="code\MainScene\ICollisionGeometry.cpp" />
     <ClCompile Include="code\MainScene\LayerManager.cpp" />
     <ClCompile Include="code\MainScene\LazerCollisionComponent.cpp" />
@@ -262,6 +263,7 @@
     <ClCompile Include="code\MainScene\MyselfAngleComponent.cpp" />
     <ClCompile Include="code\MainScene\MyselfCollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\MyselfConditionBase.cpp" />
+    <ClCompile Include="code\MainScene\MyselfDeadCondition.cpp" />
     <ClCompile Include="code\MainScene\MyselfMediatorComponent.cpp" />
     <ClCompile Include="code\MainScene\MyselfNormalCondition.cpp" />
     <ClCompile Include="code\MainScene\MyselfPosAdjustComponent.cpp" />
@@ -372,6 +374,7 @@
     <ClInclude Include="code\MainScene\EnemyWaveBase.h" />
     <ClInclude Include="code\MainScene\EnemyWaveBoss1.h" />
     <ClInclude Include="code\MainScene\EnemyWaveManager.h" />
+    <ClInclude Include="code\MainScene\GameOverUI.h" />
     <ClInclude Include="code\MainScene\ICollisionGeometry.h" />
     <ClInclude Include="code\MainScene\LayerManager.h" />
     <ClInclude Include="code\MainScene\LazerCollisionComponent.h" />
@@ -389,6 +392,7 @@
     <ClInclude Include="code\MainScene\MyselfAngleComponent.h" />
     <ClInclude Include="code\MainScene\MyselfCollisionComponent.h" />
     <ClInclude Include="code\MainScene\MyselfConditionBase.h" />
+    <ClInclude Include="code\MainScene\MyselfDeadCondition.h" />
     <ClInclude Include="code\MainScene\MyselfMediatorComponent.h" />
     <ClInclude Include="code\MainScene\MyselfNormalCondition.h" />
     <ClInclude Include="code\MainScene\MyselfPosAdjustComponent.h" />

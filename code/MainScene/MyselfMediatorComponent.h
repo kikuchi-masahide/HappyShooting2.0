@@ -8,11 +8,15 @@ class ScoreManager;
 class CollisionManager;
 class DrawTextureComponent;
 class MyselfConditionBase;
+class MyselfPosAdjustComponent;
+class MyselfAddNormalBulletComponent;
 
 //自機の複数コンポーネントをまとめるコンポーネント それらのブジェクトへの追加は行わない
 //まとめるコンポーネントは，
 //・DrawTextureComponent
 //・あたり判定コンポーネント
+//TODO:何か間違っている気がする 各Stateに当たり判定を付属させた方がおそらく楽
+//まあテストで配った後に考える
 class MyselfMediatorComponent :
     public Component
 {
@@ -32,7 +36,7 @@ public:
     void SetNextCondition(ComponentHandle<MyselfConditionBase> next_condition);
     //自機描画時のα変更(ちょっと気持ち悪い...)
     void SetAlpha(double alpha);
-    //ここらへんを全部おっぴろげにするのはあまりに先行き不安な気がするが
+    //ここらへんを全部おっぴろげにするのはあまりに先行き不安な気がするが <- 何でこうしたんだっけ
     boost::shared_ptr<LayerManager> layer_manager_;
     boost::shared_ptr<ScoreManager> score_manager_;
     boost::shared_ptr<CollisionManager> collision_manager_;
@@ -46,5 +50,9 @@ private:
     int damage_counter_;
     //攻撃を受けた状況によって自身のαを変える
     void SetMyselfAlpha();
+    //自機移動制限
+    //左辺，下辺，右辺，上辺
+    ComponentHandle<MyselfPosAdjustComponent> pos_adjust_[4];
+    ComponentHandle<MyselfAddNormalBulletComponent> bullet_;
 };
 

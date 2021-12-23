@@ -13,6 +13,8 @@ public:
     MyselfAddNormalBulletComponent(GameObjectHandle handle, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<CollisionManager> collision_manager);
     ~MyselfAddNormalBulletComponent();
     void Update() override;
+    //’e‚¤‚Â‚È‚ç‚Îtrue‚É‚·‚é
+    bool is_active_;
 private:
     //’e‚Ì1tick‚Å‚ÌˆÚ“®‹——£
     static constexpr double moving_dist_ = 8;

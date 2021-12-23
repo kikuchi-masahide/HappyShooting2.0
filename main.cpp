@@ -27,6 +27,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	game->Shutdown();
 	delete game;
 	return 0;
+	//TODO:配布するまでに何をするか?
+	//・自宅ノートでテスト
+	//・(配布はそこまで関係ないけど)描画z，upd_priorityの関係をまとめ直す
+	//・せっかくMyselfConditionBaseを作ったので，なんか作れるか?
 }
 
 LRESULT WindowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
@@ -62,6 +66,8 @@ void LoadTextures(Game* _game)
 	_game->mTexManager.LoadTexture(L"Resources/images/danger_mark.png", 21);
 	_game->mTexManager.LoadTexture(L"Resources/images/boss_incoming.png", 22);
 	_game->mTexManager.LoadTexture(L"Resources/images/band_repeat.png", 23);
+	_game->mTexManager.LoadTexture(L"Resources/images/heart.png", 24);
+	_game->mTexManager.LoadTexture(L"Resources/images/game_over.png", 25);
 }
 
 void LoadShaders(Game* _game)

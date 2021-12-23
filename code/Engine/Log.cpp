@@ -21,8 +21,8 @@ void Log::Init()
 
 void Log::OutputTrivial(std::string& _str)
 {
-#ifdef _DEBUG
 	BOOST_LOG_TRIVIAL(info) << _str.c_str();
+#ifdef _DEBUG
 	std::cout << _str << "\n";
 #endif
 }
@@ -43,8 +43,8 @@ void Log::OutputCritical(std::string& _str)
 
 void Log::OutputTrivial(const char _str[])
 {
-#ifdef _DEBUG
 	BOOST_LOG_TRIVIAL(info) << _str;
+#ifdef _DEBUG
 	std::cout << _str << "\n";
 #endif
 }

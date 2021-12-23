@@ -9,6 +9,7 @@
 EnemyWaveBoss1::EnemyWaveBoss1(MainScene* main_scene)
 	:EnemyWaveBase(120,main_scene)
 {
+	Log::OutputTrivial("start EnemyWaveBoss1;");
 	auto boss = main_scene->AddObject(MatVec::Vector2(0, 900), 1.0, 0.0);
 	auto mediator = boss->AddUpdateComponent<Boss1MediatorComponent>(
 		main_scene->GetLayerManager(), main_scene->GetScoreManager(), main_scene->GetEnemyWaveManager(), main_scene->GetCollisionManager()
@@ -20,6 +21,7 @@ EnemyWaveBoss1::EnemyWaveBoss1(MainScene* main_scene)
 
 EnemyWaveBoss1::~EnemyWaveBoss1()
 {
+	Log::OutputTrivial("end EnemyWaveBoss1;");
 }
 
 void EnemyWaveBoss1::OnDelete()

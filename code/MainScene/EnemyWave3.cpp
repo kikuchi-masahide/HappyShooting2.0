@@ -13,6 +13,7 @@
 EnemyWave3::EnemyWave3(MainScene* main_scene)
 	:EnemyWaveBase(60,main_scene)
 {
+	Log::OutputTrivial("start EnemyWave3;");
 	auto lambda = [](double angle)
 	{
 		return MatVec::Vector2(300 * cos(angle) - 300, -450 * sin(angle) + 490);
@@ -65,6 +66,7 @@ EnemyWave3::EnemyWave3(MainScene* main_scene)
 
 EnemyWave3::~EnemyWave3()
 {
+	Log::OutputTrivial("emd EnemyWave3;");
 }
 
 void EnemyWave3::OnDelete()

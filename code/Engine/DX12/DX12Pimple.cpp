@@ -23,8 +23,9 @@ DX12Pimple::DX12Pimple()
 {}
 
 void DX12Pimple::Initialize() {
+	Log::OutputTrivial("Start DX12Pimple::Initialize();");
 	//デバッグレイヤの有効化
-//#ifdef _DEBUG
+#ifdef _DEBUG
 	try {
 		{
 			ComPtr<ID3D12Debug1> debugLayer;
@@ -34,7 +35,6 @@ void DX12Pimple::Initialize() {
 				)
 			))
 			{
-				Log::OutputCritical("ID3D12Debug Initialization failed");
 				throw 0;
 			}
 			debugLayer->EnableDebugLayer();
@@ -43,9 +43,11 @@ void DX12Pimple::Initialize() {
 	}
 	catch (...)
 	{
+		Log::OutputCritical("ID3D12Debug Initialization failed");
 		throw;
 	}
-//#endif
+	Log::OutputTrivial("ID3D12Debug Initialization succeeded");
+#endif
 	try {
 		//デバイス初期化
 		{
@@ -73,6 +75,7 @@ void DX12Pimple::Initialize() {
 				Log::OutputCritical("D3D12CreateDevice() failed\n");
 				throw 0;
 			}
+			Log::OutputTrivial("D3D12CreateDevice() succeeded");
 		}
 		//ファクトリ初期化
 		{
@@ -84,6 +87,7 @@ void DX12Pimple::Initialize() {
 				Log::OutputCritical("IDXGIFactory6 Initialization failed");
 				throw 0;
 			}
+			Log::OutputTrivial("IDXGIFactory6 Initialization succeeded");
 #else
 			if (FAILED(
 				CreateDXGIFactory1(
@@ -94,6 +98,7 @@ void DX12Pimple::Initialize() {
 				Log::OutputCritical("IDXGIFactory6 Initialization failed");
 				throw 0;
 			}
+			Log::OutputTrivial("IDXGIFactory6 Initialization succeeded");
 #endif
 		}
 		//コマンドアロケータ初期化
@@ -121,6 +126,7 @@ void DX12Pimple::Initialize() {
 				throw 0;
 			}
 			mCmdList->SetName(L"CommandList0");
+			Log::OutputTrivial("ID3D12GraphicsCommandList Initialization succeeded");
 		}
 		//コマンドキュー初期化
 		{
@@ -138,14 +144,17 @@ void DX12Pimple::Initialize() {
 				Log::OutputCritical("ID3D12CommandQueue Initialization failed");
 				throw 0;
 			}
+			Log::OutputTrivial("ID3D12CommandQueue Initialization succeeded");
 		}
 		//テクスチャロード用のCOM初期化
 		{
 			if (FAILED(CoInitializeEx(0, COINIT_MULTITHREADED)))
 			{
+				Log::OutputCritical("DirectXTex Initialization failed");
 				throw 0;
 			}
 		}
+#ifdef _DEBUG
 		ComPtr<ID3D12DeviceRemovedExtendedDataSettings1> dred_settings;
 		if (SUCCEEDED(D3D12GetDebugInterface(IID_PPV_ARGS(dred_settings.ReleaseAndGetAddressOf()))))
 		{
@@ -168,6 +177,7 @@ void DX12Pimple::Initialize() {
 		mInfoQueue->PushStorageFilter(&filter);
 		//D3D12のエラー時に止めるようにする
 		mInfoQueue->SetBreakOnSeverity(D3D12_MESSAGE_SEVERITY_ERROR, TRUE);
+#endif
 	}
 	catch (...)
 	{
@@ -219,6 +229,7 @@ void DX12Pimple::FenceWaitingInProcessCommands()
 {
 	//HACK:CPUとGPUを並列に動かして寝かせなくてもいいようにするには，コマンドリストを複数持つことが必要?
 	//https://shobomaru.wordpress.com/2015/07/12/d3d12-fence/
+	//↑定数バッファ等もそれ相応の個数持つ必要がある?
 	static ComPtr<ID3D12Fence> fence = nullptr;
 	static UINT64 fenceVal = 0;
 	static auto fence_event = CreateEvent(NULL, FALSE, FALSE, NULL);

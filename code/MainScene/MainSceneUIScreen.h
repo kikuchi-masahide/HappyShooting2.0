@@ -3,6 +3,7 @@
 #include "../Helper/HTextureDraw.h"
 #include "../Helper/HDrawLineFrame.h"
 #include "../Helper/HNumberDraw.h"
+#include "../Helper/HSquareRepeatPattern.h"
 
 class ScoreManager;
 
@@ -40,6 +41,13 @@ private:
     constexpr static double score_leftup_y_ = score_image_luy_ - score_image_height_;
     //フォントサイズ
     constexpr static double font_size_ = 24.0;
+    //ハートの正方形画像の一辺
+    constexpr static double heart_height_ = 40.0;
+    //ハート表示位置(左x，下y)
+    constexpr static double heart_lx_ = score_image_lux_;
+    constexpr static double heart_by_ = score_leftup_y_ - font_size_ - 5.0 - heart_height_;
+    //ハート描画用
+    Helpers::HSquareRepeatPattern heart_;
     boost::shared_ptr<ScoreManager> score_manager_;
 };
 

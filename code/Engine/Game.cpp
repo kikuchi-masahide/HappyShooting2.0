@@ -10,15 +10,11 @@
 /// <returns>成功か否か</returns>
 bool Game::Initialize()
 {
+	Log::OutputTrivial("Start Game::Initialize();");
 	Log::Init();
 	mdx12.Initialize();
 	mIsSceneChangable = true;
 	mCurrentSwapChain = -1;
-	//カーソルの表示を消す
-	//int cursor_counter;
-	//do {
-	//	cursor_counter = ShowCursor(FALSE);
-	//} while (cursor_counter >= 0);
 	return true;
 }
 

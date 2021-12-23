@@ -13,6 +13,7 @@
 MainScene::MainScene(Game* game)
 	:Scene(game)
 {
+	Log::OutputTrivial("start MainScene;");
 	//レイヤー
 	layer_manager_ = boost::shared_ptr<LayerManager>(DBG_NEW LayerManager(this));
 	//スコア
@@ -61,6 +62,7 @@ void MainScene::PosteriorUniqueOutput()
 
 MainScene::~MainScene()
 {
+	Log::OutputTrivial("end MainScene;");
 }
 
 boost::shared_ptr<LayerManager> MainScene::GetLayerManager()

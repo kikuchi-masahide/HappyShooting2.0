@@ -268,6 +268,12 @@
     <Filter Include="MainScene\MainSceneDrawComponent\DrawSquareRepeatPattern">
       <UniqueIdentifier>{388f54ad-2d17-4b5d-a599-a44bcc5e631b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\MyselfConditionBase\MyselfDeadCondition">
+      <UniqueIdentifier>{11269e97-a334-4c68-bbaa-ab92fb6c93ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\GameOverUI">
+      <UniqueIdentifier>{7ac2386b-a8e8-4b3d-9835-386ed9893595}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -604,6 +610,12 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\DrawSquareRepeatPattern.cpp">
       <Filter>MainScene\MainSceneDrawComponent\DrawSquareRepeatPattern</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MyselfDeadCondition.cpp">
+      <Filter>MainScene\MyselfConditionBase\MyselfDeadCondition</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\GameOverUI.cpp">
+      <Filter>MainScene\GameOverUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -961,6 +973,12 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\DrawSquareRepeatPattern.h">
       <Filter>MainScene\MainSceneDrawComponent\DrawSquareRepeatPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MyselfDeadCondition.h">
+      <Filter>MainScene\MyselfConditionBase\MyselfDeadCondition</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\GameOverUI.h">
+      <Filter>MainScene\GameOverUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

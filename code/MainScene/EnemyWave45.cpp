@@ -14,6 +14,7 @@
 EnemyWave45::EnemyWave45(MainScene* main_scene)
 	:EnemyWaveBase(120, main_scene)
 {
+	Log::OutputTrivial("start EnemyWave45;");
 	auto scene = main_scene;
 	auto myself = scene->GetMyselfHandle();
 	for (int i = 0; i < 8; i++)
@@ -40,6 +41,7 @@ EnemyWave45::EnemyWave45(MainScene* main_scene)
 
 EnemyWave45::~EnemyWave45()
 {
+	Log::OutputTrivial("end EnemyWave45;");
 }
 
 void EnemyWave45::OnDelete()

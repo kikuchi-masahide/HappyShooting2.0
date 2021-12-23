@@ -11,6 +11,7 @@
 EnemyWave2::EnemyWave2(unsigned int tick_after_clear, MainScene* main_scene)
 	:EnemyWaveBase(tick_after_clear, main_scene)
 {
+	Log::OutputTrivial("start EnemyWave2;");
 	for (unsigned int index = 0; index < all_number_; index++)
 	{
 		auto e1 = main_scene->AddObject(MatVec::Vector2(0, 450) - MatVec::Vector2(speedx_, speedy_) * (5 + period_ * index), 1.0, 0.0);
@@ -26,6 +27,7 @@ EnemyWave2::EnemyWave2(unsigned int tick_after_clear, MainScene* main_scene)
 
 EnemyWave2::~EnemyWave2()
 {
+	Log::OutputTrivial("end EnemyWave2;");
 }
 
 void EnemyWave2::OnDelete()

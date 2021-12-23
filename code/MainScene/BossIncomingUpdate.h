@@ -6,7 +6,6 @@ class DrawTextureComponent;
 class DrawSquareRepeatPattern;
 
 //画面に上下の帯，!マーク，"Boss Incoming"を表示する
-//TODO:文字の上下に動く帯を追加する
 class BossIncomingUpdate :
     public Component
 {

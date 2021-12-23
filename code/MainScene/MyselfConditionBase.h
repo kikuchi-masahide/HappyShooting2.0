@@ -29,6 +29,8 @@ public:
     /// 今自機がダメージを喰らわない状態ならばtrueを返す
     /// </summary>
     virtual bool IsInvincible() = 0;
+    //弾を撃たせるか否かを返す
+    virtual bool IsShooterActive();
 protected:
     ComponentHandle<MyselfMediatorComponent> mediator_;
 };
