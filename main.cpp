@@ -68,6 +68,7 @@ void LoadTextures(Game* _game)
 	_game->mTexManager.LoadTexture(L"Resources/images/band_repeat.png", 23);
 	_game->mTexManager.LoadTexture(L"Resources/images/heart.png", 24);
 	_game->mTexManager.LoadTexture(L"Resources/images/game_over.png", 25);
+	_game->mTexManager.LoadTexture(L"Resources/images/Enemy6.png", 26);
 }
 
 void LoadShaders(Game* _game)

@@ -35,3 +35,8 @@ double EnemyHealthComponent::GetHealthRate()
 {
 	return health_ / all_health_;
 }
+
+double EnemyHealthComponent::GetHealth()
+{
+	return health_;
+}

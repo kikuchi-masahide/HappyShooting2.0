@@ -5,6 +5,7 @@
 #include "Boss1MediatorComponent.h"
 #include "Boss1StateEntering.h"
 #include "BossIncomingUpdate.h"
+#include "EnemyWave6.h"
 
 EnemyWaveBoss1::EnemyWaveBoss1(MainScene* main_scene)
 	:EnemyWaveBase(120,main_scene)
@@ -26,4 +27,7 @@ EnemyWaveBoss1::~EnemyWaveBoss1()
 
 void EnemyWaveBoss1::OnDelete()
 {
+	main_scene_->GetEnemyWaveManager()->SetWave(
+		boost::shared_ptr<EnemyWave6>(new EnemyWave6(main_scene_))
+	);
 }

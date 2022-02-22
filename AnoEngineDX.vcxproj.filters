@@ -136,9 +136,6 @@
     <Filter Include="MainScene\NormalShootComponent">
       <UniqueIdentifier>{b2d3fccb-e8f2-4818-bcf7-0d784cf1c4c9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainScene\CollisionComponent\NormalBulletCollisionComponent">
-      <UniqueIdentifier>{f1996106-cf08-4189-a371-b6f5d7f8980b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MainScene\MainSceneDrawComponent\DrawHealthBarComponent">
       <UniqueIdentifier>{6acba187-d05d-4e45-8951-46d1d8e70e58}</UniqueIdentifier>
     </Filter>
@@ -273,6 +270,18 @@
     </Filter>
     <Filter Include="MainScene\GameOverUI">
       <UniqueIdentifier>{7ac2386b-a8e8-4b3d-9835-386ed9893595}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\Enemy6MediatorComponent">
+      <UniqueIdentifier>{2b64ceb1-6ec0-412d-acbb-cccd58947275}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\EnemyWaveBase\EnemyWave6">
+      <UniqueIdentifier>{75eaec95-9ed1-45d7-ae95-0949b837458f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\CollisionComponent\NormalBulletCollisionComponent">
+      <UniqueIdentifier>{f1996106-cf08-4189-a371-b6f5d7f8980b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy6CollisionComponent">
+      <UniqueIdentifier>{3e6953a8-65f1-492a-a5f2-fafa3eb21f9d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -616,6 +625,15 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\GameOverUI.cpp">
       <Filter>MainScene\GameOverUI</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Enemy6MediatorComponent.cpp">
+      <Filter>MainScene\Enemy6MediatorComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\EnemyWave6.cpp">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave6</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Enemy6CollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy6CollisionComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -979,6 +997,15 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\GameOverUI.h">
       <Filter>MainScene\GameOverUI</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Enemy6MediatorComponent.h">
+      <Filter>MainScene\Enemy6MediatorComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\EnemyWave6.h">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave6</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Enemy6CollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy6CollisionComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>resource</title>
+    </head>
+    <body>
+        <canvas id = "canvas" width = "640" height = "1200"></canvas>
+        <script>
+            const context=document.getElementById("canvas").getContext("2d");
+            context.fillStyle = "white";
+            context.clearRect(0,0,640,1200);
+            let t = 0;
+            let size = 40;
+            for(let y = 40;y < 1200;y += 80)
+            {
+                for(let x = 40;x < 640;x += 80)
+                {
+                    context.strokeStyle = "black";
+                    const w = (3+Math.sin(Math.PI*t/60))*size/4;
+                    const h = 3*size/2-w;
+                    context.beginPath();
+                    context.moveTo(x+w,y);
+                    context.quadraticCurveTo(x,y+2*h,x-w,y);
+                    context.quadraticCurveTo(x,y-2*h,x+w,y);
+                    context.stroke();
+                    t++;
+                    /*context.strokeStyle = "red";
+                    context.beginPath();
+                    context.moveTo(x+w,y);
+                    context.lineTo(x,y+h);
+                    context.lineTo(x-w,y);
+                    context.lineTo(x,y-h);
+                    context.lineTo(x+w,y);
+                    context.stroke();*/
+                }
+            }
+        </script>
+    </body>
+</html>

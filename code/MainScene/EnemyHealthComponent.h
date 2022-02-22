@@ -30,6 +30,10 @@ public:
     /// 残りの体力が，全体力に占める割合を返す
     /// </summary>
     double GetHealthRate();
+    /// <summary>
+    /// 残りの体力を返す
+    /// </summary>
+    double GetHealth();
 private:
     double all_health_;
     double health_;

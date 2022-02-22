@@ -17,15 +17,17 @@ public:
 	/// Wave中の敵から，自機に最も近いものを計算する(敵機が存在しないならばnullptr)
 	/// </summary>
 	GameObjectHandle SolveNearestEnemy();
+	/// <summary>
+	/// 監視対象にこのオブジェクトを追加
+	/// </summary>
+	// TODO:Wave6は自己複製が入るため、敵機の側から敵機を追加する必要があるため、
+	// protected -> publicに変更したけど、これだけの理由でそうするのっていいんですか?
+	void AddEnemy(GameObjectHandle object);
 protected:
 	/// <summary>
 	/// counter_ == tick_after_clear_のtickで呼び出される
 	/// </summary>
 	virtual void OnDelete() = 0;
-	/// <summary>
-	/// 監視対象にこのオブジェクトを追加
-	/// </summary>
-	void AddEnemy(GameObjectHandle object);
 	MainScene* main_scene_;
 private:
 	std::vector<GameObjectHandle> enemies_;

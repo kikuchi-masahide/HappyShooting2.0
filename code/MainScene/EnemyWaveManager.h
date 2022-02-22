@@ -19,6 +19,8 @@ public:
 	//自機のオブジェクトハンドルを返す
 	GameObjectHandle GetMyselfHandle();
 	MainScene* const scene_;
+	//現在のWaveにこの敵機を追加する
+	void AddEnemyInWave(GameObjectHandle enemy);
 private:
 	//今見ているWave
 	boost::shared_ptr<EnemyWaveBase> wave_;

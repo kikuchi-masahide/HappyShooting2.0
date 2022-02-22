@@ -55,3 +55,8 @@ GameObjectHandle EnemyWaveManager::GetMyselfHandle()
 {
 	return scene_->GetMyselfHandle();
 }
+
+void EnemyWaveManager::AddEnemyInWave(GameObjectHandle enemy)
+{
+	wave_->AddEnemy(enemy);
+}
