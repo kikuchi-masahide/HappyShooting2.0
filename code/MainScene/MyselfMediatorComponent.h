@@ -10,6 +10,7 @@ class DrawTextureComponent;
 class MyselfConditionBase;
 class MyselfPosAdjustComponent;
 class MyselfAddNormalBulletComponent;
+class CollisionComponent;
 
 //自機の複数コンポーネントをまとめるコンポーネント それらのブジェクトへの追加は行わない
 //まとめるコンポーネントは，
@@ -28,10 +29,6 @@ public:
     /// </summary>
     /// <param name="point">攻撃力</param>
     void CauseDamageToMyself(unsigned int point);
-    /// <summary>
-    /// 自機が無敵状態ならばtrueを返す(当たり判定からの呼び出し)
-    /// </summary>
-    bool IsInvincible();
     //次tickからの健康状態をnext_stateに差し替える(旧componentの消去も行う)
     void SetNextCondition(ComponentHandle<MyselfConditionBase> next_condition);
     //自機描画時のα変更(ちょっと気持ち悪い...)
@@ -41,6 +38,9 @@ public:
     boost::shared_ptr<ScoreManager> score_manager_;
     boost::shared_ptr<CollisionManager> collision_manager_;
     ComponentHandle<MyselfConditionBase> condition_;
+    //MyselfCollisionComponentから呼び出される、当たり判定処理関数
+    //(具体的な処理はcondition_に任せる)
+    void CheckHitComponent(std::set<ComponentHandle<CollisionComponent>>& hit_comps_);
 private:
     ~MyselfMediatorComponent();
     ComponentHandle<DrawTextureComponent> draw_texture_component_;

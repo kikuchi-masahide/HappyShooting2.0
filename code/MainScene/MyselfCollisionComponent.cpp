@@ -24,20 +24,5 @@ void MyselfCollisionComponent::Update()
 
 void MyselfCollisionComponent::CheckHitComponent()
 {
-	if (hit_comps_.size() == 0)return;
-	//自機がダメージを喰らわない状態ならば，弾に当たっていても見ない
-	if (mediator_->IsInvincible())return;
-	//始めの一撃のみを勘案する
-	auto comp = *(hit_comps_.begin());
-	//敵機またはレーザーと当たった場合
-	if (comp->tag_ == CollisionManager::Tag::EnemyBody || comp->tag_ == CollisionManager::Tag::EnemyLazer)
-	{
-		mediator_->CauseDamageToMyself(comp->GetDamage());
-	}
-	//敵弾と当たった場合
-	if (comp->tag_ == CollisionManager::Tag::EnemyBullet)
-	{
-		mediator_->CauseDamageToMyself(comp->GetDamage());
-		comp->mObj->SetDeleteFlag();
-	}
+	mediator_->CheckHitComponent(hit_comps_);
 }

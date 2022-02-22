@@ -7,6 +7,7 @@
 #include "MyselfPosAdjustComponent.h"
 #include "ScoreManager.h"
 #include "MyselfDeadCondition.h"
+#include "CollisionComponent.h"
 
 MyselfNormalCondition::MyselfNormalCondition(GameObjectHandle handle, ComponentHandle<MyselfMediatorComponent> mediator)
 	:MyselfConditionBase(handle,mediator)
@@ -78,7 +79,20 @@ unsigned int MyselfNormalCondition::GetDamaged(unsigned int attack)
 	return attack;
 }
 
-bool MyselfNormalCondition::IsInvincible()
+void MyselfNormalCondition::CheckHitComponent(std::set<ComponentHandle<CollisionComponent>>& hit_comps_)
 {
-	return false;
+	if (hit_comps_.size() == 0)return;
+	//Žn‚ß‚ÌˆêŒ‚‚Ì‚Ý‚ðŠ¨ˆÄ‚·‚é
+	auto comp = *(hit_comps_.begin());
+	//“G‹@‚Ü‚½‚ÍƒŒ[ƒU[‚Æ“–‚½‚Á‚½ê‡
+	if (comp->tag_ == CollisionManager::Tag::EnemyBody || comp->tag_ == CollisionManager::Tag::EnemyLazer)
+	{
+		mediator_->CauseDamageToMyself(comp->GetDamage());
+	}
+	//“G’e‚Æ“–‚½‚Á‚½ê‡
+	if (comp->tag_ == CollisionManager::Tag::EnemyBullet)
+	{
+		mediator_->CauseDamageToMyself(comp->GetDamage());
+		comp->mObj->SetDeleteFlag();
+	}
 }

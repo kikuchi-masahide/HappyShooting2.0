@@ -38,11 +38,6 @@ void MyselfMediatorComponent::CauseDamageToMyself(unsigned int point)
 	int damage = condition_->GetDamaged(point);
 }
 
-bool MyselfMediatorComponent::IsInvincible()
-{
-	return condition_->IsInvincible();
-}
-
 void MyselfMediatorComponent::SetNextCondition(ComponentHandle<MyselfConditionBase> next_condition)
 {
 	condition_->SetDeleteFlag();
@@ -52,6 +47,11 @@ void MyselfMediatorComponent::SetNextCondition(ComponentHandle<MyselfConditionBa
 void MyselfMediatorComponent::SetAlpha(double alpha)
 {
 	draw_texture_component_->alpha_ = alpha;
+}
+
+void MyselfMediatorComponent::CheckHitComponent(std::set<ComponentHandle<CollisionComponent>>& hit_comps_)
+{
+	condition_->CheckHitComponent(hit_comps_);
 }
 
 MyselfMediatorComponent::~MyselfMediatorComponent()

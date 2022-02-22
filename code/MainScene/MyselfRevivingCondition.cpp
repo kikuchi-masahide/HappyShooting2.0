@@ -58,8 +58,3 @@ unsigned int MyselfRevivingCondition::GetDamaged(unsigned int attack)
 {
 	return 0;
 }
-
-bool MyselfRevivingCondition::IsInvincible()
-{
-	return true;
-}

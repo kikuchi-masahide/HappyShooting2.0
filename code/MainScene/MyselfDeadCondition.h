@@ -10,7 +10,6 @@ public:
     ~MyselfDeadCondition();
     void Update() override;
     unsigned int GetDamaged(unsigned int attack) override;
-    bool IsInvincible() override;
     bool IsShooterActive() override;
 };
 

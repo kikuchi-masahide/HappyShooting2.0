@@ -11,7 +11,6 @@ public:
     ~MyselfRevivingCondition();
     void Update() override;
     unsigned int GetDamaged(unsigned int attack) override;
-    bool IsInvincible() override;
 private:
     Scene* scene_;
     //•œŠˆ‰‰o‚É‰½tick‚©‚¯‚é‚©

@@ -2,6 +2,7 @@
 #include "../Engine/Component.h"
 
 class MyselfMediatorComponent;
+class CollisionComponent;
 
 /// <summary>
 /// 自機の健康状態(通常，復活中，ビリビリ中...)とそれにより変わる位置更新の仕方，描画α，敵との当たり判定を管理
@@ -25,12 +26,10 @@ public:
     /// <param name="attack">敵弾攻撃力</param>
     /// <returns>実ダメージ</returns>
     virtual unsigned int GetDamaged(unsigned int attack) = 0;
-    /// <summary>
-    /// 今自機がダメージを喰らわない状態ならばtrueを返す
-    /// </summary>
-    virtual bool IsInvincible() = 0;
     //弾を撃たせるか否かを返す
     virtual bool IsShooterActive();
+    //MyselfCollisionComponentから呼び出される、当たり判定処理
+    virtual void CheckHitComponent(std::set<ComponentHandle<CollisionComponent>>& hit_comps_);
 protected:
     ComponentHandle<MyselfMediatorComponent> mediator_;
 };

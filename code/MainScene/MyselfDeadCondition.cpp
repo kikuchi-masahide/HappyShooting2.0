@@ -29,11 +29,6 @@ unsigned int MyselfDeadCondition::GetDamaged(unsigned int attack)
 	return 0;
 }
 
-bool MyselfDeadCondition::IsInvincible()
-{
-	return true;
-}
-
 bool MyselfDeadCondition::IsShooterActive()
 {
 	return false;
