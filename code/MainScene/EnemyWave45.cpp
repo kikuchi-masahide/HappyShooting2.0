@@ -17,6 +17,7 @@ EnemyWave45::EnemyWave45(MainScene* main_scene)
 	Log::OutputTrivial("start EnemyWave45;");
 	auto scene = main_scene;
 	auto myself = scene->GetMyselfHandle();
+	auto enemywaveman = main_scene->GetEnemyWaveManager();
 	for (int i = 0; i < 8; i++)
 	{
 		auto obj = scene->AddObject(MatVec::Vector2(), 1.0, 0.0);
@@ -29,14 +30,14 @@ EnemyWave45::EnemyWave45(MainScene* main_scene)
 		obj->AddUpdateComponent<Enemy3CollisionComponent>(scene->GetCollisionManager(), scene->GetScoreManager(), health);
 		obj->AddOutputComponent<DrawHealthBarComponent<EnemyHealthComponent>>(scene->GetLayerManager(), health, MatVec::Vector2(0, 30));
 		obj->AddUpdateComponent<Enemy5ShootComponent>(50, scene->GetMyselfHandle(), 10, 4, 60, -30 * (i + 6), 100, scene->GetLayerManager(), scene->GetCollisionManager());
-		AddEnemy(obj);
+		enemywaveman->AddEnemyInWave(obj);
 	}
 	auto enemy4_1 = scene->AddObject(MatVec::Vector2(), 1.0, 0.0);
 	enemy4_1->AddUpdateComponent<Enemy4BehaviorComponent>(scene->GetCollisionManager(), scene->GetLayerManager(), scene->GetScoreManager(), myself, 1);
-	AddEnemy(enemy4_1);
+	enemywaveman->AddEnemyInWave(enemy4_1);
 	auto enemy4_2 = scene->AddObject(MatVec::Vector2(), 1.0, 0.0);
 	enemy4_2->AddUpdateComponent<Enemy4BehaviorComponent>(scene->GetCollisionManager(), scene->GetLayerManager(), scene->GetScoreManager(), myself, -1);
-	AddEnemy(enemy4_2);
+	enemywaveman->AddEnemyInWave(enemy4_2);
 }
 
 EnemyWave45::~EnemyWave45()

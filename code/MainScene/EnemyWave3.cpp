@@ -18,6 +18,7 @@ EnemyWave3::EnemyWave3(MainScene* main_scene)
 	{
 		return MatVec::Vector2(300 * cos(angle) - 300, -450 * sin(angle) + 490);
 	};
+	auto enemywaveman = main_scene->GetEnemyWaveManager();
 	for (int i = 0; i < 9; i++)
 	{
 		auto obj = main_scene->AddObject(MatVec::Vector2(), 0.0, 1.0);
@@ -36,7 +37,7 @@ EnemyWave3::EnemyWave3(MainScene* main_scene)
 				50, direct, bullet_size_, 60, bullet_attack_, main_scene->GetLayerManager(), main_scene->GetCollisionManager()
 				);
 		}
-		AddEnemy(obj);
+		enemywaveman->AddEnemyInWave(obj);
 	}
 	auto lambda2 = [](double angle)
 	{
@@ -60,7 +61,7 @@ EnemyWave3::EnemyWave3(MainScene* main_scene)
 				50, direct, bullet_size_, 60, bullet_attack_, main_scene->GetLayerManager(), main_scene->GetCollisionManager()
 				);
 		}
-		AddEnemy(obj);
+		enemywaveman->AddEnemyInWave(obj);
 	}
 }
 

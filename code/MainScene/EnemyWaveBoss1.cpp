@@ -18,6 +18,7 @@ EnemyWaveBoss1::EnemyWaveBoss1(MainScene* main_scene)
 	mediator->ChangeState(DBG_NEW Boss1StateEntering(mediator, main_scene->GetLayerManager(), main_scene->GetScoreManager(), main_scene->GetCollisionManager(), main_scene->GetEnemyWaveManager()));
 	auto boss_incoming_obj = main_scene->AddObject(MatVec::Vector2(), 1.0, 0.0);
 	boss_incoming_obj->AddUpdateComponent<BossIncomingUpdate>(main_scene_->GetLayerManager());
+	main_scene_->GetEnemyWaveManager()->AddEnemyInWave(boss);
 }
 
 EnemyWaveBoss1::~EnemyWaveBoss1()

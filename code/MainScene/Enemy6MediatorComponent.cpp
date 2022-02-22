@@ -26,7 +26,7 @@ Enemy6MediatorComponent::Enemy6MediatorComponent(GameObjectHandle _handle, int t
 		layer_manager_, health_, MatVec::Vector2(0, 48)
 		);
 	mObj->AddUpdateComponent<Enemy6CollisionComponent>(collision_manager_, score_manager, health_, time_);
-	//enemywave_manager_->AddEnemyInWave(mObj);
+	enemywave_manager_->AddEnemyInWave(mObj);
 	//TODO:EnemyWave6を初期化中にこれ呼ぶと、nullを参照して死ぬ
 	//いっそ敵機の配列はmanager_に持たせるか?とするとEnemyWaveBaseの存在意義は?
 }
