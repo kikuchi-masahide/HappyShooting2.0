@@ -8,7 +8,7 @@
 #include "EnemyWave6.h"
 
 EnemyWaveBoss1::EnemyWaveBoss1(MainScene* main_scene)
-	:EnemyWaveBase(120,main_scene)
+	:EnemyWaveBase(180,main_scene)
 {
 	Log::OutputTrivial("start EnemyWaveBoss1;");
 	auto boss = main_scene->AddObject(MatVec::Vector2(0, 900), 1.0, 0.0);

@@ -6,7 +6,6 @@
 EnemyWave6::EnemyWave6(MainScene* main_scene)
 	:EnemyWaveBase(60,main_scene)
 {
-	//main_scene->SetMyselfArmor2();
 	//xˆÚ“®—Ê‚ª³‚Ì‚à‚Ì
 	auto obj_p = main_scene_->AddObject(MatVec::Vector2(startx_, starty_), 1.0, 0.0);
 	obj_p->AddUpdateComponent<Enemy6MediatorComponent>(0, startx_, starty_, abs_dx_,

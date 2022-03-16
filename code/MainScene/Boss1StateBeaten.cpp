@@ -4,6 +4,8 @@
 #include "../Engine/GameObject.h"
 #include "../Engine/Scene.h"
 #include "DrawDeathEffectComponent.h"
+#include "EnemyWaveManager.h"
+#include "MainScene.h"
 
 Boss1StateBeaten::Boss1StateBeaten(ComponentHandle<Boss1MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<EnemyWaveManager> enemywave_manager)
 	:Boss1StateBase(mediator,layer_manager,score_manager,collision_manager,enemywave_manager),
@@ -23,6 +25,7 @@ void Boss1StateBeaten::Update()
 		auto pos = mediator_->mObj->GetPosition();
 		AddDeathEffect(pos, 500);
 		mediator_->mObj->SetDeleteFlag();
+		enemywave_manager_->scene_->SetMyselfArmor2();
 		return;
 	}
 	if (counter_ % 6 == 0)

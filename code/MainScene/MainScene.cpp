@@ -41,7 +41,6 @@ MainScene::MainScene(Game* game)
 
 	//TODO:デバッグ時の漸次的な処理
 	//Releaseならこれを消し、EnemyWave6のこの文を有効化する
-	//マジでここまわりの初期化どうにかしないとヤバい
 	SetMyselfArmor2();
 
 }

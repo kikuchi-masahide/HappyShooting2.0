@@ -10,6 +10,7 @@
 #include "NormalBulletCollisionComponent.h"
 #include "DrawNormalBulletComponent.h"
 #include "LinearMoveComponent.h"
+#include "MainScene.h"
 
 Enemy6MediatorComponent::Enemy6MediatorComponent(GameObjectHandle _handle, int time, double x0, double y0, double dx, int life, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<EnemyWaveManager> enemywave_manager, boost::shared_ptr<CollisionManager> collision_manager)
 	:Component(_handle,100),
