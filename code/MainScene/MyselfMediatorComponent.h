@@ -11,6 +11,7 @@ class MyselfConditionBase;
 class MyselfPosAdjustComponent;
 class MyselfAddNormalBulletComponent;
 class CollisionComponent;
+class MyselfArmorBase;
 
 //自機の複数コンポーネントをまとめるコンポーネント それらのブジェクトへの追加は行わない
 //まとめるコンポーネントは，
@@ -18,6 +19,7 @@ class CollisionComponent;
 //・あたり判定コンポーネント
 //TODO:何か間違っている気がする 各Stateに当たり判定を付属させた方がおそらく楽
 //まあテストで配った後に考える
+//TODO:自機が攻撃喰らってパカパカしてる時、自分からダメージ入れる判定が生きているっぽい
 class MyselfMediatorComponent :
     public Component
 {
@@ -54,5 +56,7 @@ private:
     //左辺，下辺，右辺，上辺
     ComponentHandle<MyselfPosAdjustComponent> pos_adjust_[4];
     ComponentHandle<MyselfAddNormalBulletComponent> bullet_;
+    //自機の武器装備、および自機描画を委譲する
+    boost::shared_ptr<MyselfArmorBase> armor_;
 };
 

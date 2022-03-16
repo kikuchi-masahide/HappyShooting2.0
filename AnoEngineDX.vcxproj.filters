@@ -283,6 +283,12 @@
     <Filter Include="MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy6CollisionComponent">
       <UniqueIdentifier>{3e6953a8-65f1-492a-a5f2-fafa3eb21f9d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\MyselfArmorBase">
+      <UniqueIdentifier>{63dd65cb-3d2b-4db9-9a47-c3bbaaa8c43e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\MyselfArmorBase\MyselfArmorAlone">
+      <UniqueIdentifier>{82e00b34-3a18-47e7-a51c-eb8f44bd543d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -634,6 +640,12 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\Enemy6CollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy6CollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MyselfArmorAlone.cpp">
+      <Filter>MainScene\MyselfArmorBase\MyselfArmorAlone</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MyselfArmorBase.cpp">
+      <Filter>MainScene\MyselfArmorBase</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1006,6 +1018,12 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\Enemy6CollisionComponent.h">
       <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy6CollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MyselfArmorBase.h">
+      <Filter>MainScene\MyselfArmorBase</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MyselfArmorAlone.h">
+      <Filter>MainScene\MyselfArmorBase\MyselfArmorAlone</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
