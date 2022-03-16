@@ -24,6 +24,8 @@ public:
     MatVec::Vector2 center_offset_;
     //UpdateComponentから++するようにしないと，ポーズ時などに再生が停止しない
     int counter_;
+    //描画時のα
+    double alpha_;
 private:
     //1フレーム分の絵の幅，高さ
     double flame_width_;

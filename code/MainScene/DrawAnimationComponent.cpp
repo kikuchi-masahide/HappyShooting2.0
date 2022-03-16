@@ -14,13 +14,14 @@ namespace {
 		float uv_y_;   //左上の点のuv座標y
 		float uv_w_;   //左上の点と右上の点のx座標差
 		float uv_h_;   //左上の点と左下の点のy座標差
+		float alpha_;   //描画時α
 	};
 }
 
 DrawAnimationComponent::DrawAnimationComponent(GameObjectHandle obj, boost::shared_ptr<LayerManager> layer_manager, unsigned int texture_id, double flame_width, double flame_height, unsigned int column, unsigned int row, double z, MatVec::Vector2 offset, unsigned int flame_num)
 	:MainSceneDrawComponent(obj, layer_manager, z),
 	center_offset_(offset),flame_width_(flame_width),flame_height_(flame_height),
-	column_(column),row_(row),flame_num_(flame_num),counter_(0)
+	column_(column),row_(row),flame_num_(flame_num),counter_(0), alpha_(1.0)
 {
 	if (graphics_pipeline_ == nullptr)
 	{
@@ -37,7 +38,7 @@ void DrawAnimationComponent::Draw()
 {
 	//描画位置を求める行列
 	MatVec::Matrix4x4 pos_matrix = MatVec::Expand(flame_width_, flame_height_, 1.0);
-	pos_matrix = MatVec::Rotate(MatVec::GetQuaternion(MatVec::Vector3(0, 0, 1), mObj->GetRotation())) * pos_matrix;
+	pos_matrix = MatVec::Rotate(MatVec::GetQuaternion(MatVec::Vector3(0, 0, 1), -mObj->GetRotation())) * pos_matrix;
 	pos_matrix = MatVec::Translation(MatVec::XY0(mObj->GetPosition() + center_offset_))*pos_matrix;
 	pos_matrix = MatVec::GetOrthoGraphicProjection(600, 900, 0.0, 1.0)*pos_matrix;
 
@@ -49,6 +50,7 @@ void DrawAnimationComponent::Draw()
 	info_map->uv_y_ = static_cast<double>(counter_ / column_) / row_;
 	info_map->uv_w_ = 1.0 / column_;
 	info_map->uv_h_ = 1.0 / row_;
+	info_map->alpha_ = alpha_;
 
 	Game& game = mObj->mScene->mGame;
 	game.mdx12.SetGraphicsPipeline(graphics_pipeline_);

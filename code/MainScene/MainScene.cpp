@@ -9,6 +9,7 @@
 #include "EnemyWaveManager.h"
 #include "CollisionUIScreen.h"
 #include "EnemyWave6.h"
+#include "MyselfMediatorComponent.h"
 
 MainScene::MainScene(Game* game)
 	:Scene(game)
@@ -30,13 +31,19 @@ MainScene::MainScene(Game* game)
 	CollisionUIScreen* collision_ui = AddUIScreen<CollisionUIScreen>();
 	collision_manager_ = boost::shared_ptr<CollisionManager>(DBG_NEW CollisionManager(collision_ui));
 
-	//自機追加
-	AddMyself();
-	layer_manager_->SetMyselfHandle(myself_handle_);
-	layer_manager_->InitLayers();
-
 	enemy_wave_manager_ = boost::shared_ptr<EnemyWaveManager>(DBG_NEW EnemyWaveManager(this));
 	enemy_wave_manager_->SetWave(boost::shared_ptr<EnemyWaveBase>(DBG_NEW EnemyWave6(this)));
+
+	//自機追加
+	AddMyself();
+	layer_manager_->SetMyselfHandle(mediator_->mObj);
+	layer_manager_->InitLayers();
+
+	//TODO:デバッグ時の漸次的な処理
+	//Releaseならこれを消し、EnemyWave6のこの文を有効化する
+	//マジでここまわりの初期化どうにかしないとヤバい
+	SetMyselfArmor2();
+
 }
 
 void MainScene::PriorUniqueUpdate()
@@ -87,12 +94,17 @@ boost::shared_ptr<CollisionManager> MainScene::GetCollisionManager()
 
 GameObjectHandle MainScene::GetMyselfHandle()
 {
-	return myself_handle_;
+	return mediator_->mObj;
+}
+
+void MainScene::SetMyselfArmor2()
+{
+	mediator_->SetMyselfArmor2();
 }
 
 void MainScene::AddMyself()
 {
-	myself_handle_ = AddObject(MatVec::Vector2(0, -275), 1.0, 0.0);
+	auto obj = AddObject(MatVec::Vector2(0, -275), 1.0, 0.0);
 	//他のコンポーネントの追加はメディエータに任せる
-	myself_handle_->AddUpdateComponent<MyselfMediatorComponent>(layer_manager_,score_manager_,collision_manager_);
+	mediator_ = obj->AddUpdateComponent<MyselfMediatorComponent>(layer_manager_,score_manager_,collision_manager_, enemy_wave_manager_);
 }

@@ -289,6 +289,12 @@
     <Filter Include="MainScene\MyselfArmorBase\MyselfArmorAlone">
       <UniqueIdentifier>{82e00b34-3a18-47e7-a51c-eb8f44bd543d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\MyselfArmorBase\MyselfArmor2">
+      <UniqueIdentifier>{283e5c2a-a41c-4a35-9b49-3bf92bfa8df6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\MyselfAddAimBulletComponent">
+      <UniqueIdentifier>{b00f2256-671c-402b-ba7c-a2dd85dad599}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -646,6 +652,12 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\MyselfArmorBase.cpp">
       <Filter>MainScene\MyselfArmorBase</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MyselfArmor2.cpp">
+      <Filter>MainScene\MyselfArmorBase\MyselfArmor2</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MyselfAddAimBulletComponent.cpp">
+      <Filter>MainScene\MyselfAddAimBulletComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1024,6 +1036,12 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\MyselfArmorAlone.h">
       <Filter>MainScene\MyselfArmorBase\MyselfArmorAlone</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MyselfArmor2.h">
+      <Filter>MainScene\MyselfArmorBase\MyselfArmor2</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MyselfAddAimBulletComponent.h">
+      <Filter>MainScene\MyselfAddAimBulletComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

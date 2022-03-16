@@ -9,9 +9,12 @@
 #include "MyselfNormalCondition.h"
 #include "MyselfPosAdjustComponent.h"
 #include "MyselfArmorAlone.h"
+#include "MyselfArmor2.h"
 
-MyselfMediatorComponent::MyselfMediatorComponent(GameObjectHandle myself, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager)
-	:Component(myself, 50), damage_counter_(-1), layer_manager_(layer_manager), score_manager_(score_manager),collision_manager_(collision_manager)
+MyselfMediatorComponent::MyselfMediatorComponent(GameObjectHandle myself, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<EnemyWaveManager> enemy)
+	:Component(myself, 50),
+	damage_counter_(-1), layer_manager_(layer_manager), score_manager_(score_manager),
+	collision_manager_(collision_manager),enemy_wave_manager_(enemy)
 {
 	mObj->AddUpdateComponent<MyselfCollisionComponent>(collision_manager_, This<MyselfMediatorComponent>());
 	mObj->AddUpdateComponent<MyselfAngleComponent>(layer_manager_);
@@ -51,6 +54,13 @@ void MyselfMediatorComponent::SetAlpha(double alpha)
 void MyselfMediatorComponent::CheckHitComponent(std::set<ComponentHandle<CollisionComponent>>& hit_comps_)
 {
 	condition_->CheckHitComponent(hit_comps_);
+}
+
+void MyselfMediatorComponent::SetMyselfArmor2()
+{
+	armor_ = boost::shared_ptr<MyselfArmor2>(new MyselfArmor2(
+		This<MyselfMediatorComponent>(), layer_manager_, collision_manager_, enemy_wave_manager_
+	));
 }
 
 MyselfMediatorComponent::~MyselfMediatorComponent()

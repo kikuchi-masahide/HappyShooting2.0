@@ -2,6 +2,8 @@
 
 float4 main(Output input):SV_Target
 {
-    float4 color = tex.Sample(smp, input.uv);
-    return color;
+    float3 color = tex.Sample(smp, input.uv).xyz;
+    float alpha = tex.Sample(smp, input.uv).w;
+    alpha *= alpha_;
+    return float4(color,alpha);
 }

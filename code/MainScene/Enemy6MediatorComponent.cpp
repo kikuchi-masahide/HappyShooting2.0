@@ -77,17 +77,21 @@ void Enemy6MediatorComponent::DeathAttack()
 	for (int n = 0; n < 32; n++)
 	{
 		auto obj = mObj->mScene->AddObject(mypos, 1.0, 0.0);
-		obj->AddUpdateComponent<NormalBulletCollisionComponent>(10.0, 100, collision_manager_);
-		obj->AddOutputComponent<DrawNormalBulletComponent>(layer_manager_, 10.0, MatVec::Vector3(1.0, 0.0, 0.0), 1.0, -10.0);
-		obj->AddUpdateComponent<LinearMoveComponent>(MatVec::Vector2(cos(PI * n / 16), sin(PI * n / 16)) * 20 * 25 / 60, 10.0);
+		if (obj.IsValid()) {
+			obj->AddUpdateComponent<NormalBulletCollisionComponent>(10.0, 100, collision_manager_);
+			obj->AddOutputComponent<DrawNormalBulletComponent>(layer_manager_, 10.0, MatVec::Vector3(1.0, 0.0, 0.0), 1.0, -10.0);
+			obj->AddUpdateComponent<LinearMoveComponent>(MatVec::Vector2(cos(PI * n / 16), sin(PI * n / 16)) * 20 * 25 / 60, 10.0);
+		}
 	}
 	//遅い大きな弾
 	for (int n = 0; n < 8; n++)
 	{
 		auto obj = mObj->mScene->AddObject(mypos, 1.0, 0.0);
-		obj->AddUpdateComponent<NormalBulletCollisionComponent>(40.0, 100, collision_manager_);
-		obj->AddOutputComponent<DrawNormalBulletComponent>(layer_manager_, 40.0, MatVec::Vector3(0.0, 1.0, 0.0), 1.0, -10.0);
-		obj->AddUpdateComponent<LinearMoveComponent>(MatVec::Vector2(cos(PI * n / 4), sin(PI * n / 4)) * 10 * 25 / 60, 40.0);
+		if (obj.IsValid()) {
+			obj->AddUpdateComponent<NormalBulletCollisionComponent>(40.0, 100, collision_manager_);
+			obj->AddOutputComponent<DrawNormalBulletComponent>(layer_manager_, 40.0, MatVec::Vector3(0.0, 1.0, 0.0), 1.0, -10.0);
+			obj->AddUpdateComponent<LinearMoveComponent>(MatVec::Vector2(cos(PI * n / 4), sin(PI * n / 4)) * 10 * 25 / 60, 40.0);
+		}
+		//TODO:自機が死んだとき、透明にならなくなっていませんか?
 	}
-	//TODO:自機が死んだとき、透明にならなくなっていませんか?
 }

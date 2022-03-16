@@ -5,6 +5,7 @@ cbuffer cbuff0 : register(b0)
     float uv_y_;
     float uv_w_;
     float uv_h_;
+    float alpha_;
 }
 
 struct Output

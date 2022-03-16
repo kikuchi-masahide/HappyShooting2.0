@@ -6,6 +6,7 @@
 class LayerManager;
 class ScoreManager;
 class CollisionManager;
+class EnemyWaveManager;
 class DrawTextureComponent;
 class MyselfConditionBase;
 class MyselfPosAdjustComponent;
@@ -24,7 +25,7 @@ class MyselfMediatorComponent :
     public Component
 {
 public:
-    MyselfMediatorComponent(GameObjectHandle myself, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager);
+    MyselfMediatorComponent(GameObjectHandle myself, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<EnemyWaveManager> enemy);
     void Update() override;
     /// <summary>
     /// 自機にダメージを与える(当たり判定からの呼び出し)
@@ -39,10 +40,14 @@ public:
     boost::shared_ptr<LayerManager> layer_manager_;
     boost::shared_ptr<ScoreManager> score_manager_;
     boost::shared_ptr<CollisionManager> collision_manager_;
+    boost::shared_ptr<EnemyWaveManager> enemy_wave_manager_;
     ComponentHandle<MyselfConditionBase> condition_;
     //MyselfCollisionComponentから呼び出される、当たり判定処理関数
     //(具体的な処理はcondition_に任せる)
     void CheckHitComponent(std::set<ComponentHandle<CollisionComponent>>& hit_comps_);
+    //自機の武器をMyselfArmor2に変更する
+    //TODO:今回自機の武器が高々3種類ぐらいしかないからいいけど、もっとあったらどうするんだろうね?
+    void SetMyselfArmor2();
 private:
     ~MyselfMediatorComponent();
     ComponentHandle<DrawTextureComponent> draw_texture_component_;

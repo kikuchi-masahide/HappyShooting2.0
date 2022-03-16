@@ -7,6 +7,8 @@
 #include "ScoreManager.h"
 #include "EnemyWaveManager.h"
 
+class MyselfMediatorComponent;
+
 class MainScene :public Scene
 {
 public:
@@ -21,6 +23,7 @@ public:
 	boost::shared_ptr<EnemyWaveManager> GetEnemyWaveManager();
 	boost::shared_ptr<CollisionManager> GetCollisionManager();
 	GameObjectHandle GetMyselfHandle();
+	void SetMyselfArmor2();
 private:
 	//シーンに自機を追加する
 	void AddMyself();
@@ -33,6 +36,6 @@ private:
 	boost::shared_ptr<ScoreManager> score_manager_;
 	boost::shared_ptr<EnemyWaveManager> enemy_wave_manager_;
 	boost::shared_ptr<CollisionManager> collision_manager_;
-	//自機オブジェクトのハンドル
-	GameObjectHandle myself_handle_;
+	//自機のメディエータ
+	ComponentHandle<MyselfMediatorComponent> mediator_;
 };

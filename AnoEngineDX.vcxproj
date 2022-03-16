@@ -262,8 +262,10 @@
     <ClCompile Include="code\MainScene\MainSceneShrinkLayer.cpp" />
     <ClCompile Include="code\MainScene\MainSceneUIScreen.cpp" />
     <ClCompile Include="code\MainScene\MyBulletCollisionComponent.cpp" />
+    <ClCompile Include="code\MainScene\MyselfAddAimBulletComponent.cpp" />
     <ClCompile Include="code\MainScene\MyselfAddNormalBulletComponent.cpp" />
     <ClCompile Include="code\MainScene\MyselfAngleComponent.cpp" />
+    <ClCompile Include="code\MainScene\MyselfArmor2.cpp" />
     <ClCompile Include="code\MainScene\MyselfArmorAlone.cpp" />
     <ClCompile Include="code\MainScene\MyselfArmorBase.cpp" />
     <ClCompile Include="code\MainScene\MyselfCollisionComponent.cpp" />
@@ -396,8 +398,10 @@
     <ClInclude Include="code\MainScene\MainSceneShrinkLayer.h" />
     <ClInclude Include="code\MainScene\MainSceneUIScreen.h" />
     <ClInclude Include="code\MainScene\MyBulletCollisionComponent.h" />
+    <ClInclude Include="code\MainScene\MyselfAddAimBulletComponent.h" />
     <ClInclude Include="code\MainScene\MyselfAddNormalBulletComponent.h" />
     <ClInclude Include="code\MainScene\MyselfAngleComponent.h" />
+    <ClInclude Include="code\MainScene\MyselfArmor2.h" />
     <ClInclude Include="code\MainScene\MyselfArmorAlone.h" />
     <ClInclude Include="code\MainScene\MyselfArmorBase.h" />
     <ClInclude Include="code\MainScene\MyselfCollisionComponent.h" />
