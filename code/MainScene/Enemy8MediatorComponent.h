@@ -23,10 +23,14 @@ private:
     //初めてUdpateが呼び出されるとき0、mod120を取る
     int time_;
     boost::shared_ptr<LayerManager> layer_;
+    boost::shared_ptr<ScoreManager> score_;
+    boost::shared_ptr<CollisionManager> collision_;
     GameObjectHandle myself_;
     ComponentHandle<DrawAnimationComponent> animation_;
     ComponentHandle<Enemy8CollisionComponent> col_comp_;
     //乱数を用いて、自分の位置をランダムに変更する
     void SetPosition();
+    //広がったのち自機狙いになる特殊弾を撃つ
+    void Shoot();
 };
 

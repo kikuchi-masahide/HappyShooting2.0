@@ -316,6 +316,9 @@
     <Filter Include="MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy8CollisionComponent">
       <UniqueIdentifier>{e08bdf78-466d-4ae4-a6d8-a2f17c4453b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Enemy8BulletComponent">
+      <UniqueIdentifier>{6d107a1d-5f01-4a3b-a55d-1efa3cae41eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -700,6 +703,9 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\Enemy8CollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy8CollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Enemy8BulletComponent.cpp">
+      <Filter>MainScene\Enemy8BulletComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1105,6 +1111,9 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\Enemy8CollisionComponent.h">
       <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy8CollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Enemy8BulletComponent.h">
+      <Filter>MainScene\Enemy8BulletComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

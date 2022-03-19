@@ -241,6 +241,7 @@
     <ClCompile Include="code\MainScene\Enemy7BarrierCollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\Enemy7CollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\Enemy7MediatorComponent.cpp" />
+    <ClCompile Include="code\MainScene\Enemy8BulletComponent.cpp" />
     <ClCompile Include="code\MainScene\Enemy8CollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\Enemy8MediatorComponent.cpp" />
     <ClCompile Include="code\MainScene\EnemyBodyCollisionComponent.cpp" />
@@ -384,6 +385,7 @@
     <ClInclude Include="code\MainScene\Enemy7BarrierCollisionComponent.h" />
     <ClInclude Include="code\MainScene\Enemy7CollisionComponent.h" />
     <ClInclude Include="code\MainScene\Enemy7MediatorComponent.h" />
+    <ClInclude Include="code\MainScene\Enemy8BulletComponent.h" />
     <ClInclude Include="code\MainScene\Enemy8CollisionComponent.h" />
     <ClInclude Include="code\MainScene\Enemy8MediatorComponent.h" />
     <ClInclude Include="code\MainScene\EnemyBodyCollisionComponent.h" />

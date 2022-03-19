@@ -5,10 +5,11 @@
 #include "EnemyHealthComponent.h"
 #include "Enemy8CollisionComponent.h"
 #include "DrawHealthBarComponent.h"
+#include "Enemy8BulletComponent.h"
 
 Enemy8MediatorComponent::Enemy8MediatorComponent(GameObjectHandle handle, boost::shared_ptr<LayerManager> layer, boost::shared_ptr<CollisionManager> col, boost::shared_ptr<ScoreManager> score, GameObjectHandle myself)
 	:Component(handle),
-	time_(0),layer_(layer),myself_(myself)
+	time_(0),layer_(layer),myself_(myself),score_(score),collision_(col)
 {
 	animation_ = mObj->AddOutputComponent<DrawAnimationComponent>(layer_, 30, 60, 60, 4, 8, -5.0, MatVec::Vector2(0, 0), 31);
 	auto health = mObj->AddUpdateComponent<EnemyHealthComponent>(layer_, 5000);
@@ -34,6 +35,10 @@ void Enemy8MediatorComponent::Update()
 	{
 		animation_->counter_ = 30;
 		col_comp_->is_valid_ = true;
+		if (time_ == 35 || time_ == 55 || time_ == 75)
+		{
+			Shoot();
+		}
 	}
 	//“¦‚°‚é
 	else
@@ -72,4 +77,14 @@ void Enemy8MediatorComponent::SetPosition()
 		}
 	}
 	mObj->SetPosition(MatVec::Vector2(x, y));
+}
+
+void Enemy8MediatorComponent::Shoot()
+{
+	auto pos = mObj->GetPosition();
+	for (int i = 0; i < 32; i++)
+	{
+		auto obj = mObj->mScene->AddObject(pos, 1.0, 0.0);
+		obj->AddUpdateComponent<Enemy8BulletComponent>(layer_, score_, collision_, PI*i/16, myself_);
+	}
 }
