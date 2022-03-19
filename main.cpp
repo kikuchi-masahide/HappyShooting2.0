@@ -72,6 +72,7 @@ void LoadTextures(Game* _game)
 	_game->mTexManager.LoadTexture(L"Resources/images/myself2.png", 27);
 	_game->mTexManager.LoadTexture(L"Resources/images/Enemy7.png", 28);
 	_game->mTexManager.LoadTexture(L"Resources/images/Enemy7_barrier.png", 29);
+	_game->mTexManager.LoadTexture(L"Resources/images/Enemy8.png", 30);
 }
 
 void LoadShaders(Game* _game)

@@ -241,6 +241,8 @@
     <ClCompile Include="code\MainScene\Enemy7BarrierCollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\Enemy7CollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\Enemy7MediatorComponent.cpp" />
+    <ClCompile Include="code\MainScene\Enemy8CollisionComponent.cpp" />
+    <ClCompile Include="code\MainScene\Enemy8MediatorComponent.cpp" />
     <ClCompile Include="code\MainScene\EnemyBodyCollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\EnemyHealthComponent.cpp" />
     <ClCompile Include="code\MainScene\EnemyWave1.cpp" />
@@ -249,6 +251,7 @@
     <ClCompile Include="code\MainScene\EnemyWave45.cpp" />
     <ClCompile Include="code\MainScene\EnemyWave6.cpp" />
     <ClCompile Include="code\MainScene\EnemyWave7.cpp" />
+    <ClCompile Include="code\MainScene\EnemyWave8.cpp" />
     <ClCompile Include="code\MainScene\EnemyWaveBase.cpp" />
     <ClCompile Include="code\MainScene\EnemyWaveBoss1.cpp" />
     <ClCompile Include="code\MainScene\EnemyWaveManager.cpp" />
@@ -381,6 +384,8 @@
     <ClInclude Include="code\MainScene\Enemy7BarrierCollisionComponent.h" />
     <ClInclude Include="code\MainScene\Enemy7CollisionComponent.h" />
     <ClInclude Include="code\MainScene\Enemy7MediatorComponent.h" />
+    <ClInclude Include="code\MainScene\Enemy8CollisionComponent.h" />
+    <ClInclude Include="code\MainScene\Enemy8MediatorComponent.h" />
     <ClInclude Include="code\MainScene\EnemyBodyCollisionComponent.h" />
     <ClInclude Include="code\MainScene\EnemyHealthComponent.h" />
     <ClInclude Include="code\MainScene\EnemyWave1.h" />
@@ -389,6 +394,7 @@
     <ClInclude Include="code\MainScene\EnemyWave45.h" />
     <ClInclude Include="code\MainScene\EnemyWave6.h" />
     <ClInclude Include="code\MainScene\EnemyWave7.h" />
+    <ClInclude Include="code\MainScene\EnemyWave8.h" />
     <ClInclude Include="code\MainScene\EnemyWaveBase.h" />
     <ClInclude Include="code\MainScene\EnemyWaveBoss1.h" />
     <ClInclude Include="code\MainScene\EnemyWaveManager.h" />

@@ -8,7 +8,7 @@
 #include "DrawNormalBulletComponent.h"
 #include "EnemyWaveManager.h"
 #include "CollisionUIScreen.h"
-#include "EnemyWave7.h"
+#include "EnemyWave8.h"
 #include "MyselfMediatorComponent.h"
 
 MainScene::MainScene(Game* game)
@@ -30,9 +30,7 @@ MainScene::MainScene(Game* game)
 
 	CollisionUIScreen* collision_ui = AddUIScreen<CollisionUIScreen>();
 	collision_manager_ = boost::shared_ptr<CollisionManager>(DBG_NEW CollisionManager(collision_ui));
-
 	enemy_wave_manager_ = boost::shared_ptr<EnemyWaveManager>(DBG_NEW EnemyWaveManager(this));
-	enemy_wave_manager_->SetWave(boost::shared_ptr<EnemyWaveBase>(DBG_NEW EnemyWave7(this)));
 
 	//自機追加
 	AddMyself();
@@ -42,7 +40,7 @@ MainScene::MainScene(Game* game)
 	//TODO:デバッグ時の漸次的な処理
 	//Releaseならこれを消し、EnemyWave6のこの文を有効化する
 	SetMyselfArmor2();
-
+	enemy_wave_manager_->SetWave(boost::shared_ptr<EnemyWaveBase>(DBG_NEW EnemyWave8(this)));
 }
 
 void MainScene::PriorUniqueUpdate()

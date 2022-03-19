@@ -36,6 +36,11 @@ GameObjectHandle EnemyWaveManager::SolveNearestEnemy()
 	MatVec::Vector2 mypos = myself_handle_->GetPosition();
 	for (auto itr = enemies_.begin(); itr != enemies_.end(); itr++)
 	{
+		if (!(*itr).IsValid())
+		{
+			//TODO:‹N‚«‚È‚¢‚Í‚¸‚¾‚Æv‚¤‚ñ‚¾‚¯‚Ç‚È‚ ...
+			continue;
+		}
 		MatVec::Vector2 enemy_pos = (*itr)->GetPosition();
 		double dist = (enemy_pos - mypos).Norm();
 		if (min_dist > dist)

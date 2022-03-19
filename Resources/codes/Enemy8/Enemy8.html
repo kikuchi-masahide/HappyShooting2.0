@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>resource</title>
+    </head>
+    <body>
+        <canvas id = "canvas" width = "240" height = "480"></canvas>
+        <script>
+            const context=document.getElementById("canvas").getContext("2d");
+            context.fillStyle = "white";
+            context.clearRect(0,0,240,480);
+            context.fillStyle = "black";
+            for(let t = 0;t <= 30;t++)
+            {
+                let c = t%4;
+                let r = (t-c)/4;
+                let cx = c*60+30;
+                let cy = r*60+30;
+                context.globalAlpha = t/30;
+                //三角形1
+                {
+                    let deg0 = Math.PI/6+Math.PI/6-Math.PI*t/36;
+                    let deg1 = deg0+Math.PI*2/3;
+                    let deg2 = deg1+Math.PI*2/3;
+                    context.beginPath();
+                    context.moveTo(cx+30*Math.cos(deg0),cy+30*Math.sin(deg0));
+                    context.lineTo(cx+30*Math.cos(deg1),cy+30*Math.sin(deg1));
+                    context.lineTo(cx+30*Math.cos(deg2),cy+30*Math.sin(deg2));
+                    context.lineTo(cx+30*Math.cos(deg0),cy+30*Math.sin(deg0));
+                    context.closePath();
+                    context.stroke();
+                }
+                //三角形2
+                {
+                    let deg0 = Math.PI/2-Math.PI/6+Math.PI*t/36;
+                    let deg1 = deg0+Math.PI*2/3;
+                    let deg2 = deg1+Math.PI*2/3;
+                    context.beginPath();
+                    context.moveTo(cx+30*Math.cos(deg0),cy+30*Math.sin(deg0));
+                    context.lineTo(cx+30*Math.cos(deg1),cy+30*Math.sin(deg1));
+                    context.lineTo(cx+30*Math.cos(deg2),cy+30*Math.sin(deg2));
+                    context.lineTo(cx+30*Math.cos(deg0),cy+30*Math.sin(deg0));
+                    context.closePath();
+                    context.stroke();
+                }
+            }
+</script>
+    </body>
+</html>

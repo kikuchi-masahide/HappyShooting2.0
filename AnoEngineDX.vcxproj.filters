@@ -307,6 +307,15 @@
     <Filter Include="MainScene\CollisionComponent\Enemy7BarrierCollisionComponent">
       <UniqueIdentifier>{13817ae5-c6ec-4dd2-95bd-597f4872c05b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Enemy8MediatorComponent">
+      <UniqueIdentifier>{6ee52802-1196-475f-9e52-64b64a20a6f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\EnemyWaveBase\EnemyWave8">
+      <UniqueIdentifier>{1453dad1-1fe2-42b4-ab17-ccfc23ea76f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy8CollisionComponent">
+      <UniqueIdentifier>{e08bdf78-466d-4ae4-a6d8-a2f17c4453b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -682,6 +691,15 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\Enemy7BarrierCollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent\Enemy7BarrierCollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Enemy8MediatorComponent.cpp">
+      <Filter>MainScene\Enemy8MediatorComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\EnemyWave8.cpp">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave8</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Enemy8CollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy8CollisionComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1078,6 +1096,15 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\Enemy7BarrierCollisionComponent.h">
       <Filter>MainScene\CollisionComponent\Enemy7BarrierCollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Enemy8MediatorComponent.h">
+      <Filter>MainScene\Enemy8MediatorComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\EnemyWave8.h">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave8</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Enemy8CollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy8CollisionComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
