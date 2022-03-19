@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>resource</title>
+    </head>
+    <body>
+        <canvas id = "canvas" width = "50" height = "50"></canvas>
+        <script>
+            const context=document.getElementById("canvas").getContext("2d");
+            context.fillStyle = "white";
+            context.clearRect(0,0,400,750);
+            context.fillStyle = "black";
+            let t = 0;
+            let cx = 25;
+            let cy = 25;
+            let deg = 0;
+            context.beginPath();
+            context.arc(cx,cy,20,Math.PI*2,false);
+            context.stroke();
+            context.beginPath();
+            context.arc(cx+20*Math.cos(deg),cy+20*Math.sin(deg),4,Math.PI*2,false);
+            context.arc(cx-20*Math.cos(deg),cy-20*Math.sin(deg),4,Math.PI*2,false);
+            context.fill();
+</script>
+    </body>
+</html>

@@ -2,6 +2,7 @@
 
 #include "MainScene.h"
 #include "Enemy6MediatorComponent.h"
+#include "EnemyWave7.h"
 
 EnemyWave6::EnemyWave6(MainScene* main_scene)
 	:EnemyWaveBase(60,main_scene)
@@ -27,4 +28,7 @@ EnemyWave6::~EnemyWave6()
 
 void EnemyWave6::OnDelete()
 {
+	main_scene_->GetEnemyWaveManager()->SetWave(boost::shared_ptr<EnemyWave7>(
+		new EnemyWave7(main_scene_)
+		));
 }

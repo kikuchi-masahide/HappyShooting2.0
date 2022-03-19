@@ -295,6 +295,15 @@
     <Filter Include="MainScene\MyselfAddAimBulletComponent">
       <UniqueIdentifier>{b00f2256-671c-402b-ba7c-a2dd85dad599}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Enemy7Mediator">
+      <UniqueIdentifier>{9e408e51-80d6-4569-8f54-af248d63952a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\EnemyWaveBase\EnemyWave7">
+      <UniqueIdentifier>{6ce61db1-b19f-42db-8ec2-62886376c476}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy7CollisionCompoennt">
+      <UniqueIdentifier>{1a3d6bbe-2fee-4b75-bceb-9b24d5e28303}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -658,6 +667,15 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\MyselfAddAimBulletComponent.cpp">
       <Filter>MainScene\MyselfAddAimBulletComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Enemy7MediatorComponent.cpp">
+      <Filter>MainScene\Enemy7Mediator</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\EnemyWave7.cpp">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave7</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Enemy7CollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy7CollisionCompoennt</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1042,6 +1060,15 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\MyselfAddAimBulletComponent.h">
       <Filter>MainScene\MyselfAddAimBulletComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Enemy7MediatorComponent.h">
+      <Filter>MainScene\Enemy7Mediator</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\EnemyWave7.h">
+      <Filter>MainScene\EnemyWaveBase\EnemyWave7</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Enemy7CollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\EnemyBodyCollisionComponent\Enemy7CollisionCompoennt</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

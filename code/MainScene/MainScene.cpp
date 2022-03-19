@@ -8,7 +8,7 @@
 #include "DrawNormalBulletComponent.h"
 #include "EnemyWaveManager.h"
 #include "CollisionUIScreen.h"
-#include "EnemyWave6.h"
+#include "EnemyWave7.h"
 #include "MyselfMediatorComponent.h"
 
 MainScene::MainScene(Game* game)
@@ -32,7 +32,7 @@ MainScene::MainScene(Game* game)
 	collision_manager_ = boost::shared_ptr<CollisionManager>(DBG_NEW CollisionManager(collision_ui));
 
 	enemy_wave_manager_ = boost::shared_ptr<EnemyWaveManager>(DBG_NEW EnemyWaveManager(this));
-	enemy_wave_manager_->SetWave(boost::shared_ptr<EnemyWaveBase>(DBG_NEW EnemyWave6(this)));
+	enemy_wave_manager_->SetWave(boost::shared_ptr<EnemyWaveBase>(DBG_NEW EnemyWave7(this)));
 
 	//Ž©‹@’Ç‰Á
 	AddMyself();
