@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>resource</title>
+    </head>
+    <body>
+        <canvas id = "canvas" width = "210" height = "210"></canvas>
+        <script>
+            const context=document.getElementById("canvas").getContext("2d");
+            context.fillStyle = "white";
+            context.clearRect(0,0,210,210);
+            context.beginPath();
+            context.arc(105,105,100,Math.PI*2,false);
+            context.stroke();
+</script>
+    </body>
+</html>

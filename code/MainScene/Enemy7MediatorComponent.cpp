@@ -10,18 +10,14 @@
 #include "Enemy7CollisionComponent.h"
 #include "ScoreManager.h"
 #include "DrawHealthBarComponent.h"
+#include "Enemy7BarrierCollisionComponent.h"
 
 Enemy7MediatorComponent::Enemy7MediatorComponent(GameObjectHandle handle, boost::shared_ptr<LayerManager> layer, boost::shared_ptr<CollisionManager> col, boost::shared_ptr<ScoreManager> score)
 	:Component(handle),
 	time_(-240),layer_(layer),collision_(col)
 {
-	texture_ = mObj->AddOutputComponent<DrawTextureComponent>(layer, 28, -5.0);
-	texture_->width_ = 50.0;
-	texture_->height_ = 50.0;
-	texture_->alpha_ = 1.0;
-	auto health = mObj->AddUpdateComponent<EnemyHealthComponent>(layer_, health0_);
-	mObj->AddUpdateComponent<Enemy7CollisionComponent>(collision_, score, health);
-	mObj->AddOutputComponent<DrawHealthBarComponent<EnemyHealthComponent>>(layer_, health, MatVec::Vector2(0, 30));
+	InitBody(score);
+	InitBarrier();
 }
 
 Enemy7MediatorComponent::~Enemy7MediatorComponent()
@@ -42,6 +38,11 @@ void Enemy7MediatorComponent::Update()
 	}
 	mObj->SetPosition(pos);
 	mObj->SetRotation(PI * time_ / 240);
+	//ƒoƒŠƒA‚ª¶‚«‚Ä‚¢‚éê‡‚»‚¿‚ç‚É‚à•ÏX‚ð‰Á‚¦‚é
+	if (barrier_.IsValid())
+	{
+		barrier_->SetPosition(pos);
+	}
 	if (time_ >= 0 && time_%12 == 0)
 	{
 		Shoot();
@@ -63,4 +64,25 @@ void Enemy7MediatorComponent::Shoot()
 		obj->AddOutputComponent<DrawNormalBulletComponent>(layer_, 10.0, MatVec::Vector3(0.0, 1.0, 0.0), 1.0, -10.0);
 		obj->AddUpdateComponent<NormalBulletCollisionComponent>(10.0, 100, collision_);
 	}
+}
+
+void Enemy7MediatorComponent::InitBody(boost::shared_ptr<ScoreManager> score)
+{
+	texture_ = mObj->AddOutputComponent<DrawTextureComponent>(layer_, 28, -5.0);
+	texture_->width_ = 50.0;
+	texture_->height_ = 50.0;
+	texture_->alpha_ = 1.0;
+	auto health = mObj->AddUpdateComponent<EnemyHealthComponent>(layer_, health0_);
+	mObj->AddUpdateComponent<Enemy7CollisionComponent>(collision_, score, health);
+	mObj->AddOutputComponent<DrawHealthBarComponent<EnemyHealthComponent>>(layer_, health, MatVec::Vector2(0, 30));
+}
+
+void Enemy7MediatorComponent::InitBarrier()
+{
+	barrier_ = mObj->mScene->AddObject(MatVec::Vector2(), 1.0, 0.0);
+	auto col = barrier_->AddUpdateComponent<Enemy7BarrierCollisionComponent>(collision_, layer_);
+	barrier_->AddOutputComponent<DrawHealthBarComponent<Enemy7BarrierCollisionComponent>>(layer_, col, MatVec::Vector2(0, -100));
+	auto tex = barrier_->AddOutputComponent<DrawTextureComponent>(layer_, 29, -5.0);
+	tex->width_ = 210;
+	tex->height_ = 210;
 }

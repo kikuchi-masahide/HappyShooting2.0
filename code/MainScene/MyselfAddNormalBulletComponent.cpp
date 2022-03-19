@@ -32,6 +32,10 @@ void MyselfAddNormalBulletComponent::Update()
 			bullet->AddOutputComponent<DrawNormalBulletComponent>(
 				layer_manager_, bullet_redius_, MatVec::Vector3(0.0, 0.0, 1.0), 1.0, 10.0
 				);
+			//TODO:Enemy7(バリア張ってるやつ)のために、「弾オブジェクトのrotationが飛んでく方向である」と
+			//いうことにとりあえずしてる
+			//もうちょっといいやり方ない?当たり判定まわいから変えないとだめ?(テンプレート特殊化を使うなど)
+			bullet->SetRotation(angle);
 		}
 		time_ = 0;
 	}

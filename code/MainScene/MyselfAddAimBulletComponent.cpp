@@ -53,6 +53,7 @@ void MyselfAddAimBulletComponent::ShootFrom(int i, GameObjectHandle to)
 	bullet->AddOutputComponent<DrawNormalBulletComponent>(
 		layer_, bullet_redius_, MatVec::Vector3(0.0, 0.0, 1.0), 1.0, 10.0
 	);
+	bullet->SetRotation(shootang);
 }
 
 

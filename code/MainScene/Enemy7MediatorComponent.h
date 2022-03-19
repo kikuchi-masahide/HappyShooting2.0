@@ -23,10 +23,15 @@ private:
     //初めてUpdateが呼び出されるとき-240、左右移動を始めるとき0になる
     int time_;
     ComponentHandle<DrawTextureComponent> texture_;
+    //バリアのオブジェクト(位置調整はこちらから行うため)
+    GameObjectHandle barrier_;
     boost::shared_ptr<LayerManager> layer_;
     boost::shared_ptr<CollisionManager> collision_;
     //12tickごとに4方向に弾を発射
     void Shoot();
     static const int health0_ = 2500;
+    //本体、バリアの初期化
+    void InitBody(boost::shared_ptr<ScoreManager> score);
+    void InitBarrier();
 };
 
