@@ -106,4 +106,8 @@ void LoadShaders(Game* _game)
 	_game->mShaderManager.LoadShader(L"Shader/MainSceneClippingLayer_pixel.hlsl", DX12Config::ShaderType::PIXEL, 25);
 	_game->mShaderManager.LoadShader(L"Shader/MainSceneShrinkLayer_vertex.hlsl", DX12Config::ShaderType::VERTEX, 26);
 	_game->mShaderManager.LoadShader(L"Shader/MainSceneShrinkLayer_pixel.hlsl", DX12Config::ShaderType::PIXEL, 27);
+	_game->mShaderManager.LoadShader(L"Shader/MainSceneFlippingLayer_vertex.hlsl", DX12Config::ShaderType::VERTEX, 28);
+	_game->mShaderManager.LoadShader(L"Shader/MainSceneFlippingLayer_pixel.hlsl", DX12Config::ShaderType::PIXEL, 29);
+	_game->mShaderManager.LoadShader(L"Shader/MainSceneFlippingLayer_frame_vertex.hlsl", DX12Config::ShaderType::VERTEX, 30);
+	_game->mShaderManager.LoadShader(L"Shader/MainSceneFlippingLayer_frame_pixel.hlsl", DX12Config::ShaderType::PIXEL, 31);
 }

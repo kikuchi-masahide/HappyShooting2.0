@@ -218,6 +218,8 @@
     <ClCompile Include="code\MainScene\Boss2State0.cpp" />
     <ClCompile Include="code\MainScene\Boss2State0BulletSmall.cpp" />
     <ClCompile Include="code\MainScene\Boss2State0BulletBig.cpp" />
+    <ClCompile Include="code\MainScene\Boss2State1.cpp" />
+    <ClCompile Include="code\MainScene\Boss2State1Bullet.cpp" />
     <ClCompile Include="code\MainScene\Boss2StateBase.cpp" />
     <ClCompile Include="code\MainScene\Boss2StateEntering.cpp" />
     <ClCompile Include="code\MainScene\BossIncomingUpdate.cpp" />
@@ -274,6 +276,7 @@
     <ClCompile Include="code\MainScene\MainSceneBasicLayer.cpp" />
     <ClCompile Include="code\MainScene\MainSceneClippingLayer.cpp" />
     <ClCompile Include="code\MainScene\MainSceneDrawComponent.cpp" />
+    <ClCompile Include="code\MainScene\MainSceneFlippingLayer.cpp" />
     <ClCompile Include="code\MainScene\MainSceneShrinkLayer.cpp" />
     <ClCompile Include="code\MainScene\MainSceneUIScreen.cpp" />
     <ClCompile Include="code\MainScene\MyBulletCollisionComponent.cpp" />
@@ -369,6 +372,8 @@
     <ClInclude Include="code\MainScene\Boss2State0.h" />
     <ClInclude Include="code\MainScene\Boss2State0BulletSmall.h" />
     <ClInclude Include="code\MainScene\Boss2State0BulletBig.h" />
+    <ClInclude Include="code\MainScene\Boss2State1.h" />
+    <ClInclude Include="code\MainScene\Boss2State1Bullet.h" />
     <ClInclude Include="code\MainScene\Boss2StateBase.h" />
     <ClInclude Include="code\MainScene\Boss2StateEntering.h" />
     <ClInclude Include="code\MainScene\BossIncomingUpdate.h" />
@@ -425,6 +430,7 @@
     <ClInclude Include="code\MainScene\MainSceneBasicLayer.h" />
     <ClInclude Include="code\MainScene\MainSceneClippingLayer.h" />
     <ClInclude Include="code\MainScene\MainSceneDrawComponent.h" />
+    <ClInclude Include="code\MainScene\MainSceneFlippingLayer.h" />
     <ClInclude Include="code\MainScene\MainSceneShrinkLayer.h" />
     <ClInclude Include="code\MainScene\MainSceneUIScreen.h" />
     <ClInclude Include="code\MainScene\MyBulletCollisionComponent.h" />
@@ -465,6 +471,7 @@
     <None Include="Shader\HTextureDrawInclude.hlsli" />
     <None Include="Shader\MainSceneBasicLayerHeader.hlsli" />
     <None Include="Shader\MainSceneClippingLayer_header.hlsli" />
+    <None Include="Shader\MainSceneFlippingLayer_header.hlsli" />
     <None Include="Shader\MainSceneShrinkLayer_header.hlsli" />
     <None Include="Shader\PolygonGeometryDrawer_header.hlsli" />
   </ItemGroup>
@@ -608,6 +615,30 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
     </FxCompile>
     <FxCompile Include="Shader\MainSceneClippingLayer_vertex.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneFlippingLayer_frame_pixel.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneFlippingLayer_frame_vertex.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneFlippingLayer_pixel.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneFlippingLayer_vertex.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>

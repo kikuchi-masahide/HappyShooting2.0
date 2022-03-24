@@ -34,7 +34,8 @@ public:
 	/// </summary>
 	int GetLayert();
 	/// <summary>
-	/// このレイヤーの変形行列を受け取る(activeな時のみ呼び出されうる)
+	/// レイヤーの中心(左下中心ならば座標(300,450)の点)を原点とする、レイヤーの変形行列を受け取る(activeな時のみ呼び出されうる)
+	/// すなわち、レイヤーの任意の点x(=(x,y,z,1)^t)がx'に移動するとき、x'=Axとなる行列Aを返す
 	/// </summary>
 	/// <returns></returns>
 	virtual MatVec::Matrix4x4 GetLayerTransform() = 0;

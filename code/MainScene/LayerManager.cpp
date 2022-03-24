@@ -5,6 +5,7 @@
 #include "../Engine/Scene.h"
 #include "MainSceneDrawComponent.h"
 #include "MainSceneShrinkLayer.h"
+#include "MainSceneFlippingLayer.h"
 
 LayerManager::LayerManager(Scene* scene)
 	:layer_from_next_tick_(999),scene_(scene)
@@ -28,6 +29,9 @@ void LayerManager::InitLayers()
 
 	auto layer2 = scene_->AddLayer<MainSceneShrinkLayer>(scene_, &draw_components_);
 	available_layers_[2] = static_cast<LayerHandle<MainSceneBaseLayer>>(layer2);
+
+	auto layer3 = scene_->AddLayer<MainSceneFlippingLayer>(scene_, &draw_components_);
+	available_layers_[3] = static_cast<LayerHandle<MainSceneBaseLayer>>(layer3);
 }
 
 void LayerManager::AddComponentToLayer(ComponentHandle<MainSceneDrawComponent> component)

@@ -3,6 +3,7 @@
 #include "Boss2Mediator.h"
 #include "../Engine/GameObject.h"
 #include "Boss2State0.h"
+#include "Boss2State1.h"
 
 Boss2StateEntering::Boss2StateEntering(ComponentHandle<Boss2MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<EnemyWaveManager> enemywave_manager)
 	:Boss2StateBase(mediator,layer_manager,score_manager,collision_manager,enemywave_manager),
@@ -20,7 +21,10 @@ void Boss2StateEntering::Update()
 	mediator_->mObj->SetPosition(MatVec::Vector2(0, y));
 	if (time_ == 239)
 	{
-		mediator_->ChangeState(boost::shared_ptr<Boss2State0>(new Boss2State0(
+		//mediator_->ChangeState(boost::shared_ptr<Boss2State0>(DBG_NEW Boss2State0(
+		//	mediator_, layer_manager_, score_manager_, collision_manager_, enemywave_manager_
+		//)));
+		mediator_->ChangeState(boost::shared_ptr<Boss2State1>(DBG_NEW Boss2State1(
 			mediator_, layer_manager_, score_manager_, collision_manager_, enemywave_manager_
 		)));
 	}

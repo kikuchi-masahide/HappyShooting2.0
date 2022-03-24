@@ -19,7 +19,7 @@ public:
     void Update() override;
 private:
     //y軸方向の加速度
-    static const double g_;
+    static const double abs_g_;
     //何tickの間当たり判定を活かし続けるか
     static const int whole_duration_;
     //当たり判定消失からオブジェクト消失に何tickかけるか

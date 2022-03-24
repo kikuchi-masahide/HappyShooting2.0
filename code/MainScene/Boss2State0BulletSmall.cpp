@@ -27,7 +27,7 @@ void Boss2State0BulletSmall::Update()
 	}
 	if (time_ < whole_duration_) {
 		v_ += a_ / 60;
-		a_ += g_ / 60;
+		a_ += abs_g_ / 60;
 	}
 	time_++;
 	if (time_ == whole_duration_)
@@ -40,7 +40,7 @@ void Boss2State0BulletSmall::Update()
 	}
 }
 
-const double Boss2State0BulletSmall::g_ = -9.8 * 25;
+const double Boss2State0BulletSmall::abs_g_ = -9.8 * 25;
 const int Boss2State0BulletSmall::whole_duration_ = 120;
 const int Boss2State0BulletSmall::fadeout_period_ = 30;
 const double Boss2State0BulletSmall::radius_ = 10.0;

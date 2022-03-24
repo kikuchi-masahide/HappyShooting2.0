@@ -5,6 +5,9 @@
 #include "../Engine/GameObject.h"
 #include "../Engine/Scene.h"
 #include "Boss2State0BulletBig.h"
+#include "Boss2State1.h"
+
+//TODO:大きい弾がちょっと画面外に出た時、全体の描画がキャンセルされてチカチカしてるっぽい
 
 Boss2State0::Boss2State0(ComponentHandle<Boss2MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<EnemyWaveManager> enemywave_manager)
 	:Boss2StateBase(mediator,layer_manager,score_manager,collision_manager,enemywave_manager),
@@ -31,6 +34,12 @@ void Boss2State0::Update()
 		}
 	}
 	time_++;
+	if (time_ == whole_duration_)
+	{
+		mediator_->ChangeState(boost::shared_ptr<Boss2State1>(DBG_NEW Boss2State1(
+			mediator_, layer_manager_, score_manager_, collision_manager_, enemywave_manager_
+		)));
+	}
 }
 
 bool Boss2State0::IsCollisionActive()

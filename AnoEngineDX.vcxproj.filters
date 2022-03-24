@@ -340,6 +340,15 @@
     <Filter Include="MainScene\Boss2State0BulletSmall">
       <UniqueIdentifier>{146b90bc-9b89-4ab0-8078-a03dfb1d6c19}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Boss2StateBase\Boss2State1">
+      <UniqueIdentifier>{71c8d43e-2df2-4798-a6a7-23cf540da52a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\Boss2State1Bullet">
+      <UniqueIdentifier>{3f167cd0-867d-4b1a-b309-e47c83398e8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\MainSceneBaseLayer\MainSceneFlippingLayer">
+      <UniqueIdentifier>{aec86a41-0154-4ef7-ad3a-97cc96e80c61}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -748,6 +757,15 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\Boss2State0BulletSmall.cpp">
       <Filter>MainScene\Boss2State0BulletSmall</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss2State1.cpp">
+      <Filter>MainScene\Boss2StateBase\Boss2State1</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss2State1Bullet.cpp">
+      <Filter>MainScene\Boss2State1Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MainSceneFlippingLayer.cpp">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneFlippingLayer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1178,6 +1196,15 @@
     <ClInclude Include="code\MainScene\Boss2State0BulletSmall.h">
       <Filter>MainScene\Boss2State0BulletSmall</Filter>
     </ClInclude>
+    <ClInclude Include="code\MainScene\Boss2State1.h">
+      <Filter>MainScene\Boss2StateBase\Boss2State1</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss2State1Bullet.h">
+      <Filter>MainScene\Boss2State1Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MainSceneFlippingLayer.h">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneFlippingLayer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\DrawHealthBarComponent_header.hlsli">
@@ -1221,6 +1248,9 @@
     </None>
     <None Include="Shader\MainSceneShrinkLayer_header.hlsli">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneShrinkLayer</Filter>
+    </None>
+    <None Include="Shader\MainSceneFlippingLayer_header.hlsli">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneFlippingLayer</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -1307,6 +1337,18 @@
     </FxCompile>
     <FxCompile Include="Shader\MainSceneShrinkLayer_vertex.hlsl">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneShrinkLayer</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneFlippingLayer_pixel.hlsl">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneFlippingLayer</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneFlippingLayer_vertex.hlsl">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneFlippingLayer</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneFlippingLayer_frame_vertex.hlsl">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneFlippingLayer</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneFlippingLayer_frame_pixel.hlsl">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneFlippingLayer</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
