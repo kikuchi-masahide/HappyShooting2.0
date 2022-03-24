@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>resource</title>
+    </head>
+    <body>
+        <canvas id = "canvas" width = "560" height = "880"></canvas>
+        <script>
+            const context=document.getElementById("canvas").getContext("2d");
+            context.fillStyle = "white";
+            context.clearRect(0,0,560,880);
+            const s = 50;
+            const wid_ell = 1;
+            const wid_cen = 2;
+            for(let t = 0;t < 30;t++)
+            {
+                const r = (t)%4;
+                const c = (t-r)/4;
+                const cx = r*140+70;
+                const cy = c*110+55;
+                //楕円上半分
+                context.beginPath();
+                context.ellipse(cx,cy,s*6/5,s*4/5,0.0,Math.PI,0);
+                context.lineWidth = wid_ell;
+                context.stroke();
+                let deg = Math.PI*t/30;
+                //後の黒い球
+                context.beginPath();
+                context.arc(cx-s*6*Math.cos(deg)/5,cy-s*4*Math.sin(deg)/5,s/5,0,Math.PI*2);
+                context.closePath();
+                context.fillStyle = "black";
+                context.fill();
+                //中央の大きい白い球
+                context.beginPath();
+                context.arc(cx,cy,s,0,Math.PI*2);
+                context.closePath();
+                context.fillStyle = "white";
+                context.lineWidth = wid_cen;
+                context.stroke();
+                context.fill();
+                //楕円の下半分
+                context.beginPath();
+                context.ellipse(cx,cy,s*6/5,s*4/5,0.0,0,Math.PI,0);
+                context.lineWidth = wid_ell;
+                context.stroke();
+                //前の黒い球
+                context.beginPath();
+                context.arc(cx+s*6*Math.cos(deg)/5,cy+s*4*Math.sin(deg)/5,s/5,0,Math.PI*2);
+                context.closePath();
+                context.fillStyle = "black";
+                context.fill();
+            }
+</script>
+    </body>
+</html>

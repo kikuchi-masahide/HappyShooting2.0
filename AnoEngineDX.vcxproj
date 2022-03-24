@@ -214,6 +214,12 @@
     <ClCompile Include="code\MainScene\Boss1StateBeaten.cpp" />
     <ClCompile Include="code\MainScene\Boss1StateEntering.cpp" />
     <ClCompile Include="code\MainScene\Boss1StateNormal.cpp" />
+    <ClCompile Include="code\MainScene\Boss2Mediator.cpp" />
+    <ClCompile Include="code\MainScene\Boss2State0.cpp" />
+    <ClCompile Include="code\MainScene\Boss2State0BulletSmall.cpp" />
+    <ClCompile Include="code\MainScene\Boss2State0BulletBig.cpp" />
+    <ClCompile Include="code\MainScene\Boss2StateBase.cpp" />
+    <ClCompile Include="code\MainScene\Boss2StateEntering.cpp" />
     <ClCompile Include="code\MainScene\BossIncomingUpdate.cpp" />
     <ClCompile Include="code\MainScene\CircleGeometry.cpp" />
     <ClCompile Include="code\MainScene\CollisionComponent.cpp" />
@@ -255,6 +261,7 @@
     <ClCompile Include="code\MainScene\EnemyWave8.cpp" />
     <ClCompile Include="code\MainScene\EnemyWaveBase.cpp" />
     <ClCompile Include="code\MainScene\EnemyWaveBoss1.cpp" />
+    <ClCompile Include="code\MainScene\EnemyWaveBoss2.cpp" />
     <ClCompile Include="code\MainScene\EnemyWaveManager.cpp" />
     <ClCompile Include="code\MainScene\GameOverUI.cpp" />
     <ClCompile Include="code\MainScene\ICollisionGeometry.cpp" />
@@ -358,6 +365,12 @@
     <ClInclude Include="code\MainScene\Boss1StateBeaten.h" />
     <ClInclude Include="code\MainScene\Boss1StateEntering.h" />
     <ClInclude Include="code\MainScene\Boss1StateNormal.h" />
+    <ClInclude Include="code\MainScene\Boss2Mediator.h" />
+    <ClInclude Include="code\MainScene\Boss2State0.h" />
+    <ClInclude Include="code\MainScene\Boss2State0BulletSmall.h" />
+    <ClInclude Include="code\MainScene\Boss2State0BulletBig.h" />
+    <ClInclude Include="code\MainScene\Boss2StateBase.h" />
+    <ClInclude Include="code\MainScene\Boss2StateEntering.h" />
     <ClInclude Include="code\MainScene\BossIncomingUpdate.h" />
     <ClInclude Include="code\MainScene\CircleGeometry.h" />
     <ClInclude Include="code\MainScene\CollisionComponent.h" />
@@ -399,6 +412,7 @@
     <ClInclude Include="code\MainScene\EnemyWave8.h" />
     <ClInclude Include="code\MainScene\EnemyWaveBase.h" />
     <ClInclude Include="code\MainScene\EnemyWaveBoss1.h" />
+    <ClInclude Include="code\MainScene\EnemyWaveBoss2.h" />
     <ClInclude Include="code\MainScene\EnemyWaveManager.h" />
     <ClInclude Include="code\MainScene\GameOverUI.h" />
     <ClInclude Include="code\MainScene\ICollisionGeometry.h" />

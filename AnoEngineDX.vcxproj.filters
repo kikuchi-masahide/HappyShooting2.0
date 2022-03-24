@@ -319,6 +319,27 @@
     <Filter Include="MainScene\Enemy8BulletComponent">
       <UniqueIdentifier>{6d107a1d-5f01-4a3b-a55d-1efa3cae41eb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Boss2Mediator">
+      <UniqueIdentifier>{c344019e-0bd1-4b5c-8611-bb71abd2aa21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\EnemyWaveBase\EnemyWaveBoss2">
+      <UniqueIdentifier>{9adc54e4-daff-4bd2-bc55-f626ca7b41cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\Boss2StateBase">
+      <UniqueIdentifier>{566c95a9-954e-4ae5-8add-5adfc72ee468}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\Boss2StateBase\Boss2StateEntering">
+      <UniqueIdentifier>{2132e7d8-f184-4fb6-b3a4-84adbf360555}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\Boss2StateBase\Boss2State0">
+      <UniqueIdentifier>{02fc0101-d6cd-475a-869f-ffe89e4f43b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\Boss2State0BulletBig">
+      <UniqueIdentifier>{7dc384bc-6bae-4c9f-a621-c91716e0f06a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\Boss2State0BulletSmall">
+      <UniqueIdentifier>{146b90bc-9b89-4ab0-8078-a03dfb1d6c19}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -706,6 +727,27 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\Enemy8BulletComponent.cpp">
       <Filter>MainScene\Enemy8BulletComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss2Mediator.cpp">
+      <Filter>MainScene\Boss2Mediator</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\EnemyWaveBoss2.cpp">
+      <Filter>MainScene\EnemyWaveBase\EnemyWaveBoss2</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss2StateBase.cpp">
+      <Filter>MainScene\Boss2StateBase</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss2StateEntering.cpp">
+      <Filter>MainScene\Boss2StateBase\Boss2StateEntering</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss2State0.cpp">
+      <Filter>MainScene\Boss2StateBase\Boss2State0</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss2State0BulletBig.cpp">
+      <Filter>MainScene\Boss2State0BulletBig</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss2State0BulletSmall.cpp">
+      <Filter>MainScene\Boss2State0BulletSmall</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1114,6 +1156,27 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\Enemy8BulletComponent.h">
       <Filter>MainScene\Enemy8BulletComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss2Mediator.h">
+      <Filter>MainScene\Boss2Mediator</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\EnemyWaveBoss2.h">
+      <Filter>MainScene\EnemyWaveBase\EnemyWaveBoss2</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss2StateBase.h">
+      <Filter>MainScene\Boss2StateBase</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss2StateEntering.h">
+      <Filter>MainScene\Boss2StateBase\Boss2StateEntering</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss2State0.h">
+      <Filter>MainScene\Boss2StateBase\Boss2State0</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss2State0BulletBig.h">
+      <Filter>MainScene\Boss2State0BulletBig</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss2State0BulletSmall.h">
+      <Filter>MainScene\Boss2State0BulletSmall</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

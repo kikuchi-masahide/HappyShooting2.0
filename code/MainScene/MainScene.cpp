@@ -8,7 +8,7 @@
 #include "DrawNormalBulletComponent.h"
 #include "EnemyWaveManager.h"
 #include "CollisionUIScreen.h"
-#include "EnemyWave8.h"
+#include "EnemyWaveBoss2.h"
 #include "MyselfMediatorComponent.h"
 
 MainScene::MainScene(Game* game)
@@ -40,7 +40,7 @@ MainScene::MainScene(Game* game)
 	//TODO:デバッグ時の漸次的な処理
 	//Releaseならこれを消し、EnemyWave6のこの文を有効化する
 	SetMyselfArmor2();
-	enemy_wave_manager_->SetWave(boost::shared_ptr<EnemyWaveBase>(DBG_NEW EnemyWave8(this)));
+	enemy_wave_manager_->SetWave(boost::shared_ptr<EnemyWaveBase>(DBG_NEW EnemyWaveBoss2(this)));
 }
 
 void MainScene::PriorUniqueUpdate()
