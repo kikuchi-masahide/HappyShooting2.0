@@ -31,7 +31,7 @@ private:
 	XMFLOAT3* vertex_map_;
 	boost::shared_ptr<DX12Resource> index_buffer_;
 	//’¸“_”
-	int v_;
+	int abs_v_;
 	//AABB˜g•`‰æ—p
 	Helpers::HDrawLineFrame frame_;
 };

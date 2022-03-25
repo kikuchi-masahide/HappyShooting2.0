@@ -1,7 +1,7 @@
 #include "Boss2State1.h"
 
 #include "Boss2Mediator.h"
-#include "Boss2State0.h"
+#include "Boss2State2.h"
 #include "../Engine/GameObject.h"
 #include "../Engine/Scene.h"
 #include "Boss2State1Bullet.h"
@@ -32,7 +32,7 @@ void Boss2State1::Update()
 	if (time_ == state_duration_)
 	{
 		layer_manager_->SwapLayer(0);
-		mediator_->ChangeState(boost::shared_ptr<Boss2State0>(DBG_NEW Boss2State0(
+		mediator_->ChangeState(boost::shared_ptr<Boss2State2>(DBG_NEW Boss2State2(
 			mediator_, layer_manager_, score_manager_, collision_manager_, enemywave_manager_
 		)));
 	}

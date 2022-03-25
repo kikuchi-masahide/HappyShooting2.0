@@ -17,7 +17,7 @@ private:
     static const double abs_g_;
     //‘¬“x‚Ìâ‘Î’lÅ‘å
     static const double max_v_;
-    double v_;
+    double abs_v_;
     bool go_down_;
 };
 

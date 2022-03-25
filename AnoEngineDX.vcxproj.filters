@@ -349,6 +349,12 @@
     <Filter Include="MainScene\MainSceneBaseLayer\MainSceneFlippingLayer">
       <UniqueIdentifier>{aec86a41-0154-4ef7-ad3a-97cc96e80c61}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Boss2StateBase\Boss2State2">
+      <UniqueIdentifier>{97b4751d-1065-4d4d-a136-4effc5b81bf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\Boss2State2Bullet">
+      <UniqueIdentifier>{3609f1b3-b643-4bdb-b88b-474ec83a3026}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -766,6 +772,12 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\MainSceneFlippingLayer.cpp">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneFlippingLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss2State2.cpp">
+      <Filter>MainScene\Boss2StateBase\Boss2State2</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss2State2Bullet.cpp">
+      <Filter>MainScene\Boss2State2Bullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1204,6 +1216,12 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\MainSceneFlippingLayer.h">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneFlippingLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss2State2.h">
+      <Filter>MainScene\Boss2StateBase\Boss2State2</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss2State2Bullet.h">
+      <Filter>MainScene\Boss2State2Bullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

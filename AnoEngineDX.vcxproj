@@ -220,6 +220,8 @@
     <ClCompile Include="code\MainScene\Boss2State0BulletBig.cpp" />
     <ClCompile Include="code\MainScene\Boss2State1.cpp" />
     <ClCompile Include="code\MainScene\Boss2State1Bullet.cpp" />
+    <ClCompile Include="code\MainScene\Boss2State2.cpp" />
+    <ClCompile Include="code\MainScene\Boss2State2Bullet.cpp" />
     <ClCompile Include="code\MainScene\Boss2StateBase.cpp" />
     <ClCompile Include="code\MainScene\Boss2StateEntering.cpp" />
     <ClCompile Include="code\MainScene\BossIncomingUpdate.cpp" />
@@ -374,6 +376,8 @@
     <ClInclude Include="code\MainScene\Boss2State0BulletBig.h" />
     <ClInclude Include="code\MainScene\Boss2State1.h" />
     <ClInclude Include="code\MainScene\Boss2State1Bullet.h" />
+    <ClInclude Include="code\MainScene\Boss2State2.h" />
+    <ClInclude Include="code\MainScene\Boss2State2Bullet.h" />
     <ClInclude Include="code\MainScene\Boss2StateBase.h" />
     <ClInclude Include="code\MainScene\Boss2StateEntering.h" />
     <ClInclude Include="code\MainScene\BossIncomingUpdate.h" />

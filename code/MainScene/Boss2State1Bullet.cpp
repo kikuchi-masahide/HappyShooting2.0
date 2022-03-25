@@ -5,7 +5,7 @@
 
 Boss2State1Bullet::Boss2State1Bullet(GameObjectHandle obj, bool go_down, boost::shared_ptr<LayerManager> layer, boost::shared_ptr<CollisionManager> col)
 	:Component(obj),
-	v_(0),go_down_(go_down)
+	abs_v_(0),go_down_(go_down)
 {
 	auto texture = mObj->AddOutputComponent<DrawTextureComponent>(layer, 19, -10.0);
 	texture->width_ = 40;
@@ -40,28 +40,28 @@ Boss2State1Bullet::~Boss2State1Bullet()
 void Boss2State1Bullet::Update()
 {
 	auto pos = mObj->GetPosition();
-	pos(1) += v_ / 60;
+	pos(1) += abs_v_ / 60;
 	if (go_down_) {
-		v_ -= abs_g_ / 60;
-		if (abs(v_) > max_v_)
+		abs_v_ -= abs_g_ / 60;
+		if (abs(abs_v_) > max_v_)
 		{
-			v_ = -max_v_;
+			abs_v_ = -max_v_;
 		}
 	}
 	else {
-		v_ += abs_g_ / 60;
-		if (abs(v_) > max_v_)
+		abs_v_ += abs_g_ / 60;
+		if (abs(abs_v_) > max_v_)
 		{
-			v_ = max_v_;
+			abs_v_ = max_v_;
 		}
 	}
-	if (abs(v_) > max_v_)
+	if (abs(abs_v_) > max_v_)
 	{
 		if (go_down_) {
-			v_ = -max_v_;
+			abs_v_ = -max_v_;
 		}
 		else {
-			v_ = max_v_;
+			abs_v_ = max_v_;
 		}
 	}
 	mObj->SetPosition(pos);

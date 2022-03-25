@@ -24,13 +24,13 @@ private:
         //-1~1í∏ì_ç¿ïW
         float x_, y_, z_;
         //uvç¿ïW
-        float u_, v_;
+        float u_, abs_v_;
         Vertex(
             float x, float y, float z,
             float u, float v
         )
             :x_(x), y_(y), z_(z),
-            u_(u), v_(v)
+            u_(u), abs_v_(v)
         {}
     };
     Helpers::HDrawLineFrame line_frame;
