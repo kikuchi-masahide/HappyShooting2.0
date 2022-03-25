@@ -22,13 +22,15 @@ public:
     bool IsCollisionActive() override;
     bool IsInvincible() override;
     //timetable_[n].time_のとき表示位置がtimetable_[n].pos_であるように移動する 間は線形補完
+    //(Layerから参照するため、publicに置いておく)
+    //TODO:設定を外部ファイルから読み込むようにしたりすれば、Layerからこのクラスを参照することも無いんですけどね...
     static const Boss2State2TimeTable timetable_[16];
+    //このstateを維持する時間
+    static const int state_duration_;
 private:
     int time_;
     //四方に弾をばらまく
     void Shoot();
-    //このstateを維持する時間
-    static const int state_duration_;
     //カベにぶつかったとき何個弾を放出するか
     static const int bullet_num_;
 };

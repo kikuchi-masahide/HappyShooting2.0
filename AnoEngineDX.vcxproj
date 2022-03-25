@@ -280,6 +280,7 @@
     <ClCompile Include="code\MainScene\MainSceneDrawComponent.cpp" />
     <ClCompile Include="code\MainScene\MainSceneFlippingLayer.cpp" />
     <ClCompile Include="code\MainScene\MainSceneShrinkLayer.cpp" />
+    <ClCompile Include="code\MainScene\MainSceneTackledLayer.cpp" />
     <ClCompile Include="code\MainScene\MainSceneUIScreen.cpp" />
     <ClCompile Include="code\MainScene\MyBulletCollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\MyselfAddAimBulletComponent.cpp" />
@@ -436,6 +437,7 @@
     <ClInclude Include="code\MainScene\MainSceneDrawComponent.h" />
     <ClInclude Include="code\MainScene\MainSceneFlippingLayer.h" />
     <ClInclude Include="code\MainScene\MainSceneShrinkLayer.h" />
+    <ClInclude Include="code\MainScene\MainSceneTackledLayer.h" />
     <ClInclude Include="code\MainScene\MainSceneUIScreen.h" />
     <ClInclude Include="code\MainScene\MyBulletCollisionComponent.h" />
     <ClInclude Include="code\MainScene\MyselfAddAimBulletComponent.h" />

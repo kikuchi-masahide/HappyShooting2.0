@@ -355,6 +355,9 @@
     <Filter Include="MainScene\Boss2State2Bullet">
       <UniqueIdentifier>{3609f1b3-b643-4bdb-b88b-474ec83a3026}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\MainSceneBaseLayer\MainSceneTackledLayer">
+      <UniqueIdentifier>{d2a5cbeb-e9af-432c-a2f2-ca623d7fef95}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -778,6 +781,9 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\Boss2State2Bullet.cpp">
       <Filter>MainScene\Boss2State2Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MainSceneTackledLayer.cpp">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneTackledLayer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1222,6 +1228,9 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\Boss2State2Bullet.h">
       <Filter>MainScene\Boss2State2Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MainSceneTackledLayer.h">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneTackledLayer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

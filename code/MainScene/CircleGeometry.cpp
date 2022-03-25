@@ -25,7 +25,7 @@ CircleGeometry::~CircleGeometry()
 
 bool CircleGeometry::Dispatch(ICollisionGeometry* geometry)
 {
-	return IsInCollision(this);
+	return geometry->IsInCollision(this);
 }
 
 bool CircleGeometry::IsInCollision(CircleGeometry* circle)

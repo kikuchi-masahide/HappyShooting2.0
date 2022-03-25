@@ -5,15 +5,18 @@
 #include "Boss2State0.h"
 #include "../Engine/Scene.h"
 #include "Boss2State2Bullet.h"
+#include "LayerManager.h"
 
 Boss2State2::Boss2State2(ComponentHandle<Boss2MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<EnemyWaveManager> enemywave_manager)
 	:Boss2StateBase(mediator,layer_manager,score_manager,collision_manager,enemywave_manager),
 	time_(0)
 {
+	layer_manager->SwapLayer(4);
 }
 
 Boss2State2::~Boss2State2()
 {
+	layer_manager_->SwapLayer(0);
 }
 
 void Boss2State2::Update()
@@ -83,7 +86,7 @@ const Boss2State2TimeTable Boss2State2::timetable_[16] = {
 	Boss2State2TimeTable(300 + 24 * 4,MatVec::Vector2(-100.0,-450.0 + 50.0)),
 	Boss2State2TimeTable(300 + 24 * 5,MatVec::Vector2(0.0,450.0 - 50.0)),
 	Boss2State2TimeTable(450,MatVec::Vector2(0.0,390.0)),
-	Boss2State2TimeTable(600,MatVec::Vector2(0.0,390.0)),
+	Boss2State2TimeTable(630,MatVec::Vector2(0.0,390.0)),
 };
-const int Boss2State2::state_duration_ = 600;
+const int Boss2State2::state_duration_ = 630;
 const int Boss2State2::bullet_num_ = 16;
