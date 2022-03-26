@@ -367,6 +367,12 @@
     <Filter Include="MainScene\MyBulletComponent">
       <UniqueIdentifier>{bc90986e-3cb7-4205-b5ae-345218d05448}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Boss2State3Bullet">
+      <UniqueIdentifier>{ea133936-bc15-47c3-af04-caeed0b6598b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\CollisionComponent\Boss2State3BulletColComponent">
+      <UniqueIdentifier>{dfb9a88e-88b1-471a-b85d-65f6eb5c0e8d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -802,6 +808,12 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\Boss2State3.cpp">
       <Filter>MainScene\Boss2StateBase\Boss2State3</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss2State3Bullet.cpp">
+      <Filter>MainScene\Boss2State3Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss2State3BulletColComponent.cpp">
+      <Filter>MainScene\CollisionComponent\Boss2State3BulletColComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1258,6 +1270,12 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\Boss2State3.h">
       <Filter>MainScene\Boss2StateBase\Boss2State3</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss2State3Bullet.h">
+      <Filter>MainScene\Boss2State3Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss2State3BulletColComponent.h">
+      <Filter>MainScene\CollisionComponent\Boss2State3BulletColComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

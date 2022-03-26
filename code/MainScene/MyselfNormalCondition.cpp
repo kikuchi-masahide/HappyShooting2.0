@@ -93,6 +93,7 @@ void MyselfNormalCondition::CheckHitComponent(std::set<ComponentHandle<Collision
 	if (comp->tag_ == CollisionManager::Tag::EnemyBullet)
 	{
 		mediator_->CauseDamageToMyself(comp->GetDamage());
-		comp->mObj->SetDeleteFlag();
+		//TODO:自機の当たり判定を見直す(パカパカしてる時は当たり判定させない!)
+		//comp->mObj->SetDeleteFlag();
 	}
 }
