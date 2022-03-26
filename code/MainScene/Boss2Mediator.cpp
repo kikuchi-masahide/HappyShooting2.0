@@ -4,9 +4,9 @@
 #include"DrawAnimationComponent.h"
 #include "Boss2StateEntering.h"
 
-Boss2MediatorComponent::Boss2MediatorComponent(GameObjectHandle object, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<EnemyWaveManager> enemywave_manager)
+Boss2MediatorComponent::Boss2MediatorComponent(GameObjectHandle object, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<EnemyWaveManager> enemywave_manager, ComponentHandle<MyselfMediatorComponent> myself_mediator)
 	:Component(object,100),
-	layer_(layer_manager),state_(nullptr)
+	layer_(layer_manager),state_(nullptr),myself_mediator_(myself_mediator)
 {
 	animation_ = mObj->AddOutputComponent<DrawAnimationComponent>(layer_, 31, 140, 110, 4, 8, -5.0, MatVec::Vector2(), 30);
 	ChangeState(boost::shared_ptr<Boss2StateEntering>(new Boss2StateEntering(

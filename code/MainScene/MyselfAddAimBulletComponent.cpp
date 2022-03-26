@@ -2,13 +2,13 @@
 
 #include "EnemyWaveManager.h"
 #include "../Engine/Scene.h"
-#include "LinearMoveComponent.h"
+#include "LinearMoveRevComponent.h"
 #include "MyBulletCollisionComponent.h"
 #include "DrawNormalBulletComponent.h"
 
 MyselfAddAimBulletComponent::MyselfAddAimBulletComponent(GameObjectHandle handle, boost::shared_ptr<LayerManager> layer, boost::shared_ptr<CollisionManager> col, boost::shared_ptr<EnemyWaveManager> enemy)
 	:Component(handle,30),
-	layer_(layer),collision_(col),enemy_(enemy),time_(0)
+	layer_(layer),collision_(col),enemy_(enemy),time_(0),speed_(1)
 {
 }
 
@@ -18,9 +18,9 @@ MyselfAddAimBulletComponent::~MyselfAddAimBulletComponent()
 
 void MyselfAddAimBulletComponent::Update()
 {
-	if (time_ == period_to_fire_)
+	if (time_ % period_to_fire_ == 0)
 	{
-		if (is_active_)
+		if (is_active_ && speed_ == 1)
 		{
 			auto enemy = enemy_->SolveNearestEnemy();
 			//2対のサイドから一個ずつ弾を出す
@@ -28,8 +28,45 @@ void MyselfAddAimBulletComponent::Update()
 			ShootFrom(-1, enemy);
 		}
 		time_ = 0;
+		for (auto itr = bullets_.begin(); itr != bullets_.end();)
+		{
+			if (!itr->IsValid())
+			{
+				itr = bullets_.erase(itr);
+			}
+			else {
+				itr++;
+			}
+		}
 	}
-	time_++;
+	time_ += speed_;
+}
+
+void MyselfAddAimBulletComponent::SetProgradePlay()
+{
+	speed_ = 1;
+	for (auto itr = bullets_.begin(); itr != bullets_.end(); itr++)
+	{
+		if (itr->IsValid())
+		{
+			(*itr)->SetProgradePlay();
+		}
+	}
+}
+
+void MyselfAddAimBulletComponent::SetRetrogradePlay(unsigned int speed)
+{
+	if (speed != 0)
+	{
+		speed_ = -(int)(speed);
+		for (auto itr = bullets_.begin(); itr != bullets_.end(); itr++)
+		{
+			if (itr->IsValid())
+			{
+				(*itr)->SetRetrogradePlay(speed);
+			}
+		}
+	}
 }
 
 void MyselfAddAimBulletComponent::ShootFrom(int i, GameObjectHandle to)
@@ -48,12 +85,12 @@ void MyselfAddAimBulletComponent::ShootFrom(int i, GameObjectHandle to)
 		dist = MatVec::Vector2(cos(shootang), sin(shootang)) * moving_dist_;
 	}
 	auto bullet = mObj->mScene->AddObject(sidepos, 1.0, shootang);
-	bullet->AddUpdateComponent<LinearMoveComponent>(dist, bullet_redius_);
+	auto move = bullet->AddUpdateComponent<LinearMoveRevComponent>(dist, bullet_redius_);
 	bullet->AddUpdateComponent<MyBulletCollisionComponent>(collision_, 100, bullet_redius_);
 	bullet->AddOutputComponent<DrawNormalBulletComponent>(
 		layer_, bullet_redius_, MatVec::Vector3(0.0, 0.0, 1.0), 1.0, 10.0
 	);
-	bullet->SetRotation(shootang);
+	bullets_.push_back(move);
 }
 
 

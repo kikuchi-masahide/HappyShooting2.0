@@ -20,6 +20,11 @@ public:
 	/// 弾を出すか出さないかを変える
 	/// </summary>
 	virtual void SetBulletAvailability(bool act) = 0;
+	//次tickから順行再生を行う
+	//(本当は=0にしないといけないけど、どうせMyselfArmor2しかこんなことやらないのでサボる)
+	virtual void SetProgradePlay();
+	//次tickからspeed倍速で逆再生を行う
+	virtual void SetRetrogradePlay(unsigned int speed);
 private:
 };
 

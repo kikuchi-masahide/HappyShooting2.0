@@ -60,3 +60,15 @@ void MyselfArmor2::SetBulletAvailability(bool act)
 	//両コンポーネントの実際の設定はUpdateで行う
 	is_bullet_active_ = act;
 }
+
+void MyselfArmor2::SetProgradePlay()
+{
+	normal_bullet_->SetProgradePlay();
+	aim_bullet_->SetProgradePlay();
+}
+
+void MyselfArmor2::SetRetrogradePlay(unsigned int speed)
+{
+	normal_bullet_->SetRetrogradePlay(speed);
+	aim_bullet_->SetRetrogradePlay(speed);
+}

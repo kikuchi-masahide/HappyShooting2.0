@@ -23,6 +23,8 @@ public:
     void Update() override;
     void UpdateAlpha(double alpha) override;
     void SetBulletAvailability(bool act) override;
+    void SetProgradePlay() override;
+    void SetRetrogradePlay(unsigned int speed) override;
 private:
     ComponentHandle<DrawAnimationComponent> animation_;
     ComponentHandle<MyselfAddNormalBulletComponent> normal_bullet_;

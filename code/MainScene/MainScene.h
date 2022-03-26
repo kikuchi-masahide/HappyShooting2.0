@@ -24,6 +24,8 @@ public:
 	boost::shared_ptr<CollisionManager> GetCollisionManager();
 	GameObjectHandle GetMyselfHandle();
 	void SetMyselfArmor2();
+	//自機のメディエータ
+	ComponentHandle<MyselfMediatorComponent> mediator_;
 private:
 	//シーンに自機を追加する
 	void AddMyself();
@@ -36,6 +38,4 @@ private:
 	boost::shared_ptr<ScoreManager> score_manager_;
 	boost::shared_ptr<EnemyWaveManager> enemy_wave_manager_;
 	boost::shared_ptr<CollisionManager> collision_manager_;
-	//自機のメディエータ
-	ComponentHandle<MyselfMediatorComponent> mediator_;
 };

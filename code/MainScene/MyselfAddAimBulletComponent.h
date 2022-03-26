@@ -4,6 +4,7 @@
 class LayerManager;
 class CollisionManager;
 class EnemyWaveManager;
+class LinearMoveRevComponent;
 
 class MyselfAddAimBulletComponent :
     public Component
@@ -13,6 +14,10 @@ public:
     ~MyselfAddAimBulletComponent();
     void Update() override;
     bool is_active_;
+    //次tickから順行再生を行う
+    void SetProgradePlay();
+    //次tickからspeed倍速で逆行再生を行う
+    void SetRetrogradePlay(unsigned int speed);
 private:
     boost::shared_ptr<LayerManager> layer_;
     boost::shared_ptr<CollisionManager> collision_;
@@ -26,5 +31,7 @@ private:
     static constexpr double bullet_redius_ = 5.0;
     //2対のうち片方から弾を出す(i=1,-1,toは撃つ対象)
     void ShootFrom(int i, GameObjectHandle to);
+    int speed_;
+    std::vector<ComponentHandle<LinearMoveRevComponent>> bullets_;
 };
 

@@ -41,27 +41,42 @@ public:
     boost::shared_ptr<ScoreManager> score_manager_;
     boost::shared_ptr<CollisionManager> collision_manager_;
     boost::shared_ptr<EnemyWaveManager> enemy_wave_manager_;
-    ComponentHandle<MyselfConditionBase> condition_;
     //MyselfCollisionComponentから呼び出される、当たり判定処理関数
     //(具体的な処理はcondition_に任せる)
     void CheckHitComponent(std::set<ComponentHandle<CollisionComponent>>& hit_comps_);
     //自機の武器をMyselfArmor2に変更する
     //TODO:今回自機の武器が高々3種類ぐらいしかないからいいけど、もっとあったらどうするんだろうね?
     void SetMyselfArmor2();
+    //TODO:逆再生を作る時、MyselfConditionBaseの時系列を持っておくこともちょっと考えたけど、
+    //インスタンス・コンポーネントの生成・削除が含まれているため相当めんどくさそう
+    //例えばコンポーネントが存在するしない以外に「activeかinactiveか」を持たせ、かつ
+    //各コンディションのインスタンスは常に保持し、コンディションの遷移はコマンドとして記憶する
+    //というふうにすれば可能か?
+    //今回は時間もアレなんでとりあえずやりませんけど
+    //次tickから順行・逆行再生
+    void SetProgradePlay();
+    void SetRetrogradePlay(unsigned int speed);
+    //自機位置・角度の変遷をdequeで持つ(末尾の方が時間的に後)
+    //TODO:今はMyselfRetrogradeConditionから参照するためにpublicにするが、
+    //そのうちこれをCondition内で完結するようにしたい
+    std::deque<MatVec::Vector2> pos_transition_;
+    std::deque<double> angle_transition_;
 private:
     ~MyselfMediatorComponent();
+    ComponentHandle<MyselfConditionBase> condition_;
     ComponentHandle<DrawTextureComponent> draw_texture_component_;
     //攻撃を受けてから何tick無敵になるか
     static constexpr unsigned int invulnerable_time_ = 120;
     //この値が0以上ならば無敵中
     int damage_counter_;
-    //攻撃を受けた状況によって自身のαを変える
-    void SetMyselfAlpha();
     //自機移動制限
     //左辺，下辺，右辺，上辺
     ComponentHandle<MyselfPosAdjustComponent> pos_adjust_[4];
-    ComponentHandle<MyselfAddNormalBulletComponent> bullet_;
     //自機の武器装備、および自機描画を委譲する
     boost::shared_ptr<MyselfArmorBase> armor_;
+    //自機位置を何個まで保存しておくか
+    static const int transition_max_length_;
+    //speed倍速で逆行再生中ならばspeed、順行再生中ならば-1
+    int retrograde_speed_;
 };
 

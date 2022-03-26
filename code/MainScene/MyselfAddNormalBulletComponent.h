@@ -4,8 +4,9 @@
 
 class LayerManager;
 class CollisionManager;
+class LinearMoveRevComponent;
 
-//8tick‚¨‚«‚É©‹@’Êí’e‚ğ’Ç‰Á
+//8tick‚¨‚«‚Ì’Êí©‹@’e’Ç‰ÁA‚¨‚æ‚Ñ‚»‚ê‚ç‚ÌŠÇ—(‡sE‹tsÄ¶‚É‘Î‰‚³‚¹‚é)
 class MyselfAddNormalBulletComponent :
     public Component
 {
@@ -15,6 +16,10 @@ public:
     void Update() override;
     //’e‚¤‚Â‚È‚ç‚Îtrue‚É‚·‚é
     bool is_active_;
+    //Ÿtick‚©‚ç‡sÄ¶‚ğs‚¤
+    void SetProgradePlay();
+    //Ÿtick‚©‚çspeed”{‘¬‚Å‹tÄ¶‚ğs‚¤
+    void SetRetrogradePlay(unsigned int speed);
 private:
     //’e‚Ì1tick‚Å‚ÌˆÚ“®‹——£
     static constexpr double moving_dist_ = 8;
@@ -25,6 +30,10 @@ private:
     boost::shared_ptr<LayerManager> layer_manager_;
     boost::shared_ptr<CollisionManager> collision_manager_;
     //ŠÔ Update‚ÌÅŒã‚Å‰ÁZ
-    unsigned int time_;
+    int time_;
+    //©•ª‚ªŒ‚‚Á‚½’e‚Ìvector LinearMoveRevComponent‚¾‚¯‚Á‚Ä‚¨‚¯‚Î‚æ‚¢
+    std::vector<ComponentHandle<LinearMoveRevComponent>> bullets_;
+    //Ä¶ŠÔ
+    int speed_;
 };
 

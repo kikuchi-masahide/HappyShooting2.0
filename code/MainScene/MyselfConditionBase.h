@@ -7,6 +7,7 @@ class CollisionComponent;
 /// <summary>
 /// 自機の健康状態(通常，復活中，ビリビリ中...)とそれにより変わる位置更新の仕方，描画α，敵との当たり判定を管理
 /// </summary>
+//TODO:Componentから派生させないほうがよさそう?
 class MyselfConditionBase :
     public Component
 {
