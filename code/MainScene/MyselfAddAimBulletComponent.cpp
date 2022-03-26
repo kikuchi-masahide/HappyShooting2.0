@@ -2,7 +2,7 @@
 
 #include "EnemyWaveManager.h"
 #include "../Engine/Scene.h"
-#include "LinearMoveRevComponent.h"
+#include "MyBulletComponent.h"
 #include "MyBulletCollisionComponent.h"
 #include "DrawNormalBulletComponent.h"
 
@@ -85,11 +85,7 @@ void MyselfAddAimBulletComponent::ShootFrom(int i, GameObjectHandle to)
 		dist = MatVec::Vector2(cos(shootang), sin(shootang)) * moving_dist_;
 	}
 	auto bullet = mObj->mScene->AddObject(sidepos, 1.0, shootang);
-	auto move = bullet->AddUpdateComponent<LinearMoveRevComponent>(dist, bullet_redius_);
-	bullet->AddUpdateComponent<MyBulletCollisionComponent>(collision_, 100, bullet_redius_);
-	bullet->AddOutputComponent<DrawNormalBulletComponent>(
-		layer_, bullet_redius_, MatVec::Vector3(0.0, 0.0, 1.0), 1.0, 10.0
-	);
+	auto move = bullet->AddUpdateComponent<MyBulletComponent>(layer_,collision_,dist,bullet_redius_);
 	bullets_.push_back(move);
 }
 

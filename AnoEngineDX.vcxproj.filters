@@ -358,14 +358,14 @@
     <Filter Include="MainScene\MainSceneBaseLayer\MainSceneTackledLayer">
       <UniqueIdentifier>{d2a5cbeb-e9af-432c-a2f2-ca623d7fef95}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainScene\LinearMoveRevComponent">
-      <UniqueIdentifier>{bc90986e-3cb7-4205-b5ae-345218d05448}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MainScene\MyselfConditionBase\MyselfRetrogradeCondition">
       <UniqueIdentifier>{cc7d61c9-90a3-47c7-ba88-2c7c2a717412}</UniqueIdentifier>
     </Filter>
     <Filter Include="MainScene\Boss2StateBase\Boss2State3">
       <UniqueIdentifier>{1d4f875d-2f02-4e99-852b-758d5a3da52a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\MyBulletComponent">
+      <UniqueIdentifier>{bc90986e-3cb7-4205-b5ae-345218d05448}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -794,8 +794,8 @@
     <ClCompile Include="code\MainScene\MainSceneTackledLayer.cpp">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneTackledLayer</Filter>
     </ClCompile>
-    <ClCompile Include="code\MainScene\LinearMoveRevComponent.cpp">
-      <Filter>MainScene\LinearMoveRevComponent</Filter>
+    <ClCompile Include="code\MainScene\MyBulletComponent.cpp">
+      <Filter>MainScene\MyBulletComponent</Filter>
     </ClCompile>
     <ClCompile Include="code\MainScene\MyselfRetrogradeCondition.cpp">
       <Filter>MainScene\MyselfConditionBase\MyselfRetrogradeCondition</Filter>
@@ -1250,8 +1250,8 @@
     <ClInclude Include="code\MainScene\MainSceneTackledLayer.h">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneTackledLayer</Filter>
     </ClInclude>
-    <ClInclude Include="code\MainScene\LinearMoveRevComponent.h">
-      <Filter>MainScene\LinearMoveRevComponent</Filter>
+    <ClInclude Include="code\MainScene\MyBulletComponent.h">
+      <Filter>MainScene\MyBulletComponent</Filter>
     </ClInclude>
     <ClInclude Include="code\MainScene\MyselfRetrogradeCondition.h">
       <Filter>MainScene\MyselfConditionBase\MyselfRetrogradeCondition</Filter>

@@ -4,7 +4,7 @@
 
 class LayerManager;
 class CollisionManager;
-class LinearMoveRevComponent;
+class MyBulletComponent;
 
 //8tickおきの通常自機弾追加、およびそれらの管理(順行・逆行再生に対応させる)
 class MyselfAddNormalBulletComponent :
@@ -32,7 +32,7 @@ private:
     //時間 Updateの最後で加算
     int time_;
     //自分が撃った弾のvector LinearMoveRevComponentだけ持っておけばよい
-    std::vector<ComponentHandle<LinearMoveRevComponent>> bullets_;
+    std::vector<ComponentHandle<MyBulletComponent>> bullets_;
     //再生時間
     int speed_;
 };

@@ -4,7 +4,7 @@
 class LayerManager;
 class CollisionManager;
 class EnemyWaveManager;
-class LinearMoveRevComponent;
+class MyBulletComponent;
 
 class MyselfAddAimBulletComponent :
     public Component
@@ -32,6 +32,6 @@ private:
     //2‘Î‚Ì‚¤‚¿•Ğ•û‚©‚ç’e‚ğo‚·(i=1,-1,to‚ÍŒ‚‚Â‘ÎÛ)
     void ShootFrom(int i, GameObjectHandle to);
     int speed_;
-    std::vector<ComponentHandle<LinearMoveRevComponent>> bullets_;
+    std::vector<ComponentHandle<MyBulletComponent>> bullets_;
 };
 

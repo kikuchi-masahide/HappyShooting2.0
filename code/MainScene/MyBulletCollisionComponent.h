@@ -18,6 +18,8 @@ public:
     ~MyBulletCollisionComponent();
     void Update();
     void CheckHitComponent();
+    //“–‚½‚è”»’è‚ğs‚¤‚©”Û‚©
+    bool active_;
 private:
     double radius_;
     CircleGeometry circle_;

@@ -2,7 +2,7 @@
 
 #include "../Engine/Game.h"
 #include "../Engine/Scene.h"
-#include "LinearMoveRevComponent.h"
+#include "MyBulletComponent.h"
 #include "DrawNormalBulletComponent.h"
 #include "MyBulletCollisionComponent.h"
 
@@ -29,12 +29,8 @@ void MyselfAddNormalBulletComponent::Update()
 			//もうちょっといいやり方ない?当たり判定まわいから変えないとだめ?(テンプレート特殊化を使うなど)
 			GameObjectHandle bullet = mObj->mScene->AddObject(pos, 1.0, angle);
 			auto dist = MatVec::Vector2(cos(angle) * moving_dist_, sin(angle) * moving_dist_);
-			auto move = bullet->AddUpdateComponent<LinearMoveRevComponent>(
-				dist, bullet_redius_
-				);
-			bullet->AddUpdateComponent<MyBulletCollisionComponent>(collision_manager_, 100, bullet_redius_);
-			bullet->AddOutputComponent<DrawNormalBulletComponent>(
-				layer_manager_, bullet_redius_, MatVec::Vector3(0.0, 0.0, 1.0), 1.0, 10.0
+			auto move = bullet->AddUpdateComponent<MyBulletComponent>(
+				layer_manager_,collision_manager_,dist,bullet_redius_
 				);
 			bullets_.push_back(move);
 		}

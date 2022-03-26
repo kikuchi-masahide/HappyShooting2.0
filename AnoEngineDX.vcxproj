@@ -273,7 +273,7 @@
     <ClCompile Include="code\MainScene\LayerManager.cpp" />
     <ClCompile Include="code\MainScene\LazerCollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\LinearMoveComponent.cpp" />
-    <ClCompile Include="code\MainScene\LinearMoveRevComponent.cpp" />
+    <ClCompile Include="code\MainScene\MyBulletComponent.cpp" />
     <ClCompile Include="code\MainScene\LinearRotateComponent.cpp" />
     <ClCompile Include="code\MainScene\MainScene.cpp" />
     <ClCompile Include="code\MainScene\MainSceneBaseLayer.cpp" />
@@ -433,7 +433,7 @@
     <ClInclude Include="code\MainScene\LayerManager.h" />
     <ClInclude Include="code\MainScene\LazerCollisionComponent.h" />
     <ClInclude Include="code\MainScene\LinearMoveComponent.h" />
-    <ClInclude Include="code\MainScene\LinearMoveRevComponent.h" />
+    <ClInclude Include="code\MainScene\MyBulletComponent.h" />
     <ClInclude Include="code\MainScene\LinearRotateComponent.h" />
     <ClInclude Include="code\MainScene\MainScene.h" />
     <ClInclude Include="code\MainScene\MainSceneBaseLayer.h" />
