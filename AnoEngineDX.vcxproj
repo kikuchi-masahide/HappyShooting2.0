@@ -214,6 +214,7 @@
     <ClCompile Include="code\MainScene\Boss1StateBeaten.cpp" />
     <ClCompile Include="code\MainScene\Boss1StateEntering.cpp" />
     <ClCompile Include="code\MainScene\Boss1StateNormal.cpp" />
+    <ClCompile Include="code\MainScene\Boss2CollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\Boss2Mediator.cpp" />
     <ClCompile Include="code\MainScene\Boss2State0.cpp" />
     <ClCompile Include="code\MainScene\Boss2State0BulletSmall.cpp" />
@@ -376,6 +377,7 @@
     <ClInclude Include="code\MainScene\Boss1StateBeaten.h" />
     <ClInclude Include="code\MainScene\Boss1StateEntering.h" />
     <ClInclude Include="code\MainScene\Boss1StateNormal.h" />
+    <ClInclude Include="code\MainScene\Boss2CollisionComponent.h" />
     <ClInclude Include="code\MainScene\Boss2Mediator.h" />
     <ClInclude Include="code\MainScene\Boss2State0.h" />
     <ClInclude Include="code\MainScene\Boss2State0BulletSmall.h" />

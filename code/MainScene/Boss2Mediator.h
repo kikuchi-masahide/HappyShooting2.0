@@ -8,6 +8,7 @@ class EnemyWaveManager;
 class DrawAnimationComponent;
 class Boss2StateBase;
 class MyselfMediatorComponent;
+class CollisionComponent;
 
 class Boss2MediatorComponent :
     public Component
@@ -19,11 +20,22 @@ public:
     void ChangeState(boost::shared_ptr<Boss2StateBase> next);
     //TOCO:相当ヤバいことしてる enemywavemanagerでMyselfMediator持ってる方がまだマシ
     ComponentHandle<MyselfMediatorComponent> myself_mediator_;
+    double GetHealthRate();
+    //CollisionComponentから呼び出される 具体的な処理はStateに任せる
+    void CheckHitComponent(std::set<ComponentHandle<CollisionComponent>>& hit_comps);
 private:
     boost::shared_ptr<LayerManager> layer_;
+    boost::shared_ptr<ScoreManager> score_;
     ComponentHandle<DrawAnimationComponent> animation_;
     //初めてのUpdateで0
     int time_;
     boost::shared_ptr<Boss2StateBase> state_;
+    int health_;
+    //初期体力
+    static constexpr int health0_ = 300000;
+    static constexpr double healthbar_x_ = 0.0;
+    static constexpr double healthbar_y_ = 430.0;
+    static constexpr double healthbar_w_ = 500.0;
+    static constexpr double healthbar_h_ = 5.0;
 };
 

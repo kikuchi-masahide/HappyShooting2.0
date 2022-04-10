@@ -373,6 +373,9 @@
     <Filter Include="MainScene\CollisionComponent\Boss2State3BulletColComponent">
       <UniqueIdentifier>{dfb9a88e-88b1-471a-b85d-65f6eb5c0e8d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\CollisionComponent\Boss2CollisionComponent">
+      <UniqueIdentifier>{00accdd6-3e53-444c-b689-047221c43daa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -814,6 +817,9 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\Boss2State3BulletColComponent.cpp">
       <Filter>MainScene\CollisionComponent\Boss2State3BulletColComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss2CollisionComponent.cpp">
+      <Filter>MainScene\CollisionComponent\Boss2CollisionComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1276,6 +1282,9 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\Boss2State3BulletColComponent.h">
       <Filter>MainScene\CollisionComponent\Boss2State3BulletColComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss2CollisionComponent.h">
+      <Filter>MainScene\CollisionComponent\Boss2CollisionComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

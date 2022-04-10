@@ -38,16 +38,6 @@ void Boss2State1::Update()
 	}
 }
 
-bool Boss2State1::IsCollisionActive()
-{
-	return true;
-}
-
-bool Boss2State1::IsInvincible()
-{
-	return false;
-}
-
 void Boss2State1::Shoot()
 {
 	auto scene = mediator_->mObj->mScene;

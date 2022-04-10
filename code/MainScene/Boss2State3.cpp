@@ -138,16 +138,6 @@ void Boss2State3::Update()
 	}
 }
 
-bool Boss2State3::IsCollisionActive()
-{
-	return true;
-}
-
-bool Boss2State3::IsInvincible()
-{
-	return false;
-}
-
 void Boss2State3::GenerateBullets(int n, int m)
 {
 	//TODO:ファイルからCSVで曲線を読み込んで沿わせる形式にしなかったことを本気で後悔してる

@@ -48,16 +48,6 @@ void Boss2State2::Update()
 	}
 }
 
-bool Boss2State2::IsCollisionActive()
-{
-	return true;
-}
-
-bool Boss2State2::IsInvincible()
-{
-	return false;
-}
-
 void Boss2State2::Shoot()
 {
 	auto pos = mediator_->mObj->GetPosition();

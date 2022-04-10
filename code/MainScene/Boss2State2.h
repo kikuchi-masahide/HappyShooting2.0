@@ -19,8 +19,6 @@ public:
     Boss2State2(ComponentHandle<Boss2MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<EnemyWaveManager> enemywave_manager);
     ~Boss2State2();
     void Update() override;
-    bool IsCollisionActive() override;
-    bool IsInvincible() override;
     //timetable_[n].time_のとき表示位置がtimetable_[n].pos_であるように移動する 間は線形補完
     //(Layerから参照するため、publicに置いておく)
     //TODO:設定を外部ファイルから読み込むようにしたりすれば、Layerからこのクラスを参照することも無いんですけどね...

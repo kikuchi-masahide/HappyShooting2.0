@@ -31,12 +31,7 @@ void Boss2StateEntering::Update()
 	time_++;
 }
 
-bool Boss2StateEntering::IsCollisionActive()
+int Boss2StateEntering::CheckHitComponents(std::set<ComponentHandle<CollisionComponent>>& hit_comps)
 {
-	return true;
-}
-
-bool Boss2StateEntering::IsInvincible()
-{
-	return true;
+	return 0;
 }

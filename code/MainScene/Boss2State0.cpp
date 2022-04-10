@@ -42,16 +42,6 @@ void Boss2State0::Update()
 	}
 }
 
-bool Boss2State0::IsCollisionActive()
-{
-	return false;
-}
-
-bool Boss2State0::IsInvincible()
-{
-	return false;
-}
-
 const int Boss2State0::bullet_period_ = 60;
 const int Boss2State0::bullet_repeat_ = 16;
 const int Boss2State0::whole_duration_ = 1200;
