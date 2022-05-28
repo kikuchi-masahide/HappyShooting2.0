@@ -7,6 +7,7 @@
 #include "MainSceneShrinkLayer.h"
 #include "MainSceneFlippingLayer.h"
 #include "MainSceneTackledLayer.h"
+#include "MainSceneEndingLayer.h"
 
 LayerManager::LayerManager(Scene* scene)
 	:layer_from_next_tick_(999),scene_(scene)
@@ -36,6 +37,9 @@ void LayerManager::InitLayers()
 
 	auto layer4 = scene_->AddLayer<MainSceneTackledLayer>(scene_, &draw_components_);
 	available_layers_[4] = static_cast<LayerHandle<MainSceneBaseLayer>>(layer4);
+
+	auto layer5 = scene_->AddLayer<MainSceneEndingLayer>(scene_, &draw_components_);
+	available_layers_[5] = static_cast<LayerHandle<MainSceneBaseLayer>>(layer5);
 }
 
 void LayerManager::AddComponentToLayer(ComponentHandle<MainSceneDrawComponent> component)

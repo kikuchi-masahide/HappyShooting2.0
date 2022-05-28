@@ -9,6 +9,8 @@ class DrawAnimationComponent;
 class Boss2StateBase;
 class MyselfMediatorComponent;
 class CollisionComponent;
+template<class T>
+class DrawHealthBarComponent;
 
 class Boss2MediatorComponent :
     public Component
@@ -23,12 +25,15 @@ public:
     double GetHealthRate();
     //CollisionComponentから呼び出される 具体的な処理はStateに任せる
     void CheckHitComponent(std::set<ComponentHandle<CollisionComponent>>& hit_comps);
+    //Boss2とヘルスバーの描画を不可逆的にストップする
+    void HaltDrawing();
 private:
     boost::shared_ptr<LayerManager> layer_;
     boost::shared_ptr<ScoreManager> score_;
     boost::shared_ptr<CollisionManager> col_;
     boost::shared_ptr<EnemyWaveManager> enemy_;
     ComponentHandle<DrawAnimationComponent> animation_;
+    ComponentHandle<DrawHealthBarComponent<Boss2MediatorComponent>> health_bar_;
     //初めてのUpdateで0
     int time_;
     boost::shared_ptr<Boss2StateBase> state_;

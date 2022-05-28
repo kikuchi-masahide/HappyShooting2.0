@@ -11,5 +11,6 @@ public:
     int CheckHitComponents(std::set<ComponentHandle<CollisionComponent>>& hit_comps) override;
 private:
     int time_;
+    boost::shared_ptr<LayerManager> layer_manager_;
 };
 

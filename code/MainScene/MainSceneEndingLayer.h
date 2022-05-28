@@ -10,6 +10,7 @@ public:
     MainSceneEndingLayer(Scene* scene, DrawComponentsMultiset* draw_components);
     ~MainSceneEndingLayer();
     void UniqueDraw() override;
+    MatVec::Matrix4x4 GetLayerTransform() override;
 private:
     void GraphicInit(Game& game);
     boost::shared_ptr<DX12GraphicsPipeline> pipeline_;
@@ -18,6 +19,7 @@ private:
     boost::shared_ptr<DX12Resource> vertex_;
     boost::shared_ptr<DX12Resource> index_;
     boost::shared_ptr<DX12Resource> const_;
+    void* const_map_;
     Helpers::HDrawLineFrame frame_;
 };
 

@@ -1351,6 +1351,9 @@
     <None Include="Shader\MainSceneFlippingLayer_header.hlsli">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneFlippingLayer</Filter>
     </None>
+    <None Include="Shader\MainSceneEndingLayer_header.hlsli">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneEndingLayer</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\DrawHealthBarComponent_vertex.hlsl">
@@ -1448,6 +1451,12 @@
     </FxCompile>
     <FxCompile Include="Shader\MainSceneFlippingLayer_frame_pixel.hlsl">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneFlippingLayer</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneEndingLayer_pixel.hlsl">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneEndingLayer</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\MainSceneEndingLayer_vertex.hlsl">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneEndingLayer</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>

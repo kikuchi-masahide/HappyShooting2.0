@@ -1,7 +1,7 @@
 #include "Boss2Mediator.h"
 
 #include "../Engine/GameObject.h"
-#include"DrawAnimationComponent.h"
+#include "DrawAnimationComponent.h"
 #include "Boss2StateEntering.h"
 #include "DrawHealthBarComponent.h"
 #include "ScoreManager.h"
@@ -14,7 +14,7 @@ Boss2MediatorComponent::Boss2MediatorComponent(GameObjectHandle object, boost::s
 {
 	animation_ = mObj->AddOutputComponent<DrawAnimationComponent>(layer_, 31, 140, 110, 4, 8, -5.0, MatVec::Vector2(), 30);
 	health_bar_obj_ = mObj->mScene->AddObject(MatVec::Vector2(healthbar_x_, healthbar_y_), 1.0, 0.0);
-	health_bar_obj_->AddOutputComponent<DrawHealthBarComponent<Boss2MediatorComponent>>(layer_, This<Boss2MediatorComponent>(), MatVec::Vector2(0, 0), healthbar_w_, healthbar_h_);
+	health_bar_ = health_bar_obj_->AddOutputComponent<DrawHealthBarComponent<Boss2MediatorComponent>>(layer_, This<Boss2MediatorComponent>(), MatVec::Vector2(0, 0), healthbar_w_, healthbar_h_);
 	mObj->AddUpdateComponent<Boss2CollisionComponent>(collision_manager, This<Boss2MediatorComponent>());
 	ChangeState(boost::shared_ptr<Boss2StateEntering>(new Boss2StateEntering(
 		This<Boss2MediatorComponent>(), layer_, score_manager, collision_manager, enemywave_manager
@@ -23,13 +23,19 @@ Boss2MediatorComponent::Boss2MediatorComponent(GameObjectHandle object, boost::s
 
 Boss2MediatorComponent::~Boss2MediatorComponent()
 {
-	health_bar_obj_->SetDeleteFlag();
+	if (health_bar_obj_.IsValid())
+	{
+		health_bar_obj_->SetDeleteFlag();
+	}
 }
 
 void Boss2MediatorComponent::Update()
 {
 	//30fps‚Å“®‚©‚µ‚Ä‚Ý‚é
-	animation_->counter_ = (time_ / 2) % 30;
+	if (animation_.IsValid())
+	{
+		animation_->counter_ = (time_ / 2) % 30;
+	}
 	if (state_)
 	{
 		state_->Update();
@@ -62,4 +68,10 @@ void Boss2MediatorComponent::CheckHitComponent(std::set<ComponentHandle<Collisio
 			health_ = -1;
 		}
 	}
+}
+
+void Boss2MediatorComponent::HaltDrawing()
+{
+	animation_->SetDeleteFlag();
+	health_bar_obj_->SetDeleteFlag();
 }

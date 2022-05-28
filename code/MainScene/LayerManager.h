@@ -55,7 +55,7 @@ private:
 	//持っているレイヤーの内描画するもの
 	LayerHandle<MainSceneBaseLayer> active_layer_;
 	//使えるレイヤーの一覧
-	LayerHandle<MainSceneBaseLayer> available_layers_[5];
+	LayerHandle<MainSceneBaseLayer> available_layers_[6];
 	//次のtickから使うレイヤー(none:999)
 	unsigned int layer_from_next_tick_;
 	GameObjectHandle myself_;
