@@ -16,7 +16,7 @@ void ScoreManager::AddScore(int add)
 
 void ScoreManager::ConsumeLife()
 {
-	life_--;
+	//life_--;
 }
 
 bool ScoreManager::IsLifeRemaining()

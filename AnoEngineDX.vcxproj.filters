@@ -376,6 +376,12 @@
     <Filter Include="MainScene\CollisionComponent\Boss2CollisionComponent">
       <UniqueIdentifier>{00accdd6-3e53-444c-b689-047221c43daa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\Boss2StateBase\Boss2StateEnd">
+      <UniqueIdentifier>{7f574236-7d73-42a3-bd6e-0e304c27960a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainScene\MainSceneBaseLayer\MainSceneEndingLayer">
+      <UniqueIdentifier>{d9a14fca-e489-4511-a788-41dec6664040}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -820,6 +826,12 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\Boss2CollisionComponent.cpp">
       <Filter>MainScene\CollisionComponent\Boss2CollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\Boss2StateEnd.cpp">
+      <Filter>MainScene\Boss2StateBase\Boss2StateEnd</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\MainSceneEndingLayer.cpp">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneEndingLayer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1285,6 +1297,12 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\Boss2CollisionComponent.h">
       <Filter>MainScene\CollisionComponent\Boss2CollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\Boss2StateEnd.h">
+      <Filter>MainScene\Boss2StateBase\Boss2StateEnd</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\MainSceneEndingLayer.h">
+      <Filter>MainScene\MainSceneBaseLayer\MainSceneEndingLayer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

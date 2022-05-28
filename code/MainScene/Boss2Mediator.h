@@ -26,16 +26,20 @@ public:
 private:
     boost::shared_ptr<LayerManager> layer_;
     boost::shared_ptr<ScoreManager> score_;
+    boost::shared_ptr<CollisionManager> col_;
+    boost::shared_ptr<EnemyWaveManager> enemy_;
     ComponentHandle<DrawAnimationComponent> animation_;
     //‰‚ß‚Ä‚ÌUpdate‚Å0
     int time_;
     boost::shared_ptr<Boss2StateBase> state_;
     int health_;
     //‰Šú‘Ì—Í
-    static constexpr int health0_ = 300000;
+    static constexpr int health0_ = 300;
     static constexpr double healthbar_x_ = 0.0;
     static constexpr double healthbar_y_ = 430.0;
     static constexpr double healthbar_w_ = 500.0;
     static constexpr double healthbar_h_ = 5.0;
+    //ˆê‚É“¹˜A‚ê‚É‚µ‚È‚¢‚Æ‚¢‚¯‚È‚¢‚Ì‚Å
+    GameObjectHandle health_bar_obj_;
 };
 

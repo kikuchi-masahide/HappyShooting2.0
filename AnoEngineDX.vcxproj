@@ -227,6 +227,7 @@
     <ClCompile Include="code\MainScene\Boss2State3Bullet.cpp" />
     <ClCompile Include="code\MainScene\Boss2State3BulletColComponent.cpp" />
     <ClCompile Include="code\MainScene\Boss2StateBase.cpp" />
+    <ClCompile Include="code\MainScene\Boss2StateEnd.cpp" />
     <ClCompile Include="code\MainScene\Boss2StateEntering.cpp" />
     <ClCompile Include="code\MainScene\BossIncomingUpdate.cpp" />
     <ClCompile Include="code\MainScene\CircleGeometry.cpp" />
@@ -276,6 +277,7 @@
     <ClCompile Include="code\MainScene\LayerManager.cpp" />
     <ClCompile Include="code\MainScene\LazerCollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\LinearMoveComponent.cpp" />
+    <ClCompile Include="code\MainScene\MainSceneEndingLayer.cpp" />
     <ClCompile Include="code\MainScene\MyBulletComponent.cpp" />
     <ClCompile Include="code\MainScene\LinearRotateComponent.cpp" />
     <ClCompile Include="code\MainScene\MainScene.cpp" />
@@ -390,6 +392,7 @@
     <ClInclude Include="code\MainScene\Boss2State3Bullet.h" />
     <ClInclude Include="code\MainScene\Boss2State3BulletColComponent.h" />
     <ClInclude Include="code\MainScene\Boss2StateBase.h" />
+    <ClInclude Include="code\MainScene\Boss2StateEnd.h" />
     <ClInclude Include="code\MainScene\Boss2StateEntering.h" />
     <ClInclude Include="code\MainScene\BossIncomingUpdate.h" />
     <ClInclude Include="code\MainScene\CircleGeometry.h" />
@@ -439,6 +442,7 @@
     <ClInclude Include="code\MainScene\LayerManager.h" />
     <ClInclude Include="code\MainScene\LazerCollisionComponent.h" />
     <ClInclude Include="code\MainScene\LinearMoveComponent.h" />
+    <ClInclude Include="code\MainScene\MainSceneEndingLayer.h" />
     <ClInclude Include="code\MainScene\MyBulletComponent.h" />
     <ClInclude Include="code\MainScene\LinearRotateComponent.h" />
     <ClInclude Include="code\MainScene\MainScene.h" />
