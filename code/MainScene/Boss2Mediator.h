@@ -9,8 +9,7 @@ class DrawAnimationComponent;
 class Boss2StateBase;
 class MyselfMediatorComponent;
 class CollisionComponent;
-template<class T>
-class DrawHealthBarComponent;
+class Boss2CollisionComponent;
 
 class Boss2MediatorComponent :
     public Component
@@ -33,7 +32,7 @@ private:
     boost::shared_ptr<CollisionManager> col_;
     boost::shared_ptr<EnemyWaveManager> enemy_;
     ComponentHandle<DrawAnimationComponent> animation_;
-    ComponentHandle<DrawHealthBarComponent<Boss2MediatorComponent>> health_bar_;
+    ComponentHandle<Boss2CollisionComponent> col_comp_;
     //èâÇﬂÇƒÇÃUpdateÇ≈0
     int time_;
     boost::shared_ptr<Boss2StateBase> state_;

@@ -14,8 +14,8 @@ Boss2MediatorComponent::Boss2MediatorComponent(GameObjectHandle object, boost::s
 {
 	animation_ = mObj->AddOutputComponent<DrawAnimationComponent>(layer_, 31, 140, 110, 4, 8, -5.0, MatVec::Vector2(), 30);
 	health_bar_obj_ = mObj->mScene->AddObject(MatVec::Vector2(healthbar_x_, healthbar_y_), 1.0, 0.0);
-	health_bar_ = health_bar_obj_->AddOutputComponent<DrawHealthBarComponent<Boss2MediatorComponent>>(layer_, This<Boss2MediatorComponent>(), MatVec::Vector2(0, 0), healthbar_w_, healthbar_h_);
-	mObj->AddUpdateComponent<Boss2CollisionComponent>(collision_manager, This<Boss2MediatorComponent>());
+	health_bar_obj_->AddOutputComponent<DrawHealthBarComponent<Boss2MediatorComponent>>(layer_, This<Boss2MediatorComponent>(), MatVec::Vector2(0, 0), healthbar_w_, healthbar_h_);
+	col_comp_ = mObj->AddUpdateComponent<Boss2CollisionComponent>(collision_manager, This<Boss2MediatorComponent>());
 	ChangeState(boost::shared_ptr<Boss2StateEntering>(new Boss2StateEntering(
 		This<Boss2MediatorComponent>(), layer_, score_manager, collision_manager, enemywave_manager
 	)));
@@ -74,4 +74,5 @@ void Boss2MediatorComponent::HaltDrawing()
 {
 	animation_->SetDeleteFlag();
 	health_bar_obj_->SetDeleteFlag();
+	col_comp_->SetDeleteFlag();
 }
