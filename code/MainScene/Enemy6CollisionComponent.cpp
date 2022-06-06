@@ -1,18 +1,15 @@
 #include "Enemy6CollisionComponent.h"
 
 #include "../Engine/GameObject.h"
-#include "CollisionUIScreen.h"
 
 Enemy6CollisionComponent::Enemy6CollisionComponent(GameObjectHandle object, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<ScoreManager> score_manager, ComponentHandle<EnemyHealthComponent> health_component, int time)
 	:EnemyBodyCollisionComponent(object, collision_manager, score_manager, health_component, 100),
 	time_(time), polygon_(This<CollisionComponent>(), 4)
 {
-	manager_->collision_ui_->AddPolygonGeometry(&polygon_, MatVec::Vector3(1.0, 0.0, 0.0));
 }
 
 Enemy6CollisionComponent::~Enemy6CollisionComponent()
 {
-	manager_->collision_ui_->DeletePolygonGeometry(&polygon_);
 }
 
 void Enemy6CollisionComponent::Update()

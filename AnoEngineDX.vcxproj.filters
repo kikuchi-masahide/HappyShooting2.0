@@ -196,9 +196,6 @@
     <Filter Include="MainScene\CollisionComponent\Boss1CollisionComponent">
       <UniqueIdentifier>{5ab9c813-6008-484c-9de5-235e9d651063}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainScene\CollisionUIScreen">
-      <UniqueIdentifier>{ab442823-1918-4373-b112-dbdc9c51735c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MainScene\PolygonGeometryDrawer">
       <UniqueIdentifier>{6508c226-cc9b-48cd-95d8-5bbbfab952cd}</UniqueIdentifier>
     </Filter>
@@ -545,9 +542,6 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\CollisionManager.cpp">
       <Filter>MainScene\CollisionManager</Filter>
-    </ClCompile>
-    <ClCompile Include="code\MainScene\CollisionUIScreen.cpp">
-      <Filter>MainScene\CollisionUIScreen</Filter>
     </ClCompile>
     <ClCompile Include="code\MainScene\Enemy1MoveComponent.cpp">
       <Filter>MainScene\Enemy1MoveComponent</Filter>
@@ -1020,9 +1014,6 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\CollisionManager.h">
       <Filter>MainScene\CollisionManager</Filter>
-    </ClInclude>
-    <ClInclude Include="code\MainScene\CollisionUIScreen.h">
-      <Filter>MainScene\CollisionUIScreen</Filter>
     </ClInclude>
     <ClInclude Include="code\MainScene\Enemy1MoveComponent.h">
       <Filter>MainScene\Enemy1MoveComponent</Filter>

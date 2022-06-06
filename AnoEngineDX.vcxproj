@@ -233,7 +233,6 @@
     <ClCompile Include="code\MainScene\CircleGeometry.cpp" />
     <ClCompile Include="code\MainScene\CollisionComponent.cpp" />
     <ClCompile Include="code\MainScene\CollisionManager.cpp" />
-    <ClCompile Include="code\MainScene\CollisionUIScreen.cpp" />
     <ClCompile Include="code\MainScene\CupsuleGeometry.cpp" />
     <ClCompile Include="code\MainScene\DrawAnimationComponent.cpp" />
     <ClCompile Include="code\MainScene\DrawBoss1BulletComponent.cpp" />
@@ -399,7 +398,6 @@
     <ClInclude Include="code\MainScene\CircleGeometry.h" />
     <ClInclude Include="code\MainScene\CollisionComponent.h" />
     <ClInclude Include="code\MainScene\CollisionManager.h" />
-    <ClInclude Include="code\MainScene\CollisionUIScreen.h" />
     <ClInclude Include="code\MainScene\CupsuleGeometry.h" />
     <ClInclude Include="code\MainScene\DrawAnimationComponent.h" />
     <ClInclude Include="code\MainScene\DrawBoss1BulletComponent.h" />

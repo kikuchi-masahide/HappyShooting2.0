@@ -7,7 +7,6 @@
 #include "MyselfMediatorComponent.h"
 #include "DrawNormalBulletComponent.h"
 #include "EnemyWaveManager.h"
-#include "CollisionUIScreen.h"
 #include "EnemyWaveBoss2.h"
 #include "MyselfMediatorComponent.h"
 #include "EnemyWave1.h"
@@ -29,8 +28,7 @@ MainScene::MainScene(Game* game)
 	//UIScreen
 	AddUIScreen<MainSceneUIScreen>(score_manager_);
 
-	CollisionUIScreen* collision_ui = AddUIScreen<CollisionUIScreen>();
-	collision_manager_ = boost::shared_ptr<CollisionManager>(DBG_NEW CollisionManager(collision_ui));
+	collision_manager_ = boost::shared_ptr<CollisionManager>(DBG_NEW CollisionManager());
 	enemy_wave_manager_ = boost::shared_ptr<EnemyWaveManager>(DBG_NEW EnemyWaveManager(this));
 
 	//Ž©‹@’Ç‰Á

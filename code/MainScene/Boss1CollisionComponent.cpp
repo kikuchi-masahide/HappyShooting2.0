@@ -3,7 +3,6 @@
 #include "Boss1MediatorComponent.h"
 #include "../Engine/GameObject.h"
 #include "DrawBoss1Component.h"
-#include "CollisionUIScreen.h"
 
 Boss1CollisionComponent::Boss1CollisionComponent(GameObjectHandle handle, boost::shared_ptr<CollisionManager> manager, boost::shared_ptr<ScoreManager> score_manager, ComponentHandle<Boss1MediatorComponent> mediator)
 	:EnemyBodyCollisionComponent<Boss1MediatorComponent>(handle,manager,score_manager,mediator,200,200),
@@ -14,18 +13,10 @@ Boss1CollisionComponent::Boss1CollisionComponent(GameObjectHandle handle, boost:
 		polygon_[n] = PolygonGeometry(This<CollisionComponent>(), 4);
 	}
 	SetPolygonCoord();
-	for (int n = 0; n < 4; n++)
-	{
-		manager->collision_ui_->AddPolygonGeometry(&(polygon_[n]),MatVec::Vector3(0.5,0.0,0.0));
-	}
 }
 
 Boss1CollisionComponent::~Boss1CollisionComponent()
 {
-	for (int n = 0; n < 4; n++)
-	{
-		manager_->collision_ui_->DeletePolygonGeometry(&(polygon_[n]));
-	}
 }
 
 void Boss1CollisionComponent::Update()

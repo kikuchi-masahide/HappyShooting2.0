@@ -6,7 +6,6 @@
 #include "PolygonGeometry.h"
 #include "AABBTree.h"
 
-class CollisionUIScreen;
 class CollisionComponent;
 class CircleGeometry;
 class PolygonGeometry;
@@ -18,7 +17,7 @@ class CupsuleGeometry;
 class CollisionManager
 {
 public:
-	CollisionManager(CollisionUIScreen* screen);
+	CollisionManager();
 	~CollisionManager();
 	/// <summary>
 	/// 全componentが持つ図形同士の当たり判定を実行し，componentに衝突したcomponentを教える
@@ -43,7 +42,6 @@ public:
 		EnemyBullet,
 		EnemyLazer
 	};
-	CollisionUIScreen* const collision_ui_;
 private:
 	//comp1とcomp2のhit_comps_に，お互いを追加する
 	void NoticeEachOther(ComponentHandle<CollisionComponent> comp1, ComponentHandle<CollisionComponent> comp2);
