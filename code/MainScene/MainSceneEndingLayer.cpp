@@ -51,10 +51,10 @@ void MainSceneEndingLayer::UniqueDraw()
 		t -= 30;
 		map->r1 = 900.0f;
 		map->r2 = 300.0f;
-		map->r1alphast = t / 90.f;
-		map->r1alphaen = t / 90.f;
-		map->r2alphast = t / 90.f;
-		map->r2alphaen = t / 90.f;
+		map->r1alphast = t / 150.f;
+		map->r1alphaen = t / 150.f;
+		map->r2alphast = t / 150.f;
+		map->r2alphaen = t / 150.f;
 	}
 	auto& game = scene_->mGame;
 	game.mdx12.OpenRenderTarget(pera_rtv_, 0);

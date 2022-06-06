@@ -382,6 +382,9 @@
     <Filter Include="MainScene\MainSceneBaseLayer\MainSceneEndingLayer">
       <UniqueIdentifier>{d9a14fca-e489-4511-a788-41dec6664040}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainScene\GameClearUI">
+      <UniqueIdentifier>{d4d45852-9074-4490-bf7b-90e513b48608}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\TitleScene\TitleScene.cpp">
@@ -832,6 +835,9 @@
     </ClCompile>
     <ClCompile Include="code\MainScene\MainSceneEndingLayer.cpp">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneEndingLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainScene\GameClearUI.cpp">
+      <Filter>MainScene\GameClearUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1303,6 +1309,9 @@
     </ClInclude>
     <ClInclude Include="code\MainScene\MainSceneEndingLayer.h">
       <Filter>MainScene\MainSceneBaseLayer\MainSceneEndingLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MainScene\GameClearUI.h">
+      <Filter>MainScene\GameClearUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

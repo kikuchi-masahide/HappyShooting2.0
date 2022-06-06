@@ -6,6 +6,7 @@
 #include "../Engine/Scene.h"
 #include "CollisionComponent.h"
 #include "LayerManager.h"
+#include "GameClearUI.h"
 
 Boss2StateEnd::Boss2StateEnd(ComponentHandle<Boss2MediatorComponent> mediator, boost::shared_ptr<LayerManager> layer_manager, boost::shared_ptr<ScoreManager> score_manager, boost::shared_ptr<CollisionManager> collision_manager, boost::shared_ptr<EnemyWaveManager> enemywave_manager)
 	:Boss2StateBase(mediator, layer_manager, score_manager, collision_manager, enemywave_manager),
@@ -33,7 +34,11 @@ void Boss2StateEnd::Update()
 	{
 		mediator_->HaltDrawing();
 	}
-	else if (time_ == 360)
+	else if (time_ == 270)
+	{
+		mediator_->mObj->mScene->AddUIScreen<GameClearUI>();
+	}
+	else if (time_ == 390)
 	{
 		layer_manager_->SwapLayer(0);
 		mediator_->mObj->SetDeleteFlag();
