@@ -79,7 +79,7 @@ void Enemy7MediatorComponent::InitBody(boost::shared_ptr<ScoreManager> score)
 
 void Enemy7MediatorComponent::InitBarrier()
 {
-	barrier_ = mObj->mScene->AddObject(MatVec::Vector2(), 1.0, 0.0);
+	barrier_ = mObj->mScene->AddObject(MatVec::Vector2(0.0, 900.0), 1.0, 0.0);
 	auto col = barrier_->AddUpdateComponent<Enemy7BarrierCollisionComponent>(collision_, layer_);
 	barrier_->AddOutputComponent<DrawHealthBarComponent<Enemy7BarrierCollisionComponent>>(layer_, col, MatVec::Vector2(0, -100));
 	auto tex = barrier_->AddOutputComponent<DrawTextureComponent>(layer_, 29, -5.0);

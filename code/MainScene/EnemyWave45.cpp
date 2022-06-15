@@ -20,7 +20,7 @@ EnemyWave45::EnemyWave45(MainScene* main_scene)
 	auto enemywaveman = main_scene->GetEnemyWaveManager();
 	for (int i = 0; i < 8; i++)
 	{
-		auto obj = scene->AddObject(MatVec::Vector2(), 1.0, 0.0);
+		auto obj = scene->AddObject(MatVec::Vector2(0.0, 900.0), 1.0, 0.0);
 		obj->AddUpdateComponent<Enemy5MoveComponent>(-30 * (i+6));
 		auto draw = obj->AddOutputComponent<DrawTextureComponent>(scene->GetLayerManager(), 8, -5);
 		draw->width_ = 40;
@@ -32,10 +32,10 @@ EnemyWave45::EnemyWave45(MainScene* main_scene)
 		obj->AddUpdateComponent<Enemy5ShootComponent>(50, scene->GetMyselfHandle(), 10, 4, 60, -30 * (i + 6), 100, scene->GetLayerManager(), scene->GetCollisionManager());
 		enemywaveman->AddEnemyInWave(obj);
 	}
-	auto enemy4_1 = scene->AddObject(MatVec::Vector2(), 1.0, 0.0);
+	auto enemy4_1 = scene->AddObject(MatVec::Vector2(0.0, 900.0), 1.0, 0.0);
 	enemy4_1->AddUpdateComponent<Enemy4BehaviorComponent>(scene->GetCollisionManager(), scene->GetLayerManager(), scene->GetScoreManager(), myself, 1);
 	enemywaveman->AddEnemyInWave(enemy4_1);
-	auto enemy4_2 = scene->AddObject(MatVec::Vector2(), 1.0, 0.0);
+	auto enemy4_2 = scene->AddObject(MatVec::Vector2(0.0, 900.0), 1.0, 0.0);
 	enemy4_2->AddUpdateComponent<Enemy4BehaviorComponent>(scene->GetCollisionManager(), scene->GetLayerManager(), scene->GetScoreManager(), myself, -1);
 	enemywaveman->AddEnemyInWave(enemy4_2);
 }

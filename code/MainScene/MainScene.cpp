@@ -7,7 +7,6 @@
 #include "MyselfMediatorComponent.h"
 #include "DrawNormalBulletComponent.h"
 #include "EnemyWaveManager.h"
-#include "EnemyWaveBoss2.h"
 #include "MyselfMediatorComponent.h"
 #include "EnemyWave1.h"
 
@@ -36,11 +35,7 @@ MainScene::MainScene(Game* game)
 	layer_manager_->SetMyselfHandle(mediator_->mObj);
 	layer_manager_->InitLayers();
 
-	//TODO:デバッグ時の漸次的な処理
-	//Releaseならこれを消し、EnemyWave6のこの文を有効化する
-	SetMyselfArmor2();
-	enemy_wave_manager_->SetWave(boost::shared_ptr<EnemyWaveBase>(DBG_NEW EnemyWaveBoss2(this)));
-	//enemy_wave_manager_->SetWave(boost::shared_ptr<EnemyWave1>(DBG_NEW EnemyWave1(60, this)));
+	enemy_wave_manager_->SetWave(boost::shared_ptr<EnemyWave1>(DBG_NEW EnemyWave1(60, this)));
 }
 
 void MainScene::PriorUniqueUpdate()

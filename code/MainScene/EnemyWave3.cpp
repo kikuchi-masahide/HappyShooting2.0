@@ -21,7 +21,7 @@ EnemyWave3::EnemyWave3(MainScene* main_scene)
 	auto enemywaveman = main_scene->GetEnemyWaveManager();
 	for (int i = 0; i < 9; i++)
 	{
-		auto obj = main_scene->AddObject(MatVec::Vector2(), 0.0, 1.0);
+		auto obj = main_scene->AddObject(MatVec::Vector2(0.0,900.0), 0.0, 1.0);
 		obj->AddUpdateComponent<Enemy3MoveComponent>(-i * 30, lambda,PI/600);
 		auto draw = obj->AddOutputComponent<DrawTextureComponent>(main_scene->GetLayerManager(), 8, -5);
 		draw->width_ = 40;
@@ -45,7 +45,7 @@ EnemyWave3::EnemyWave3(MainScene* main_scene)
 	};
 	for (int i = 0; i < 9; i++)
 	{
-		auto obj = main_scene->AddObject(MatVec::Vector2(), 0.0, 1.0);
+		auto obj = main_scene->AddObject(MatVec::Vector2(0.0, 900.0), 0.0, 1.0);
 		obj->AddUpdateComponent<Enemy3MoveComponent>(-i * 30, lambda2, PI / 600);
 		auto draw = obj->AddOutputComponent<DrawTextureComponent>(main_scene->GetLayerManager(), 8, -5);
 		draw->width_ = 40;

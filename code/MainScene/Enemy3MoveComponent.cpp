@@ -15,6 +15,9 @@ Enemy3MoveComponent::~Enemy3MoveComponent()
 
 void Enemy3MoveComponent::Update()
 {
+	//HACK:画面中心に敵機がちらつく現象について
+	//DrawTextureComponentの本追加自体は正しく遅らせられているが、MainSceneBaseLayerへの命令はコンストラクタ
+	//で事前に飛ばされているのが原因。やはり遅延初期化を行わないと解決しなそう
 	double angle = angle_delta_*counter_;
 	MatVec::Vector2 pos = lambda_(angle);
 	mObj->SetPosition(pos);
