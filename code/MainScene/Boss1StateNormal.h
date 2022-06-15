@@ -22,7 +22,7 @@ private:
     double deg_;
     //ŸBoss1State1~3‚Ì‚Ç‚¿‚ç‚É‘JˆÚ‚·‚é‚©
     unsigned int next_state_;
-    static constexpr double delta_deg_ = PI/120;
+    static constexpr double delta_deg_ = PI/(60*60);
     //‰½ŒÂ‚Ì’e‚ğŒ‚‚Â‚©
     static constexpr int bullet_num_ = 96;
     //‰½tick‚¨‚«‚É’e‚ğŒ‚‚Â‚©D

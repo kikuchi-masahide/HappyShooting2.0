@@ -53,6 +53,7 @@ void Boss1StateNormal::Update()
 			mediator_->ChangeState(DBG_NEW Boss1State3(mediator_, layer_manager_, score_manager_, collision_manager_, enemywave_manager_));
 		}
 	}
+	deg_ += delta_deg_;
 	counter_++;
 }
 
