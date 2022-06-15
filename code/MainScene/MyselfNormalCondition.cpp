@@ -62,10 +62,10 @@ unsigned int MyselfNormalCondition::GetDamaged(unsigned int attack)
 	auto score = mediator_->score_manager_;
 	//実ダメージをスコアに加算
 	score->AddScore(-(int)attack);
-	//残機を1減らす
-	score->ConsumeLife();
 	//残機があれば復活状態にmediator_->condition_を譲る
 	if (score->IsLifeRemaining()) {
+		//残機を1減らす
+		score->ConsumeLife();
 		auto next = mObj->AddUpdateComponent<MyselfRevivingCondition>(mediator_);
 		auto next_conv = static_cast<ComponentHandle<MyselfConditionBase>>(next);
 		mediator_->SetNextCondition(next_conv);

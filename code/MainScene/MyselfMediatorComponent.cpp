@@ -88,6 +88,13 @@ void MyselfMediatorComponent::SetMyselfArmor2()
 	));
 }
 
+void MyselfMediatorComponent::AddLife(int n)
+{
+	if (condition_->IsShooterActive()) {
+		score_manager_->AddLife(n);
+	}
+}
+
 void MyselfMediatorComponent::SetProgradePlay()
 {
 	retrograde_speed_ = -1;

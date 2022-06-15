@@ -56,7 +56,7 @@ void Boss1State2::Update()
 	}
 	if (counter_ == terminal_counter_ - 1)
 	{
-		mediator_->ChangeState(DBG_NEW Boss1StateNormal(mediator_, layer_manager_, score_manager_, collision_manager_,enemywave_manager_,1));
+		mediator_->ChangeState(DBG_NEW Boss1StateNormal(mediator_, layer_manager_, score_manager_, collision_manager_,enemywave_manager_,3));
 	}
 	counter_++;
 }

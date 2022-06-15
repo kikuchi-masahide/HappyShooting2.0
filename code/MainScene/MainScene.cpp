@@ -94,6 +94,11 @@ void MainScene::SetMyselfArmor2()
 	mediator_->SetMyselfArmor2();
 }
 
+void MainScene::AddLife(int n)
+{
+	mediator_->AddLife(n);
+}
+
 void MainScene::AddMyself()
 {
 	auto obj = AddObject(MatVec::Vector2(0, -275), 1.0, 0.0);

@@ -24,6 +24,7 @@ public:
 	boost::shared_ptr<CollisionManager> GetCollisionManager();
 	GameObjectHandle GetMyselfHandle();
 	void SetMyselfArmor2();
+	void AddLife(int n);
 	//自機のメディエータ
 	ComponentHandle<MyselfMediatorComponent> mediator_;
 private:

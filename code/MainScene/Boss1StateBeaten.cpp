@@ -26,6 +26,7 @@ void Boss1StateBeaten::Update()
 		AddDeathEffect(pos, 500);
 		mediator_->mObj->SetDeleteFlag();
 		enemywave_manager_->scene_->SetMyselfArmor2();
+		enemywave_manager_->scene_->AddLife(2);
 		return;
 	}
 	if (counter_ % 6 == 0)
