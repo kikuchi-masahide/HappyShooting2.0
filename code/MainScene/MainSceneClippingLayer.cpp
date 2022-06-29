@@ -38,7 +38,7 @@ void MainSceneClippingLayer::UniqueDraw()
 	unsigned int t = GetLayert();
 	if (t < shrinking_period_)
 	{
-		const_map->r_ = (min_r_ - 900.0) * t / (shrinking_period_ - 1) + 900.0;
+		const_map->r_ = (min_r_ - 1100.0) * t / (shrinking_period_ - 1) + 1100.0;
 	}
 	else if (t < shrinking_period_ + maintain_period_)
 	{
@@ -46,8 +46,8 @@ void MainSceneClippingLayer::UniqueDraw()
 	}
 	else
 	{
-		const_map->r_ = (900.0 - min_r_) * (t - shrinking_period_ - maintain_period_) / (clearing_period_ - 1) + min_r_;
-		const_map->r_ = min(900.0, const_map->r_);
+		const_map->r_ = (1100.0 - min_r_) * (t - shrinking_period_ - maintain_period_) / (clearing_period_ - 1) + min_r_;
+		const_map->r_ = min(1100.0, const_map->r_);
 	}
 	const_map->myself_ = MatVec::ConvertToXMFLOAT2(myself_->GetPosition());
 	game.mdx12.Unmap(const_buffer_);

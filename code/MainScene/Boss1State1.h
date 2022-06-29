@@ -25,7 +25,7 @@ private:
     static constexpr double popup_centerx_ = 0.0;
     static constexpr double popup_rightx_ = 150.0;
     //counter_‚ª‰½‚É‚È‚Á‚½‚çNormalState‚É–ß‚é‚©
-    static constexpr unsigned int terminal_counter_ = 400*60/25-1;
+    static constexpr unsigned int terminal_counter_ = 450*60/25-1;
     //‚±‚ÌxÀ•W‚Åã‰º‰^“®‚·‚éCMasterBullet‚ğ’Ç‰Á‚·‚é
     void AddMasterBullet(double x);
 };

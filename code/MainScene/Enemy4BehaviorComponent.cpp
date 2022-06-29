@@ -100,7 +100,7 @@ void Enemy4BehaviorComponent::Update()
 		//‰~‚Ì”¼Œa‚ðC60tick‚Å0‚©‚ç20ã2‚Ü‚Å‘‰Á‚³‚¹‚é
 		double r = sqrt(2) * counter_ / 3;
 		lazer_draw_->r_ = r;
-		lazer_collision_->cupsule_.r_ = r;
+		lazer_collision_->cupsule_.r_ = max(0.0,r - 1);
 		RegCollisionGeometry(MatVec::Vector2((300 - sqrt(2) * 20) * flag_, 410.0), 60);
 		myself_pos_->SetAnchorPoint(MatVec::Vector2(300 - sqrt(2) * 20 - r - 0.01, +450.0) * flag_, MatVec::Vector2(300 - sqrt(2) * 20 - r - 0.01, -450.0) * flag_);
 		counter_++;

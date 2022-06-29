@@ -43,7 +43,7 @@ private:
     //アニメーションが止まっているか否か(次tickからの適用)
     bool is_pausing_;
     //初期体力
-    static constexpr double all_health_ = 300.0;// 60000.0;
+    static constexpr double all_health_ = 60000.0;
     //現体力
     double health_;
     //ヘルスバーを描く位置調整のためのオブジェクト

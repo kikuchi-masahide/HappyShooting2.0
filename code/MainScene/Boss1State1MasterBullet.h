@@ -33,9 +33,9 @@ private:
     //Á–Å‰½ŒÂ‚Ì’e‚ğì‚é‚©
     static constexpr unsigned int small_bullet_num_ = 32;
     //Á–Å‚ÌŠe’e‚Ì‰‘¬“x‚Ì‘å‚«‚³
-    static constexpr double small_bullet_v0_ = 4.0 * 25 / 60;
+    static constexpr double small_bullet_v0_ = 3.0 * 25 / 60;
     //¬‚³‚È’e‚Ìy•ûŒü‰Á‘¬“x(ã‚ğ³‚Æ‚µ‚Ä‚¢‚é)
-    static constexpr double small_bullet_ay_ = -0.25 * 25 / 60;
+    static constexpr double small_bullet_ay_ = -0.10 * 25 / 60;
     //¬‚³‚È’e‚Ì‘å‚«‚³
     static constexpr double small_bullet_size_ = 10.0;
 };

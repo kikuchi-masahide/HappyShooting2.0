@@ -25,7 +25,7 @@ EnemyWave45::EnemyWave45(MainScene* main_scene)
 		auto draw = obj->AddOutputComponent<DrawTextureComponent>(scene->GetLayerManager(), 8, -5);
 		draw->width_ = 40;
 		draw->height_ = 40;
-		auto health = obj->AddUpdateComponent<EnemyHealthComponent>(scene->GetLayerManager(), 300);
+		auto health = obj->AddUpdateComponent<EnemyHealthComponent>(scene->GetLayerManager(), 600);
 		//Enemy3‚ÆŒ`‚ªˆê‚È‚Ì‚Å“–‚½‚è”»’è‚àˆê
 		obj->AddUpdateComponent<Enemy3CollisionComponent>(scene->GetCollisionManager(), scene->GetScoreManager(), health);
 		obj->AddOutputComponent<DrawHealthBarComponent<EnemyHealthComponent>>(scene->GetLayerManager(), health, MatVec::Vector2(0, 30));
