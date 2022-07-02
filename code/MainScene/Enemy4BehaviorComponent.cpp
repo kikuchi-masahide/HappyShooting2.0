@@ -145,6 +145,9 @@ void Enemy4BehaviorComponent::CheckHitComponent()
 {
 	for (auto comp : hit_comps_)
 	{
+		if (comp->tag_ == CollisionManager::Tag::Myself) {
+			continue;
+		}
 		auto damage = comp->GetDamage();
 		auto real_damage = health_->Damage(damage);
 		score_manager_->AddScore(real_damage);

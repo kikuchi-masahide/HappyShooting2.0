@@ -24,7 +24,7 @@ public:
         for (auto comp : hit_comps_)
         {
             //Ž©‹@‚Ü‚½‚ÍŽ©‹@’e‚Æ‚ÌÕ“Ë
-            if (comp->tag_ == CollisionManager::Tag::Myself || comp->tag_ == CollisionManager::Tag::MyBullet)
+            if (comp->tag_ == CollisionManager::Tag::MyBullet)
             {
                 auto damage = comp->GetDamage();
                 auto real_damage = health_component_->Damage(damage);

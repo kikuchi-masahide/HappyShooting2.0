@@ -26,8 +26,6 @@ void Enemy1CollisionComponent::Update()
 		manager_->AddEnemyGeometry(&(circle_around_[n]));
 		angle += 2 * PI / 3;
 	}
-	CircleGeometry circle(
-		This<CollisionComponent>(), center, 4
-	);
+	circle_center_.center_ = center;
 	manager_->AddEnemyGeometry(&circle_center_);
 }
